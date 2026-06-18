@@ -12,6 +12,9 @@ import {
 
 export default function SignUpPage() {
   const [role, setRole] = useState("student");
+  const [email, setEmail] = useState("");
+const [otpSent, setOtpSent] = useState(false);
+const [otp, setOtp] = useState("");
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-white py-20">
@@ -91,14 +94,44 @@ export default function SignUpPage() {
                 />
               </div>
 
-              <div className="relative">
-                <FaEnvelope className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
+           <div className="relative">
+  <FaEnvelope className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
 
-                <input
-                  placeholder="Email Address"
-                  className="w-full rounded-2xl border border-slate-200 py-3.5 pl-12 pr-4 outline-none focus:border-[#D6451B]"
-                />
-              </div>
+  <input
+    value={email}
+    onChange={(e) => setEmail(e.target.value)}
+    placeholder="Email Address"
+    className="w-full rounded-2xl border border-slate-200 py-3.5 pl-12 pr-32 outline-none focus:border-[#D6451B]"
+  />
+
+  {!otpSent && (
+    <button
+      type="button"
+      onClick={() => setOtpSent(true)}
+      className="absolute right-2 top-1/2 -translate-y-1/2 rounded-xl bg-[#D6451B] px-3 py-2 text-xs text-white hover:opacity-90"
+    >
+      Send OTP
+    </button>
+  )}
+</div>
+{otpSent && (
+  <div className="relative">
+    <input
+      value={otp}
+      onChange={(e) => setOtp(e.target.value)}
+      placeholder="Enter OTP"
+      className="w-full rounded-2xl border border-slate-200 py-3.5 px-4 outline-none focus:border-[#D6451B]"
+    />
+
+    <button
+      type="button"
+      className="mt-2 text-xs font-medium text-[#D6451B] hover:underline"
+      onClick={() => setOtpSent(false)}
+    >
+      Change Email
+    </button>
+  </div>
+)}
 
               <div className="relative">
                 <FaLock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />

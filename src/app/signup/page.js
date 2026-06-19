@@ -12,6 +12,7 @@ import {
 } from "react-icons/fa";
 import { useSendOtpMutation, useSignUpMutation, useVerifyOtpMutation } from "../mutations/AuthenticationMutations";
 import { toast } from "sonner";
+import Link from "next/link";
 
 export default function SignUpPage() {
   const [role, setRole] = useState("student");
@@ -332,7 +333,7 @@ disabled={emailVerified}
             </div>
 
             {/* Google */}
-            <button className="flex w-full items-center justify-center gap-3 rounded-2xl border border-slate-200 py-3.5 hover:bg-slate-50">
+            <button disabled className="flex w-full items-center justify-center gap-3 rounded-2xl border border-slate-200 py-3.5 hover:bg-slate-50 disabled:opacity-20">
               <FaGoogle />
               Continue with Google
             </button>
@@ -341,9 +342,9 @@ disabled={emailVerified}
           {/* Footer */}
           <p className="mt-6 text-center text-sm text-slate-500">
             Already have an account?
-            <span className="ml-2 font-medium text-[#D6451B] cursor-pointer">
+            <Link href='/login' className="ml-2 font-medium text-[#D6451B] cursor-pointer">
               Login
-            </span>
+            </Link>
           </p>
         </motion.div>
       </div>

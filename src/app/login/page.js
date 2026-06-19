@@ -11,6 +11,7 @@ import {
   FaSpinner,
 } from "react-icons/fa";
 import { useLoginMutation } from "../mutations/AuthenticationMutations";
+import Link from "next/link";
 
 export default function LoginPage() {
 
@@ -151,7 +152,7 @@ export default function LoginPage() {
             </div>
 
             {/* Google */}
-            <button className="flex w-full items-center justify-center gap-3 rounded-2xl border border-slate-200 py-3.5 hover:bg-slate-50">
+            <button disabled className="flex w-full items-center justify-center gap-3 rounded-2xl border border-slate-200 py-3.5 hover:bg-slate-50 disabled:opacity-30">
               <FaGoogle />
               Continue with Google
             </button>
@@ -160,9 +161,9 @@ export default function LoginPage() {
           {/* Footer */}
           <p className="mt-6 text-center text-sm text-slate-500">
             Don’t have an account?
-            <span className="ml-2 font-medium text-[#D6451B] cursor-pointer hover:underline">
+            <Link href='/signup' className="ml-2 font-medium text-[#D6451B] cursor-pointer hover:underline">
               Sign up
-            </span>
+            </Link>
           </p>
         </motion.div>
       </div>

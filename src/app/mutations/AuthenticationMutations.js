@@ -3,6 +3,7 @@ import { toast } from 'sonner';
 import queryClient from '@/lib/queryClient';
 import { loginApi,sendOtp,signUpApi, verifyOtp } from '../api/AuthApi';
 import { useRouter } from 'next/navigation';
+import handleError from '@/Utils/handleError';
 export const useLoginMutation=()=>{
     
     // const navigate=useNavigate()
@@ -12,9 +13,7 @@ export const useLoginMutation=()=>{
            return response.data
         },
         retry:false,
-        onError:(error)=>{
-             toast.error(error.response.data.message)
-        },
+       onError:(error)=>handleError(error),
         onSuccess:(data)=>{
      
 //   queryClient.invalidateQueries({
@@ -34,9 +33,7 @@ export const useSendOtpMutation=(setOtpSent,setTimer)=>{
            return response.data
         },
         retry:false,
-        onError:(error)=>{
-             toast.error(error.response.data.message)
-        },
+         onError:(error)=>handleError(error),
         onSuccess:(data)=>{
         // localStorage.setItem("accessToken",data.accessToken)
 //   queryClient.invalidateQueries({
@@ -58,9 +55,7 @@ export const useVerifyOtpMutation=(setOtpSent,setEmailVerified,setVerificationTo
            return response.data
         },
         retry:false,
-        onError:(error)=>{
-             toast.error(error.response.data.message)
-        },
+         onError:(error)=>handleError(error),
         onSuccess:(data)=>{
         // localStorage.setItem("accessToken",data.accessToken)
 //   queryClient.invalidateQueries({
@@ -84,11 +79,15 @@ export const useSignUpMutation=(resetForm)=>{
          return await signUpApi(data)
         },
          retry:false,
-        // onError:(error)=>handleError(error),
+        onError:(error)=>handleError(error),
          onSuccess:()=>{
-            resetForm()
-            router.push('/login')
-     toast.success("Your Account created successfully ")
+               toast.success("Your Account created successfully ")
+             resetForm();
+
+  setTimeout(() => {
+    router.push("/signup/pending");
+  }, 1500);
+  
         }
     })
 }

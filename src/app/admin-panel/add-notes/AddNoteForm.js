@@ -7,10 +7,12 @@ import TextArea from "@/app/student-profile/components/profile/TextArea";
 import { useCreateNotesMutation } from "@/app/mutations/notesMutation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createNoteSchema } from "@/schemas/createNoteSchema";
+import { useSearchParams } from "next/navigation";
 
-export default function AddNoteForm({
-  batchId,
-}) {
+export default function AddNoteForm() {
+  const searchParams=useSearchParams()
+  const batchId=searchParams.get("batchId") 
+  if(!batchId) return 
   const {
     register,
     handleSubmit,
@@ -39,7 +41,7 @@ const createNoteMutation=useCreateNotesMutation(reset)
     }
 
     await createNoteMutation.mutateAsync({
-      id:"6a380bd36d1cdf6a9da7ff8e",
+      id:batchId,
       data:formData,
     });
 

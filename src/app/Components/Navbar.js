@@ -90,11 +90,11 @@ const profileItems = [
     icon: FaVideo,
     href:`/${path}/classes`,
   },
-  {
-    title: "Batches",
-    icon: FaVideo,
-    href: `/${path}/batches`,
-  },
+  // {
+  //   title: "Batches",
+  //   icon: FaVideo,
+  //   href: `/${path}/batches`,
+  // },
   {
     title: "Announcements",
     icon: FaVideo,

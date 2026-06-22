@@ -279,9 +279,15 @@ if(isLoading) return
 
               <div className="mt-8 flex items-center justify-between border-t border-slate-200 pt-6">
 
-              
+               <button onClick={()=>{router.push(`/admin-panel/batches/${slug}/batch?batchId=${batch._id}`)}}  className="flex items-center gap-2 rounded-xl bg-blue-50 px-4 py-3 font-medium text-blue-600 transition hover:scale-105">
 
-                <button onClick={()=>{router.push(`/admin-panel/batches/${slug}/batch?batchId=${batch._id}`)}} className="flex items-center gap-2 rounded-xl bg-orange-50 px-4 py-3 font-medium text-[#D6451B] transition hover:scale-105">
+                    <FaEye />
+
+                    View
+
+                  </button>
+
+                <button onClick={()=>{router.push(`/admin-panel/batches/${slug}/edit-batch?batchId=${batch._id}`)}} className="flex items-center gap-2 rounded-xl bg-orange-50 px-4 py-3 font-medium text-[#D6451B] transition hover:scale-105">
 
                   <FaEdit />
 

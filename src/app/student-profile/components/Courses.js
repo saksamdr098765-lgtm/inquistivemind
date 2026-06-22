@@ -9,50 +9,17 @@ import {
   FaClock,
 } from "react-icons/fa";
 import { useState } from "react";
+import { useGetStudentBatches } from "@/Hooks/useGetStudentBatches";
 
-const initialCourses = [
-  {
-    id: 1,
-    title: "General English",
-    level: "Intermediate",
-    lessons: 30,
-    completedLessons: 24,
-    progress: 80,
-    duration: "12 Weeks",
-    status: "In Progress",
-    image: "/courses/general-english.jpg",
-  },
-  {
-    id: 2,
-    title: "IELTS Preparation",
-    level: "Advanced",
-    lessons: 40,
-    completedLessons: 8,
-    progress: 20,
-    duration: "16 Weeks",
-    status: "In Progress",
-    image: "/courses/ielts.jpg",
-  },
-  {
-    id: 3,
-    title: "Business English",
-    level: "Advanced",
-    lessons: 30,
-    completedLessons: 30,
-    progress: 100,
-    duration: "10 Weeks",
-    status: "Completed",
-    image: "/courses/business.jpg",
-  },
-];
 
 export default function Courses() {
   const [search, setSearch] = useState("");
+  const {data:batches,isLoading}=useGetStudentBatches()
 
-  const filteredCourses = initialCourses.filter((course) =>
-    course.title.toLowerCase().includes(search.toLowerCase())
-  );
-
+  // const filteredCourses = initialCourses.filter((course) =>
+  //   course.title.toLowerCase().includes(search.toLowerCase())
+  // );
+if(isLoading) return
   return (
     <div className="space-y-8">
 
@@ -88,19 +55,19 @@ export default function Courses() {
       {/* Cards */}
       <div className="grid gap-8">
 
-        {filteredCourses.map((course) => (
+        {batches?.map(({course}) => (
           <motion.div
             whileHover={{ y: -4 }}
-            key={course.id}
+            key={course._id}
             className="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-lg"
           >
             <div className="grid lg:grid-cols-[280px_1fr]">
 
               {/* Image */}
               <img
-                src={course.image}
+                src={course?.thumbnail?.url}
                 alt={course.title}
-                className="h-60 w-full object-cover"
+                className="h-full w-full object-cover"
               />
 
               {/* Content */}
@@ -132,13 +99,13 @@ export default function Courses() {
 
                 <div className="mt-8 grid gap-6 md:grid-cols-3">
 
-                  <div className="flex items-center gap-3">
+                  {/* <div className="flex items-center gap-3">
 
                     <FaBookOpen className="text-[#D6451B]" />
 
                     <div>
                       <p className="text-sm text-slate-500">
-                        Lessons
+                        Batch
                       </p>
 
                       <h3 className="font-semibold">
@@ -146,7 +113,7 @@ export default function Courses() {
                       </h3>
                     </div>
 
-                  </div>
+                  </div> */}
 
                   <div className="flex items-center gap-3">
 
@@ -158,13 +125,13 @@ export default function Courses() {
                       </p>
 
                       <h3 className="font-semibold">
-                        {course.duration}
+                        {course.durationInMonths + " Months"}
                       </h3>
                     </div>
 
                   </div>
 
-                  <div>
+                  {/* <div>
 
                     <p className="text-sm text-slate-500">
                       Progress
@@ -174,20 +141,11 @@ export default function Courses() {
                       {course.progress}%
                     </h3>
 
-                  </div>
+                  </div> */}
 
                 </div>
 
-                <div className="mt-6 h-3 overflow-hidden rounded-full bg-orange-100">
-
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: `${course.progress}%` }}
-                    transition={{ duration: 1 }}
-                    className="h-full rounded-full bg-gradient-to-r from-[#D6451B] to-orange-400"
-                  />
-
-                </div>
+               
 
                 <div className="mt-8">
 
@@ -213,7 +171,7 @@ export default function Courses() {
 
       </div>
 
-      {filteredCourses.length === 0 && (
+      {batches?.length === 0 && (
         <div className="rounded-3xl bg-white p-12 text-center shadow-lg">
           <h2 className="text-2xl font-bold">
             No courses found

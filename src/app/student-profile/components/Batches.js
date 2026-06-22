@@ -36,6 +36,7 @@ const batches = [
 ];
 
 export default function Batches() {
+  
   return (
     <div className="space-y-8">
 

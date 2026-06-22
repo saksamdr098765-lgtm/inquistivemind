@@ -6,3 +6,6 @@ export  function addNoteApi({id,data}){
 export  function getNoteApi(id){
     return api.get(`/notes/${id}/notes`)
 }
+export  function deleteNoteApi(id){
+    return api.delete(`/notes/${id}/delete`)
+}

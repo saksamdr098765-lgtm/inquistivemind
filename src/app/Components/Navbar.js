@@ -16,6 +16,8 @@ import {
   FaSignOutAlt,
   FaInfoCircle,
   FaPhoneAlt,
+  FaUsers,
+  FaBullhorn,
 } from "react-icons/fa";
 import useAuthStore from "@/store/authStore";
 import capitalizeFirstLetter from "@/Utils/captilizeFirstLetter";
@@ -80,30 +82,30 @@ const profileItems = [
     icon: FaUserCircle,
     href: `/${path}/profile`,
   },
-  {
-    title: "My Courses",
-    icon: FaBookOpen,
-    href: `/${path}/courses`,
-  },
-  {
+    {
+          title: "My Courses",
+          icon: FaBookOpen,
+          href: `/${path}/courses`,
+        },
+
+  ...(path === "student-profile"
+    ? [
+        {
+          title: "My Batches",
+          icon: FaUsers,
+          href: `/${path}/batches`,
+        },
+          {
     title: "Live Classes",
     icon: FaVideo,
-    href:`/${path}/classes`,
+    href: `/${path}/classes`,
   },
-  // {
-  //   title: "Batches",
-  //   icon: FaVideo,
-  //   href: `/${path}/batches`,
-  // },
+      ]
+    : []),
   {
     title: "Announcements",
-    icon: FaVideo,
+    icon: FaBullhorn,
     href: `/${path}/announcements`,
-  },
-  {
-    title: "Certificates",
-    icon: FaVideo,
-    href: `/${path}/certificates`,
   },
   {
     title: "Settings",

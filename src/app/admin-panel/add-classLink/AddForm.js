@@ -18,7 +18,7 @@ import { useAddClassLinkMutation } from "@/app/mutations/classLinkMutation";
 
 
 
-export default function AddForm({ batches = [] }) {
+export default function AddForm({ batchId }) {
   const {
     register,
     handleSubmit,
@@ -40,8 +40,9 @@ export default function AddForm({ batches = [] }) {
     useAddClassLinkMutation(reset);
 
   const onSubmit = async (data) => {
+    console.log(data)
     await createClassLinkMutation.mutateAsync({
-      id:"6a380bd36d1cdf6a9da7ff8e",
+      id:batchId,
       data,
     });
 
@@ -64,16 +65,7 @@ export default function AddForm({ batches = [] }) {
         </h2>
 
         <div className="grid gap-6 md:grid-cols-2">
-          {/* <Select
-            label="Batch"
-            icon={<FaUsers />}
-            {...register("batch")}
-            error={errors.batch}
-            options={batches.map((batch) => ({
-              label: batch.name,
-              value: batch._id,
-            }))}
-          /> */}
+         
 
           <Input
             label="Class Title"

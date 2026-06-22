@@ -12,27 +12,34 @@ import {
   FaTrash,
   FaExternalLinkAlt,
   FaFilePdf,
+  FaSpinner,
 } from "react-icons/fa";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAdminGetAllNotes } from "@/Hooks/useAdminGetNotes";
 import Modal from "@/app/Components/ui/Modals";
 import PdfViewer from "@/Utils/pdfViewer";
+import { usedeleteNotesMutation } from "@/app/mutations/notesMutation";
+import { useAdminGetAllLinks } from "@/Hooks/useAdminGetClassLinks";
+import { formatISTDateTime } from "@/Utils/formatDate";
+import { useDeleteClassLinkMutation } from "@/app/mutations/classLinkMutation";
 
 export default function BatchDetailsPage() {
     const searchParams=useSearchParams()
     const batchId=searchParams.get("batchId")
     const {data:notes,isLoading}=useAdminGetAllNotes(batchId)
+    const {data:classLinks}=useAdminGetAllLinks(batchId)
     const [pdfOpen,setPdfOpen]=useState(false)
     const [pdfUrl,setPdfUrl]=useState("")
-   
-  const [activeTab, setActiveTab] = useState("notes");
-const router=useRouter()
+    const [activeTab, setActiveTab] = useState("notes");
+    const router=useRouter()
+    const deleteNoteMutation=usedeleteNotesMutation()
+    const deleteClassLinkMutation=useDeleteClassLinkMutation()
  if(!batchId || isLoading) return 
   // Dummy Data
   const batch = {
     name: "Morning IELTS Batch",
     course: "IELTS Mastery",
-    status: "active",
+    status: "Active",
     students: 42,
     trainers: 3,
     notes: 12,
@@ -241,6 +248,8 @@ const router=useRouter()
                     </button>
 
                     <button
+                    onClick={()=>{deleteNoteMutation.mutate(note._id)}}
+                    disabled={deleteNoteMutation.isPending}
                       className="
                         rounded-xl
                         bg-red-50
@@ -248,7 +257,13 @@ const router=useRouter()
                         text-red-600
                       "
                     >
-                      <FaTrash />
+                     {deleteNoteMutation.isPending &&
+   deleteNoteMutation.variables === note._id ? (
+    <FaSpinner className="animate-spin" />
+  ) : (
+    <FaTrash />
+  )}
+                     
                     </button>
                   </div>
                 </div>
@@ -304,6 +319,7 @@ const router=useRouter()
             </div>
 
             <button
+             onClick={()=>{router.push(`/admin-panel/add-classLink?batchId=${batchId}`)}}
               className="
                 flex items-center gap-2
                 rounded-2xl
@@ -318,7 +334,7 @@ const router=useRouter()
           </div>
 
           <div className="mt-8 space-y-5">
-            {links.map((link) => (
+            {classLinks?.map((link) => (
               <div
                 key={link._id}
                 className="
@@ -339,31 +355,41 @@ const router=useRouter()
                     </p>
 
                     <p className="mt-3 text-sm font-medium text-[#D6451B]">
-                      {link.meetingDate}
+                      {formatISTDateTime(link.meetingDate)}
                     </p>
                   </div>
 
                   <div className="flex gap-2">
                     <button
+                  
                       className="
                         rounded-xl
                         bg-orange-50
                         px-4 py-2
                         text-[#D6451B]
+                          cursor-pointer
                       "
                     >
                       <FaEdit />
                     </button>
 
                     <button
+                        onClick={()=>{deleteClassLinkMutation.mutate(link._id)}}
+                    disabled={deleteClassLinkMutation.isPending}
                       className="
                         rounded-xl
                         bg-red-50
                         px-4 py-2
                         text-red-600
+                        cursor-pointer
                       "
                     >
-                      <FaTrash />
+                           {deleteClassLinkMutation.isPending &&
+   deleteClassLinkMutation.variables === link._id ? (
+    <FaSpinner className="animate-spin" />
+  ) : (
+    <FaTrash />
+  )}
                     </button>
                   </div>
                 </div>
@@ -375,8 +401,10 @@ const router=useRouter()
                     pt-5
                   "
                 >
-                  <button
+                  <a
+                  href={link.meetingLink}
                     className="
+                    w-fit
                       flex items-center gap-2
                       rounded-xl
                       bg-green-50
@@ -386,7 +414,7 @@ const router=useRouter()
                   >
                     <FaExternalLinkAlt />
                     Join Meeting
-                  </button>
+                  </a>
                 </div>
               </div>
             ))}

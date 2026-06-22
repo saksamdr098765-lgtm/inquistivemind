@@ -5,12 +5,14 @@ import { motion } from "framer-motion";
 import { FaBookOpen } from "react-icons/fa";
 
 
-import { useAdminGetAllCourses } from "@/Hooks/useAdminGetCourses";
+
 import AddForm from "./AddForm";
+import { useSearchParams } from "next/navigation";
 
 export default function page() {
-  const {data:courses,isLoading}=useAdminGetAllCourses()
-  if(isLoading) return
+  const searchParams=useSearchParams()
+  const batchId=searchParams.get("batchId")
+ if(!batchId) return
   return (
     <div className="py-24 ">
       {/* Hero */}
@@ -60,7 +62,7 @@ export default function page() {
           shadow-lg
         "
       >
-        <AddForm courses={courses} />
+        <AddForm batchId={batchId} />
       </motion.div>
       </div>
     </div>

@@ -6,6 +6,9 @@ export  function getLoggedUserApi(){
 export  function userUpdateApi(data){
     return api.patch('/student/update',data)
 }
+export  function studentBatchesApi(id){
+    return api.get(`/student/${id}/batches`)
+}
 
 
 export const updateProfileImageApi = (file) => {

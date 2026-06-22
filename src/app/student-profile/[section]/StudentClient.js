@@ -31,7 +31,7 @@ export default  function StudentPortala({section}) {
   return (
     <div className="pt-24 mx-auto max-w-7xl">
 
-      <StudentNavbar section={section}  />
+      {/* <StudentNavbar section={section}  /> */}
 
       <div className="max-w-7xl mx-auto px-5 py-10">
        {section=== "dashboard" && <Dashboard user={user} />}

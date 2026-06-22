@@ -62,53 +62,53 @@ useEffect(() => {
     );
 
 }, []);
-const dashboardPath =
+const path =
   user?.role === "admin"
-    ? "/admin/dashboard"
+    ? "admin-panel"
     : user?.role === "teacher"
-    ? "/teacher/dashboard"
-    : "/student/dashboard";
+    ? "teacher-profile"
+    : "student-profile";
 
 const profileItems = [
   {
     title: "Dashboard",
     icon: FaHome,
-    href: dashboardPath,
+    href: `/${path}/dashboard`,
   },
   {
     title: "My Profile",
     icon: FaUserCircle,
-    href: "/student-profile/profile",
+    href: `/${path}/profile`,
   },
   {
     title: "My Courses",
     icon: FaBookOpen,
-    href: "/student-profile/courses",
+    href: `/${path}/courses`,
   },
   {
     title: "Live Classes",
     icon: FaVideo,
-    href: "/student-profile/classes",
+    href:`/${path}/classes`,
   },
   {
     title: "Batches",
     icon: FaVideo,
-    href: "/student-profile/batches",
+    href: `/${path}/batches`,
   },
   {
     title: "Announcements",
     icon: FaVideo,
-    href: "/student-profile/announcements",
+    href: `/${path}/announcements`,
   },
   {
     title: "Certificates",
     icon: FaVideo,
-    href: "/student-profile/certificates",
+    href: `/${path}/certificates`,
   },
   {
     title: "Settings",
     icon: FaCog,
-    href: "/student-profile/settings",
+    href: `/${path}/settings`,
   },
 ];
 const ProfileItem = ({

@@ -27,3 +27,16 @@ export  function adminUpdateUserById(id,data){
 export  function adminGetCoursesApi(){
     return api.get(`/courses/`)
 }
+
+//stats
+export  function adminGetStats(){
+    return api.get(`/admin/dashboard-stats`)
+}
+
+//batches
+export  function adminGetBatchApi(slug){
+    return api.get(`/batches/${slug}/batches`)
+}
+export  function adminUpdateBatchApi(id,data){
+    return api.patch(`/batches/${id}/update`,data)
+}

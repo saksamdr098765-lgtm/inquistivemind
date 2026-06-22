@@ -13,46 +13,51 @@ import {
   FaEye,
   FaGraduationCap,
 } from "react-icons/fa";
+import { useAdminGetAllCourses } from "@/Hooks/useAdminGetCourses";
+import capitalizeFirstLetter from "@/Utils/captilizeFirstLetter";
+import { useRouter } from "next/navigation";
 
-const courses = [
-  {
-    id: 1,
-    title: "General English",
-    category: "English",
-    trainer: "John Smith",
-    duration: "6 Months",
-    students: 120,
-    price: "₹15,000",
-    progress: 82,
-    image: "/course1.jpg",
-  },
-  {
-    id: 2,
-    title: "IELTS Preparation",
-    category: "IELTS",
-    trainer: "Emma Johnson",
-    duration: "3 Months",
-    students: 68,
-    price: "₹18,000",
-    progress: 65,
-    image: "/course2.jpg",
-  },
-  {
-    id: 3,
-    title: "Business English",
-    category: "Professional",
-    trainer: "David Wilson",
-    duration: "4 Months",
-    students: 44,
-    price: "₹20,000",
-    progress: 90,
-    image: "/course3.jpg",
-  },
-];
+// const courses = [
+//   {
+//     id: 1,
+//     title: "General English",
+//     category: "English",
+//     trainer: "John Smith",
+//     duration: "6 Months",
+//     students: 120,
+//     price: "₹15,000",
+//     progress: 82,
+//     image: "/course1.jpg",
+//   },
+//   {
+//     id: 2,
+//     title: "IELTS Preparation",
+//     category: "IELTS",
+//     trainer: "Emma Johnson",
+//     duration: "3 Months",
+//     students: 68,
+//     price: "₹18,000",
+//     progress: 65,
+//     image: "/course2.jpg",
+//   },
+//   {
+//     id: 3,
+//     title: "Business English",
+//     category: "Professional",
+//     trainer: "David Wilson",
+//     duration: "4 Months",
+//     students: 44,
+//     price: "₹20,000",
+//     progress: 90,
+//     image: "/course3.jpg",
+//   },
+// ];
 
 export default function Courses() {
+  const router=useRouter()
+  const {data:courses,isLoading}=useAdminGetAllCourses()
   const [search, setSearch] = useState("");
-
+if(isLoading) return
   return (
     <div className="space-y-8 max-w-7xl mx-auto py-20">
 
@@ -182,13 +187,10 @@ export default function Courses() {
       <div className="grid gap-7 md:grid-cols-2 xl:grid-cols-3">
 
         {courses
-          .filter((course) =>
-            course.title.toLowerCase().includes(search.toLowerCase())
-          )
-          .map((course) => (
+          ?.map((course) => (
 
             <motion.div
-              key={course.id}
+              key={course._id}
               whileHover={{ y: -8 }}
               transition={{ duration: 0.25 }}
               className="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-lg"
@@ -198,11 +200,11 @@ export default function Courses() {
 
               <div className="relative h-56 overflow-hidden bg-gradient-to-br from-[#D6451B] to-orange-400">
 
-                {course.image ? (
+                {course?.thumbnail ? (
 
                   <img
-                    src={course.image}
-                    alt={course.title}
+                    src={course?.thumbnail?.url}
+                    alt={course?.title}
                     className="h-full w-full object-cover"
                   />
 
@@ -218,7 +220,7 @@ export default function Courses() {
 
                 <span className="absolute left-5 top-5 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#D6451B] shadow">
 
-                  {course.category}
+                  {course?.category}
 
                 </span>
 
@@ -232,15 +234,15 @@ export default function Courses() {
 
                   <div>
 
-                    <h2 className="text-2xl font-bold text-slate-900">
+                    <h2 className="text-2xl h-20 font-bold text-slate-900">
 
-                      {course.title}
+                      {capitalizeFirstLetter(course?.title)}
 
                     </h2>
 
                     <p className="mt-2 text-slate-500">
 
-                      Instructor • {course.trainer}
+                      Instructor • {course?.trainer}
 
                     </p>
 
@@ -248,90 +250,19 @@ export default function Courses() {
 
                   <span className="rounded-xl bg-orange-50 px-4 py-2 font-bold text-[#D6451B]">
 
-                    {course.price}
+                    {course?.price}
 
                   </span>
 
                 </div>
 
-                {/* Details */}
-
-                <div className="mt-8 grid grid-cols-2 gap-5">
-
-                  <div className="rounded-2xl bg-slate-50 p-4">
-
-                    <p className="text-sm text-slate-500">
-
-                      Students
-
-                    </p>
-
-                    <h3 className="mt-2 text-xl font-bold">
-
-                      {course.students}
-
-                    </h3>
-
-                  </div>
-
-                  <div className="rounded-2xl bg-slate-50 p-4">
-
-                    <p className="text-sm text-slate-500">
-
-                      Duration
-
-                    </p>
-
-                    <h3 className="mt-2 text-xl font-bold">
-
-                      {course.duration}
-
-                    </h3>
-
-                  </div>
-
-                </div>
-
-                {/* Progress */}
-
-                <div className="mt-8">
-
-                  <div className="mb-3 flex items-center justify-between">
-
-                    <span className="font-medium">
-
-                      Completion
-
-                    </span>
-
-                    <span className="font-bold text-[#D6451B]">
-
-                      {course.progress}%
-
-                    </span>
-
-                  </div>
-
-                  <div className="h-3 overflow-hidden rounded-full bg-orange-100">
-
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={{
-                        width: `${course.progress}%`,
-                      }}
-                      transition={{ duration: 1 }}
-                      className="h-full rounded-full bg-gradient-to-r from-[#D6451B] to-orange-400"
-                    />
-
-                  </div>
-
-                </div>
+               
 
                 {/* Footer */}
 
                 <div className="mt-8 flex items-center justify-between border-t border-slate-100 pt-6">
 
-                  <button className="flex items-center gap-2 rounded-xl bg-blue-50 px-4 py-3 font-medium text-blue-600 transition hover:scale-105">
+                  <button onClick={()=>{router.push(`/admin-panel/batches/${course?.slug}`)}} className="flex items-center gap-2 rounded-xl bg-blue-50 px-4 py-3 font-medium text-blue-600 transition hover:scale-105">
 
                     <FaEye />
 
@@ -418,28 +349,23 @@ export default function Courses() {
 
               <tbody>
 
-                {courses.map((course) => (
+                {courses?.map((course) => (
 
                   <tr
-                    key={course.id}
+                    key={course._id}
                     className="border-b last:border-none"
                   >
 
                     <td className="px-6 py-5 font-semibold">
-                      {course.title}
+                      {course?.title}
                     </td>
 
                     <td className="px-6 py-5">
-                      {course.students}
+                      {course?.students}
                     </td>
 
                     <td className="px-6 py-5">
-                      ₹
-                      {(
-                        parseInt(
-                          course.price.replace(/[₹,]/g, "")
-                        ) * course.students
-                      ).toLocaleString()}
+                      ₹{course?.price}
                     </td>
 
                     <td className="px-6 py-5">
@@ -450,7 +376,7 @@ export default function Courses() {
 
                           <div
                             style={{
-                              width: `${course.progress}%`,
+                              width: `${course?.progress}%`,
                             }}
                             className="h-full rounded-full bg-[#D6451B]"
                           />
@@ -459,7 +385,7 @@ export default function Courses() {
 
                         <span className="font-medium">
 
-                          {course.progress}%
+                          {course?.progress}%
 
                         </span>
 
@@ -494,11 +420,11 @@ export default function Courses() {
           <div className="mt-8 space-y-6">
 
             {courses
-              .sort((a, b) => b.students - a.students)
+              ?.sort((a, b) => b.students - a.students)
               .map((course) => (
 
                 <div
-                  key={course.id}
+                  key={course?._id}
                   className="rounded-2xl bg-slate-50 p-5"
                 >
 
@@ -507,18 +433,18 @@ export default function Courses() {
                     <div>
 
                       <h3 className="font-semibold">
-                        {course.title}
+                        {course?.title}
                       </h3>
 
                       <p className="mt-1 text-sm text-slate-500">
-                        {course.students} Students
+                        {course?.students} Students
                       </p>
 
                     </div>
 
                     <span className="font-bold text-[#D6451B]">
 
-                      #{course.id}
+                      #{course?.id}
 
                     </span>
 
@@ -536,10 +462,10 @@ export default function Courses() {
 
       {/* Pagination */}
 
-      <div className="flex flex-col items-center justify-between gap-5 rounded-[30px] border border-slate-200 bg-white p-6 shadow-lg md:flex-row">
+      {/* <div className="flex flex-col items-center justify-between gap-5 rounded-[30px] border border-slate-200 bg-white p-6 shadow-lg md:flex-row">
 
         <p className="text-sm text-slate-500">
-          Showing 1 - {courses.length} of {courses.length} Courses
+          Showing 1 - {courses?.length} of {courses?.length} Courses
         </p>
 
         <div className="flex gap-2">
@@ -564,11 +490,11 @@ export default function Courses() {
 
         </div>
 
-      </div>
+      </div> */}
 
       {/* Empty State */}
 
-      {courses.length === 0 && (
+      {courses?.length === 0 && (
 
         <div className="rounded-[32px] border border-dashed border-slate-300 bg-white py-20 text-center shadow-lg">
 

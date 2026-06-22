@@ -12,7 +12,7 @@ export const profileSchema = z.object({
     .string()
     .min(10, "Phone number is required"),
 
-  profileImage: z.string().optional(),
+  // profileImage: z.string().optional(),
 
   // Student
 

@@ -14,49 +14,53 @@ import {
   FaEdit,
   FaTrash,
 } from "react-icons/fa";
+import { useAdminGetAllBatches } from "@/Hooks/useAdminGetBatches";
+import { useRouter } from "next/navigation";
 
-const batches = [
-  {
-    id: 1,
-    name: "Morning Batch A",
-    course: "General English",
-    trainer: "John Smith",
-    students: 28,
-    schedule: "Mon - Fri",
-    timing: "9:00 AM - 10:30 AM",
-    room: "Room 101",
-    progress: 72,
-    status: "Active",
-  },
-  {
-    id: 2,
-    name: "IELTS Evening",
-    course: "IELTS",
-    trainer: "Emma Johnson",
-    students: 18,
-    schedule: "Mon - Thu",
-    timing: "6:00 PM - 7:30 PM",
-    room: "Room 203",
-    progress: 45,
-    status: "Active",
-  },
-  {
-    id: 3,
-    name: "Weekend Speaking",
-    course: "Spoken English",
-    trainer: "David Wilson",
-    students: 35,
-    schedule: "Sat - Sun",
-    timing: "10:00 AM - 1:00 PM",
-    room: "Online",
-    progress: 91,
-    status: "Completed",
-  },
-];
+// const batches = [
+//   {
+//     id: 1,
+//     name: "Morning Batch A",
+//     course: "General English",
+//     trainer: "John Smith",
+//     students: 28,
+//     schedule: "Mon - Fri",
+//     timing: "9:00 AM - 10:30 AM",
+//     room: "Room 101",
+//     progress: 72,
+//     status: "Active",
+//   },
+//   {
+//     id: 2,
+//     name: "IELTS Evening",
+//     course: "IELTS",
+//     trainer: "Emma Johnson",
+//     students: 18,
+//     schedule: "Mon - Thu",
+//     timing: "6:00 PM - 7:30 PM",
+//     room: "Room 203",
+//     progress: 45,
+//     status: "Active",
+//   },
+//   {
+//     id: 3,
+//     name: "Weekend Speaking",
+//     course: "Spoken English",
+//     trainer: "David Wilson",
+//     students: 35,
+//     schedule: "Sat - Sun",
+//     timing: "10:00 AM - 1:00 PM",
+//     room: "Online",
+//     progress: 91,
+//     status: "Completed",
+//   },
+// ];
 
-export default function Batches() {
+export default function BatchesClient({slug}) {
+  const router=useRouter()
+    const {data:batches,isLoading}=useAdminGetAllBatches(slug)
   const [search, setSearch] = useState("");
-
+if(isLoading) return
   return (
     <div className="space-y-8 max-w-7xl mx-auto py-20">
 
@@ -104,28 +108,22 @@ export default function Batches() {
 
         <Stat
           title="Total Batches"
-          value="24"
+          value={batches?.length}
           icon={<FaLayerGroup />}
           color="bg-orange-50 text-[#D6451B]"
         />
 
         <Stat
           title="Students"
-          value="642"
+          value={batches?.reduce((sum,batch)=> sum+batch?.students?.length,0) || 0}
           icon={<FaUsers />}
           color="bg-green-50 text-green-600"
         />
 
-        <Stat
-          title="Courses"
-          value="12"
-          icon={<FaBookOpen />}
-          color="bg-blue-50 text-blue-600"
-        />
 
         <Stat
           title="Trainers"
-          value="9"
+            value={batches?.reduce((sum,batch)=> sum+batch?.trainers?.length,0) || 0}
           icon={<FaChalkboardTeacher />}
           color="bg-purple-50 text-purple-600"
         />
@@ -179,15 +177,12 @@ export default function Batches() {
       {/* Batch Cards */}
 
       <div className="grid gap-7 lg:grid-cols-2 xl:grid-cols-3">
-
+       {console.log(batches)}
         {batches
-          .filter((batch) =>
-            batch.name.toLowerCase().includes(search.toLowerCase())
-          )
-          .map((batch) => (
+          ?.map((batch) => (
 
             <motion.div
-              key={batch.id}
+              key={batch._id}
               whileHover={{ y: -6 }}
               className="rounded-[32px] border border-slate-200 bg-white p-7 shadow-lg"
             >
@@ -197,23 +192,23 @@ export default function Batches() {
                 <div>
 
                   <h2 className="text-2xl font-bold">
-                    {batch.name}
+                    {batch?.name}
                   </h2>
 
                   <p className="mt-2 text-slate-500">
-                    {batch.course}
+                    {batch?.course?.title}
                   </p>
 
                 </div>
 
                 <span
                   className={`rounded-full px-4 py-2 text-sm font-semibold ${
-                    batch.status === "Active"
+                    batch?.status === "active"
                       ? "bg-green-100 text-green-700"
                       : "bg-slate-200 text-slate-700"
                   }`}
                 >
-                  {batch.status}
+                  {batch?.status}
                 </span>
 
               </div>
@@ -223,46 +218,29 @@ export default function Batches() {
                 <Info
                   icon={<FaChalkboardTeacher />}
                   label="Trainer"
-                  value={batch.trainer}
+                  value={batch?.trainers?.length}
                 />
 
                 <Info
                   icon={<FaUsers />}
                   label="Students"
-                  value={batch.students}
+                  value={batch?.students?.length}
                 />
 
                 <Info
                   icon={<FaClock />}
-                  label="Timing"
-                  value={batch.timing}
+                  label="Start Date"
+                  value={new Date(batch?.startDate).toLocaleDateString("en-IN")}
+                />
+                <Info
+                  icon={<FaClock />}
+                  label="End Date"
+                  value={new Date(batch?.endDate).toLocaleDateString("en-IN")}
                 />
 
               </div>
 
-              <div className="mt-8">
-
-                <div className="mb-2 flex justify-between">
-
-                  <span>Progress</span>
-
-                  <span className="font-semibold text-[#D6451B]">
-                    {batch.progress}%
-                  </span>
-
-                </div>
-
-                <div className="h-3 overflow-hidden rounded-full bg-orange-100">
-
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: `${batch.progress}%` }}
-                    className="h-full rounded-full bg-gradient-to-r from-[#D6451B] to-orange-400"
-                  />
-
-                </div>
-
-              </div>
+            
                             {/* Schedule */}
 
               <div className="mt-8 rounded-2xl bg-slate-50 p-5">
@@ -276,7 +254,7 @@ export default function Batches() {
                     </p>
 
                     <h3 className="mt-1 font-semibold">
-                      {batch.schedule}
+                      {batch?.schedule || "Mon-Fri"}
                     </h3>
 
                   </div>
@@ -284,11 +262,11 @@ export default function Batches() {
                   <div className="text-right">
 
                     <p className="text-sm text-slate-500">
-                      Location
+                      Mode
                     </p>
 
                     <h3 className="mt-1 font-semibold">
-                      {batch.room}
+                      {batch?.room || "online"}
                     </h3>
 
                   </div>
@@ -301,15 +279,9 @@ export default function Batches() {
 
               <div className="mt-8 flex items-center justify-between border-t border-slate-200 pt-6">
 
-                <button className="flex items-center gap-2 rounded-xl bg-blue-50 px-4 py-3 font-medium text-blue-600 transition hover:scale-105">
+              
 
-                  <FaEye />
-
-                  View
-
-                </button>
-
-                <button className="flex items-center gap-2 rounded-xl bg-orange-50 px-4 py-3 font-medium text-[#D6451B] transition hover:scale-105">
+                <button onClick={()=>{router.push(`/admin-panel/batches/${slug}/batch?batchId=${batch._id}`)}} className="flex items-center gap-2 rounded-xl bg-orange-50 px-4 py-3 font-medium text-[#D6451B] transition hover:scale-105">
 
                   <FaEdit />
 
@@ -390,7 +362,7 @@ export default function Batches() {
                 {batches.map((batch) => (
 
                   <tr
-                    key={batch.id}
+                    key={batch._id}
                     className="border-b last:border-none"
                   >
 
@@ -399,11 +371,11 @@ export default function Batches() {
                     </td>
 
                     <td className="px-6 py-5">
-                      {batch.trainer}
+                      {batch?.trainers?.length}
                     </td>
 
                     <td className="px-6 py-5">
-                      {batch.students}
+                      {batch?.students?.length}
                     </td>
 
                     <td className="px-6 py-5">
@@ -460,7 +432,7 @@ export default function Batches() {
               .map((batch) => (
 
                 <div
-                  key={batch.id}
+                  key={batch._id}
                   className="rounded-2xl bg-slate-50 p-5"
                 >
 
@@ -469,18 +441,16 @@ export default function Batches() {
                     <div>
 
                       <h3 className="font-semibold">
-                        {batch.name}
+                        {batch?.name}
                       </h3>
 
                       <p className="mt-1 text-sm text-slate-500">
-                        {batch.students} Students
+                        {batch?.students?.length + " Students"} 
                       </p>
 
                     </div>
 
-                    <span className="font-bold text-[#D6451B]">
-                      #{batch.id}
-                    </span>
+                  
 
                   </div>
 

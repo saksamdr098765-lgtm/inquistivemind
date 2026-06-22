@@ -1,16 +1,17 @@
-import {  adminGetCoursesApi } from "@/app/api/adminApi"
+
+import { getBatchById } from "@/app/api/BatchApi"
 import useAuthStore from "@/store/authStore"
 import { keepPreviousData, useQuery } from "@tanstack/react-query"
 
 
-export  const useAdminGetAllCourses=()=>{
+export  const useGetBatchById=(id)=>{
     const user=useAuthStore.getState().user
     return useQuery({
-        queryKey:["Admin-courses"],
+        queryKey:["batch",id],
         queryFn:async()=>{
-            const response = await adminGetCoursesApi()
-            console.log(response.data.courses)
-            return response.data.courses
+            const response = await getBatchById(id)
+        
+            return response.data.batch
         },
         keepPreviousData:true,
         placeholderData:keepPreviousData,

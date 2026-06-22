@@ -17,6 +17,9 @@ export const useAdminUserUpdateMutation=(id)=>{
             queryClient.invalidateQueries({
                 queryKey:["Admin-User",id]
             })
+            queryClient.invalidateQueries({
+  queryKey: ["Admin-Student-List"],
+});
      toast.success(data.message)
         },
      onError:(error)=> handleError(error)
@@ -35,6 +38,9 @@ export const useAdminApproveUser=(id)=>{
             queryClient.invalidateQueries({
                 queryKey:["Admin-User",id]
             })
+            queryClient.invalidateQueries({
+  queryKey: ["Admin-Student-List"],
+});
      toast.success(data.message)
         },
      onError:(error)=> handleError(error)
@@ -53,6 +59,9 @@ export const useAdminRejectUser=(id)=>{
             queryClient.invalidateQueries({
                 queryKey:["Admin-User",id]
             })
+            queryClient.invalidateQueries({
+  queryKey: ["Admin-Student-List"],
+});
      toast.success(data.message)
         },
      onError:(error)=> handleError(error)
@@ -71,6 +80,9 @@ export const useAdminBlockUser=(id,setOpen)=>{
             queryClient.invalidateQueries({
                 queryKey:["Admin-User",id]
             })
+            queryClient.invalidateQueries({
+  queryKey: ["Admin-Student-List"],
+});
      toast.success(data.message)
         },
         onSettled:()=>setOpen(false),
@@ -90,6 +102,9 @@ export const useAdminUnblockUser=(id)=>{
             queryClient.invalidateQueries({
                 queryKey:["Admin-User",id]
             })
+            queryClient.invalidateQueries({
+  queryKey: ["Admin-Student-List"],
+});
      toast.success(data.message)
         },
      onError:(error)=> handleError(error)

@@ -1,6 +1,8 @@
 "use client";
 
+import { useAdminGetStats } from "@/Hooks/useAdminGetStats";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import {
   FaUsers,
   FaUserTie,
@@ -90,10 +92,22 @@ const announcements = [
     date: "25 Jun",
   },
 ];
-const stats = [
+
+const quickActions=[
+  {action:"New Course",path:"/admin-panel/add-course"},
+  {action:"Create Batch",path:"/admin-panel/add-course"},
+  {action:"Add Student",path:""},
+  {action:"Add Trainer",path:""},
+  {action:" Announcement",path:"/admin-panel/add-course"},
+  {action:" ClassLink",path:"/admin-panel/add-classLink"},
+  {action:"Add Material",path:"/admin-panel/add-notes"},
+]
+export default function Dashboard() {
+  const {data,isLoading}=useAdminGetStats()
+   const stats = [
   {
     title: "Total Students",
-    value: "1,284",
+    value: data?.totalStudents,
     growth: "+12%",
     icon: <FaUsers />,
     color: "bg-blue-50 text-blue-600",
@@ -107,14 +121,14 @@ const stats = [
   },
   {
     title: "Courses",
-    value: "18",
+    value: data?.totalCourses,
     growth: "+5%",
     icon: <FaBookOpen />,
     color: "bg-green-50 text-green-600",
   },
   {
     title: "Batches",
-    value: "42",
+    value: data?.totalBatches,
     growth: "+8%",
     icon: <FaLayerGroup />,
     color: "bg-orange-50 text-[#D6451B]",
@@ -135,9 +149,10 @@ const stats = [
   },
 ];
 
-export default function Dashboard() {
+  if(isLoading) return
   return (
-    <div className="space-y-8 mx-auto max-w-7xl py-20">
+    <div className="py-28">
+    <div className="space-y-8 mx-auto max-w-7xl px-2 ">
 
       {/* Hero */}
 
@@ -164,30 +179,18 @@ export default function Dashboard() {
               powerful dashboard.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-4">
-
-              <button className="flex items-center gap-2 rounded-2xl bg-white px-6 py-3 font-semibold text-[#D6451B] transition hover:scale-105">
-                <FaPlus />
-                Add Student
-              </button>
-
-              <button className="flex items-center gap-2 rounded-2xl border border-white/40 px-6 py-3 font-semibold hover:bg-white/10">
-                View Reports
-                <FaArrowRight />
-              </button>
-
-            </div>
+           
 
           </div>
 
           {/* Overview Card */}
 
-          <div className="rounded-3xl border border-white/20 bg-white/10 p-6 backdrop-blur-md lg:w-80">
+          <div className="rounded-3xl border hidden lg:block border-white/20 bg-white/10 p-6 backdrop-blur-md lg:w-80">
 
             <div className="flex items-center justify-between">
 
               <h3 className="font-semibold">
-                Today's Overview
+                 Overview
               </h3>
 
               <FaBell />
@@ -199,11 +202,11 @@ export default function Dashboard() {
               <div className="flex items-center justify-between">
 
                 <span className="text-orange-100">
-                  New Admissions
+                  Approved Students
                 </span>
 
                 <span className="font-bold">
-                  18
+                  {data?.approvedStudents || 0}
                 </span>
 
               </div>
@@ -211,11 +214,11 @@ export default function Dashboard() {
               <div className="flex items-center justify-between">
 
                 <span className="text-orange-100">
-                  Live Classes
+                  Pending Students
                 </span>
 
                 <span className="font-bold">
-                  6
+                 {data?.pendingStudents || 0}
                 </span>
 
               </div>
@@ -223,26 +226,16 @@ export default function Dashboard() {
               <div className="flex items-center justify-between">
 
                 <span className="text-orange-100">
-                  Attendance
+                  Block Students
                 </span>
 
                 <span className="font-bold">
-                  92%
+                {data?.blockedStudents || 0}
                 </span>
 
               </div>
 
-              <div className="flex items-center justify-between">
-
-                <span className="text-orange-100">
-                  Revenue
-                </span>
-
-                <span className="font-bold">
-                  ₹28,500
-                </span>
-
-              </div>
+            
 
             </div>
 
@@ -274,10 +267,10 @@ export default function Dashboard() {
                 {item.icon}
               </div>
 
-              <span className="flex items-center gap-1 rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-600">
+              {/* <span className="flex items-center gap-1 rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-600">
                 <FaArrowUp />
                 {item.growth}
-              </span>
+              </span> */}
 
             </div>
 
@@ -303,8 +296,28 @@ export default function Dashboard() {
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-xl"
+          className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-xl relative"
         >
+           <div
+    className="
+      absolute inset-0 z-10
+      flex items-center justify-center
+      bg-black/60
+      rounded-xl 
+    "
+  >
+    <span
+      className="
+        rounded-full
+        bg-orange-500
+        px-4 py-2
+        text-sm font-bold
+        text-white
+      "
+    >
+      Coming Soon
+    </span>
+  </div>
           <div className="flex items-center justify-between">
 
             <div>
@@ -368,7 +381,7 @@ export default function Dashboard() {
 
           {/* Attendance */}
 
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-xl"
@@ -407,7 +420,7 @@ export default function Dashboard() {
 
             </div>
 
-          </motion.div>
+          </motion.div> */}
 
           {/* Quick Actions */}
 
@@ -423,20 +436,14 @@ export default function Dashboard() {
 
             <div className="mt-6 grid grid-cols-2 gap-4">
 
-              {[
-                "Add Student",
-                "Add Trainer",
-                "New Course",
-                "Create Batch",
-                "Live Class",
-                "Announcement",
-              ].map((action) => (
-                <button
+              {quickActions.map(({action,path}) => (
+                <Link
                   key={action}
+                  href={path}
                   className="rounded-2xl border border-slate-200 p-4 text-sm font-medium transition hover:border-[#D6451B] hover:bg-orange-50"
                 >
                   {action}
-                </button>
+                </Link>
               ))}
 
             </div>
@@ -608,7 +615,7 @@ export default function Dashboard() {
 
     {/* Payments */}
 
-    <motion.div
+    {/* <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-xl"
@@ -655,7 +662,7 @@ export default function Dashboard() {
 
       </div>
 
-    </motion.div>
+    </motion.div> */}
 
     {/* Announcements */}
 
@@ -697,6 +704,6 @@ export default function Dashboard() {
   </div>
 
 </div>
-    </div>
+    </div></div>
   );
 }

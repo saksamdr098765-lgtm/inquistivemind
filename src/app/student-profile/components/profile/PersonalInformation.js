@@ -15,6 +15,7 @@ import Select from "./Select";
 export default function PersonalInformation({
   register,
   errors,
+  mode=""
 }) {
   return (
     <section className={`rounded-[30px] border border-slate-200 bg-white px-8 pb-20 pt-8 shadow-lg`}>
@@ -54,15 +55,16 @@ export default function PersonalInformation({
           {...register("phone")}
         />
 
+       
+
+       {mode !== "user" && <>
         <Input
           icon={<FaBirthdayCake />}
           type="date"
           label="Date of Birth"
           error={errors.dateOfBirth}
           {...register("dateOfBirth")}
-        />
-
-        <Select
+        /> <Select
           icon={<FaVenusMars />}
           label="Gender"
           error={errors.gender}
@@ -86,7 +88,7 @@ export default function PersonalInformation({
             { value: "Upper Intermediate", label: "Upper Intermediate" },
             { value: "Advanced", label: "Advanced" },
           ]}
-        />
+        /></>}
 
       </div>
 

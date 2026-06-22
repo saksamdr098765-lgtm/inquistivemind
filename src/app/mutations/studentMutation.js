@@ -15,9 +15,12 @@ export const useProfileUpdateMutation=()=>{
        onSuccess: (data) => {
       toast.success(data.message);
       // Update Zustand
+      console.log(data.data.user)
       useAuthStore.getState().setUser(data.data.user);
-    
-      useAuthStore.getState().setProfile(data.data.profile);
+      if(data.data.user.role !=="admin"){
+
+          useAuthStore.getState().setProfile(data.data.profile);
+      }
 
      
     },

@@ -17,6 +17,7 @@ import {
 } from "react-icons/fa";
 import { createBatchSchema } from "@/schemas/createBatchSchema";
 import { useCreateBatchMutation } from "@/app/mutations/BatchMutation";
+import TextArea from "@/app/student-profile/components/profile/TextArea";
 
 export default function AddBatchForm({ courses = [] }) {
 
@@ -28,14 +29,22 @@ export default function AddBatchForm({ courses = [] }) {
   } = useForm({
     resolver: zodResolver(createBatchSchema),
     mode: "onBlur",
-    defaultValues: {
-      course: "",
-      name: "",
-      startDate: "",
-      endDate: "",
-      maxStudents: 50,
-      status: "upcoming",
-    },
+   defaultValues: {
+  course: "",
+  name: "",
+  description: "",
+  startDate: "",
+  endDate: "",
+  maxStudents: 50,
+  meetingPlatform: "zoom",
+  enrollmentOpen: true,
+  status: "upcoming",
+  schedule: {
+    days: [],
+    startTime: "",
+    endTime: "",
+  },
+},
   });
 
   const createBatchMutation=useCreateBatchMutation(reset)
@@ -53,23 +62,22 @@ console.log(data)
 >
   {/* Basic Information */}
 
-  <div>
-    <h2 className="mb-4 text-xl font-bold text-slate-800">
-      Basic Information
-    </h2>
+<div>
+  <h2 className="mb-4 text-xl font-bold text-slate-800">
+    Basic Information
+  </h2>
 
+  <div className="grid gap-6">
     <div className="grid gap-6 md:grid-cols-2">
       <Select
         label="Course"
         icon={<FaBookOpen />}
         {...register("course")}
         error={errors.course}
-        options={[
-          ...courses.map((course) => ({
-            label: course.title,
-            value: course._id,
-          })),
-        ]}
+        options={courses.map((course) => ({
+          label: course.title,
+          value: course._id,
+        }))}
       />
 
       <Input
@@ -80,7 +88,20 @@ console.log(data)
         error={errors.name}
       />
     </div>
+
+    <div>
+       <TextArea
+                label="Batch Description"
+               placeholder="Enter batch description..."
+              {...register("description")}
+                error={errors.description}
+                 rows={4}
+              />
+      
+     
+    </div>
   </div>
+</div>
 
   {/* Schedule */}
 
@@ -107,7 +128,60 @@ console.log(data)
       />
     </div>
   </div>
+<div>
+  <h2 className="mb-4 text-xl font-bold text-slate-800">
+    Schedule
+  </h2>
 
+  <div className="space-y-6">
+    
+    <div>
+      <label className="mb-3 block font-medium text-slate-700">
+        Class Days
+      </label>
+
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
+        {[
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ].map((day) => (
+          <label
+            key={day}
+            className="flex items-center gap-2 rounded-xl border p-3"
+          >
+            <input
+              type="checkbox"
+              value={day}
+              {...register("schedule.days")}
+            />
+            {day}
+          </label>
+        ))}
+      </div>
+    </div>
+
+    <div className="grid gap-6 md:grid-cols-2">
+      <Input
+        type="time"
+        label="Start Time"
+        {...register("schedule.startTime")}
+        error={errors.schedule?.startTime}
+      />
+
+      <Input
+        type="time"
+        label="End Time"
+        {...register("schedule.endTime")}
+        error={errors.schedule?.endTime}
+      />
+    </div>
+  </div>
+</div>
   {/* Settings */}
 
   <div>
@@ -115,7 +189,7 @@ console.log(data)
       Batch Settings
     </h2>
 
-    <div className="grid gap-6 md:grid-cols-2">
+   <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
       <Input
         type="number"
         label="Maximum Students"
@@ -149,8 +223,43 @@ console.log(data)
           },
         ]}
       />
+      <Select
+  label="Meeting Platform"
+  {...register("meetingPlatform")}
+  error={errors.meetingPlatform}
+  options={[
+    {
+      label: "Zoom",
+      value: "zoom",
+    },
+    {
+      label: "Google Meet",
+      value: "google-meet",
+    },
+    {
+      label: "Offline",
+      value: "offline",
+    },
+    {
+      label: "Other",
+      value: "other",
+    },
+  ]}
+/>
+
+   <Select
+  label="Enrollment Open"
+  {...register("enrollmentOpen", {
+    setValueAs: (value) => value === "true",
+  })}
+  options={[
+    { label: "Yes", value: "true" },
+    { label: "No", value: "false" },
+  ]}
+/>
+</div>
     </div>
-  </div>
+
 
   {/* Submit */}
 

@@ -9,6 +9,12 @@ export  function userUpdateApi(data){
 export  function studentBatchesApi(id){
     return api.get(`/student/${id}/batches`)
 }
+export  function getStudentNotesApi(id){
+    return api.get(`/student/${id}/notes`)
+}
+export  function getStudentClassLinksApi(id){
+    return api.get(`/student/${id}/class-links`)
+}
 
 
 export const updateProfileImageApi = (file) => {

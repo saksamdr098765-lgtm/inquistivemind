@@ -94,12 +94,7 @@ const profileItems = [
           title: "My Batches",
           icon: FaUsers,
           href: `/${path}/batches`,
-        },
-          {
-    title: "Live Classes",
-    icon: FaVideo,
-    href: `/${path}/classes`,
-  },
+        }
       ]
     : []),
   {

@@ -9,36 +9,35 @@ export const createNoteSchema = z.object({
 
   description: z
     .string()
-    .trim()
     .max(1000, "Description cannot exceed 1000 characters")
-    .optional(),
+    .optional()
+    .or(z.literal("")),
+
+  type: z.enum(
+    [
+      "pdf",
+      "ppt",
+      "doc",
+      "image",
+      "video",
+      "other",
+    ],
+    {
+      message: "Please select a valid note type",
+    }
+  ),
+
+  visibility: z.enum(
+    ["public", "private"],
+    {
+      message: "Please select visibility",
+    }
+  ),
 
   file: z
     .any()
     .refine(
-      (file) => file?.length > 0,
+      (files) => files?.length > 0,
       "File is required"
-    )
-    .refine(
-      (file) =>
-        !file?.[0] ||
-        file[0].size <= 10 * 1024 * 1024,
-      "File size must be less than 10MB"
-    )
-    .refine(
-      (file) =>
-        !file?.[0] ||
-        [
-          "application/pdf",
-          "application/msword",
-          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-          "application/vnd.ms-powerpoint",
-          "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-          "application/zip",
-          "image/jpeg",
-          "image/png",
-          "image/webp",
-        ].includes(file[0].type),
-      "Unsupported file type"
     ),
 });

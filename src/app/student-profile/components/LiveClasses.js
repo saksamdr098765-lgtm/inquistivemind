@@ -1,6 +1,12 @@
 "use client";
 
+import { useGetStudentClassLInks } from "@/Hooks/useGetStudentClassLinks";
+import { useGetStudentNotes } from "@/Hooks/useGetStudentNotes";
 import { motion } from "framer-motion";
+import { useSearchParams } from "next/navigation";
+import { useState } from "react";
+import Modal from "@/app/Components/ui/Modals";
+import PdfViewer from "@/Utils/pdfViewer";
 import {
   FaVideo,
   FaCalendarAlt,
@@ -8,40 +14,52 @@ import {
   FaUserTie,
   FaPlayCircle,
   FaBookOpen,
+  FaPlus,
+  FaFilePdf,
 } from "react-icons/fa";
+import { formatISTDateTime } from "@/Utils/formatDate";
 
-const classes = [
-  {
-    id: 1,
-    title: "English Speaking Practice",
-    trainer: "John Smith",
-    date: "Today",
-    time: "6:00 PM - 7:00 PM",
-    topic: "Daily Conversation",
-    status: "Live",
-  },
-  {
-    id: 2,
-    title: "Business Communication",
-    trainer: "Emma Johnson",
-    date: "Tomorrow",
-    time: "5:00 PM - 6:00 PM",
-    topic: "Formal Emails",
-    status: "Upcoming",
-  },
-  {
-    id: 3,
-    title: "Grammar Workshop",
-    trainer: "Sophia Lee",
-    date: "Saturday",
-    time: "11:00 AM - 12:00 PM",
-    topic: "Tenses",
-    status: "Upcoming",
-  },
-];
+// const classes = [
+//   {
+//     id: 1,
+//     title: "English Speaking Practice",
+//     trainer: "John Smith",
+//     date: "Today",
+//     time: "6:00 PM - 7:00 PM",
+//     topic: "Daily Conversation",
+//     status: "Live",
+//   },
+//   {
+//     id: 2,
+//     title: "Business Communication",
+//     trainer: "Emma Johnson",
+//     date: "Tomorrow",
+//     time: "5:00 PM - 6:00 PM",
+//     topic: "Formal Emails",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: 3,
+//     title: "Grammar Workshop",
+//     trainer: "Sophia Lee",
+//     date: "Saturday",
+//     time: "11:00 AM - 12:00 PM",
+//     topic: "Tenses",
+//     status: "Upcoming",
+//   },
+// ];
 
 export default function LiveClasses() {
+  const searchParams=useSearchParams()
+  const batchId=searchParams.get("batchId")
+  const {data:classes,isLoading:classLoading}=useGetStudentClassLInks(batchId)
+  const {data:notes,isLoading:notesLoading}=useGetStudentNotes(batchId)
+   const [pdfOpen,setPdfOpen]=useState(false)
+    const [pdfUrl,setPdfUrl]=useState("")
+  const [activeTab,setActiveTab]=useState("links")
+  if(notesLoading || classLoading) return
   return (
+    <div className="max-w-6xl mx-auto">
     <div className="space-y-8">
 
       {/* Hero */}
@@ -96,14 +114,123 @@ export default function LiveClasses() {
         </div>
 
       </motion.div>
+  <div className="flex gap-3">
+        <button
+          onClick={() => setActiveTab("notes")}
+          className={`
+            rounded-2xl px-6 py-3 font-medium transition
+            ${
+              activeTab === "notes"
+                ? "bg-[#D6451B] text-white"
+                : "bg-white border border-slate-200"
+            }
+          `}
+        >
+          Notes
+        </button>
 
+        <button
+          onClick={() => setActiveTab("links")}
+          className={`
+            rounded-2xl px-6 py-3 font-medium transition
+            ${
+              activeTab === "links"
+                ? "bg-[#D6451B] text-white"
+                : "bg-white border border-slate-200"
+            }
+          `}
+        >
+          Class Links
+        </button>
+      </div>
       {/* Schedule */}
+  {activeTab === "notes" && (
+        <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-lg">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-3xl font-bold">
+                Notes
+              </h2>
 
-      <div className="grid gap-6">
+              <p className="mt-2 text-slate-500">
+                Manage study materials for this
+                batch
+              </p>
+            </div>
 
-        {classes.map((item, index) => (
+         
+          </div>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {notes && notes?.map((note) => (
+              <div
+                key={note?._id}
+                className="
+                  rounded-3xl
+                  border border-slate-200
+                  p-6 transition
+                  hover:border-[#D6451B]
+                "
+              >
+                <div className="flex items-start justify-between">
+                  <div>
+                    <h3 className="text-xl font-bold">
+                      {note?.title}
+                    </h3>
+
+                    <p className="mt-2 text-slate-500">
+                      {note?.description}
+                    </p>
+                  </div>
+
+                
+                </div>
+
+                <div
+                  className="
+                    mt-6 flex items-center
+                    justify-between
+                    border-t border-slate-200
+                    pt-5
+                  "
+                >
+                  <div className="flex items-center gap-3">
+                    <FaFilePdf className="text-red-500" />
+
+                    <span className="text-sm font-medium">
+                      {note?.fileName}
+                    </span>
+                  </div>
+
+                  <button
+                  onClick={()=>{setPdfUrl(note?.file?.url);setPdfOpen(true)}}
+                    className="
+                      rounded-xl
+                      bg-blue-50
+                      px-4 py-2
+                      text-blue-600
+                    "
+                  >
+                    View
+                  </button>
+                </div>
+              </div>
+            ))}
+          </div>
+              <Modal
+               isOpen={pdfOpen}
+                onClose={() => setPdfOpen(false)}>
+                <PdfViewer url={pdfUrl}></PdfViewer>
+                
+          
+              </Modal>
+        </div>
+      )}
+   {activeTab === "links" &&  <div className="grid gap-6">
+
+        {classes?.map((item, index) => (
           <motion.div
-            key={item.id}
+            key={item?._id}
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
@@ -117,18 +244,18 @@ export default function LiveClasses() {
                 <div className="flex items-center gap-3">
 
                   <h2 className="text-2xl font-bold">
-                    {item.title}
+                    {item?.title}
                   </h2>
 
-                  <span
+                  {/* <span
                     className={`rounded-full px-3 py-1 text-sm font-semibold ${
-                      item.status === "Live"
+                      item?.status === "Live"
                         ? "bg-green-100 text-green-700"
                         : "bg-orange-100 text-[#D6451B]"
                     }`}
                   >
-                    {item.status}
-                  </span>
+                    {item?.status}
+                  </span> */}
 
                 </div>
 
@@ -145,7 +272,7 @@ export default function LiveClasses() {
                       </p>
 
                       <h4 className="font-semibold">
-                        {item.date}
+                        {formatISTDateTime(item?.meetingDate).split(",")[0]}
                       </h4>
 
                     </div>
@@ -163,7 +290,7 @@ export default function LiveClasses() {
                       </p>
 
                       <h4 className="font-semibold">
-                        {item.time}
+                        {formatISTDateTime(item?.meetingDate).split(",")[1]}
                       </h4>
 
                     </div>
@@ -181,7 +308,7 @@ export default function LiveClasses() {
                       </p>
 
                       <h4 className="font-semibold">
-                        {item.trainer}
+                        {item?.trainer}
                       </h4>
 
                     </div>
@@ -189,9 +316,7 @@ export default function LiveClasses() {
                   </div>
 
                   <div className="flex items-center gap-3">
-
                     <FaBookOpen className="text-[#D6451B]" />
-
                     <div>
 
                       <p className="text-sm text-slate-500">
@@ -199,7 +324,7 @@ export default function LiveClasses() {
                       </p>
 
                       <h4 className="font-semibold">
-                        {item.topic}
+                        {item?.add}
                       </h4>
 
                     </div>
@@ -210,25 +335,27 @@ export default function LiveClasses() {
 
               </div>
 
-              <button
+              <a
+              href={item?.meetingLink}
+              
                 className={`rounded-2xl px-6 py-3 font-medium text-white ${
-                  item.status === "Live"
+                  item?.status === "Live"
                     ? "bg-green-600 hover:bg-green-700"
                     : "bg-[#D6451B] hover:opacity-90"
                 }`}
               >
-                {item.status === "Live"
+                {item?.status === "Live"
                   ? "Join Now"
                   : "View Details"}
-              </button>
+              </a>
 
             </div>
 
           </motion.div>
         ))}
 
-      </div>
+      </div>}
 
-    </div>
+    </div></div>
   );
 }

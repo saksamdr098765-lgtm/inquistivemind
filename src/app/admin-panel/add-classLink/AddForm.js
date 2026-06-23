@@ -27,24 +27,35 @@ export default function AddForm({ batchId }) {
   } = useForm({
     resolver: zodResolver(createClassLinkSchema),
     mode: "onBlur",
-    defaultValues: {
-      batch: "",
-      title: "",
-      meetingLink: "",
-      meetingDate: "",
-      description: "",
-    },
+   defaultValues: {
+  title: "",
+  meetingLink: "",
+  meetingDate: "",
+  description: "",
+  durationMinutes: 60,
+  status: "scheduled",
+  platform: "zoom",
+  attendanceEnabled: "false",
+  // recordingUrl: "",
+  // classNumber: 1,
+}
   });
 
   const createClassLinkMutation =
     useAddClassLinkMutation(reset);
 
   const onSubmit = async (data) => {
-    console.log(data)
-    await createClassLinkMutation.mutateAsync({
-      id:batchId,
-      data,
-    });
+  
+   const payload = {
+  ...data,
+  attendanceEnabled:
+    data.attendanceEnabled === "true",
+};
+
+await createClassLinkMutation.mutateAsync({
+  id: batchId,
+  data: payload,
+});
 
     reset();
   };
@@ -59,78 +70,186 @@ export default function AddForm({ batchId }) {
     >
       {/* Basic Information */}
 
-      <div>
-        <h2 className="mb-4 text-xl font-bold text-slate-800">
-          Class Information
-        </h2>
+   <div>
+  <h2 className="mb-4 text-xl font-bold text-slate-800">
+    Class Information
+  </h2>
 
-        <div className="grid gap-6 md:grid-cols-2">
-         
+  <div className="grid gap-6 md:grid-cols-2">
 
-          <Input
-            label="Class Title"
-            placeholder="IELTS Speaking Session"
-            icon={<FaHeading />}
-            {...register("title")}
-            error={errors.title}
-          />
-        </div>
-      </div>
+    <Input
+      label="Class Title"
+      placeholder="IELTS Speaking Session"
+      icon={<FaHeading />}
+      {...register("title")}
+      error={errors.title}
+    />
+
+    {/* <Input
+      type="number"
+      label="Class Number"
+      placeholder="1"
+      icon={<FaUsers />}
+      {...register("classNumber", {
+        valueAsNumber: true,
+      })}
+      error={errors.classNumber}
+    /> */}
+
+  </div>
+</div>
 
       {/* Meeting Details */}
 
-      <div>
-        <h2 className="mb-4 text-xl font-bold text-slate-800">
-          Meeting Details
-        </h2>
+   <div>
+  <h2 className="mb-4 text-xl font-bold text-slate-800">
+    Meeting Details
+  </h2>
 
-        <div className="grid gap-6 md:grid-cols-2">
-          <Input
-            type="datetime-local"
-            label="Meeting Date & Time"
-            icon={<FaCalendarAlt />}
-            {...register("meetingDate")}
-            error={errors.meetingDate}
-          />
+  <div className="grid gap-6 md:grid-cols-2">
 
-          <Input
-            label="Meeting Link"
-            placeholder="https://meet.google.com/..."
-            icon={<FaVideo />}
-            {...register("meetingLink")}
-            error={errors.meetingLink}
-          />
-        </div>
-      </div>
+    <Input
+      type="datetime-local"
+      label="Meeting Date & Time"
+      icon={<FaCalendarAlt />}
+      {...register("meetingDate")}
+      error={errors.meetingDate}
+    />
 
+    <Input
+      label="Meeting Link"
+      placeholder="https://zoom.us/j/123456"
+      icon={<FaVideo />}
+      {...register("meetingLink")}
+      error={errors.meetingLink}
+    />
+
+    <Input
+      type="number"
+      label="Duration (Minutes)"
+      placeholder="60"
+      {...register("durationMinutes", {
+        valueAsNumber: true,
+      })}
+      error={errors.durationMinutes}
+    />
+
+    <Select
+      label="Platform"
+      {...register("platform")}
+      error={errors.platform}
+      options={[
+        {
+          label: "Zoom",
+          value: "zoom",
+        },
+        {
+          label: "Google Meet",
+          value: "google-meet",
+        },
+        {
+          label: "Microsoft Teams",
+          value: "teams",
+        },
+        {
+          label: "Custom",
+          value: "custom",
+        },
+      ]}
+    />
+
+  </div>
+</div>
+<div>
+  <h2 className="mb-4 text-xl font-bold text-slate-800">
+    Class Settings
+  </h2>
+
+  <div className="grid gap-6 md:grid-cols-2">
+
+    <Select
+      label="Status"
+      {...register("status")}
+      error={errors.status}
+      options={[
+        {
+          label: "Scheduled",
+          value: "scheduled",
+        },
+        {
+          label: "Live",
+          value: "live",
+        },
+        {
+          label: "Completed",
+          value: "completed",
+        },
+        {
+          label: "Cancelled",
+          value: "cancelled",
+        },
+      ]}
+    />
+
+    <Select
+      label="Attendance Tracking"
+      {...register("attendanceEnabled")}
+      error={errors.attendanceEnabled}
+      options={[
+        {
+          label: "Enabled",
+          value: "true",
+        },
+        {
+          label: "Disabled",
+          value: "false",
+        },
+      ]}
+    />
+
+  </div>
+</div>
+{/* <div>
+  <h2 className="mb-4 text-xl font-bold text-slate-800">
+    Recording (Optional)
+  </h2>
+
+  <Input
+    label="Recording URL"
+    placeholder="https://bunny.net/video/..."
+    icon={<FaVideo />}
+    {...register("recordingUrl")}
+    error={errors.recordingUrl}
+  />
+</div> */}
       {/* Description */}
 
-      <div>
-        <h2 className="mb-4 text-xl font-bold text-slate-800">
-          Additional Information
-        </h2>
+    <div>
+  <h2 className="mb-4 text-xl font-bold text-slate-800">
+    Additional Information
+  </h2>
 
-        <textarea
-          {...register("description")}
-          placeholder="Class agenda, notes, instructions..."
-          className="
-            min-h-[120px]
-            w-full
-            rounded-2xl
-            border
-            border-slate-300
-            p-4
-            outline-none
-            focus:border-[#D6451B]
-          "
-        />
+  <textarea
+    {...register("description")}
+    placeholder="Class agenda, notes, instructions..."
+    className="
+      min-h-[120px]
+      w-full
+      rounded-2xl
+      border
+      border-slate-300
+      p-4
+      outline-none
+      focus:border-[#D6451B]
+    "
+  />
 
-        {errors.description && (
-          <p className="mt-1 text-sm text-red-500">
-            {errors.description.message}
-          </p>
-        )}
-      </div>
+  {errors.description && (
+    <p className="mt-1 text-sm text-red-500">
+      {errors.description.message}
+    </p>
+  )}
+</div>
 
       {/* Submit */}
 

@@ -5,7 +5,22 @@ export const editBatchSchema = z
     startDate: z
       .string()
       .min(1, "Start date is required"),
+description: z.string().optional(),
 
+meetingPlatform: z.enum([
+  "zoom",
+  "google-meet",
+  "offline",
+  "other",
+]),
+
+enrollmentOpen: z.coerce.boolean(),
+
+schedule: z.object({
+  days: z.array(z.string()).optional(),
+  startTime: z.string().optional(),
+  endTime: z.string().optional(),
+}),
     endDate: z
       .string()
       .min(1, "End date is required"),

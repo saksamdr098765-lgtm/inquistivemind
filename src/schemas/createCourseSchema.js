@@ -12,7 +12,18 @@ export const createCourseSchema = z.object({
     .max(200, "Short description cannot exceed 200 characters")
     .optional()
     .or(z.literal("")),
+ category: z
+    .string()
+    .min(2, "Category is required"),
 
+  language: z
+    .string()
+    .min(2, "Language is required"),
+
+  enrollmentOpen: z.union([
+    z.boolean(),
+    z.enum(["true", "false"]),
+  ]),
   description: z
     .string()
     .trim()

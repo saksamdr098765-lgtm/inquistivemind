@@ -27,16 +27,19 @@ export default function AddCourseForm() {
   } = useForm({
     resolver:zodResolver(createCourseSchema),
     mode:"onBlur",
-    defaultValues: {
-      title: "",
-      slug: "",
-      shortDescription: "",
-      description: "",
-      price: 0,
-      durationInMonths: "",
-      level: "beginner",
-      status: "draft",
-    },
+   defaultValues: {
+  title: "",
+  shortDescription: "",
+  description: "",
+  price: 0,
+  durationInMonths: "",
+  level: "beginner",
+  status: "draft",
+
+  category: "",
+  language: "English",
+  enrollmentOpen: true,
+},
   });
  const createCourseMutation=useCreateCourseMutation(reset)
   const onSubmit = async (data) => {
@@ -56,6 +59,15 @@ export default function AddCourseForm() {
   );
   formData.append("level", data.level);
   formData.append("status", data.status);
+  formData.append("category", data.category);
+formData.append("language", data.language);
+
+formData.append(
+  "enrollmentOpen",
+  data.enrollmentOpen
+);
+
+
 
   if (data.thumbnail) {
     formData.append(
@@ -89,6 +101,23 @@ export default function AddCourseForm() {
 
           
         </div>
+        <div className="grid gap-6 md:grid-cols-2 mt-6">
+  <Input
+    label="Category"
+    placeholder="English Speaking"
+    icon={<FaBookOpen />}
+    {...register("category")}
+    error={errors.category}
+  />
+
+  <Input
+    label="Language"
+    placeholder="English"
+    icon={<FaBookOpen />}
+    {...register("language")}
+    error={errors.language}
+  />
+</div>
       </div>
 
       {/* Descriptions */}
@@ -166,7 +195,16 @@ export default function AddCourseForm() {
               },
             ]}
           />
-
+ <Select
+  label="Enrollment Open"
+  {...register("enrollmentOpen", {
+    setValueAs: (value) => value === "true",
+  })}
+  options={[
+    { label: "Yes", value: "true" },
+    { label: "No", value: "false" },
+  ]}
+/>
           <Select
             label="Status"
             error={errors.status}

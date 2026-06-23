@@ -12,7 +12,22 @@ export const createBatchSchema = z
       .trim()
       .min(3, "Batch name must be at least 3 characters")
       .max(100, "Batch name cannot exceed 100 characters"),
+description: z.string().optional(),
 
+schedule: z.object({
+  days: z.array(z.string()).optional(),
+  startTime: z.string().optional(),
+  endTime: z.string().optional(),
+}),
+
+meetingPlatform: z.enum([
+  "zoom",
+  "google-meet",
+  "offline",
+  "other",
+]),
+
+enrollmentOpen: z.coerce.boolean().default(false),
     startDate: z.string().min(1, "Start date is required"),
 
     endDate: z.string().min(1, "End date is required"),

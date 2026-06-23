@@ -16,12 +16,12 @@ export default function Courses() {
   const [search, setSearch] = useState("");
   const {data:batches,isLoading}=useGetStudentBatches()
 
-  // const filteredCourses = initialCourses.filter((course) =>
-  //   course.title.toLowerCase().includes(search.toLowerCase())
-  // );
+
 if(isLoading) return
   return (
-    <div className="space-y-8">
+ <div className="  max-w-6xl mx-auto">
+
+    <div className="space-y-8 px-2">
 
       {/* Header */}
       <motion.div
@@ -53,7 +53,7 @@ if(isLoading) return
       </div>
 
       {/* Cards */}
-      <div className="grid gap-8">
+      <div className="grid  gap-8">
 
         {batches?.map(({course}) => (
           <motion.div
@@ -183,6 +183,6 @@ if(isLoading) return
         </div>
       )}
 
-    </div>
+    </div></div>
   );
 }

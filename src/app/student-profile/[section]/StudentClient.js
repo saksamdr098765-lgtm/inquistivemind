@@ -29,11 +29,11 @@ export default  function StudentPortala({section}) {
     return <StudentLoading></StudentLoading>
   }
   return (
-    <div className="pt-24 mx-auto max-w-7xl">
+    <div className="pt-24 ">
 
       {/* <StudentNavbar section={section}  /> */}
 
-      <div className="max-w-7xl mx-auto px-5 py-10">
+   
        {section=== "dashboard" && <Dashboard user={user} />}
         {section=== "profile" && <Profile user={user} profile={profile} />}
         {section=== "courses" && <Courses />}
@@ -59,6 +59,6 @@ export default  function StudentPortala({section}) {
 
       </div>
 
-    </div>
+   
   );
 }

@@ -3,6 +3,7 @@
 import { useUpdateBatchMutation } from "@/app/mutations/BatchMutation";
 import Input from "@/app/student-profile/components/profile/Input";
 import Select from "@/app/student-profile/components/profile/Select";
+import TextArea from "@/app/student-profile/components/profile/TextArea";
 import { useAdminStudent } from "@/Hooks/useAdminStudents";
 import { useGetBatchById } from "@/Hooks/useGetBatchById";
 import { editBatchSchema } from "@/schemas/EditBatchSchema";
@@ -20,14 +21,20 @@ const [students,setStudents]=useState([])
   const { register, handleSubmit, watch,reset, setValue,formState:{isSubmitting,errors,isDirty} } = useForm({
     resolver:zodResolver(editBatchSchema),
     mode:"onBlur",
-    defaultValues: {
-      startDate: batch?.startDate?.split("T")[0] || "",
-      endDate: batch?.endDate?.split("T")[0] || "",
-      status: batch?.status || "upcoming",
-      maxStudents: batch?.maxStudents || 50,
-    students: batch?.students?.map((s) => s._id) || [],
-    trainers: batch?.trainers?.map((t) => t._id) || [],
-    },
+  defaultValues: {
+  startDate: "",
+  endDate: "",
+  status: "upcoming",
+  maxStudents: 50,
+  description: "",
+  meetingPlatform: "zoom",
+  enrollmentOpen: true,
+  "schedule.days": [],
+  "schedule.startTime": "",
+  "schedule.endTime": "",
+  students: [],
+  trainers: [],
+},
   });
   const batchMutation=useUpdateBatchMutation(reset)
 const {data:studentsData,isLoading}=useAdminStudent(1,"" ,"" ,"" ,"student")
@@ -35,13 +42,25 @@ const {data:trainersData}=useAdminStudent(1,"" ,"" ,"" ,"teacher")
 useEffect(()=>{
 if(!batch) return
 reset({
-    startDate: batch?.startDate?.split("T")[0] || "",
-      endDate: batch?.endDate?.split("T")[0] || "",
-      status: batch?.status || "upcoming",
-      maxStudents: batch?.maxStudents || 50,
-    students: batch?.students?.map((s) => s._id) || [],
-    trainers: batch?.trainers?.map((t) => t._id) || [],
-})
+  startDate: batch?.startDate?.split("T")[0] || "",
+  endDate: batch?.endDate?.split("T")[0] || "",
+  status: batch?.status || "upcoming",
+  maxStudents: batch?.maxStudents || 50,
+  description: batch?.description || "",
+  meetingPlatform: batch?.meetingPlatform || "zoom",
+  enrollmentOpen: batch?.enrollmentOpen ?? true,
+
+  "schedule.days": batch?.schedule?.days || [],
+  "schedule.startTime":
+    batch?.schedule?.startTime || "",
+  "schedule.endTime":
+    batch?.schedule?.endTime || "",
+
+  students:
+    batch?.students?.map((s) => s._id) || [],
+  trainers:
+    batch?.trainers?.map((t) => t._id) || [],
+});
 },[batch,reset])
 useEffect(()=>{
   if(!studentsData || !trainersData) return 
@@ -98,7 +117,8 @@ console.log(data)
 };
 if(isLoading) return
   return (
-    <div className="max-w-7xl mx-auto py-10 space-y-8">
+    <div className="py-28 space-y-8">
+      <div className="  max-w-7xl mx-auto">
       <div className="rounded-[32px] bg-gradient-to-r from-[#D6451B] to-orange-500 p-8 text-white">
         <h1 className="text-4xl font-bold">Edit Batch</h1>
         <p className="mt-2 text-orange-100">
@@ -107,7 +127,7 @@ if(isLoading) return
       </div>
 
       <form onSubmit={handleSubmit(onSubmit,(error)=>console.log(error))} className="space-y-8">
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid gap-8 ">
           <div className="rounded-[32px] bg-white p-8 shadow-lg">
             <h2 className="text-2xl font-bold mb-6">Batch Information</h2>
 
@@ -117,6 +137,13 @@ if(isLoading) return
            
              
              </div>
+             <TextArea
+  label="Description"
+  rows={4}
+  placeholder="Batch description"
+  {...register("description")}
+  error={errors?.description}
+/>
            
              {/* Schedule */}
            
@@ -142,6 +169,21 @@ if(isLoading) return
                    error={errors?.endDate}
                  />
                </div>
+               <div className="grid gap-6 md:grid-cols-2">
+  <Input
+    label="Start Time"
+    type="time"
+    {...register("schedule.startTime")}
+    error={errors?.schedule?.startTime}
+  />
+
+  <Input
+    label="End Time"
+    type="time"
+    {...register("schedule.endTime")}
+    error={errors?.schedule?.endTime}
+  />
+</div>
              </div>
            
              {/* Settings */}
@@ -160,6 +202,41 @@ if(isLoading) return
                    {...register("maxStudents")}
                    error={errors?.maxStudents}
                  />
+                 <Select
+  label="Meeting Platform"
+  icon={<FaBookOpen />}
+
+  {...register("meetingPlatform")}
+  error={errors?.meetingPlatform}
+  options={[
+    {
+      label: "Zoom",
+      value: "zoom",
+    },
+    {
+      label: "Google Meet",
+      value: "google-meet",
+    },
+    {
+      label: "Offline",
+      value: "offline",
+    },
+    {
+      label: "Other",
+      value: "other",
+    },
+  ]}
+/>
+ <Select
+  label="Enrollment Open"
+  {...register("enrollmentOpen", {
+    setValueAs: (value) => value === "true",
+  })}
+  options={[
+    { label: "Yes", value: "true" },
+    { label: "No", value: "false" },
+  ]}
+/>
            
                  <Select
                    label="Status"
@@ -186,6 +263,38 @@ if(isLoading) return
                    ]}
                  />
                </div>
+               <div className="mt-6">
+   <label className="mb-4 text-xl font-bold text-slate-800">
+    Class Days
+  </label>
+
+  <div className="grid grid-cols-2 gap-3 md:grid-cols-4 items-center space-y-6">
+    {[
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+      "Sunday",
+    ].map((day) => (
+      <label
+        key={day}
+        className="flex items-center gap-2"
+      >
+        <input
+          type="checkbox"
+          value={day}
+          {...register("schedule.days")}
+        />
+        {day}
+      </label>
+    ))}
+    
+  </div>
+  
+</div>
+
              </div>
             </div>
           </div>
@@ -455,6 +564,6 @@ if(isLoading) return
             : "Save Batch"}
         </button>
       </form>
-    </div>
+    </div></div>
   );
 }

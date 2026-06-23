@@ -90,7 +90,7 @@ if(isLoading) return
 
           </div>
 
-          <button className="flex items-center gap-3 rounded-2xl bg-white px-6 py-4 font-semibold text-[#D6451B]">
+          <button onClick={()=>{router.push('/admin-panel/add-batch')}} className="flex items-center gap-3 rounded-2xl bg-white px-6 py-4 font-semibold text-[#D6451B]">
 
             <FaPlus />
 
@@ -177,135 +177,174 @@ if(isLoading) return
       {/* Batch Cards */}
 
       <div className="grid gap-7 lg:grid-cols-2 xl:grid-cols-3">
-       {console.log(batches)}
+      
         {batches
           ?.map((batch) => (
 
-            <motion.div
-              key={batch._id}
-              whileHover={{ y: -6 }}
-              className="rounded-[32px] border border-slate-200 bg-white p-7 shadow-lg"
-            >
+          <motion.div
+  key={batch._id}
+  whileHover={{ y: -4 }}
+  className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-xl"
+>
+  {/* Header */}
+  <div className="flex items-start justify-between gap-3">
+    <div className="min-w-0 flex-1">
+      <h2 className="truncate text-xl font-bold text-slate-900">
+        {batch.name}
+      </h2>
 
-              <div className="flex items-start justify-between">
+      <p className="mt-1 text-sm text-slate-500">
+        {batch.course?.title}
+      </p>
+    </div>
 
-                <div>
+    <span
+      className={`shrink-0 rounded-full px-3 py-1 text-xs font-semibold ${
+        batch.status === "active"
+          ? "bg-green-100 text-green-700"
+          : batch.status === "completed"
+          ? "bg-blue-100 text-blue-700"
+          : batch.status === "cancelled"
+          ? "bg-red-100 text-red-700"
+          : "bg-yellow-100 text-yellow-700"
+      }`}
+    >
+      {batch.status}
+    </span>
+  </div>
 
-                  <h2 className="text-2xl font-bold">
-                    {batch?.name}
-                  </h2>
+  {/* Enrollment */}
+  <div className="mt-3">
+    <span
+      className={`rounded-full px-3 py-1 text-xs font-medium ${
+        batch.enrollmentOpen
+          ? "bg-blue-100 text-blue-700"
+          : "bg-red-100 text-red-700"
+      }`}
+    >
+      {batch.enrollmentOpen
+        ? "Enrollment Open"
+        : "Enrollment Closed"}
+    </span>
+  </div>
 
-                  <p className="mt-2 text-slate-500">
-                    {batch?.course?.title}
-                  </p>
+  {/* Description */}
+  <p className="mt-4 line-clamp-2 text-sm text-slate-500">
+    {batch.description ||
+      "No description available"}
+  </p>
 
-                </div>
+  {/* Stats */}
+  <div className="mt-5 grid grid-cols-2 gap-3">
+    <div className="rounded-2xl bg-slate-50 p-3">
+      <p className="text-xs text-slate-500">
+        Students
+      </p>
 
-                <span
-                  className={`rounded-full px-4 py-2 text-sm font-semibold ${
-                    batch?.status === "active"
-                      ? "bg-green-100 text-green-700"
-                      : "bg-slate-200 text-slate-700"
-                  }`}
-                >
-                  {batch?.status}
-                </span>
+      <p className="mt-1 font-semibold text-slate-900">
+        {batch.students?.length || 0}/
+        {batch.maxStudents}
+      </p>
+    </div>
 
-              </div>
+    <div className="rounded-2xl bg-slate-50 p-3">
+      <p className="text-xs text-slate-500">
+        Trainers
+      </p>
 
-              <div className="mt-8 space-y-4">
+      <p className="mt-1 font-semibold text-slate-900">
+        {batch.trainers?.length || 0}
+      </p>
+    </div>
+  </div>
 
-                <Info
-                  icon={<FaChalkboardTeacher />}
-                  label="Trainer"
-                  value={batch?.trainers?.length}
-                />
+  {/* Dates */}
+  <div className="mt-4 flex justify-between rounded-2xl bg-slate-50 p-3">
+    <div>
+      <p className="text-xs text-slate-500">
+        Start Date
+      </p>
 
-                <Info
-                  icon={<FaUsers />}
-                  label="Students"
-                  value={batch?.students?.length}
-                />
+      <p className="mt-1 text-sm font-medium">
+        {new Date(
+          batch.startDate
+        ).toLocaleDateString("en-IN")}
+      </p>
+    </div>
 
-                <Info
-                  icon={<FaClock />}
-                  label="Start Date"
-                  value={new Date(batch?.startDate).toLocaleDateString("en-IN")}
-                />
-                <Info
-                  icon={<FaClock />}
-                  label="End Date"
-                  value={new Date(batch?.endDate).toLocaleDateString("en-IN")}
-                />
+    <div className="text-right">
+      <p className="text-xs text-slate-500">
+        End Date
+      </p>
 
-              </div>
+      <p className="mt-1 text-sm font-medium">
+        {new Date(
+          batch.endDate
+        ).toLocaleDateString("en-IN")}
+      </p>
+    </div>
+  </div>
 
-            
-                            {/* Schedule */}
+  {/* Schedule */}
+  <div className="mt-4 rounded-2xl border border-slate-100 bg-slate-50 p-4">
+    <p className="text-xs text-slate-500">
+      Schedule
+    </p>
 
-              <div className="mt-8 rounded-2xl bg-slate-50 p-5">
+    <p className="mt-1 font-medium text-slate-900">
+      {batch?.schedule?.days?.length
+        ? batch.schedule.days.join(", ")
+        : "Schedule Not Set"}
+    </p>
 
-                <div className="flex items-center justify-between">
+    <p className="mt-2 text-sm text-slate-500">
+      {batch?.schedule?.startTime || "--"}
+      {" - "}
+      {batch?.schedule?.endTime || "--"}
+    </p>
 
-                  <div>
+    <div className="mt-3 flex items-center justify-between">
+      <span className="text-xs text-slate-500">
+        Platform
+      </span>
 
-                    <p className="text-sm text-slate-500">
-                      Schedule
-                    </p>
+      <span className="rounded-lg bg-white px-2 py-1 text-sm font-medium capitalize">
+        {batch.meetingPlatform}
+      </span>
+    </div>
+  </div>
 
-                    <h3 className="mt-1 font-semibold">
-                      {batch?.schedule || "Mon-Fri"}
-                    </h3>
+  {/* Actions */}
+  <div className="mt-5 grid grid-cols-3 gap-2 border-t border-slate-100 pt-4">
+    <button
+      onClick={() =>
+        router.push(
+          `/admin-panel/batches/${slug}/batch?batchId=${batch._id}`
+        )
+      }
+      className="flex items-center justify-center gap-2 rounded-xl bg-blue-50 py-3 text-blue-600 transition hover:bg-blue-100"
+    >
+      <FaEye />
+    </button>
 
-                  </div>
+    <button
+      onClick={() =>
+        router.push(
+          `/admin-panel/batches/${slug}/edit-batch?batchId=${batch._id}`
+        )
+      }
+      className="flex items-center justify-center gap-2 rounded-xl bg-orange-50 py-3 text-[#D6451B] transition hover:bg-orange-100"
+    >
+      <FaEdit />
+    </button>
 
-                  <div className="text-right">
-
-                    <p className="text-sm text-slate-500">
-                      Mode
-                    </p>
-
-                    <h3 className="mt-1 font-semibold">
-                      {batch?.room || "online"}
-                    </h3>
-
-                  </div>
-
-                </div>
-
-              </div>
-
-              {/* Actions */}
-
-              <div className="mt-8 flex items-center justify-between border-t border-slate-200 pt-6">
-
-               <button onClick={()=>{router.push(`/admin-panel/batches/${slug}/batch?batchId=${batch._id}`)}}  className="flex items-center gap-2 rounded-xl bg-blue-50 px-4 py-3 font-medium text-blue-600 transition hover:scale-105">
-
-                    <FaEye />
-
-                    View
-
-                  </button>
-
-                <button onClick={()=>{router.push(`/admin-panel/batches/${slug}/edit-batch?batchId=${batch._id}`)}} className="flex items-center gap-2 rounded-xl bg-orange-50 px-4 py-3 font-medium text-[#D6451B] transition hover:scale-105">
-
-                  <FaEdit />
-
-                  Edit
-
-                </button>
-
-                <button className="flex items-center gap-2 rounded-xl bg-red-50 px-4 py-3 font-medium text-red-600 transition hover:scale-105">
-
-                  <FaTrash />
-
-                  Delete
-
-                </button>
-
-              </div>
-
-            </motion.div>
+    <button
+      className="flex items-center justify-center gap-2 rounded-xl bg-red-50 py-3 text-red-600 transition hover:bg-red-100"
+    >
+      <FaTrash />
+    </button>
+  </div>
+</motion.div>
 
           ))}
 
@@ -434,7 +473,11 @@ if(isLoading) return
           <div className="mt-8 space-y-5">
 
             {batches
-              .sort((a, b) => b.students - a.students)
+             .sort(
+  (a, b) =>
+    (b.students?.length || 0) -
+    (a.students?.length || 0)
+)
               .map((batch) => (
 
                 <div

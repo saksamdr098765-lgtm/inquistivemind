@@ -40,3 +40,6 @@ export  function adminGetBatchApi(slug){
 export  function adminUpdateBatchApi(id,data){
     return api.patch(`/batches/${id}/update`,data)
 }
+export  function adminGetBatchByIdApi(id){
+    return api.get(`/batches/${id}/byId`)
+}

@@ -1,6 +1,9 @@
 "use client";
 
+import { useGetStudentBatches } from "@/Hooks/useGetStudentBatches";
+import { formatISTDateTime } from "@/Utils/formatDate";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import {
   FaUsers,
   FaUserTie,
@@ -36,8 +39,11 @@ const batches = [
 ];
 
 export default function Batches() {
-  
+  const {data:batches,isLoading}=useGetStudentBatches()
+  const router=useRouter()
+  if(isLoading) return
   return (
+    <div className="max-w-6xl mx-auto">
     <div className="space-y-8">
 
       {/* Header */}
@@ -60,9 +66,9 @@ export default function Batches() {
 
       <div className="grid gap-6">
 
-        {batches.map((batch, index) => (
+        {batches?.map((batch, index) => (
           <motion.div
-            key={batch.id}
+            key={batch._id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
@@ -81,7 +87,7 @@ export default function Batches() {
 
                   <span
                     className={`rounded-full px-3 py-1 text-sm font-semibold ${
-                      batch.status === "Active"
+                      batch.status === "active"
                         ? "bg-green-100 text-green-700"
                         : "bg-orange-100 text-[#D6451B]"
                     }`}
@@ -96,44 +102,44 @@ export default function Batches() {
                   <Info
                     icon={<FaUserTie />}
                     title="Trainer"
-                    value={batch.trainer}
+                    value={batch?.trainers?.length}
                   />
 
                   <Info
                     icon={<FaClock />}
                     title="Timing"
-                    value={batch.timing}
+                    value={batch?.timing || "Not Avilable"}
                   />
 
                   <Info
                     icon={<FaCalendarAlt />}
-                    title="Days"
-                    value={batch.days}
+                    title="Start Date"
+                    value={formatISTDateTime(batch.startDate).split(",")[0]}
                   />
 
                   <Info
-                    icon={<FaMapMarkerAlt />}
-                    title="Classroom"
-                    value={batch.room}
+                    icon={<FaCalendarAlt />}
+                    title="End Date"
+                    value={formatISTDateTime(batch.endDate).split(",")[0]}
                   />
 
                   <Info
                     icon={<FaUsers />}
                     title="Students"
-                    value={batch.students}
+                    value={batch?.students?.length}
                   />
 
                   <Info
                     icon={<FaCheckCircle />}
                     title="Attendance"
-                    value={batch.attendance}
+                    value={batch?.attendance || "Not Avilable"}
                   />
 
                 </div>
 
               </div>
 
-              <button className="rounded-2xl bg-[#D6451B] px-6 py-3 font-medium text-white hover:opacity-90">
+              <button onClick={()=>{router.push(`/student-profile/classes?batchId=${batch._id}`)}} className="rounded-2xl bg-[#D6451B] px-6 py-3 font-medium text-white hover:opacity-90">
                 View Batch
               </button>
 
@@ -144,7 +150,7 @@ export default function Batches() {
 
       </div>
 
-    </div>
+    </div></div>
   );
 }
 

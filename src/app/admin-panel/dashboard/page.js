@@ -1,7 +1,12 @@
 "use client";
 
 import CommingSoon from "@/app/Components/ui/CommingSoon";
+import DashboardSkeleton from "@/app/Skeletons/DashBoardSkeleton";
+import { useAdminGetAllAnnoucements } from "@/Hooks/useAdminGetAllAnnouncements";
+import { useAdminGetAllClasses } from "@/Hooks/useAdminGetAllClasses";
+import { useAdminGetRecentActivities } from "@/Hooks/useAdminGetRecentEnrollments";
 import { useAdminGetStats } from "@/Hooks/useAdminGetStats";
+import { formatISTDateTime } from "@/Utils/formatDate";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
@@ -16,32 +21,7 @@ import {
   FaBell,
   FaPlus,
 } from "react-icons/fa";
-const recentStudents = [
-  {
-    name: "Anjali Sharma",
-    course: "General English",
-    batch: "Morning Batch",
-    status: "Active",
-  },
-  {
-    name: "Rahul Verma",
-    course: "IELTS",
-    batch: "Evening Batch",
-    status: "Pending",
-  },
-  {
-    name: "Priya Singh",
-    course: "Spoken English",
-    batch: "Weekend",
-    status: "Active",
-  },
-  {
-    name: "Amit Kumar",
-    course: "Business English",
-    batch: "Morning",
-    status: "Active",
-  },
-];
+
 
 const liveClasses = [
   {
@@ -79,32 +59,19 @@ const payments = [
   },
 ];
 
-const announcements = [
-  {
-    title: "Holiday Notice",
-    date: "18 Jun",
-  },
-  {
-    title: "IELTS Mock Test",
-    date: "20 Jun",
-  },
-  {
-    title: "New Batch Starts",
-    date: "25 Jun",
-  },
-];
+
 
 const quickActions=[
   {action:"New Course",path:"/admin-panel/add-course"},
   {action:"Create Batch",path:"/admin-panel/add-course"},
-  {action:"Add Student",path:""},
-  {action:"Add Trainer",path:""},
   {action:" Announcement",path:"/admin-panel/add-announcement"},
-  {action:" ClassLink",path:"/admin-panel/add-classLink"},
-  {action:"Add Material",path:"/admin-panel/add-notes"},
+
 ]
 export default function Dashboard() {
-  const {data,isLoading}=useAdminGetStats()
+  const {data,isLoading:statsLoading}=useAdminGetStats()
+  const {data:recentStudents,isLoading:activitiesLoading}=useAdminGetRecentActivities()
+  const {data:classes,isLoading:classesLoading}=useAdminGetAllClasses()
+  const {data:announcements,isLoading:annoucementsLoading}=useAdminGetAllAnnoucements()
    const stats = [
   {
     title: "Total Students",
@@ -134,23 +101,10 @@ export default function Dashboard() {
     icon: <FaLayerGroup />,
     color: "bg-orange-50 text-[#D6451B]",
   },
-  {
-    title: "Today's Classes",
-    value: "16",
-    growth: "+2",
-    icon: <FaVideo />,
-    color: "bg-red-50 text-red-600",
-  },
-  {
-    title: "Monthly Revenue",
-    value: "₹8.4L",
-    growth: "+18%",
-    icon: <FaRupeeSign />,
-    color: "bg-emerald-50 text-emerald-600",
-  },
+  
 ];
 
-  if(isLoading) return
+  if(statsLoading || classesLoading || annoucementsLoading || activitiesLoading) return <DashboardSkeleton></DashboardSkeleton>
   return (
     <div className="py-28">
     <div className="space-y-8 mx-auto max-w-7xl px-2 ">
@@ -439,108 +393,152 @@ export default function Dashboard() {
 
   {/* Recent Students */}
 
-  <motion.div
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-xl"
-  >
+ <motion.div
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  className="rounded-[28px] border border-slate-200 bg-white p-4 shadow-xl sm:p-6 lg:p-8"
+>
+  <div className="flex items-center justify-between gap-4">
+    <h2 className="text-xl font-bold sm:text-2xl">
+      Recent Admissions
+    </h2>
 
-    <div className="flex items-center justify-between">
+    <button
+      onClick={() => router.push("/admin-panel/students")}
+      className="shrink-0 text-sm font-medium text-[#D6451B] hover:underline"
+    >
+      View All
+    </button>
+  </div>
 
-      <h2 className="text-2xl font-bold">
-        Recent Admissions
-      </h2>
+  {/* Mobile Cards */}
+  <div className="mt-6 space-y-4 lg:hidden">
+    {recentStudents?.length > 0 ? (
+      recentStudents.map((student) => (
+        <div
+          key={student?.id}
+          className="rounded-2xl border border-slate-200 p-4"
+        >
+          <div className="flex items-center gap-3">
+            <div className="flex h-11 w-11 items-center justify-center rounded-full bg-orange-100 font-bold text-[#D6451B]">
+              {student?.name?.charAt(0)}
+            </div>
 
-      <button className="text-[#D6451B] font-medium">
-        View All
-      </button>
+            <div className="min-w-0 flex-1">
+              <h3 className="truncate font-semibold text-slate-900">
+                {student?.name}
+              </h3>
 
-    </div>
+              <p className="truncate text-sm text-slate-500">
+                {student?.course}
+              </p>
+            </div>
+          </div>
 
-    <div className="mt-8 overflow-x-auto">
+          <div className="mt-4 grid grid-cols-2 gap-3">
+            <div>
+              <p className="text-xs text-slate-500">
+                Batch
+              </p>
 
-      <table className="w-full">
+              <p className="mt-1 text-sm font-medium text-slate-800">
+                {student?.batch}
+              </p>
+            </div>
 
-        <thead>
+            <div>
+              <p className="text-xs text-slate-500">
+                Status
+              </p>
 
-          <tr className="border-b">
+              <span
+                className={`mt-1 inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
+                  student?.status === "approved"
+                    ? "bg-green-100 text-green-600"
+                    : "bg-yellow-100 text-yellow-700"
+                }`}
+              >
+                {student?.status}
+              </span>
+            </div>
+          </div>
+        </div>
+      ))
+    ) : (
+      <div className="rounded-2xl border border-dashed border-slate-300 py-10 text-center">
+        <p className="text-slate-500">
+          No recent admissions found
+        </p>
+      </div>
+    )}
+  </div>
 
-            <th className="pb-4 text-left font-semibold">
-              Student
-            </th>
+  {/* Desktop Table */}
+  <div className="mt-8 hidden overflow-x-auto lg:block">
+    <table className="w-full">
+      <thead>
+        <tr className="border-b border-slate-200">
+          <th className="pb-4 text-left font-semibold">
+            Student
+          </th>
 
-            <th className="pb-4 text-left font-semibold">
-              Course
-            </th>
+          <th className="pb-4 text-left font-semibold">
+            Course
+          </th>
 
-            <th className="pb-4 text-left font-semibold">
-              Batch
-            </th>
+          <th className="pb-4 text-left font-semibold">
+            Batch
+          </th>
 
-            <th className="pb-4 text-left font-semibold">
-              Status
-            </th>
+          <th className="pb-4 text-left font-semibold">
+            Status
+          </th>
+        </tr>
+      </thead>
 
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          {recentStudents.map((student) => (
-
-            <tr
-              key={student.name}
-              className="border-b last:border-none"
-            >
-
-              <td className="py-5">
-
-                <div className="flex items-center gap-3">
-
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 font-bold text-[#D6451B]">
-
-                    {student.name.charAt(0)}
-
-                  </div>
-
-                  <span className="font-medium">
-                    {student.name}
-                  </span>
-
+      <tbody>
+        {recentStudents?.map((student) => (
+          <tr
+            key={student?.id}
+            className="border-b border-slate-100 last:border-none"
+          >
+            <td className="py-5">
+              <div className="flex items-center gap-3">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-orange-100 font-bold text-[#D6451B]">
+                  {student?.name?.charAt(0)}
                 </div>
 
-              </td>
-
-              <td>{student.course}</td>
-
-              <td>{student.batch}</td>
-
-              <td>
-
-                <span
-                  className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                    student.status === "Active"
-                      ? "bg-green-100 text-green-600"
-                      : "bg-yellow-100 text-yellow-700"
-                  }`}
-                >
-                  {student.status}
+                <span className="font-medium">
+                  {student?.name}
                 </span>
+              </div>
+            </td>
 
-              </td>
+            <td className="max-w-[220px] truncate">
+              {student?.course}
+            </td>
 
-            </tr>
+            <td className="max-w-[180px] truncate">
+              {student?.batch}
+            </td>
 
-          ))}
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  </motion.div>
+            <td>
+              <span
+                className={`rounded-full px-3 py-1 text-xs font-semibold ${
+                  student?.status === "approved"
+                    ? "bg-green-100 text-green-600"
+                    : "bg-yellow-100 text-yellow-700"
+                }`}
+              >
+                {student?.status}
+              </span>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</motion.div>
 
   {/* Right */}
 
@@ -560,30 +558,28 @@ export default function Dashboard() {
 
       <div className="mt-6 space-y-4">
 
-        {liveClasses.map((item) => (
+        {classes?.map((item) => (
 
           <div
-            key={item.title}
+            key={item?._id}
             className="rounded-2xl bg-slate-50 p-4"
           >
 
             <h3 className="font-semibold">
-              {item.title}
+              {item?.title}
             </h3>
 
-            <p className="mt-1 text-sm text-slate-500">
-              {item.trainer}
-            </p>
+        
 
             <div className="mt-3 flex items-center justify-between">
 
               <span className="text-[#D6451B] font-medium">
-                {item.time}
+                {formatISTDateTime(item.meetingDate)}
               </span>
 
-              <button className="rounded-xl bg-[#D6451B] px-4 py-2 text-sm text-white">
-                Manage
-              </button>
+              <a href={item?.meetingLink} className="rounded-xl bg-[#D6451B] px-4 py-2 text-sm text-white">
+                <FaVideo></FaVideo>
+              </a>
 
             </div>
 
@@ -660,7 +656,7 @@ export default function Dashboard() {
 
       <div className="mt-6 space-y-4">
 
-        {announcements.map((item) => (
+        {announcements?.map((item) => (
 
           <div
             key={item.title}
@@ -668,11 +664,11 @@ export default function Dashboard() {
           >
 
             <h3 className="font-semibold">
-              {item.title}
+              {item?.title}
             </h3>
 
             <p className="mt-1 text-sm text-slate-500">
-              {item.date}
+              {formatISTDateTime(item?.publishAt)}
             </p>
 
           </div>

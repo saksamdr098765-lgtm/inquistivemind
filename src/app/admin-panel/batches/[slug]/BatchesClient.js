@@ -16,6 +16,7 @@ import {
 } from "react-icons/fa";
 import { useAdminGetAllBatches } from "@/Hooks/useAdminGetBatches";
 import { useRouter } from "next/navigation";
+import BatchesSkeleton from "@/app/Skeletons/BatchSkeleton";
 
 // const batches = [
 //   {
@@ -60,9 +61,9 @@ export default function BatchesClient({slug}) {
   const router=useRouter()
     const {data:batches,isLoading}=useAdminGetAllBatches(slug)
   const [search, setSearch] = useState("");
-if(isLoading) return
+if(isLoading) return <BatchesSkeleton></BatchesSkeleton>
   return (
-    <div className="space-y-8 max-w-7xl mx-auto py-20">
+<div className="mx-auto max-w-7xl space-y-6 px-4 py-28 sm:px-6 lg:px-8">
 
       {/* Hero */}
 
@@ -130,49 +131,7 @@ if(isLoading) return
 
       </div>
 
-      {/* Filters */}
-
-      <div className="rounded-[30px] border border-slate-200 bg-white p-6 shadow-lg">
-
-        <div className="grid gap-4 lg:grid-cols-4">
-
-          <div className="relative">
-
-            <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
-
-            <input
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search batches..."
-              className="w-full rounded-2xl border border-slate-200 py-3 pl-12 pr-4 outline-none focus:border-[#D6451B]"
-            />
-
-          </div>
-
-          <select className="rounded-2xl border border-slate-200 p-3">
-
-            <option>All Status</option>
-            <option>Active</option>
-            <option>Completed</option>
-
-          </select>
-
-          <select className="rounded-2xl border border-slate-200 p-3">
-
-            <option>All Courses</option>
-            <option>General English</option>
-            <option>IELTS</option>
-            <option>Spoken English</option>
-
-          </select>
-
-          <button className="rounded-2xl bg-[#D6451B] text-white">
-            Apply Filters
-          </button>
-
-        </div>
-
-      </div>
+   
 
       {/* Batch Cards */}
 
@@ -350,193 +309,7 @@ if(isLoading) return
 
       </div>
 
-      {/* Bottom Section */}
-
-      <div className="grid gap-8 xl:grid-cols-[2fr_1fr]">
-
-        {/* Analytics */}
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-lg"
-        >
-
-          <div className="border-b border-slate-200 p-6">
-
-            <h2 className="text-2xl font-bold">
-              Batch Analytics
-            </h2>
-
-            <p className="mt-2 text-slate-500">
-              Performance overview of all batches
-            </p>
-
-          </div>
-
-          <div className="overflow-x-auto">
-
-            <table className="w-full">
-
-              <thead className="bg-slate-50">
-
-                <tr>
-
-                  <th className="px-6 py-4 text-left">
-                    Batch
-                  </th>
-
-                  <th className="px-6 py-4 text-left">
-                    Trainer
-                  </th>
-
-                  <th className="px-6 py-4 text-left">
-                    Students
-                  </th>
-
-                  <th className="px-6 py-4 text-left">
-                    Progress
-                  </th>
-
-                </tr>
-
-              </thead>
-
-              <tbody>
-
-                {batches.map((batch) => (
-
-                  <tr
-                    key={batch._id}
-                    className="border-b last:border-none"
-                  >
-
-                    <td className="px-6 py-5 font-semibold">
-                      {batch.name}
-                    </td>
-
-                    <td className="px-6 py-5">
-                      {batch?.trainers?.length}
-                    </td>
-
-                    <td className="px-6 py-5">
-                      {batch?.students?.length}
-                    </td>
-
-                    <td className="px-6 py-5">
-
-                      <div className="flex items-center gap-3">
-
-                        <div className="h-2 w-32 overflow-hidden rounded-full bg-orange-100">
-
-                          <div
-                            style={{
-                              width: `${batch.progress}%`,
-                            }}
-                            className="h-full rounded-full bg-[#D6451B]"
-                          />
-
-                        </div>
-
-                        <span className="font-semibold">
-                          {batch.progress}%
-                        </span>
-
-                      </div>
-
-                    </td>
-
-                  </tr>
-
-                ))}
-
-              </tbody>
-
-            </table>
-
-          </div>
-
-        </motion.div>
-
-        {/* Top Batches */}
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-lg"
-        >
-
-          <h2 className="text-2xl font-bold">
-            Top Batches
-          </h2>
-
-          <div className="mt-8 space-y-5">
-
-            {batches
-             .sort(
-  (a, b) =>
-    (b.students?.length || 0) -
-    (a.students?.length || 0)
-)
-              .map((batch) => (
-
-                <div
-                  key={batch._id}
-                  className="rounded-2xl bg-slate-50 p-5"
-                >
-
-                  <div className="flex items-center justify-between">
-
-                    <div>
-
-                      <h3 className="font-semibold">
-                        {batch?.name}
-                      </h3>
-
-                      <p className="mt-1 text-sm text-slate-500">
-                        {batch?.students?.length + " Students"} 
-                      </p>
-
-                    </div>
-
-                  
-
-                  </div>
-
-                </div>
-
-              ))}
-
-          </div>
-
-        </motion.div>
-
-      </div>
-            {/* Pagination */}
-
-      <div className="flex flex-col items-center justify-between gap-5 rounded-[30px] border border-slate-200 bg-white p-6 shadow-lg md:flex-row">
-
-        <p className="text-sm text-slate-500">
-          Showing 1 - {batches.length} of {batches.length} Batches
-        </p>
-
-        <div className="flex gap-2">
-
-          <button className="rounded-xl border border-slate-200 px-4 py-2 transition hover:bg-slate-50">
-            Previous
-          </button>
-
-          <button className="h-10 w-10 rounded-xl bg-[#D6451B] text-white">
-            1
-          </button>
-
-          <button className="rounded-xl border border-slate-200 px-4 py-2 transition hover:bg-slate-50">
-            Next
-          </button>
-
-        </div>
-
-      </div>
+    
 
       {/* Empty State */}
 
@@ -555,9 +328,7 @@ if(isLoading) return
             Create your first batch to start assigning students.
           </p>
 
-          <button className="mt-8 rounded-2xl bg-[#D6451B] px-8 py-4 text-white transition hover:opacity-90">
-            Create Batch
-          </button>
+        
 
         </div>
 

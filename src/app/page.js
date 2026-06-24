@@ -14,12 +14,12 @@ export default function Home() {
   return (
 <>
 <Hero></Hero>
-<WhyChooseUs></WhyChooseUs>
-<GlobalCommunity></GlobalCommunity>
+{/* <GlobalCommunity></GlobalCommunity> */}
 <Programs></Programs>
-<LearningExperience></LearningExperience>
+<WhyChooseUs></WhyChooseUs>
+{/* <LearningExperience></LearningExperience> */}
 <SuccessStories></SuccessStories>
-<Faculty></Faculty>
+{/* <Faculty></Faculty> */}
 <CTA></CTA>
 <Footer></Footer>
 </>

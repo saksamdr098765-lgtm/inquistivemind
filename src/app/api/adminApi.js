@@ -51,3 +51,14 @@ export  function adminCreateAnnouncementApi(data){
 export  function adminDeleteAnnouncementApi(id){
     return api.delete(`/announcements/${id}/delete`)
 }
+
+
+export  function adminGetRecipeEnrollents(){
+    return api.get(`/admin/recent-activties`)
+}
+export  function adminGetAllClasses(){
+    return api.get(`/admin/all-classes`)
+}
+export  function adminGetAllAnnoucements(){
+    return api.get(`/admin/all-announcements`)
+}

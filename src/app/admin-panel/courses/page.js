@@ -16,6 +16,8 @@ import {
 import { useAdminGetAllCourses } from "@/Hooks/useAdminGetCourses";
 import capitalizeFirstLetter from "@/Utils/captilizeFirstLetter";
 import { useRouter } from "next/navigation";
+import { useAdminGetStats } from "@/Hooks/useAdminGetStats";
+import CoursesSkeleton from "@/app/Skeletons/CourseSkeleton";
 
 // const courses = [
 //   {
@@ -55,19 +57,18 @@ import { useRouter } from "next/navigation";
 
 export default function Courses() {
   const router=useRouter()
-  const {data:courses,isLoading}=useAdminGetAllCourses()
-  const [search, setSearch] = useState("");
-if(isLoading) return
+  const {data:courses,isLoading:courseLoading}=useAdminGetAllCourses()
+  const {data:stats,isLoading:statsLoading}=useAdminGetStats()
+if( courseLoading || statsLoading) return <CoursesSkeleton></CoursesSkeleton>
   return (
-    <div className="space-y-8 max-w-7xl mx-auto py-20">
+ <div className="mx-auto max-w-7xl space-y-6 px-4 py-28 sm:px-6 lg:px-8 ">
 
       {/* Hero */}
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="rounded-[32px] bg-gradient-to-r from-[#D6451B] to-orange-500 p-8 text-white shadow-xl"
-      >
+className="rounded-[24px] bg-gradient-to-r from-[#D6451B] to-orange-500 p-5 text-white shadow-xl sm:p-8"      >
 
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
 
@@ -77,7 +78,7 @@ if(isLoading) return
               Course Management
             </span>
 
-            <h1 className="mt-5 text-4xl font-bold">
+          <h1 className="mt-4 text-2xl font-bold sm:text-4xl">
               Manage Courses
             </h1>
 
@@ -88,7 +89,12 @@ if(isLoading) return
 
           </div>
 
-          <button onClick={()=>{router.push('/admin-panel/add-course')}} className="flex items-center gap-3 rounded-2xl cursor-pointer bg-white px-6 py-4 font-semibold text-[#D6451B]">
+          <button onClick={()=>{router.push('/admin-panel/add-course')}}  className="
+flex w-full items-center justify-center gap-3
+rounded-2xl bg-white px-6 py-4
+font-semibold text-[#D6451B]
+lg:w-auto
+">
 
             <FaPlus />
 
@@ -102,32 +108,32 @@ if(isLoading) return
 
       {/* Stats */}
 
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+    <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
 
         <Stat
           title="Courses"
-          value="18"
+          value={stats?.totalCourses}
           icon={<FaBookOpen />}
           color="bg-blue-50 text-blue-600"
         />
 
         <Stat
           title="Students"
-          value="1264"
+          value={stats?.totalStudents}
           icon={<FaUsers />}
           color="bg-green-50 text-green-600"
         />
 
         <Stat
           title="Trainers"
-          value="12"
+          value={stats?.totalTeachers}
           icon={<FaGraduationCap />}
           color="bg-orange-50 text-[#D6451B]"
         />
 
         <Stat
-          title="Avg Duration"
-          value="5 Months"
+          title="Batches"
+         value={stats?.totalBatches}
           icon={<FaClock />}
           color="bg-purple-50 text-purple-600"
         />
@@ -136,9 +142,9 @@ if(isLoading) return
 
       {/* Filters */}
 
-      <div className="rounded-[30px] border border-slate-200 bg-white p-6 shadow-lg">
+      {/* <div className="rounded-[30px] border border-slate-200 bg-white p-6 shadow-lg">
 
-        <div className="grid gap-4 lg:grid-cols-4">
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
 
           <div className="relative">
 
@@ -175,16 +181,16 @@ if(isLoading) return
 
           </select>
 
-          <button className="rounded-2xl bg-[#D6451B] text-white">
+      <button className="h-12 rounded-2xl bg-[#D6451B] text-white">
             Apply Filters
           </button>
 
         </div>
 
-      </div>
+      </div> */}
             {/* Courses Grid */}
 
-      <div className="grid gap-7 md:grid-cols-2 xl:grid-cols-3">
+   <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
 
         {courses
           ?.map((course) => (
@@ -205,7 +211,7 @@ if(isLoading) return
 >
   {/* Thumbnail */}
 
-  <div className="relative h-52 overflow-hidden bg-gradient-to-br from-[#D6451B] to-orange-500">
+  <div className="relative h-44 overflow-hidden sm:h-52 bg-gradient-to-br from-[#D6451B] to-orange-500">
     {course?.thumbnail?.url ? (
       <img
         src={course.thumbnail.url}
@@ -257,7 +263,7 @@ if(isLoading) return
   <div className="p-5">
     {/* Title */}
 
-    <h2 className="line-clamp-2 text-xl font-bold text-slate-900">
+  <h2 className="line-clamp-2 text-lg font-bold text-slate-900 sm:text-xl">
       {capitalizeFirstLetter(course?.title)}
     </h2>
 
@@ -338,28 +344,11 @@ if(isLoading) return
 
     {/* Tags */}
 
-    {course?.tags?.length > 0 && (
-      <div className="mt-5 flex flex-wrap gap-2">
-        {course.tags.slice(0, 3).map((tag) => (
-          <span
-            key={tag}
-            className="
-              rounded-full
-              bg-slate-100
-              px-3 py-1
-              text-xs
-              text-slate-600
-            "
-          >
-            #{tag}
-          </span>
-        ))}
-      </div>
-    )}
+   
 
     {/* Actions */}
 
-    <div className="mt-6 grid grid-cols-3 gap-2 border-t border-slate-100 pt-5">
+ <div className="mt-5 grid grid-cols-3 gap-2 border-t border-slate-100 pt-4">
       <button
         onClick={() =>
           router.push(
@@ -401,170 +390,9 @@ if(isLoading) return
           ))}
 
       </div>
-            {/* Bottom Section */}
+        
 
-      <div className="grid gap-8 xl:grid-cols-[2fr_1fr]">
-
-        {/* Course Performance */}
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="overflow-hidden rounded-[32px] border border-slate-200 bg-white shadow-lg"
-        >
-
-          <div className="border-b border-slate-200 p-6">
-
-            <h2 className="text-2xl font-bold">
-              Course Performance
-            </h2>
-
-            <p className="mt-2 text-slate-500">
-              Enrollment and completion overview
-            </p>
-
-          </div>
-
-          <div className="overflow-x-auto">
-
-            <table className="w-full">
-
-              <thead className="bg-slate-50">
-
-                <tr>
-
-                  <th className="px-6 py-4 text-left">
-                    Course
-                  </th>
-
-                  <th className="px-6 py-4 text-left">
-                    Students
-                  </th>
-
-                  <th className="px-6 py-4 text-left">
-                    Revenue
-                  </th>
-
-                  <th className="px-6 py-4 text-left">
-                    Completion
-                  </th>
-
-                </tr>
-
-              </thead>
-
-              <tbody>
-
-                {courses?.map((course) => (
-
-                  <tr
-                    key={course._id}
-                    className="border-b last:border-none"
-                  >
-
-                    <td className="px-6 py-5 font-semibold">
-                      {course?.title}
-                    </td>
-
-                    <td className="px-6 py-5">
-                      {course?.students}
-                    </td>
-
-                    <td className="px-6 py-5">
-                      ₹{course?.price}
-                    </td>
-
-                    <td className="px-6 py-5">
-
-                      <div className="flex items-center gap-3">
-
-                        <div className="h-2 w-32 overflow-hidden rounded-full bg-orange-100">
-
-                          <div
-                            style={{
-                              width: `${course?.progress}%`,
-                            }}
-                            className="h-full rounded-full bg-[#D6451B]"
-                          />
-
-                        </div>
-
-                        <span className="font-medium">
-
-                          {course?.progress}%
-
-                        </span>
-
-                      </div>
-
-                    </td>
-
-                  </tr>
-
-                ))}
-
-              </tbody>
-
-            </table>
-
-          </div>
-
-        </motion.div>
-
-        {/* Top Courses */}
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-lg"
-        >
-
-          <h2 className="text-2xl font-bold">
-            Top Courses
-          </h2>
-
-          <div className="mt-8 space-y-6">
-
-            {courses
-              ?.sort((a, b) => b.students - a.students)
-              .map((course) => (
-
-                <div
-                  key={course?._id}
-                  className="rounded-2xl bg-slate-50 p-5"
-                >
-
-                  <div className="flex items-center justify-between">
-
-                    <div>
-
-                      <h3 className="font-semibold">
-                        {course?.title}
-                      </h3>
-
-                      <p className="mt-1 text-sm text-slate-500">
-                        {course?.students} Students
-                      </p>
-
-                    </div>
-
-                    <span className="font-bold text-[#D6451B]">
-
-                      #{course?.id}
-
-                    </span>
-
-                  </div>
-
-                </div>
-
-              ))}
-
-          </div>
-
-        </motion.div>
-
-      </div>
+  
 
       {/* Pagination */}
 
@@ -602,7 +430,7 @@ if(isLoading) return
 
       {courses?.length === 0 && (
 
-        <div className="rounded-[32px] border border-dashed border-slate-300 bg-white py-20 text-center shadow-lg">
+        <div className="rounded-[24px] border border-dashed border-slate-300 bg-white px-5 py-14 text-center shadow-lg sm:py-20">
 
           <FaBookOpen className="mx-auto text-6xl text-[#D6451B]" />
 
@@ -619,7 +447,7 @@ if(isLoading) return
 
           </p>
 
-          <button className="mt-8 rounded-2xl bg-[#D6451B] px-8 py-4 text-white">
+          <button onClick={()=>{router.push('/admin-panel/add-course')}} className="mt-8 rounded-2xl bg-[#D6451B] px-8 py-4 text-white">
 
             Add Course
 
@@ -642,7 +470,7 @@ function Stat({ title, value, icon, color }) {
     <motion.div
       whileHover={{ y: -6 }}
       transition={{ duration: 0.25 }}
-      className="rounded-[30px] border border-slate-200 bg-white p-6 shadow-lg"
+   className="rounded-3xl border border-slate-200 bg-white p-4 shadow-lg sm:p-6"
     >
       <div
         className={`flex h-14 w-14 items-center justify-center rounded-2xl text-2xl ${color}`}
@@ -650,7 +478,7 @@ function Stat({ title, value, icon, color }) {
         {icon}
       </div>
 
-      <h2 className="mt-6 text-4xl font-bold text-slate-900">
+<h2 className="mt-4 text-2xl font-bold text-slate-900 sm:text-4xl">
         {value}
       </h2>
 

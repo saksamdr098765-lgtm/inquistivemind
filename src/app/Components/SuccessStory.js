@@ -31,7 +31,7 @@ export default function SuccessStories() {
 
 const [activeVideo, setActiveVideo] = useState(null);
   return (
-    <section className="relative overflow-hidden bg-white  text-slate-900">
+    <section className="relative overflow-hidden bg-white  text-slate-900 py-10">
       {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(214,69,27,0.06),transparent_60%)]" />
 

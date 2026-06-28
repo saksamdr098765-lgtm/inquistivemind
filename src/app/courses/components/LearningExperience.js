@@ -1,6 +1,7 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import CountUp from "react-countup";
 import {
   FaVideo,
   FaMicrophone,
@@ -43,132 +44,129 @@ const journey = [
 ];
 
 export default function LearningExperience() {
-  const router=useRouter()
   return (
-    <section className="relative overflow-hidden bg-slate-50 py-20 md:py-28">
-      {/* Background Glow */}
-      <div className="absolute left-0 top-0 h-72 w-72 rounded-full bg-[#D6451B]/10 blur-3xl" />
-      <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-orange-200/30 blur-3xl" />
+    <section className="relative overflow-hidden bg-white py-20 sm:py-24 lg:py-28">
+      {/* Background */}
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
-        {/* Header */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.10),transparent_60%)]" />
 
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <span className="rounded-full bg-[#D6451B]/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.25em] text-[#D6451B]">
-            How Learning Works
-          </span>
+      <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:70px_70px]" />
 
-          <h2 className="mt-6 text-4xl font-bold text-slate-900 md:text-5xl">
-            A Simple Path To
-            <span className="block text-[#D6451B]">
-              Learning Success
+      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+        {/* Heading */}
+
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: .5 }}
+          className="mx-auto max-w-3xl text-center"
+        >
+
+          <p className="text-[10px] font-medium tracking-[0.35em] text-slate-400">
+            LEARNING EXPERIENCE
+          </p>
+
+          <h2 className="mt-4 text-3xl font-bold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
+            A Simple Path to
+            <span className="bg-gradient-to-r from-amber-500 via-yellow-400 to-sky-400 bg-clip-text text-transparent">
+              {" "}Success
             </span>
           </h2>
 
-          <p className="mt-5 text-lg text-slate-600">
-            Whether you're preparing for IELTS, learning French,
-            improving English fluency, or excelling in school studies,
-            our structured learning process ensures measurable progress.
+          <div className="mx-auto mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-amber-500 to-sky-400" />
+
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
+            Our structured approach helps every learner build confidence,
+            improve consistently, and achieve measurable results.
           </p>
-        </div>
+
+        </motion.div>
 
         {/* Timeline */}
 
-        <div className="relative mx-auto max-w-5xl">
-          {/* Vertical Line */}
+        <div className="mt-16 space-y-5">
+          {journey.map((item, index) => (
+            <motion.div
+              key={item.step}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: .45,
+                delay: index * .08,
+              }}
+              className="rounded-3xl border border-slate-200 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-amber-200 hover:shadow-xl"
+            >
 
-          <div className="absolute left-7 top-0 hidden h-full w-1 rounded-full bg-orange-100 md:block" />
+              <div className="flex flex-col gap-5 md:flex-row">
 
-          <div className="space-y-8 md:space-y-10">
-            {journey.map((item) => (
-              <div
-                key={item.step}
-                className="
-                  group relative
-                  rounded-3xl
-                  border border-slate-200
-                  bg-white
-                  p-6 md:p-8
-                  shadow-sm
-                  transition-all
-                  hover:-translate-y-1
-                  hover:border-[#D6451B]
-                  hover:shadow-xl
-                "
-              >
-                <div className="flex flex-col gap-5 md:flex-row md:items-start">
-                  {/* Icon */}
-
-                  <div className="relative z-10 flex-shrink-0">
-                    <div
-                      className="
-                        flex h-16 w-16 items-center justify-center
-                        rounded-2xl
-                        bg-[#D6451B]
-                        text-xl text-white
-                        shadow-lg
-                      "
-                    >
-                      {item.icon}
-                    </div>
-                  </div>
-
-                  {/* Content */}
-
-                  <div className="flex-1">
-                    <div className="text-sm font-bold tracking-[0.25em] text-[#D6451B]">
-                      STEP {item.step}
-                    </div>
-
-                    <h3 className="mt-2 text-2xl font-bold text-slate-900">
-                      {item.title}
-                    </h3>
-
-                    <p className="mt-3 leading-relaxed text-slate-600">
-                      {item.desc}
-                    </p>
-                  </div>
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-amber-100 to-sky-100 text-2xl text-amber-500">
+                  {item.icon}
                 </div>
+
+                <div className="flex-1">
+
+                  <div className="text-xs font-semibold tracking-[0.3em] text-amber-500">
+                    STEP {item.step}
+                  </div>
+
+                  <h3 className="mt-2 text-2xl font-bold text-slate-900">
+                    {item.title}
+                  </h3>
+
+                  <p className="mt-3 leading-7 text-slate-600">
+                    {item.desc}
+                  </p>
+
+                </div>
+
               </div>
-            ))}
-          </div>
+
+            </motion.div>
+          ))}
         </div>
 
         {/* Stats */}
 
-        <div className="mt-20 grid grid-cols-2 gap-4 md:grid-cols-4">
+        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            ["5000+", "Students Trained"],
-            ["95%", "Success Rate"],
-            ["100+", "Live Batches"],
-            ["4.9/5", "Student Rating"],
+            ["5000", "Students"],
+            ["95", "Success Rate"],
+            ["100", "Live Batches"],
+            ["4.9", "Rating"],
           ].map(([value, label]) => (
             <div
               key={label}
-              className="
-                rounded-3xl
-                border border-slate-200
-                bg-white
-                p-6
-                text-center
-                shadow-sm
-                transition
-                hover:border-[#D6451B]
-                hover:shadow-lg
-              "
+              className="rounded-3xl border border-slate-200 bg-white p-6 text-center shadow-lg"
             >
-              <div className="text-3xl font-bold text-[#D6451B]">
-                {value}
+              <div className="text-3xl font-bold text-amber-500">
+                {label === "Success Rate" ? (
+                  <>
+                    <CountUp end={95} />%
+                  </>
+                ) : label === "Rating" ? (
+                  <>
+                    <CountUp end={4.9} decimals={1} />/5
+                  </>
+                ) : (
+                  <>
+                    <CountUp end={Number(value)} />+
+                  </>
+                )}
               </div>
 
               <div className="mt-2 text-sm text-slate-500">
                 {label}
               </div>
+
             </div>
           ))}
         </div>
+                {/* CTA */}
 
-     
+
       </div>
     </section>
   );

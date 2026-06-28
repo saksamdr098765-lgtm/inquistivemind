@@ -21,7 +21,7 @@ export default function page() {
 <LearningExperience></LearningExperience>
 <StudentSuccess></StudentSuccess>
 <FAQs></FAQs>
-<CTA></CTA>
+{/* <CTA></CTA> */}
   </>
   )
 }

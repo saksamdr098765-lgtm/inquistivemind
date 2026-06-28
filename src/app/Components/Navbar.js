@@ -114,9 +114,8 @@ const ProfileItem = ({
 }) => (
   <Link
     href={href}
-    className="flex items-center gap-4 rounded-xl px-4 py-3 transition hover:bg-orange-50"
-  >
-    <Icon className="text-[#D6451B]" />
+className="flex items-center gap-4 rounded-xl px-4 py-3 transition hover:bg-yellow-50"  >
+    <Icon className="text-yellow-500" />
 
     <span className="text-sm font-medium">
       {title}
@@ -129,10 +128,10 @@ logoutMutation.mutate()
 }
   return (
 <header
-  className={`fixed top-0 left-0 z-50 w-full border-b border-slate-200/60 transition-all ${
+  className={`fixed top-0 left-0 z-50 w-full border-b border-slate-200/60 shadow-sm transition-all ${
     open
       ? "bg-white"
-      : "bg-white/90 backdrop-blur-md"
+      : "bg-white"
   }`}
 >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
@@ -149,7 +148,7 @@ logoutMutation.mutate()
               Inquisitive Mind
             </h2>
 
-            <p className="text-[10px] tracking-[0.35em] text-[#D6451B]">
+          <p className="text-[10px] tracking-[0.35em] text-yellow-500">
               ACADEMY
             </p>
           </div>
@@ -164,9 +163,9 @@ logoutMutation.mutate()
     <Link
       key={item.name}
       href={item.path}
-      className="flex items-center gap-4 rounded-2xl px-4 py-4 hover:bg-orange-50"
+className="flex items-center gap-4 rounded-2xl px-4 py-4 transition hover:bg-yellow-50 hover:text-yellow-600"
     >
-      <Icon className="text-[#D6451B]" />
+  <Icon className="text-yellow-500" />
       {item.name}
     </Link>
   );
@@ -180,15 +179,14 @@ logoutMutation.mutate()
     <>
       <Link
         href="/login"
-        className="text-sm font-medium text-slate-600 transition hover:text-[#D6451B]"
+        className="text-sm font-medium text-slate-600 transition hover:text-yellow-500"
       >
         Login
       </Link>
 
       <Link
         href="/signup"
-        className="rounded-full bg-[#D6451B] px-6 py-2.5 text-sm font-semibold text-white transition hover:shadow-lg hover:shadow-orange-200"
-      >
+className="rounded-full bg-yellow-400 px-6 py-2.5 text-sm font-semibold text-slate-900 transition hover:bg-yellow-500 hover:shadow-lg hover:shadow-yellow-200"      >
         Enroll Now
       </Link>
     </>
@@ -200,7 +198,7 @@ logoutMutation.mutate()
       {/* Profile Button */}
       <button
         onClick={() => setProfileOpen(!profileOpen)}
-        className="flex items-center gap-3 rounded-full border border-slate-200 bg-white px-2 py-2 transition hover:border-[#D6451B] hover:shadow-lg"
+        className="flex items-center gap-3 rounded-full border border-slate-200 bg-white px-2 py-2 transition hover:border-yellow-400 hover:shadow-lg"
       >
         {user.profileImage ? (
           <img
@@ -209,7 +207,7 @@ logoutMutation.mutate()
             className="h-11 w-11 rounded-full object-cover"
           />
         ) : (
-          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-r from-[#D6451B] to-orange-500 text-lg font-bold text-white">
+          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-r from-yellow-400 to-amber-500 text-lg font-bold text-white">
             {user.fullName.charAt(0).toUpperCase()}
           </div>
         )}
@@ -257,7 +255,7 @@ logoutMutation.mutate()
             className="absolute right-0 mt-4 w-80 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl"
           >
             {/* Header */}
-<div className="bg-gradient-to-r from-[#D6451B] via-[#e65a2d] to-orange-500 p-6 text-white">
+<div className="bg-gradient-to-r from-yellow-400 via-amber-500 to-sky-400 p-6 text-white">
 
   <div className="flex items-center gap-4">
 
@@ -278,7 +276,7 @@ logoutMutation.mutate()
         {user.fullName}
       </h2>
 
-      <p className="text-sm text-orange-100">
+      <p className="text-sm text-yellow-100">
         {user.email}
       </p>
 
@@ -361,7 +359,7 @@ logoutMutation.mutate()
         Inquisitive Mind
       </h2>
 
-      <p className="text-[10px] tracking-[0.35em] text-[#D6451B]">
+      <p className="text-[10px] tracking-[0.35em] text-yellow-500">
         ACADEMY
       </p>
 
@@ -381,7 +379,7 @@ logoutMutation.mutate()
 
   {user ? (
 
-    <div className="rounded-3xl bg-gradient-to-r from-[#D6451B] via-[#e65a2d] to-orange-500 p-6 text-white shadow-xl">
+    <div className="rounded-3xl bg-gradient-to-r from-yellow-400 via-amber-500 to-sky-400 p-6 text-white shadow-xl">
 
       <div className="flex items-center gap-4">
 
@@ -402,7 +400,7 @@ logoutMutation.mutate()
             {user.fullName}
           </h2>
 
-          <p className="text-sm text-orange-100">
+          <p className="text-sm text-yellow-100">
             {user.email}
           </p>
 
@@ -431,8 +429,7 @@ logoutMutation.mutate()
       <Link
         href="/signup"
         onClick={() => setOpen(false)}
-        className="block rounded-2xl bg-[#D6451B] py-4 text-center font-semibold text-white"
-      >
+className="block rounded-2xl bg-yellow-400 py-4 text-center font-semibold text-slate-900 transition hover:bg-yellow-500"      >
         Enroll Now
       </Link>
 
@@ -456,7 +453,7 @@ logoutMutation.mutate()
           key={item.name}
           href={item.path}
           onClick={() => setOpen(false)}
-          className="flex items-center rounded-2xl px-4 py-4 font-medium transition hover:bg-orange-50 hover:text-[#D6451B]"
+          className="flex items-center rounded-2xl px-4 py-4 font-medium transition hover:bg-yellow-50 hover:text-yellow-600"
         >
           {item.name}
         </Link>
@@ -478,9 +475,8 @@ logoutMutation.mutate()
                 key={item.title}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="flex items-center gap-4 rounded-2xl px-4 py-4 font-medium transition hover:bg-orange-50"
-              >
-                <Icon className="text-[#D6451B]" />
+className="flex items-center gap-4 rounded-2xl px-4 py-4 font-medium transition hover:bg-yellow-50"              >
+           <Icon className="text-yellow-500" />
 
                 <span>{item.title}</span>
               </Link>
@@ -502,8 +498,7 @@ logoutMutation.mutate()
     ) : (
       <Link
         href="/login"
-        className="block rounded-2xl bg-[#D6451B] py-4 text-center font-semibold text-white"
-      >
+className="block rounded-2xl bg-yellow-400 py-4 text-center font-semibold text-slate-900 transition hover:bg-yellow-500"      >
         Login
       </Link>
     )}

@@ -82,9 +82,7 @@ export function validateStep(step, form) {
         return "Please enter a valid 10-digit phone number";
       }
 
-      if (!form.city?.trim()) {
-        return "Please enter your city";
-      }
+    
 
       break;
 

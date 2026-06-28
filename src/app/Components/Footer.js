@@ -14,15 +14,22 @@ import {
   FaBookOpen,
   FaInfoCircle,
   FaPhoneAlt,
+  FaSearch,
+  FaWhatsapp,
 } from "react-icons/fa";
+import SITE_CONFIG from "../siteConfig";
 
 const links = [
   { name: "Home", path: "/", icon: FaHome },
   { name: "Courses", path: "/courses", icon: FaBookOpen },
   { name: "About", path: "/about", icon: FaInfoCircle },
-  { name: "Contact", path: "/contact", icon: FaPhoneAlt },
+    { name: "Find Tutor", path: "/find-tutor", icon: FaSearch },
 ];
-
+const {phone,email,socialLinks,whatsappNumber}=SITE_CONFIG
+const socials=[
+  {icon:FaInstagram,link:socialLinks.instagram},
+  {icon:FaWhatsapp,link:`https://wa.link/${whatsappNumber}`}
+]
 export default function Footer() {
   const router = useRouter();
 
@@ -75,16 +82,17 @@ export default function Footer() {
             {/* SOCIALS */}
             <div className="mt-6 flex gap-4 text-lg">
 
-              {[FaFacebook, FaInstagram, FaLinkedin, FaYoutube].map(
-                (Icon, i) => (
-                  <div
+              {socials.map(
+                (item, i) => {
+                  const Icon=item.icon
+                  return <button
                     key={i}
                     className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition hover:-translate-y-0.5 hover:border-amber-300 hover:text-amber-500 hover:shadow-md"
                   >
-                    <Icon />
-                  </div>
-                )
-              )}
+                    <Icon/>
+                  </button>
+})
+              }
 
             </div>
           </div>
@@ -119,12 +127,12 @@ export default function Footer() {
 
               <div className="flex gap-3">
                 <FaPhone className="mt-1 text-amber-500" />
-                <span>+91 98765 43210</span>
+                <span>{phone}</span>
               </div>
 
               <div className="flex gap-3">
                 <FaEnvelope className="mt-1 text-amber-500" />
-                <span>support@academy.com</span>
+                <span>{email}</span>
               </div>
 
               <div className="flex gap-3">
@@ -162,12 +170,13 @@ export default function Footer() {
 
         </div>
 
-        {/* COPYRIGHT */}
-        <div className="mt-14 border-t border-slate-100 pt-6 text-center text-sm text-slate-500">
-          © {new Date().getFullYear()} Inquisitive Mind Academy. All Rights Reserved.
-        </div>
+      
 
       </div>
+ 
+
+
+
     </footer>
   );
 }

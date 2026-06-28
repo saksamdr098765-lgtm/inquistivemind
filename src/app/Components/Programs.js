@@ -7,12 +7,14 @@ import {
   FaUserGraduate,
   FaGlobe,
 } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 const programs = [
   {
     icon: <FaLanguage />,
     title: "English Language",
     level: "Beginner → Advanced",
+    slug:"english-speaking-mastery",
     desc:
       "Develop speaking, listening, reading, and writing skills through personalized lessons and real-world communication practice.",
     points: [
@@ -26,6 +28,7 @@ const programs = [
     icon: <FaGlobe />,
     title: "French Language",
     level: "A1 → C2 Levels",
+    slug:"french-language-program",
     desc:
       "Learn French for education, work, travel, or immigration with structured lessons and interactive speaking sessions.",
     points: [
@@ -39,6 +42,7 @@ const programs = [
     icon: <FaUserGraduate />,
     title: "Academic Programs",
     level: "Students & Professionals",
+    slug:"academic-excellence-program",
     desc:
       "Prepare for academic success with expert guidance in exams, study abroad pathways, and professional development.",
     points: [
@@ -52,6 +56,7 @@ const programs = [
 export default function Programs() {
   const [active, setActive] = useState(0);
   const current = programs[active];
+  const router=useRouter()
 
   return (
     <section className="relative overflow-hidden bg-white py-20 text-slate-900 lg:py-28">
@@ -162,7 +167,7 @@ export default function Programs() {
                   ))}
                 </div>
 
-                <button className="mt-8 w-full rounded-full bg-amber-500 px-8 py-3 text-white transition hover:bg-amber-600 sm:w-auto shadow-md shadow-amber-200">
+                <button onClick={()=>{router.push(`/course/${current.slug}`)}} className="mt-8 w-full rounded-full bg-amber-500 px-8 py-3 text-white transition hover:bg-amber-600 sm:w-auto shadow-md shadow-amber-200">
                   Explore Program
                 </button>
 

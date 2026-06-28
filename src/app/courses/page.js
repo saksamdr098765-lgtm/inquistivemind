@@ -19,7 +19,7 @@ export default function page() {
 {/* <LearningRoadmap></LearningRoadmap> */}
 {/* <CourseComparison></CourseComparison> */}
 <LearningExperience></LearningExperience>
-<StudentSuccess></StudentSuccess>
+{/* <StudentSuccess></StudentSuccess> */}
 <FAQs></FAQs>
 {/* <CTA></CTA> */}
   </>

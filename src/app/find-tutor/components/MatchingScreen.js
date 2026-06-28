@@ -6,9 +6,10 @@ import {
   FaCheckCircle,
   FaUserGraduate,
   FaArrowRight,
+  FaSpinner,
 } from "react-icons/fa";
 
-export default function MatchingScreen({ onContinue }) {
+export default function MatchingScreen({ onContinue ,mutation}) {
   const [progress, setProgress] = useState(0);
   const [complete, setComplete] = useState(false);
 
@@ -157,10 +158,11 @@ export default function MatchingScreen({ onContinue }) {
             <div className="mt-10 flex flex-col gap-4 sm:flex-row justify-center">
               <button
                 onClick={onContinue}
+                disabled={mutation.isPending}
                 className="flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-400 to-sky-400 px-8 py-4 font-medium text-white shadow-lg hover:scale-[1.02] transition"
               >
-                View Tutors
-                <FaArrowRight />
+               { mutation.isPending?<FaSpinner className="animate-spin text-white"></FaSpinner>:"View Tutors"}
+               
               </button>
 
               <button

@@ -128,43 +128,7 @@ export default function LearningExperience() {
           ))}
         </div>
 
-        {/* Stats */}
-
-        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {[
-            ["5000", "Students"],
-            ["95", "Success Rate"],
-            ["100", "Live Batches"],
-            ["4.9", "Rating"],
-          ].map(([value, label]) => (
-            <div
-              key={label}
-              className="rounded-3xl border border-slate-200 bg-white p-6 text-center shadow-lg"
-            >
-              <div className="text-3xl font-bold text-amber-500">
-                {label === "Success Rate" ? (
-                  <>
-                    <CountUp end={95} />%
-                  </>
-                ) : label === "Rating" ? (
-                  <>
-                    <CountUp end={4.9} decimals={1} />/5
-                  </>
-                ) : (
-                  <>
-                    <CountUp end={Number(value)} />+
-                  </>
-                )}
-              </div>
-
-              <div className="mt-2 text-sm text-slate-500">
-                {label}
-              </div>
-
-            </div>
-          ))}
-        </div>
-                {/* CTA */}
+    
 
 
       </div>

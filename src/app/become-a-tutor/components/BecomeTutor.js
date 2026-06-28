@@ -24,11 +24,14 @@ import {
 
 import ProgressTracker from "@/app/find-tutor/components/ProgressTraker";
 import { validateStep } from "./Validation";
-
+import { useTeacherLeadMutation } from "@/app/mutations/leadMutation";
+import SITE_CONFIG from "@/app/siteConfig";
+import { FaSpinner } from "react-icons/fa";
+const {whatsappNumber}=SITE_CONFIG
 export default function BecomeTutor() {
   const [error, setError] = useState("");
   const [step, setStep] = useState(0);
-
+const teacherLeadsMutation=useTeacherLeadMutation()
   const [form, setForm] = useState({
     subject: "",
     experience: "",
@@ -43,7 +46,21 @@ export default function BecomeTutor() {
     phone: "",
     city: "",
   });
+     const message = `
+🎓 New Tutor Application
 
+👤 Name: ${form.name || ""}
+📧 Email: ${form.email || ""}
+📱 Phone: ${form.phone || ""}
+📚 Subject: ${form.subject || ""}
+👨‍🏫 Experience: ${form.experience || ""}
+🎯 Student Level: ${form.studentLevel || ""}
+💻 Teaching Mode: ${form.mode || ""}
+📅 Availability: ${(form.availability || []).join(", ") || "Not provided"}
+⏰ Time Slot: ${form.timeSlot || ""}
+💰 Earnings: ${form.earnings || ""}
+🎓 Qualification: ${form.qualification || ""}
+`;
   const update = (key, value) => {
     setForm((prev) => ({
       ...prev,
@@ -60,7 +77,7 @@ export default function BecomeTutor() {
     );
   };
 
-  const next = () => {
+  const next = async () => {
     const errorMessage = validateStep(step, form);
 
     if (errorMessage) {
@@ -70,33 +87,18 @@ export default function BecomeTutor() {
 
     setError("");
 
-    // CONTACT STEP → SUBMIT
+  
     if (step === 8) {
-      const message = `
-🎓 New Tutor Application
-
-👤 Name: ${form.name || ""}
-📧 Email: ${form.email || ""}
-📱 Phone: ${form.phone || ""}
-
-📚 Subject: ${form.subject || ""}
-👨‍🏫 Experience: ${form.experience || ""}
-🎯 Student Level: ${form.studentLevel || ""}
-💻 Teaching Mode: ${form.mode || ""}
-
-📅 Availability: ${(form.availability || []).join(", ") || "Not provided"}
-
-⏰ Time Slot: ${form.timeSlot || ""}
-💰 Earnings: ${form.earnings || ""}
-🎓 Qualification: ${form.qualification || ""}
-`;
-
-      const whatsappNumber = "919876543210";
-
-      window.open(
+   await teacherLeadsMutation.mutateAsync(form,{
+    onSuccess:()=>{
+ window.open(
         `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
         "_blank"
       );
+    }
+   })
+      
+     
 
       setStep(9);
       return;
@@ -262,15 +264,15 @@ export default function BecomeTutor() {
 
                 <button
                   onClick={next}
-                  disabled={!canContinue}
-                  className={`flex-1 rounded-full px-6 py-4 font-medium transition
+                  disabled={!canContinue }
+                  className={`flex-1 rounded-full px-6 py-4 flex font-medium transition  justify-center
                     ${
                       canContinue
                         ? "bg-gradient-to-r from-amber-400 to-sky-400 text-white shadow-lg"
                         : "cursor-not-allowed bg-slate-200 text-slate-400"
                     }`}
                 >
-                  Continue
+                 { (teacherLeadsMutation.isPending && step===8 )? <FaSpinner className="animate-spin text-white"></FaSpinner>:"Continue"}
                 </button>
 
               </div>

@@ -91,7 +91,7 @@ export default function CourseHero({ course }) {
             <div className="mt-10 flex flex-col gap-4 sm:flex-row">
 
               <Link
-                href="/contact"
+                href="/about"
                 className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-yellow-400 to-sky-400 px-8 py-4 font-semibold text-slate-900 transition hover:scale-105"
               >
                 Book Free Demo

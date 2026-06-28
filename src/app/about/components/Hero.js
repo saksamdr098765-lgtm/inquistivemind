@@ -17,7 +17,7 @@ export default function Hero() {
     course: "english",
   });
 
-  const { whatsappNumber } = SITE_CONFIG;
+  const { whatsappNumber,phone } = SITE_CONFIG;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -168,6 +168,7 @@ export default function Hero() {
                 <button
                   type="submit"
                   className="w-full rounded-2xl bg-gradient-to-r from-amber-400 to-yellow-400 px-6 py-4 font-semibold text-slate-900 shadow-lg hover:scale-[1.02] transition"
+                
                 >
                   Book Free Demo Class
                 </button>
@@ -176,7 +177,7 @@ export default function Hero() {
                   <FaPhoneAlt />
                   Call / WhatsApp:
                   <span className="font-semibold text-slate-900">
-                    +91 XXXXX XXXXX
+                     {phone}
                   </span>
                 </div>
 

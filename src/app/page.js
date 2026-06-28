@@ -11,6 +11,7 @@ import CTA from "./Components/CTA";
 import Footer from "./Components/Footer";
 import FindTutor from "./Components/FindTutor";
 import BecomeTutor from "./Components/BecomeTutor";
+import DeveloperCredit from "./Components/DeveloperCredit";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
 {/* <Faculty></Faculty> */}
 <CTA></CTA>
 <Footer></Footer>
+<DeveloperCredit></DeveloperCredit>
 </>
   );
 }

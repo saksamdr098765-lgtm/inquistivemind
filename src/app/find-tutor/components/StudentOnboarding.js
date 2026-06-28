@@ -29,6 +29,10 @@ import {
 import ProgressTracker from "./ProgressTraker";
 import { validateStep } from "../validation";
 import SITE_CONFIG from "@/app/siteConfig";
+import { studentsLeadsApi } from "@/app/api/LeadApi";
+import { toast } from "sonner";
+import { useStudentLeadMutation } from "@/app/mutations/leadMutation";
+import { data } from "framer-motion/client";
 
 export default function StudentOnboarding() {
   const [error, setError] = useState("");
@@ -90,8 +94,19 @@ export default function StudentOnboarding() {
 📅 Days: ${form.availability.join(", ")}
 ⏰ Time: ${form.timeSlot}
 
-🎯 Preference: ${form.tutor}
+
 `;
+const studentLeadsMutation=useStudentLeadMutation()
+const onContinue = async () => {
+   await studentLeadsMutation.mutateAsync(form,{onSuccess:()=>{
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, "_blank")
+   }})
+
+     
+    
+
+};
 
   return (
     <section className="relative min-h-screen overflow-hidden bg-white py-20">
@@ -237,10 +252,8 @@ export default function StudentOnboarding() {
 
                 {step === 9 && (
                   <MatchingScreen
-                    onContinue={() => {
-                      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-                      window.open(whatsappUrl, "_blank");
-                    }}
+                    onContinue={onContinue}
+                    mutation={studentLeadsMutation}
                   />
                 )}
 

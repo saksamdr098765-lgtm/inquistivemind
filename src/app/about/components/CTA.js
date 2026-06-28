@@ -56,13 +56,13 @@ export default function CTA() {
 
             <div className="mt-10 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
 
-              <Link
-                href="/contact"
+              <button
+               onClick={()=>{window.scrollTo({top:0,behavior:"smooth"})}}
                 className="flex items-center justify-center gap-2 rounded-full bg-amber-500 px-8 py-4 font-semibold text-white transition hover:bg-amber-600"
               >
                 Book Free Demo
                 <FaArrowRight />
-              </Link>
+              </button>
 
               <Link
                 href="/courses"

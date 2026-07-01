@@ -27,6 +27,9 @@ export  function adminUpdateUserById(id,data){
 export  function adminGetCoursesApi(){
     return api.get(`/courses/`)
 }
+export  function DeleteCoursesApi(id){
+    return api.delete(`/courses/${id}`)
+}
 
 //stats
 export  function adminGetStats(){

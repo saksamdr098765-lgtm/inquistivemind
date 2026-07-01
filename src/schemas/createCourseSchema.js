@@ -1,5 +1,5 @@
 import { z } from "zod";
-export const createCourseSchema = z.object({
+ const baseSchema = z.object({
   title: z
     .string()
     .trim()
@@ -50,12 +50,35 @@ durationInMonths: z.preprocess(
     "published",
     "archived",
   ]),
-thumbnail: z
+
+});
+const thumbnailSchema = z
   .any()
   .transform((files) => files?.[0])
   .refine((file) => file instanceof File, {
     message: "Thumbnail is required",
   })
+  .refine(
+    (file) =>
+      ["image/jpeg", "image/png", "image/jpg", "image/webp"].includes(file.type),
+    {
+      message: "Only JPG, JPEG, PNG and WebP images are allowed",
+    }
+  )
+  .refine(
+    (file) => file.size <= 5 * 1024 * 1024,
+    {
+      message: "Thumbnail must be less than 5 MB",
+    }
+  );
+
+export const createCourseSchema = baseSchema.extend({
+  thumbnail: thumbnailSchema,
+});
+
+const optionalThumbnailSchema = z
+  .any()
+  .transform((files) => files?.[0])
   .refine(
     (file) =>
       !file ||
@@ -69,5 +92,8 @@ thumbnail: z
     {
       message: "Thumbnail must be less than 5 MB",
     }
-  )
+  );
+
+export const updateCourseSchema = baseSchema.extend({
+  thumbnail: optionalThumbnailSchema,
 });

@@ -100,6 +100,15 @@ const profileItems = [
         }
       ]
     : []),
+  ...(path === "admin-panel"
+    ? [
+        {
+          title: "My students",
+          icon: FaUsers,
+          href: `/${path}/student`,
+        }
+      ]
+    : []),
  
   {
     title: "Settings",

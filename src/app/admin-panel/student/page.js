@@ -66,51 +66,14 @@ useEffect(() => {
 
           </div>
 
-          <button className="flex items-center gap-3 rounded-2xl bg-white px-6 py-4 font-semibold text-[#D6451B] hover:scale-105 transition">
-
-            <FaPlus />
-
-            Add Student
-
-          </button>
+      
 
         </div>
 
       </motion.div>
 
-      {/* Stats */}
 
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-
-        <Stat
-          title="Students"
-          value="1284"
-          icon={<FaUsers />}
-          color="bg-blue-50 text-blue-600"
-        />
-
-        <Stat
-          title="Active"
-          value="1180"
-          icon={<FaCheckCircle />}
-          color="bg-green-50 text-green-600"
-        />
-
-        <Stat
-          title="Pending"
-          value="72"
-          icon={<FaClock />}
-          color="bg-yellow-50 text-yellow-600"
-        />
-
-        <Stat
-          title="Graduated"
-          value="425"
-          icon={<FaUserGraduate />}
-          color="bg-orange-50 text-[#D6451B]"
-        />
-
-      </div>
+     
 
       {/* Filters */}
 

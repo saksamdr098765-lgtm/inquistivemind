@@ -12,12 +12,14 @@ import {
   FaTrash,
   FaEye,
   FaGraduationCap,
+  FaSpinner,
 } from "react-icons/fa";
 import { useAdminGetAllCourses } from "@/Hooks/useAdminGetCourses";
 import capitalizeFirstLetter from "@/Utils/captilizeFirstLetter";
 import { useRouter } from "next/navigation";
 import { useAdminGetStats } from "@/Hooks/useAdminGetStats";
 import CoursesSkeleton from "@/app/Skeletons/CourseSkeleton";
+import { useDeleteCourseMutation } from "@/app/mutations/coursesMutations";
 
 // const courses = [
 //   {
@@ -59,6 +61,7 @@ export default function Courses() {
   const router=useRouter()
   const {data:courses,isLoading:courseLoading}=useAdminGetAllCourses()
   const {data:stats,isLoading:statsLoading}=useAdminGetStats()
+  const deleteCourse=useDeleteCourseMutation()
 if( courseLoading || statsLoading) return <CoursesSkeleton></CoursesSkeleton>
   return (
  <div className="mx-auto max-w-7xl space-y-6 px-4 py-28 sm:px-6 lg:px-8 ">
@@ -140,55 +143,8 @@ lg:w-auto
 
       </div>
 
-      {/* Filters */}
-
-      {/* <div className="rounded-[30px] border border-slate-200 bg-white p-6 shadow-lg">
-
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-
-          <div className="relative">
-
-            <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"/>
-
-            <input
-              placeholder="Search courses..."
-              value={search}
-              onChange={(e)=>setSearch(e.target.value)}
-              className="w-full rounded-2xl border border-slate-200 py-3 pl-12 pr-4 outline-none focus:border-[#D6451B]"
-            />
-
-          </div>
-
-          <select className="rounded-2xl border border-slate-200 p-3">
-
-            <option>All Categories</option>
-
-            <option>English</option>
-
-            <option>IELTS</option>
-
-            <option>Professional</option>
-
-          </select>
-
-          <select className="rounded-2xl border border-slate-200 p-3">
-
-            <option>All Trainers</option>
-
-            <option>John Smith</option>
-
-            <option>Emma Johnson</option>
-
-          </select>
-
-      <button className="h-12 rounded-2xl bg-[#D6451B] text-white">
-            Apply Filters
-          </button>
-
-        </div>
-
-      </div> */}
-            {/* Courses Grid */}
+    
+          
 
    <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
 
@@ -358,31 +314,56 @@ lg:w-auto
         className="
           flex items-center justify-center gap-2
           rounded-xl bg-blue-50 py-3
-          text-blue-600
+          text-blue-600 cursor-pointer
+          hover:scale-110 transition-all
         "
       >
         <FaEye />
       </button>
 
       <button
+        onClick={() =>
+          router.push(
+            `/admin-panel/courses/edit-course?courseId=${course?._id}`
+          )
+        }
         className="
           flex items-center justify-center gap-2
           rounded-xl bg-orange-50 py-3
-          text-[#D6451B]
+          text-[#D6451B] cursor-pointer
+          hover:scale-110 transition-all
         "
       >
         <FaEdit />
       </button>
 
-      <button
-        className="
-          flex items-center justify-center gap-2
-          rounded-xl bg-red-50 py-3
-          text-red-600
-        "
-      >
-        <FaTrash />
-      </button>
+   <button
+  onClick={() => deleteCourse.mutate(course._id)}
+  disabled={
+    deleteCourse.isPending &&
+    deleteCourse.variables === course._id
+  }
+  className={`
+    flex items-center justify-center gap-2
+    rounded-xl py-3 transition-all
+    hover:scale-110 
+    ${
+      deleteCourse.isPending &&
+      deleteCourse.variables === course._id
+        ? "bg-red-100 text-red-400 cursor-not-allowed"
+        : "bg-red-50 text-red-600 hover:bg-red-100 cursor-pointer"
+    }
+  `}
+>
+  {deleteCourse.isPending &&
+  deleteCourse.variables === course._id ? (
+    <>
+ <FaSpinner className="text-white animate-spin"></FaSpinner>
+    </>
+  ) : (
+    <FaTrash />
+  )}
+</button>
     </div>
   </div>
 </motion.div>

@@ -3,17 +3,19 @@
 import { motion } from "framer-motion";
 
 import { FaBookOpen } from "react-icons/fa";
+import AddCourseForm from "../../add-course/AddCourses";
+import { useSearchParams } from "next/navigation";
+import { useGetCourseById } from "@/Hooks/useGetCourseById";
+import Loading from "@/app/Components/ui/Loading";
 
 
-import { useAdminGetAllCourses } from "@/Hooks/useAdminGetCourses";
-import AddAnnouncementForm from "./AddForm";
-
-
-export default function page() {
-//   const {data:courses,isLoading}=useAdminGetAllCourses()
-  // if(isLoading) return
+export default function editCourse() {
+    const searchParams=useSearchParams()
+    const courseId=searchParams.get("courseId")
+    const {data:course,isLoading}=useGetCourseById(courseId)
+    if(isLoading) return <Loading></Loading>
   return (
-    <div className="py-28 ">
+    <div className="py-24 ">
       {/* Hero */}
 <div className="mx-auto max-w-6xl space-y-8">
       <motion.div
@@ -36,11 +38,11 @@ export default function page() {
 
           <div>
             <h1 className="text-4xl font-bold">
-              Create New Announcement
+              Edit Your Course
             </h1>
 
             <p className="mt-2 text-orange-100">
-              Add a new Announcement for system
+              Update the course of your academy.
             </p>
           </div>
         </div>
@@ -61,10 +63,9 @@ export default function page() {
           shadow-lg
         "
       >
-        <AddAnnouncementForm  />
+        <AddCourseForm mode="edit" initialData={course} />
       </motion.div>
       </div>
     </div>
   );
 }
-

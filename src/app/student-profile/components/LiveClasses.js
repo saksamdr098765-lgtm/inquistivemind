@@ -43,7 +43,7 @@ export default function LiveClasses() {
 
 if(batchLoading) return <Loading></Loading>
   return (
-<div className="mx-auto w-full max-w-7xl px-4 py-5 sm:px-6 sm:py-6 lg:px-8 lg:py-8">
+<div className="mx-auto w-full max-w-7xl px-4 py-5 md:px-0 sm:py-6 lg:py-8">
   <div className="space-y-6 sm:space-y-8">
 
     {/* Hero */}

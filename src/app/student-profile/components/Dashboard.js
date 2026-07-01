@@ -55,7 +55,7 @@ const stats = [
 if(announcementsLoading || classesLoading || staticsLoading) return <DashboardSkeleton></DashboardSkeleton>
   return (
   <div className="py-4 md:py-8 lg:py-10">
-  <div className="mx-auto max-w-7xl space-y-4 px-3 sm:px-4 md:space-y-6 lg:space-y-8">
+  <div className="mx-auto max-w-7xl space-y-4 px-4 md:px-0 md:space-y-6 lg:space-y-8">
 
       {/* Hero */}
     <motion.div

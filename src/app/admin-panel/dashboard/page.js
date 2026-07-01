@@ -23,41 +23,8 @@ import {
 } from "react-icons/fa";
 
 
-const liveClasses = [
-  {
-    title: "Speaking Practice",
-    trainer: "John Smith",
-    time: "10:00 AM",
-  },
-  {
-    title: "IELTS Writing",
-    trainer: "Emma Johnson",
-    time: "2:00 PM",
-  },
-  {
-    title: "Grammar Workshop",
-    trainer: "David Wilson",
-    time: "5:00 PM",
-  },
-];
 
-const payments = [
-  {
-    student: "Anjali Sharma",
-    amount: "₹12,000",
-    status: "Paid",
-  },
-  {
-    student: "Rahul Verma",
-    amount: "₹8,000",
-    status: "Pending",
-  },
-  {
-    student: "Priya Singh",
-    amount: "₹10,000",
-    status: "Paid",
-  },
-];
+
 
 
 
@@ -82,7 +49,7 @@ export default function Dashboard() {
   },
   {
     title: "Active Trainers",
-    value: "24",
+    value: data?.totalTeachers,
     growth: "+3%",
     icon: <FaUserTie />,
     color: "bg-violet-50 text-violet-600",

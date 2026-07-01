@@ -1,11 +1,12 @@
 "use client";
 
-import { useCreateCourseMutation } from "@/app/mutations/coursesMutations";
+import { useCreateCourseMutation, useUpdateCourseMutation } from "@/app/mutations/coursesMutations";
 import Input from "@/app/student-profile/components/profile/Input";
 import Select from "@/app/student-profile/components/profile/Select";
 import TextArea from "@/app/student-profile/components/profile/TextArea";
-import { createCourseSchema } from "@/schemas/createCourseSchema";
+import { createCourseSchema, updateCourseSchema } from "@/schemas/createCourseSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import {
   FaBookOpen,
@@ -15,35 +16,58 @@ import {
   FaLayerGroup,
   FaSave,
 } from "react-icons/fa";
+import { SlControlPause } from "react-icons/sl";
 
 
 
-export default function AddCourseForm() {
+
+export default function AddCourseForm({mode,initialData}) {
+    const isEdit=mode==="edit"
+   const schema = isEdit
+  ? updateCourseSchema
+  : createCourseSchema;
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
   } = useForm({
-    resolver:zodResolver(createCourseSchema),
+    resolver:zodResolver(schema),
     mode:"onBlur",
-   defaultValues: {
-  title: "",
-  shortDescription: "",
-  description: "",
-  price: 0,
-  durationInMonths: "",
-  level: "beginner",
-  status: "draft",
-
-  category: "",
-  language: "English",
-  enrollmentOpen: true,
+  defaultValues: {
+  title: initialData?.title ?? "",
+  shortDescription: initialData?.shortDescription ?? "",
+  description: initialData?.description ?? "",
+  price: initialData?.price ?? 0,
+  durationInMonths: initialData?.durationInMonths ?? "",
+  level: initialData?.level ?? "beginner",
+  status: initialData?.status ?? "draft",
+  category: initialData?.category ?? "",
+  language: initialData?.language ?? "English",
+  enrollmentOpen: initialData?.enrollmentOpen ?? true,
 },
   });
+  useEffect(() => {
+  if (isEdit && initialData) {
+    reset({
+      title: initialData.title,
+      shortDescription: initialData.shortDescription,
+      description: initialData.description,
+      price: initialData.price,
+      durationInMonths: initialData.durationInMonths,
+      level: initialData.level,
+      status: initialData.status,
+      category: initialData.category,
+      language: initialData.language,
+      enrollmentOpen: initialData.enrollmentOpen,
+    });
+  }
+}, [initialData, isEdit, reset]);
+
+  const updateCourseMutation=useUpdateCourseMutation()
  const createCourseMutation=useCreateCourseMutation(reset)
   const onSubmit = async (data) => {
-    console.log("submit")
+ 
  const formData = new FormData();
 
   formData.append("title", data.title);
@@ -75,7 +99,16 @@ formData.append(
       data.thumbnail
     );}
     // mutation here
+
+     if (isEdit) {
+    
+    await updateCourseMutation.mutateAsync({
+      id: initialData._id,
+      data: formData,
+    });
+  } else {
     await createCourseMutation.mutateAsync(formData);
+  }
   };
 
   return (
@@ -233,6 +266,15 @@ formData.append(
         <h2 className="mb-4 text-xl font-bold text-slate-800">
           Thumbnail
         </h2>
+{isEdit && initialData?.thumbnail?.url && (
+  <div className="mb-4">
+    <img
+      src={initialData.thumbnail.url}
+      alt={initialData.title}
+      className="h-40 w-64 rounded-lg object-cover"
+    />
+  </div>
+)}
 
         <Input
           type="file"
@@ -245,11 +287,13 @@ formData.append(
       {/* Submit */}
 
       <div className="flex justify-end">
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="
-            flex items-center gap-2
+      <button
+  type="submit"
+  disabled={
+    createCourseMutation.isPending ||
+    updateCourseMutation.isPending
+  }
+  className="flex items-center gap-2
             rounded-2xl
             bg-[#D6451B]
             px-6 py-3
@@ -257,15 +301,20 @@ formData.append(
             text-white
             transition
             hover:bg-[#bf3b14]
-            disabled:opacity-50
-          "
-        >
-          <FaSave />
+            disabled:opacity-50"
+>
 
-          {isSubmitting
-            ? "Creating..."
-            : "Create Course"}
-        </button>
+<FaSave></FaSave>
+
+  {createCourseMutation.isPending ||
+  updateCourseMutation.isPending
+    ? isEdit
+      ? "Updating..."
+      : "Creating..."
+    : isEdit
+      ? "Update Course"
+      : "Create Course"}
+</button>
       </div>
     </form>
   );

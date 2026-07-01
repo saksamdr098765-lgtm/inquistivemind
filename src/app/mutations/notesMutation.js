@@ -21,7 +21,7 @@ export const useCreateNotesMutation=(resetForm)=>{
              resetForm();
 
 
-    router.push("/admin-panel/batches");
+    router.push("/admin-panel/courses");
   
   
         }

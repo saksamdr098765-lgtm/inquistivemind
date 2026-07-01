@@ -3,7 +3,7 @@ import handleError from "@/Utils/handleError"
 
 import { useMutation } from "@tanstack/react-query"
 import { toast } from "sonner"
-import { adminApproveUserApi, adminBlockUserApi, adminGetUserById, adminRejectUserApi, adminUnblockUserApi, adminUpdateUserById } from "../api/adminApi"
+import { adminApproveUserApi, adminBlockUserApi, adminDeleteUserByIdApi, adminGetUserById, adminRejectUserApi, adminUnblockUserApi, adminUpdateUserById } from "../api/adminApi"
 import queryClient from "@/lib/queryClient"
 
 export const useAdminUserUpdateMutation=(id)=>{
@@ -108,6 +108,27 @@ export const useAdminUnblockUser=(id)=>{
      toast.success(data.message)
         },
      onError:(error)=> handleError(error)
+    
+
+    })
+}
+export const useAdminDeleteUser=()=>{
+    
+    return useMutation({
+        mutationFn:async(id)=>{
+          const response=await  adminDeleteUserByIdApi(id)
+          return response.data
+        },
+         retry:false,
+         onSuccess:(data)=>{
+           
+            queryClient.invalidateQueries({
+  queryKey: ["Admin-Student-List"],
+});
+     toast.success(data.message)
+
+
+        },
     
 
     })

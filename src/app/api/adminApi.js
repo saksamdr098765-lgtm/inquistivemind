@@ -21,6 +21,9 @@ export  function adminUnblockUserApi(id){
 export  function adminUpdateUserById(id,data){
     return api.patch(`/admin/user/${id}/update`,data)
 }
+export  function adminDeleteUserByIdApi(id){
+    return api.delete(`/admin/user/${id}`)
+}
 
 //course 
 

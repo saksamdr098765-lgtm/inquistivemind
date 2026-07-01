@@ -17,6 +17,7 @@ import { useAdminStudent } from "@/Hooks/useAdminStudents";
 import useDebounce from "@/Hooks/useDebounce";
 import capitalizeFirstLetter from "@/Utils/captilizeFirstLetter";
 import { useRouter } from "next/navigation";
+import { useAdminDeleteUser } from "@/app/mutations/AdminMutations";
 
 export default function Students() {
   const router=useRouter()
@@ -29,6 +30,7 @@ const [filters, setFilters] = useState({
   role:""
 });
   const debouncedSearch = useDebounce(search, 500);
+  const deleteUserMutation=useAdminDeleteUser()
   const {data,isLoading}=useAdminStudent(page,filters.search,filters.status,filters.approvalStatus,filters.role)
   const users=data?.users || []
   const pagination=data?.pagination || {}
@@ -38,7 +40,8 @@ useEffect(() => {
 
   if(isLoading) return
   return (
-    <div className="space-y-8 mx-auto max-w-7xl py-24 px-4 md:px-0">
+    <div className="py-28">
+    <div className="space-y-8 mx-auto max-w-7xl  px-4 md:px-0">
 
       {/* Hero */}
 
@@ -214,13 +217,7 @@ useEffect(() => {
                   Contact
                 </th>
 
-                <th className="px-6 py-4 text-left text-sm font-semibold text-slate-600">
-                  Course
-                </th>
-
-                <th className="px-6 py-4 text-left text-sm font-semibold text-slate-600">
-                  Batch
-                </th>
+               
 <th className="px-6 py-4 text-left text-sm font-semibold text-slate-600">
   Approval
 </th>
@@ -292,23 +289,8 @@ useEffect(() => {
 
                     </td>
 
-                    {/* Course */}
 
-                    <td className="px-6 py-5">
-                      {/* {student.course} */}
-                    </td>
-
-                    {/* Batch */}
-
-                    <td className="px-6 py-5">
-
-                      <span className="rounded-full bg-orange-50 px-4 py-2 text-sm font-medium text-[#D6451B]">
-
-                        {/* {student.batch} */}
-
-                      </span>
-
-                    </td>
+                   
 <td className="px-6 py-5">
   <span
     className={`rounded-full px-4 py-2 text-sm font-medium ${
@@ -353,7 +335,7 @@ useEffect(() => {
 
                         </button>
 
-                        <button className="rounded-xl bg-red-50 p-3 text-red-600 transition hover:scale-105">
+                        <button onClick={()=>{deleteUserMutation.mutate(student._id)}}  className="rounded-xl bg-red-50 p-3 text-red-600 transition hover:scale-105">
 
                           <FaTrash />
 
@@ -574,7 +556,7 @@ useEffect(() => {
 
       )}
 
-    </div>
+    </div></div>
   );
 }
 

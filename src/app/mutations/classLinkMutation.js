@@ -22,7 +22,7 @@ export const useAddClassLinkMutation=(resetForm)=>{
              resetForm();
 
 
-    router.push("/admin-panel/batches");
+    router.push("/admin-panel/courses");
 
   
         }

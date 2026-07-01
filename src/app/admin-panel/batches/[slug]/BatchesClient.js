@@ -63,7 +63,8 @@ export default function BatchesClient({slug}) {
   const [search, setSearch] = useState("");
 if(isLoading) return <BatchesSkeleton></BatchesSkeleton>
   return (
-<div className="mx-auto max-w-7xl space-y-6 px-4 py-28 sm:px-6 lg:px-8">
+    <div className=" py-28">
+<div className="mx-auto max-w-7xl space-y-6 px-4 md:px-0">
 
       {/* Hero */}
 
@@ -334,7 +335,7 @@ if(isLoading) return <BatchesSkeleton></BatchesSkeleton>
 
       )}
 
-    </div>
+    </div></div>
 
   );
 }

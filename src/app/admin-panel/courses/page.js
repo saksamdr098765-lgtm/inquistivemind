@@ -64,7 +64,8 @@ export default function Courses() {
   const deleteCourse=useDeleteCourseMutation()
 if( courseLoading || statsLoading) return <CoursesSkeleton></CoursesSkeleton>
   return (
- <div className="mx-auto max-w-7xl space-y-6 px-4 py-28 sm:px-6 lg:px-8 ">
+    <div className="py-28">
+ <div className="mx-auto max-w-7xl space-y-6 px-4  sm:px-6 lg:px-8 ">
 
       {/* Hero */}
 
@@ -438,7 +439,7 @@ lg:w-auto
 
       )}
 
-    </div>
+    </div></div>
 
   );
 

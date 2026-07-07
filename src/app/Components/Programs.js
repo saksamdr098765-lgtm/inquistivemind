@@ -14,7 +14,7 @@ const programs = [
     icon: <FaLanguage />,
     title: "English Language",
     level: "Beginner → Advanced",
-    slug:"english-speaking-mastery",
+    slug: "english-speaking-mastery",
     desc:
       "Develop speaking, listening, reading, and writing skills through personalized lessons and real-world communication practice.",
     points: [
@@ -28,7 +28,7 @@ const programs = [
     icon: <FaGlobe />,
     title: "French Language",
     level: "A1 → C2 Levels",
-    slug:"french-language-program",
+    slug: "french-language-program",
     desc:
       "Learn French for education, work, travel, or immigration with structured lessons and interactive speaking sessions.",
     points: [
@@ -42,7 +42,7 @@ const programs = [
     icon: <FaUserGraduate />,
     title: "Academic Programs",
     level: "Students & Professionals",
-    slug:"academic-excellence-program",
+    slug: "academic-excellence-program",
     desc:
       "Prepare for academic success with expert guidance in exams, study abroad pathways, and professional development.",
     points: [
@@ -56,17 +56,15 @@ const programs = [
 export default function Programs() {
   const [active, setActive] = useState(0);
   const current = programs[active];
-  const router=useRouter()
+  const router = useRouter();
 
   return (
     <section className="relative overflow-hidden bg-white py-20 text-slate-900 lg:py-28">
-
-      {/* Background (aligned with navbar theme) */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.10),transparent_60%)]" />
+      {/* Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(250,204,21,0.12),transparent_60%)]" />
       <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:70px_70px]" />
 
       <div className="relative mx-auto max-w-6xl px-5 sm:px-6">
-
         {/* Header */}
         <div className="mb-10 text-center lg:mb-16">
           <div className="text-[10px] tracking-[0.35em] text-slate-400">
@@ -75,17 +73,17 @@ export default function Programs() {
 
           <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
             Learn without{" "}
-            <span className="bg-gradient-to-r from-amber-500 via-yellow-400 to-sky-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-300 bg-clip-text text-transparent">
               limits
             </span>
           </h2>
 
-          <div className="mx-auto mt-6 h-1 w-20 rounded-full bg-gradient-to-r from-amber-500 to-sky-400" />
+          <div className="mx-auto mt-6 h-1 w-20 rounded-full bg-yellow-500" />
 
           <p className="mx-auto mt-5 max-w-2xl text-sm text-slate-600 sm:text-base">
             Whether you're mastering English, learning French, or preparing for
-            academic success, our expert-led programs help you achieve your goals
-            with confidence.
+            academic success, our expert-led programs help you achieve your
+            goals with confidence.
           </p>
         </div>
 
@@ -97,8 +95,8 @@ export default function Programs() {
               onClick={() => setActive(i)}
               className={`whitespace-nowrap rounded-full px-4 py-2 text-xs transition sm:text-sm ${
                 active === i
-                  ? "bg-amber-500 text-white shadow-md shadow-amber-200"
-                  : "border border-slate-200 bg-white text-slate-600 hover:bg-amber-50"
+                  ? "bg-yellow-500 text-white shadow-md shadow-yellow-200"
+                  : "border border-slate-200 bg-white text-slate-600 hover:bg-yellow-50"
               }`}
             >
               {p.title}
@@ -108,14 +106,12 @@ export default function Programs() {
 
         {/* Main Layout */}
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
-
           {/* Left Visual */}
-          <div className="relative h-[240px] overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-amber-50/40 to-sky-50/30 sm:h-[300px] lg:h-[380px]">
-
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(251,191,36,0.15),transparent_60%)]" />
+          <div className="relative h-[240px] overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-yellow-50 to-yellow-100/40 sm:h-[300px] lg:h-[380px]">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(250,204,21,0.18),transparent_60%)]" />
 
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="flex h-28 w-28 items-center justify-center rounded-full bg-amber-100 text-[70px] text-amber-500 sm:h-36 sm:w-36 sm:text-[90px] lg:h-44 lg:w-44 lg:text-[110px]">
+              <div className="flex h-28 w-28 items-center justify-center rounded-full bg-yellow-100 text-[70px] text-yellow-500 sm:h-36 sm:w-36 sm:text-[90px] lg:h-44 lg:w-44 lg:text-[110px]">
                 {current.icon}
               </div>
             </div>
@@ -133,7 +129,6 @@ export default function Programs() {
 
           {/* Right Content */}
           <div className="flex min-h-[260px] flex-col justify-center sm:min-h-[320px]">
-
             <AnimatePresence mode="wait">
               <motion.div
                 key={active}
@@ -142,8 +137,7 @@ export default function Programs() {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.25 }}
               >
-
-                <div className="text-[10px] tracking-[0.35em] text-amber-500">
+                <div className="text-[10px] tracking-[0.35em] text-yellow-500">
                   {current.level}
                 </div>
 
@@ -161,19 +155,22 @@ export default function Programs() {
                       key={i}
                       className="flex items-start gap-3 text-sm text-slate-700"
                     >
-                      <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-gradient-to-r from-amber-400 to-sky-400" />
+                      <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-yellow-500" />
                       <span>{pt}</span>
                     </div>
                   ))}
                 </div>
 
-                <button onClick={()=>{router.push(`/course/${current.slug}`)}} className="mt-8 w-full rounded-full bg-amber-500 px-8 py-3 text-white transition hover:bg-amber-600 sm:w-auto shadow-md shadow-amber-200">
+                <button
+                  onClick={() => {
+                    router.push(`/course/${current.slug}`);
+                  }}
+                  className="mt-8 w-full rounded-full bg-yellow-500 px-8 py-3 text-white shadow-md shadow-yellow-200 transition hover:bg-yellow-600 sm:w-auto"
+                >
                   Explore Program
                 </button>
-
               </motion.div>
             </AnimatePresence>
-
           </div>
         </div>
       </div>

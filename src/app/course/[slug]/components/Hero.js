@@ -92,7 +92,7 @@ export default function CourseHero({ course }) {
 
               <Link
                 href="/about"
-                className="inline-flex items-center justify-center gap-3 rounded-full bg-gradient-to-r from-yellow-400 to-sky-400 px-8 py-4 font-semibold text-slate-900 transition hover:scale-105"
+                className="inline-flex items-center justify-center gap-3 rounded-full bg-yellow-300 px-8 py-4 font-semibold text-slate-900 transition hover:scale-105"
               >
                 Book Free Demo
                 <FaArrowRight />

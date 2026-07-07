@@ -6,12 +6,10 @@ import CourseModules from './CourseModule';
 import WhoIsThisCourseFor from './WhoIsThisFor';
 import StudentResult from './StudentsResult';
 import CourseCTA from './CTA';
-import { FaBookOpen, FaBullhorn, FaCheckCircle, FaComments, FaMicrophone, FaUserTie } from 'react-icons/fa';
 
 
 
 export default function CourseClient({course}) {
-  console.log(course)
   return (
    <>
    <CourseHero course={course}></CourseHero>

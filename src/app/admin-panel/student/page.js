@@ -48,7 +48,7 @@ useEffect(() => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-[32px] bg-gradient-to-r from-[#D6451B] to-orange-500 p-8 text-white shadow-xl"
+        className="rounded-[32px] bg-gradient-to-r from-yellow-500 to-amber-500 p-8 text-white shadow-xl"
       >
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
 
@@ -193,9 +193,9 @@ useEffect(() => {
 
           </div>
 
-          <button className="rounded-2xl bg-[#D6451B] px-5 py-3 text-white transition hover:opacity-90">
+          {/* <button className="rounded-2xl bg-[#D6451B] px-5 py-3 text-white transition hover:opacity-90">
             Export
-          </button>
+          </button> */}
 
         </div>
 

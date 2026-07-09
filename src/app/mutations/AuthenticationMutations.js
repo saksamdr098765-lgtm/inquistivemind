@@ -18,15 +18,16 @@ export const useLoginMutation=()=>{
        onError:(error)=>handleError(error),
         onSuccess:(data)=>{
      
-
+ 
   login({user:data.user,accessToken:data.accessToken})
-     toast.success("You Logged in Successlly ")
-     if(data.user.role==="student"){
+    if(data.user.role==="student"){
     router.push('/student-profile/profile')
      }
      if(data.user.role==="admin"){
     router.push('/admin-panel/student')
      }
+     toast.success("You Logged in Successlly ")
+  
 
         }
     })

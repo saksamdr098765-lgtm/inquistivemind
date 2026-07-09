@@ -60,9 +60,10 @@ export default function BatchDetailsPage() {
         animate={{ opacity: 1 }}
         className="
           rounded-[32px]
-          bg-gradient-to-r
-          from-[#D6451B]
-          to-orange-500
+       
+            bg-gradient-to-r
+          from-amber-500
+          to-yellow-500
           p-8
           text-white
           shadow-xl
@@ -137,7 +138,7 @@ export default function BatchDetailsPage() {
         onClick={() => setActiveTab("notes")}
         className={`flex flex-col items-center justify-center gap-1 rounded-xl py-3 text-xs font-semibold transition-all sm:flex-row sm:text-sm ${
           activeTab === "notes"
-            ? "bg-[#D6451B] text-white shadow-md"
+            ? "bg-yellow-500 text-white shadow-md"
             : "text-slate-600 hover:bg-slate-50"
         }`}
       >
@@ -149,7 +150,7 @@ export default function BatchDetailsPage() {
         onClick={() => setActiveTab("links")}
         className={`flex flex-col items-center justify-center gap-1 rounded-xl py-3 text-xs font-semibold transition-all sm:flex-row sm:text-sm ${
           activeTab === "links"
-            ? "bg-[#D6451B] text-white shadow-md"
+            ? "bg-yellow-500 text-white shadow-md"
             : "text-slate-600 hover:bg-slate-50"
         }`}
       >
@@ -161,7 +162,7 @@ export default function BatchDetailsPage() {
         onClick={() => setActiveTab("announcements")}
         className={`flex flex-col items-center justify-center gap-1 rounded-xl py-3 text-xs font-semibold transition-all sm:flex-row sm:text-sm ${
           activeTab === "announcements"
-            ? "bg-[#D6451B] text-white shadow-md"
+            ? "bg-yellow-500 text-white shadow-md"
             : "text-slate-600 hover:bg-slate-50"
         }`}
       >
@@ -201,7 +202,7 @@ export default function BatchDetailsPage() {
         }}
         className="
           flex w-full items-center justify-center gap-2
-          rounded-2xl bg-[#D6451B]
+          rounded-2xl bg-yellow-500
           px-5 py-3 text-white
           sm:w-auto
         "
@@ -228,7 +229,7 @@ export default function BatchDetailsPage() {
             rounded-2xl bg-orange-50
           "
         >
-          <FaFilePdf className="text-3xl text-[#D6451B]" />
+          <FaFilePdf className="text-3xl text-yellow-500" />
         </div>
 
         <h3 className="mt-5 text-xl font-bold text-slate-900">
@@ -484,7 +485,7 @@ export default function BatchDetailsPage() {
         }
         className="
           flex w-full items-center justify-center gap-2
-          rounded-xl bg-[#D6451B]
+          rounded-xl bg-yellow-500
           px-5 py-3 text-white
           sm:w-auto
         "
@@ -703,7 +704,7 @@ export default function BatchDetailsPage() {
             }
             className="
               mt-5 rounded-xl
-              bg-[#D6451B]
+              bg-yellow-500
               px-5 py-3
               text-white
             "
@@ -746,7 +747,7 @@ export default function BatchDetailsPage() {
         className="
           flex w-full sm:w-auto items-center justify-center gap-2
           rounded-xl sm:rounded-2xl
-          bg-[#D6451B]
+          bg-yellow-500
           px-4 py-3 sm:px-5
           text-white
           transition hover:opacity-90

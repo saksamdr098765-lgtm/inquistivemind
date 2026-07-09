@@ -6,6 +6,7 @@ import AboutAcademy from './components/AboutAcademy'
 import CourseCategories from '../courses/components/CourseCategroies'
 import HowItWorks from './components/HowItWorks'
 import CTA from './components/CTA'
+import FounderSection from './components/FounderSection'
 export const metadata = {
   title: "About Us | Inquisitive Mind Academy",
 
@@ -117,6 +118,7 @@ export default function page() {
    <Hero></Hero>
   
    <AboutAcademy></AboutAcademy>
+   <FounderSection></FounderSection>
   <CourseCategories></CourseCategories>
   <HowItWorks></HowItWorks>
   <CTA></CTA>

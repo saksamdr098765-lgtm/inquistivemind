@@ -24,8 +24,8 @@ export default function editCourse() {
         className="
           rounded-[30px]
           bg-gradient-to-r
-          from-[#D6451B]
-          to-orange-500
+          from-amber-500
+          to-yellow-500
           p-8
           text-white
           shadow-xl

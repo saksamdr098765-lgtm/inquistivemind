@@ -293,15 +293,22 @@ formData.append(
     createCourseMutation.isPending ||
     updateCourseMutation.isPending
   }
-  className="flex items-center gap-2
-            rounded-2xl
-            bg-[#D6451B]
-            px-6 py-3
-            font-semibold
-            text-white
-            transition
-            hover:bg-[#bf3b14]
-            disabled:opacity-50"
+ className="
+  flex items-center gap-2
+  rounded-2xl
+  bg-yellow-500
+  px-6 py-3
+  font-semibold
+  text-white
+  shadow-lg shadow-yellow-500/20
+  transition-all duration-300
+  hover:bg-yellow-600
+  hover:shadow-xl hover:shadow-yellow-500/30
+  focus:outline-none
+  focus:ring-4 focus:ring-yellow-300
+  disabled:opacity-50
+  disabled:cursor-not-allowed
+"
 >
 
 <FaSave></FaSave>

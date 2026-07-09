@@ -71,7 +71,7 @@ if(isLoading) return <BatchesSkeleton></BatchesSkeleton>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="rounded-[32px] bg-gradient-to-r from-[#D6451B] to-orange-500 p-8 text-white shadow-xl"
+        className="rounded-[32px] bg-gradient-to-r from-amber-400 to-yellow-500 p-8 text-white shadow-xl"
       >
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
 

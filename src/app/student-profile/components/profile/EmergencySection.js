@@ -87,7 +87,7 @@ export default function EmergencySection({
         <button
           type="submit"
           disabled={isSubmitting || profileUpdateMutation?.isPending}
-          className="flex w-full items-center justify-center gap-2 rounded-2xl bg-[#D6451B] px-6 py-3 font-semibold text-white shadow-lg shadow-orange-300/40 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#bf3d17] hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
+          className="flex w-full items-center justify-center gap-2 rounded-2xl bg-yellow-500 px-6 py-3 font-semibold text-white shadow-lg shadow-orange-300/40 transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#bf3d17] hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
         >
           <FaSave className="text-sm" />
 

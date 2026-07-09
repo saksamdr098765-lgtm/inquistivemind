@@ -68,7 +68,7 @@ export default function ProfileSidebar({
   className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-lg"
 >
   {/* Top Banner */}
-  <div className="relative h-28 bg-gradient-to-r from-[#D6451B] via-orange-500 to-orange-400">
+  <div className="relative h-28 bg-gradient-to-r from-amber-400  to-yellow-400">
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,.25),transparent_55%)]" />
   </div>
 

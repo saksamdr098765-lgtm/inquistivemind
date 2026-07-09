@@ -27,6 +27,7 @@ import { validateStep } from "./Validation";
 import { useTeacherLeadMutation } from "@/app/mutations/leadMutation";
 import SITE_CONFIG from "@/app/siteConfig";
 import { FaSpinner } from "react-icons/fa";
+import { trackWhatsAppClick } from "@/lib/traking";
 const {whatsappNumber}=SITE_CONFIG
 export default function BecomeTutor() {
   const [error, setError] = useState("");
@@ -91,6 +92,7 @@ const teacherLeadsMutation=useTeacherLeadMutation()
     if (step === 8) {
    await teacherLeadsMutation.mutateAsync(form,{
     onSuccess:()=>{
+      trackWhatsAppClick("become-tutor");
  window.open(
         `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
         "_blank"

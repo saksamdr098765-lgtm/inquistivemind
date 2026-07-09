@@ -72,7 +72,7 @@ if( courseLoading || statsLoading) return <CoursesSkeleton></CoursesSkeleton>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-className="rounded-[24px] bg-gradient-to-r from-[#D6451B] to-orange-500 p-5 text-white shadow-xl sm:p-8"      >
+className="rounded-[24px] bg-gradient-to-r from-amber-500 to-yellow-500 p-5 text-white shadow-xl sm:p-8"      >
 
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
 

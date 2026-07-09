@@ -119,7 +119,7 @@ if(isLoading) return
   return (
     <div className="py-28 space-y-8">
       <div className="  max-w-7xl mx-auto">
-      <div className="rounded-[32px] bg-gradient-to-r from-[#D6451B] to-orange-500 p-8 text-white">
+      <div className="rounded-[32px] bg-gradient-to-r from-amber-500 to-yellow-500 p-8 text-white">
         <h1 className="text-4xl font-bold">Edit Batch</h1>
         <p className="mt-2 text-orange-100">
           Update batch details, students and trainers.
@@ -556,7 +556,7 @@ if(isLoading) return
         <button
           type="submit"
           disabled={isSubmitting || batchMutation.isPending}
-          className="flex items-center gap-2 rounded-2xl bg-[#D6451B] px-6 py-3 text-white disabled:cursor-not-allowed disabled:opacity-30"
+          className="flex items-center gap-2 rounded-2xl bg-yellow-500 px-6 py-3 text-white disabled:cursor-not-allowed disabled:opacity-30"
         >
           <FaSave />
           {isSubmitting

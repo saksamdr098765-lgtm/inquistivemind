@@ -87,7 +87,7 @@ export default function ProfileClient() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="rounded-[32px] bg-gradient-to-r from-[#D6451B] to-orange-500 p-8 text-white"
+        className="rounded-[32px] bg-gradient-to-r from-amber-500 to-yellow-500 p-8 text-white"
       >
         <h1 className="text-4xl font-bold">
           My Profile
@@ -126,7 +126,7 @@ export default function ProfileClient() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="flex items-center justify-center gap-2 rounded-2xl bg-[#D6451B] px-6 py-3 font-medium text-white transition hover:bg-[#b93814] disabled:cursor-not-allowed disabled:opacity-70"
+                  className="flex items-center justify-center gap-2 rounded-2xl bg-yellow-500 px-6 py-3 font-medium text-white transition hover:bg-amber-500 disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   <FaSave />
         

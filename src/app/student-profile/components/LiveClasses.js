@@ -51,7 +51,7 @@ if(batchLoading) return <Loading></Loading>
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35 }}
-      className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#D6451B] via-[#e85b2f] to-orange-500 p-5 text-white shadow-xl sm:p-8 lg:p-10"
+      className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber-500 to-yellow-500 p-5 text-white shadow-xl sm:p-8 lg:p-10"
     >
       {/* Background Glow */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,.18),transparent_55%)]" />
@@ -136,7 +136,7 @@ if(batchLoading) return <Loading></Loading>
         onClick={() => setActiveTab("notes")}
         className={`flex flex-col items-center justify-center gap-1 rounded-xl py-3 text-xs font-semibold transition-all sm:flex-row sm:text-sm ${
           activeTab === "notes"
-            ? "bg-[#D6451B] text-white shadow-md"
+            ? "bg-yellow-500 text-white shadow-md"
             : "text-slate-600 hover:bg-slate-50"
         }`}
       >
@@ -148,7 +148,7 @@ if(batchLoading) return <Loading></Loading>
         onClick={() => setActiveTab("links")}
         className={`flex flex-col items-center justify-center gap-1 rounded-xl py-3 text-xs font-semibold transition-all sm:flex-row sm:text-sm ${
           activeTab === "links"
-            ? "bg-[#D6451B] text-white shadow-md"
+            ? "bg-yellow-500 text-white shadow-md"
             : "text-slate-600 hover:bg-slate-50"
         }`}
       >
@@ -160,7 +160,7 @@ if(batchLoading) return <Loading></Loading>
         onClick={() => setActiveTab("announcements")}
         className={`flex flex-col items-center justify-center gap-1 rounded-xl py-3 text-xs font-semibold transition-all sm:flex-row sm:text-sm ${
           activeTab === "announcements"
-            ? "bg-[#D6451B] text-white shadow-md"
+            ? "bg-yellow-500 text-white shadow-md"
             : "text-slate-600 hover:bg-slate-50"
         }`}
       >
@@ -208,7 +208,7 @@ if(batchLoading) return <Loading></Loading>
              bg-white p-4 shadow-sm
              transition-all duration-300
              hover:-translate-y-1
-             hover:border-[#D6451B]
+             hover:border-yellow-500
              hover:shadow-xl
              sm:p-5
            "
@@ -587,14 +587,14 @@ if(batchLoading) return <Loading></Loading>
                p-4 sm:p-5
                shadow-sm
                transition-all duration-300
-               hover:border-[#D6451B]
+               hover:border-yellow-500
                hover:shadow-lg
              "
            >
  
              {/* Accent */}
  
-             <div className="absolute left-0 top-0 h-full w-1 bg-[#D6451B]" />
+             <div className="absolute left-0 top-0 h-full w-1 bg-yellow-500" />
  
              <div className="flex flex-col sm:flex-row gap-4">
  

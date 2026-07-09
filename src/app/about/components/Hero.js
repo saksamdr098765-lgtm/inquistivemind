@@ -9,6 +9,7 @@ import {
   FaCheckCircle,
 } from "react-icons/fa";
 import SITE_CONFIG from "@/app/siteConfig";
+import { trackWhatsAppClick } from "@/lib/traking";
 
 export default function Hero() {
   const [form, setForm] = useState({
@@ -33,7 +34,7 @@ export default function Hero() {
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
       message
     )}`;
-
+      trackWhatsAppClick("book-demo")
     window.open(whatsappUrl, "_blank");
   };
 

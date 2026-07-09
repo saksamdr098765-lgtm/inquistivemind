@@ -209,7 +209,7 @@ className="rounded-full bg-yellow-400 px-6 py-2.5 text-sm font-semibold text-sla
         onClick={() => setProfileOpen(!profileOpen)}
         className="flex items-center gap-3 rounded-full border border-slate-200 bg-white px-2 py-2 transition hover:border-yellow-400 hover:shadow-lg"
       >
-        {user.profileImage ? (
+        {user.profileImage.url ? (
           <img
             src={user.profileImage.url}
             alt={user.fullName}
@@ -264,7 +264,7 @@ className="rounded-full bg-yellow-400 px-6 py-2.5 text-sm font-semibold text-sla
             className="absolute right-0 mt-4 w-80 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl"
           >
             {/* Header */}
-<div className="bg-gradient-to-r from-yellow-400 via-amber-500 to-sky-400 p-6 text-white">
+<div className="bg-gradient-to-r from-amber-400 to-yellow-500 p-6 text-white">
 
   <div className="flex items-center gap-4">
 

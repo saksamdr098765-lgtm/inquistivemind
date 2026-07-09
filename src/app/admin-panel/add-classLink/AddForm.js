@@ -263,12 +263,12 @@ await createClassLinkMutation.mutateAsync({
           className="
             flex items-center gap-2
             rounded-2xl
-            bg-[#D6451B]
+            bg-amber-500
             px-6 py-3
             font-semibold
             text-white
             transition
-            hover:bg-[#bf3b14]
+            hover:bg-yellow-500
             disabled:opacity-50
           "
         >

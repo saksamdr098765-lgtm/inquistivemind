@@ -7,7 +7,7 @@ import AddCourseForm from "./AddCourses";
 
 export default function AddCourse() {
   return (
-    <div className="py-24 ">
+    <div className="py-28 ">
       {/* Hero */}
 <div className="mx-auto max-w-6xl space-y-8">
       <motion.div
@@ -16,8 +16,8 @@ export default function AddCourse() {
         className="
           rounded-[30px]
           bg-gradient-to-r
-          from-[#D6451B]
-          to-orange-500
+          from-amber-500
+          to-yellow-500
           p-8
           text-white
           shadow-xl

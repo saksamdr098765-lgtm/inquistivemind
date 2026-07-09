@@ -15,9 +15,9 @@ export default function AddNotes() {
         animate={{ opacity: 1, y: 0 }}
         className="
           rounded-[30px]
-          bg-gradient-to-r
-          from-[#D6451B]
-          to-orange-500
+         bg-gradient-to-r
+          from-amber-500
+          to-yellow-500
           p-8
           text-white
           shadow-xl

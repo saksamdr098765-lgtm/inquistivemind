@@ -10,6 +10,7 @@ import {
 } from "react-icons/fa";
 import SITE_CONFIG from "@/app/siteConfig";
 import { useRouter } from "next/navigation";
+import { trackWhatsAppClick } from "@/lib/traking";
 
 const faqs = [
   {
@@ -53,11 +54,18 @@ const faqs = [
       "Simply contact our team through WhatsApp or phone. We will guide you in selecting the right course and batch.",
   },
 ];
+
 const {whatsappNumber}=SITE_CONFIG
 export default function FAQs() {
   const [active, setActive] = useState(0);
   const router=useRouter()
-
+const handleClick=()=>{
+trackWhatsAppClick("courses")
+      window.open(
+        `https://wa.me/${whatsappNumber}`,
+        "_blank"
+      )
+}
   return (
     <section className="relative overflow-hidden bg-white py-20 sm:py-24 lg:py-28">
 
@@ -116,7 +124,7 @@ export default function FAQs() {
                 choose the perfect course for your goals.
               </p>
 
-              <button className="mt-6 flex items-center gap-3 rounded-full bg-amber-500 px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-amber-600">
+              <button onClick={handleClick} className="mt-6 flex items-center gap-3 rounded-full bg-amber-500 px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-amber-600">
                 <FaWhatsapp />
                 Chat on WhatsApp
               </button>
@@ -218,11 +226,7 @@ export default function FAQs() {
 
               <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
 
-                <button onClick={()=>{
-      window.open(
-        `https://wa.me/${whatsappNumber}`,
-        "_blank"
-      );}} className="rounded-full bg-amber-500 px-8 py-3 font-semibold text-white shadow-lg shadow-amber-500/30 transition-all hover:-translate-y-1 hover:bg-amber-600">
+                <button onClick={handleClick} className="rounded-full bg-amber-500 px-8 py-3 font-semibold text-white shadow-lg shadow-amber-500/30 transition-all hover:-translate-y-1 hover:bg-amber-600">
                   Talk To An Advisor
                 </button>
 

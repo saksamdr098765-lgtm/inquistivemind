@@ -9,6 +9,7 @@ import { useAdminGetStats } from "@/Hooks/useAdminGetStats";
 import { formatISTDateTime } from "@/Utils/formatDate";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   FaUsers,
   FaUserTie,
@@ -30,11 +31,12 @@ import {
 
 const quickActions=[
   {action:"New Course",path:"/admin-panel/add-course"},
-  {action:"Create Batch",path:"/admin-panel/add-course"},
+  {action:"Create Batch",path:"/admin-panel/add-batch"},
   {action:" Announcement",path:"/admin-panel/add-announcement"},
 
 ]
 export default function Dashboard() {
+  const router=useRouter()
   const {data,isLoading:statsLoading}=useAdminGetStats()
   const {data:recentStudents,isLoading:activitiesLoading}=useAdminGetRecentActivities()
   const {data:classes,isLoading:classesLoading}=useAdminGetAllClasses()
@@ -81,7 +83,7 @@ export default function Dashboard() {
       <motion.section
         initial={{ opacity: 0, y: 25 }}
         animate={{ opacity: 1, y: 0 }}
-        className="overflow-hidden rounded-[32px] bg-gradient-to-r from-[#D6451B] to-[#ff855e] p-8 text-white shadow-xl"
+        className="overflow-hidden rounded-[32px] bg-gradient-to-r from-amber-500 to-yellow-500 p-8 text-white shadow-xl"
       >
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
 
@@ -371,7 +373,7 @@ export default function Dashboard() {
     </h2>
 
     <button
-      onClick={() => router.push("/admin-panel/students")}
+      onClick={() => router.push("/admin-panel/student")}
       className="shrink-0 text-sm font-medium text-[#D6451B] hover:underline"
     >
       View All
@@ -442,7 +444,7 @@ export default function Dashboard() {
 
   {/* Desktop Table */}
   <div className="mt-8 hidden overflow-x-auto lg:block">
-    <table className="w-full">
+   { recentStudents?.length >0 ? <table className="w-full">
       <thead>
         <tr className="border-b border-slate-200">
           <th className="pb-4 text-left font-semibold">
@@ -504,6 +506,11 @@ export default function Dashboard() {
         ))}
       </tbody>
     </table>
+    :<div className="rounded-2xl border border-dashed border-slate-300 py-10 text-center">
+        <p className="text-slate-500">
+          No recent admissions found
+        </p>
+      </div>}
   </div>
 </motion.div>
 
@@ -525,7 +532,7 @@ export default function Dashboard() {
 
       <div className="mt-6 space-y-4">
 
-        {classes?.map((item) => (
+        { classes?.length>0 ? classes?.map((item) => (
 
           <div
             key={item?._id}
@@ -540,11 +547,11 @@ export default function Dashboard() {
 
             <div className="mt-3 flex items-center justify-between">
 
-              <span className="text-[#D6451B] font-medium">
+              <span className="text-yellow-500 font-medium">
                 {formatISTDateTime(item.meetingDate)}
               </span>
 
-              <a href={item?.meetingLink} className="rounded-xl bg-[#D6451B] px-4 py-2 text-sm text-white">
+              <a href={item?.meetingLink} className="rounded-xl bg-yellow-500 px-4 py-2 text-sm text-white">
                 <FaVideo></FaVideo>
               </a>
 
@@ -552,7 +559,38 @@ export default function Dashboard() {
 
           </div>
 
-        ))}
+        )): <div
+            className="
+              mt-6
+              rounded-3xl
+              border border-dashed border-slate-200
+              bg-slate-50
+              py-12
+              px-6
+              text-center
+            "
+          >
+            <div
+              className="
+                mx-auto
+                flex h-16 w-16
+                items-center justify-center
+                rounded-2xl
+                bg-yellow-100
+                text-yellow-500
+              "
+            >
+              <FaVideo className="text-2xl" />
+            </div>
+        
+            <h3 className="mt-4 text-lg font-semibold text-slate-800">
+              No Upcoming Classes
+            </h3>
+        
+            <p className="mt-2 text-sm text-slate-500 max-w-xs mx-auto">
+              There are no scheduled classes right now. Check back later for new sessions.
+            </p>
+          </div>}
 
       </div>
 
@@ -623,7 +661,7 @@ export default function Dashboard() {
 
       <div className="mt-6 space-y-4">
 
-        {announcements?.map((item) => (
+        { announcements?.length>0 ? announcements?.map((item) => (
 
           <div
             key={item.title}
@@ -640,7 +678,17 @@ export default function Dashboard() {
 
           </div>
 
-        ))}
+        )):  <div className="flex flex-col items-center justify-center py-10">
+                <FaBullhorn className="text-4xl text-slate-300" />
+        
+                <h3 className="mt-3 font-semibold text-slate-700">
+                  No Announcements
+                </h3>
+        
+                <p className="mt-1 text-sm text-slate-500">
+                  You're all caught up for now.
+                </p>
+              </div>}
 
       </div>
 

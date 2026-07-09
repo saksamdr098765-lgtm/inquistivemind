@@ -205,7 +205,7 @@ export default function Profile({ user, profile }) {
   });
 };
 
-if(!user || !profile) return <ProfileSkeleton></ProfileSkeleton>
+if( !user || !profile) return <ProfileSkeleton></ProfileSkeleton>
 return (
   <div className="min-h-screen bg-gradient-to-b from-orange-50/40 via-white to-slate-50">
     <div className="mx-auto w-full max-w-7xl px-4 py-6 md:px-0">
@@ -214,7 +214,7 @@ return (
         initial={{ opacity: 0, y: 25 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45 }}
-        className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-[#D6451B] via-orange-500 to-orange-600 p-6 shadow-xl sm:p-8 lg:p-10"
+        className="relative overflow-hidden rounded-[32px] bg-gradient-to-br from-amber-500  to-yellow-600 p-6 shadow-xl sm:p-8 lg:p-10"
       >
         <div className="absolute inset-0 opacity-10">
           <div className="absolute -right-16 -top-16 h-52 w-52 rounded-full bg-white blur-3xl" />

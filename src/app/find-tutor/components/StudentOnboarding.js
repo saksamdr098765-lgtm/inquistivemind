@@ -33,6 +33,7 @@ import { studentsLeadsApi } from "@/app/api/LeadApi";
 import { toast } from "sonner";
 import { useStudentLeadMutation } from "@/app/mutations/leadMutation";
 import { data } from "framer-motion/client";
+import { trackWhatsAppClick } from "@/lib/traking";
 
 export default function StudentOnboarding() {
   const [error, setError] = useState("");
@@ -99,6 +100,7 @@ export default function StudentOnboarding() {
 const studentLeadsMutation=useStudentLeadMutation()
 const onContinue = async () => {
    await studentLeadsMutation.mutateAsync(form,{onSuccess:()=>{
+    trackWhatsAppClick("find-tutor")
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
       window.open(whatsappUrl, "_blank")
    }})

@@ -144,11 +144,11 @@ const onSubmit = async (data) => {
           className="
             flex items-center gap-2
             rounded-2xl
-            bg-[#D6451B]
+            bg-amber-500
             px-6 py-3
             text-white
             font-semibold
-            hover:bg-[#bf3b14]
+            hover:bg-yellow-500
           "
         >
           <FaSave />

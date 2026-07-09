@@ -64,8 +64,8 @@ if(announcementsLoading || classesLoading || staticsLoading) return <DashboardSk
   className="
     rounded-3xl
     bg-gradient-to-r
-    from-[#D6451B]
-    to-[#ff855e]
+ from-amber-500
+ to-yellow-500
     p-5
     sm:p-6
     lg:p-8
@@ -138,7 +138,7 @@ sm:p-5
 lg:p-6
 shadow-lg
 "          >
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-50 text-xl text-[#D6451B]">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-yellow-50 text-xl text-[#D6451B]">
               {item.icon}
             </div>
 
@@ -263,7 +263,7 @@ shadow-lg
             className="
               flex w-full items-center justify-center gap-2
               rounded-2xl
-              bg-[#D6451B]
+              bg-yellow-500
               px-4 py-3
               font-medium text-white
               transition-all duration-300
@@ -297,8 +297,8 @@ shadow-lg
         flex h-16 w-16
         items-center justify-center
         rounded-2xl
-        bg-orange-100
-        text-[#D6451B]
+        bg-yellow-100
+        text-yellow-500
       "
     >
       <FaVideo className="text-2xl" />
@@ -364,7 +364,7 @@ shadow-lg
       </p>
     </div>
 
-    <div className="rounded-2xl bg-orange-50 px-4 py-2 text-sm font-medium text-[#D6451B]">
+    <div className="rounded-2xl bg-orange-50 px-4 py-2 text-sm font-medium text-yellow-500">
       {announcements?.length || 0} Updates
     </div>
   </div>

@@ -18,6 +18,7 @@ import {
   FaWhatsapp,
 } from "react-icons/fa";
 import SITE_CONFIG from "../siteConfig";
+import { trackSocialClick } from "@/lib/traking";
 
 const links = [
   { name: "Home", path: "/", icon: FaHome },
@@ -27,8 +28,8 @@ const links = [
 ];
 const {phone,email,socialLinks,whatsappNumber,}=SITE_CONFIG
 const socials=[
-  {icon:FaInstagram,link:socialLinks.instagram},
-  {icon:FaWhatsapp,link:`https://wa.me/${whatsappNumber}`}
+  {name:"instagram",icon:FaInstagram,link:socialLinks.instagram},
+  {name:"whatsapp",icon:FaWhatsapp,link:`https://wa.me/${whatsappNumber}`}
 ]
 export default function Footer() {
   const router = useRouter();
@@ -87,6 +88,7 @@ export default function Footer() {
                   const Icon=item.icon
                   return <button
                     key={i}
+                    onClick={()=>{trackSocialClick(item.name)}}
                     className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition hover:-translate-y-0.5 hover:border-amber-300 hover:text-amber-500 hover:shadow-md"
                   >
                   <a href={item.link} target="_blank"> <Icon/></a> 

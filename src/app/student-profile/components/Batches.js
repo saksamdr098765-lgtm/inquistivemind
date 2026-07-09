@@ -27,7 +27,7 @@ export default function Batches() {
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: .4 }}
-  className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#D6451B] via-orange-500 to-orange-400 p-6 shadow-xl sm:p-8 lg:p-10"
+  className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-yellow-500  to-amber-400 p-6 shadow-xl sm:p-8 lg:p-10"
 >
   <div className="absolute inset-0">
     <div className="absolute -right-12 -top-12 h-52 w-52 rounded-full bg-white/10 blur-3xl" />
@@ -267,11 +267,11 @@ items-center
 justify-center
 gap-2
 rounded-2xl
-bg-[#D6451B]
+bg-yellow-500
 font-semibold
 text-white
 transition-all
-hover:bg-[#b93814]
+
 active:scale-[0.98]
 "
   >

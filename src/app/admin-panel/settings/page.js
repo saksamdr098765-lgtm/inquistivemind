@@ -81,7 +81,7 @@ logoutMutation.mutate()
    <motion.div
   initial={{ opacity: 0, y: 10 }}
   animate={{ opacity: 1, y: 0 }}
-  className="rounded-3xl bg-gradient-to-r from-[#D6451B] to-orange-500 px-5 py-6 text-white shadow-xl sm:px-8 sm:py-8"
+  className="rounded-3xl bg-gradient-to-r from-amber-500 to-yellow-500 px-5 py-6 text-white shadow-xl sm:px-8 sm:py-8"
 >
   <h1 className="text-2xl font-bold sm:text-3xl lg:text-4xl">
     Settings
@@ -154,12 +154,12 @@ logoutMutation.mutate()
         mt-6
         flex items-center gap-2
         rounded-2xl
-        bg-[#D6451B]
+        bg-yellow-500
         px-6 py-3
         font-medium
         text-white
         transition
-        hover:bg-[#bf3c17]
+       
         disabled:opacity-50
       "
     >
@@ -298,7 +298,7 @@ function Switch({ title, value, onClick }) {
       <button
         onClick={onClick}
         className={`relative h-7 w-14 rounded-full transition ${
-          value ? "bg-[#D6451B]" : "bg-slate-300"
+          value ? "bg-yellow-500" : "bg-slate-300"
         }`}
       >
         <span

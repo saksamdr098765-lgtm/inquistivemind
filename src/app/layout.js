@@ -6,7 +6,7 @@ import { Toaster } from "sonner";
 import AuthProvider from "./Components/AuthProvider";
 import { Inter, Poppins } from "next/font/google";
 
-
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 
 export const metadata = {
@@ -113,6 +113,9 @@ export const metadata = {
   applicationName: "Inquisitive Mind Academy",
 
   referrer: "origin-when-cross-origin",
+    verification: {
+    google: "008KSwOu-47s9K24WqUE2ruV6Io9y4UFdssfHyf3M-0",
+  },
 };
 
 const inter = Inter({
@@ -213,6 +216,7 @@ export default function RootLayout({ children }) {
   }}
 />
         </body>
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID}  />
     </html>
   );
 }

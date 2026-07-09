@@ -86,12 +86,12 @@ export default function FAQs() {
 
             <h2 className="mt-4 text-4xl font-bold leading-tight text-slate-900 md:text-5xl lg:text-6xl">
               Everything You
-              <span className="bg-gradient-to-r from-amber-500 via-yellow-400 to-sky-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-amber-500  to-yellow-400 bg-clip-text text-transparent">
                 {" "}Need To Know
               </span>
             </h2>
 
-            <div className="mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-amber-500 to-sky-400" />
+            <div className="mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400" />
 
             <p className="mt-6 text-lg leading-8 text-slate-600">
               Find answers about English Speaking,
@@ -103,7 +103,7 @@ export default function FAQs() {
 
             <div className="mt-10 rounded-3xl border border-slate-200 bg-white p-8 shadow-xl">
 
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-amber-100 to-sky-100 text-2xl text-amber-500">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-amber-100 to-yellow-100 text-2xl text-amber-500">
                 <FaHeadset />
               </div>
 
@@ -205,7 +205,7 @@ export default function FAQs() {
 
               <h3 className="mt-4 text-3xl font-bold text-slate-900 md:text-5xl">
                 Let's Find The
-                <span className="bg-gradient-to-r from-amber-500 via-yellow-400 to-sky-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-amber-500 to-yellow-400  bg-clip-text text-transparent">
                   {" "}Perfect Course
                 </span>
               </h3>

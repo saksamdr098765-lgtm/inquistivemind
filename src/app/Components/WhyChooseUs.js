@@ -35,49 +35,43 @@ const features = [
 export default function WhyChooseUs() {
   return (
     <section className="relative overflow-hidden bg-white py-28 text-slate-900">
-
-      {/* Background (system aligned) */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.10),transparent_60%)]" />
+      {/* Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(250,204,21,0.10),transparent_60%)]" />
       <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:70px_70px]" />
 
       <div className="relative mx-auto max-w-6xl px-6">
-
-        {/* HEADER */}
+        {/* Header */}
         <div className="mb-20 text-center">
-
           <div className="text-[10px] tracking-[0.35em] text-slate-400">
             TRUSTED LANGUAGE ACADEMY
           </div>
 
           <h2 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl">
             Why learners choose{" "}
-            <span className="bg-gradient-to-r from-amber-500 via-yellow-400 to-sky-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600 bg-clip-text text-transparent">
               real fluency
             </span>
           </h2>
 
-          <div className="mx-auto mt-6 h-1 w-20 rounded-full bg-gradient-to-r from-amber-500 to-sky-400" />
+          <div className="mx-auto mt-6 h-1 w-20 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-600" />
 
           <p className="mx-auto mt-5 max-w-2xl text-slate-600">
             We don’t teach memorization. We build real communication ability
             through structured speaking systems and immersion.
           </p>
-
         </div>
 
-        {/* CONTENT */}
+        {/* Content */}
         <div className="grid items-start gap-12 lg:grid-cols-3">
-
-          {/* LEFT */}
+          {/* Left */}
           <div className="space-y-6 lg:col-span-1">
-
             <div className="text-[10px] tracking-[0.35em] text-slate-400">
               THE DIFFERENCE
             </div>
 
             <h3 className="text-3xl font-bold leading-tight">
               Not just learning a language —{" "}
-              <span className="bg-gradient-to-r from-amber-500 to-sky-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-yellow-500 to-yellow-600 bg-clip-text text-transparent">
                 living it
               </span>
             </h3>
@@ -87,15 +81,13 @@ export default function WhyChooseUs() {
               respond, and communicate naturally in real situations.
             </p>
 
-            <div className="border-t border-slate-100 pt-6 text-xs tracking-[0.3em] text-amber-500">
+            <div className="border-t border-slate-100 pt-6 text-xs tracking-[0.3em] text-yellow-600">
               IMMERSION • SPEAKING • CONFIDENCE
             </div>
-
           </div>
 
-          {/* RIGHT FEATURES */}
+          {/* Right Features */}
           <div className="space-y-12 lg:col-span-2">
-
             {features.map((item, i) => (
               <motion.div
                 key={item.title}
@@ -105,15 +97,11 @@ export default function WhyChooseUs() {
                 transition={{ delay: i * 0.12 }}
                 className="flex items-start gap-5"
               >
-
-                {/* Icon */}
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-amber-100 text-xl text-amber-500">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-yellow-100 text-xl text-yellow-600">
                   {item.icon}
                 </div>
 
-                {/* Content */}
                 <div className="space-y-2">
-
                   <h3 className="text-xl font-semibold text-slate-900">
                     {item.title}
                   </h3>
@@ -121,35 +109,30 @@ export default function WhyChooseUs() {
                   <p className="max-w-xl leading-relaxed text-slate-600">
                     {item.desc}
                   </p>
-
                 </div>
-
               </motion.div>
             ))}
-
           </div>
         </div>
 
         {/* CTA */}
         <div className="mt-24 text-center">
-
           <h3 className="text-2xl font-semibold">
             Start your fluency journey today
           </h3>
 
           <p className="mt-3 text-slate-600">
-            Join thousands of learners already transforming their communication skills.
+            Join thousands of learners already transforming their communication
+            skills.
           </p>
 
           <Link
             href="/courses"
-            className="mt-6 inline-flex items-center justify-center rounded-full bg-amber-500 px-8 py-3 text-white transition hover:bg-amber-600 shadow-md shadow-amber-200"
+            className="mt-6 inline-flex items-center justify-center rounded-full bg-yellow-500 px-8 py-3 text-white shadow-md shadow-yellow-200 transition hover:bg-yellow-600"
           >
             Get Started
           </Link>
-
         </div>
-
       </div>
     </section>
   );

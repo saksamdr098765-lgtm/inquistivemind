@@ -47,7 +47,7 @@ export default function ProgressTracker({ currentStep, totalSteps }) {
         <motion.div
           animate={{ width: `${progress}%` }}
           transition={{ duration: 0.4 }}
-          className="h-full rounded-full bg-gradient-to-r from-yellow-400 via-amber-400 to-sky-400"
+          className="h-full rounded-full bg-gradient-to-r from-yellow-400 to-amber-400 "
         />
       </div>
 
@@ -65,7 +65,7 @@ export default function ProgressTracker({ currentStep, totalSteps }) {
               transition={{ duration: 0.25 }}
               className={`h-3 w-3 rounded-full transition-all ${
                 active
-                  ? "bg-gradient-to-r from-yellow-400 to-sky-400 shadow-sm"
+                  ? "bg-gradient-to-r from-yellow-400 to-amber-400 shadow-sm"
                   : "bg-slate-200"
               }`}
             />

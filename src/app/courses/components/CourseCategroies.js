@@ -62,12 +62,12 @@ export default function CourseCategories() {
 
             <h2 className="mt-4 text-4xl font-bold leading-tight text-slate-900 md:text-5xl lg:text-6xl">
               Explore Our
-              <span className="bg-gradient-to-r from-amber-500 via-yellow-400 to-sky-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-amber-500 to-yellow-400  bg-clip-text text-transparent">
                 {" "}Learning Programs
               </span>
             </h2>
 
-            <div className="mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-amber-500 to-sky-400" />
+            <div className="mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400" />
 
           </div>
 

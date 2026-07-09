@@ -27,7 +27,7 @@ export default function CTA() {
 
             <h2 className="mt-5 text-4xl font-bold leading-tight sm:text-5xl">
               Speak English with{" "}
-              <span className="bg-gradient-to-r from-amber-500 via-yellow-400 to-sky-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-amber-500 to-yellow-400 bg-clip-text text-transparent">
                 confidence in real life
               </span>
             </h2>

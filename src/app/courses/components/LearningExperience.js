@@ -70,12 +70,12 @@ export default function LearningExperience() {
 
           <h2 className="mt-4 text-3xl font-bold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
             A Simple Path to
-            <span className="bg-gradient-to-r from-amber-500 via-yellow-400 to-sky-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-amber-500 to-yellow-400  bg-clip-text text-transparent">
               {" "}Success
             </span>
           </h2>
 
-          <div className="mx-auto mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-amber-500 to-sky-400" />
+          <div className="mx-auto mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400" />
 
           <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
             Our structured approach helps every learner build confidence,
@@ -102,7 +102,7 @@ export default function LearningExperience() {
 
               <div className="flex flex-col gap-5 md:flex-row">
 
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-amber-100 to-sky-100 text-2xl text-amber-500">
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-amber-100 to-yellow-100 text-2xl text-amber-500">
                   {item.icon}
                 </div>
 

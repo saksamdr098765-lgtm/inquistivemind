@@ -571,8 +571,6 @@ By the end of the course, learners will be able to communicate confidently in Fr
     "Anyone looking to learn a globally recognized foreign language",
   ],
 },
-
-
 {
   _id: "685a1f4a7b9c4d001f2e1236",
 
@@ -868,6 +866,1592 @@ By the end of the program, students demonstrate stronger conceptual understandin
     "Students aiming to improve grades and rankings",
     "Parents seeking quality academic support",
     "Students looking for structured learning and guidance",
+  ],
+},
+{
+  _id: "685a2f5b7b9c4d001f2e5678",
+
+  title: "French A1 Beginner Course",
+
+  slug: "french-a1-beginner-course",
+
+  shortDescription:
+    "Learn French from scratch with our A1 Beginner Course. Master everyday vocabulary, pronunciation, grammar, listening, speaking, reading, and writing through live interactive classes designed for students, professionals, travelers, and study abroad aspirants.",
+
+  description: `
+French A1 Beginner Course is a comprehensive beginner-level program designed according to the Common European Framework of Reference for Languages (CEFR A1).
+
+The course helps learners develop the ability to understand and use familiar everyday French expressions, introduce themselves confidently, ask and answer simple questions, and communicate in daily situations.
+
+Students participate in live speaking sessions, pronunciation practice, grammar lessons, vocabulary-building activities, listening exercises, reading comprehension, writing assignments, and conversation practice with experienced trainers.
+
+Whether you are planning to study abroad, migrate, travel to French-speaking countries, improve your career opportunities, or simply learn a new language, this course provides a structured foundation in French.
+
+Throughout the program, learners receive regular assessments, speaking feedback, interactive assignments, and practical communication exercises.
+
+By the end of the course, students will confidently communicate in basic French conversations and build a strong foundation for progressing to French A2 and higher CEFR levels.
+  `,
+
+  thumbnail: {
+    public_id: "courses/french-a1-beginner",
+    url: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a",
+  },
+
+  // price: 6999,
+
+  durationInMonths: 3,
+
+  level: "A1 Beginner",
+
+  language: "French",
+
+  category: "French Language",
+
+  status: "published",
+
+  enrollmentOpen: true,
+
+  tags: [
+    "french course",
+    "french a1",
+    "learn french",
+    "beginner french",
+    "french speaking",
+    "study abroad",
+    "canada immigration",
+    "france student visa",
+    "french grammar",
+    "french vocabulary",
+    "cefr a1",
+    "online french classes",
+  ],
+
+  learningOutcomes: [
+    "Introduce yourself confidently in French",
+    "Understand everyday French conversations",
+    "Speak basic French in daily situations",
+    "Read simple French texts",
+    "Write short emails and messages in French",
+    "Develop correct French pronunciation",
+    "Build practical everyday vocabulary",
+    "Understand basic French grammar",
+    "Prepare for French A2 level",
+    "Build confidence while communicating in French",
+  ],
+
+  requirements: [
+    "No prior knowledge of French required",
+    "Internet connection for online live classes",
+    "Notebook for practice and assignments",
+    "Commitment to attend speaking sessions regularly",
+  ],
+
+  targetAudience: [
+    "Complete Beginners",
+    "School Students",
+    "College Students",
+    "Study Abroad Aspirants",
+    "Canada Immigration Applicants",
+    "Working Professionals",
+    "Travel Enthusiasts",
+    "Language Learners",
+  ],
+
+  modules: [
+    {
+      title: "Introduction to French",
+      description:
+        "Learn the French alphabet, pronunciation, greetings, and introductions.",
+      lessons: [
+        "French Alphabet",
+        "Greetings",
+        "Introducing Yourself",
+        "Basic Expressions",
+      ],
+    },
+    {
+      title: "Basic Grammar",
+      description:
+        "Understand essential grammar needed for beginner communication.",
+      lessons: [
+        "Articles",
+        "Gender of Nouns",
+        "Present Tense",
+        "Pronouns",
+        "Simple Sentences",
+      ],
+    },
+    {
+      title: "Vocabulary Building",
+      description:
+        "Develop vocabulary used in daily life and common conversations.",
+      lessons: [
+        "Numbers",
+        "Colors",
+        "Family",
+        "Food",
+        "Travel Vocabulary",
+      ],
+    },
+    {
+      title: "Listening & Speaking",
+      description:
+        "Practice listening comprehension and speaking confidently.",
+      lessons: [
+        "Daily Conversations",
+        "Question & Answer Practice",
+        "Pronunciation",
+        "Role Plays",
+      ],
+    },
+    {
+      title: "Reading & Writing",
+      description:
+        "Learn to read simple passages and write basic French sentences.",
+      lessons: [
+        "Reading Practice",
+        "Writing Short Paragraphs",
+        "Email Writing",
+        "Sentence Formation",
+      ],
+    },
+    {
+      title: "A1 Exam Preparation",
+      description:
+        "Prepare for CEFR A1 assessments and future language certifications.",
+      lessons: [
+        "Revision",
+        "Mock Tests",
+        "Speaking Assessment",
+        "Final Evaluation",
+      ],
+    },
+  ],
+
+  certificateAvailable: true,
+
+  classType: "Live Online",
+
+  seoTitle:
+    "French A1 Course | Beginner French Classes | Learn French Online",
+
+  seoDescription:
+    "Join our French A1 Beginner Course to learn French from scratch. Improve speaking, listening, reading, writing, grammar, pronunciation, and vocabulary through live online classes aligned with CEFR A1.",
+
+  batches: [
+    {
+      _id: "fr-a1-batch-1",
+      name: "Morning Batch",
+      startDate: "2026-07-05",
+      students: 22,
+    },
+    {
+      _id: "fr-a1-batch-2",
+      name: "Weekend Batch",
+      startDate: "2026-07-12",
+      students: 18,
+    },
+  ],
+
+  createdAt: "2026-06-20T10:00:00.000Z",
+
+  updatedAt: "2026-06-24T10:00:00.000Z",
+
+  results: [
+    {
+      name: "Neha Kapoor",
+      image:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+      achievement: "Started French from Scratch",
+      result: "Beginner → A1 Certified",
+      quote:
+        "The interactive classes made learning French simple and enjoyable. I can now introduce myself and communicate confidently.",
+    },
+    {
+      name: "Arjun Malhotra",
+      image:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43d",
+      achievement: "Study Abroad Preparation",
+      result: "Ready for A2 Level",
+      quote:
+        "This course built a strong foundation for my higher studies in France. The speaking practice was extremely helpful.",
+    },
+    {
+      name: "Simran Kaur",
+      image:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+      achievement: "Improved French Communication",
+      result: "Confident Everyday Conversations",
+      quote:
+        "I loved the pronunciation sessions and vocabulary practice. Learning French became much easier than I expected.",
+    },
+  ],
+
+  learnings: [
+    {
+      icon: <FaComments />,
+      title: "Speak Basic French",
+      description:
+        "Communicate confidently in everyday French conversations.",
+    },
+    {
+      icon: <FaMicrophone />,
+      title: "French Pronunciation",
+      description:
+        "Develop accurate pronunciation and listening skills.",
+    },
+    {
+      icon: <FaBookOpen />,
+      title: "Vocabulary Building",
+      description:
+        "Learn practical vocabulary used in daily situations.",
+    },
+    {
+      icon: <FaCheckCircle />,
+      title: "French Grammar",
+      description:
+        "Master beginner grammar with practical exercises.",
+    },
+    {
+      icon: <FaUserTie />,
+      title: "Study Abroad Preparation",
+      description:
+        "Build a strong language foundation for international education.",
+    },
+    {
+      icon: <FaBullhorn />,
+      title: "Conversation Practice",
+      description:
+        "Gain confidence through live speaking sessions and role plays.",
+    },
+  ],
+
+  whoIsThisFor: [
+    "Complete beginners learning French",
+    "Students planning to study in France or Canada",
+    "College students learning a foreign language",
+    "Professionals expanding career opportunities",
+    "Travelers visiting French-speaking countries",
+    "Canada PR applicants",
+    "Anyone preparing for CEFR A2 and DELF exams",
+    "Anyone interested in learning French from scratch",
+  ],
+},
+{
+  _id: "685a3f7b7b9c4d001f2e6789",
+
+  title: "French A2 Intermediate Course",
+
+  slug: "french-a2-intermediate-course",
+
+  shortDescription:
+    "Advance your French communication skills with our CEFR A2 Course. Improve speaking, listening, reading, writing, grammar, vocabulary, pronunciation, and real-life conversation through live interactive classes.",
+
+  description: `
+French A2 Intermediate Course is designed according to the Common European Framework of Reference for Languages (CEFR A2). It is ideal for learners who have completed the A1 level or already possess basic knowledge of French.
+
+The course focuses on improving communication skills by helping learners understand frequently used expressions, participate in everyday conversations, describe experiences, express opinions, and communicate confidently in familiar situations.
+
+Students practice through live speaking sessions, grammar workshops, listening exercises, reading comprehension, writing assignments, vocabulary development, role plays, and interactive classroom activities.
+
+Whether you are preparing for higher education, immigration, DELF A2 certification, professional opportunities, or simply want to improve your French fluency, this course provides the next step in your language-learning journey.
+
+By the end of the program, students will communicate comfortably in daily conversations, understand routine situations, write structured paragraphs, and confidently progress toward the B1 level.
+  `,
+
+  thumbnail: {
+    public_id: "courses/french-a2-course",
+    url: "https://images.unsplash.com/photo-1517048676732-d65bc937f952",
+  },
+
+  // price: 7999,
+
+  durationInMonths: 3,
+
+  level: "A2 Intermediate",
+
+  language: "French",
+
+  category: "French Language",
+
+  status: "published",
+
+  enrollmentOpen: true,
+
+  tags: [
+    "french a2",
+    "learn french online",
+    "intermediate french",
+    "cefr a2",
+    "delf a2",
+    "french speaking course",
+    "french grammar",
+    "study abroad",
+    "canada immigration",
+    "online french classes",
+    "french communication",
+    "french vocabulary",
+  ],
+
+  learningOutcomes: [
+    "Communicate confidently in everyday French conversations",
+    "Describe experiences, plans, and opinions",
+    "Understand frequently used French expressions",
+    "Improve listening and pronunciation",
+    "Write emails, letters, and short paragraphs",
+    "Strengthen French grammar skills",
+    "Expand practical vocabulary",
+    "Prepare for DELF A2 examination",
+    "Develop conversational fluency",
+    "Build a strong foundation for French B1",
+  ],
+
+  requirements: [
+    "Completion of French A1 or equivalent knowledge",
+    "Basic reading and speaking skills in French",
+    "Internet connection for online classes",
+    "Notebook for assignments and practice",
+  ],
+
+  targetAudience: [
+    "Students who completed French A1",
+    "Study Abroad Aspirants",
+    "Canada PR Applicants",
+    "Working Professionals",
+    "College Students",
+    "Language Enthusiasts",
+    "Travelers",
+    "Anyone preparing for DELF A2",
+  ],
+
+  modules: [
+    {
+      title: "Revision of A1 Concepts",
+      description:
+        "Refresh essential grammar and vocabulary before moving to A2.",
+      lessons: [
+        "A1 Grammar Review",
+        "Conversation Practice",
+        "Vocabulary Revision",
+        "Pronunciation Review",
+      ],
+    },
+    {
+      title: "Intermediate Grammar",
+      description:
+        "Learn advanced grammar structures used in everyday communication.",
+      lessons: [
+        "Past Tense (Passé Composé)",
+        "Future Tense",
+        "Reflexive Verbs",
+        "Object Pronouns",
+        "Comparisons",
+      ],
+    },
+    {
+      title: "Vocabulary Expansion",
+      description:
+        "Build vocabulary for work, travel, education, shopping, and daily life.",
+      lessons: [
+        "Travel Vocabulary",
+        "Shopping & Banking",
+        "Health",
+        "Education",
+        "Professional Vocabulary",
+      ],
+    },
+    {
+      title: "Speaking & Listening",
+      description:
+        "Improve confidence through interactive conversations.",
+      lessons: [
+        "Role Plays",
+        "Daily Situations",
+        "Listening Practice",
+        "Discussion Activities",
+      ],
+    },
+    {
+      title: "Reading & Writing",
+      description:
+        "Read authentic texts and improve writing skills.",
+      lessons: [
+        "Reading Articles",
+        "Letter Writing",
+        "Emails",
+        "Paragraph Writing",
+      ],
+    },
+    {
+      title: "DELF A2 Preparation",
+      description:
+        "Prepare for CEFR A2 certification with practice tests.",
+      lessons: [
+        "Mock Speaking Test",
+        "Listening Assessment",
+        "Writing Practice",
+        "Final Evaluation",
+      ],
+    },
+  ],
+
+  certificateAvailable: true,
+
+  classType: "Live Online",
+
+  seoTitle:
+    "French A2 Course | Intermediate French Classes | DELF A2 Preparation",
+
+  seoDescription:
+    "Join our French A2 Intermediate Course to improve speaking, listening, reading, writing, grammar, pronunciation, vocabulary, and prepare for DELF A2 certification through live online classes.",
+
+  batches: [
+    {
+      _id: "fr-a2-batch-1",
+      name: "Morning Batch",
+      startDate: "2026-07-08",
+      students: 20,
+    },
+    {
+      _id: "fr-a2-batch-2",
+      name: "Evening Batch",
+      startDate: "2026-07-15",
+      students: 17,
+    },
+  ],
+
+  createdAt: "2026-06-21T10:00:00.000Z",
+
+  updatedAt: "2026-06-24T10:00:00.000Z",
+
+  results: [
+    {
+      name: "Riya Sharma",
+      image:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+      achievement: "Passed DELF A2",
+      result: "A1 → A2 Certified",
+      quote:
+        "The speaking sessions and mock tests gave me the confidence to clear my DELF A2 exam.",
+    },
+    {
+      name: "Karan Verma",
+      image:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43d",
+      achievement: "Study Abroad Ready",
+      result: "Improved Communication",
+      quote:
+        "I can now confidently communicate during travel and university interactions in French.",
+    },
+    {
+      name: "Simran Gill",
+      image:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+      achievement: "Better Workplace Communication",
+      result: "Confident French Speaker",
+      quote:
+        "This course strengthened my grammar, vocabulary, and overall confidence while speaking French.",
+    },
+  ],
+
+  learnings: [
+    {
+      icon: <FaComments />,
+      title: "Fluent Conversations",
+      description:
+        "Communicate naturally in everyday situations.",
+    },
+    {
+      icon: <FaMicrophone />,
+      title: "Pronunciation & Listening",
+      description:
+        "Improve comprehension and pronunciation accuracy.",
+    },
+    {
+      icon: <FaBookOpen />,
+      title: "Advanced Vocabulary",
+      description:
+        "Expand vocabulary for education, travel, and professional use.",
+    },
+    {
+      icon: <FaCheckCircle />,
+      title: "Intermediate Grammar",
+      description:
+        "Master essential grammar for A2 communication.",
+    },
+    {
+      icon: <FaUserTie />,
+      title: "DELF A2 Preparation",
+      description:
+        "Prepare confidently for the DELF A2 certification exam.",
+    },
+    {
+      icon: <FaBullhorn />,
+      title: "Real-Life Communication",
+      description:
+        "Practice speaking through discussions, role plays, and presentations.",
+    },
+  ],
+
+  whoIsThisFor: [
+    "Students who completed French A1",
+    "Learners preparing for DELF A2",
+    "Study abroad aspirants",
+    "Canada immigration applicants",
+    "Working professionals",
+    "College students",
+    "Travel enthusiasts",
+    "Anyone aiming to reach French B1 level",
+  ],
+},
+{
+  _id: "685a4f8c7b9c4d001f2e7890",
+
+  title: "French B1 Intermediate Course",
+
+  slug: "french-b1-intermediate-course",
+
+  shortDescription:
+    "Achieve independent communication in French with our CEFR B1 Course. Develop fluency in speaking, listening, reading, writing, grammar, and vocabulary while preparing for DELF B1 certification, higher education, and international careers.",
+
+  description: `
+French B1 Intermediate Course is designed according to the Common European Framework of Reference for Languages (CEFR B1). It is ideal for learners who have successfully completed A2 or possess equivalent French language proficiency.
+
+The course focuses on helping learners communicate independently in academic, professional, and everyday situations. Students learn to express opinions, discuss experiences, explain ideas, solve problems, and participate naturally in longer conversations.
+
+The program includes live interactive speaking classes, advanced grammar lessons, pronunciation practice, vocabulary expansion, listening comprehension, reading authentic French materials, writing structured texts, presentations, debates, and real-world communication exercises.
+
+Whether your goal is studying abroad, immigration, DELF B1 certification, career advancement, or becoming fluent in French, this course provides the skills required to confidently communicate in French-speaking environments.
+
+By the end of the course, learners will confidently understand standard spoken French, participate in discussions, write well-structured texts, express viewpoints clearly, and build a strong foundation for the B2 level.
+  `,
+
+  thumbnail: {
+    public_id: "courses/french-b1-course",
+    url: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+  },
+
+  // price: 9999,
+
+  durationInMonths: 4,
+
+  level: "B1 Intermediate",
+
+  language: "French",
+
+  category: "French Language",
+
+  status: "published",
+
+  enrollmentOpen: true,
+
+  tags: [
+    "French B1",
+    "DELF B1",
+    "Intermediate French",
+    "French speaking course",
+    "Learn French online",
+    "French grammar",
+    "French conversation",
+    "French vocabulary",
+    "Study abroad",
+    "Canada immigration",
+    "French certification",
+    "Online French classes",
+  ],
+
+  learningOutcomes: [
+    "Communicate independently in French",
+    "Participate confidently in conversations and discussions",
+    "Express opinions and ideas naturally",
+    "Understand authentic spoken French",
+    "Improve pronunciation and fluency",
+    "Write essays, emails, and formal documents",
+    "Expand advanced French vocabulary",
+    "Master intermediate grammar concepts",
+    "Prepare for DELF B1 examination",
+    "Build confidence for French B2 level",
+  ],
+
+  requirements: [
+    "Completion of French A2 or equivalent knowledge",
+    "Basic conversational French skills",
+    "Internet connection for live classes",
+    "Notebook for assignments and practice",
+  ],
+
+  targetAudience: [
+    "Students completing French A2",
+    "Study Abroad Aspirants",
+    "Canada PR Applicants",
+    "Working Professionals",
+    "College Students",
+    "International Job Seekers",
+    "Language Enthusiasts",
+    "Learners preparing for DELF B1",
+  ],
+
+  modules: [
+    {
+      title: "Revision of A2 Concepts",
+      description:
+        "Strengthen previous concepts before moving to B1 level.",
+      lessons: [
+        "Grammar Revision",
+        "Conversation Review",
+        "Vocabulary Expansion",
+        "Listening Practice",
+      ],
+    },
+    {
+      title: "Advanced Grammar",
+      description:
+        "Learn grammar required for independent communication.",
+      lessons: [
+        "Imparfait",
+        "Future Simple",
+        "Conditional",
+        "Relative Pronouns",
+        "Complex Sentences",
+      ],
+    },
+    {
+      title: "Speaking & Communication",
+      description:
+        "Develop fluency through practical speaking exercises.",
+      lessons: [
+        "Debates",
+        "Presentations",
+        "Storytelling",
+        "Role Plays",
+      ],
+    },
+    {
+      title: "Reading & Listening",
+      description:
+        "Understand newspapers, interviews, podcasts, and articles.",
+      lessons: [
+        "News Articles",
+        "Podcasts",
+        "Audio Conversations",
+        "Reading Comprehension",
+      ],
+    },
+    {
+      title: "Writing Skills",
+      description:
+        "Write structured and meaningful French texts.",
+      lessons: [
+        "Essay Writing",
+        "Formal Emails",
+        "Letters",
+        "Opinion Writing",
+      ],
+    },
+    {
+      title: "DELF B1 Preparation",
+      description:
+        "Comprehensive preparation for DELF B1 examination.",
+      lessons: [
+        "Mock Tests",
+        "Speaking Assessment",
+        "Writing Evaluation",
+        "Final Practice",
+      ],
+    },
+  ],
+
+  certificateAvailable: true,
+
+  classType: "Live Online",
+
+  seoTitle:
+    "French B1 Course | DELF B1 Preparation | Intermediate French Classes",
+
+  seoDescription:
+    "Master independent French communication with our French B1 Course. Improve speaking, listening, reading, writing, grammar, vocabulary, and prepare for DELF B1 certification through expert-led live online classes.",
+
+  batches: [
+    {
+      _id: "fr-b1-batch-1",
+      name: "Morning Batch",
+      startDate: "2026-07-10",
+      students: 18,
+    },
+    {
+      _id: "fr-b1-batch-2",
+      name: "Weekend Batch",
+      startDate: "2026-07-18",
+      students: 15,
+    },
+  ],
+
+  createdAt: "2026-06-22T10:00:00.000Z",
+
+  updatedAt: "2026-06-25T10:00:00.000Z",
+
+  results: [
+    {
+      name: "Aarav Mehta",
+      image:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43d",
+      achievement: "Passed DELF B1",
+      result: "A2 → B1 Certified",
+      quote:
+        "The speaking practice and presentations helped me become comfortable communicating entirely in French.",
+    },
+    {
+      name: "Sneha Kapoor",
+      image:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+      achievement: "Study Abroad Success",
+      result: "French University Admission",
+      quote:
+        "This course gave me the confidence and language skills needed for my university interviews and daily life in France.",
+    },
+    {
+      name: "Rohan Verma",
+      image:
+        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
+      achievement: "Career Growth",
+      result: "Professional French Communication",
+      quote:
+        "My vocabulary and grammar improved tremendously, allowing me to communicate confidently with international clients.",
+    },
+  ],
+
+  learnings: [
+    {
+      icon: <FaComments />,
+      title: "Independent Conversations",
+      description:
+        "Communicate naturally in academic, professional, and social situations.",
+    },
+    {
+      icon: <FaMicrophone />,
+      title: "Advanced Pronunciation",
+      description:
+        "Improve fluency, pronunciation, and listening comprehension.",
+    },
+    {
+      icon: <FaBookOpen />,
+      title: "Rich Vocabulary",
+      description:
+        "Develop vocabulary for work, education, travel, and daily communication.",
+    },
+    {
+      icon: <FaCheckCircle />,
+      title: "Complex Grammar",
+      description:
+        "Master intermediate grammar and sentence structures.",
+    },
+    {
+      icon: <FaUserTie />,
+      title: "DELF B1 Preparation",
+      description:
+        "Prepare confidently for the official DELF B1 examination.",
+    },
+    {
+      icon: <FaBullhorn />,
+      title: "Presentation Skills",
+      description:
+        "Develop confidence through presentations, discussions, and debates.",
+    },
+  ],
+
+  whoIsThisFor: [
+    "Students who completed French A2",
+    "Learners preparing for DELF B1",
+    "Study abroad aspirants",
+    "Canada immigration applicants",
+    "Working professionals",
+    "College students",
+    "International job seekers",
+    "Anyone planning to advance to French B2",
+  ],
+},
+{
+  _id: "685a1f4a7b9c4d001f2e1238",
+
+  title: "French B2 Advanced Communication Course",
+
+  slug: "french-b2-advanced",
+
+  shortDescription:
+    "Master advanced French communication, professional writing, debates, presentations, business communication, and DELF B2 exam preparation through immersive live online classes.",
+
+  description: `
+The French B2 Advanced Communication Course is designed for learners who already possess a strong intermediate understanding of French and wish to achieve independent, confident, and professional communication.
+
+The course focuses on advanced speaking, listening, writing, reading comprehension, grammar refinement, professional communication, public presentations, debates, critical thinking, and authentic French media.
+
+Students engage in discussions on current affairs, business topics, culture, travel, technology, education, and professional situations while learning advanced sentence structures and natural expressions.
+
+Special attention is given to DELF B2 examination strategies, formal writing, argument development, opinion essays, presentations, interviews, and workplace conversations.
+
+By the end of this program, learners will confidently communicate with native speakers, express opinions fluently, understand complex conversations, and prepare successfully for DELF B2 certification or professional opportunities requiring French.
+  `,
+
+  thumbnail: {
+    public_id: "courses/french-b2-advanced",
+    url: "https://images.unsplash.com/photo-1493612276216-ee3925520721",
+  },
+
+  durationInMonths: 4,
+
+  level: "Upper Intermediate (B2)",
+
+  language: "French",
+
+  category: "French Language",
+
+  status: "published",
+
+  enrollmentOpen: true,
+
+  tags: [
+    "French B2",
+    "Advanced French",
+    "DELF B2",
+    "French communication",
+    "Business French",
+    "French speaking",
+    "French writing",
+    "French grammar",
+    "French vocabulary",
+    "French fluency",
+    "French certification",
+    "French online course",
+  ],
+
+  learningOutcomes: [
+    "Communicate fluently with native speakers",
+    "Participate confidently in debates and discussions",
+    "Write professional emails and formal documents",
+    "Understand advanced spoken French",
+    "Improve pronunciation and natural fluency",
+    "Prepare successfully for DELF B2",
+    "Present ideas clearly in French",
+    "Develop business communication skills",
+    "Expand advanced vocabulary",
+    "Gain confidence for study or work in French-speaking countries",
+  ],
+
+  requirements: [
+    "Completion of French B1 or equivalent knowledge",
+    "Comfortable with intermediate grammar and conversation",
+    "Internet connection for live classes",
+    "Notebook for assignments and speaking practice",
+  ],
+
+  targetAudience: [
+    "Students completing French B1",
+    "Professionals working with French companies",
+    "Students preparing for DELF B2",
+    "Learners planning higher education abroad",
+    "Individuals relocating to French-speaking countries",
+    "Professionals seeking career growth through French",
+  ],
+
+  modules: [
+    {
+      title: "Advanced Grammar & Sentence Structures",
+      description:
+        "Refine grammar accuracy using advanced sentence patterns.",
+      lessons: [
+        "Complex Sentences",
+        "Subjunctive Mood",
+        "Advanced Verb Usage",
+        "Reported Speech",
+      ],
+    },
+    {
+      title: "Professional Communication",
+      description:
+        "Communicate confidently in workplace and business environments.",
+      lessons: [
+        "Business Emails",
+        "Meetings",
+        "Negotiations",
+        "Professional Vocabulary",
+      ],
+    },
+    {
+      title: "Debates & Opinion Expression",
+      description:
+        "Develop confidence in discussing complex topics.",
+      lessons: [
+        "Current Affairs",
+        "Expressing Opinions",
+        "Arguments",
+        "Critical Thinking",
+      ],
+    },
+    {
+      title: "Listening & Media",
+      description:
+        "Understand authentic French through various media sources.",
+      lessons: [
+        "News",
+        "Podcasts",
+        "Interviews",
+        "TV Programs",
+      ],
+    },
+    {
+      title: "Presentation & Public Speaking",
+      description:
+        "Deliver structured presentations with confidence.",
+      lessons: [
+        "Presentation Skills",
+        "Storytelling",
+        "Audience Engagement",
+        "Speech Practice",
+      ],
+    },
+    {
+      title: "DELF B2 Preparation",
+      description:
+        "Comprehensive preparation for all DELF B2 exam sections.",
+      lessons: [
+        "Listening Practice",
+        "Reading Comprehension",
+        "Writing Tasks",
+        "Speaking Examination",
+      ],
+    },
+  ],
+
+  certificateAvailable: true,
+
+  classType: "Live Online",
+
+  seoTitle:
+    "French B2 Course | Advanced French Language & DELF B2 Preparation",
+
+  seoDescription:
+    "Join our French B2 Advanced Course to master fluent French communication, professional writing, advanced grammar, speaking, and DELF B2 exam preparation through expert-led live online classes.",
+
+  batches: [
+    {
+      _id: "fr-b2-batch-1",
+      name: "Weekend Batch",
+      startDate: "2026-07-20",
+      students: 18,
+    },
+    {
+      _id: "fr-b2-batch-2",
+      name: "Evening Batch",
+      startDate: "2026-08-05",
+      students: 16,
+    },
+  ],
+
+  createdAt: "2026-06-20T10:00:00.000Z",
+
+  updatedAt: "2026-06-23T10:00:00.000Z",
+
+  results: [
+    {
+      name: "Aditi Sharma",
+      image:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+      achievement: "Passed DELF B2",
+      result: "B1 → DELF B2 Certified",
+      quote:
+        "The debate sessions, mock exams, and advanced grammar practice helped me clear DELF B2 confidently.",
+    },
+    {
+      name: "Rahul Kapoor",
+      image:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43d",
+      achievement: "Job Opportunity in France",
+      result: "Professional French Communication",
+      quote:
+        "This course helped me communicate confidently during interviews and secure a position with a French company.",
+    },
+    {
+      name: "Sanya Gupta",
+      image:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+      achievement: "University Admission",
+      result: "Advanced Academic French",
+      quote:
+        "The structured writing and speaking practice prepared me perfectly for university admissions abroad.",
+    },
+  ],
+
+  learnings: [
+    {
+      icon: <FaComments />,
+      title: "Advanced Conversations",
+      description:
+        "Discuss complex topics confidently with fluent communication.",
+    },
+    {
+      icon: <FaMicrophone />,
+      title: "Professional Speaking",
+      description:
+        "Deliver presentations, meetings, and interviews naturally.",
+    },
+    {
+      icon: <FaBookOpen />,
+      title: "Advanced Vocabulary",
+      description:
+        "Build professional, academic, and business vocabulary.",
+    },
+    {
+      icon: <FaCheckCircle />,
+      title: "Grammar Mastery",
+      description:
+        "Use advanced grammar accurately in speaking and writing.",
+    },
+    {
+      icon: <FaUserTie />,
+      title: "Business French",
+      description:
+        "Communicate effectively in international workplaces.",
+    },
+    {
+      icon: <FaBullhorn />,
+      title: "DELF B2 Preparation",
+      description:
+        "Prepare confidently for all DELF B2 examination modules.",
+    },
+  ],
+
+  whoIsThisFor: [
+    "Students completing French B1",
+    "Learners preparing for DELF B2 certification",
+    "Professionals working with international companies",
+    "Students planning higher education in France or Canada",
+    "Individuals relocating to French-speaking countries",
+    "Business professionals communicating with French clients",
+    "Advanced learners aiming for fluent communication",
+    "Anyone pursuing professional-level French proficiency",
+  ],
+},
+{
+  _id: "685a1f4a7b9c4d001f2e1239",
+
+  title: "French C1 Professional Fluency Course",
+
+  slug: "french-c1-professional-fluency",
+
+  shortDescription:
+    "Achieve professional-level French fluency with advanced communication, academic writing, public speaking, business French, and DALF C1 preparation through immersive live online classes.",
+
+  description: `
+The French C1 Professional Fluency Course is designed for advanced learners who want to communicate naturally, accurately, and confidently in academic, professional, and social environments.
+
+This intensive program focuses on mastering sophisticated vocabulary, advanced grammar, spontaneous speaking, persuasive communication, academic writing, presentations, negotiations, public speaking, and cultural understanding.
+
+Students participate in real-life discussions, debates, business meetings, research presentations, media analysis, literature discussions, and workplace simulations to develop native-like fluency.
+
+The course also provides complete preparation for the DALF C1 examination, including advanced listening, reading, writing, and oral production.
+
+By the end of the course, learners will confidently understand complex French content, communicate with native speakers effortlessly, write professional and academic documents, and perform successfully in higher education or international careers requiring advanced French proficiency.
+  `,
+
+  thumbnail: {
+    public_id: "courses/french-c1-professional-fluency",
+    url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b",
+  },
+
+  durationInMonths: 5,
+
+  level: "Advanced (C1)",
+
+  language: "French",
+
+  category: "French Language",
+
+  status: "published",
+
+  enrollmentOpen: true,
+
+  tags: [
+    "French C1",
+    "DALF C1",
+    "Advanced French",
+    "Professional French",
+    "Business French",
+    "Academic French",
+    "French fluency",
+    "French communication",
+    "French writing",
+    "French public speaking",
+    "French online course",
+    "French certification",
+  ],
+
+  learningOutcomes: [
+    "Speak French fluently in professional environments",
+    "Express complex ideas with confidence",
+    "Write advanced academic and professional documents",
+    "Understand native speakers effortlessly",
+    "Participate in debates and negotiations",
+    "Master advanced grammar and stylistic expressions",
+    "Prepare successfully for DALF C1",
+    "Deliver presentations in French",
+    "Develop near-native pronunciation",
+    "Gain confidence for international careers and higher education",
+  ],
+
+  requirements: [
+    "Completion of French B2 or equivalent proficiency",
+    "Strong command of intermediate and advanced grammar",
+    "Regular participation in speaking sessions",
+    "Internet connection for live online classes",
+  ],
+
+  targetAudience: [
+    "Students preparing for DALF C1",
+    "Professionals working in multinational companies",
+    "University students pursuing higher education abroad",
+    "Translators and language professionals",
+    "Individuals relocating to France or Canada",
+    "Learners aiming for near-native fluency",
+  ],
+
+  modules: [
+    {
+      title: "Advanced Grammar & Expression",
+      description:
+        "Master sophisticated grammatical structures and stylistic language.",
+      lessons: [
+        "Advanced Syntax",
+        "Complex Sentence Structures",
+        "Idiomatic Expressions",
+        "Language Register",
+      ],
+    },
+    {
+      title: "Professional Communication",
+      description:
+        "Communicate confidently in corporate and international environments.",
+      lessons: [
+        "Business Meetings",
+        "Negotiation Skills",
+        "Professional Emails",
+        "Corporate Presentations",
+      ],
+    },
+    {
+      title: "Academic Writing",
+      description:
+        "Develop advanced writing skills for university and research purposes.",
+      lessons: [
+        "Essays",
+        "Reports",
+        "Research Writing",
+        "Argumentative Writing",
+      ],
+    },
+    {
+      title: "Media & Cultural Analysis",
+      description:
+        "Understand authentic French media and cultural perspectives.",
+      lessons: [
+        "Newspapers",
+        "Podcasts",
+        "TV Discussions",
+        "Literature Analysis",
+      ],
+    },
+    {
+      title: "Public Speaking & Debate",
+      description:
+        "Present and defend ideas confidently before an audience.",
+      lessons: [
+        "Public Speaking",
+        "Debates",
+        "Critical Thinking",
+        "Persuasive Communication",
+      ],
+    },
+    {
+      title: "DALF C1 Preparation",
+      description:
+        "Comprehensive preparation for all DALF C1 examination sections.",
+      lessons: [
+        "Listening",
+        "Reading",
+        "Writing",
+        "Oral Production",
+      ],
+    },
+  ],
+
+  certificateAvailable: true,
+
+  classType: "Live Online",
+
+  seoTitle:
+    "French C1 Course | DALF C1 Preparation & Professional French Fluency",
+
+  seoDescription:
+    "Master advanced French communication with our French C1 Course. Learn professional speaking, academic writing, business French, public speaking, and prepare for DALF C1 certification through expert-led live online classes.",
+
+  batches: [
+    {
+      _id: "fr-c1-batch-1",
+      name: "Weekend Advanced Batch",
+      startDate: "2026-08-01",
+      students: 14,
+    },
+    {
+      _id: "fr-c1-batch-2",
+      name: "Evening Professional Batch",
+      startDate: "2026-08-18",
+      students: 11,
+    },
+  ],
+
+  createdAt: "2026-06-20T10:00:00.000Z",
+
+  updatedAt: "2026-06-23T10:00:00.000Z",
+
+  results: [
+    {
+      name: "Neha Arora",
+      image:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+      achievement: "Passed DALF C1",
+      result: "B2 → DALF C1 Certified",
+      quote:
+        "The advanced discussions and mock examinations helped me achieve my DALF C1 certification with confidence.",
+    },
+    {
+      name: "Karan Malhotra",
+      image:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43d",
+      achievement: "International Career",
+      result: "Professional French Fluency",
+      quote:
+        "I now conduct meetings and presentations entirely in French while working for an international organization.",
+    },
+    {
+      name: "Sarah Wilson",
+      image:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+      achievement: "University Admission",
+      result: "Academic French Excellence",
+      quote:
+        "This course gave me the confidence to pursue postgraduate studies in France with advanced French proficiency.",
+    },
+  ],
+
+  learnings: [
+    {
+      icon: <FaComments />,
+      title: "Native-Level Conversations",
+      description:
+        "Communicate naturally in complex personal and professional situations.",
+    },
+    {
+      icon: <FaMicrophone />,
+      title: "Professional Presentations",
+      description:
+        "Deliver impactful presentations and speeches confidently.",
+    },
+    {
+      icon: <FaBookOpen />,
+      title: "Academic Writing",
+      description:
+        "Write research papers, reports, and professional documents effectively.",
+    },
+    {
+      icon: <FaCheckCircle />,
+      title: "Advanced Grammar",
+      description:
+        "Master sophisticated grammar and stylistic language structures.",
+    },
+    {
+      icon: <FaUserTie />,
+      title: "Business Communication",
+      description:
+        "Lead meetings, negotiations, and workplace discussions in French.",
+    },
+    {
+      icon: <FaBullhorn />,
+      title: "DALF C1 Success",
+      description:
+        "Prepare comprehensively for every section of the DALF C1 examination.",
+    },
+  ],
+
+  whoIsThisFor: [
+    "Students completing French B2",
+    "Learners preparing for DALF C1",
+    "Professionals seeking international career opportunities",
+    "University students pursuing higher education in French-speaking countries",
+    "Researchers and academics",
+    "Translators and interpreters",
+    "Business professionals working with French-speaking clients",
+    "Anyone aiming for near-native French fluency",
+  ],
+},
+{
+  _id: "685a1f4a7b9c4d001f2e1240",
+
+  title: "French C2 Native Mastery Course",
+
+  slug: "french-c2-native-mastery",
+
+  shortDescription:
+    "Achieve near-native French proficiency with advanced communication, literature, research writing, interpretation, public speaking, and DALF C2 preparation through immersive live online training.",
+
+  description: `
+The French C2 Native Mastery Course is our highest level of French language training, designed for learners who wish to communicate with the precision, confidence, and sophistication of a native speaker.
+
+This program emphasizes complete mastery of spoken and written French through advanced academic discussions, professional communication, literature analysis, research writing, interpretation techniques, cultural studies, and high-level presentations.
+
+Students explore authentic French media, legal and business communication, advanced vocabulary, idiomatic expressions, regional language variations, and complex grammar structures while participating in debates, seminars, conferences, and public speaking exercises.
+
+Special attention is given to DALF C2 examination strategies, spontaneous communication, critical analysis, persuasive writing, and advanced listening comprehension using real-world French content.
+
+Upon completion, learners will confidently communicate in any personal, academic, governmental, corporate, or international environment while demonstrating exceptional fluency, cultural awareness, and professional-level French proficiency.
+  `,
+
+  thumbnail: {
+    public_id: "courses/french-c2-native-mastery",
+    url: "https://images.unsplash.com/photo-1523240795612-9a054b0db644",
+  },
+
+  durationInMonths: 6,
+
+  level: "Mastery (C2)",
+
+  language: "French",
+
+  category: "French Language",
+
+  status: "published",
+
+  enrollmentOpen: true,
+
+  tags: [
+    "French C2",
+    "DALF C2",
+    "Native French",
+    "French Mastery",
+    "Professional French",
+    "Academic French",
+    "Interpreter Training",
+    "French Literature",
+    "Advanced French Communication",
+    "French Fluency",
+    "French Certification",
+    "French Online Course",
+  ],
+
+  learningOutcomes: [
+    "Communicate like a native French speaker",
+    "Understand every form of spoken and written French",
+    "Master academic and research writing",
+    "Lead professional meetings and negotiations",
+    "Interpret complex conversations accurately",
+    "Develop advanced public speaking skills",
+    "Understand regional accents and idiomatic expressions",
+    "Prepare successfully for DALF C2",
+    "Analyze literature and media critically",
+    "Achieve complete professional French fluency",
+  ],
+
+  requirements: [
+    "Completion of French C1 or equivalent proficiency",
+    "Excellent command of advanced grammar",
+    "Regular participation in discussions and presentations",
+    "Internet connection for live online classes",
+  ],
+
+  targetAudience: [
+    "Students preparing for DALF C2",
+    "Professional translators and interpreters",
+    "University researchers",
+    "International business professionals",
+    "Government and diplomatic professionals",
+    "Teachers of French language",
+    "Learners seeking native-level fluency",
+  ],
+
+  modules: [
+    {
+      title: "Native-Level Communication",
+      description:
+        "Develop effortless communication across every situation.",
+      lessons: [
+        "Spontaneous Speaking",
+        "Regional Expressions",
+        "Idioms",
+        "Conversation Mastery",
+      ],
+    },
+    {
+      title: "Advanced Academic Writing",
+      description:
+        "Produce research papers and high-level professional documents.",
+      lessons: [
+        "Research Writing",
+        "Academic Essays",
+        "Critical Reviews",
+        "Professional Reports",
+      ],
+    },
+    {
+      title: "French Literature & Culture",
+      description:
+        "Study authentic literary works and cultural perspectives.",
+      lessons: [
+        "Classic Literature",
+        "Modern Literature",
+        "French Society",
+        "Cultural Analysis",
+      ],
+    },
+    {
+      title: "Interpretation & Translation",
+      description:
+        "Develop advanced translation and interpretation skills.",
+      lessons: [
+        "Simultaneous Interpretation",
+        "Professional Translation",
+        "Contextual Meaning",
+        "Terminology",
+      ],
+    },
+    {
+      title: "Leadership Communication",
+      description:
+        "Master executive presentations and public speaking.",
+      lessons: [
+        "Executive Meetings",
+        "Negotiations",
+        "Seminars",
+        "Conference Speaking",
+      ],
+    },
+    {
+      title: "DALF C2 Preparation",
+      description:
+        "Comprehensive preparation for every component of DALF C2.",
+      lessons: [
+        "Listening",
+        "Reading",
+        "Advanced Writing",
+        "Oral Defense",
+      ],
+    },
+  ],
+
+  certificateAvailable: true,
+
+  classType: "Live Online",
+
+  seoTitle:
+    "French C2 Course | Native French Mastery & DALF C2 Preparation",
+
+  seoDescription:
+    "Master native-level French with our French C2 Course. Learn advanced communication, academic writing, literature, interpretation, business French, and prepare for DALF C2 certification through expert-led live classes.",
+
+  batches: [
+    {
+      _id: "fr-c2-batch-1",
+      name: "Weekend Mastery Batch",
+      startDate: "2026-08-15",
+      students: 8,
+    },
+    {
+      _id: "fr-c2-batch-2",
+      name: "Professional Evening Batch",
+      startDate: "2026-09-01",
+      students: 6,
+    },
+  ],
+
+  createdAt: "2026-06-20T10:00:00.000Z",
+
+  updatedAt: "2026-06-23T10:00:00.000Z",
+
+  results: [
+    {
+      name: "Ritika Sharma",
+      image:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
+      achievement: "Passed DALF C2",
+      result: "C1 → DALF C2 Certified",
+      quote:
+        "The advanced discussions, literature analysis, and mock exams helped me achieve the highest level of French proficiency.",
+    },
+    {
+      name: "Arjun Mehta",
+      image:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43d",
+      achievement: "Interpreter at International Conference",
+      result: "Professional French Interpreter",
+      quote:
+        "This course transformed my communication skills and prepared me for international interpretation assignments.",
+    },
+    {
+      name: "Emily Brown",
+      image:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80",
+      achievement: "Research Scholar in France",
+      result: "Native-Level Academic French",
+      quote:
+        "The academic writing and presentation modules prepared me perfectly for doctoral studies in France.",
+    },
+  ],
+
+  learnings: [
+    {
+      icon: <FaComments />,
+      title: "Native-Level Fluency",
+      description:
+        "Communicate naturally in every professional and personal situation.",
+    },
+    {
+      icon: <FaMicrophone />,
+      title: "Executive Communication",
+      description:
+        "Deliver world-class presentations, lectures, and speeches.",
+    },
+    {
+      icon: <FaBookOpen />,
+      title: "Academic Excellence",
+      description:
+        "Produce research papers and advanced academic publications.",
+    },
+    {
+      icon: <FaCheckCircle />,
+      title: "Language Mastery",
+      description:
+        "Master every aspect of French grammar, vocabulary, and style.",
+    },
+    {
+      icon: <FaUserTie />,
+      title: "Translation & Interpretation",
+      description:
+        "Develop professional-level interpreting and translation skills.",
+    },
+    {
+      icon: <FaBullhorn />,
+      title: "DALF C2 Success",
+      description:
+        "Prepare comprehensively for the highest French language certification.",
+    },
+  ],
+
+  whoIsThisFor: [
+    "Students completing French C1",
+    "Learners preparing for DALF C2 certification",
+    "Professional translators and interpreters",
+    "University professors and researchers",
+    "Government and diplomatic professionals",
+    "International business executives",
+    "French language teachers",
+    "Anyone aiming for native-level French proficiency",
   ],
 }
 ];

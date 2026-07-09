@@ -268,7 +268,7 @@ const teacherLeadsMutation=useTeacherLeadMutation()
                   className={`flex-1 rounded-full px-6 py-4 flex font-medium transition  justify-center
                     ${
                       canContinue
-                        ? "bg-gradient-to-r from-amber-400 to-sky-400 text-white shadow-lg"
+                        ? "bg-gradient-to-r from-amber-400 to-yellow-400 text-white shadow-lg"
                         : "cursor-not-allowed bg-slate-200 text-slate-400"
                     }`}
                 >

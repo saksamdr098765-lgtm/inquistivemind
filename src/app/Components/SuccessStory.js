@@ -11,19 +11,19 @@ const stories = [
     name: "Anjali Sharma",
     result: "B1 → C1 in 6 Months",
     video: "/students/anjali.mp4",
-    thumbnail: "/students/anjali.jpg",
+    thumbnail: "/logo.jpg",
   },
   {
     name: "Rahul Mehta",
     result: "IELTS 7.5 Score",
     video: "/students/rahul.mp4",
-    thumbnail: "/students/rahul.jpg",
+ thumbnail: "/logo.jpg",
   },
   {
     name: "Sofia Martin",
     result: "Fluent Conversation Level",
     video: "/students/anjali.mp4",
-    thumbnail: "/students/anjali.jpg",
+   thumbnail: "/logo.jpg",
   },
 ];
 
@@ -67,12 +67,12 @@ export default function SuccessStories() {
 
           <h2 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl lg:text-5xl">
             Stories of{" "}
-            <span className="bg-gradient-to-r from-amber-500 via-yellow-400 to-sky-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-yellow-500 to-yellow-400   bg-clip-text text-transparent">
               real change
             </span>
           </h2>
 
-          <div className="mx-auto mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-amber-500 to-sky-400" />
+          <div className="mx-auto mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 " />
 
           <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
             These are not testimonials. These are transformations of real
@@ -174,7 +174,7 @@ export default function SuccessStories() {
 
           <Link
             href="/courses"
-            className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-amber-500 px-8 py-3 font-medium text-white shadow-md shadow-amber-200 transition hover:bg-amber-600 sm:w-auto"
+            className="mt-8 inline-flex w-full items-center justify-center rounded-full bg-yellow-500 px-8 py-3 font-medium text-white shadow-md shadow-yellow-200 transition hover:bg-yellow-600 sm:w-auto"
           >
             Start Your Journey
           </Link>

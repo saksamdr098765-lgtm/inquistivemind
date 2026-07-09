@@ -64,12 +64,12 @@ export default function FindTutor() {
 
           <h2 className="mt-4 text-3xl font-bold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
             Discover the perfect{" "}
-            <span className="bg-gradient-to-r from-amber-500 via-yellow-400 to-sky-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 bg-clip-text text-transparent">
               tutor for your goals
             </span>
           </h2>
 
-          <div className="mx-auto mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-amber-500 to-sky-400" />
+          <div className="mx-auto mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600" />
 
           <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
             Browse verified tutors, compare expertise, read reviews, and book
@@ -89,7 +89,7 @@ export default function FindTutor() {
           >
             {/* Search */}
             <div className="flex h-14 items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4">
-              <FaSearch className="text-amber-500" />
+              <FaSearch className="text-yellow-500" />
               <span className="text-sm text-slate-500">
                 Search tutors, subjects...
               </span>
@@ -100,7 +100,7 @@ export default function FindTutor() {
               {filters.map((item) => (
                 <button
                   key={item}
-                  className="whitespace-nowrap rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-700 transition hover:border-amber-300 hover:bg-amber-50"
+                  className="whitespace-nowrap rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-700 transition hover:border-yellow-300 hover:bg-yellow-50"
                 >
                   {item}
                 </button>
@@ -114,14 +114,14 @@ export default function FindTutor() {
                   key={item}
                   className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-slate-50 p-4"
                 >
-                  <div className="h-12 w-12 shrink-0 rounded-full bg-gradient-to-r from-amber-100 to-sky-100" />
+                  <div className="h-12 w-12 shrink-0 rounded-full bg-gradient-to-r from-yellow-100 to-yellow-200" />
 
                   <div className="flex-1">
                     <div className="h-3 w-28 rounded-full bg-slate-200" />
                     <div className="mt-2 h-2 w-20 rounded-full bg-slate-100" />
                   </div>
 
-                  <span className="rounded-full bg-amber-100 px-3 py-1 text-[11px] font-medium text-amber-700">
+                  <span className="rounded-full bg-yellow-100 px-3 py-1 text-[11px] font-medium text-yellow-700">
                     Available
                   </span>
                 </div>
@@ -135,7 +135,7 @@ export default function FindTutor() {
                   key={item}
                   className="flex items-center gap-2 text-sm text-slate-700"
                 >
-                  <FaCheckCircle className="text-amber-500" />
+                  <FaCheckCircle className="text-yellow-500" />
                   <span>{item}</span>
                 </div>
               ))}
@@ -154,9 +154,9 @@ export default function FindTutor() {
               {features.map((feature) => (
                 <div
                   key={feature.title}
-                  className="rounded-3xl border border-slate-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-amber-200 hover:shadow-lg"
+                  className="rounded-3xl border border-slate-200 bg-white p-5 transition-all duration-300 hover:-translate-y-1 hover:border-yellow-200 hover:shadow-lg"
                 >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-100 text-xl text-amber-500">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-yellow-100 text-xl text-yellow-500">
                     {feature.icon}
                   </div>
 
@@ -173,7 +173,7 @@ export default function FindTutor() {
 
             <Link
               href="/find-tutor"
-              className="mt-8 flex h-12 w-full items-center justify-center gap-3 rounded-full bg-amber-500 px-6 text-sm font-medium text-white transition hover:bg-amber-600 sm:h-14 lg:w-fit lg:px-8"
+              className="mt-8 flex h-12 w-full items-center justify-center gap-3 rounded-full bg-yellow-500 px-6 text-sm font-medium text-white transition hover:bg-yellow-600 sm:h-14 lg:w-fit lg:px-8"
             >
               Find Your Tutor
               <FaArrowRight className="text-sm" />

@@ -224,7 +224,7 @@ export default function CourseOverview({ course }) {
 
               </div>
 
-              <div className="space-y-3">
+              {/* <div className="space-y-3">
 
                 {[
                   ["Duration", `${course?.durationInMonths || "-"} Months`],
@@ -255,7 +255,7 @@ export default function CourseOverview({ course }) {
 
                 ))}
 
-              </div>
+              </div> */}
 
             </div>
 

@@ -45,7 +45,7 @@ export default function FeaturedPrograms() {
 
           <h2 className="mt-4 text-4xl md:text-5xl font-bold text-slate-900">
             Most Popular
-            <span className="block bg-gradient-to-r from-blue-500 to-violet-500 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-amber-500 to-yellow-500 bg-clip-text text-transparent">
               Learning Programs
             </span>
           </h2>

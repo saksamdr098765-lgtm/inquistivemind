@@ -11,7 +11,7 @@ const SITE_CONFIG = {
 
   socialLinks: {
     facebook: "",
-    instagram: "",
+    instagram: "https://www.instagram.com/theinquisitivemindacademy?igsh=MWFrY2owbmJnMTJwdA==",
     youtube: "",
     linkedin: "",
   },

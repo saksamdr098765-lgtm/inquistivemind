@@ -6,6 +6,7 @@ import CourseModules from './CourseModule';
 import WhoIsThisCourseFor from './WhoIsThisFor';
 import StudentResult from './StudentsResult';
 import CourseCTA from './CTA';
+import FrenchCourseLevels from './FrenchCourseLevels';
 
 
 
@@ -15,7 +16,8 @@ export default function CourseClient({course}) {
    <CourseHero course={course}></CourseHero>
    <WhatYouWillLearn learnings={course.learnings}></WhatYouWillLearn>
    <CourseOverview course={course}></CourseOverview>
-   <CourseModules modules={course.modules}></CourseModules>
+  { course.slug==="french-language-program" ?<FrenchCourseLevels></FrenchCourseLevels>
+  : <CourseModules modules={course.modules}></CourseModules>}
    <WhoIsThisCourseFor whoIsThisFor={course.whoIsThisFor}></WhoIsThisCourseFor>
    <StudentResult results={course.results}></StudentResult>
    <CourseCTA course={course}></CourseCTA>

@@ -54,7 +54,7 @@ export default function Hero() {
           {/* LEFT CONTENT */}
           <div>
 
-            <span className="inline-flex items-center gap-2 rounded-full bg-amber-50 px-4 py-2 text-sm font-medium text-amber-600 border border-amber-100">
+            <span className="inline-flex items-center gap-2 rounded-full bg-yellow-50 px-4 py-2 text-sm font-medium text-yellow-600 border border-yellow-100">
               <FaCheckCircle />
               Free Demo Classes Available
             </span>
@@ -62,7 +62,7 @@ export default function Hero() {
             <h1 className="mt-6 text-5xl font-bold leading-tight text-slate-900 md:text-6xl">
               Learn
               <span className="text-amber-500"> English,</span>
-              <span className="block text-[#D6451B]">
+              <span className="block text-yellow-400">
                 French & School Subjects
               </span>
               With Expert Teachers

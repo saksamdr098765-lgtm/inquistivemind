@@ -25,10 +25,10 @@ const links = [
   { name: "About", path: "/about", icon: FaInfoCircle },
     { name: "Find Tutor", path: "/find-tutor", icon: FaSearch },
 ];
-const {phone,email,socialLinks,whatsappNumber}=SITE_CONFIG
+const {phone,email,socialLinks,whatsappNumber,}=SITE_CONFIG
 const socials=[
   {icon:FaInstagram,link:socialLinks.instagram},
-  {icon:FaWhatsapp,link:`https://wa.link/${whatsappNumber}`}
+  {icon:FaWhatsapp,link:`https://wa.me/${whatsappNumber}`}
 ]
 export default function Footer() {
   const router = useRouter();
@@ -89,7 +89,7 @@ export default function Footer() {
                     key={i}
                     className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition hover:-translate-y-0.5 hover:border-amber-300 hover:text-amber-500 hover:shadow-md"
                   >
-                    <Icon/>
+                  <a href={item.link} target="_blank"> <Icon/></a> 
                   </button>
 })
               }

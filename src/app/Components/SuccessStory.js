@@ -8,13 +8,13 @@ import Link from "next/link";
 
 const stories = [
   {
-    name: "Anjali Sharma",
+    name: "Mansi Sharma",
     result: "B1 → C1 in 6 Months",
     video: "/students/anjali.mp4",
     thumbnail: "/logo.jpg",
   },
   {
-    name: "Rahul Mehta",
+    name: "Ishika",
     result: "IELTS 7.5 Score",
     video: "/students/rahul.mp4",
  thumbnail: "/logo.jpg",
@@ -72,7 +72,7 @@ export default function SuccessStories() {
             </span>
           </h2>
 
-          <div className="mx-auto mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400 " />
+          <div className="mx-auto mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-400 " />
 
           <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
             These are not testimonials. These are transformations of real

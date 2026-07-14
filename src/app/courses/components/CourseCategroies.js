@@ -62,12 +62,12 @@ export default function CourseCategories() {
 
             <h2 className="mt-4 text-4xl font-bold leading-tight text-slate-900 md:text-5xl lg:text-6xl">
               Explore Our
-              <span className="bg-gradient-to-r from-amber-500 to-yellow-400  bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-yellow-500 to-yellow-400  bg-clip-text text-transparent">
                 {" "}Learning Programs
               </span>
             </h2>
 
-            <div className="mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400" />
+            <div className="mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-400" />
 
           </div>
 
@@ -109,7 +109,7 @@ export default function CourseCategories() {
 
                 <div className="absolute left-6 top-6">
 
-                  <span className="rounded-full bg-white px-4 py-2 text-xs font-semibold text-amber-600 shadow">
+                  <span className="rounded-full bg-white px-4 py-2 text-xs font-semibold text-yellow-600 shadow">
                     {category.courses}
                   </span>
 
@@ -128,7 +128,7 @@ export default function CourseCategories() {
                     onClick={() =>
                       router.push(`/course/${category.slug}`)
                     }
-                    className="mt-6 inline-flex items-center gap-2 font-semibold text-amber-400 transition-all duration-300 group-hover:gap-4 group-hover:text-yellow-300"
+                    className="mt-6 inline-flex items-center gap-2 font-semibold text-yellow-400 transition-all duration-300 group-hover:gap-4 group-hover:text-yellow-300"
                   >
                     Explore Program
                     <FaArrowRight className="text-sm" />

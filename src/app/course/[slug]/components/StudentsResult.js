@@ -13,7 +13,7 @@ export default function StudentResult({ results }) {
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute -left-24 top-0 h-72 w-72 rounded-full bg-yellow-200/20 blur-3xl" />
-        <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-amber-200/20 blur-3xl" />
+        <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-yellow-200/20 blur-3xl" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-5 lg:px-8">
@@ -27,7 +27,7 @@ export default function StudentResult({ results }) {
 
           <h2 className="mt-5 text-3xl font-bold text-slate-900 sm:text-4xl lg:text-5xl">
             Real Results From
-            <span className="block bg-gradient-to-r from-yellow-500 via-amber-500 to-[#D6451B] bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-yellow-500 via-yellow-500 to-[#D6451B] bg-clip-text text-transparent">
               Real Students
             </span>
           </h2>
@@ -76,7 +76,7 @@ export default function StudentResult({ results }) {
               {/* Result Badge */}
               <div className="mt-5">
 
-                <span className="inline-flex items-center gap-2 rounded-full border border-yellow-200 bg-gradient-to-r from-yellow-50 to-amber-50 px-4 py-2 text-sm font-semibold text-yellow-700">
+                <span className="inline-flex items-center gap-2 rounded-full border border-yellow-200 bg-gradient-to-r from-yellow-50 to-yellow-50 px-4 py-2 text-sm font-semibold text-yellow-700">
 
                   <FaStar className="text-yellow-500" />
 
@@ -89,7 +89,7 @@ export default function StudentResult({ results }) {
               {/* Quote */}
               <div className="mt-6 flex-1">
 
-                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-yellow-400 to-amber-500 text-white shadow-md">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-500 text-white shadow-md">
                   <FaQuoteLeft />
                 </div>
 
@@ -106,7 +106,7 @@ export default function StudentResult({ results }) {
         </div>
 
         {/* Bottom Highlight */}
-        <div className="mt-14 rounded-3xl border border-yellow-200 bg-gradient-to-r from-yellow-50 via-amber-50 to-white p-6 text-center lg:p-8">
+        <div className="mt-14 rounded-3xl border border-yellow-200 bg-gradient-to-r from-yellow-50 via-yellow-50 to-white p-6 text-center lg:p-8">
 
           <h3 className="text-2xl font-bold text-slate-900">
             Join Hundreds of Successful Students

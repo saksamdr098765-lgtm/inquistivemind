@@ -19,7 +19,7 @@ export default function CourseClient({course}) {
   { course.slug==="french-language-program" ?<FrenchCourseLevels></FrenchCourseLevels>
   : <CourseModules modules={course.modules}></CourseModules>}
    <WhoIsThisCourseFor whoIsThisFor={course.whoIsThisFor}></WhoIsThisCourseFor>
-   <StudentResult results={course.results}></StudentResult>
+   {/* <StudentResult results={course.results}></StudentResult> */}
    <CourseCTA course={course}></CourseCTA>
 
    </>

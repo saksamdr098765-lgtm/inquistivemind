@@ -94,12 +94,12 @@ trackWhatsAppClick("courses")
 
             <h2 className="mt-4 text-4xl font-bold leading-tight text-slate-900 md:text-5xl lg:text-6xl">
               Everything You
-              <span className="bg-gradient-to-r from-amber-500  to-yellow-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-yellow-500  to-yellow-400 bg-clip-text text-transparent">
                 {" "}Need To Know
               </span>
             </h2>
 
-            <div className="mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400" />
+            <div className="mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-400" />
 
             <p className="mt-6 text-lg leading-8 text-slate-600">
               Find answers about English Speaking,
@@ -111,7 +111,7 @@ trackWhatsAppClick("courses")
 
             <div className="mt-10 rounded-3xl border border-slate-200 bg-white p-8 shadow-xl">
 
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-amber-100 to-yellow-100 text-2xl text-amber-500">
+              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-yellow-100 to-yellow-100 text-2xl text-yellow-500">
                 <FaHeadset />
               </div>
 
@@ -124,7 +124,7 @@ trackWhatsAppClick("courses")
                 choose the perfect course for your goals.
               </p>
 
-              <button onClick={handleClick} className="mt-6 flex items-center gap-3 rounded-full bg-amber-500 px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-amber-600">
+              <button onClick={handleClick} className="mt-6 flex items-center gap-3 rounded-full bg-yellow-500 px-6 py-3 font-semibold text-white shadow-lg transition hover:bg-yellow-600">
                 <FaWhatsapp />
                 Chat on WhatsApp
               </button>
@@ -149,7 +149,7 @@ trackWhatsAppClick("courses")
                   transition={{
                     delay: index * 0.05,
                   }}
-                  className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-lg transition-all duration-300 hover:border-amber-200 hover:shadow-xl"
+                  className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-lg transition-all duration-300 hover:border-yellow-200 hover:shadow-xl"
                 >
 
                   <button
@@ -163,7 +163,7 @@ trackWhatsAppClick("courses")
                       {faq.question}
                     </span>
 
-                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-100 text-amber-500">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-yellow-100 text-yellow-500">
 
                       {isOpen ? <FaMinus /> : <FaPlus />}
 
@@ -203,7 +203,7 @@ trackWhatsAppClick("courses")
           transition={{ duration: 0.5 }}
           className="mx-auto mt-24 max-w-5xl"
         >
-          <div className="overflow-hidden rounded-[36px] border border-slate-200 bg-gradient-to-r from-amber-50 via-white to-sky-50 p-8 shadow-xl md:p-12">
+          <div className="overflow-hidden rounded-[36px] border border-slate-200 bg-gradient-to-r from-yellow-50 via-white to-sky-50 p-8 shadow-xl md:p-12">
 
             <div className="text-center">
 
@@ -213,7 +213,7 @@ trackWhatsAppClick("courses")
 
               <h3 className="mt-4 text-3xl font-bold text-slate-900 md:text-5xl">
                 Let's Find The
-                <span className="bg-gradient-to-r from-amber-500 to-yellow-400  bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-yellow-500 to-yellow-400  bg-clip-text text-transparent">
                   {" "}Perfect Course
                 </span>
               </h3>
@@ -226,7 +226,7 @@ trackWhatsAppClick("courses")
 
               <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
 
-                <button onClick={handleClick} className="rounded-full bg-amber-500 px-8 py-3 font-semibold text-white shadow-lg shadow-amber-500/30 transition-all hover:-translate-y-1 hover:bg-amber-600">
+                <button onClick={handleClick} className="rounded-full bg-yellow-500 px-8 py-3 font-semibold text-white shadow-lg shadow-yellow-500/30 transition-all hover:-translate-y-1 hover:bg-yellow-600">
                   Talk To An Advisor
                 </button>
 

@@ -15,7 +15,7 @@ export default function CourseOverview({ course }) {
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute -left-24 top-0 h-72 w-72 rounded-full bg-yellow-200/20 blur-3xl" />
-        <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-amber-200/20 blur-3xl" />
+        <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-yellow-200/20 blur-3xl" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -28,7 +28,7 @@ export default function CourseOverview({ course }) {
 
           <h2 className="mt-4 text-3xl font-bold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
             Everything You Need
-            <span className="block bg-gradient-to-r from-yellow-500 via-amber-500 to-[#D6451B] bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-yellow-500 via-yellow-500 to-[#D6451B] bg-clip-text text-transparent">
               Before You Start
             </span>
           </h2>
@@ -49,7 +49,7 @@ export default function CourseOverview({ course }) {
 
               <div className="flex items-center gap-4">
 
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-yellow-400 to-amber-500 text-white shadow-md lg:h-14 lg:w-14 lg:rounded-2xl">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-yellow-400 to-yellow-500 text-white shadow-md lg:h-14 lg:w-14 lg:rounded-2xl">
                   <FaBookOpen />
                 </div>
 
@@ -122,7 +122,7 @@ export default function CourseOverview({ course }) {
 
               <div className="flex items-center gap-4">
 
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-100 text-amber-600 lg:h-12 lg:w-12">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-yellow-100 text-yellow-600 lg:h-12 lg:w-12">
                   <FaUsers />
                 </div>
 
@@ -204,11 +204,11 @@ export default function CourseOverview({ course }) {
             </div>
 
             {/* Course Details */}
-            <div className="rounded-3xl border border-yellow-200 bg-gradient-to-br from-yellow-50 via-amber-50 to-white p-5 shadow-sm lg:p-6">
+            <div className="rounded-3xl border border-yellow-200 bg-gradient-to-br from-yellow-50 via-yellow-50 to-white p-5 shadow-sm lg:p-6">
 
               <div className="mb-6 flex items-center gap-4">
 
-                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-yellow-400 to-amber-500 text-white lg:h-12 lg:w-12">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-yellow-400 to-yellow-500 text-white lg:h-12 lg:w-12">
                   <FaClock />
                 </div>
 

@@ -5,7 +5,7 @@ import { AnimatePresence } from "framer-motion";
 
 import MatchingScreen from "./MatchingScreen";
 import StepCard, {
-  BudgetSelector,
+
   ContactForm,
   AvailabilitySelector,
 } from "./StepCard";
@@ -14,14 +14,12 @@ import {
   goalOptions,
   languageOptions,
   levels,
-  focusAreas,
   availabilityOptions,
   tutorPreferences,
-  academicBudgetOptions,
-  languageBudgetOptions,
+
   academicSubjects,
   academicLevels,
-  academicFocusAreas,
+
   academicPreferences,
   timeSlotOptions,
 } from "./data";
@@ -44,8 +42,7 @@ export default function StudentOnboarding() {
     goal: "",
     language: "",
     level: "",
-    focus: "",
-    budget: "",
+  
     availability: [],
     timeSlot: "",
     tutor: "",
@@ -72,7 +69,9 @@ export default function StudentOnboarding() {
     if (errorMessage) return setError(errorMessage);
 
     setError("");
-    if (step < 9) setStep((prev) => prev + 1);
+   if (step < 7) {
+  setStep((prev) => prev + 1);
+}
   };
 
   const prev = () => {
@@ -89,9 +88,7 @@ export default function StudentOnboarding() {
 🎯 Goal: ${form.goal}
 📚 Subject: ${form.language}
 📈 Level: ${form.level}
-⭐ Focus: ${form.focus}
 
-💰 Budget: ${form.budget}
 📅 Days: ${form.availability.join(", ")}
 ⏰ Time: ${form.timeSlot}
 
@@ -123,26 +120,26 @@ const onContinue = async () => {
       <div className="relative mx-auto max-w-7xl px-5 py-6 lg:px-8 lg:py-10">
 
         {/* PROGRESS */}
-        <ProgressTracker currentStep={step} totalSteps={10} />
+        <ProgressTracker currentStep={step} totalSteps={8} />
 
         {/* TAGS */}
         <div className="mb-8 flex flex-wrap justify-center gap-3">
           {form.goal && (
-            <span className="rounded-full bg-yellow-100 px-4 py-2 text-sm text-yellow-700">
+            <button onClick={()=>{setStep(1)}} className="rounded-full bg-yellow-100 px-4 py-2 text-sm text-yellow-700">
               {form.goal}
-            </span>
+            </button>
           )}
 
           {form.language && (
-            <span className="rounded-full bg-amber-100 px-4 py-2 text-sm text-amber-700">
+            <button onClick={()=>{setStep(2)}} className="rounded-full bg-amber-100 px-4 py-2 text-sm text-amber-700">
               {form.language}
-            </span>
+            </button>
           )}
 
           {form.level && (
-            <span className="rounded-full bg-slate-100 px-4 py-2 text-sm text-slate-700">
+            <button onClick={()=>{setStep(3)}} className="rounded-full bg-slate-100 px-4 py-2 text-sm text-slate-700">
               {form.level}
-            </span>
+            </button>
           )}
         </div>
 
@@ -155,111 +152,98 @@ const onContinue = async () => {
 
             <div className="relative">
 
-              <AnimatePresence mode="wait">
+           <AnimatePresence mode="wait">
 
-                {step === 0 && (
-                  <StepCard
-                    title="Why are you learning?"
-                    subtitle="We'll personalize your tutor recommendations."
-                    options={goalOptions}
-                    selected={form.goal}
-                    onSelect={(v) => update("goal", v)}
-                  />
-                )}
+  {/* Contact */}
+  {step === 0 && (
+    <ContactForm form={form} update={update} />
+  )}
 
-                {step === 1 && (
-                  <StepCard
-                    title="Which language do you want to learn?"
-                    options={
-                      form.goal === "Academics"
-                        ? academicSubjects
-                        : languageOptions
-                    }
-                    selected={form.language}
-                    onSelect={(v) => update("language", v)}
-                  />
-                )}
+  {/* Goal */}
+  {step === 1 && (
+    <StepCard
+      title="What are you looking for?"
+      subtitle="We'll personalize your learning journey."
+      options={goalOptions}
+      selected={form.goal}
+      onSelect={(v) => update("goal", v)}
+    />
+  )}
 
-                {step === 2 && (
-                  <StepCard
-                    title="What's your current level?"
-                    options={
-                      form.goal === "Academics"
-                        ? academicLevels
-                        : levels
-                    }
-                    selected={form.level}
-                    onSelect={(v) => update("level", v)}
-                  />
-                )}
+  {/* Subject / Language */}
+  {step === 2 && (
+    <StepCard
+      title={
+        form.goal === "Academics"
+          ? "Which subject do you need help with?"
+          : "Which language do you want to learn?"
+      }
+      options={
+        form.goal === "Academics"
+          ? academicSubjects
+          : languageOptions
+      }
+      selected={form.language}
+      onSelect={(v) => update("language", v)}
+    />
+  )}
 
-                {step === 3 && (
-                  <StepCard
-                    title="What do you want to improve?"
-                    options={
-                      form.goal === "Academics"
-                        ? academicFocusAreas
-                        : focusAreas
-                    }
-                    selected={form.focus}
-                    onSelect={(v) => update("focus", v)}
-                  />
-                )}
+  {/* Level */}
+  {step === 3 && (
+    <StepCard
+      title="What's your current level?"
+      options={
+        form.goal === "Academics"
+          ? academicLevels
+          : levels
+      }
+      selected={form.level}
+      onSelect={(v) => update("level", v)}
+    />
+  )}
 
-                {step === 4 && (
-                  <BudgetSelector
-                    value={form.budget}
-                    onChange={(v) => update("budget", v)}
-                    budgets={
-                      form.goal === "Academics"
-                        ? academicBudgetOptions
-                        : languageBudgetOptions
-                    }
-                  />
-                )}
+  {/* Availability */}
+  {step === 4 && (
+    <AvailabilitySelector
+      selected={form.availability}
+      toggleDay={toggleDay}
+      days={availabilityOptions}
+    />
+  )}
 
-                {step === 5 && (
-                  <AvailabilitySelector
-                    selected={form.availability}
-                    toggleDay={toggleDay}
-                    days={availabilityOptions}
-                  />
-                )}
+  {/* Time */}
+  {step === 5 && (
+    <StepCard
+      title="What time works best for you?"
+      options={timeSlotOptions}
+      selected={form.timeSlot}
+      onSelect={(v) => update("timeSlot", v)}
+    />
+  )}
 
-                {step === 6 && (
-                  <StepCard
-                    title="What time works best?"
-                    options={timeSlotOptions}
-                    selected={form.timeSlot}
-                    onSelect={(v) => update("timeSlot", v)}
-                  />
-                )}
+  {/* Preference */}
+  {step === 6 && (
+    <StepCard
+      title="How would you like to learn?"
+      options={
+        form.goal === "Academics"
+          ? academicPreferences
+          : tutorPreferences
+      }
+      selected={form.tutor}
+      onSelect={(v) => update("tutor", v)}
+    />
+  )}
 
-                {step === 7 && (
-                  <StepCard
-                    title="Tutor preferences"
-                    options={
-                      form.goal === "Academics"
-                        ? academicPreferences
-                        : tutorPreferences
-                    }
-                    selected={form.tutor}
-                    onSelect={(v) => update("tutor", v)}
-                  />
-                )}
+  {/* Matching */}
+  {step === 7 && (
+    <MatchingScreen
+      onContinue={onContinue}
+      mutation={studentLeadsMutation}
+    />
+  )}
 
-                {step === 8 && (
-                  <ContactForm form={form} update={update} />
-                )}
-
-                {step === 9 && (
-                  <MatchingScreen
-                    onContinue={onContinue}
-                    mutation={studentLeadsMutation}
-                  />
-                )}
-
-              </AnimatePresence>
+</AnimatePresence>
 
               {/* ERROR */}
               {error && (
@@ -269,7 +253,7 @@ const onContinue = async () => {
               )}
 
               {/* NAV */}
-              {step < 9 && (
+           {step < 7 && (
                 <div className="mt-10 flex items-center gap-3">
 
                   {step > 0 && (

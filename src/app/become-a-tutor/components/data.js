@@ -10,15 +10,15 @@ import {
 } from "react-icons/fa";
 
 export const tutorSteps = [
+  "contact",
   "subject",
   "experience",
   "students",
   "mode",
   "availability",
   "time",
-  "earnings",
   "qualification",
-  "contact",
+  "success",
 ];
 
 export const tutorSubjectOptions = [

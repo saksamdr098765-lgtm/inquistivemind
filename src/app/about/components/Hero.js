@@ -47,7 +47,7 @@ export default function Hero() {
 
       {/* Soft brand glows */}
       <div className="absolute -left-20 top-20 h-72 w-72 rounded-full bg-[#D6451B]/10 blur-[120px]" />
-      <div className="absolute -right-20 bottom-10 h-80 w-80 rounded-full bg-amber-200/30 blur-[120px]" />
+      <div className="absolute -right-20 bottom-10 h-80 w-80 rounded-full bg-yellow-200/30 blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="grid items-center gap-14 lg:grid-cols-2">
@@ -62,7 +62,7 @@ export default function Hero() {
 
             <h1 className="mt-6 text-5xl font-bold leading-tight text-slate-900 md:text-6xl">
               Learn
-              <span className="text-amber-500"> English,</span>
+              <span className="text-yellow-500"> English,</span>
               <span className="block text-yellow-400">
                 French & School Subjects
               </span>
@@ -77,23 +77,23 @@ export default function Hero() {
             {/* FEATURES */}
             <div className="mt-10 grid gap-4 sm:grid-cols-2">
 
-              <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 hover:border-amber-200 transition">
-                <FaLanguage className="text-amber-500" />
+              <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 hover:border-yellow-200 transition">
+                <FaLanguage className="text-yellow-500" />
                 <span className="font-medium text-slate-700">English & French</span>
               </div>
 
-              <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 hover:border-amber-200 transition">
-                <FaUserGraduate className="text-amber-500" />
+              <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 hover:border-yellow-200 transition">
+                <FaUserGraduate className="text-yellow-500" />
                 <span className="font-medium text-slate-700">IELTS Preparation</span>
               </div>
 
-              <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 hover:border-amber-200 transition">
-                <FaSchool className="text-amber-500" />
+              <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 hover:border-yellow-200 transition">
+                <FaSchool className="text-yellow-500" />
                 <span className="font-medium text-slate-700">Classes 1st–12th</span>
               </div>
 
-              <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 hover:border-amber-200 transition">
-                <FaCheckCircle className="text-amber-500" />
+              <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 hover:border-yellow-200 transition">
+                <FaCheckCircle className="text-yellow-500" />
                 <span className="font-medium text-slate-700">Live Interactive Classes</span>
               </div>
             </div>
@@ -102,7 +102,7 @@ export default function Hero() {
             <div className="mt-10 flex flex-wrap gap-8">
 
               <div>
-                <h3 className="text-3xl font-bold text-amber-500">500+</h3>
+                <h3 className="text-3xl font-bold text-yellow-500">500+</h3>
                 <p className="text-slate-500">Students</p>
               </div>
 
@@ -112,7 +112,7 @@ export default function Hero() {
               </div>
 
               <div>
-                <h3 className="text-3xl font-bold text-amber-500">95%</h3>
+                <h3 className="text-3xl font-bold text-yellow-500">95%</h3>
                 <p className="text-slate-500">Success Rate</p>
               </div>
 
@@ -140,7 +140,7 @@ export default function Hero() {
                   onChange={(e) =>
                     setForm({ ...form, name: e.target.value })
                   }
-                  className="w-full rounded-2xl border border-slate-300 px-4 py-3 outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-100"
+                  className="w-full rounded-2xl border border-slate-300 px-4 py-3 outline-none focus:border-yellow-400 focus:ring-2 focus:ring-yellow-100"
                 />
 
                 <input
@@ -150,7 +150,7 @@ export default function Hero() {
                   onChange={(e) =>
                     setForm({ ...form, phone: e.target.value })
                   }
-                  className="w-full rounded-2xl border border-slate-300 px-4 py-3 outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-100"
+                  className="w-full rounded-2xl border border-slate-300 px-4 py-3 outline-none focus:border-yellow-400 focus:ring-2 focus:ring-yellow-100"
                 />
 
                 <select
@@ -158,7 +158,7 @@ export default function Hero() {
                   onChange={(e) =>
                     setForm({ ...form, course: e.target.value })
                   }
-                  className="w-full rounded-2xl border border-slate-300 px-4 py-3 outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-100"
+                  className="w-full rounded-2xl border border-slate-300 px-4 py-3 outline-none focus:border-yellow-400 focus:ring-2 focus:ring-yellow-100"
                 >
                   <option value="english">Spoken English</option>
                   <option value="ielts">IELTS Preparation</option>
@@ -168,7 +168,7 @@ export default function Hero() {
 
                 <button
                   type="submit"
-                  className="w-full rounded-2xl bg-gradient-to-r from-amber-400 to-yellow-400 px-6 py-4 font-semibold text-slate-900 shadow-lg hover:scale-[1.02] transition"
+                  className="w-full rounded-2xl bg-gradient-to-r from-yellow-400 to-yellow-400 px-6 py-4 font-semibold text-slate-900 shadow-lg hover:scale-[1.02] transition"
                 
                 >
                   Book Free Demo Class

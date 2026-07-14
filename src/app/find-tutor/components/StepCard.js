@@ -198,7 +198,7 @@ export function ContactForm({ form, update }) {
     <div className="text-center">
       <div className="mb-10">
         <div className="inline-flex rounded-full border border-yellow-200 bg-yellow-50 px-5 py-2 text-[10px] tracking-[0.35em] text-yellow-600">
-          ALMOST DONE
+          ALMOST THEIR
         </div>
 
         <h2 className="mt-6 text-4xl font-bold text-slate-900">

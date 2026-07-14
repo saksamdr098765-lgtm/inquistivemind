@@ -70,12 +70,12 @@ export default function LearningExperience() {
 
           <h2 className="mt-4 text-3xl font-bold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
             A Simple Path to
-            <span className="bg-gradient-to-r from-amber-500 to-yellow-400  bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-yellow-500 to-yellow-400  bg-clip-text text-transparent">
               {" "}Success
             </span>
           </h2>
 
-          <div className="mx-auto mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-amber-500 to-yellow-400" />
+          <div className="mx-auto mt-5 h-1 w-20 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-400" />
 
           <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
             Our structured approach helps every learner build confidence,
@@ -97,18 +97,18 @@ export default function LearningExperience() {
                 duration: .45,
                 delay: index * .08,
               }}
-              className="rounded-3xl border border-slate-200 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-amber-200 hover:shadow-xl"
+              className="rounded-3xl border border-slate-200 bg-white p-6 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-yellow-200 hover:shadow-xl"
             >
 
               <div className="flex flex-col gap-5 md:flex-row">
 
-                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-amber-100 to-yellow-100 text-2xl text-amber-500">
+                <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-yellow-100 to-yellow-100 text-2xl text-yellow-500">
                   {item.icon}
                 </div>
 
                 <div className="flex-1">
 
-                  <div className="text-xs font-semibold tracking-[0.3em] text-amber-500">
+                  <div className="text-xs font-semibold tracking-[0.3em] text-yellow-500">
                     STEP {item.step}
                   </div>
 

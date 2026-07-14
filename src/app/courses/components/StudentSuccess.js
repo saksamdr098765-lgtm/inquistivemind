@@ -59,12 +59,12 @@ export default function StudentSuccess() {
 
           <h2 className="mt-4 text-4xl font-bold leading-tight text-slate-900 md:text-5xl lg:text-6xl">
             Real Results.
-            <span className="bg-gradient-to-r from-amber-500 via-yellow-400 to-sky-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-yellow-500 via-yellow-400 to-sky-400 bg-clip-text text-transparent">
               {" "}Real Transformations.
             </span>
           </h2>
 
-          <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-amber-500 to-sky-400" />
+          <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-yellow-500 to-sky-400" />
 
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-slate-600">
             Thousands of students have improved their English,
@@ -94,11 +94,11 @@ export default function StudentSuccess() {
 
               <div className="flex items-center justify-between">
 
-                <span className="rounded-full bg-amber-100 px-4 py-2 text-sm font-semibold text-amber-600">
+                <span className="rounded-full bg-yellow-100 px-4 py-2 text-sm font-semibold text-yellow-600">
                   {student.result}
                 </span>
 
-                <FaQuoteLeft className="text-3xl text-amber-200" />
+                <FaQuoteLeft className="text-3xl text-yellow-200" />
 
               </div>
 
@@ -110,7 +110,7 @@ export default function StudentSuccess() {
                 "{student.quote}"
               </p>
 
-              <div className="mt-6 flex gap-1 text-amber-400">
+              <div className="mt-6 flex gap-1 text-yellow-400">
 
                 {[...Array(5)].map((_, i) => (
                   <FaStar key={i} />
@@ -120,7 +120,7 @@ export default function StudentSuccess() {
 
               <div className="mt-8 flex items-center gap-4 border-t border-slate-100 pt-6">
 
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-r from-amber-500 to-yellow-400 font-bold text-white shadow-lg">
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-r from-yellow-500 to-yellow-400 font-bold text-white shadow-lg">
                   {student.name.charAt(0)}
                 </div>
 
@@ -167,7 +167,7 @@ export default function StudentSuccess() {
               className="rounded-3xl border border-slate-200 bg-white p-6 text-center shadow-lg"
             >
 
-              <div className="text-3xl font-bold text-amber-500">
+              <div className="text-3xl font-bold text-yellow-500">
 
                 {label === "Success Rate" ? (
                   <>

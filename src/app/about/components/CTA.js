@@ -19,11 +19,11 @@ export default function CTA() {
 
       <div className="mx-auto max-w-6xl px-5">
 
-        <div className="overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-r from-amber-50 via-white to-sky-50 p-6 shadow-sm sm:p-10">
+        <div className="overflow-hidden rounded-3xl border border-slate-200 bg-gradient-to-r from-yellow-50 via-white to-sky-50 p-6 shadow-sm sm:p-10">
 
           <div className="flex flex-col items-center text-center">
 
-            <span className="rounded-full bg-amber-100 px-4 py-2 text-xs font-semibold tracking-[0.25em] text-amber-600">
+            <span className="rounded-full bg-yellow-100 px-4 py-2 text-xs font-semibold tracking-[0.25em] text-yellow-600">
               ADMISSIONS OPEN
             </span>
 
@@ -45,7 +45,7 @@ export default function CTA() {
                   key={item}
                   className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700"
                 >
-                  <FaCheckCircle className="text-amber-500" />
+                  <FaCheckCircle className="text-yellow-500" />
                   {item}
                 </div>
               ))}
@@ -58,7 +58,7 @@ export default function CTA() {
 
               <button
                onClick={()=>{window.scrollTo({top:0,behavior:"smooth"})}}
-                className="flex items-center justify-center gap-2 rounded-full bg-amber-500 px-8 py-4 font-semibold text-white transition hover:bg-amber-600"
+                className="flex items-center justify-center gap-2 rounded-full bg-yellow-500 px-8 py-4 font-semibold text-white transition hover:bg-yellow-600"
               >
                 Book Free Demo
                 <FaArrowRight />

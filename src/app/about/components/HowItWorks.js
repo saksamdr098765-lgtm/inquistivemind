@@ -47,7 +47,7 @@ export default function HowItWorks() {
       <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:70px_70px]" />
 
       {/* soft glows */}
-      <div className="absolute -left-20 top-10 h-72 w-72 rounded-full bg-amber-300/10 blur-[120px]" />
+      <div className="absolute -left-20 top-10 h-72 w-72 rounded-full bg-yellow-300/10 blur-[120px]" />
       <div className="absolute -right-20 bottom-10 h-80 w-80 rounded-full bg-sky-300/10 blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
@@ -55,13 +55,13 @@ export default function HowItWorks() {
         {/* HEADER */}
         <div className="mx-auto max-w-3xl text-center">
 
-          <span className="inline-flex items-center rounded-full border border-amber-100 bg-amber-50 px-4 py-2 text-sm font-medium text-amber-600">
+          <span className="inline-flex items-center rounded-full border border-yellow-100 bg-yellow-50 px-4 py-2 text-sm font-medium text-yellow-600">
             How It Works
           </span>
 
           <h2 className="mt-6 text-4xl font-bold text-slate-900 md:text-5xl">
             Start Learning In
-            <span className="block text-amber-500">
+            <span className="block text-yellow-500">
               4 Simple Steps
             </span>
           </h2>
@@ -77,14 +77,14 @@ export default function HowItWorks() {
         <div className="relative mt-20">
 
           {/* desktop line */}
-          <div className="absolute left-0 right-0 top-16 hidden h-px bg-amber-100 lg:block" />
+          <div className="absolute left-0 right-0 top-16 hidden h-px bg-yellow-100 lg:block" />
 
           <div className="grid gap-8 lg:grid-cols-4">
 
             {steps.map((step) => (
               <div
                 key={step.number}
-                className="group relative rounded-[32px] border border-slate-200 bg-white p-8 text-center transition-all hover:-translate-y-2 hover:border-amber-300 hover:shadow-xl"
+                className="group relative rounded-[32px] border border-slate-200 bg-white p-8 text-center transition-all hover:-translate-y-2 hover:border-yellow-300 hover:shadow-xl"
               >
 
                 {/* step number */}
@@ -93,7 +93,7 @@ export default function HowItWorks() {
                 </div>
 
                 {/* icon */}
-                <div className="relative z-10 mx-auto flex h-20 w-20 items-center justify-center rounded-3xl bg-amber-50 text-amber-500 text-3xl group-hover:bg-amber-100 transition">
+                <div className="relative z-10 mx-auto flex h-20 w-20 items-center justify-center rounded-3xl bg-yellow-50 text-yellow-500 text-3xl group-hover:bg-yellow-100 transition">
                   {step.icon}
                 </div>
 

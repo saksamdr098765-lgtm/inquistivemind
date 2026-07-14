@@ -17,12 +17,12 @@ export default function CourseCTA({ course }) {
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute -left-24 top-0 h-72 w-72 rounded-full bg-yellow-200/20 blur-3xl" />
-        <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-amber-200/20 blur-3xl" />
+        <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-yellow-200/20 blur-3xl" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-        <div className="overflow-hidden rounded-[30px] border border-yellow-100 bg-gradient-to-br from-yellow-50 via-white to-amber-50 shadow-sm">
+        <div className="overflow-hidden rounded-[30px] border border-yellow-100 bg-gradient-to-br from-yellow-50 via-white to-yellow-50 shadow-sm">
 
           <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
 
@@ -36,7 +36,7 @@ export default function CourseCTA({ course }) {
 
               <h2 className="mt-5 text-3xl font-bold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
                 Ready to Join
-                <span className="block bg-gradient-to-r from-yellow-500 via-amber-500 to-[#D6451B] bg-clip-text text-transparent">
+                <span className="block bg-gradient-to-r from-yellow-500 via-yellow-500 to-[#D6451B] bg-clip-text text-transparent">
                   {course?.title}?
                 </span>
               </h2>
@@ -50,7 +50,7 @@ export default function CourseCTA({ course }) {
 
                 <button
                   onClick={() => router.push("/find-tutor")}
-                  className="flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-yellow-500 to-amber-500 px-7 py-4 font-semibold text-white transition hover:scale-[1.02]"
+                  className="flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-yellow-500 to-yellow-500 px-7 py-4 font-semibold text-white transition hover:scale-[1.02]"
                 >
                   Enroll Now
                   <FaArrowRight />
@@ -97,7 +97,7 @@ export default function CourseCTA({ course }) {
 
                 <div className="flex items-center gap-4 rounded-2xl border border-yellow-100 bg-white p-4">
 
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-100 text-amber-600">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-100 text-yellow-600">
                     <FaClock />
                   </div>
 
@@ -133,7 +133,7 @@ export default function CourseCTA({ course }) {
 
               </div>
 
-              <div className="mt-8 rounded-2xl bg-gradient-to-r from-yellow-400 to-amber-500 p-5 text-white">
+              <div className="mt-8 rounded-2xl bg-gradient-to-r from-yellow-400 to-yellow-500 p-5 text-white">
 
                 <p className="text-sm font-medium uppercase tracking-wide opacity-90">
                   Why Join?

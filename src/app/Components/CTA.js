@@ -21,13 +21,13 @@ export default function CTA() {
           {/* LEFT CONTENT */}
           <div>
 
-            <div className="text-[10px] tracking-[0.35em] text-amber-500">
+            <div className="text-[10px] tracking-[0.35em] text-yellow-500">
               START YOUR TRANSFORMATION
             </div>
 
             <h2 className="mt-5 text-4xl font-bold leading-tight sm:text-5xl">
               Speak English with{" "}
-              <span className="bg-gradient-to-r from-amber-500 to-yellow-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-yellow-500 to-yellow-400 bg-clip-text text-transparent">
                 confidence in real life
               </span>
             </h2>
@@ -46,7 +46,7 @@ export default function CTA() {
                 "Global speaking community access",
               ].map((t, i) => (
                 <div key={i} className="flex items-center gap-3">
-                  <FaCheckCircle className="text-amber-500" />
+                  <FaCheckCircle className="text-yellow-500" />
                   {t}
                 </div>
               ))}
@@ -58,14 +58,14 @@ export default function CTA() {
 
               <button
                 onClick={() => router.push("/find-tutor")}
-                className="rounded-full bg-amber-500 px-8 py-3 font-medium text-white shadow-md shadow-amber-200 transition hover:bg-amber-600 hover:-translate-y-0.5"
+                className="rounded-full bg-yellow-500 px-8 py-3 font-medium text-white shadow-md shadow-yellow-200 transition hover:bg-yellow-600 hover:-translate-y-0.5"
               >
                 Start Learning Now
               </button>
 
               <button
                 onClick={() => router.push("/about")}
-                className="rounded-full border border-slate-200 px-8 py-3 text-slate-700 transition hover:bg-amber-50"
+                className="rounded-full border border-slate-200 px-8 py-3 text-slate-700 transition hover:bg-yellow-50"
               >
                 Watch Demo Class
               </button>
@@ -77,7 +77,7 @@ export default function CTA() {
           {/* RIGHT SIDE */}
           <div className="relative">
 
-            <div className="rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-amber-50/40 to-sky-50/30 p-8 shadow-lg">
+            <div className="rounded-3xl border border-slate-200 bg-gradient-to-br from-white via-yellow-50/40 to-sky-50/30 p-8 shadow-lg">
 
               <div className="text-[10px] tracking-[0.35em] text-slate-500">
                 LIVE ACTIVITY
@@ -99,7 +99,7 @@ export default function CTA() {
                     transition={{ delay: i * 0.1 }}
                     className="flex items-center gap-2 text-sm text-slate-700"
                   >
-                    <span className="text-amber-500">●</span>
+                    <span className="text-yellow-500">●</span>
                     {item}
                   </motion.div>
                 ))}
@@ -107,7 +107,7 @@ export default function CTA() {
               </div>
 
               {/* Badge */}
-              <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-amber-200 bg-white px-4 py-2 text-xs text-amber-600">
+              <div className="mt-8 inline-flex items-center gap-2 rounded-full border border-yellow-200 bg-white px-4 py-2 text-xs text-yellow-600">
                 🔥 127 students joined today
               </div>
 

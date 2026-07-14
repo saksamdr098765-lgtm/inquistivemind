@@ -60,12 +60,12 @@ export default function Hero() {
             Learn Languages.
             <br />
 
-            <span className="bg-gradient-to-r from-amber-500 to-yellow-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-yellow-500 to-yellow-400 bg-clip-text text-transparent">
               Build Your Future.
             </span>
           </h1>
 
-          <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-amber-500 to-sky-400" />
+          <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-yellow-500 to-sky-400" />
 
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-slate-600">
             Join our expert-led English Language, French Language and
@@ -77,7 +77,7 @@ export default function Hero() {
 
             <button
               onClick={() => router.push("/find-tutor")}
-              className="rounded-full bg-amber-500 px-8 py-4 font-semibold text-white shadow-lg transition hover:bg-amber-600"
+              className="rounded-full bg-yellow-500 px-8 py-4 font-semibold text-white shadow-lg transition hover:bg-yellow-600"
             >
               Enroll Now
             </button>
@@ -96,7 +96,7 @@ export default function Hero() {
           <div className="mt-14 flex flex-wrap justify-center gap-12">
 
             <div>
-              <div className="text-4xl font-bold text-amber-500">
+              <div className="text-4xl font-bold text-yellow-500">
                 <CountUp end={2000} />+
               </div>
               <p className="mt-2 text-sm text-slate-500">
@@ -114,7 +114,7 @@ export default function Hero() {
             </div>
 
             <div>
-              <div className="text-4xl font-bold text-amber-500">
+              <div className="text-4xl font-bold text-yellow-500">
                 <CountUp end={98} />%
               </div>
               <p className="mt-2 text-sm text-slate-500">
@@ -166,7 +166,7 @@ export default function Hero() {
                     onClick={() =>
                       router.push(`/course/${goal.slug}`)
                     }
-                    className="mt-6 flex items-center gap-2 font-semibold text-amber-400 transition-all duration-300 group-hover:gap-4"
+                    className="mt-6 flex items-center gap-2 font-semibold text-yellow-400 transition-all duration-300 group-hover:gap-4"
                   >
                     Explore Program
                     <FaArrowRight className="text-sm" />

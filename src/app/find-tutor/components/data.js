@@ -10,14 +10,14 @@ import {
 } from "react-icons/fa";
 
 export const steps = [
+  "contact",
   "goal",
   "language",
   "level",
-  "focus",
-  "budget",
   "availability",
+  "time",
   "tutor",
-  "contact",
+  "matching",
 ];
 
 export const goalOptions = [

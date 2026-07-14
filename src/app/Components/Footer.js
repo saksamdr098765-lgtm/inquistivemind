@@ -89,7 +89,7 @@ export default function Footer() {
                   return <button
                     key={i}
                     onClick={()=>{trackSocialClick(item.name)}}
-                    className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition hover:-translate-y-0.5 hover:border-amber-300 hover:text-amber-500 hover:shadow-md"
+                    className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition hover:-translate-y-0.5 hover:border-yellow-300 hover:text-yellow-500 hover:shadow-md"
                   >
                   <a href={item.link} target="_blank"> <Icon/></a> 
                   </button>
@@ -111,9 +111,9 @@ export default function Footer() {
                   <Link
                     key={item.name}
                     href={item.path}
-                    className="flex items-center gap-3 rounded-xl px-3 py-2 transition hover:bg-amber-50 hover:text-amber-600"
+                    className="flex items-center gap-3 rounded-xl px-3 py-2 transition hover:bg-yellow-50 hover:text-yellow-600"
                   >
-                    <Icon className="text-amber-500" />
+                    <Icon className="text-yellow-500" />
                     {item.name}
                   </Link>
                 );
@@ -128,17 +128,17 @@ export default function Footer() {
             <div className="mt-5 space-y-4 text-sm text-slate-600">
 
               <div className="flex gap-3">
-                <FaPhone className="mt-1 text-amber-500" />
+                <FaPhone className="mt-1 text-yellow-500" />
                 <span>{phone}</span>
               </div>
 
               <div className="flex gap-3">
-                <FaEnvelope className="mt-1 text-amber-500" />
+                <FaEnvelope className="mt-1 text-yellow-500" />
                 <span>{email}</span>
               </div>
 
               <div className="flex gap-3">
-                <FaMapMarkerAlt className="mt-1 text-amber-500" />
+                <FaMapMarkerAlt className="mt-1 text-yellow-500" />
                 <span>India • Online & Offline Classes</span>
               </div>
 
@@ -158,14 +158,14 @@ export default function Footer() {
 
           <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
             Speak with Confidence.
-            <span className="block bg-gradient-to-r from-amber-500 via-yellow-400 to-sky-400 bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-yellow-500 via-yellow-400 to-sky-400 bg-clip-text text-transparent">
               Learn Without Limits.
             </span>
           </h2>
 
           <button
             onClick={() => router.push("/find-tutor")}
-            className="mt-8 rounded-full bg-amber-500 px-8 py-3 font-medium text-white shadow-md shadow-amber-200 transition hover:bg-amber-600 hover:-translate-y-0.5"
+            className="mt-8 rounded-full bg-yellow-500 px-8 py-3 font-medium text-white shadow-md shadow-yellow-200 transition hover:bg-yellow-600 hover:-translate-y-0.5"
           >
             Enroll Now
           </button>

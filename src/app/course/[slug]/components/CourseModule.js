@@ -16,7 +16,7 @@ export default function CourseModules({ modules }) {
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute -left-24 top-0 h-72 w-72 rounded-full bg-yellow-200/20 blur-3xl" />
-        <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-amber-200/20 blur-3xl" />
+        <div className="absolute -right-24 bottom-0 h-72 w-72 rounded-full bg-yellow-200/20 blur-3xl" />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-5 lg:px-8">
@@ -30,7 +30,7 @@ export default function CourseModules({ modules }) {
 
           <h2 className="mt-5 text-3xl font-bold text-slate-900 sm:text-4xl lg:text-5xl">
             Course
-            <span className="block bg-gradient-to-r from-yellow-500 via-amber-500 to-[#D6451B] bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-yellow-500 via-yellow-500 to-[#D6451B] bg-clip-text text-transparent">
               Modules
             </span>
           </h2>
@@ -64,7 +64,7 @@ export default function CourseModules({ modules }) {
 
                   <div className="flex items-center gap-4">
 
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-yellow-400 to-amber-500 text-white shadow-md">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-yellow-400 to-yellow-500 text-white shadow-md">
                       <FaBookOpen />
                     </div>
 

@@ -216,7 +216,7 @@ className="rounded-full bg-yellow-400 px-6 py-2.5 text-sm font-semibold text-sla
             className="h-11 w-11 rounded-full object-cover"
           />
         ) : (
-          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-r from-yellow-400 to-amber-500 text-lg font-bold text-white">
+          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-lg font-bold text-white">
             {user.fullName.charAt(0).toUpperCase()}
           </div>
         )}
@@ -264,7 +264,7 @@ className="rounded-full bg-yellow-400 px-6 py-2.5 text-sm font-semibold text-sla
             className="absolute right-0 mt-4 w-80 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl"
           >
             {/* Header */}
-<div className="bg-gradient-to-r from-amber-400 to-yellow-500 p-6 text-white">
+<div className="bg-gradient-to-r from-yellow-400 to-yellow-500 p-6 text-white">
 
   <div className="flex items-center gap-4">
 
@@ -388,7 +388,7 @@ className="rounded-full bg-yellow-400 px-6 py-2.5 text-sm font-semibold text-sla
 
   {user ? (
 
-    <div className="rounded-3xl bg-gradient-to-r from-yellow-400 via-amber-500 to-sky-400 p-6 text-white shadow-xl">
+    <div className="rounded-3xl bg-gradient-to-r from-yellow-400 via-yellow-500 to-sky-400 p-6 text-white shadow-xl">
 
       <div className="flex items-center gap-4">
 

@@ -32,7 +32,7 @@ const frenchLevels = coursesData
 const colors = {
   A1: "bg-yellow-400",
   A2: "bg-yellow-500",
-  B1: "bg-amber-500",
+  B1: "bg-yellow-500",
   B2: "bg-orange-500",
   C1: "bg-[#D6451B]",
   C2: "bg-slate-900",

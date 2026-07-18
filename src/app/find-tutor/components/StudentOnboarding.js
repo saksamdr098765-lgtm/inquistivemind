@@ -44,7 +44,7 @@ export default function StudentOnboarding() {
     level: "",
   
     availability: [],
-    timeSlot: "",
+    timeSlot: [],
     tutor: "",
     name: "",
     email: "",
@@ -63,7 +63,14 @@ export default function StudentOnboarding() {
         : [...form.availability, day]
     );
   };
-
+ const toggleSlot = (timeSlot) => {
+    update(
+      "timeSlot",
+      form.timeSlot.includes(timeSlot)
+        ? form.timeSlot.filter((t) => t !== timeSlot)
+        : [...form.timeSlot, timeSlot]
+    );
+  };
   const next = () => {
     const errorMessage = validateStep(step, form);
     if (errorMessage) return setError(errorMessage);
@@ -90,7 +97,7 @@ export default function StudentOnboarding() {
 📈 Level: ${form.level}
 
 📅 Days: ${form.availability.join(", ")}
-⏰ Time: ${form.timeSlot}
+⏰ Time: ${form.timeSlot.join(", ")}
 
 
 `;
@@ -213,11 +220,11 @@ const onContinue = async () => {
 
   {/* Time */}
   {step === 5 && (
-    <StepCard
-      title="What time works best for you?"
-      options={timeSlotOptions}
+    <AvailabilitySelector
+    description=" Select all Time Slot that work for you."
       selected={form.timeSlot}
-      onSelect={(v) => update("timeSlot", v)}
+      toggleDay={toggleSlot}
+      days={timeSlotOptions}
     />
   )}
 

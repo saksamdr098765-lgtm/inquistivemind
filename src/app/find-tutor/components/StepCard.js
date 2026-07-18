@@ -154,7 +154,7 @@ export function BudgetSelector({ value, onChange, budgets }) {
 /* =========================
    AVAILABILITY SELECTOR
 ========================= */
-export function AvailabilitySelector({ selected = [], toggleDay, days = [] }) {
+export function AvailabilitySelector({ selected = [], toggleDay, days = [],description="Select all days that work for you." }) {
   return (
     <div className="text-center">
       <div className="mb-10">
@@ -167,7 +167,7 @@ export function AvailabilitySelector({ selected = [], toggleDay, days = [] }) {
         </h2>
 
         <p className="mt-4 text-slate-600">
-          Select all days that work for you.
+       {description}
         </p>
       </div>
 

@@ -39,7 +39,7 @@ const [form, setForm] = useState({
   studentLevel: "",
   mode: "",
   availability: [],
-  timeSlot: "",
+  timeSlot: [],
   qualification: "",
   name: "",
   email: "",
@@ -57,7 +57,7 @@ const [form, setForm] = useState({
 🎯 Student Level: ${form.studentLevel || ""}
 💻 Teaching Mode: ${form.mode || ""}
 📅 Availability: ${(form.availability || []).join(", ") || "Not provided"}
-⏰ Time Slot: ${form.timeSlot || ""}
+⏰ Time Slot: ${(form.timeSlot || []).join(", ") || "Not provided"}
 🎓 Qualification: ${form.qualification || ""}
 `;
   const update = (key, value) => {
@@ -73,6 +73,14 @@ const [form, setForm] = useState({
       form.availability.includes(day)
         ? form.availability.filter((d) => d !== day)
         : [...form.availability, day]
+    );
+  };
+  const toggleSlot = (timeSlot) => {
+    update(
+      "timeSlot",
+      form.timeSlot.includes(timeSlot)
+        ? form.timeSlot.filter((t) => t !== timeSlot)
+        : [...form.timeSlot, timeSlot]
     );
   };
 
@@ -222,13 +230,13 @@ const next = async () => {
   )}
 
   {/* Time */}
+ 
   {step === 6 && (
-    <StepCard
-      title="Preferred teaching hours"
-      subtitle="Choose the time that suits you."
-      options={tutorTimeSlots}
+    <AvailabilitySelector
+    description="Select all Time Slot that work for you."
       selected={form.timeSlot}
-      onSelect={(v) => update("timeSlot", v)}
+      toggleDay={toggleSlot}
+      days={tutorTimeSlots}
     />
   )}
 

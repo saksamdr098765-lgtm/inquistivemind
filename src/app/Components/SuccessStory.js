@@ -20,9 +20,9 @@ const stories = [
  thumbnail: "/logo.jpg",
   },
   {
-    name: "Sofia Martin",
+    name: "Sofia ",
     result: "Fluent Conversation Level",
-    video: "/students/anjali.mp4",
+    video: "/students/sofia.mp4",
    thumbnail: "/logo.jpg",
   },
 ];

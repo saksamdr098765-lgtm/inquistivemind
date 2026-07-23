@@ -21,6 +21,7 @@ import {
   FaArrowRight,
   FaBell,
   FaPlus,
+  FaBullhorn
 } from "react-icons/fa";
 
 

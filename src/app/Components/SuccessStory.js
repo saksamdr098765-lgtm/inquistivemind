@@ -20,7 +20,7 @@ const stories = [
  thumbnail: "/logo.jpg",
   },
   {
-    name: "Sofia ",
+    name: "Ishita Dutt Sharma ",
     result: "Fluent Conversation Level",
     video: "/students/sofia.mp4",
    thumbnail: "/logo.jpg",

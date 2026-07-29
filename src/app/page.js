@@ -12,6 +12,7 @@ import Footer from "./Components/Footer";
 import FindTutor from "./Components/FindTutor";
 import BecomeTutor from "./Components/BecomeTutor";
 import DeveloperCredit from "./Components/DeveloperCredit";
+import StudentRequirements from "./Components/StudentRequirment";
 
 export const metadata = {
   metadataBase: new URL("https://www.inquistivemindacademy.com"),
@@ -120,7 +121,8 @@ export default function Home() {
 <Programs></Programs>
 <FindTutor></FindTutor>
 <WhyChooseUs></WhyChooseUs>
-<BecomeTutor></BecomeTutor>
+{/* <BecomeTutor></BecomeTutor> */}
+<StudentRequirements></StudentRequirements>
 <SuccessStories></SuccessStories>
 
 <CTA></CTA>

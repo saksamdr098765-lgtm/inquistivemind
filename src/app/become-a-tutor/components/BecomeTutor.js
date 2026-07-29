@@ -28,9 +28,12 @@ import { useTeacherLeadMutation } from "@/app/mutations/leadMutation";
 import SITE_CONFIG from "@/app/siteConfig";
 import { FaSpinner } from "react-icons/fa";
 import { trackWhatsAppClick } from "@/lib/traking";
+import { useSearchParams } from "next/navigation";
 const {whatsappNumber}=SITE_CONFIG
 export default function BecomeTutor() {
   const [error, setError] = useState("");
+  const searchParams=useSearchParams()
+  const reqId=searchParams.get("id")
   const [step, setStep] = useState(0);
 const teacherLeadsMutation=useTeacherLeadMutation()
 const [form, setForm] = useState({
@@ -59,6 +62,7 @@ const [form, setForm] = useState({
 📅 Availability: ${(form.availability || []).join(", ") || "Not provided"}
 ⏰ Time Slot: ${(form.timeSlot || []).join(", ") || "Not provided"}
 🎓 Qualification: ${form.qualification || ""}
+🎓 RequirmentID: ${reqId || "none"}
 `;
   const update = (key, value) => {
     setForm((prev) => ({

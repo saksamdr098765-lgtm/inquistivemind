@@ -3,7 +3,7 @@ import Hero from './components/Hero'
 
 import AboutAcademy from './components/AboutAcademy'
 
-import CourseCategories from '../courses/components/CourseCategroies'
+// import CourseCategories from '../courses/components/CourseCategroies'
 import HowItWorks from './components/HowItWorks'
 import CTA from './components/CTA'
 import FounderSection from './components/FounderSection'
@@ -119,7 +119,7 @@ export default function page() {
   
    <AboutAcademy></AboutAcademy>
    <FounderSection></FounderSection>
-  <CourseCategories></CourseCategories>
+  {/* <CourseCategories></CourseCategories> */}
   <HowItWorks></HowItWorks>
   <CTA></CTA>
 

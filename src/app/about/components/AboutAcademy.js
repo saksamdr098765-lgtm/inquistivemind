@@ -1,4 +1,3 @@
-"use client";
 
 import {
   FaLanguage,
@@ -9,33 +8,33 @@ import {
   FaAward,
 } from "react-icons/fa";
 
+const features = [
+  {
+    icon: FaLanguage,
+    title: "English & French Training",
+    description:
+      "Practical language learning focused on speaking confidence, communication skills, and real-world usage.",
+  },
+  {
+    icon: FaGraduationCap,
+    title: "IELTS Preparation",
+    description:
+      "Structured coaching with mock tests, speaking practice, and personalized guidance to achieve your target band score.",
+  },
+  {
+    icon: FaSchool,
+    title: "Classes 1st to 12th",
+    description:
+      "Academic support for school students with experienced teachers and concept-based learning.",
+  },
+  {
+    icon: FaChalkboardTeacher,
+    title: "Live Interactive Classes",
+    description:
+      "Learn directly from expert teachers through engaging live sessions and doubt-solving support.",
+  },
+];
 export default function AboutAcademy() {
-  const features = [
-    {
-      icon: <FaLanguage />,
-      title: "English & French Training",
-      description:
-        "Practical language learning focused on speaking confidence, communication skills, and real-world usage.",
-    },
-    {
-      icon: <FaGraduationCap />,
-      title: "IELTS Preparation",
-      description:
-        "Structured coaching with mock tests, speaking practice, and personalized guidance to achieve your target band score.",
-    },
-    {
-      icon: <FaSchool />,
-      title: "Classes 1st to 12th",
-      description:
-        "Academic support for school students with experienced teachers and concept-based learning.",
-    },
-    {
-      icon: <FaChalkboardTeacher />,
-      title: "Live Interactive Classes",
-      description:
-        "Learn directly from expert teachers through engaging live sessions and doubt-solving support.",
-    },
-  ];
 
   return (
     <section className="relative bg-white py-24 overflow-hidden">
@@ -45,8 +44,8 @@ export default function AboutAcademy() {
       <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:70px_70px]" />
 
       {/* soft glow */}
-      <div className="absolute -left-20 top-10 h-72 w-72 rounded-full bg-yellow-300/10 blur-[120px]" />
-      <div className="absolute -right-20 bottom-10 h-80 w-80 rounded-full bg-sky-300/10 blur-[120px]" />
+      <div className="absolute -left-20 top-10 h-72 w-72 rounded-full bg-yellow-300/10 blur-[70px]" />
+      <div className="absolute -right-20 bottom-10 h-80 w-80 rounded-full bg-sky-300/10 blur-[70px]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
         <div className="grid items-center gap-14 lg:grid-cols-2">
@@ -104,13 +103,14 @@ export default function AboutAcademy() {
           {/* RIGHT FEATURES */}
           <div className="grid gap-5 sm:grid-cols-2">
 
-            {features.map((item) => (
-              <div
+            {features.map((item) => {
+              const Icon=item.icon
+             return <div
                 key={item.title}
-                className="group rounded-[28px] border border-slate-200 bg-white p-6 transition-all hover:-translate-y-1 hover:border-yellow-300 hover:shadow-xl"
+                className="group rounded-[28px] border border-slate-200 bg-white p-6 transition-transform   hover:-translate-y-1 hover:border-yellow-300 hover:shadow-xl"
               >
                 <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-yellow-50 text-yellow-500 text-2xl group-hover:bg-yellow-100 transition">
-                  {item.icon}
+                  <Icon></Icon>
                 </div>
 
                 <h3 className="mt-5 text-xl font-bold text-slate-900">
@@ -121,7 +121,7 @@ export default function AboutAcademy() {
                   {item.description}
                 </p>
               </div>
-            ))}
+})}
 
           </div>
 

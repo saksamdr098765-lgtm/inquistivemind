@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://inquistivemindacademy.com
+
+# Sitemaps
+Sitemap: https://inquistivemindacademy.com/sitemap.xml

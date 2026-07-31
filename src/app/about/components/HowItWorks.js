@@ -1,4 +1,3 @@
-"use client";
 
 import {
   FaUserPlus,
@@ -11,28 +10,28 @@ const steps = [
   {
     number: "01",
     title: "Register For Free Demo",
-    icon: <FaUserPlus />,
+    icon: FaUserPlus,
     description:
       "Fill out the demo registration form and our team will contact you to schedule your free class.",
   },
   {
     number: "02",
     title: "Attend Live Demo Class",
-    icon: <FaVideo />,
+    icon: FaVideo,
     description:
       "Experience our teaching style, interact with trainers, and understand the learning process before joining.",
   },
   {
     number: "03",
     title: "Join Your Batch",
-    icon: <FaUsers />,
+    icon: FaUsers,
     description:
       "Choose the right course and get added to a batch that matches your level and learning goals.",
   },
   {
     number: "04",
     title: "Learn & Achieve Results",
-    icon: <FaTrophy />,
+    icon: FaTrophy,
     description:
       "Attend classes, complete assignments, receive feedback, and achieve your academic or language goals.",
   },
@@ -47,8 +46,8 @@ export default function HowItWorks() {
       <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:70px_70px]" />
 
       {/* soft glows */}
-      <div className="absolute -left-20 top-10 h-72 w-72 rounded-full bg-yellow-300/10 blur-[120px]" />
-      <div className="absolute -right-20 bottom-10 h-80 w-80 rounded-full bg-sky-300/10 blur-[120px]" />
+      <div className="absolute -left-20 top-10 h-72 w-72 rounded-full bg-yellow-300/10 blur-[7px]" />
+      <div className="absolute -right-20 bottom-10 h-80 w-80 rounded-full bg-sky-300/10 blur-[70px]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
 
@@ -81,8 +80,10 @@ export default function HowItWorks() {
 
           <div className="grid gap-8 lg:grid-cols-4">
 
-            {steps.map((step) => (
-              <div
+            {steps.map((step) => 
+              {
+                const Icon=step.icon
+              return <div
                 key={step.number}
                 className="group relative rounded-[32px] border border-slate-200 bg-white p-8 text-center transition-all hover:-translate-y-2 hover:border-yellow-300 hover:shadow-xl"
               >
@@ -94,7 +95,7 @@ export default function HowItWorks() {
 
                 {/* icon */}
                 <div className="relative z-10 mx-auto flex h-20 w-20 items-center justify-center rounded-3xl bg-yellow-50 text-yellow-500 text-3xl group-hover:bg-yellow-100 transition">
-                  {step.icon}
+                 <Icon/>
                 </div>
 
                 <h3 className="mt-6 text-xl font-bold text-slate-900">
@@ -106,7 +107,7 @@ export default function HowItWorks() {
                 </p>
 
               </div>
-            ))}
+})}
 
           </div>
         </div>

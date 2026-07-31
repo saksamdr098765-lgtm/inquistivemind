@@ -1,4 +1,3 @@
-"use client";
 
 import Image from "next/image";
 import { FaQuoteLeft, FaAward } from "react-icons/fa";
@@ -16,16 +15,19 @@ export default function FounderSection() {
           <div className="order-1 flex justify-center lg:justify-start">
             <div className="relative w-full max-w-sm">
               {/* Glow */}
-              <div className="absolute inset-0 rounded-[36px] bg-yellow-300/20 blur-3xl" />
+              <div className="absolute inset-0 rounded-[36px] bg-yellow-300/20 blur-xl" />
 
-              <div className="relative overflow-hidden rounded-[36px] border border-slate-200 bg-white p-3 shadow-xl">
+              <div className="relative overflow-hidden rounded-[36px] border border-slate-200 bg-white p-3 shadow-lg">
                 <div className="relative aspect-[4/5] overflow-hidden rounded-[28px]">
-                  <Image
-                    src="/founder.webp"
-                    alt="Founder of Inquisitive Mind Academy"
-                    fill
-                    className="object-cover"
-                  />
+                <Image
+  src="/founder.webp"
+  alt="Founder of Inquisitive Mind Academy"
+  fill
+  sizes="(max-width: 768px) 90vw, (max-width: 1200px) 40vw, 400px"
+  quality={75}
+  loading="lazy"
+  className="object-cover"
+/>
                 </div>
 
                 <div className="absolute bottom-8 left-8 rounded-2xl border border-white/30 bg-white/90 px-5 py-3 backdrop-blur">

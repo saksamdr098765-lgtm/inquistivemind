@@ -1,10 +1,9 @@
-"use client";
 
 import Link from "next/link";
 import {
-  FaArrowRight,
   FaCheckCircle,
 } from "react-icons/fa";
+import ScrollTopButton from "./ScrollTopButton";
 
 const features = [
   "English Speaking",
@@ -55,14 +54,7 @@ export default function CTA() {
             {/* Buttons */}
 
             <div className="mt-10 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-
-              <button
-               onClick={()=>{window.scrollTo({top:0,behavior:"smooth"})}}
-                className="flex items-center justify-center gap-2 rounded-full bg-yellow-500 px-8 py-4 font-semibold text-white transition hover:bg-yellow-600"
-              >
-                Book Free Demo
-                <FaArrowRight />
-              </button>
+<ScrollTopButton></ScrollTopButton>
 
               <Link
                 href="/courses"

@@ -1,7 +1,5 @@
-"use client";
 
-import { motion } from "framer-motion";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
 const categories = [
@@ -32,7 +30,7 @@ const categories = [
 ];
 
 export default function CourseCategories() {
-  const router = useRouter();
+
 
   return (
     <section className="relative overflow-hidden bg-white py-20 sm:py-24 lg:py-28">
@@ -46,11 +44,7 @@ export default function CourseCategories() {
 
         {/* Header */}
 
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: .5 }}
+        <div
           className="mb-16 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between"
         >
 
@@ -77,7 +71,7 @@ export default function CourseCategories() {
             academics, we have a program designed for your success.
           </p>
 
-        </motion.div>
+        </div>
 
         {/* Cards */}
 
@@ -85,15 +79,8 @@ export default function CourseCategories() {
 
           {categories.map((category, index) => (
 
-            <motion.div
+            <div
               key={category.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: .45,
-                delay: index * .1,
-              }}
-              viewport={{ once: true }}
               className="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
             >
 
@@ -124,19 +111,18 @@ export default function CourseCategories() {
                   <p className="mt-3 text-white/80">
                     {category.description}
                   </p>
-                                    <button
-                    onClick={() =>
-                      router.push(`/course/${category.slug}`)
-                    }
+                                    <Link
+                   href={ `/course/${category.slug}`}
+                    
                     className="mt-6 inline-flex items-center gap-2 font-semibold text-yellow-400 transition-all duration-300 group-hover:gap-4 group-hover:text-yellow-300"
                   >
                     Explore Program
                     <FaArrowRight className="text-sm" />
-                  </button>
+                  </Link>
 
                 </div>
               </div>
-            </motion.div>
+            </div>
 
           ))}
 

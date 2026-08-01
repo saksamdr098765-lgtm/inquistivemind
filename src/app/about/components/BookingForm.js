@@ -81,6 +81,8 @@ export default function BookingForm() {
     <select
       name="course"
       required
+      
+      id="course"
       value={form.course}
       onChange={handleChange}
       className="w-full rounded-xl border border-slate-300 px-4 py-3 text-base outline-none transition-colors focus:border-yellow-400 focus:ring-2 focus:ring-yellow-100"

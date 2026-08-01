@@ -3,7 +3,7 @@ import Hero from './components/Hero'
 import CourseCategories from './components/CourseCategroies'
 
 import LearningExperience from './components/LearningExperience'
-import FAQs from './components/Faqs'
+import FAQSection from './components/FaqSection'
 
 export const metadata = {
   title: "French Language Courses | Inquisitive Mind Academy",
@@ -122,7 +122,8 @@ export default function page() {
 
 <LearningExperience></LearningExperience>
 
-<FAQs></FAQs>
+
+ <FAQSection></FAQSection>
 
   </>
   )

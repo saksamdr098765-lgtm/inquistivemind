@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import CountUp from "react-countup";
 import {
   FaVideo,
   FaMicrophone,
@@ -14,31 +13,31 @@ const journey = [
   {
     step: "01",
     title: "Join Live Classes",
-    icon: <FaVideo />,
+    icon: FaVideo,
     desc: "Attend interactive online classes for English, French, IELTS, PTE, and school subjects with experienced instructors.",
   },
   {
     step: "02",
     title: "Practice & Participate",
-    icon: <FaMicrophone />,
+    icon: FaMicrophone,
     desc: "Engage in speaking sessions, quizzes, assignments, and classroom discussions to strengthen learning.",
   },
   {
     step: "03",
     title: "Get Expert Feedback",
-    icon: <FaChartLine />,
+    icon: FaChartLine,
     desc: "Receive personalized feedback on pronunciation, grammar, communication skills, and academic performance.",
   },
   {
     step: "04",
     title: "Learn With Community",
-    icon: <FaUsers />,
+    icon: FaUsers ,
     desc: "Collaborate with fellow students, participate in group activities, and improve confidence together.",
   },
   {
     step: "05",
     title: "Achieve Your Goals",
-    icon: <FaCertificate />,
+    icon: FaCertificate ,
     desc: "Earn certificates, improve grades, crack language exams, and unlock better opportunities.",
   },
 ];
@@ -87,8 +86,9 @@ export default function LearningExperience() {
         {/* Timeline */}
 
         <div className="mt-16 space-y-5">
-          {journey.map((item, index) => (
-            <motion.div
+          {journey.map((item, index) => {
+            const Icon=item.icon
+           return <motion.div
               key={item.step}
               initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -103,7 +103,7 @@ export default function LearningExperience() {
               <div className="flex flex-col gap-5 md:flex-row">
 
                 <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-r from-yellow-100 to-yellow-100 text-2xl text-yellow-500">
-                  {item.icon}
+                  <Icon></Icon>
                 </div>
 
                 <div className="flex-1">
@@ -125,7 +125,7 @@ export default function LearningExperience() {
               </div>
 
             </motion.div>
-          ))}
+})}
         </div>
 
     

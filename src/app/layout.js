@@ -3,7 +3,6 @@ import "./globals.css";
 import Navbar from "./Components/Navbar";
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import { Toaster } from "sonner";
-import AuthProvider from "./Components/AuthProvider";
 import { Inter, Poppins } from "next/font/google";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -140,11 +139,10 @@ export default function RootLayout({ children }) {
        
 
 <ReactQueryProvider>
-<AuthProvider>
+
   <Navbar></Navbar>
         {children}
        
-        </AuthProvider>
         </ReactQueryProvider>
         <Toaster
   position="bottom-right"

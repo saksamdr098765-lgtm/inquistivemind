@@ -1,14 +1,10 @@
-import ProtectedRoute from "@/lib/ProtectedRoutes";
 import AuthProvider from "../Components/AuthProvider";
 
 
 export default function Layout({ children }) {
   return (
     <AuthProvider>
-    <ProtectedRoute roles={["admin"]}>
       {children}
-    </ProtectedRoute>
-    </AuthProvider>
-  
+</AuthProvider>
   );
 }

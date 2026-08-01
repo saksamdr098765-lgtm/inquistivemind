@@ -74,17 +74,17 @@ export default function Hero() {
             <div className="mt-10 flex flex-wrap gap-8">
 
               <div>
-                <h3 className="text-3xl font-bold text-yellow-500">500+</h3>
+                <p className="text-3xl font-bold text-yellow-500">500+</p>
                 <p className="text-slate-500">Students</p>
               </div>
 
               <div>
-                <h3 className="text-3xl font-bold text-sky-500">20+</h3>
+                <p className="text-3xl font-bold text-sky-500">20+</p>
                 <p className="text-slate-500">Teachers</p>
               </div>
 
               <div>
-                <h3 className="text-3xl font-bold text-yellow-500">95%</h3>
+                <p className="text-3xl font-bold text-yellow-500">95%</p>
                 <p className="text-slate-500">Success Rate</p>
               </div>
 

@@ -5,7 +5,6 @@ import { AnimatePresence } from "framer-motion";
 
 import StepCard, {
   AvailabilitySelector,
-  BudgetSelector,
   ContactForm,
 } from "@/app/find-tutor/components/StepCard";
 
@@ -18,7 +17,6 @@ import {
   teachingModeOptions,
   tutorAvailabilityOptions,
   tutorTimeSlots,
-  earningOptions,
   qualificationOptions,
 } from "./data";
 

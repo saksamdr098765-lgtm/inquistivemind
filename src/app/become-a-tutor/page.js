@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import BecomeTutor from './components/BecomeTutor'
 export const metadata = {
   title: "Become a French Tutor | Join Inquisitive Mind Academy",
@@ -129,7 +129,9 @@ export default function page() {
     }),
   }}
 />
+<Suspense fallback={null}>
     <BecomeTutor></BecomeTutor>
+    </Suspense>
     </>
   )
 }

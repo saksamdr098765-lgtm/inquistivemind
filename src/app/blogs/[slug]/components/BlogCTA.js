@@ -1,90 +1,102 @@
 import Link from "next/link";
-import {
-  FaArrowRight,
-  FaCalendarCheck,
-  FaCheck,
-} from "react-icons/fa";
+import SITE_CONFIG from "@/app/siteConfig";
+import { FiArrowRight, FiCheck, FiCalendar } from "react-icons/fi";
+import { FaWhatsapp } from "react-icons/fa";
 
 export default function BlogCTA({
-  title = "Start Your Language Learning Journey Today",
-  description = "Master Spoken English, French, IELTS, and school subjects with experienced teachers through interactive online and offline classes.",
-  serviceName = "Book Free Demo",
-  serviceLink = "/courses",
-  bookingLink = "/book-demo",
-  whatsappLink = "/contact",
-  features = [
-    "Free Demo Classes",
-    "Expert Teachers",
-    "Online & Offline Batches",
-    "Personalized Learning",
-  ],
+  cta,
+  title: propTitle,
+  description: propDescription,
 }) {
+  const defaultWhatsappMsg = encodeURIComponent(
+    "Hi Inquisitive Mind Academy! I read your article and would like to book a Free Demo Class."
+  );
+
+  const title = cta?.title || propTitle || "Master French with Certified Tutors";
+  const description =
+    cta?.description ||
+    propDescription ||
+    "Join interactive live classes, DELF & TEF exam prep, and small batch sizes (max 10 students).";
+  const serviceName = cta?.serviceName;
+  const serviceLink = cta?.serviceLink || "/courses";
+  const bookingLink =
+    cta?.bookingLink ||
+    cta?.whatsappLink ||
+    `https://wa.me/${SITE_CONFIG.whatsapp}?text=${defaultWhatsappMsg}`;
+
+  const features = cta?.features || [
+    "Online Live & Offline",
+    "DELF & TEF Canada Prep",
+  ];
+
+  const secondaryText = serviceName
+    ? serviceName.toLowerCase().startsWith("explore")
+      ? serviceName
+      : `Explore ${serviceName}`
+    : "Explore Courses";
+
   return (
-    <section className="relative my-12 overflow-hidden rounded-[2rem] border border-yellow-200 bg-gradient-to-br from-yellow-50 via-white to-amber-50 shadow-xl shadow-yellow-100/40">
-      {/* Soft Glow */}
-      <div className="absolute -left-20 top-10 h-64 w-64 rounded-full bg-yellow-300/20 blur-[90px]" />
-      <div className="absolute -right-20 bottom-0 h-72 w-72 rounded-full bg-[#D6451B]/10 blur-[90px]" />
+    <section className="relative my-8 overflow-hidden rounded-3xl border border-amber-200/80 bg-gradient-to-r from-amber-50/80 via-white to-yellow-50/50 p-6 shadow-sm transition-all duration-300 hover:shadow-md sm:p-7">
+      {/* Background Decorative Glow */}
+      <div className="absolute -right-12 -top-12 h-36 w-36 rounded-full bg-amber-200/30 blur-2xl pointer-events-none" />
 
-      <div className="relative p-6 sm:p-8 lg:p-10">
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
-          {/* Left */}
-          <div className="max-w-2xl">
-            <span className="inline-flex items-center rounded-full border border-yellow-200 bg-yellow-100 px-4 py-2 text-sm font-semibold text-yellow-700">
-              ✨ Free Demo Classes Available
+      <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        {/* Left Info */}
+        <div className="max-w-xl space-y-3">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-200 bg-amber-100/90 px-3 py-1 text-xs font-bold text-amber-900">
+              <FiCalendar className="text-amber-600" />
+              <span>Free Consultation & Demo</span>
             </span>
+            {serviceName && (
+              <span className="text-xs font-semibold text-amber-800">
+                • {serviceName}
+              </span>
+            )}
+          </div>
 
-            <h2 className="mt-5 text-3xl font-bold leading-tight text-slate-900 lg:text-4xl">
-              {title}
-            </h2>
+          <h3 className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
+            {title}
+          </h3>
 
-            <p className="mt-5 text-lg leading-8 text-slate-600">
-              {description}
-            </p>
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            {description}
+          </p>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          {features && features.length > 0 && (
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium text-slate-700 pt-1">
               {features.map((feature, index) => (
-                <div
+                <span
                   key={index}
-                  className="flex items-center gap-3 rounded-2xl border border-yellow-100 bg-white p-4 shadow-sm transition-all duration-300 hover:border-yellow-300 hover:shadow-md"
+                  className="flex items-center gap-1.5 font-semibold text-amber-950"
                 >
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-yellow-500 text-white">
-                    <FaCheck className="text-xs" />
-                  </div>
-
-                  <span className="font-medium text-slate-700">
-                    {feature}
-                  </span>
-                </div>
+                  <FiCheck className="font-bold text-amber-600 shrink-0" />
+                  {feature}
+                </span>
               ))}
             </div>
-          </div>
+          )}
+        </div>
 
-          {/* Right */}
-          <div className="flex w-full flex-col gap-4 lg:w-72">
-            <Link
-              href={bookingLink}
-              className="flex items-center justify-center gap-2 rounded-2xl bg-yellow-500 px-6 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-[#D6451B]"
-            >
-              <FaCalendarCheck />
-              {serviceName}
-            </Link>
+        {/* Right Compact Actions */}
+        <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+          <a
+            href={bookingLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500 px-5 py-3 text-xs sm:text-sm font-bold text-slate-950 shadow-sm transition-all hover:bg-amber-400 hover:shadow-md text-center"
+          >
+            <FaWhatsapp size={18} className="text-slate-950 shrink-0" />
+            <span>Book Free Consultation</span>
+          </a>
 
-            <Link
-              href={serviceLink}
-              className="group flex items-center justify-center gap-2 rounded-2xl border border-yellow-200 bg-white px-6 py-4 font-semibold text-yellow-700 transition-all duration-300 hover:bg-yellow-50"
-            >
-              Explore Courses
-
-              <FaArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-
-            <Link
-              href={whatsappLink}
-              className="text-center text-sm font-medium text-slate-500 transition-colors hover:text-yellow-700"
-            >
-              Need help? Talk to our counsellor →
-            </Link>
-          </div>
+          <Link
+            href={serviceLink}
+            className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-amber-200 bg-white px-5 py-2.5 text-xs sm:text-sm font-bold text-amber-900 transition-all hover:bg-amber-50 text-center"
+          >
+            <span>{secondaryText}</span>
+            <FiArrowRight size={14} className="text-amber-700 shrink-0" />
+          </Link>
         </div>
       </div>
     </section>

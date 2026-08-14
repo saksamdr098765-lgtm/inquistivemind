@@ -14,18 +14,13 @@ import { FaWhatsapp } from "react-icons/fa";
 export default function ShareButtons({ blog }) {
   const [copied, setCopied] = useState(false);
 
-  const url =
-    typeof window !== "undefined"
-      ? window.location.href
-      : "";
-
+  const url = typeof window !== "undefined" ? window.location.href : "";
   const shareText = blog.title;
 
   const copyLink = async () => {
     try {
       await navigator.clipboard.writeText(url);
       setCopied(true);
-
       setTimeout(() => {
         setCopied(false);
       }, 2000);
@@ -36,7 +31,6 @@ export default function ShareButtons({ blog }) {
 
   const nativeShare = async () => {
     if (!navigator.share) return;
-
     try {
       await navigator.share({
         title: blog.title,
@@ -47,36 +41,30 @@ export default function ShareButtons({ blog }) {
   };
 
   return (
-    <section className="relative mt-16 overflow-hidden rounded-[2rem] bg-white px-6 py-14 lg:mt-20 lg:px-8 lg:py-16">
-      {/* Background (Matches Hero) */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.10),transparent_60%)]" />
-      <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:70px_70px]" />
+    <section className="relative mt-12 overflow-hidden rounded-[2.5rem] border border-amber-100/80 bg-gradient-to-br from-amber-50/30 via-white to-orange-50/20 px-6 py-10 lg:px-10 lg:py-12 shadow-xl shadow-amber-500/5">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(251,191,36,0.08),transparent_60%)]" />
 
-      <div className="relative flex flex-col gap-10 lg:flex-row lg:items-center lg:justify-between">
-        {/* Content */}
+      <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
         <div className="max-w-xl">
-          <span className="inline-flex rounded-full border border-yellow-100 bg-yellow-50 px-4 py-2 text-sm font-semibold tracking-wide text-yellow-700">
-            Share Article
+          <span className="inline-flex rounded-full border border-amber-200 bg-amber-100/80 px-4 py-1.5 text-xs font-bold tracking-wide text-amber-900">
+            Share Guide
           </span>
 
-          <h2 className="mt-5 text-4xl font-bold tracking-tight text-slate-900">
+          <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
             Found this article helpful?
           </h2>
 
-          <p className="mt-5 text-lg leading-8 text-slate-600">
-            Share this article with friends, classmates, and anyone
-            interested in learning English, French, IELTS, or improving
-            their academic skills.
+          <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+            Share this guide with friends, classmates, and fellow language learners.
           </p>
         </div>
 
-        {/* Share Buttons */}
         <div className="w-full lg:w-auto">
           <div className="grid grid-cols-3 gap-3 sm:flex sm:flex-wrap">
             {typeof navigator !== "undefined" && navigator.share && (
               <button
                 onClick={nativeShare}
-                className="flex h-12 w-full items-center justify-center rounded-2xl bg-yellow-500 text-white transition-all duration-300 hover:scale-105 hover:bg-[#D6451B] sm:w-12"
+                className="flex h-12 w-full items-center justify-center rounded-2xl bg-amber-500 text-slate-950 font-bold shadow-md transition-all duration-300 hover:scale-105 hover:bg-amber-400 sm:w-12"
                 aria-label="Share"
               >
                 <FiShare2 className="h-5 w-5" />
@@ -89,7 +77,7 @@ export default function ShareButtons({ blog }) {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-12 w-full items-center justify-center rounded-2xl bg-green-500 text-white transition-transform duration-300 hover:scale-105 sm:w-12"
+              className="flex h-12 w-full items-center justify-center rounded-2xl bg-emerald-500 text-white shadow-md transition-transform duration-300 hover:scale-105 sm:w-12"
               aria-label="Share on WhatsApp"
             >
               <FaWhatsapp className="h-5 w-5" />
@@ -101,7 +89,7 @@ export default function ShareButtons({ blog }) {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-12 w-full items-center justify-center rounded-2xl bg-[#1877F2] text-white transition-transform duration-300 hover:scale-105 sm:w-12"
+              className="flex h-12 w-full items-center justify-center rounded-2xl bg-[#1877F2] text-white shadow-md transition-transform duration-300 hover:scale-105 sm:w-12"
               aria-label="Share on Facebook"
             >
               <FiFacebook className="h-5 w-5" />
@@ -113,7 +101,7 @@ export default function ShareButtons({ blog }) {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-12 w-full items-center justify-center rounded-2xl bg-[#0A66C2] text-white transition-transform duration-300 hover:scale-105 sm:w-12"
+              className="flex h-12 w-full items-center justify-center rounded-2xl bg-[#0A66C2] text-white shadow-md transition-transform duration-300 hover:scale-105 sm:w-12"
               aria-label="Share on LinkedIn"
             >
               <FiLinkedin className="h-5 w-5" />
@@ -125,7 +113,7 @@ export default function ShareButtons({ blog }) {
               )}&url=${encodeURIComponent(url)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-12 w-full items-center justify-center rounded-2xl bg-black text-white transition-transform duration-300 hover:scale-105 sm:w-12"
+              className="flex h-12 w-full items-center justify-center rounded-2xl bg-slate-900 text-white shadow-md transition-transform duration-300 hover:scale-105 sm:w-12"
               aria-label="Share on X"
             >
               <FiTwitter className="h-5 w-5" />
@@ -134,17 +122,17 @@ export default function ShareButtons({ blog }) {
 
           <button
             onClick={copyLink}
-            className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white px-5 py-3 font-semibold text-slate-700 transition-all duration-300 hover:border-yellow-300 hover:bg-yellow-50 hover:text-yellow-700"
+            className="mt-3 flex w-full items-center justify-center gap-2 rounded-2xl border border-amber-200 bg-white px-5 py-3 text-xs font-bold text-slate-800 transition-all duration-300 hover:bg-amber-50 hover:text-amber-900"
           >
             {copied ? (
               <>
-                <FiCheck />
-                Copied
+                <FiCheck className="text-amber-600 text-base" />
+                <span>Link Copied!</span>
               </>
             ) : (
               <>
-                <FiCopy />
-                Copy Link
+                <FiCopy className="text-amber-600 text-base" />
+                <span>Copy Page Link</span>
               </>
             )}
           </button>

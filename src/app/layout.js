@@ -6,7 +6,8 @@ import { Toaster } from "sonner";
 import { Inter, Poppins } from "next/font/google";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
-
+import Footer from "./Components/Footer";
+import DeveloperCredit from "./Components/DeveloperCredit";
 
 export const metadata = {
   title:
@@ -142,7 +143,8 @@ export default function RootLayout({ children }) {
 
   <Navbar></Navbar>
         {children}
-       
+       <Footer></Footer>
+       <DeveloperCredit></DeveloperCredit>
         </ReactQueryProvider>
         <Toaster
   position="bottom-right"

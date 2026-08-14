@@ -65,7 +65,7 @@ export default function LoginPage() {
   };
 
   return (
-  <section className="relative min-h-screen overflow-hidden bg-white">
+  <section className="relative min-h-screen overflow-hidden bg-white py-12">
 
   {/* Background */}
   <div className="absolute inset-0">
@@ -200,24 +200,87 @@ export default function LoginPage() {
 
         {/* Google */}
 
-        <button
-          disabled
-          className="
-            flex w-full items-center justify-center gap-3
-            rounded-2xl
-            border border-yellow-100
-            bg-white
-            py-3.5
-            font-medium
-            text-slate-700
-            transition
-            hover:bg-yellow-50
-            disabled:opacity-40
-          "
-        >
-          <FaGoogle className="text-[#DB4437]" />
-          Continue with Google
-        </button>
+
+
+
+  {/* Coming Soon Tooltip */}
+
+<div className="relative group">
+
+  <button
+    disabled
+    className="
+      flex w-full items-center justify-center gap-3
+      rounded-2xl
+      border border-yellow-100
+      bg-white
+      py-3.5
+      font-medium
+      text-slate-700
+      transition
+      hover:bg-yellow-50
+      disabled:opacity-40
+    "
+  >
+    <FaGoogle className="text-[#DB4437]" />
+    Continue with Google
+  </button>
+
+
+  {/* Mobile Badge */}
+  <span
+    className="
+      absolute
+      right-3
+      top-1/2
+      -translate-y-1/2
+      rounded-full
+      bg-yellow-100
+      px-2.5
+      py-1
+      text-[10px]
+      font-semibold
+      text-amber-700
+
+      sm:hidden
+    "
+  >
+    Soon
+  </span>
+
+
+  {/* Desktop Tooltip */}
+  <div
+    className="
+      pointer-events-none
+      absolute
+      -top-12
+      left-1/2
+      -translate-x-1/2
+      rounded-full
+      bg-slate-900
+      px-4
+      py-2
+      text-xs
+      font-medium
+      text-white
+      opacity-0
+      transition-all
+      duration-300
+      group-hover:opacity-100
+      group-hover:-translate-y-1
+      whitespace-nowrap
+
+      hidden
+      sm:block
+    "
+  >
+    Coming Soon 🚀
+  </div>
+
+</div>
+
+
 
       </div>
 

@@ -8,9 +8,7 @@ import Programs from "./Components/Programs";
 import SuccessStories from "./Components/SuccessStory";
 
 import CTA from "./Components/CTA";
-import Footer from "./Components/Footer";
 import FindTutor from "./Components/FindTutor";
-import BecomeTutor from "./Components/BecomeTutor";
 import DeveloperCredit from "./Components/DeveloperCredit";
 import StudentRequirements from "./Components/StudentRequirment";
 
@@ -126,8 +124,7 @@ export default function Home() {
 <SuccessStories></SuccessStories>
 
 <CTA></CTA>
-<Footer></Footer>
-<DeveloperCredit></DeveloperCredit>
+
 </>
   );
 }

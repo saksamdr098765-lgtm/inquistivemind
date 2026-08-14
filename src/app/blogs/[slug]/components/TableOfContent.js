@@ -3,9 +3,9 @@
 import { useEffect, useState } from "react";
 
 export default function TableOfContents({ content }) {
-  const headings = content.filter(
-    (item) => item.type === "heading" && item.level === 2
-  );
+  const headings = Array.isArray(content)
+    ? content.filter((item) => item.type === "heading" && item.level === 2)
+    : [];
 
   const [activeId, setActiveId] = useState("");
 
@@ -26,7 +26,6 @@ export default function TableOfContents({ content }) {
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries.find((entry) => entry.isIntersecting);
-
         if (visible) {
           setActiveId(visible.target.id);
         }
@@ -38,33 +37,28 @@ export default function TableOfContents({ content }) {
     );
 
     elements.forEach((el) => observer.observe(el));
-
     return () => observer.disconnect();
   }, [headings]);
 
   if (!headings.length) return null;
 
   return (
-    <aside className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
-      {/* Background (Hero Theme) */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.10),transparent_60%)]" />
-      <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:70px_70px]" />
+    <aside className="relative overflow-hidden rounded-3xl border border-amber-100/80 bg-white p-6 shadow-sm shadow-amber-500/5 lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.08),transparent_60%)]" />
 
       <div className="relative">
-        {/* Header */}
-        <div className="mb-6">
-          <span className="inline-flex rounded-full border border-yellow-100 bg-yellow-50 px-3 py-1 text-xs font-semibold tracking-wide text-yellow-700">
+        <div className="mb-5 border-b border-amber-100 pb-3">
+          <span className="inline-flex rounded-full border border-amber-200 bg-amber-100/80 px-3 py-1 text-xs font-bold text-amber-900">
             Quick Navigation
           </span>
 
-          <h3 className="mt-4 text-2xl font-bold text-slate-900">
+          <h3 className="mt-3 text-lg font-bold text-slate-900">
             Table of Contents
           </h3>
         </div>
 
-        {/* Navigation */}
         <nav aria-label="Table of contents">
-          <ul className="space-y-2">
+          <ul className="space-y-1.5">
             {headings.map((heading) => {
               const id = heading.text
                 .toLowerCase()
@@ -77,10 +71,10 @@ export default function TableOfContents({ content }) {
                 <li key={id}>
                   <a
                     href={`#${id}`}
-                    className={`block rounded-2xl border-l-4 px-4 py-3 text-sm leading-6 transition-all duration-300 ${
+                    className={`block rounded-xl border-l-4 px-3.5 py-2.5 text-xs font-semibold leading-relaxed transition-all duration-300 ${
                       active
-                        ? "border-yellow-500 bg-yellow-50 font-semibold text-yellow-700 shadow-sm"
-                        : "border-transparent text-slate-600 hover:border-yellow-300 hover:bg-yellow-50/60 hover:text-yellow-700"
+                        ? "border-amber-500 bg-amber-50 text-amber-900 shadow-sm"
+                        : "border-transparent text-slate-600 hover:border-amber-300 hover:bg-amber-50/50 hover:text-amber-900"
                     }`}
                   >
                     {heading.text}

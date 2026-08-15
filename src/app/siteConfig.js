@@ -98,11 +98,12 @@ const SITE_CONFIG = {
   },
 
   socialLinks: {
-    facebook: "https://www.facebook.com/inquisitivemindacademy",
+    // facebook: "https://www.facebook.com/inquisitivemindacademy",
     instagram:
       "https://www.instagram.com/theinquisitivemindacademy?igsh=MWFrY2owbmJnMTJwdA==",
-    youtube: "https://www.youtube.com/@inquisitivemindacademy",
-    linkedin: "https://www.linkedin.com/company/inquisitivemindacademy",
+    // youtube: "https://www.youtube.com/@inquisitivemindacademy",
+    // linkedin: "https://www.linkedin.com/company/inquisitivemindacademy",
+    whatsapp:"https://wa.me/919878761488"
   },
 };
 

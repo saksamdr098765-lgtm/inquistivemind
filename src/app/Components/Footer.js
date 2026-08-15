@@ -12,26 +12,29 @@ import {
   FaFacebookF,
   FaLinkedinIn,
   FaYoutube,
+  FaWhatsapp,
 } from "react-icons/fa";
 import { trackSocialClick, trackPhoneClick } from "@/lib/traking";
 import TrackedLink from "./tracking/TrackedLink";
 import TrackedButton from "./tracking/TrackedButton";
+import SITE_CONFIG from "../siteConfig";
 
 const links = [
   { name: "Home", path: "/" },
   { name: "Courses", path: "/courses" },
-  { name: "Services", path: "/services" },
-  { name: "Locations", path: "/locations" },
-  { name: "Pricing", path: "/prices" },
+  // { name: "Services", path: "/services" },
+  // { name: "Locations", path: "/locations" },
+  // { name: "Pricing", path: "/prices" },
   { name: "Blogs", path: "/blogs" },
   { name: "About Us", path: "/about" },
 ];
 
 const socials = [
-  { name: "Instagram", link: "https://www.instagram.com", icon: FaInstagram },
-  { name: "Facebook", link: "https://www.facebook.com", icon: FaFacebookF },
-  { name: "LinkedIn", link: "https://www.linkedin.com", icon: FaLinkedinIn },
-  { name: "YouTube", link: "https://www.youtube.com", icon: FaYoutube },
+  { name: "Instagram", link: SITE_CONFIG.socialLinks.instagram, icon: FaInstagram },
+  { name: "Whatsapp", link: SITE_CONFIG.socialLinks.whatsapp, icon: FaWhatsapp },
+  // { name: "Facebook", link: "https://www.facebook.com", icon: FaFacebookF },
+  // { name: "LinkedIn", link: "https://www.linkedin.com", icon: FaLinkedinIn },
+  // { name: "YouTube", link: "https://www.youtube.com", icon: FaYoutube },
 ];
 
 const serviceCategories = [
@@ -67,8 +70,8 @@ export default function Footer() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const phone = "+91 98765 43210";
-  const email = "contact@inquistivemindacademy.com";
+  const phone = SITE_CONFIG.phone;
+  const email =SITE_CONFIG.email;
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -292,7 +295,7 @@ export default function Footer() {
 
               <div className="flex items-center gap-3 p-2">
                 <FaEnvelope className="text-yellow-500 shrink-0" />
-                <span className="break-all">{email}</span>
+                <span className="">{email}</span>
               </div>
 
               <div className="flex items-center gap-3 p-2">

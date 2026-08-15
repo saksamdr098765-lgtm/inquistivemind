@@ -27,7 +27,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden bg-slate-950 pt-20 "
+      className="relative overflow-hidden bg-slate-950 pt-16"
     >
       {/* Decorative Glow */}
       <div className="absolute left-8 top-24 h-40 w-40 rounded-full bg-yellow-400/20 blur-3xl" />
@@ -36,11 +36,11 @@ export default function Hero() {
       {/* ================= MOBILE ================= */}
       <div className="lg:hidden">
         {/* Hero Image */}
-        <div className="relative h-[62vh] overflow-hidden">
+        <div className="relative h-[48vh] sm:h-[55vh] max-h-[480px] min-h-[320px] overflow-hidden bg-slate-900">
           <img
             src="/classroom1.jpg"
             alt="Students learning"
-            className="h-full w-full object-cover object-[55%_15%]"
+            className="h-full w-full object-cover object-center sm:object-top"
           />
 
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent" />
@@ -70,11 +70,11 @@ export default function Hero() {
       {/* ================= DESKTOP ================= */}
       <div className="hidden min-h-screen lg:grid lg:grid-cols-2">
         {/* Image */}
-        <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden bg-slate-900">
           <img
             src="/classroom1.jpg"
             alt="Students learning"
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-center"
           />
 
           <div className="absolute inset-0 bg-slate-900/20" />

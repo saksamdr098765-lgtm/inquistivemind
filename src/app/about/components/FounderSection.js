@@ -18,7 +18,7 @@ export default function FounderSection() {
               <div className="absolute inset-0 rounded-[36px] bg-yellow-300/20 blur-xl" />
 
               <div className="relative overflow-hidden rounded-[36px] border border-slate-200 bg-white p-3 shadow-lg">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-[28px]">
+                <div className="relative aspect-[4/5] sm:aspect-[3/4] overflow-hidden rounded-[28px] bg-slate-100">
                 <Image
   src="/founder.webp"
   alt="Founder of Inquisitive Mind Academy"
@@ -26,7 +26,7 @@ export default function FounderSection() {
   sizes="(max-width: 768px) 90vw, (max-width: 1200px) 40vw, 400px"
   quality={75}
   loading="lazy"
-  className="object-cover"
+  className="object-cover object-top"
 />
                 </div>
 

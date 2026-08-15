@@ -32,11 +32,11 @@ export default function BlogInterlinking({ block }) {
 
       <div className="grid gap-4 sm:grid-cols-2">
         {block.items.map((item, idx) => {
-          const href = item.href || "#";
-          const isInternal = href.startsWith("/");
-          const isLocation = href.includes("/locations/");
-          const isCourse = href.includes("/courses/") || href.includes("/course/");
-          const isPrice = href.includes("/prices/");
+          const href = item.href;
+          const isInternal = href && href.startsWith("/");
+          const isLocation = href && href.includes("/locations/");
+          const isCourse = href && (href.includes("/courses/") || href.includes("/course/"));
+          const isPrice = href && href.includes("/prices/");
 
           const actionText = isLocation
             ? "View Center Details"
@@ -66,7 +66,7 @@ export default function BlogInterlinking({ block }) {
                   <h4 className="font-bold text-slate-900 group-hover:text-amber-700 transition-colors">
                     {item.title}
                   </h4>
-                  <FiArrowUpRight className="h-4 w-4 shrink-0 text-amber-500 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  {href && <FiArrowUpRight className="h-4 w-4 shrink-0 text-amber-500 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />}
                 </div>
 
                 {item.description && (
@@ -76,31 +76,42 @@ export default function BlogInterlinking({ block }) {
                 )}
               </div>
 
-              <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-amber-600 group-hover:text-amber-700">
-                <span>{actionText}</span>
-                <span>&rarr;</span>
-              </div>
+              {href && (
+                <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-amber-600 group-hover:text-amber-700">
+                  <span>{actionText}</span>
+                  <span>&rarr;</span>
+                </div>
+              )}
             </div>
           );
 
-          if (isInternal) {
+          if (href && href !== "#") {
+            if (isInternal) {
+              return (
+                <Link key={idx} href={href} className="block no-underline">
+                  {content}
+                </Link>
+              );
+            }
+
             return (
-              <Link key={idx} href={href} className="block no-underline">
+              <a
+                key={idx}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block no-underline"
+              >
                 {content}
-              </Link>
+              </a>
             );
           }
 
+          // If href is not present, render as simple div
           return (
-            <a
-              key={idx}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block no-underline"
-            >
+            <div key={idx} className="block">
               {content}
-            </a>
+            </div>
           );
         })}
       </div>

@@ -17,23 +17,25 @@ export default function BlogCTA({
     cta?.description ||
     propDescription ||
     "Join interactive live classes, DELF & TEF exam prep, and small batch sizes (max 10 students).";
-  const serviceName = cta?.serviceName;
-  const serviceLink = cta?.serviceLink || "/courses";
+
   const bookingLink =
     cta?.bookingLink ||
     cta?.whatsappLink ||
     `https://wa.me/${SITE_CONFIG.whatsapp}?text=${defaultWhatsappMsg}`;
+
+  // Check if explicit serviceLink or href is provided
+  const targetHref = cta?.serviceLink || cta?.href;
 
   const features = cta?.features || [
     "Online Live & Offline",
     "DELF & TEF Canada Prep",
   ];
 
-  const secondaryText = serviceName
-    ? serviceName.toLowerCase().startsWith("explore")
-      ? serviceName
-      : `Explore ${serviceName}`
-    : "Explore Courses";
+  const secondaryText = cta?.serviceName
+    ? cta.serviceName.toLowerCase().startsWith("explore")
+      ? cta.serviceName
+      : `Explore ${cta.serviceName}`
+    : "Find a Tutor";
 
   return (
     <section className="relative my-8 overflow-hidden rounded-3xl border border-amber-200/80 bg-gradient-to-r from-amber-50/80 via-white to-yellow-50/50 p-6 shadow-sm transition-all duration-300 hover:shadow-md sm:p-7">
@@ -48,11 +50,6 @@ export default function BlogCTA({
               <FiCalendar className="text-amber-600" />
               <span>Free Consultation & Demo</span>
             </span>
-            {serviceName && (
-              <span className="text-xs font-semibold text-amber-800">
-                • {serviceName}
-              </span>
-            )}
           </div>
 
           <h3 className="text-xl font-bold tracking-tight text-slate-900 sm:text-2xl">
@@ -78,25 +75,28 @@ export default function BlogCTA({
           )}
         </div>
 
-        {/* Right Compact Actions */}
+        {/* Dual Conversion Actions */}
         <div className="flex flex-col sm:flex-row lg:flex-col gap-3 shrink-0">
+          {/* Primary Button */}
           <a
             href={bookingLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500 px-5 py-3 text-xs sm:text-sm font-bold text-slate-950 shadow-sm transition-all hover:bg-amber-400 hover:shadow-md text-center"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500 px-6 py-3.5 text-sm font-bold text-slate-950 shadow-md transition-all hover:bg-amber-400 text-center"
           >
             <FaWhatsapp size={18} className="text-slate-950 shrink-0" />
-            <span>Book Free Consultation</span>
+            <span>Message on WhatsApp</span>
           </a>
 
-          <Link
-            href={serviceLink}
-            className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-amber-200 bg-white px-5 py-2.5 text-xs sm:text-sm font-bold text-amber-900 transition-all hover:bg-amber-50 text-center"
-          >
-            <span>{secondaryText}</span>
-            <FiArrowRight size={14} className="text-amber-700 shrink-0" />
-          </Link>
+       
+            <Link
+              href="/find-tutor"
+              className="inline-flex items-center justify-center gap-1.5 rounded-xl border border-amber-300 bg-white px-6 py-3 text-sm font-bold text-amber-950 transition-all hover:bg-amber-50 text-center shadow-2xs"
+            >
+              <span>Find a Tutor</span>
+              <FiArrowRight size={14} className="text-amber-800 shrink-0" />
+            </Link>
+      
         </div>
       </div>
     </section>

@@ -120,7 +120,7 @@ export default function CourseHero({ course }) {
                 <img
                   src={course.thumbnail.url}
                   alt={course.title}
-                  className="h-[280px] w-full rounded-2xl object-cover md:h-[500px]"
+                  className="h-auto max-h-[460px] w-full rounded-2xl object-contain bg-slate-900/5 sm:object-cover sm:object-center md:h-[460px]"
                 />
 
               ) : (

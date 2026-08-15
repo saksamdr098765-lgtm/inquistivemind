@@ -85,12 +85,11 @@ export default function FrenchCourseLevels() {
            >
                 {/* Image */}
 
-                <div className="relative h-56 overflow-hidden">
+                <div className="relative h-56 overflow-hidden bg-slate-900">
                   <img
                     src={course.thumbnail.url}
                     alt={course.title}
-                    // fill
-                    className="object-cover transition duration-500 group-hover:scale-110"
+                    className="h-full w-full object-cover object-center transition duration-500 group-hover:scale-110"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />

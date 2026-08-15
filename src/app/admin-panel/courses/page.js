@@ -173,7 +173,7 @@ lg:w-auto
       <img
         src={course.thumbnail.url}
         alt={course.title}
-        className="h-full w-full object-cover"
+        className="h-full w-full object-cover object-center sm:object-top"
       />
     ) : (
       <div className="flex h-full items-center justify-center">

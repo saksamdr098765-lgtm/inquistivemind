@@ -15,6 +15,7 @@ import { getBlogSchema } from "@/schemas/BlogSchema";
 import SITE_CONFIG from "@/app/siteConfig";
 import BlogCTA from "./components/BlogCTA";
 import BlogQuickInfo from "./components/BlogQuickInfo";
+import BlogReviews from "./components/BlogReviews";
 
 export async function generateStaticParams() {
   return blogs.map((blog) => ({
@@ -96,15 +97,16 @@ export default async function BlogPage({ params }) {
         <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:70px_70px]" />
 
         <section className="border-b border-gray-100 relative">
-          <div className="mx-auto max-w-7xl px-6 py-10">
+          <div className="mx-auto max-w-7xl px-3.5 sm:px-6 py-6 sm:py-10">
             <Breadcrumb blog={blog} />
             <BlogHero blog={blog} />
             <BlogQuickInfo blog={blog} />
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1500px] px-6 py-14 relative">
-          <div className="grid gap-10 xl:grid-cols-[260px_minmax(0,1fr)_320px]">
+        <section className="mx-auto max-w-[1500px] px-3.5 sm:px-6 py-6 sm:py-14 relative">
+          <div className="grid gap-8 xl:grid-cols-[260px_minmax(0,1fr)_320px]">
+            {/* Desktop TOC */}
             <aside className="hidden xl:block">
               <div className="sticky top-28">
                 <TableOfContents content={blog.content} />
@@ -112,25 +114,42 @@ export default async function BlogPage({ params }) {
             </aside>
 
             <article className="min-w-0">
-              <BlogContent content={blog.content} />
+              {/* Mobile Table of Contents */}
+              <div className="mb-6 xl:hidden">
+                <TableOfContents content={blog.content} />
+              </div>
+
+              <BlogContent
+                content={blog.content}
+                tags={blog.tags}
+                author={blog.author}
+                reviewedBy={blog.reviewedBy}
+              />
               <FAQSection faq={blog.faq} />
+              <BlogReviews blog={blog} />
               <BlogCTA cta={blog.cta} />
               <RelatedCourses relatedCourses={blog.relatedCourses} />
               <ShareButtons blog={blog} />
               <PreviousNext currentBlog={blog} blogs={blogs} />
+
+              {/* Mobile Sidebar Content */}
+              <div className="mt-10 lg:hidden">
+                <BlogSidebar currentBlog={blog} blogs={blogs} />
+              </div>
             </article>
 
+            {/* Desktop Sidebar */}
             <aside className="hidden lg:block">
               <BlogSidebar currentBlog={blog} blogs={blogs} />
             </aside>
           </div>
         </section>
 
-        <section className="border-t border-gray-100 bg-slate-50 relative">
-          <div className="mx-auto max-w-7xl px-6 py-10  ">
+      { relatedBlogs.length && <section className="border-t border-gray-100 bg-slate-50 relative">
+          <div className="mx-auto max-w-7xl px-3.5 sm:px-6 py-8 sm:py-12">
             <RelatedPosts blogs={relatedBlogs} />
           </div>
-        </section>
+        </section>}
       </main>
     </>
   );

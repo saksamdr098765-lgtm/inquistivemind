@@ -128,7 +128,7 @@ export default function SuccessStories() {
                   src={story.thumbnail}
                   alt={story.name}
                   loading="lazy"
-                  className="aspect-[9/16] w-full object-cover transition duration-700 group-hover:scale-105"
+                  className="aspect-[4/5] sm:aspect-[9/16] w-full object-cover object-center transition duration-700 group-hover:scale-105"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black/10" />

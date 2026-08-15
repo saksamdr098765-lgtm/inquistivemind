@@ -78,7 +78,7 @@ export default function ProfileSidebar({
       <img
         src={preview || user?.profileImage?.url || "/student.jpg"}
         alt={user?.fullName}
-        className="h-32 w-32 rounded-full border-4 border-white object-cover shadow-xl sm:h-36 sm:w-36"
+        className="h-32 w-32 shrink-0 rounded-full border-4 border-white object-cover object-top shadow-xl sm:h-36 sm:w-36"
       />
 
       {!selectedFile ? (

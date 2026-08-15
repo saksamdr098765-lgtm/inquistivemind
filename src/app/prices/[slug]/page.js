@@ -4,6 +4,8 @@ import PriceOverview from "./components/PriceOverview";
 import WhyGetThisTest from "./components/WhyGetThisTest";
 import FAQ from "./components/FAQ";
 import CTA from "./components/CTA";
+import PriceRelatedServices from "./components/PriceRelatedServices";
+import PriceRelatedBlogs from "./components/PriceRelatedBlogs";
 import SITE_CONFIG from "@/app/siteConfig";
 import { notFound } from "next/navigation";
 import { prices } from "@/app/data/prices";
@@ -74,6 +76,8 @@ export default async function PriceSlugPage({ params }) {
           testTitle={testTitle}
           whyGetTest={priceData.whyEnroll}
         />
+        <PriceRelatedServices priceSlug={priceData.slug} />
+        <PriceRelatedBlogs />
         <FAQ faqs={priceData.faqs} />
         <CTA cta={priceData.cta} testTitle={testTitle} />
       </main>

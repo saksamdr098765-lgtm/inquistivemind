@@ -9,7 +9,7 @@ export default function Hero({ hero, priceCard }) {
         <img
           src={hero.image}
           alt={hero.title}
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/90 to-slate-900/70" />
       </div>

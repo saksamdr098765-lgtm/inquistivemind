@@ -95,7 +95,8 @@ export default function StudentProfile() {
 
           <img
             src="/student.jpg"
-            className="h-40 w-40 rounded-full object-cover border-4 border-orange-100"
+            className="h-40 w-40 shrink-0 rounded-full object-cover object-top border-4 border-orange-100"
+            alt="Student avatar"
           />
 
           <div className="flex-1">

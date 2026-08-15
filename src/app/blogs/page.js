@@ -54,7 +54,7 @@ export default function BlogsPage() {
   const otherBlogs = blogs.filter((blog) => blog.id !== featuredBlog?.id);
 
   return (
-    <main>
+    <main className="pt-20 lg:pt-0">
       {blogsSchema.map((schema, index) => (
         <script
           key={index}

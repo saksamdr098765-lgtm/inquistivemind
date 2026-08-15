@@ -2,6 +2,8 @@ import Link from "next/link";
 import { FiUserPlus, FiArrowRight } from "react-icons/fi";
 
 export default function LocationTeacherCallout({ location }) {
+  const offersVisits = location.offersVisits ?? false;
+
   return (
     <section className="py-12 bg-white border-b border-slate-100">
       <div className="mx-auto max-w-5xl px-5 sm:px-6">
@@ -15,7 +17,9 @@ export default function LocationTeacherCallout({ location }) {
                 Are You a Certified French Teacher in {location.city}?
               </h3>
               <p className="mt-1 text-xs sm:text-sm text-slate-600">
-                Join Inquisitive Mind Academy&apos;s faculty at our {location.city} center. Flexible hours & competitive compensation.
+                {offersVisits
+                  ? `Join Inquisitive Mind Academy's faculty at our ${location.city} center. Flexible hours & competitive compensation.`
+                  : `Join Inquisitive Mind Academy's online faculty serving ${location.city}. Flexible hours & competitive compensation.`}
               </p>
             </div>
           </div>

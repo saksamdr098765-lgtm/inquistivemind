@@ -10,20 +10,20 @@ export default function BlogCard({ blog }) {
   return (
     <Link
       href={`/blogs/${blog.slug}`}
-      className="group flex h-full flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-2 hover:border-yellow-200 hover:shadow-xl"
+      className="group flex flex-row lg:flex-col h-full overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-yellow-200 hover:shadow-xl"
     >
       {/* Cover Image */}
-      <div className="relative overflow-hidden">
+      <div className="relative w-32 sm:w-48 lg:w-full shrink-0 overflow-hidden bg-slate-100">
         <Image
           src={blog.coverImage}
           alt={blog.title}
           width={700}
           height={450}
-          className="aspect-[16/10] w-full object-cover transition duration-700 group-hover:scale-105"
+          className="aspect-square sm:aspect-[16/10] lg:aspect-[16/10] h-full w-full object-cover object-center transition duration-700 group-hover:scale-105"
         />
 
-        {/* Category */}
-        <span className="absolute left-5 top-5 rounded-full border border-yellow-100 bg-white/95 px-3 py-1 text-xs font-semibold text-yellow-700 backdrop-blur">
+        {/* Category badge on desktop/tablet */}
+        <span className="hidden sm:inline-block absolute left-3.5 top-3.5 sm:left-4 sm:top-4 rounded-full border border-yellow-100 bg-white/95 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-semibold text-yellow-700 backdrop-blur shadow-xs">
           {blog.category}
         </span>
 
@@ -32,44 +32,53 @@ export default function BlogCard({ blog }) {
       </div>
 
       {/* Content */}
-      <div className="flex flex-1 flex-col p-6">
-        {/* Meta */}
-        <div className="mb-4 flex flex-wrap items-center gap-4 text-sm text-slate-500">
-          <span className="flex items-center gap-2">
-            <FiCalendar className="text-yellow-500" />
-            {blog.publishedAt}
-          </span>
+      <div className="flex flex-1 flex-col justify-between p-3.5 sm:p-5 lg:p-6 min-w-0">
+        <div>
+          {/* Category badge on mobile */}
+          <div className="sm:hidden mb-1">
+            <span className="inline-block rounded-full border border-yellow-100 bg-yellow-50 px-2 py-0.5 text-[10px] font-bold text-yellow-700">
+              {blog.category}
+            </span>
+          </div>
 
-          <span className="flex items-center gap-2">
-            <FiClock className="text-yellow-500" />
-            {blog.readingTime}
-          </span>
+          {/* Meta */}
+          <div className="mb-1.5 sm:mb-3 flex flex-wrap items-center gap-2.5 sm:gap-4 text-[11px] sm:text-xs text-slate-500">
+            <span className="flex items-center gap-1 sm:gap-1.5">
+              <FiCalendar className="text-yellow-500 shrink-0 text-xs" />
+              <span>{blog.publishedAt}</span>
+            </span>
+
+            <span className="flex items-center gap-1 sm:gap-1.5">
+              <FiClock className="text-yellow-500 shrink-0 text-xs" />
+              <span>{blog.readingTime}</span>
+            </span>
+          </div>
+
+          {/* Title */}
+          <h3 className="line-clamp-2 text-xs sm:text-lg md:text-xl font-bold leading-snug text-slate-900 transition-colors duration-300 group-hover:text-yellow-600">
+            {blog.title}
+          </h3>
+
+          {/* Excerpt */}
+          <p className="mt-1 sm:mt-2.5 line-clamp-2 flex-1 text-[11px] sm:text-sm leading-relaxed text-slate-600">
+            {blog.excerpt}
+          </p>
         </div>
 
-        {/* Title */}
-        <h3 className="line-clamp-2 text-2xl font-bold leading-snug text-slate-900 transition-colors duration-300 group-hover:text-yellow-600">
-          {blog.title}
-        </h3>
-
-        {/* Excerpt */}
-        <p className="mt-4 line-clamp-3 flex-1 leading-7 text-slate-600">
-          {blog.excerpt}
-        </p>
-
         {/* Footer */}
-        <div className="mt-6 flex items-center justify-between border-t border-slate-100 pt-5">
+        <div className="mt-2.5 pt-2 sm:mt-5 sm:pt-4 flex items-center justify-between border-t border-slate-100">
           <div>
-            <p className="text-xs uppercase tracking-wider text-slate-400">
+            <p className="text-[9px] sm:text-[10px] uppercase tracking-wider text-slate-400">
               By
             </p>
 
-            <p className="font-semibold text-slate-900">
+            <p className="text-[11px] sm:text-xs font-semibold text-slate-900 line-clamp-1">
               {blog.author.name}
             </p>
           </div>
 
-          <span className="inline-flex items-center gap-2 font-semibold text-yellow-600 transition-colors group-hover:text-[#D6451B]">
-            Read More
+          <span className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-yellow-600 transition-colors group-hover:text-[#D6451B] shrink-0">
+            <span>Read</span>
 
             <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
           </span>

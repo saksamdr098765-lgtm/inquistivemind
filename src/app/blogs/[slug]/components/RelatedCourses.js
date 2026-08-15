@@ -34,9 +34,9 @@ export default function RelatedCourses({ relatedCourses = [] }) {
                 <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
                   {course.level}
                 </span>
-                <span className="text-sm font-bold text-yellow-600">
+                {/* <span className="text-sm font-bold text-yellow-600">
                   ₹{course.price.toLocaleString()}
-                </span>
+                </span> */}
               </div>
               <h3 className="mt-3 text-lg font-bold text-slate-900">
                 {course.title}
@@ -51,7 +51,7 @@ export default function RelatedCourses({ relatedCourses = [] }) {
             </div>
             <div className="mt-6 pt-4 border-t border-slate-100">
               <Link
-                href={`/courses/${course.slug}`}
+                href={`/course/${course.slug}`}
                 className="inline-flex items-center gap-2 text-sm font-semibold text-yellow-600 hover:text-yellow-700"
               >
                 <span>View Course Details</span>

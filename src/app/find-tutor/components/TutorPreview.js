@@ -55,7 +55,7 @@ export default function TutorPreview({
           <img
             src={tutor?.image}
             alt={tutor?.name}
-            className="h-16 w-16 rounded-2xl object-cover"
+            className="h-16 w-16 shrink-0 rounded-2xl object-cover object-top"
           />
 
           <div>

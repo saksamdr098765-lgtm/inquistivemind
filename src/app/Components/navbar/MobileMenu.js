@@ -67,7 +67,7 @@ import { FaSignOutAlt, FaTimes } from 'react-icons/fa';
   alt={user.fullName}
   width={64}
   height={64}
-  className="rounded-full border-2 border-white object-cover"
+  className="rounded-full border-2 border-white object-cover object-top shrink-0"
   
 />
         ) : (

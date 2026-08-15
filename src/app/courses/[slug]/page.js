@@ -79,7 +79,7 @@ export default async function CourseDetailPage({ params }) {
             <img
               src={course.coverImage}
               alt={course.title}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover object-center"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-900/90 to-slate-900/70" />
           </div>

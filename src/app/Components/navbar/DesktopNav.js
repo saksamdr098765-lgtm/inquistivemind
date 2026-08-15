@@ -31,7 +31,7 @@ const ProfileDropDown = dynamic(() => import("./ProfileDropDown"));
         </Link>
 
         {/* Desktop Menu */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-2 xl:gap-5">
           {links.map((item) => {
   const Icon = item.icon;
 
@@ -39,9 +39,9 @@ const ProfileDropDown = dynamic(() => import("./ProfileDropDown"));
     <Link
       key={item.name}
       href={item.path}
-className="flex items-center gap-4 rounded-2xl px-4 py-4 transition hover:bg-yellow-50 hover:text-yellow-600"
+      className="flex items-center gap-2 rounded-2xl px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-yellow-50 hover:text-yellow-600"
     >
-  <Icon className="text-yellow-500" />
+      <Icon className="text-yellow-500 shrink-0" />
       {item.name}
     </Link>
   );
@@ -82,7 +82,7 @@ className="rounded-full bg-yellow-400 px-6 py-2.5 text-sm font-semibold text-sla
   alt={user.fullName}
   width={44}
   height={44}
-  className="rounded-full object-cover"
+  className="rounded-full object-cover object-top shrink-0"
 />
         ) : (
           <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-lg font-bold text-white">

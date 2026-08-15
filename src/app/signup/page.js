@@ -185,7 +185,7 @@ export default function SignUpPage() {
             <img
               src="/icon1.png"
               alt="IMA"
-              className="mx-auto h-16 w-16"
+              className="mx-auto h-16 w-16 object-contain"
             />
 
             <span className="mt-6 inline-flex rounded-full border border-yellow-300 bg-yellow-50 px-4 py-2 text-xs font-semibold tracking-wide text-yellow-700">

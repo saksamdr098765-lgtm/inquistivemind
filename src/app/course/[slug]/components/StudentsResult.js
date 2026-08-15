@@ -56,7 +56,7 @@ export default function StudentResult({ results }) {
                 <img
                   src={student.image}
                   alt={student.name}
-                  className="h-16 w-16 rounded-2xl object-cover ring-2 ring-yellow-100"
+                  className="h-16 w-16 shrink-0 rounded-2xl object-cover object-top ring-2 ring-yellow-100"
                 />
 
                 <div>

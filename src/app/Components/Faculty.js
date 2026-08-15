@@ -104,11 +104,11 @@ export default function Faculty() {
             transition={{ duration: 0.4 }}
             className="relative lg:col-span-2"
           >
-            <div className="relative h-[420px] overflow-hidden rounded-3xl">
+            <div className="relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-auto lg:h-[420px] max-h-[480px] w-full overflow-hidden rounded-3xl bg-slate-900">
               <img
                 src={mentor.img}
                 alt={mentor.name}
-                className="h-full w-full object-cover transition duration-700 hover:scale-110"
+                className="h-full w-full object-cover object-top transition duration-700 hover:scale-110"
               />
 
               {/* Overlay */}

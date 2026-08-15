@@ -4,7 +4,7 @@ import { FiMapPin, FiArrowRight } from "react-icons/fi";
 
 export default function LocationOtherAreas({ currentSlug }) {
   const otherLocations = locations.filter((loc) => loc.slug !== currentSlug);
-
+  if(!otherLocations.length) return
   return (
     <section className="py-16 bg-slate-50/50 border-b border-slate-100">
       <div className="mx-auto max-w-7xl px-5 sm:px-6">

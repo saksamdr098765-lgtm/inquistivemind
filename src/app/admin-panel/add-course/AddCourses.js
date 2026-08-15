@@ -271,7 +271,7 @@ formData.append(
     <img
       src={initialData.thumbnail.url}
       alt={initialData.title}
-      className="h-40 w-64 rounded-lg object-cover"
+      className="h-44 w-auto max-w-full rounded-lg object-contain bg-slate-100 p-1 border border-slate-200"
     />
   </div>
 )}

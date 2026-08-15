@@ -1,7 +1,8 @@
-
 import React from "react";
 
 export default function BlogReference({ block, index }) {
+  if (!block || !block.items || !block.items.length) return null;
+
   return (
     <section
       key={index}
@@ -14,14 +15,18 @@ export default function BlogReference({ block, index }) {
       <ul className="space-y-3">
         {block.items.map((item, i) => (
           <li key={i} className="text-sm leading-6 text-slate-700">
-            <a
-              href={item.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-yellow-700 underline underline-offset-2 transition-colors hover:text-amber-800"
-            >
-              {item.title}
-            </a>
+            {item.url ? (
+              <a
+                href={item.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-yellow-700 underline underline-offset-2 transition-colors hover:text-amber-800"
+              >
+                {item.title}
+              </a>
+            ) : (
+              <span className="font-medium text-slate-900">{item.title}</span>
+            )}
 
             {item.publisher && (
               <span className="text-slate-500">
@@ -35,4 +40,3 @@ export default function BlogReference({ block, index }) {
     </section>
   );
 }
-

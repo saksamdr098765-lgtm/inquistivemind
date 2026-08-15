@@ -2,16 +2,16 @@
 import { useState, useRef, useEffect, useMemo,useCallback } from "react";
 
 import {
- 
   FaUserCircle,
   FaHome,
   FaBookOpen,
   FaCog,
- 
   FaInfoCircle,
   FaUsers,
   FaChalkboardTeacher,
   FaSearch,
+  FaBlog,
+  FaBook
 } from "react-icons/fa";
 import useAuthStore from "@/store/authStore";
 import capitalizeFirstLetter from "@/Utils/captilizeFirstLetter";
@@ -19,12 +19,14 @@ import {  useLogoutMutation } from "../mutations/AuthenticationMutations";
 import DesktopNav from "./navbar/DesktopNav";
 
 import dynamic from "next/dynamic";
+import { BsJournalText } from "react-icons/bs";
 const MobileMenu=dynamic(()=>import("./navbar/MobileMenu"))
 const links = [
   { name: "Home", path: "/", icon: FaHome },
   { name: "Courses", path: "/courses", icon: FaBookOpen },
   { name: "Find Tutor", path: "/find-tutor", icon: FaSearch },
   { name: "Become a Tutor", path: "/become-a-tutor", icon: FaChalkboardTeacher },
+  { name: "Blogs", path: "/blogs", icon: BsJournalText },
   { name: "About", path: "/about", icon: FaInfoCircle },
 ];
 export default function Navbar() {

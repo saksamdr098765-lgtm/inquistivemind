@@ -2,6 +2,7 @@ import { getLocation, locations } from "@/app/data/locations";
 import { notFound } from "next/navigation";
 import Hero from "./components/Hero";
 import LocationBriefOverview from "./components/LocationBriefOverview";
+import AreasWeServe from "./components/AreasWeServe";
 import LocationCentralHub from "./components/LocationCentralHub";
 import LocationWhyChooseUs from "./components/LocationWhyChooseUs";
 import LocationHowToApply from "./components/LocationHowToApply";
@@ -93,7 +94,10 @@ export default async function LocationPage({ params }) {
           {/* 2. Location Brief Overview */}
           <LocationBriefOverview location={location} />
 
-          {/* 3. Central Hub (Connecting to Service, Price, and Blog page) */}
+          {/* 3. Specific Local Sectors & Areas We Serve */}
+          <AreasWeServe location={location} />
+
+          {/* 4. Central Hub (Connecting to Service, Price, and Blog page) */}
           <LocationCentralHub location={location} />
 
           {/* 4. Why Choose Us in Chandigarh/Location */}

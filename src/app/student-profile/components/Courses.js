@@ -137,19 +137,12 @@ hover:shadow-xl
 >
   {/* Thumbnail */}
 
-  <div className="relative h-52 overflow-hidden bg-gradient-to-br from-[#D6451B] to-orange-500">
+  <div className="relative h-44 sm:h-52 overflow-hidden bg-gradient-to-br from-[#D6451B] to-orange-500">
     {course?.thumbnail?.url ? (
       <img
         src={course.thumbnail.url}
         alt={course.title}
-     className="
-h-full
-w-full
-object-cover
-transition-transform
-duration-500
-group-hover:scale-105
-"
+        className="h-full w-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
       />
     ) : (
       <div className="flex h-full items-center justify-center">

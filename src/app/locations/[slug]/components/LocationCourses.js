@@ -55,12 +55,12 @@ export default function LocationCourses({ location }) {
               </div>
 
               <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
-                <div>
+                {/* <div>
                   <span className="text-[10px] uppercase text-slate-400 font-bold">Course Fee</span>
                   <p className="text-base font-extrabold text-slate-900">
                     ₹{c.price?.toLocaleString()}
                   </p>
-                </div>
+                </div> */}
                 <Link
                   href={`/course/${c.slug}`}
                   className="rounded-full bg-yellow-500 px-4 py-2 text-xs font-bold text-slate-950 hover:bg-yellow-400 transition-all shadow-xs"

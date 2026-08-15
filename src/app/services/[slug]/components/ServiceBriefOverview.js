@@ -1,32 +1,46 @@
-import { FiCheckCircle, FiInfo, FiZap } from "react-icons/fi";
+import { FiCheckCircle, FiInfo, FiZap, FiBriefcase } from "react-icons/fi";
 
 export default function ServiceBriefOverview({ service }) {
+  const isTeacher = service.category === "teacher";
   const overview = service?.briefOverview;
   const summary =
     overview?.summary ||
     service?.description ||
-    "This specialized educational program is designed to deliver targeted language training with certified instructors, interactive live practice, and comprehensive study materials.";
+    (isTeacher
+      ? "Join our growing network of French educators. Connect with motivated students for home tuition or live online classes with flexible hours and competitive payouts."
+      : "This specialized educational program is designed to deliver targeted language training with certified instructors, interactive live practice, and comprehensive study materials.");
 
-  const highlights = overview?.highlights || [
-    "Comprehensive coverage of core skills & exam task formats",
-    "Personalized feedback from certified language master trainers",
-    "Real exam computer-based mock tests & timed drills",
-    "Flexible batch timings for students, professionals, and job seekers",
-  ];
+  const defaultHighlights = isTeacher
+    ? [
+        "Teach home tuition, live online classes, or exam bootcamps",
+        "Pre-screened student matching handled entirely by our academy team",
+        "Flexible part-time or full-time schedules around your availability",
+        "Transparent, timely direct payouts with performance bonuses",
+      ]
+    : [
+        "Comprehensive coverage of core skills & exam task formats",
+        "Personalized feedback from certified language master trainers",
+        "Real exam computer-based mock tests & timed drills",
+        "Flexible batch timings for students, professionals, and job seekers",
+      ];
+
+  const highlights = overview?.highlights || defaultHighlights;
 
   return (
     <section className="py-14 bg-white border-b border-slate-100">
       <div className="mx-auto max-w-7xl px-5 sm:px-6">
         <div className="max-w-3xl mb-8">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-yellow-100 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-yellow-700">
-            <FiInfo />
-            <span>Service Briefing</span>
+            {isTeacher ? <FiBriefcase /> : <FiInfo />}
+            <span>{isTeacher ? "Opportunity Briefing" : "Service Briefing"}</span>
           </span>
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Service Overview in Brief
+            {isTeacher ? "Position Overview in Brief" : "Service Overview in Brief"}
           </h2>
           <p className="mt-2 text-sm text-slate-500">
-            A quick summary of what this educational program offers and how it helps you succeed.
+            {isTeacher
+              ? "A quick summary of this teaching opportunity, role flexibility, and educator benefits."
+              : "A quick summary of what this educational program offers and how it helps you succeed."}
           </p>
         </div>
 
@@ -40,7 +54,7 @@ export default function ServiceBriefOverview({ service }) {
 
               <div className="mt-6 pt-6 border-t border-slate-100">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900 mb-4">
-                  Core Program Highlights
+                  {isTeacher ? "Key Opportunity Highlights" : "Core Program Highlights"}
                 </h3>
                 <ul className="space-y-3">
                   {highlights.map((item, idx) => (
@@ -59,30 +73,38 @@ export default function ServiceBriefOverview({ service }) {
             <div className="h-full rounded-3xl border border-yellow-200 bg-gradient-to-br from-yellow-50/70 via-white to-amber-50/40 p-6 sm:p-8 shadow-xs flex flex-col justify-between">
               <div>
                 <div className="flex items-center gap-2 mb-4">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-yellow-500 text-slate-950">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-yellow-500 text-slate-950 font-bold">
                     <FiZap className="text-lg" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900">
-                    Key Program Takeaways
+                    {isTeacher ? "Why Teach With Us" : "Key Program Takeaways"}
                   </h3>
                 </div>
 
                 <p className="text-xs text-slate-600 leading-relaxed">
-                  Enrolling in this service connects you with certified language faculty who guide you step-by-step from foundational concepts to advanced exam strategy.
+                  {isTeacher
+                    ? "Joining our educator network connects you with pre-screened students and steady teaching assignments — home tuition or live online."
+                    : "Enrolling in this service connects you with certified language faculty who guide you step-by-step from foundational concepts to advanced exam strategy."}
                 </p>
 
                 <div className="mt-6 space-y-2.5 pt-4 border-t border-yellow-200/60">
                   <div className="flex items-center justify-between text-xs font-semibold text-slate-800">
-                    <span>Mentorship Type</span>
-                    <span className="text-yellow-700">1-on-1 & Small Batches</span>
+                    <span>{isTeacher ? "Teaching Format" : "Mentorship Type"}</span>
+                    <span className="text-yellow-700">
+                      {isTeacher ? "Home Visits & Live Online" : "1-on-1 & Small Batches"}
+                    </span>
                   </div>
                   <div className="flex items-center justify-between text-xs font-semibold text-slate-800">
-                    <span>Mock Evaluations</span>
-                    <span className="text-yellow-700">Included (Timed Drills)</span>
+                    <span>{isTeacher ? "Student Referrals" : "Mock Evaluations"}</span>
+                    <span className="text-yellow-700">
+                      {isTeacher ? "Pre-Screened & Guaranteed" : "Included (Timed Drills)"}
+                    </span>
                   </div>
                   <div className="flex items-center justify-between text-xs font-semibold text-slate-800">
-                    <span>Certificate</span>
-                    <span className="text-yellow-700">Official IMA Completion</span>
+                    <span>{isTeacher ? "Pay Frequency" : "Certificate"}</span>
+                    <span className="text-yellow-700">
+                      {isTeacher ? "Transparent Monthly / Hourly" : "Official IMA Completion"}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -92,7 +114,7 @@ export default function ServiceBriefOverview({ service }) {
                   href="#consultation"
                   className="w-full text-center inline-block rounded-full bg-slate-900 px-6 py-3 text-xs font-bold text-white transition-all hover:bg-yellow-500 hover:text-slate-950 shadow-sm"
                 >
-                  Book Academic Consultation
+                  {isTeacher ? "Apply for Teaching Position" : "Book Academic Consultation"}
                 </a>
               </div>
             </div>

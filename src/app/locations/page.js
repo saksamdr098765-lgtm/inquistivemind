@@ -43,79 +43,83 @@ export default function LocationsPage() {
 
         {/* Locations Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {locations.map((loc) => (
-            <div
-              key={loc.slug}
-              className="flex flex-col justify-between rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:border-yellow-300"
-            >
-              {/* Image & Badge */}
-              <div className="relative h-60 w-full overflow-hidden bg-slate-100">
-                <img
-                  src={loc.coverImage}
-                  alt={loc.title}
-                  className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                />
-                <div className="absolute top-4 left-4 rounded-full bg-yellow-500 px-3.5 py-1 text-xs font-bold text-slate-950 shadow-md">
-                  ★ {loc.city} Center
-                </div>
-              </div>
+          {locations.map((loc) => {
+            const offersVisits = loc.offersVisits ?? false;
 
-              {/* Body Content */}
-              <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between bg-gradient-to-b from-yellow-50/20 via-white to-white">
-                <div>
-                  <h2 className="text-2xl font-bold text-slate-900">
-                    {loc.title}
-                  </h2>
-                  <p className="mt-3 text-sm text-slate-600 leading-relaxed">
-                    {loc.shortDescription}
-                  </p>
-
-                  <div className="mt-6 space-y-2.5 text-xs sm:text-sm text-slate-700 font-medium">
-                    <div className="flex items-start gap-2.5">
-                      <FiMapPin className="text-yellow-500 mt-0.5 shrink-0 font-bold" />
-                      <span>{loc.address}</span>
-                    </div>
-                    <div className="flex items-center gap-2.5">
-                      <FiPhone className="text-yellow-500 shrink-0 font-bold" />
-                      <span>{loc.phone}</span>
-                    </div>
-                    <div className="flex items-center gap-2.5">
-                      <FiClock className="text-yellow-500 shrink-0 font-bold" />
-                      <span>{loc.hours}</span>
-                    </div>
-                  </div>
-
-                  {/* Highlights */}
-                  <div className="mt-6 pt-6 border-t border-slate-100">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                      Center Highlights
-                    </h3>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {loc.features.slice(0, 3).map((feat, idx) => (
-                        <span
-                          key={idx}
-                          className="inline-flex items-center gap-1 rounded-full bg-yellow-50 border border-yellow-200 px-3 py-1 text-xs font-semibold text-yellow-800"
-                        >
-                          <FiCheckCircle className="text-yellow-600" />
-                          <span>{feat}</span>
-                        </span>
-                      ))}
-                    </div>
+            return (
+              <div
+                key={loc.slug}
+                className="flex flex-col justify-between rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:border-yellow-300"
+              >
+                {/* Image & Badge */}
+                <div className="relative h-60 w-full overflow-hidden bg-slate-100">
+                  <img
+                    src={loc.coverImage}
+                    alt={loc.title}
+                    className="h-full w-full object-cover object-center transition-transform duration-500 hover:scale-105"
+                  />
+                  <div className="absolute top-4 left-4 rounded-full bg-yellow-500 px-3.5 py-1 text-xs font-bold text-slate-950 shadow-md">
+                    {offersVisits ? `★ ${loc.city} Center` : `★ ${loc.city} Online Hub`}
                   </div>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-slate-100">
-                  <Link
-                    href={`/locations/${loc.slug}`}
-                    className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-yellow-500 px-6 py-3.5 text-sm font-bold text-slate-950 transition-all duration-300 hover:bg-yellow-400 shadow-md hover:shadow-lg"
-                  >
-                    <span>Explore Center Details</span>
-                    <FiArrowRight />
-                  </Link>
+                {/* Body Content */}
+                <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between bg-gradient-to-b from-yellow-50/20 via-white to-white">
+                  <div>
+                    <h2 className="text-2xl font-bold text-slate-900">
+                      {loc.title}
+                    </h2>
+                    <p className="mt-3 text-sm text-slate-600 leading-relaxed">
+                      {loc.shortDescription}
+                    </p>
+
+                    <div className="mt-6 space-y-2.5 text-xs sm:text-sm text-slate-700 font-medium">
+                      <div className="flex items-start gap-2.5">
+                        <FiMapPin className="text-yellow-500 mt-0.5 shrink-0 font-bold" />
+                        <span>{offersVisits ? (loc.physicalAddress || loc.address) : loc.address}</span>
+                      </div>
+                      <div className="flex items-center gap-2.5">
+                        <FiPhone className="text-yellow-500 shrink-0 font-bold" />
+                        <span>{loc.phone}</span>
+                      </div>
+                      <div className="flex items-center gap-2.5">
+                        <FiClock className="text-yellow-500 shrink-0 font-bold" />
+                        <span>{loc.hours}</span>
+                      </div>
+                    </div>
+
+                    {/* Highlights */}
+                    <div className="mt-6 pt-6 border-t border-slate-100">
+                      <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                        {offersVisits ? "Center Highlights" : "Hub Highlights"}
+                      </h3>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {loc.features.slice(0, 3).map((feat, idx) => (
+                          <span
+                            key={idx}
+                            className="inline-flex items-center gap-1 rounded-full bg-yellow-50 border border-yellow-200 px-3 py-1 text-xs font-semibold text-yellow-800"
+                          >
+                            <FiCheckCircle className="text-yellow-600" />
+                            <span>{feat}</span>
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-8 pt-6 border-t border-slate-100">
+                    <Link
+                      href={`/locations/${loc.slug}`}
+                      className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-yellow-500 px-6 py-3.5 text-sm font-bold text-slate-950 transition-all duration-300 hover:bg-yellow-400 shadow-md hover:shadow-lg"
+                    >
+                      <span>{offersVisits ? "Explore Center Details" : "Explore Online Hub Details"}</span>
+                      <FiArrowRight />
+                    </Link>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </main>

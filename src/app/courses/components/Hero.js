@@ -144,12 +144,12 @@ export default function Hero() {
               className="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl"
             >
 
-              <div className="relative h-72 overflow-hidden">
+              <div className="relative h-60 sm:h-72 overflow-hidden bg-slate-900">
 
                 <img
                   src={goal.image}
                   alt={goal.title}
-                  className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                  className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-110"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />

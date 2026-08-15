@@ -1,131 +1,123 @@
 import Link from "next/link";
-import SITE_CONFIG from "@/app/siteConfig";
-import { FiCheck, FiMapPin, FiArrowRight, FiDollarSign } from "react-icons/fi";
+import Image from "next/image";
+import { locations } from "@/app/data/locations";
+import { blogs } from "@/app/data/blogs";
+import { services } from "@/app/data/services";
+import { FiBookOpen, FiArrowRight } from "react-icons/fi";
 
 export default function ServicePricingAndAreas({ service }) {
-  const p = service.pricing;
-  const areas = service.areasWeServe || [];
+  // 1. Extract related blogs from data
+  const relatedBlogSlugs = service?.relatedBlogs || [];
+  let matchedBlogs = blogs.filter((b) => relatedBlogSlugs.includes(b.slug));
+  if (!matchedBlogs.length) {
+    matchedBlogs = blogs.slice(0, 1);
+  }
+
+  // 2. Extract related services from data
+  const relatedServicesSlugs = service?.relatedServices || [];
+  let matchedServices = services.filter((s) => s.slug !== service?.slug && relatedServicesSlugs.includes(s.slug));
+  if (!matchedServices.length) {
+    matchedServices = services.filter((s) => s.slug !== service?.slug).slice(0, 1);
+  }
+
+  // 3. Extract related location from data
+  const matchedLocations = locations.slice(0, 1);
+
+  // Combine into a single array of 2-3 items for 1 single row
+  const rowItems = [
+    ...matchedBlogs.map((b) => ({ ...b, itemType: "blog" })),
+    ...matchedServices.map((s) => ({ ...s, itemType: "service" })),
+    ...matchedLocations.map((l) => ({ ...l, itemType: "location" })),
+  ].slice(0, 3);
+
+  if (!rowItems.length) return null;
 
   return (
-    <section className="py-16 bg-slate-50/60 border-b border-slate-100">
+    <section className="py-12 bg-slate-50/60 border-b border-slate-100">
       <div className="mx-auto max-w-7xl px-5 sm:px-6">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <span className="rounded-full bg-yellow-100 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-yellow-700">
-            Investment & Locations
+        {/* Section Header */}
+        <div className="mb-6">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-yellow-100 px-3.5 py-1 text-[11px] font-bold uppercase tracking-wider text-yellow-800">
+            <FiBookOpen className="text-yellow-700" />
+            <span>Related Resources</span>
           </span>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Pricing, Fee Plans & Study Centers We Serve
+          <h2 className="mt-2 text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+            Related Blog Guides, Services & Study Locations
           </h2>
-          <p className="mt-3 text-sm sm:text-base text-slate-600">
-            Check the dedicated fee breakdown for this service and explore our physical study centers or global online batches.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Left Column: Pricing & Fee Link */}
-          {p && (
-            <div className="lg:col-span-6 flex flex-col justify-between rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="inline-block rounded-full bg-yellow-100 px-3 py-1 text-xs font-bold text-yellow-800">
-                    {p.planName}
-                  </span>
-                  <FiDollarSign className="text-yellow-500 text-xl" />
-                </div>
+        {/* Single Unified Row Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+          {rowItems.map((item, idx) => {
+            const isBlog = item.itemType === "blog";
+            const isService = item.itemType === "service";
+            const isLocation = item.itemType === "location";
 
-                <div className="flex items-baseline gap-3">
-                  <span className="text-3xl sm:text-4xl font-extrabold text-slate-900">
-                    {p.fee}
-                  </span>
-                  {p.originalFee && (
-                    <span className="text-sm text-slate-400 line-through">
-                      {p.originalFee}
-                    </span>
-                  )}
-                </div>
-                <p className="text-xs font-semibold text-slate-500 mt-1">
-                  {p.duration}
-                </p>
+            const href = isBlog
+              ? `/blogs/${item.slug}`
+              : isService
+              ? `/services/${item.slug}`
+              : `/locations/${item.slug}`;
 
-                <ul className="mt-6 space-y-2.5 pt-4 border-t border-slate-100">
-                  {p.includes?.map((inc, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-xs sm:text-sm text-slate-700 font-medium">
-                      <FiCheck className="text-yellow-500 font-bold shrink-0" />
-                      <span>{inc}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            const badgeText = isBlog
+              ? item.category
+              : isService
+              ? item.targetAudience || (item.category === "teacher" ? "Teacher Job" : "Course")
+              : item.offersVisits
+              ? `★ ${item.city} Center`
+              : `★ ${item.city} Online`;
 
-              <div className="mt-8 pt-6 border-t border-slate-100 flex flex-col sm:flex-row items-center gap-3">
-                {p.pricePageLink && (
-                  <Link
-                    href={p.pricePageLink}
-                    className="w-full text-center inline-flex items-center justify-center gap-2 rounded-full bg-yellow-500 px-6 py-3.5 text-xs sm:text-sm font-bold text-slate-950 hover:bg-yellow-400 transition-all shadow-md"
-                  >
-                    <span>{p.pricePageTitle || "View Complete Fee Details"}</span>
-                    <FiArrowRight />
-                  </Link>
-                )}
-                <a
-                  href={`https://wa.me/${SITE_CONFIG.whatsapp}?text=${encodeURIComponent(
-                    `Hi, I want to inquire about fee and pricing for ${service.title}.`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full text-center inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-6 py-3.5 text-xs sm:text-sm font-semibold text-slate-700 hover:bg-slate-50 transition-all"
-                >
-                  Ask Fee via WhatsApp
-                </a>
-              </div>
-            </div>
-          )}
+            const descriptionText = isBlog
+              ? item.excerpt
+              : isService
+              ? item.description || item.subtitle
+              : item.shortDescription || item.description;
 
-          {/* Right Column: Locations & Study Centers */}
-          <div className="lg:col-span-6 flex flex-col justify-between rounded-3xl border border-slate-200 bg-gradient-to-br from-yellow-50/40 via-white to-sky-50/30 p-6 sm:p-8 shadow-sm">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <FiMapPin className="text-yellow-600 text-xl" />
-                <h3 className="text-xl font-bold text-slate-900">
-                  Study Centers & Locations We Serve
-                </h3>
-              </div>
-              <p className="text-xs sm:text-sm text-slate-600 mb-6">
-                We offer both interactive online classes globally and in-person classroom coaching at our flagship Punjab centers.
-              </p>
+            const actionText = isBlog
+              ? "Read Guide"
+              : isService
+              ? "Explore Service"
+              : "Explore Center";
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                {areas.map((loc, idx) => (
-                  <Link
-                    key={idx}
-                    href={loc.href || "/locations"}
-                    className="group rounded-2xl border border-slate-200/80 bg-white p-4 shadow-xs transition-all hover:border-yellow-300 hover:shadow-sm"
-                  >
-                    <span className="inline-block rounded-md bg-yellow-100 px-2 py-0.5 text-[10px] font-bold text-yellow-800 mb-1">
-                      {loc.city}
-                    </span>
-                    <h4 className="text-sm font-bold text-slate-900 group-hover:text-yellow-700 transition-colors">
-                      {loc.center}
-                    </h4>
-                    <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-yellow-600 group-hover:text-yellow-800">
-                      <span>View Center</span>
-                      <FiArrowRight size={11} />
-                    </span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-slate-200/60">
+            return (
               <Link
-                href="/locations"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 hover:text-yellow-700 transition-colors"
+                key={idx}
+                href={href}
+                className="group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-2xs transition-all duration-300 hover:border-yellow-400 hover:shadow-md"
               >
-                <span>Browse All Physical & Virtual Centers</span>
-                <FiArrowRight size={12} />
+                <div>
+                  <div className="relative h-40 w-full overflow-hidden bg-slate-900/5 p-1.5 flex items-center justify-center">
+                    <Image
+                      src={item.coverImage}
+                      alt={item.title}
+                      fill
+                      className="object-contain transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent opacity-70" />
+                    <span className="absolute top-2.5 left-2.5 rounded-full bg-yellow-500 px-2.5 py-0.5 text-[10px] font-bold text-slate-950 shadow-xs">
+                      {badgeText}
+                    </span>
+                  </div>
+
+                  <div className="p-4">
+                    <h4 className="text-sm font-bold text-slate-900 group-hover:text-yellow-700 transition-colors line-clamp-1">
+                      {item.title}
+                    </h4>
+                    <p className="mt-1.5 text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                      {descriptionText}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="px-4 pb-4 pt-0">
+                  <span className="inline-flex items-center gap-1 text-[11px] font-bold text-yellow-700 group-hover:text-yellow-800">
+                    <span>{actionText}</span>
+                    <FiArrowRight size={11} className="transition-transform group-hover:translate-x-1" />
+                  </span>
+                </div>
               </Link>
-            </div>
-          </div>
+            );
+          })}
         </div>
       </div>
     </section>

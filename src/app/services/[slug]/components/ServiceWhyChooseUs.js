@@ -1,6 +1,7 @@
-import { FiAward } from "react-icons/fi";
+import { FiAward, FiCheckSquare } from "react-icons/fi";
 
 export default function ServiceWhyChooseUs({ service }) {
+  const isTeacher = service.category === "teacher";
   const points = service.whyChooseUs || [];
   if (!points.length) return null;
 
@@ -9,10 +10,12 @@ export default function ServiceWhyChooseUs({ service }) {
       <div className="mx-auto max-w-7xl px-5 sm:px-6">
         <div className="max-w-3xl mb-10">
           <span className="rounded-full bg-yellow-100 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-yellow-700">
-            Why Choose Us
+            <span>{isTeacher ? "Why Teach With Us" : "Why Choose Us"}</span>
           </span>
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Key Advantages of Our Academy
+            {isTeacher
+              ? "Why Educators Partner With Inquisitive Mind Academy"
+              : "Key Advantages of Our Academy"}
           </h2>
         </div>
 
@@ -23,7 +26,7 @@ export default function ServiceWhyChooseUs({ service }) {
               className="rounded-2xl border border-slate-200 bg-gradient-to-br from-yellow-50/50 via-white to-sky-50/30 p-6 shadow-sm"
             >
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-yellow-100 text-yellow-700 mb-4 font-bold">
-                <FiAward className="text-xl" />
+                {isTeacher ? <FiCheckSquare className="text-xl" /> : <FiAward className="text-xl" />}
               </div>
               <h3 className="text-lg font-bold text-slate-900">
                 {pt.title}

@@ -10,6 +10,7 @@ import ServiceQuickInfo from "./components/ServiceQuickInfo";
 import ServiceHowItWorks from "./components/ServiceHowItWorks";
 import ServiceWhatsCovered from "./components/ServiceWhatsCovered";
 import ServiceWhyChooseUs from "./components/ServiceWhyChooseUs";
+import ServiceOnlineClasses from "./components/ServiceOnlineClasses";
 import ServiceCoursesWeOffer from "./components/ServiceCoursesWeOffer";
 import ServicePricingAndAreas from "./components/ServicePricingAndAreas";
 import ServiceTutorCallout from "./components/ServiceTutorCallout";
@@ -110,28 +111,31 @@ export default async function ServicePage({ params }) {
           {/* 6. Why Choose Us */}
           <ServiceWhyChooseUs service={service} />
 
-          {/* 7. Courses We Offer */}
+          {/* 7. Dedicated Online Classes & Tutor Section (High-Intent SEO Keywords) */}
+          <ServiceOnlineClasses service={service} />
+
+          {/* 8. Courses We Offer */}
           <ServiceCoursesWeOffer service={service} />
 
-          {/* 8. Pricing, Fee Plans & Study Centers */}
+          {/* 9. Pricing, Fee Plans & Study Centers */}
           <ServicePricingAndAreas service={service} />
 
-          {/* 9. Become a Tutor callout */}
+          {/* 10. Become a Tutor callout */}
           <ServiceTutorCallout service={service} />
 
-          {/* 10. FAQ */}
+          {/* 11. FAQ */}
           <ServiceFAQ service={service} />
 
-          {/* 11. Other Services We Offer */}
+          {/* 12. Other Services We Offer */}
           <ServiceOtherServices currentSlug={service.slug} />
 
-          {/* 12. Related Blog Posts */}
+          {/* 13. Related Blog Posts */}
           <ServiceRelatedBlogs service={service} blogs={blogs} />
 
-          {/* 13. References */}
+          {/* 14. References */}
           <ServiceReferences service={service} />
 
-          {/* 14. Final CTA */}
+          {/* 15. Final CTA */}
           <ServiceCTA service={service} />
         </div>
       </main>

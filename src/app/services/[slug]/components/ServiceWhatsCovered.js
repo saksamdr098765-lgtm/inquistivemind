@@ -1,6 +1,7 @@
-import { FiCheckCircle } from "react-icons/fi";
+import { FiCheckCircle, FiBriefcase } from "react-icons/fi";
 
 export default function ServiceWhatsCovered({ service }) {
+  const isTeacher = service.category === "teacher";
   const items = service.whatsCovered || [];
   if (!items.length) return null;
 
@@ -9,10 +10,11 @@ export default function ServiceWhatsCovered({ service }) {
       <div className="mx-auto max-w-7xl px-5 sm:px-6">
         <div className="max-w-3xl mb-10">
           <span className="rounded-full bg-yellow-100 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-yellow-700">
-            Curriculum & Modules
+            {isTeacher ? <FiBriefcase className="inline mr-1" /> : null}
+            <span>{isTeacher ? "Scope & Responsibilities" : "Curriculum & Modules"}</span>
           </span>
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            What&apos;s Covered In This Program
+            {isTeacher ? "Teaching Scope & Key Responsibilities" : "What\u2019s Covered In This Program"}
           </h2>
         </div>
 

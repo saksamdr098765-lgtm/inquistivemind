@@ -1,16 +1,18 @@
 import Image from "next/image";
-import Link from "next/link";
 import {
   FiArrowRight,
   FiCalendar,
   FiClock,
 } from "react-icons/fi";
+import TrackedLink from "@/app/Components/tracking/TrackedLink";
 
 export default function BlogCard({ blog }) {
   return (
-    <Link
+    <TrackedLink
       href={`/blogs/${blog.slug}`}
-      className="group flex flex-row lg:flex-col h-full overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-yellow-200 hover:shadow-xl"
+      label={`Blog Card: ${blog.title}`}
+      category="Blog Listing"
+      className="group flex flex-row lg:flex-col h-full overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-yellow-200 hover:shadow-xl min-h-[44px]"
     >
       {/* Cover Image */}
       <div className="relative w-32 sm:w-48 lg:w-full shrink-0 overflow-hidden bg-slate-100">
@@ -84,6 +86,6 @@ export default function BlogCard({ blog }) {
           </span>
         </div>
       </div>
-    </Link>
+    </TrackedLink>
   );
 }

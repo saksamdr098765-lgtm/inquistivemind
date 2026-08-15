@@ -8,7 +8,7 @@ import {
   FaStar,
   FaCalendarCheck,
 } from "react-icons/fa";
-import Link from "next/link";
+import TrackedLink from "./tracking/TrackedLink";
 
 export default function BecomeTutor() {
   return (
@@ -26,7 +26,7 @@ export default function BecomeTutor() {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="text-[10px] tracking-[0.35em] text-yellow-600">
+            <div className="text-[10px] tracking-[0.35em] text-yellow-600 font-bold">
               BECOME A TUTOR
             </div>
 
@@ -58,13 +58,15 @@ export default function BecomeTutor() {
               ))}
             </div>
 
-            <Link
+            <TrackedLink
               href="/become-a-tutor"
-              className="mt-8 flex w-full items-center justify-center gap-3 rounded-full bg-yellow-500 px-8 py-3 font-medium text-white shadow-md shadow-yellow-200 transition hover:bg-yellow-600 lg:w-fit"
+              label="Become a Tutor CTA"
+              category="Homepage Tutor"
+              className="mt-8 inline-flex min-h-[44px] w-full items-center justify-center gap-3 rounded-full bg-yellow-500 px-8 py-3.5 font-medium text-white shadow-md shadow-yellow-200 transition hover:bg-yellow-600 lg:w-fit"
             >
-              Become a Tutor
+              <span>Become a Tutor</span>
               <FaArrowRight />
-            </Link>
+            </TrackedLink>
           </motion.div>
 
           {/* RIGHT */}
@@ -91,7 +93,7 @@ export default function BecomeTutor() {
               </p>
             </div>
 
-            {/* Dashboard */}
+            {/* Dashboard Preview */}
             <div className="overflow-hidden rounded-[32px] border border-slate-200 bg-white p-6 shadow-2xl">
               <div className="flex items-center justify-between border-b border-slate-100 pb-5">
                 <div>
@@ -114,7 +116,6 @@ export default function BecomeTutor() {
                     <FaDollarSign />
                     <span className="text-sm text-slate-600">Earnings</span>
                   </div>
-
                   <p className="mt-2 text-2xl font-bold text-slate-900">
                     $1,240
                   </p>
@@ -125,7 +126,6 @@ export default function BecomeTutor() {
                     <FaUsers />
                     <span className="text-sm text-slate-600">Students</span>
                   </div>
-
                   <p className="mt-2 text-2xl font-bold text-slate-900">
                     48
                   </p>
@@ -136,7 +136,6 @@ export default function BecomeTutor() {
                     <FaCalendarCheck />
                     <span className="text-sm text-slate-600">Lessons</span>
                   </div>
-
                   <p className="mt-2 text-2xl font-bold text-slate-900">
                     126
                   </p>
@@ -147,7 +146,6 @@ export default function BecomeTutor() {
                     <FaStar />
                     <span className="text-sm text-slate-600">Rating</span>
                   </div>
-
                   <p className="mt-2 text-2xl font-bold text-slate-900">
                     4.9
                   </p>

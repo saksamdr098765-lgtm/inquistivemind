@@ -9,7 +9,9 @@ import {
   FaArrowRight,
   FaCheckCircle,
 } from "react-icons/fa";
-import Link from "next/link";
+import { trackFilterSelect } from "@/lib/traking";
+import TrackedLink from "./tracking/TrackedLink";
+import TrackedButton from "./tracking/TrackedButton";
 
 const features = [
   {
@@ -87,7 +89,7 @@ export default function FindTutor() {
             transition={{ duration: 0.45 }}
             className="overflow-hidden rounded-3xl border border-slate-200 bg-white p-5 shadow-xl sm:p-6"
           >
-            {/* Search */}
+            {/* Search Input Box */}
             <div className="flex h-14 items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4">
               <FaSearch className="text-yellow-500" />
               <span className="text-sm text-slate-500">
@@ -98,16 +100,19 @@ export default function FindTutor() {
             {/* Filters */}
             <div className="mt-5 flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
               {filters.map((item) => (
-                <button
+                <TrackedButton
                   key={item}
-                  className="whitespace-nowrap rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-700 transition hover:border-yellow-300 hover:bg-yellow-50"
+                  onClick={() => trackFilterSelect("Find Tutor Pill", item)}
+                  label={`Find Tutor Pill: ${item}`}
+                  category="Find Tutor Filter"
+                  className="whitespace-nowrap rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-medium text-slate-700 transition hover:border-yellow-300 hover:bg-yellow-50 min-h-[44px]"
                 >
                   {item}
-                </button>
+                </TrackedButton>
               ))}
             </div>
 
-            {/* Results */}
+            {/* Results Preview */}
             <div className="mt-6 space-y-4">
               {[1, 2, 3].map((item) => (
                 <div
@@ -135,7 +140,7 @@ export default function FindTutor() {
                   key={item}
                   className="flex items-center gap-2 text-sm text-slate-700"
                 >
-                  <FaCheckCircle className="text-yellow-500" />
+                  <FaCheckCircle className="text-yellow-500 shrink-0" />
                   <span>{item}</span>
                 </div>
               ))}
@@ -171,13 +176,15 @@ export default function FindTutor() {
               ))}
             </div>
 
-            <Link
+            <TrackedLink
               href="/find-tutor"
-              className="mt-8 flex h-12 w-full items-center justify-center gap-3 rounded-full bg-yellow-500 px-6 text-sm font-medium text-white transition hover:bg-yellow-600 sm:h-14 lg:w-fit lg:px-8"
+              label="Find Your Tutor Section CTA"
+              category="Homepage Find Tutor"
+              className="mt-8 flex h-12 w-full items-center justify-center gap-3 rounded-full bg-yellow-500 px-6 text-sm font-medium text-white transition hover:bg-yellow-600 sm:h-14 lg:w-fit lg:px-8 min-h-[44px]"
             >
-              Find Your Tutor
+              <span>Find Your Tutor</span>
               <FaArrowRight className="text-sm" />
-            </Link>
+            </TrackedLink>
           </motion.div>
         </div>
       </div>

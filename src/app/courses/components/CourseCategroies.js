@@ -1,6 +1,5 @@
-
-import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
+import TrackedLink from "@/app/Components/tracking/TrackedLink";
 
 const categories = [
   {
@@ -30,62 +29,45 @@ const categories = [
 ];
 
 export default function CourseCategories() {
-
-
   return (
     <section className="relative overflow-hidden bg-white py-20 sm:py-24 lg:py-28">
       {/* Background */}
-
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.10),transparent_60%)]" />
-
       <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:70px_70px]" />
 
       <div className="relative mx-auto max-w-7xl px-6">
-
         {/* Header */}
-
-        <div
-          className="mb-16 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between"
-        >
-
+        <div className="mb-16 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div>
-
             <p className="text-[10px] font-medium tracking-[0.35em] text-slate-400">
               PROGRAMS
             </p>
 
             <h2 className="mt-4 text-4xl font-bold leading-tight text-slate-900 md:text-5xl lg:text-6xl">
               Explore Our
-              <span className="bg-gradient-to-r from-yellow-500 to-yellow-400  bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-yellow-500 to-yellow-400 bg-clip-text text-transparent">
                 {" "}Learning Programs
               </span>
             </h2>
 
             <div className="mt-6 h-1 w-24 rounded-full bg-gradient-to-r from-yellow-500 to-yellow-400" />
-
           </div>
 
           <p className="max-w-xl text-lg leading-8 text-slate-600">
-            Whether you want to improve your language skills,
-            prepare for international opportunities, or excel in
-            academics, we have a program designed for your success.
+            Whether you want to improve your language skills, prepare for international
+            opportunities, or excel in academics, we have a program designed for your
+            success.
           </p>
-
         </div>
 
         {/* Cards */}
-
         <div className="grid gap-8 lg:grid-cols-3">
-
-          {categories.map((category, index) => (
-
+          {categories.map((category) => (
             <div
               key={category.title}
               className="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
             >
-
               <div className="relative h-60 sm:h-72 overflow-hidden bg-slate-900">
-
                 <img
                   src={category.image}
                   alt={category.title}
@@ -95,15 +77,12 @@ export default function CourseCategories() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent" />
 
                 <div className="absolute left-6 top-6">
-
                   <span className="rounded-full bg-white px-4 py-2 text-xs font-semibold text-yellow-600 shadow">
                     {category.courses}
                   </span>
-
                 </div>
 
                 <div className="absolute bottom-6 left-6 right-6">
-
                   <h3 className="text-3xl font-bold text-white">
                     {category.title}
                   </h3>
@@ -111,27 +90,21 @@ export default function CourseCategories() {
                   <p className="mt-3 text-white/80">
                     {category.description}
                   </p>
-                                    <Link
-                   href={ `/course/${category.slug}`}
-                    
-                    className="mt-6 inline-flex items-center gap-2 font-semibold text-yellow-400 transition-all duration-300 group-hover:gap-4 group-hover:text-yellow-300"
-                  >
-                    Explore Program
-                    <FaArrowRight className="text-sm" />
-                  </Link>
 
+                  <TrackedLink
+                    href={`/course/${category.slug}`}
+                    label={`Explore Program: ${category.title}`}
+                    category="Course Categories"
+                    className="mt-6 inline-flex min-h-[44px] items-center gap-2 font-semibold text-yellow-400 transition-all duration-300 group-hover:gap-4 group-hover:text-yellow-300"
+                  >
+                    <span>Explore Program</span>
+                    <FaArrowRight className="text-sm" />
+                  </TrackedLink>
                 </div>
               </div>
             </div>
-
           ))}
-
         </div>
-
-        {/* Bottom CTA */}
-
-    
-
       </div>
     </section>
   );

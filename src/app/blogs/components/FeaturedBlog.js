@@ -1,17 +1,17 @@
 import Image from "next/image";
-import Link from "next/link";
 import {
   FiArrowRight,
   FiCalendar,
   FiClock,
 } from "react-icons/fi";
+import TrackedLink from "@/app/Components/tracking/TrackedLink";
 
 export default function FeaturedBlog({ blog }) {
   if (!blog) return null;
 
   return (
     <section className="relative overflow-hidden bg-white py-8 sm:py-12 md:py-16 lg:py-20">
-      {/* Background (same as Hero) */}
+      {/* Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.10),transparent_60%)]" />
       <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:70px_70px]" />
 
@@ -29,9 +29,11 @@ export default function FeaturedBlog({ blog }) {
           </div>
         </div>
 
-        <Link
+        <TrackedLink
           href={`/blogs/${blog.slug}`}
-          className="group block overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-yellow-200 hover:shadow-xl"
+          label={`Featured Article: ${blog.title}`}
+          category="Blog Listing"
+          className="group block overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-yellow-200 hover:shadow-xl min-h-[44px]"
         >
           <div className="grid lg:grid-cols-2">
             {/* Image */}
@@ -93,14 +95,13 @@ export default function FeaturedBlog({ blog }) {
                 </div>
 
                 <span className="inline-flex w-full items-center justify-center gap-2 rounded-xl sm:rounded-2xl bg-yellow-500 px-5 py-3 text-sm sm:text-base font-semibold text-white transition-all duration-300 group-hover:bg-[#D6451B] sm:w-auto">
-                  Read Article
-
+                  <span>Read Article</span>
                   <FiArrowRight className="transition-transform duration-300 group-hover:translate-x-1" />
                 </span>
               </div>
             </div>
           </div>
-        </Link>
+        </TrackedLink>
       </div>
     </section>
   );

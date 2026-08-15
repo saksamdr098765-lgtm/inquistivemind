@@ -7,7 +7,9 @@ import {
   FaUserGraduate,
   FaGlobe,
 } from "react-icons/fa";
-import { useRouter } from "next/navigation";
+import { trackFilterSelect } from "@/lib/traking";
+import TrackedLink from "./tracking/TrackedLink";
+import TrackedButton from "./tracking/TrackedButton";
 
 const programs = [
   {
@@ -23,7 +25,6 @@ const programs = [
       "Fluency and confidence building",
     ],
   },
-
   {
     icon: <FaGlobe />,
     title: "French Language",
@@ -37,7 +38,6 @@ const programs = [
       "DELF / TEF preparation support",
     ],
   },
-
   {
     icon: <FaUserGraduate />,
     title: "Academic Programs",
@@ -56,7 +56,6 @@ const programs = [
 export default function Programs() {
   const [active, setActive] = useState(0);
   const current = programs[active];
-  const router = useRouter();
 
   return (
     <section className="relative overflow-hidden bg-white py-20 text-slate-900 lg:py-28">
@@ -90,17 +89,22 @@ export default function Programs() {
         {/* Program Selector */}
         <div className="mb-10 flex gap-2 overflow-x-auto pb-4 scrollbar-hide">
           {programs.map((p, i) => (
-            <button
+            <TrackedButton
               key={p.title}
-              onClick={() => setActive(i)}
-              className={`whitespace-nowrap rounded-full px-4 py-2 text-xs transition sm:text-sm ${
+              onClick={() => {
+                trackFilterSelect("Program Tab", p.title);
+                setActive(i);
+              }}
+              label={`Program Tab: ${p.title}`}
+              category="Program Selector"
+              className={`whitespace-nowrap rounded-full px-4 py-2.5 text-xs transition sm:text-sm min-h-[44px] ${
                 active === i
-                  ? "bg-yellow-500 text-white shadow-md shadow-yellow-200"
+                  ? "bg-yellow-500 text-white shadow-md shadow-yellow-200 font-semibold"
                   : "border border-slate-200 bg-white text-slate-600 hover:bg-yellow-50"
               }`}
             >
               {p.title}
-            </button>
+            </TrackedButton>
           ))}
         </div>
 
@@ -161,14 +165,14 @@ export default function Programs() {
                   ))}
                 </div>
 
-                <button
-                  onClick={() => {
-                    router.push(`/course/${current.slug}`);
-                  }}
-                  className="mt-8 w-full rounded-full bg-yellow-500 px-8 py-3 text-white shadow-md shadow-yellow-200 transition hover:bg-yellow-600 sm:w-auto"
+                <TrackedLink
+                  href={`/course/${current.slug}`}
+                  label={`Explore Program: ${current.title}`}
+                  category="Program Selector"
+                  className="mt-8 inline-flex min-h-[44px] w-full items-center justify-center rounded-full bg-yellow-500 px-8 py-3 text-center text-white shadow-md shadow-yellow-200 transition hover:bg-yellow-600 sm:w-auto"
                 >
                   Explore Program
-                </button>
+                </TrackedLink>
               </motion.div>
             </AnimatePresence>
           </div>

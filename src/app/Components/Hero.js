@@ -1,10 +1,10 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { FaArrowRight } from "react-icons/fa";
+import TrackedLink from "./tracking/TrackedLink";
 
 const words = [
   "Curiosity",
@@ -88,6 +88,7 @@ export default function Hero() {
     </section>
   );
 }
+
 function HeroContent({ index, desktop = false, mobile = false }) {
   return (
     <div className="mx-auto max-w-xl">
@@ -108,9 +109,7 @@ function HeroContent({ index, desktop = false, mobile = false }) {
           </p>
 
           <div className="mt-6 flex items-center gap-2 text-sm">
-            <span className="text-slate-500">
-              Driven by
-            </span>
+            <span className="text-slate-500">Driven by</span>
 
             <AnimatePresence mode="wait">
               <motion.span
@@ -126,22 +125,26 @@ function HeroContent({ index, desktop = false, mobile = false }) {
             </AnimatePresence>
           </div>
 
-          {/* CTA */}
+          {/* CTA (Min 44x44px touch targets) */}
           <div className="mt-8 flex flex-col gap-3">
-            <Link
+            <TrackedLink
               href="/courses"
-              className="flex items-center justify-center rounded-full bg-yellow-400 px-8 py-4 font-semibold text-slate-900 shadow-lg transition hover:bg-yellow-500"
+              label="Hero Mobile Explore Programs"
+              category="Hero CTA"
+              className="flex min-h-[44px] items-center justify-center rounded-full bg-yellow-400 px-8 py-3.5 font-semibold text-slate-900 shadow-lg transition hover:bg-yellow-500"
             >
               Explore Programs
-            </Link>
+            </TrackedLink>
 
-            <Link
+            <TrackedLink
               href="/about"
-              className="flex items-center justify-center gap-2 rounded-full border border-slate-200 px-8 py-4 font-medium text-slate-700 transition hover:bg-slate-50"
+              label="Hero Mobile Learn More"
+              category="Hero CTA"
+              className="flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-slate-200 px-8 py-3.5 font-medium text-slate-700 transition hover:bg-slate-50"
             >
-              Learn More
+              <span>Learn More</span>
               <FaArrowRight size={12} />
-            </Link>
+            </TrackedLink>
           </div>
 
           {/* Stats */}
@@ -150,30 +153,21 @@ function HeroContent({ index, desktop = false, mobile = false }) {
               <div className="text-2xl font-bold text-yellow-500">
                 <CountUp end={5000} duration={2} />+
               </div>
-
-              <p className="mt-1 text-xs text-slate-500">
-                Learners
-              </p>
+              <p className="mt-1 text-xs text-slate-500">Learners</p>
             </div>
 
             <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4 text-center">
               <div className="text-2xl font-bold text-sky-500">
                 <CountUp end={50} duration={2} />+
               </div>
-
-              <p className="mt-1 text-xs text-slate-500">
-                Educators
-              </p>
+              <p className="mt-1 text-xs text-slate-500">Educators</p>
             </div>
 
             <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4 text-center">
               <div className="text-2xl font-bold text-red-500">
                 <CountUp end={98} duration={2} />%
               </div>
-
-              <p className="mt-1 text-xs text-slate-500">
-                Success
-              </p>
+              <p className="mt-1 text-xs text-slate-500">Success</p>
             </div>
           </div>
         </>
@@ -191,9 +185,7 @@ function HeroContent({ index, desktop = false, mobile = false }) {
             <span className="block text-yellow-500">
               Inquisitive Minds
             </span>
-            <span className="block">
-              For Tomorrow
-            </span>
+            <span className="block">For Tomorrow</span>
           </h1>
 
           <p className="mt-6 text-lg leading-relaxed text-slate-600">
@@ -202,9 +194,7 @@ function HeroContent({ index, desktop = false, mobile = false }) {
           </p>
 
           <div className="mt-5 flex items-center gap-2 text-sm">
-            <span className="text-slate-500">
-              Driven by
-            </span>
+            <span className="text-slate-500">Driven by</span>
 
             <AnimatePresence mode="wait">
               <motion.span
@@ -220,21 +210,25 @@ function HeroContent({ index, desktop = false, mobile = false }) {
             </AnimatePresence>
           </div>
 
-          <div className="mt-10 flex flex-wrap gap-4">
-            <Link
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <TrackedLink
               href="/courses"
-              className="rounded-full bg-yellow-400 px-8 py-3 font-semibold text-slate-900 shadow-lg shadow-yellow-400/30 transition hover:-translate-y-1 hover:bg-yellow-500"
+              label="Hero Desktop Explore Programs"
+              category="Hero CTA"
+              className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-yellow-400 px-8 py-3 font-semibold text-slate-900 shadow-lg shadow-yellow-400/30 transition hover:-translate-y-1 hover:bg-yellow-500"
             >
               Explore Programs
-            </Link>
+            </TrackedLink>
 
-            <Link
+            <TrackedLink
               href="/about"
-              className="flex items-center gap-2 font-medium text-slate-700 transition hover:text-sky-600"
+              label="Hero Desktop Learn More"
+              category="Hero CTA"
+              className="inline-flex min-h-[44px] items-center gap-2 font-medium text-slate-700 transition hover:text-sky-600"
             >
-              Learn More
+              <span>Learn More</span>
               <FaArrowRight size={12} />
-            </Link>
+            </TrackedLink>
           </div>
 
           <div className="mt-14 flex gap-10 text-slate-500">

@@ -21,6 +21,9 @@ import {
   FiChevronDown,
   FiZap,
 } from "react-icons/fi";
+import { trackFilterSelect, trackSearchQuery, trackCourseClick } from "@/lib/traking";
+import TrackedLink from "../Components/tracking/TrackedLink";
+import TrackedButton from "../Components/tracking/TrackedButton";
 
 export default function ServicesClient({ services = [] }) {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -47,6 +50,14 @@ export default function ServicesClient({ services = [] }) {
   const featuredService =
     services.find((s) => s.slug?.includes("tef") || s.slug?.includes("delf")) ||
     services[0];
+
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchQuery(value);
+    if (value.length > 2) {
+      trackSearchQuery(value, "Services Page Search");
+    }
+  };
 
   const faqs = [
     {
@@ -99,121 +110,115 @@ export default function ServicesClient({ services = [] }) {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl leading-[1.15]"
             >
-              Master French Languages & Expand Your Career
+              Master French with Experts.{" "}
+              <span className="bg-gradient-to-r from-amber-500 via-amber-600 to-yellow-600 bg-clip-text text-transparent block sm:inline">
+                Build a Global Career.
+              </span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed font-normal"
+              className="mt-5 text-sm sm:text-lg text-slate-600 leading-relaxed"
             >
-              Explore certified exam preparation for TEF Canada & DELF, 1-on-1 online tuition, and rewarding career opportunities for French educators.
+              From TEF Canada & DELF exam preparation to private 1-on-1 tutoring and French teacher job placement, discover structured learning solutions tailored for students and educators.
             </motion.p>
 
-            {/* Quick Metrics Bar */}
-            {/* <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl mx-auto rounded-2xl border border-slate-200/80 bg-white/80 p-3.5 shadow-sm backdrop-blur"
+            {/* Quick Metrics Ticker */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="mt-8 flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm font-bold text-slate-700"
             >
-              <div className="text-center p-1 border-r border-slate-100 last:border-0">
-                <p className="text-lg sm:text-xl font-extrabold text-slate-900">98%</p>
-                <p className="text-[11px] font-semibold text-slate-500">Exam Pass Rate</p>
+              <div className="flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 shadow-xs border border-slate-200/80">
+                <FiCheckCircle className="text-emerald-500" />
+                <span>98% Exam Pass Rate</span>
               </div>
-              <div className="text-center p-1 border-r border-slate-100 last:border-0">
-                <p className="text-lg sm:text-xl font-extrabold text-slate-900">100%</p>
-                <p className="text-[11px] font-semibold text-slate-500">Live Interactive</p>
+              <div className="flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 shadow-xs border border-slate-200/80">
+                <FiUserCheck className="text-sky-500" />
+                <span>100% Live Interactive</span>
               </div>
-              <div className="text-center p-1 border-r border-slate-100 last:border-0">
-                <p className="text-lg sm:text-xl font-extrabold text-slate-900">4.9 ★</p>
-                <p className="text-[11px] font-semibold text-slate-500">Student Rating</p>
+              <div className="flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 shadow-xs border border-slate-200/80">
+                <FiStar className="text-amber-500 fill-amber-400" />
+                <span>4.9/5 Student Rating</span>
               </div>
-              <div className="text-center p-1">
-                <p className="text-lg sm:text-xl font-extrabold text-slate-900">1-on-1</p>
-                <p className="text-[11px] font-semibold text-slate-500">Mentorship</p>
-              </div>
-            </motion.div> */}
+            </motion.div>
           </div>
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* ========================================================================= */}
-        {/* 2. FEATURED PROGRAM SPOTLIGHT BANNER */}
-        {/* ========================================================================= */}
+      {/* ========================================================================= */}
+      {/* 2. FEATURED SPOTLIGHT BANNER */}
+      {/* ========================================================================= */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-12">
         {featuredService && (
-          <section className="mb-12">
-            <div className="relative overflow-hidden rounded-3xl border border-amber-200/90 bg-gradient-to-br from-amber-500/10 via-white to-sky-500/10 p-6 sm:p-8 lg:p-10 shadow-lg">
-              <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-amber-400/20 blur-3xl pointer-events-none" />
-
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-                <div className="lg:col-span-7">
-                  <div className="flex flex-wrap items-center gap-2 mb-3">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-500 px-3 py-1 text-xs font-bold text-slate-950 shadow-xs">
-                      <FiStar className="fill-slate-950" />
-                      <span>Featured Program</span>
-                    </span>
-                    <span className="inline-flex items-center gap-1 rounded-full border border-amber-300 bg-white/90 px-3 py-1 text-xs font-bold text-amber-900">
-                      {featuredService.quickInfo?.duration || "Immigration & Exam Target"}
-                    </span>
-                  </div>
-
-                  <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                    {featuredService.title}
-                  </h2>
-                  <p className="mt-2 text-xs sm:text-sm font-bold uppercase tracking-wider text-amber-800">
-                    {featuredService.subtitle}
-                  </p>
-                  <p className="mt-3 text-sm text-slate-600 leading-relaxed">
-                    {featuredService.description}
-                  </p>
-
-                  {/* Highlights Bullet List */}
-                  <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                    {(featuredService.briefOverview?.highlights?.slice(0, 4) || [
-                      "Score NCLC 7+ for Canadian PR",
-                      "Live 1-on-1 Oral Simulations",
-                      "Computer-based Mock Tests",
-                      "Dedicated DELF Certified Trainers",
-                    ]).map((item, idx) => (
-                      <div key={idx} className="flex items-center gap-2 text-xs font-semibold text-slate-800">
-                        <FiCheckCircle className="text-amber-500 shrink-0" />
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-7 flex flex-wrap items-center gap-4">
-                    <Link
-                      href={`/services/${featuredService.slug}`}
-                      className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-sm font-bold text-white shadow-md transition-all hover:bg-slate-800 hover:shadow-lg hover:-translate-y-0.5"
-                    >
-                      <span>Explore Featured Program</span>
-                      <FiArrowRight />
-                    </Link>
-                  </div>
+          <div className="relative overflow-hidden rounded-3xl border border-amber-300/80 bg-gradient-to-r from-amber-500/10 via-yellow-400/10 to-sky-500/10 p-6 sm:p-10 shadow-lg">
+            <div className="grid lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-7">
+                <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-amber-800">
+                  <span className="rounded-full bg-amber-500 px-3 py-1 text-slate-950">
+                    Flagship Program
+                  </span>
+                  <span>{featuredService.subtitle || "TEF & DELF Focus"}</span>
                 </div>
 
-                {/* Featured Image with Object Contain */}
-                <div className="lg:col-span-5 flex justify-center">
-                  <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-amber-200/80 bg-white p-3 shadow-md flex items-center justify-center">
-                    <img
-                      src={featuredService.coverImage}
-                      alt={featuredService.title}
-                      className="w-full h-auto max-h-64 sm:max-h-72 object-contain rounded-xl transition-transform duration-500 hover:scale-103"
-                    />
-                  </div>
+                <h2 className="mt-3 text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                  {featuredService.title}
+                </h2>
+
+                <p className="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
+                  {featuredService.description}
+                </p>
+
+                {/* Feature Checklist */}
+                <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {(featuredService.trustBadges || [
+                    "Certified Bilingual Trainers",
+                    "Targeted Oral & Listening Drills",
+                    "Exam Engine Mock Tests",
+                    "Small Interactive Batches",
+                  ]).map((item, idx) => (
+                    <div key={idx} className="flex items-center gap-2 text-xs font-semibold text-slate-800">
+                      <FiCheckCircle className="text-amber-500 shrink-0" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-7 flex flex-wrap items-center gap-4">
+                  <TrackedLink
+                    href={`/services/${featuredService.slug}`}
+                    label={`Explore Featured Program: ${featuredService.title}`}
+                    category="Services Featured Spotlight"
+                    className="inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-sm font-bold text-white shadow-md transition-all hover:bg-slate-800 hover:shadow-lg hover:-translate-y-0.5"
+                  >
+                    <span>Explore Featured Program</span>
+                    <FiArrowRight />
+                  </TrackedLink>
+                </div>
+              </div>
+
+              {/* Featured Image with Object Contain */}
+              <div className="lg:col-span-5 flex justify-center">
+                <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-amber-200/80 bg-white p-3 shadow-md flex items-center justify-center">
+                  <img
+                    src={featuredService.coverImage}
+                    alt={featuredService.title}
+                    className="w-full h-auto max-h-64 sm:max-h-72 object-contain rounded-xl transition-transform duration-500 hover:scale-103"
+                  />
                 </div>
               </div>
             </div>
-          </section>
+          </div>
         )}
+      </section>
 
-        {/* ========================================================================= */}
-        {/* 3. INTERACTIVE CONTROL BAR (SEARCH & FILTER TABS) */}
-        {/* ========================================================================= */}
+      {/* ========================================================================= */}
+      {/* 3. INTERACTIVE CONTROL BAR (SEARCH & FILTER TABS) */}
+      {/* ========================================================================= */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-8 space-y-4">
           <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 rounded-2xl border border-slate-200/80 bg-white p-3.5 shadow-sm">
             {/* Search Input */}
@@ -222,25 +227,32 @@ export default function ServicesClient({ services = [] }) {
               <input
                 type="text"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={handleSearchChange}
                 placeholder="Search services (e.g., TEF Canada, DELF, Teacher Jobs, Online Tutors)..."
                 className="w-full rounded-xl bg-slate-100/80 py-2.5 pl-10 pr-9 text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-400 transition-all"
               />
               {searchQuery && (
-                <button
+                <TrackedButton
                   onClick={() => setSearchQuery("")}
+                  label="Clear Services Search"
+                  category="Services Search"
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
                 >
                   <FiX size={16} />
-                </button>
+                </TrackedButton>
               )}
             </div>
 
             {/* Segmented Category Filter Tabs */}
             <div className="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 scrollbar-none">
-              <button
-                onClick={() => setActiveCategory("all")}
-                className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-bold transition-all duration-200 cursor-pointer shrink-0 ${
+              <TrackedButton
+                onClick={() => {
+                  trackFilterSelect("Services Category Tab", "all");
+                  setActiveCategory("all");
+                }}
+                label="Filter All Services"
+                category="Services Filter"
+                className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-bold transition-all duration-200 cursor-pointer shrink-0 min-h-[44px] ${
                   activeCategory === "all"
                     ? "bg-slate-900 text-white shadow-sm"
                     : "bg-slate-100 text-slate-700 hover:bg-slate-200/70"
@@ -257,11 +269,16 @@ export default function ServicesClient({ services = [] }) {
                 >
                   {services.length}
                 </span>
-              </button>
+              </TrackedButton>
 
-              <button
-                onClick={() => setActiveCategory("student")}
-                className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-bold transition-all duration-200 cursor-pointer shrink-0 ${
+              <TrackedButton
+                onClick={() => {
+                  trackFilterSelect("Services Category Tab", "student");
+                  setActiveCategory("student");
+                }}
+                label="Filter Student Courses"
+                category="Services Filter"
+                className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-bold transition-all duration-200 cursor-pointer shrink-0 min-h-[44px] ${
                   activeCategory === "student"
                     ? "bg-amber-500 text-slate-950 shadow-sm"
                     : "bg-slate-100 text-slate-700 hover:bg-slate-200/70"
@@ -278,11 +295,16 @@ export default function ServicesClient({ services = [] }) {
                 >
                   {studentCount}
                 </span>
-              </button>
+              </TrackedButton>
 
-              <button
-                onClick={() => setActiveCategory("teacher")}
-                className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-bold transition-all duration-200 cursor-pointer shrink-0 ${
+              <TrackedButton
+                onClick={() => {
+                  trackFilterSelect("Services Category Tab", "teacher");
+                  setActiveCategory("teacher");
+                }}
+                label="Filter Teacher Jobs"
+                category="Services Filter"
+                className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-bold transition-all duration-200 cursor-pointer shrink-0 min-h-[44px] ${
                   activeCategory === "teacher"
                     ? "bg-amber-500 text-slate-950 shadow-sm"
                     : "bg-slate-100 text-slate-700 hover:bg-slate-200/70"
@@ -299,7 +321,7 @@ export default function ServicesClient({ services = [] }) {
                 >
                   {teacherCount}
                 </span>
-              </button>
+              </TrackedButton>
             </div>
           </div>
 
@@ -310,15 +332,17 @@ export default function ServicesClient({ services = [] }) {
               {searchQuery && <span> for &ldquo;{searchQuery}&rdquo;</span>}
             </span>
             {searchQuery && (
-              <button
+              <TrackedButton
                 onClick={() => {
                   setSearchQuery("");
                   setActiveCategory("all");
                 }}
+                label="Reset Services Filters"
+                category="Services Filter"
                 className="text-amber-700 hover:underline font-bold"
               >
                 Reset Filters
-              </button>
+              </TrackedButton>
             )}
           </div>
         </div>
@@ -410,13 +434,16 @@ export default function ServicesClient({ services = [] }) {
 
                   {/* Card Action Footer */}
                   <div className="p-5 pt-0">
-                    <Link
+                    <TrackedLink
                       href={`/services/${service.slug}`}
-                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-xs font-bold text-slate-800 transition-all duration-200 group-hover:bg-amber-500 group-hover:border-amber-500 group-hover:text-slate-950 group-hover:shadow-sm"
+                      onClick={() => trackCourseClick(service.title, "Services Grid")}
+                      label={`Service Card: ${service.title}`}
+                      category="Services Grid"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-xs font-bold text-slate-800 transition-all duration-200 group-hover:bg-amber-500 group-hover:border-amber-500 group-hover:text-slate-950 group-hover:shadow-sm min-h-[44px]"
                     >
                       <span>{isTeacher ? "View Job Details" : "View Program Details"}</span>
                       <FiArrowRight size={13} className="transition-transform group-hover:translate-x-1" />
-                    </Link>
+                    </TrackedLink>
                   </div>
                 </motion.div>
               );
@@ -424,130 +451,72 @@ export default function ServicesClient({ services = [] }) {
           </div>
         ) : (
           <div className="rounded-3xl border border-dashed border-slate-300 bg-white p-12 text-center my-8">
-            <FiSearch className="mx-auto text-slate-300" size={40} />
-            <h3 className="mt-4 text-base font-bold text-slate-900">No Services Found</h3>
-            <p className="mt-1 text-xs text-slate-500">
-              No service matching &ldquo;{searchQuery}&rdquo; was found. Try adjusting your search term.
+            <FiSearch size={40} className="mx-auto text-amber-500 mb-3" />
+            <h3 className="text-lg font-bold text-slate-900">No Services Found</h3>
+            <p className="mt-1 text-xs text-slate-500 max-w-sm mx-auto">
+              We couldn&apos;t find any service matching &ldquo;{searchQuery}&rdquo;. Try clearing your search or choosing another category.
             </p>
-            <button
+            <TrackedButton
               onClick={() => {
                 setSearchQuery("");
                 setActiveCategory("all");
               }}
-              className="mt-4 inline-flex items-center gap-1.5 rounded-xl bg-slate-900 px-4 py-2 text-xs font-bold text-white hover:bg-slate-800"
+              label="Reset Services Search Button"
+              category="Services Search"
+              className="mt-5 inline-flex items-center gap-2 rounded-xl bg-slate-900 px-5 py-2.5 text-xs font-bold text-white shadow-xs hover:bg-slate-800 transition-all min-h-[44px]"
             >
-              <span>View All Services</span>
-            </button>
+              Reset Filters
+            </TrackedButton>
           </div>
         )}
 
         {/* ========================================================================= */}
-        {/* 5. PLATFORM TRUST & DIFFERENTIATORS GRID */}
+        {/* 5. PLATFORM TRUST DIFFERENTIATORS */}
         {/* ========================================================================= */}
-        <section className="mt-16 sm:mt-20">
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-amber-300 bg-amber-50 px-3.5 py-1 text-xs font-bold text-amber-900">
-              <FiShield className="text-amber-600" />
-              <span>Academy Excellence Guarantee</span>
-            </span>
-            <h2 className="mt-3 text-2xl sm:text-3xl font-extrabold text-slate-900">
-              Why Our Educational Services Lead the Industry
+        <section className="mt-20 pt-12 border-t border-slate-200/80">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900">
+              Why Learn with Inquisitive Mind Academy?
             </h2>
             <p className="mt-2 text-xs sm:text-sm text-slate-600">
-              Structured learning pathways designed for maximum language retention and career advancement.
+              We combine accredited native mentors, small interactive batches, and exam-focused drills.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-xs transition-all hover:shadow-md">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-800 font-bold mb-3">
-                <FiAward size={20} />
-              </div>
-              <h3 className="text-sm font-bold text-slate-900">Certified Bilingual Mentors</h3>
-              <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">
-                Learn from native-level French trainers with proven records in TEF Canada & DELF exam preparation.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-xs transition-all hover:shadow-md">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-800 font-bold mb-3">
-                <FiUsers size={20} />
-              </div>
-              <h3 className="text-sm font-bold text-slate-900">Small Interactive Batches</h3>
-              <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">
-                Max 6 students per batch to ensure personalized feedback, speaking drills, and live interaction.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-xs transition-all hover:shadow-md">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-800 font-bold mb-3">
-                <FiTarget size={20} />
-              </div>
-              <h3 className="text-sm font-bold text-slate-900">Exam-Engine Mock Drills</h3>
-              <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">
-                Practice with real computer-based exam engines that mirror official TEF and DELF testing centers.
-              </p>
-            </div>
-
-            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-xs transition-all hover:shadow-md">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-800 font-bold mb-3">
-                <FiBriefcase size={20} />
-              </div>
-              <h3 className="text-sm font-bold text-slate-900">Teacher Job Placement</h3>
-              <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">
-                Dedicated recruitment pathways and administrative support for online & offline French tutors.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ========================================================================= */}
-        {/* 6. INTERACTIVE FAQ ACCORDION SECTION */}
-        {/* ========================================================================= */}
-        <section className="mt-16 sm:mt-20 max-w-4xl mx-auto">
-          <div className="text-center mb-8">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
-              Frequently Asked Questions
-            </h2>
-            <p className="mt-2 text-xs sm:text-sm text-slate-600">
-              Got questions about our services, live classes, or teaching opportunities? Find answers below.
-            </p>
-          </div>
-
-          <div className="space-y-3">
-            {faqs.map((faq, index) => {
-              const isOpen = openFaq === index;
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                icon: FiAward,
+                title: "Certified DELF Trainers",
+                desc: "Expert French mentors with native fluency and exam board certification.",
+              },
+              {
+                icon: FiUsers,
+                title: "Small Batches & 1-on-1",
+                desc: "Personalized attention ensuring every student gets maximum speaking time.",
+              },
+              {
+                icon: FiTarget,
+                title: "Exam-Engine Mock Drills",
+                desc: "Real TEF & DELF exam simulations with detailed oral and writing feedback.",
+              },
+              {
+                icon: FiBriefcase,
+                title: "Teacher Career Placement",
+                desc: "Dedicated hiring portal connecting certified French tutors with top institutes.",
+              },
+            ].map((card, i) => {
+              const Icon = card.icon;
               return (
                 <div
-                  key={index}
-                  className="rounded-2xl border border-slate-200 bg-white overflow-hidden shadow-2xs transition-all"
+                  key={i}
+                  className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-xs hover:border-amber-400 hover:shadow-md transition-all"
                 >
-                  <button
-                    onClick={() => setOpenFaq(isOpen ? -1 : index)}
-                    className="flex w-full items-center justify-between p-4 sm:p-5 text-left text-sm font-bold text-slate-900 hover:text-amber-800 transition-colors"
-                  >
-                    <span>{faq.question}</span>
-                    <FiChevronDown
-                      className={`shrink-0 text-slate-400 transition-transform duration-300 ${
-                        isOpen ? "rotate-180 text-amber-600" : ""
-                      }`}
-                      size={18}
-                    />
-                  </button>
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <div className="px-4 pb-5 sm:px-5 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
-                          {faq.answer}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-500/10 text-amber-600 mb-4">
+                    <Icon size={22} />
+                  </div>
+                  <h3 className="text-base font-extrabold text-slate-900">{card.title}</h3>
+                  <p className="mt-2 text-xs text-slate-600 leading-relaxed">{card.desc}</p>
                 </div>
               );
             })}
@@ -555,47 +524,86 @@ export default function ServicesClient({ services = [] }) {
         </section>
 
         {/* ========================================================================= */}
-        {/* 7. HIGH-CONVERTING DUAL CTA FOOTER BANNER */}
+        {/* 6. INTERACTIVE QUICK FAQ ACCORDION */}
         {/* ========================================================================= */}
-        <section className="mt-16 sm:mt-20">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-950 via-slate-900 to-amber-950 p-8 sm:p-12 text-white shadow-2xl">
-            <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-amber-500/10 blur-3xl pointer-events-none" />
+        <section className="mt-20 rounded-3xl border border-slate-200/80 bg-white p-6 sm:p-10 shadow-sm">
+          <div className="max-w-2xl mx-auto text-center mb-8">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900">
+              Frequently Asked Questions
+            </h2>
+            <p className="mt-2 text-xs sm:text-sm text-slate-600">
+              Everything you need to know about our French courses, tutors, and career options.
+            </p>
+          </div>
 
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              <div className="lg:col-span-8">
-                <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-400/20 px-3.5 py-1 text-xs font-bold text-amber-300 border border-amber-400/30">
-                  <FiUserCheck />
-                  <span>Start Learning or Teaching Today</span>
-                </span>
-                <h2 className="mt-3 text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-                  Ready to Achieve Your Language & Career Goals?
-                </h2>
-                <p className="mt-2 text-xs sm:text-base text-slate-300 leading-relaxed max-w-2xl">
-                  Whether you need TEF Canada PR score improvement, DELF exam coaching, or want to join our elite team of French language tutors—we are here to guide you.
-                </p>
-              </div>
-
-              <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-end">
-                <Link
-                  href="/courses"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500 px-6 py-3.5 text-sm font-bold text-slate-950 transition-all hover:bg-amber-400 shadow-lg hover:-translate-y-0.5"
+          <div className="max-w-3xl mx-auto space-y-3">
+            {faqs.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div
+                  key={idx}
+                  className="rounded-2xl border border-slate-200/80 bg-slate-50/50 overflow-hidden transition-all"
                 >
-                  <FiBookOpen size={16} />
-                  <span>Browse All Courses</span>
-                </Link>
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? -1 : idx)}
+                    className="w-full flex items-center justify-between p-4 sm:p-5 text-left text-xs sm:text-sm font-bold text-slate-900 hover:text-amber-700 transition-colors"
+                  >
+                    <span>{faq.question}</span>
+                    <FiChevronDown
+                      className={`text-slate-400 transition-transform duration-200 shrink-0 ${
+                        isOpen ? "rotate-180 text-amber-500" : ""
+                      }`}
+                    />
+                  </button>
+                  {isOpen && (
+                    <div className="px-4 pb-5 sm:px-5 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                      {faq.answer}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
 
-                <Link
-                  href="/become-a-tutor"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3.5 text-sm font-bold text-white transition-all hover:bg-white/20 backdrop-blur"
-                >
-                  <FiBriefcase size={16} />
-                  <span>Apply as French Tutor</span>
-                </Link>
-              </div>
+        {/* ========================================================================= */}
+        {/* 7. DUAL-ACTION CONVERSION BANNER */}
+        {/* ========================================================================= */}
+        <section className="mt-16 overflow-hidden rounded-3xl bg-slate-900 p-8 sm:p-12 text-white text-center relative">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(251,191,36,0.15),transparent_70%)] pointer-events-none" />
+
+          <div className="relative max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
+              Ready to Accelerate Your French Journey?
+            </h2>
+            <p className="mt-3 text-xs sm:text-base text-slate-300 leading-relaxed">
+              Join thousands of successful learners preparing for TEF Canada, DELF exams, or apply as a certified tutor today.
+            </p>
+
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+              <TrackedLink
+                href="/courses"
+                label="Services Footer Browse Courses CTA"
+                category="Services CTA"
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-xl bg-amber-500 px-6 py-3 text-xs sm:text-sm font-extrabold text-slate-950 shadow-md transition-all hover:bg-amber-400 hover:-translate-y-0.5"
+              >
+                <span>Browse All Courses</span>
+                <FiArrowRight />
+              </TrackedLink>
+
+              <TrackedLink
+                href="/become-a-tutor"
+                label="Services Footer Apply Tutor CTA"
+                category="Services CTA"
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-xl border border-slate-700 bg-slate-800/80 px-6 py-3 text-xs sm:text-sm font-bold text-white transition-all hover:bg-slate-800 hover:border-slate-600"
+              >
+                <FiBriefcase className="text-amber-400" />
+                <span>Apply as French Tutor</span>
+              </TrackedLink>
             </div>
           </div>
         </section>
-      </div>
+      </section>
     </main>
   );
 }

@@ -104,14 +104,11 @@ export default function StudentOnboarding() {
 const studentLeadsMutation=useStudentLeadMutation()
 const onContinue = async () => {
    await studentLeadsMutation.mutateAsync(form,{onSuccess:()=>{
-    trackWhatsAppClick("find-tutor")
+    trackFormSubmit("Find Tutor Student Lead", "success");
+    trackWhatsAppClick("find-tutor");
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, "_blank")
+      window.open(whatsappUrl, "_blank");
    }})
-
-     
-    
-
 };
 
   return (

@@ -17,9 +17,12 @@ import {
 } from "react-icons/fa";
 import { createBatchSchema } from "@/schemas/createBatchSchema";
 import { useCreateBatchMutation } from "@/app/mutations/BatchMutation";
+import { useAdminGetAllCourses } from "@/Hooks/useAdminGetCourses";
 import TextArea from "@/app/student-profile/components/profile/TextArea";
 
 export default function AddBatchForm({ courses = [] }) {
+  const { data: fetchedCourses } = useAdminGetAllCourses();
+  const availableCourses = courses?.length ? courses : fetchedCourses || [];
 
   const {
     register,

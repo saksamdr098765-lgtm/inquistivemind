@@ -1,7 +1,7 @@
-import Link from "next/link";
 import { locations } from "@/app/data/locations";
 import SITE_CONFIG from "@/app/siteConfig";
 import { FiMapPin, FiPhone, FiClock, FiArrowRight, FiCheckCircle } from "react-icons/fi";
+import TrackedLink from "@/app/Components/tracking/TrackedLink";
 
 export const metadata = {
   title: "Academy Study Centers & Learning Locations | Inquisitive Mind Academy",
@@ -108,13 +108,15 @@ export default function LocationsPage() {
                   </div>
 
                   <div className="mt-8 pt-6 border-t border-slate-100">
-                    <Link
+                    <TrackedLink
                       href={`/locations/${loc.slug}`}
-                      className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-yellow-500 px-6 py-3.5 text-sm font-bold text-slate-950 transition-all duration-300 hover:bg-yellow-400 shadow-md hover:shadow-lg"
+                      label={`Explore Location: ${loc.title}`}
+                      category="Locations Grid"
+                      className="w-full inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-yellow-500 px-6 py-3.5 text-sm font-bold text-slate-950 transition-all duration-300 hover:bg-yellow-400 shadow-md hover:shadow-lg"
                     >
                       <span>{offersVisits ? "Explore Center Details" : "Explore Online Hub Details"}</span>
                       <FiArrowRight />
-                    </Link>
+                    </TrackedLink>
                   </div>
                 </div>
               </div>

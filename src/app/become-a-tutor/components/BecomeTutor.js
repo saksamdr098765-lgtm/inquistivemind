@@ -99,6 +99,7 @@ const next = async () => {
   if (step === 7) {
     await teacherLeadsMutation.mutateAsync(form, {
       onSuccess: () => {
+        trackFormSubmit("Tutor Application Lead", "success");
         trackWhatsAppClick("become-tutor");
 
         window.open(

@@ -1,6 +1,6 @@
-import Link from "next/link";
 import { services } from "@/app/data/services";
 import { FiBookOpen, FiArrowRight } from "react-icons/fi";
+import TrackedLink from "@/app/Components/tracking/TrackedLink";
 
 export default function PriceRelatedServices({ priceSlug }) {
   if (!services || !services.length) return null;
@@ -19,13 +19,15 @@ export default function PriceRelatedServices({ priceSlug }) {
             </h2>
           </div>
 
-          <Link
+          <TrackedLink
             href="/services"
-            className="inline-flex items-center gap-1 text-sm font-bold text-yellow-700 hover:text-yellow-800 shrink-0"
+            label="View All Services"
+            category="Price Related Services"
+            className="inline-flex items-center gap-1 text-sm font-bold text-yellow-700 hover:text-yellow-800 shrink-0 min-h-[44px]"
           >
             <span>View All Services</span>
             <FiArrowRight />
-          </Link>
+          </TrackedLink>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -59,13 +61,15 @@ export default function PriceRelatedServices({ priceSlug }) {
               </div>
 
               <div className="p-6 pt-0">
-                <Link
+                <TrackedLink
                   href={`/services/${item.slug}`}
-                  className="w-full inline-flex items-center justify-center gap-1.5 rounded-full border border-slate-300 bg-white px-5 py-2.5 text-xs font-bold text-slate-700 transition-all group-hover:bg-yellow-500 group-hover:text-slate-950 group-hover:border-yellow-500 shadow-2xs"
+                  label={`Explore Service: ${item.title}`}
+                  category="Price Related Services"
+                  className="w-full inline-flex min-h-[44px] items-center justify-center gap-1.5 rounded-full border border-slate-300 bg-white px-5 py-2.5 text-xs font-bold text-slate-700 transition-all group-hover:bg-yellow-500 group-hover:text-slate-950 group-hover:border-yellow-500 shadow-2xs"
                 >
                   <span>Explore Service</span>
                   <FiArrowRight size={12} />
-                </Link>
+                </TrackedLink>
               </div>
             </div>
           ))}

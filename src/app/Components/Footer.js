@@ -51,7 +51,7 @@ const serviceCategories = [
     id: "locations",
     title: "Locations & Hubs",
     links: [
-      // { name: "French Classes Chandigarh", path: "/services/french-classes-chandigarh" },
+      { name: "French Classes Zirakpur", path: "/locations/french-classes-zirakpur" },
       { name: "French Classes Mohali", path: "/locations/french-classes-mohali" },
     ],
   },

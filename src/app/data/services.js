@@ -525,18 +525,18 @@ export const services = [
       },
     ],
 
-    areasWeServe: [
-      { city: "Chandigarh", center: "Sector 17 Learning Center", href: "/locations/chandigarh-center" },
-      { city: "Mohali", center: "Phase 8 / Sector 62 Campus", href: "/french-classes-mohali" },
-      { city: "Panchkula", center: "Home Tuition Coverage", href: "/locations/chandigarh-center" },
-      { city: "Online Global", center: "Virtual Live Academy", href: "/locations/online-global-hub" },
-    ],
+    // areasWeServe: [
+    //   { city: "Chandigarh", center: "Sector 17 Learning Center", href: "/locations/chandigarh-center" },
+    //   { city: "Mohali", center: "Phase 8 / Sector 62 Campus", href: "/french-classes-mohali" },
+    //   { city: "Panchkula", center: "Home Tuition Coverage", href: "/locations/chandigarh-center" },
+    //   { city: "Online Global", center: "Virtual Live Academy", href: "/locations/online-global-hub" },
+    // ],
 relatedServices:[
   "french-tutor-jobs-chandigarh"
 ],
     relatedBlogs: [
       "french-classes-fees-in-chandigarh-cost-guide",
-      "what-is-tef-tcf-exam-comparison-scores-fees",
+  
     ],
 
     finalCta: {
@@ -1029,6 +1029,186 @@ relatedServices:[
         "French jobs in Chandigarh",
         "Online French teacher jobs",
         "How to become a French teacher",
+      ],
+    },
+  },
+  {
+    slug: "online-french-tutor-jobs",
+    category: "teacher",
+    targetAudience: "For Remote & Online French Teachers",
+    ctaType: "apply",
+    title: "Online French Tutor Jobs — Work From Anywhere",
+    subtitle: "Teach French Online to Students in India & Worldwide. Flexible Hours, Steady Matches.",
+    description:
+      "Apply as an online French tutor with Inquisitive Mind Academy and get matched with students across India and worldwide. Teach from home on your own schedule — freshers and experienced tutors welcome.",
+    coverImage:
+      "/services/online-french-tutor-jobs/cover.webp",
+
+    trustBadges: [
+      "100% Remote — Work From Anywhere",
+      "Flexible Hours",
+      "Steady Student Referrals",
+      "Freshers & Experienced Welcome",
+    ],
+
+    briefOverview: {
+      summary:
+        "Looking for online French teacher jobs you can do from home? Inquisitive Mind Academy connects qualified French tutors with students across India and worldwide who are actively searching for online classes. Set your own hours, teach from anywhere, and we handle finding you students.",
+      highlights: [
+        "Teach live online — no commute, no fixed classroom",
+        "Work part-time, full-time, or freelance around your schedule",
+        "Get matched with pre-screened students actively searching for an online French tutor",
+        "Open to freshers, experienced teachers, and DELF/TEF/TCF-qualified candidates",
+      ],
+    },
+
+    quickInfo: {
+      duration: "Flexible — Part-Time, Full-Time, or Freelance",
+      mode: "100% Live Online",
+      level: "Teach A1 to C2 (Based on Your Expertise)",
+      batchSize: "1-on-1 & Small Group Batches",
+      certification: "DELF/DALF Certification Preferred",
+    },
+
+    howItWorks: [
+      {
+        step: "01",
+        title: "Apply as an Online Tutor",
+        desc: "Share your French proficiency level, teaching experience, and preferred online teaching hours.",
+      },
+      {
+        step: "02",
+        title: "Get Verified & Evaluated",
+        desc: "We review your profile and conduct a brief conversational evaluation to match you with suitable student levels.",
+      },
+      {
+        step: "03",
+        title: "Receive Student Assignments",
+        desc: "Once verified, receive student match notifications and start teaching live online on your own schedule.",
+      },
+    ],
+
+    whatsCovered: [
+      {
+        title: "Teach Students Across India & Worldwide",
+        desc: "Get matched with students from India, Canada, UAE, and beyond — no location restrictions.",
+      },
+      {
+        title: "Freelance or Structured Teaching",
+        desc: "Work as an independent freelance French teacher or take on a steady part-time/full-time online teaching role.",
+      },
+      {
+        title: "Beginner to Exam-Prep Batches",
+        desc: "Teach conversational French, French for adults and kids, or specialize in DELF/TEF/TCF exam preparation online.",
+      },
+      {
+        title: "Freshers Welcome",
+        desc: "New to online teaching? We guide freshers through onboarding alongside experienced faculty.",
+      },
+    ],
+
+    whyChooseUs: [
+      {
+        title: "We Bring Students To You",
+        desc: "No need to advertise on freelance platforms or chase leads — we match you directly with paying students.",
+      },
+      {
+        title: "Work From Anywhere",
+        desc: "Teach from home, another city, or another country — all you need is a stable internet connection.",
+      },
+      {
+        title: "Open to Freshers Too",
+        desc: "Passionate about French but new to teaching? We welcome freshers with guidance to get started confidently.",
+      },
+      {
+        title: "Competitive Payouts",
+        desc: "Earn reliable hourly or batch-based payouts, paid transparently for every session.",
+      },
+    ],
+
+    pricing: {
+      planName: "Online Tutor Earnings Structure",
+      fee: "₹400 - ₹1,200 / Hour",
+      originalFee: "",
+      duration: "Paid Per Session / Per Batch",
+      includes: [
+        "Online 1-on-1 Session Rates",
+        "Online Group Batch Rates",
+        "Exam-Prep Batch Bonuses (DELF/TEF/TCF)",
+        "Referral Bonuses for Steady Batches",
+      ],
+      discountNote: "Earnings depend on batch size, student level, and your experience. Discuss details during onboarding interview.",
+      pricePageLink: "/online-french-tutor-jobs",
+      pricePageTitle: "Apply to Discuss Your Earning Potential",
+    },
+
+    tutorCallout: {
+      title: "Looking for French Classes Instead?",
+      description: "If you're a student looking to learn French online — not teach it — check out our student courses.",
+      buttonText: "Find Student Courses",
+      link: "/services/french-classes-chandigarh",
+    },
+
+    faq: [
+      {
+        question: "How do I become an online French tutor with Inquisitive Mind Academy?",
+        answer:
+          "Apply through our tutor application form, sharing your French proficiency level and teaching experience. We review applications and conduct a short evaluation before matching you with online students.",
+      },
+      {
+        question: "Are there online French teacher jobs I can do from anywhere?",
+        answer:
+          "Yes, our online French teaching roles are open to tutors located anywhere in India or abroad — all classes are conducted live online.",
+      },
+      {
+        question: "Are there French tutoring jobs for freelancers?",
+        answer:
+          "Yes, you can work with us as a freelance French tutor, choosing your own hours and taking on as many or as few students as fits your schedule.",
+      },
+      {
+        question: "Are there online French tutor jobs for freshers?",
+        answer:
+          "Yes, strong spoken French and enthusiasm for teaching matter most. We welcome freshers alongside experienced educators, with guidance to get started.",
+      },
+      {
+        question: "Can I teach French online to adults as well as kids?",
+        answer:
+          "Yes, we match tutors with both adult learners and younger students based on your preference and teaching style.",
+      },
+      {
+        question: "Is there demand for French teachers right now?",
+        answer:
+          "Yes, demand for French tutors is growing steadily in India, driven largely by students preparing for DELF, TEF, and TCF exams for Canada PR and study-abroad goals.",
+      },
+    ],
+
+
+    relatedBlogs: [
+      "french-classes-fees-in-chandigarh-cost-guide",
+      "what-is-tef-tcf-exam-comparison-scores-fees",
+    ],
+
+    finalCta: {
+      title: "Apply as an Online French Tutor Today",
+      description:
+        "Share your details and preferred teaching hours — and join our growing network of online educators.",
+      buttonText: "Apply as a Tutor Now",
+      whatsappMsg: "Hi Inquisitive Mind Academy! I want to apply as an online French tutor. Please share the application process.",
+    },
+
+    seo: {
+      title: "Online French Tutor Jobs | Work From Anywhere | Inquisitive Mind Academy",
+      description:
+        "Online French tutor jobs — teach French remotely to students across India and worldwide. Open to freshers and experienced faculty. Flexible hours, steady student matches.",
+      keywords: [
+        "Online French tutor jobs",
+        "French teacher jobs online",
+        "Remote French tutor jobs",
+        "French tutoring jobs near me",
+        "Online French teacher jobs worldwide",
+        "How to become a French tutor",
+        "Freelance French teacher",
+        "French jobs for freshers",
       ],
     },
   },

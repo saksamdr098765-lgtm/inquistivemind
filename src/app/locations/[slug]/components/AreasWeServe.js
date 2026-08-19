@@ -3,18 +3,26 @@ import { FiMapPin } from "react-icons/fi";
 export default function AreasWeServe({ location }) {
   if (!location.areas || !location.areas.length) return null;
 
+  const isOnlineOnly = location.isOnlineOnly ?? true;
+
+  const serveCopy = isOnlineOnly
+    ? `Students across ${location.city} and neighboring sectors join our live online batches from home — no commute needed across the tricity region.`
+    : `Students commute to our ${location.city} campus from all neighboring sectors and localities across the tricity region.`;
+
+  const eyebrowLabel = isOnlineOnly ? "Areas We Reach Online" : "Nearby Access";
+
   return (
     <section className="py-16 bg-white border-b border-slate-100">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <span className="text-xs font-bold uppercase tracking-wider text-yellow-600">
-            Nearby Access
+            {eyebrowLabel}
           </span>
           <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
             Areas & Localities We Serve Near {location.city}
           </h2>
           <p className="mt-3 text-base text-slate-600">
-            Students commute to our {location.city} campus from all neighboring sectors and localities across the tricity region.
+            {serveCopy}
           </p>
         </div>
 

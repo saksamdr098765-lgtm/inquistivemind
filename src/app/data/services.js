@@ -567,6 +567,196 @@ relatedServices:[
       ],
     },
   },
+  {
+    slug: "tcf-canada-coaching-chandigarh",
+    category: "student",
+    targetAudience: "For Canada PR & Immigration Aspirants in Chandigarh",
+    ctaType: "enroll",
+    title: "TCF Canada Coaching in Chandigarh",
+    subtitle: "Structured TCF Canada Preparation for Express Entry, PR & CRS Points — Live Online Classes for Chandigarh Students",
+    description:
+      "Join TCF Canada coaching for Chandigarh students with Inquisitive Mind Academy. Expert-led live online batches covering Listening, Speaking, Reading & Writing, mock tests, and a personalized study plan to help you hit your target CLB score for Canada PR.",
+    coverImage:
+      "/services/tcf-canada-coaching-chandigarh/cover.webp",
+
+    trustBadges: [
+      "100% Live Online Classes",
+      "Free Mock Test Included",
+      "Certified French Faculty",
+      "Small Batch Sizes (6–10 Students)",
+    ],
+
+    briefOverview: {
+      summary:
+        "Searching for TCF Canada coaching near you in Chandigarh? Inquisitive Mind Academy offers structured, exam-focused TCF Canada preparation through live online batches for students across Chandigarh, Mohali, Panchkula, and Zirakpur — whether you're targeting Express Entry CRS points, a study permit, or Canadian citizenship. Our trainers focus on all four TCF modules with regular mock tests so you walk into the exam center knowing exactly what to expect.",
+      highlights: [
+        "Dedicated TCF Canada batches — not a generic French class repurposed for exam prep",
+        "Live online classes accessible from anywhere in Chandigarh and the wider Tricity area",
+        "Regular full-length mock tests with detailed score feedback",
+        "Guidance on registration, exam centers, and CLB score targets for your PR goals",
+      ],
+    },
+
+    quickInfo: {
+      duration: "4 Months (Standard Track) / 2 Months (Crash Course)",
+      mode: "100% Live Online",
+      level: "A1 to C2 — Based on Your Target CLB Score",
+      batchSize: "6–10 Students",
+      certification: "Exam-Ready Score Guarantee Program",
+    },
+
+    howItWorks: [
+      {
+        step: "01",
+        title: "Free Level Assessment",
+        desc: "Take a quick diagnostic to identify your current French level and the CLB score you're realistically targeting.",
+      },
+      {
+        step: "02",
+        title: "Join Your Batch",
+        desc: "Get placed in a live online batch matched to your level and preferred timing.",
+      },
+      {
+        step: "03",
+        title: "Structured TCF Preparation",
+        desc: "Work through Listening, Reading, Speaking, and Writing modules with weekly progress checks and mock tests.",
+      },
+      {
+        step: "04",
+        title: "Exam Booking Support",
+        desc: "Get guidance on registering at your nearest TCF Canada test center and choosing the right exam date.",
+      },
+    ],
+
+    whatsCovered: [
+      {
+        title: "All Four TCF Canada Modules",
+        desc: "Focused practice on Listening Comprehension, Reading Comprehension, Speaking, and Writing — matched to the exam's actual format.",
+      },
+      {
+        title: "Full-Length Mock Tests",
+        desc: "Simulated TCF Canada mock tests under timed conditions, with detailed feedback on your CLB-equivalent score.",
+      },
+      {
+        title: "CLB Score Targeting",
+        desc: "Preparation mapped directly to your required CLB level — whether that's CLB 7 for a solid CRS boost or CLB 9 for maximum points.",
+      },
+      {
+        title: "Speaking & Writing Feedback",
+        desc: "One-on-one correction for the two modules most students struggle to self-assess.",
+      },
+    ],
+
+    whyChooseUs: [
+      {
+        title: "Built for Chandigarh Students",
+        desc: "Live online batches timed and structured specifically for students across Chandigarh and the Tricity area — no commute needed.",
+      },
+      {
+        title: "Exam-Focused, Not Generic",
+        desc: "Our TCF batches are built specifically around the exam format, not a general spoken French course.",
+      },
+      {
+        title: "Experienced French Faculty",
+        desc: "Learn from DELF/DALF-trained trainers with a decade of teaching experience across adult and exam-prep learners.",
+      },
+      {
+        title: "Flexible Batch Timings",
+        desc: "Weekday, weekend, and evening batches available for working professionals and students alike.",
+      },
+    ],
+
+    pricing: {
+      planName: "TCF Canada Coaching Fee",
+      fee: "Contact for Current Batch Fees",
+      originalFee: "",
+      duration: "Per Course (4 Months) or Crash Course (2 Months)",
+      includes: [
+        "All 4 Module Training (Listening, Reading, Speaking, Writing)",
+        "Full-Length Mock Tests",
+        "Personalized Study Plan",
+        "Exam Registration Guidance",
+      ],
+      discountNote: "Fees vary by batch type and duration. Message us for current pricing and available slots.",
+      pricePageLink: "/services/tcf-canada-coaching-chandigarh",
+      pricePageTitle: "Contact Us for Current Fees & Batch Availability",
+    },
+
+    // tutorCallout: {
+    //   title: "Preparing for TEF Instead?",
+    //   description: "Not sure which French exam is right for you? Check out our TEF Canada coaching or compare both exams first.",
+    //   buttonText: "Explore TEF Canada Coaching",
+    //   link: "/services/tef-canada-coaching",
+    // },
+
+    faq: [
+      {
+        question: "Where can I take TCF Canada coaching in Chandigarh?",
+        answer:
+          "Inquisitive Mind Academy offers TCF Canada coaching through live online batches for students across Chandigarh, Mohali, Panchkula, and Zirakpur — you can join from home without needing to travel.",
+      },
+      {
+        question: "Is TCF Canada accepted for PR?",
+        answer:
+          "Yes, TCF Canada is fully recognized by IRCC and can be used to claim French-language CRS points under Express Entry, alongside TEF Canada.",
+      },
+      {
+        question: "What CLB score do I need for Canada PR?",
+        answer:
+          "It depends on your CRS goals — many candidates target at least CLB 7 for a meaningful points boost, while CLB 9 unlocks higher point brackets. Your trainer will help set a realistic target based on your current level.",
+      },
+      {
+        question: "How long does it take to prepare for TCF Canada?",
+        answer:
+          "Most students take our 4-month standard track to build proficiency from scratch, though a 2-month crash course is available for candidates who already have a base level of French.",
+      },
+      {
+        question: "Do you offer TCF Canada exam registration guidance?",
+        answer:
+          "Yes, we guide students through choosing a nearby test center, understanding the registration process, and picking an exam date that aligns with their PR application timeline.",
+      },
+      {
+        question: "Are online TCF Canada classes effective for exam prep?",
+        answer:
+          "Yes, our live online batches follow the same structured curriculum, mock tests, and one-on-one trainer feedback you'd expect from an in-person class — students across Chandigarh, Mohali, Panchkula, and Zirakpur join these batches from home.",
+      },
+      {
+        question: "Is TCF or TEF better for Canada PR?",
+        answer:
+          "Both are equally valid and IRCC-recognized. TCF Canada's adaptive format tends to suit beginners, while TEF Canada's fixed-difficulty format tends to suit stronger candidates. We can help you decide based on a quick assessment.",
+      },
+    ],
+
+    relatedBlogs: [
+      "tcf-canada-exam-guide-registration-fees-score-chart",
+      "what-is-tef-tcf-exam-comparison-scores-fees",
+      "french-classes-fees-in-chandigarh-cost-guide",
+    ],
+
+    finalCta: {
+      title: "Start Your TCF Canada Preparation in Chandigarh Today",
+      description:
+        "Book a free consultation, get your level assessed, and start preparing for your target CLB score with structured, exam-focused batches.",
+      buttonText: "Book Free Consultation",
+      whatsappMsg: "Hi Inquisitive Mind Academy! I want to know more about TCF Canada coaching in Chandigarh. Please share batch timings and fees.",
+    },
+
+    seo: {
+      title: "TCF Canada Coaching in Chandigarh | Live Online | Inquisitive Mind Academy",
+      description:
+        "TCF Canada coaching for Chandigarh students — live online batches covering all 4 modules, mock tests & exam registration guidance. Open to students across Chandigarh, Mohali, Panchkula & Zirakpur.",
+      keywords: [
+        "TCF Canada coaching Chandigarh",
+        "TCF classes in Chandigarh",
+        "TCF Canada institute Chandigarh",
+        "best TCF coaching in Chandigarh",
+        "TCF coaching center Chandigarh",
+        "TCF Canada coaching Punjab",
+        "TCF Canada coaching Tricity",
+        "TCF Canada coaching near PGGC Chandigarh",
+      ],
+    },
+  },
   // {
   //   slug: "delf-dalf-exam-prep",
   //   category: "student",

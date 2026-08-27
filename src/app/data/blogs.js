@@ -32,7 +32,7 @@ export const blogs = [
     publishedAt: "August 20, 2026",
     readingTime: "10 min read",
     coverImage: "/blogs/what-is-tef-tcf-exam-comparison-scores-fees/cover.webp",
-    featured: true,
+    featured: false,
     quickInfo: {
       courseName: "TEF/TCF Canada Preparation",
       duration: "4 Months",
@@ -374,7 +374,7 @@ export const blogs = [
     lastUpdated: "August 14, 2026",
     readingTime: "8 min read",
     coverImage: "/blogs/french-classes-fees-in-chandigarh-cost-guide/cover.webp",
-    featured: true,
+    featured: false,
     quickInfo: {
       courseName: "French Classes Chandigarh — Fee Guide",
       duration: "8 mins",
@@ -702,6 +702,342 @@ export const blogs = [
         "Home & Online Batches",
         "Free Trial Class",
         "Flexible Fee Plans",
+        "Experienced French Tutors",
+        "Flexible Batch Timings",
+      ],
+    },
+  },
+  {
+    id: 3,
+    slug: "tcf-canada-exam-guide-registration-fees-score-chart",
+    title:
+      "TCF Canada Exam Guide 2026: Registration, Fees, Score Chart & Preparation Tips",
+    excerpt:
+      "Planning to give TCF Canada for PR? Here's everything you need — registration process, exam fees in India, CLB score chart, exam pattern, and how to prepare.",
+    category: "TEF/TCF Preparation",
+    author: {
+      name: "Sakshi Goel",
+      credentials: "French Faculty · 10+ Years Teaching Experience · DELF/DALF Trained",
+      image: "/founder.webp",
+      bio:
+        "French language educator with 10+ years of teaching experience, having taught both adults and young learners across different institutions. Experienced in preparing students for TEF/TCF-style examinations, with specialization in French language, communication skills, and exam-oriented preparation across beginner to advanced levels.",
+    },
+    relatedCourses: [
+      "french-c2-mastery-course",
+      "french-a1-beginner-course",
+      "french-a2-elementary-course",
+      "french-b1-intermediate-course",
+      "french-b2-advanced-course",
+      "french-c1-proficiency-course"
+    ],
+    reviewedBy: {
+      name: "Sakshi Goel",
+      role: "French Faculty",
+    },
+    publishedAt: "August 26, 2026",
+    readingTime: "9 min read",
+    coverImage: "/blogs/tcf-canada-exam-guide-registration-fees-score-chart/cover.webp",
+    featured: true,
+    quickInfo: {
+      courseName: "TCF Canada Preparation",
+      duration: "4 Months",
+      mode: "Online & Offline",
+      level: "A1 to C2 (All Levels)",
+      batchSize: "6–10 Students",
+      certification: "Exam-Ready Score Guarantee Program",
+    },
+
+    seo: {
+      title:
+        "TCF Canada Exam Guide 2026: Registration, Fees & Score Chart | Inquisitive Mind Academy",
+      description:
+        "Complete guide to the TCF Canada exam — registration process, exam fees in India, CLB score chart, exam pattern, and preparation tips for Canada PR aspirants.",
+      keywords: [
+        "TCF Canada registration",
+        "TCF Canada exam fees",
+        "TCF Canada exam pattern",
+        "TCF Canada CLB 7",
+        "TCF Canada mock test",
+        "TCF Canada score chart",
+        "TCF Canada exam preparation",
+        "Inquisitive Mind Academy",
+      ],
+    },
+    tags: [
+      "TCF",
+      "TCF Canada",
+      "Canada PR",
+      "Exam Fees",
+      "CLB Score",
+    ],
+    content: [
+      {
+        type: "paragraph",
+        text:
+          "If you've decided to take TCF Canada for your Express Entry or PR application, the next questions are usually practical ones — how do I register, what does it cost, what score do I actually need, and how do I prepare. This guide walks through all of it in one place, so you can plan your exam timeline with confidence.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "What is TCF Canada?",
+      },
+      {
+        type: "paragraph",
+        text:
+          "TCF Canada (Test de Connaissance du Français pour le Canada) is a French proficiency test administered by France Education International (FEI), an official body under the French Ministry of Education. It is one of the two IRCC-recognized French tests — the other being TEF Canada — accepted for Express Entry, Canadian citizenship, and provincial nomination programs.",
+      },
+      {
+        type: "list",
+        items: [
+          "Purpose: Assesses French proficiency for Canadian immigration and academic purposes",
+          "Recognized by: IRCC (Immigration, Refugees and Citizenship Canada)",
+          "Modules tested: Listening Comprehension, Reading Comprehension, Speaking (Expression Orale), Writing (Expression Écrite)",
+          "Validity: Test results are generally valid for 2 years from the test date",
+        ],
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "TCF Canada Registration Process",
+      },
+      {
+        type: "paragraph",
+        text:
+          "Registration for TCF Canada is done through an authorized test center rather than a single centralized portal, so the exact steps can vary slightly depending on where you book.",
+      },
+      {
+        type: "list",
+        items: [
+          "Locate your nearest authorized TCF Canada test center (Alliance Française branches and FEI-approved centers conduct the test in India)",
+          "Create an account or fill the registration form on the test center's official booking page",
+          "Choose your preferred test date based on available slots — popular dates near CRS draw cycles fill up quickly",
+          "Pay the exam fee online or at the center to confirm your slot",
+          "Carry a valid passport (or the ID specified by the center) on exam day, along with your registration confirmation",
+        ],
+      },
+      {
+        type: "tip",
+        title: "Study Tip",
+        text:
+          "Book your slot at least 4–6 weeks in advance, especially if you're targeting a specific CRS draw. Popular centers in Tricity and Delhi NCR often have limited seats during peak PR application season.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "TCF Canada Exam Pattern",
+      },
+      {
+        type: "list",
+        items: [
+          "Listening Comprehension: Progressively harder audio clips with multiple-choice questions, roughly 35 minutes",
+          "Reading Comprehension: Short to medium passages with multiple-choice questions, roughly 60 minutes",
+          "Speaking (Expression Orale): One-on-one or recorded oral task with an examiner, roughly 12 minutes",
+          "Writing (Expression Écrite): Structured writing tasks across increasing difficulty tiers, roughly 60 minutes",
+          "Total duration: approximately 2 hours 42 minutes across all four modules",
+        ],
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "TCF Canada Score Chart (CLB Conversion)",
+      },
+      {
+        type: "list",
+        items: [
+          "CLB 4 (Basic): TCF ~331–368",
+          "CLB 5 (Basic): TCF ~369–397",
+          "CLB 6 (Intermediate): TCF ~398–457",
+          "CLB 7 (Intermediate): TCF ~458–502",
+          "CLB 8 (Advanced): TCF ~503–522",
+          "CLB 9 (Advanced): TCF ~549–580",
+        ],
+      },
+      {
+        type: "warning",
+        title: "Important Note",
+        text:
+          "CLB conversion thresholds are periodically updated by IRCC. Always verify the current chart on the official IRCC website before setting your target score, especially if you're relying on French points to boost your CRS score.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "TCF Canada Exam Fees in India",
+      },
+      {
+        type: "list",
+        items: [
+          "TCF Canada exam fee: approximately ₹18,000–₹19,500 (varies by test center)",
+          "Some centers charge separately for the four modules if taken individually",
+          "Additional charges may apply for late registration, rescheduling, or result rechecking",
+          "Fees are subject to change — always confirm the latest amount directly with your test center before booking",
+        ],
+      },
+    {
+  type: "interlinking",
+  title: "Explore Courses, Services & Pricing",
+  description:
+    "Explore our specialized French coaching programs, TCF exam preparation, French classes, tutor opportunities, and fee plans.",
+  items: [
+   
+    {
+      title: "TCF Canada Coaching",
+      description:
+        "Structured TCF Canada preparation with mock tests and personalized study plans.",
+      href: "/services/tcf-canada-coaching-chandigarh",
+      badge: "Service",
+    },
+    {
+      title: "French Classes in Chandigarh",
+      description:
+        "In-person French language classes in Chandigarh for all proficiency levels.",
+      href: "/services/french-classes-chandigarh",
+      badge: "Service",
+    },
+    {
+      title: "Online French Tutor Jobs",
+      description:
+        "Explore online French tutor opportunities for teaching French remotely.",
+      href: "/services/online-french-tutor-jobs",
+      badge: "Service",
+    },
+    {
+      title: "French Tutor Jobs in Chandigarh",
+      description:
+        "Discover French tutor opportunities in Chandigarh for qualified French teachers.",
+      href: "/services/french-tutor-jobs-chandigarh",
+      badge: "Service",
+    },
+  ],
+},
+      {
+        type: "heading",
+        level: 2,
+        text: "How to Prepare for TCF Canada",
+      },
+      {
+        type: "paragraph",
+        text:
+          "TCF Canada's adaptive format means the questions get harder as you answer correctly, so consistent accuracy matters more than speed alone. Here's a practical approach to preparation.",
+      },
+      {
+        type: "list",
+        items: [
+          "Start with a diagnostic mock test to identify your current CLB level before building a study plan",
+          "Practice listening daily with authentic French audio — news clips, podcasts, and past TCF listening samples",
+          "Build reading speed with short passages first, then move to longer texts as comprehension improves",
+          "Record yourself for the speaking module and get feedback from a trainer — self-assessment alone often misses pronunciation and fluency gaps",
+          "Practice writing under timed conditions to get used to the tiered difficulty format",
+        ],
+      },
+      {
+        type: "tip",
+        title: "Study Tip",
+        text:
+          "Because TCF adapts to your responses, a few careless mistakes early in the listening or reading sections can lower the difficulty (and your ceiling score) for the rest of that module. Accuracy in the first few questions matters more than people expect.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "Conclusion",
+      },
+      {
+        type: "paragraph",
+        text:
+          "TCF Canada is a well-recognized, IRCC-accepted path to strengthen your CRS score or meet language requirements for PR. Registering early, understanding the score chart, and preparing with structured mock tests will put you in the best position to hit your target CLB level.",
+      },
+      {
+        type: "interlinking",
+        title: "Locations & Study Centers We Serve",
+        description:
+          "Join live online French batches for Mohali, Zirakpur & nearby areas, or connect from anywhere worldwide.",
+        items: [
+          {
+            title: "French Classes for Mohali — Live Online",
+            description: "Certified faculty, small batches, and DELF/TEF/TCF exam prep for Phase 7, Phase 8, Sector 62 & nearby.",
+            href: "/locations/french-classes-mohali",
+            badge: "Mohali",
+          },
+          {
+            title: "French Classes for Zirakpur — Live Online",
+            description: "Live online French batches with DELF/TEF/TCF exam prep for VIP Road, Dhakoli, Baltana & nearby.",
+            href: "/locations/french-classes-zirakpur",
+            badge: "Zirakpur",
+          },
+          {
+            title: "French Classes in Chandigarh",
+            description: "Home tuition and live online French classes for Chandigarh, Mohali & Panchkula learners.",
+            href: "/services/french-classes-chandigarh",
+            badge: "Chandigarh (Service)",
+          },
+        ],
+      },
+      {
+        type: "references",
+        items: [
+          {
+            title: "TCF Canada Test Information",
+            publisher: "France Education International",
+            url: "https://www.france-education-international.fr/en/test/tcf-canada",
+          },
+          {
+            title: "Canadian Language Benchmarks (CLB)",
+            publisher: "Language Canada",
+            url: "https://www.language.ca/",
+          },
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "How do I prepare for TCF?",
+        answer:
+          "Start with a diagnostic mock test to find your current CLB level, then build a daily routine covering all four modules — listening, reading, speaking, and writing — with extra focus on timed practice for the writing and speaking sections.",
+      },
+      {
+        question: "Is there a TCF exam in India?",
+        answer:
+          "Yes, TCF Canada is conducted at Alliance Française branches and other FEI-authorized test centers across India, including cities in the Chandigarh–Tricity region.",
+      },
+      {
+        question: "How much does TCF Canada cost in India?",
+        answer:
+          "TCF Canada exam fees in India are typically in the range of ₹18,000–₹19,500, though this varies by test center and is subject to change. Always confirm the current fee directly with your center before booking.",
+      },
+      {
+        question: "Is TCF accepted for PR?",
+        answer:
+          "Yes, TCF Canada is fully recognized by IRCC and can be used to claim French-language CRS points under Express Entry, alongside TEF Canada.",
+      },
+      {
+        question: "What score do I need in TCF for PR?",
+        answer:
+          "It depends on your target CRS points, but many Express Entry candidates aim for at least CLB 7 (TCF score roughly 458–502) to claim meaningful French-language points, with CLB 9 (roughly 549–580) unlocking higher point brackets.",
+      },
+      {
+        question: "Is the TCF exam hard?",
+        answer:
+          "TCF Canada's adaptive format adjusts question difficulty based on your responses, which many beginners find more manageable than fixed-difficulty formats. Difficulty ultimately depends on your current French level and how well you've practiced each module.",
+      },
+      {
+        question: "Can I give TCF in India?",
+        answer:
+          "Yes, you do not need to travel abroad — TCF Canada is available at authorized test centers within India.",
+      },
+    ],
+    cta: {
+      title: "Start Your TCF Canada Preparation Today",
+      description:
+        "Looking for reliable TCF Canada coaching? Book a free consultation with expert tutors, get a personalized study plan, and prepare confidently for your target CLB score.",
+      serviceName: "TCF Canada Coaching",
+      serviceLink: "/services/tcf-canada-coaching",
+      bookingLink:
+        `https://wa.me/${SITE_CONFIG.whatsapp}?text=Hi%2C%20I%20want%20to%20book%20a%20free%20consultation%20for%20TCF%20Canada%20preparation.%20Please%20share%20the%20available%20batch%20timings.`,
+      whatsappLink:
+        `https://wa.me/${SITE_CONFIG.whatsapp}?text=Hi%2C%20I%20have%20a%20question%20about%20TCF%20Canada%20classes.`,
+      features: [
+        "Live Online & Offline Batches",
+        "Free Mock Test Included",
+        "Personalized Study Plan",
         "Experienced French Tutors",
         "Flexible Batch Timings",
       ],

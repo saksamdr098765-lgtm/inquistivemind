@@ -273,6 +273,7 @@ export const locations = [
     },
    
   },
+
 ];
 
 export function getLocation(slug) {

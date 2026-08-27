@@ -1,441 +1,320 @@
 "use client";
 
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import {
   FaArrowLeft,
   FaUser,
   FaEnvelope,
-  FaPhone,
+  FaPhoneAlt,
   FaUserShield,
   FaCheckCircle,
   FaBan,
-  FaEdit,
   FaSave,
   FaTimes,
-  FaPhoneAlt,
-  FaBirthdayCake,
-  FaVenusMars,
-  FaSpinner,
 } from "react-icons/fa";
-import { useAdminUserById } from "@/Hooks/useUserByIdAdmin";
-import capitalizeFirstLetter from "@/Utils/captilizeFirstLetter";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { profileSchema } from "@/schemas/profileSchema";
-import Input from "@/app/student-profile/components/profile/Input";
 import { toast } from "sonner";
-import { useAdminApproveUser, useAdminBlockUser, useAdminRejectUser, useAdminUnblockUser, useAdminUserUpdateMutation } from "@/app/mutations/AdminMutations";
-import Select from "@/app/student-profile/components/profile/Select";
+
+import { profileSchema } from "@/schemas/profileSchema";
+import { useAdminUserById } from "@/Hooks/useUserByIdAdmin";
+import capitalizeFirstLetter from "@/Utils/captilizeFirstLetter";
+import {
+  useAdminApproveUser,
+  useAdminBlockUser,
+  useAdminRejectUser,
+  useAdminUnblockUser,
+  useAdminUserUpdateMutation,
+} from "@/app/mutations/AdminMutations";
+
 import Modal from "@/app/Components/ui/Modals";
-import { useRouter } from "next/navigation";
+import PortalCard from "@/app/Components/portal-ui/PortalCard";
+import PortalInput from "@/app/Components/portal-ui/PortalInput";
+import PortalSelect from "@/app/Components/portal-ui/PortalSelect";
+import PortalBadge from "@/app/Components/portal-ui/PortalBadge";
+import PortalButton from "@/app/Components/portal-ui/PortalButton";
+import PortalSkeleton from "@/app/Components/portal-ui/PortalSkeleton";
 
-
-export default function UserDetailsPage({id}) {
+export default function UserDetailsPage({ id }) {
   const [open, setOpen] = useState(false);
- const [reason, setReason] = useState("");
-  const updateMutation=useAdminUserUpdateMutation(id)
-  const approveUserMutation=useAdminApproveUser(id)
-  const rejectUserMutation=useAdminRejectUser(id)
-  const blockUserMutation=useAdminBlockUser(id,setOpen)
-  const unblockUserMutation=useAdminUnblockUser(id)
-  const router=useRouter()
- const {register,handleSubmit, reset,
-    formState: {
-      errors,
-      isSubmitting,
-      isDirty,
-      dirtyFields
-    },} =useForm({
-      resolver:zodResolver(profileSchema),
-       mode: "onBlur",
+  const [reason, setReason] = useState("");
+  const updateMutation = useAdminUserUpdateMutation(id);
+  const approveUserMutation = useAdminApproveUser(id);
+  const rejectUserMutation = useAdminRejectUser(id);
+  const blockUserMutation = useAdminBlockUser(id, setOpen);
+  const unblockUserMutation = useAdminUnblockUser(id);
+  const router = useRouter();
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting, isDirty, dirtyFields },
+  } = useForm({
+    resolver: zodResolver(profileSchema),
+    mode: "onBlur",
     defaultValues: {
       fullName: "",
       email: "",
       phone: "",
       profileImage: "",
-       role : ""}
-    })
-  const {data,isLoading}=useAdminUserById(id)
+      role: "",
+    },
+  });
 
-useEffect(() => {
-  if (data) {
-     reset({
-      fullName: data.fullName || "",
-      email: data.email || "",
-      phone: data.phone || "",
-      profileImage: data.profileImage || "",
-      role:data.role || ""
-    })
-  }
-}, [data,reset]);
-const user={approvalStatus:"approved",status:"active"}
- 
+  const { data, isLoading } = useAdminUserById(id);
 
-  const onSubmit = async(data) => {
-    console.log("error")
-  if(!isDirty){
-          toast.error("Nothing changed");
-          return
-        }
-           console.log("error")
-          const updatedData = getDirtyValues(dirtyFields, data);
-             console.log(updatedData)
+  useEffect(() => {
+    if (data) {
+      reset({
+        fullName: data.fullName || "",
+        email: data.email || "",
+        phone: data.phone || "",
+        profileImage: data.profileImage || "",
+        role: data.role || "",
+      });
+    }
+  }, [data, reset]);
+
+  const onSubmit = async (formData) => {
+    if (!isDirty) {
+      toast.error("Nothing changed");
+      return;
+    }
+    const updatedData = getDirtyValues(dirtyFields, formData);
     await updateMutation.mutateAsync(updatedData);
-    
   };
-  const handleApproveUserClick=()=>{
-    if(!id) return
-    approveUserMutation.mutate()
-  }
-  const handleRejectUserClick=()=>{
-    if(!id) return
-    rejectUserMutation.mutate()
-  }
-  const handleBlockUserClick=()=>{
-    if(!id) return
-    blockUserMutation.mutate({reason})
-  }
-  const handleUnblockUserClick=()=>{
-    if(!id) return
-    unblockUserMutation.mutate()
-  }
-  if(isLoading) return
+
+  const handleApproveUserClick = () => {
+    if (!id) return;
+    approveUserMutation.mutate();
+  };
+
+  const handleRejectUserClick = () => {
+    if (!id) return;
+    rejectUserMutation.mutate();
+  };
+
+  const handleBlockUserClick = () => {
+    if (!id) return;
+    blockUserMutation.mutate({ reason });
+  };
+
+  const handleUnblockUserClick = () => {
+    if (!id) return;
+    unblockUserMutation.mutate();
+  };
+
+  if (isLoading) return <PortalSkeleton type="profile" />;
+
   return (
-    <div className="  py-24">
-      {/* Header */}
-<div className="max-w-6xl mx-auto space-y-8 py-10">
+    <div className="space-y-8 max-w-6xl mx-auto">
+      {/* Executive Hero Header */}
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="rounded-[32px] bg-gradient-to-r from-[#D6451B] to-orange-500 p-8 text-white shadow-xl w-full"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="rounded-[32px] bg-slate-900 border border-slate-800 p-6 sm:p-8 text-white shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
       >
-        <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div>
-            <button onClick={()=>{router.push('/admin-panel/student')}} className="mb-4 flex items-center gap-2 text-white/90">
-            
-              <FaArrowLeft />
-              Back to Users
-            </button>
-
-            <h1 className="text-4xl font-bold">
-              User Profile
-            </h1>
-
-            <p className="mt-2 text-orange-100">
-              View and manage user details.
-            </p>
-          </div>
-
-         
+        <div>
+          <button
+            onClick={() => router.push("/admin-panel/student")}
+            className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-yellow-400 hover:underline mb-2"
+          >
+            <FaArrowLeft />
+            Back to Student Directory
+          </button>
+          <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-white">
+            User Profile{" "}
+            <span className="bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-400 bg-clip-text text-transparent">
+              Overview
+            </span>
+          </h1>
+          <p className="mt-1 text-slate-300 font-medium text-sm">
+            Inspect, approve, edit, or adjust permissions for this account.
+          </p>
         </div>
       </motion.div>
 
-      {/* Profile Card */}
+      {/* User Header Card */}
+      <PortalCard padding="p-6 sm:p-8">
+        <div className="flex flex-col items-center gap-6 sm:flex-row sm:justify-between">
+          <div className="flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+            <div className="flex h-24 w-24 items-center justify-center rounded-full bg-yellow-100 font-black text-yellow-800 text-3xl border border-yellow-300 shadow-xs">
+              {data?.fullName?.charAt(0) || "U"}
+            </div>
 
-      <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-xl">
-        <div className="flex flex-col items-center gap-6 md:flex-row">
-          <div className="flex h-28 w-28 items-center justify-center rounded-full bg-[#D6451B]/10 text-4xl font-bold text-[#D6451B]">
-            R
-          </div>
+            <div>
+              <h2 className="text-2xl font-bold text-slate-900">
+                {data?.fullName}{" "}
+                <span className="text-sm font-normal text-slate-400">
+                  ({capitalizeFirstLetter(data?.role)})
+                </span>
+              </h2>
+              <p className="text-sm text-slate-500 mt-1">{data?.email}</p>
 
-          <div className="flex-1">
-            <h2 className="text-3xl font-bold">
-              {data?.fullName} {`(${capitalizeFirstLetter(data?.role)})`}
-            </h2>
-
-            <div className="mt-4 flex flex-wrap gap-3">
-              <span className={`rounded-full  px-4 py-2 text-sm font-medium  ${
-        data?.approvalStatus === "approved"
-          ? "bg-green-100 text-green-700"
-          : data?.approvalStatus === "pending"
-          ? "bg-yellow-100 text-yellow-700"
-          : "bg-red-100 text-red-700"
-      }`}>
-                {data?.approvalStatus}
-              </span>
-
-              <span className={`rounded-full bg-green-100 px-4 py-2 text-sm font-medium text-green-700 ${
-        data?.status === "active"
-          ? "bg-green-100 text-green-700"
-          : data?.approvalStatus === "block"
-          ? "bg-yellow-100 text-yellow-700"
-          : "bg-red-100 text-red-700"
-      }`}>
-            {data?.status}
-              </span>
-
-            
+              <div className="mt-3 flex flex-wrap justify-center sm:justify-start gap-2">
+                <PortalBadge variant={data?.approvalStatus}>
+                  {data?.approvalStatus}
+                </PortalBadge>
+                <PortalBadge variant={data?.status}>{data?.status}</PortalBadge>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </PortalCard>
 
-      {/* Personal Information */}
+      {/* Editable Information Form */}
+      <PortalCard header="Account Details & Editing">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          <div className="grid gap-5 sm:grid-cols-2">
+            <PortalInput
+              label="Full Name"
+              icon={FaUser}
+              error={errors.fullName?.message}
+              {...register("fullName")}
+            />
 
-   <section className={`rounded-[30px] border border-slate-200 bg-white px-8 pb-20 pt-8 shadow-lg`}>
- 
-       <div className="mb-8">
-         <h2 className="text-2xl font-bold">
-           Personal Information
-         </h2>
- 
-         <p className="text-slate-500">
-           Update your personal details.
-         </p>
-       </div>
- 
- <form onSubmit={handleSubmit(onSubmit)}>
-       <div className="grid gap-6 md:grid-cols-2">
-         <Input
-           icon={<FaUser />}
-           label="Full Name"
-           placeholder="Full Name"
-           error={errors.fullName}
-           {...register("fullName")}
-         />
- 
-         <Input
-           icon={<FaEnvelope />}
-           label="Email"
-           disabled
-           error={errors.email}
-           {...register("email")}
-         />
- 
-         <Input
-           icon={<FaPhoneAlt />}
-           label="Phone"
-           error={errors.phone}
-           {...register("phone")}
-         />
-          <Select
-                   icon={<FaUserShield />}
-                   label="Role"
-                   error={errors.role}
-                   {...register("role")}
-                   options={[
-                     { value: "student", label: "Student" },
-                     { value: "teacher", label: "Teacher" },
-                    
-                   ]}
-                 />
- 
-         
-       </div>
+            <PortalInput
+              label="Email Address"
+              icon={FaEnvelope}
+              disabled
+              helperText="Email address cannot be modified."
+              error={errors.email?.message}
+              {...register("email")}
+            />
 
-       <div className="mt-10 flex flex-col-reverse gap-4 sm:flex-row sm:justify-end">
+            <PortalInput
+              label="Phone Number"
+              icon={FaPhoneAlt}
+              error={errors.phone?.message}
+              {...register("phone")}
+            />
 
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="flex items-center justify-center gap-2 rounded-2xl bg-[#D6451B] px-6 py-3 font-medium text-white transition hover:bg-[#b93814] disabled:cursor-not-allowed disabled:opacity-70"
-        >
-          <FaSave />
+            <PortalSelect
+              label="System Role"
+              icon={FaUserShield}
+              error={errors.role?.message}
+              {...register("role")}
+            >
+              <option value="student">Student</option>
+              <option value="teacher">Teacher</option>
+            </PortalSelect>
+          </div>
 
-          {isSubmitting
-            ? "Saving..."
-            : "Save Changes"}
-        </button>
+          <div className="flex justify-end pt-4 border-t border-slate-100">
+            <PortalButton
+              type="submit"
+              icon={FaSave}
+              isLoading={isSubmitting}
+              disabled={isSubmitting}
+            >
+              Save Profile Changes
+            </PortalButton>
+          </div>
+        </form>
+      </PortalCard>
 
-      </div>
-       </form>
-     </section>
+      {/* Account Administrative Actions */}
+      <PortalCard header="Administrative Status Actions">
+        <div className="flex flex-wrap gap-3">
+          {data?.approvalStatus === "pending" && (
+            <>
+              <PortalButton
+                variant="primary"
+                icon={FaCheckCircle}
+                isLoading={approveUserMutation.isPending}
+                onClick={handleApproveUserClick}
+              >
+                Approve Account
+              </PortalButton>
 
-      {/* Account Information */}
+              <PortalButton
+                variant="danger"
+                icon={FaTimes}
+                isLoading={rejectUserMutation.isPending}
+                onClick={handleRejectUserClick}
+              >
+                Reject Account
+              </PortalButton>
+            </>
+          )}
 
-      <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-xl">
-        <h2 className="mb-8 text-2xl font-bold">
-          Account Information
-        </h2>
+          {data?.approvalStatus === "approved" && data?.status === "active" && (
+            <PortalButton
+              variant="danger"
+              icon={FaBan}
+              onClick={() => setOpen(true)}
+            >
+              Block User Account
+            </PortalButton>
+          )}
 
-        <div className="grid gap-6 md:grid-cols-2">
-          <Info label="Email Verified" value="Yes" />
-          <Info label="Phone Verified" value="No" />
-          <Info label="Login Provider" value="Email" />
-          <Info label="Last Login" value="21 Jun 2026" />
-          <Info label="Created At" value="12 Jun 2026" />
-          <Info label="Approval Status" value="Approved" />
+          {data?.approvalStatus === "approved" && data?.status === "blocked" && (
+            <PortalButton
+              variant="primary"
+              icon={FaCheckCircle}
+              isLoading={unblockUserMutation.isPending}
+              onClick={handleUnblockUserClick}
+            >
+              Unblock Account
+            </PortalButton>
+          )}
+
+          {data?.approvalStatus === "rejected" && (
+            <PortalButton
+              variant="primary"
+              icon={FaCheckCircle}
+              isLoading={approveUserMutation.isPending}
+              onClick={handleApproveUserClick}
+            >
+              Approve Account
+            </PortalButton>
+          )}
         </div>
-      </div>
+      </PortalCard>
 
-      {/* Actions */}
-
-    <div className="rounded-[32px] border border-slate-200 bg-white p-8 shadow-xl">
-  <h2 className="mb-8 text-2xl font-bold">
-    Account Actions
-  </h2>
-
-  <div className="flex flex-wrap gap-4">
-
-    {data.approvalStatus === "pending" && (
-      <>
-        <button
-        onClick={handleApproveUserClick}
-        disabled={approveUserMutation.isPending}
-          className="flex items-center gap-3 rounded-2xl bg-green-100 px-6 py-4 font-semibold text-green-700 transition hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed"
-        >
-        {
-  approveUserMutation.isPending ? (
-    <FaSpinner className="animate-spin text-black" />
-  ) : (
-    <>
-      <FaCheckCircle />
-      Approve User
-    </>
-  )
-}
-        
-        </button>
-
-        <button
-           onClick={handleRejectUserClick}
-        disabled={rejectUserMutation.isPending}
-          className="flex items-center gap-3 rounded-2xl bg-yellow-100 px-6 py-4 font-semibold text-yellow-700 transition hover:scale-105"
-        >
-            {
-  rejectUserMutation.isPending ? (
-    <FaSpinner className="animate-spin text-black" />
-  ) : (
-    <>
-      <FaTimes />
-          Reject User
-    </>
-  )
-}
-        
-        </button>
-      </>
-    )}
-
-    {data.approvalStatus === "approved"  &&
-      data.status === "active" && (
-        <button
-           onClick={()=>{setOpen(true)}}
-      
-          className="flex items-center gap-3 rounded-2xl bg-red-100 px-6 py-4 font-semibold text-red-700 transition hover:scale-105"
-        > <FaBan></FaBan> Block User
-         
-        </button>
-      )}
-
-    {data.approvalStatus === "approved" &&
-      data.status === "blocked" && (
-        <button
-           onClick={handleUnblockUserClick}
-        disabled={unblockUserMutation.isPending}
-          className="flex items-center gap-3 rounded-2xl bg-blue-100 px-6 py-4 font-semibold text-blue-700 transition hover:scale-105"
-        >
-          {
-  unblockUserMutation.isPending ? (
-    <FaSpinner className="animate-spin text-black" />
-  ) : (
-    <>
-       <FaCheckCircle />
-          Unblock User
-    </>
-  )
-}
-         
-      
-        </button>
-      )}
- {data.approvalStatus === "rejected" && (
-      <>
-        <button
-        onClick={handleApproveUserClick}
-        disabled={approveUserMutation.isPending}
-          className="flex items-center gap-3 rounded-2xl bg-green-100 px-6 py-4 font-semibold text-green-700 transition hover:scale-105 disabled:opacity-30 disabled:cursor-not-allowed"
-        >
-        {
-  approveUserMutation.isPending ? (
-    <FaSpinner className="animate-spin text-black" />
-  ) : (
-    <>
-      <FaCheckCircle />
-      Approve User
-    </>
-  )
-}
-        
-        </button>
-
-       
-      </>
-    )}
-  
-
-  </div>
-</div>
-    </div>
-        <Modal
+      {/* Block Reason Modal */}
+      <Modal
         isOpen={open}
         onClose={() => setOpen(false)}
-        title="Block User"
+        title="Block User Account"
         actions={
-          <>
-            <button
-              onClick={() => setOpen(false)}
-              className="rounded-lg border px-5 py-2"
-            >
+          <div className="flex justify-end gap-3 pt-4">
+            <PortalButton variant="outline" size="sm" onClick={() => setOpen(false)}>
               Cancel
-            </button>
-
-            <button
+            </PortalButton>
+            <PortalButton
+              variant="danger"
+              size="sm"
+              isLoading={blockUserMutation.isPending}
               onClick={handleBlockUserClick}
-                disabled={blockUserMutation.isPending}
-              className="rounded-lg bg-red-600 px-5 py-2 text-white"
             >
-           {
-  blockUserMutation.isPending ? (
-    <FaSpinner className="animate-spin text-black" />
-  ) : (
-    <>
-     
-          Block User
-    </>
-  )
-}
-            </button>
-          </>
+              Confirm Block
+            </PortalButton>
+          </div>
         }
       >
-        <p className="mb-4 text-sm text-slate-600">
-          Please provide a reason for blocking this user.
+        <p className="mb-3 text-sm text-slate-600">
+          Please provide a reason for blocking this user account.
         </p>
-
         <textarea
-          rows={5}
+          rows={4}
           value={reason}
           onChange={(e) => setReason(e.target.value)}
-          placeholder="Enter reason..."
-          className="w-full rounded-xl border p-3 outline-none focus:border-red-500"
+          placeholder="Reason for blocking..."
+          className="w-full rounded-2xl border border-slate-200 p-3 text-sm outline-none focus:border-red-500"
         />
       </Modal>
     </div>
-    
   );
 }
 
-
-
-function Info({ label, value }) {
-  return (
-    <div className="rounded-2xl bg-slate-50 p-4">
-      <p className="text-sm text-slate-500">
-        {label}
-      </p>
-      <p className="mt-1 font-semibold">
-        {value}
-      </p>
-    </div>
-  );
-}
 function getDirtyValues(dirtyFields, allValues) {
   if (dirtyFields === true) {
     return allValues;
   }
-
   return Object.fromEntries(
     Object.keys(dirtyFields).map((key) => [
       key,

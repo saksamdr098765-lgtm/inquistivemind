@@ -92,168 +92,150 @@ export default function Hero() {
 function HeroContent({ index, desktop = false, mobile = false }) {
   return (
     <div className="mx-auto max-w-xl">
-      {/* ---------------- MOBILE ---------------- */}
+      {/* Badge */}
       {mobile && (
-        <>
-          <h1 className="text-[2.7rem] font-extrabold leading-[1.05] text-slate-900">
-            Igniting
-            <span className="block text-yellow-500">
-              Inquisitive Minds
-            </span>
-            <span className="block">For Tomorrow</span>
-          </h1>
-
-          <p className="mt-5 text-base leading-7 text-slate-600">
-            Empowering students through engaging learning experiences,
-            critical thinking, innovation, and academic excellence.
-          </p>
-
-          <div className="mt-6 flex items-center gap-2 text-sm">
-            <span className="text-slate-500">Driven by</span>
-
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={index}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.25 }}
-                className="font-semibold text-sky-600"
-              >
-                {words[index]}
-              </motion.span>
-            </AnimatePresence>
-          </div>
-
-          {/* CTA (Min 44x44px touch targets) */}
-          <div className="mt-8 flex flex-col gap-3">
-            <TrackedLink
-              href="/courses"
-              label="Hero Mobile Explore Programs"
-              category="Hero CTA"
-              className="flex min-h-[44px] items-center justify-center rounded-full bg-yellow-400 px-8 py-3.5 font-semibold text-slate-900 shadow-lg transition hover:bg-yellow-500"
-            >
-              Explore Programs
-            </TrackedLink>
-
-            <TrackedLink
-              href="/about"
-              label="Hero Mobile Learn More"
-              category="Hero CTA"
-              className="flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-slate-200 px-8 py-3.5 font-medium text-slate-700 transition hover:bg-slate-50"
-            >
-              <span>Learn More</span>
-              <FaArrowRight size={12} />
-            </TrackedLink>
-          </div>
-
-          {/* Stats */}
-          <div className="mt-10 grid grid-cols-3 gap-3">
-            <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4 text-center">
-              <div className="text-2xl font-bold text-yellow-500">
-                <CountUp end={5000} duration={2} />+
-              </div>
-              <p className="mt-1 text-xs text-slate-500">Learners</p>
-            </div>
-
-            <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4 text-center">
-              <div className="text-2xl font-bold text-sky-500">
-                <CountUp end={50} duration={2} />+
-              </div>
-              <p className="mt-1 text-xs text-slate-500">Educators</p>
-            </div>
-
-            <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4 text-center">
-              <div className="text-2xl font-bold text-red-500">
-                <CountUp end={98} duration={2} />%
-              </div>
-              <p className="mt-1 text-xs text-slate-500">Success</p>
-            </div>
-          </div>
-        </>
+        <motion.div
+          initial={{ opacity: 0, y: -15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-4 inline-flex rounded-full bg-yellow-100 px-4 py-2 text-xs font-semibold tracking-[0.25em] text-yellow-700"
+        >
+          INQUISITIVE MIND ACADEMY
+        </motion.div>
       )}
 
-      {/* ---------------- DESKTOP ---------------- */}
       {desktop && (
-        <>
-          <div className="mb-5 inline-flex rounded-full bg-yellow-100 px-4 py-2 text-xs font-semibold tracking-[0.2em] text-yellow-700">
-            INQUISITIVE MIND ACADEMY
-          </div>
+        <div className="mb-5 inline-flex rounded-full bg-yellow-100 px-4 py-2 text-xs font-semibold tracking-[0.2em] text-yellow-700">
+          INQUISITIVE MIND ACADEMY
+        </div>
+      )}
 
-          <h1 className="text-5xl font-extrabold leading-[1.05] text-slate-900 xl:text-7xl">
-            Igniting
-            <span className="block text-yellow-500">
-              Inquisitive Minds
-            </span>
-            <span className="block">For Tomorrow</span>
-          </h1>
+      {/* Single shared H1 — sized responsively, rendered once */}
+      <h1 className="text-[2.7rem] font-extrabold leading-[1.05] text-slate-900 lg:text-5xl xl:text-7xl">
+        Igniting
+        <span className="block text-yellow-500">Inquisitive Minds</span>
+        <span className="block">For Tomorrow</span>
+      </h1>
 
-          <p className="mt-6 text-lg leading-relaxed text-slate-600">
-            Empowering students through engaging learning experiences,
-            critical thinking, innovation, and academic excellence.
-          </p>
+      <p className="mt-5 lg:mt-6 text-base lg:text-lg leading-7 lg:leading-relaxed text-slate-600">
+        Empowering students through engaging learning experiences,
+        critical thinking, innovation, and academic excellence.
+      </p>
 
-          <div className="mt-5 flex items-center gap-2 text-sm">
-            <span className="text-slate-500">Driven by</span>
+      {/* "Driven by" rotator — shared, sizing tweaks via classes */}
+      <div className="mt-6 lg:mt-5 flex items-center gap-2 text-sm">
+        <span className="text-slate-500">Driven by</span>
 
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={index}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.25 }}
-                className="font-semibold text-sky-500"
-              >
-                {words[index]}
-              </motion.span>
-            </AnimatePresence>
-          </div>
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={index}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25 }}
+            className={`font-semibold ${mobile ? "text-sky-600" : "text-sky-500"}`}
+          >
+            {words[index]}
+          </motion.span>
+        </AnimatePresence>
+      </div>
 
-          <div className="mt-10 flex flex-wrap items-center gap-4">
-            <TrackedLink
-              href="/courses"
-              label="Hero Desktop Explore Programs"
-              category="Hero CTA"
-              className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-yellow-400 px-8 py-3 font-semibold text-slate-900 shadow-lg shadow-yellow-400/30 transition hover:-translate-y-1 hover:bg-yellow-500"
-            >
-              Explore Programs
-            </TrackedLink>
+      {/* CTAs */}
+      {mobile && (
+        <div className="mt-8 flex flex-col gap-3">
+          <TrackedLink
+            href="/courses"
+            label="Hero Mobile Explore Programs"
+            category="Hero CTA"
+            className="flex min-h-[44px] items-center justify-center rounded-full bg-yellow-400 px-8 py-3.5 font-semibold text-slate-900 shadow-lg transition hover:bg-yellow-500"
+          >
+            Explore Programs
+          </TrackedLink>
 
-            <TrackedLink
-              href="/about"
-              label="Hero Desktop Learn More"
-              category="Hero CTA"
-              className="inline-flex min-h-[44px] items-center gap-2 font-medium text-slate-700 transition hover:text-sky-600"
-            >
-              <span>Learn More</span>
-              <FaArrowRight size={12} />
-            </TrackedLink>
-          </div>
+          <TrackedLink
+            href="/about"
+            label="Hero Mobile Learn More"
+            category="Hero CTA"
+            className="flex min-h-[44px] items-center justify-center gap-2 rounded-full border border-slate-200 px-8 py-3.5 font-medium text-slate-700 transition hover:bg-slate-50"
+          >
+            <span>Learn More</span>
+            <FaArrowRight size={12} />
+          </TrackedLink>
+        </div>
+      )}
 
-          <div className="mt-14 flex gap-10 text-slate-500">
-            <div>
-              <div className="text-3xl font-bold text-yellow-500">
-                <CountUp end={5000} duration={2} />+
-              </div>
-              <div className="text-sm">Learners</div>
+      {desktop && (
+        <div className="mt-10 flex flex-wrap items-center gap-4">
+          <TrackedLink
+            href="/courses"
+            label="Hero Desktop Explore Programs"
+            category="Hero CTA"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-yellow-400 px-8 py-3 font-semibold text-slate-900 shadow-lg shadow-yellow-400/30 transition hover:-translate-y-1 hover:bg-yellow-500"
+          >
+            Explore Programs
+          </TrackedLink>
+
+          <TrackedLink
+            href="/about"
+            label="Hero Desktop Learn More"
+            category="Hero CTA"
+            className="inline-flex min-h-[44px] items-center gap-2 font-medium text-slate-700 transition hover:text-sky-600"
+          >
+            <span>Learn More</span>
+            <FaArrowRight size={12} />
+          </TrackedLink>
+        </div>
+      )}
+
+      {/* Stats */}
+      {mobile && (
+        <div className="mt-10 grid grid-cols-3 gap-3">
+          <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4 text-center">
+            <div className="text-2xl font-bold text-yellow-500">
+              <CountUp end={5000} duration={2} />+
             </div>
-
-            <div>
-              <div className="text-3xl font-bold text-sky-500">
-                <CountUp end={50} duration={2} />+
-              </div>
-              <div className="text-sm">Educators</div>
-            </div>
-
-            <div>
-              <div className="text-3xl font-bold text-red-500">
-                <CountUp end={98} duration={2} />%
-              </div>
-              <div className="text-sm">Success Rate</div>
-            </div>
+            <p className="mt-1 text-xs text-slate-500">Learners</p>
           </div>
-        </>
+
+          <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4 text-center">
+            <div className="text-2xl font-bold text-sky-500">
+              <CountUp end={50} duration={2} />+
+            </div>
+            <p className="mt-1 text-xs text-slate-500">Educators</p>
+          </div>
+
+          <div className="rounded-2xl border border-slate-100 bg-slate-50 p-4 text-center">
+            <div className="text-2xl font-bold text-red-500">
+              <CountUp end={98} duration={2} />%
+            </div>
+            <p className="mt-1 text-xs text-slate-500">Success</p>
+          </div>
+        </div>
+      )}
+
+      {desktop && (
+        <div className="mt-14 flex gap-10 text-slate-500">
+          <div>
+            <div className="text-3xl font-bold text-yellow-500">
+              <CountUp end={5000} duration={2} />+
+            </div>
+            <div className="text-sm">Learners</div>
+          </div>
+
+          <div>
+            <div className="text-3xl font-bold text-sky-500">
+              <CountUp end={50} duration={2} />+
+            </div>
+            <div className="text-sm">Educators</div>
+          </div>
+
+          <div>
+            <div className="text-3xl font-bold text-red-500">
+              <CountUp end={98} duration={2} />%
+            </div>
+            <div className="text-sm">Success Rate</div>
+          </div>
+        </div>
       )}
     </div>
   );

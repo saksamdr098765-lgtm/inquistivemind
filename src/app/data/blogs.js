@@ -5,8 +5,8 @@ export const blogs = [
 {
     id: 1,
     slug: "what-is-tef-tcf-exam-comparison-scores-fees",
-    title:
-      "What is TEF and TCF Exam? Full Comparison, Score Chart, Timing & Fees (2026)",
+ title:
+  "TEF vs TCF Exam: Comparison, Scores & Fees (2026)",
     excerpt:
       "New to French exams for Canada PR? Understand what TEF and TCF stand for, how they compare, their score charts, exam duration, and fees — all in one place.",
     category: "TEF/TCF Preparation",
@@ -42,22 +42,22 @@ export const blogs = [
       certification: "Exam-Ready Score Guarantee Program",
     },
   
-    seo: {
-      title:
-        "What is TEF & TCF? Comparison, Scores, Timing & Fees 2026 | Inquisitive Mind Academy",
-      description:
-        "Complete guide to TEF and TCF exams for Canada PR — what they are, score chart comparison, exam duration, and latest fees. Learn from expert French tutors.",
-      keywords: [
-        "What is TEF exam",
-        "What is TCF exam",
-        "TEF full form",
-        "TCF full form",
-        "TEF TCF score chart",
-        "TEF TCF exam fees",
-        "TEF TCF exam duration",
-        "Inquisitive Mind Academy",
-      ],
-    },
+   seo: {
+  title:
+    "TEF vs TCF Exam: Comparison, Scores & Fees (2026)",
+  description:
+    "Complete guide to TEF and TCF exams for Canada PR — what they are, score chart comparison, exam duration, and latest fees. Learn from expert French tutors.",
+  keywords: [
+    "What is TEF exam",
+    "What is TCF exam",
+    "TEF full form",
+    "TCF full form",
+    "TEF TCF score chart",
+    "TEF TCF exam fees",
+    "TEF TCF exam duration",
+    "Inquisitive Mind Academy",
+  ],
+},
     tags: [
       "TEF",
       "TCF",
@@ -424,7 +424,7 @@ export const blogs = [
       title:
         "French Classes Fees in Chandigarh (2026) — Full Cost Guide",
       description:
-        "What do French classes actually cost in Chandigarh? Compare home tuition, online, and group batch fees, plus DELF and TEF/TCF exam costs — written and reviewed by our French faculty.",
+        "What do French classes actually cost in Chandigarh? Compare home tuition, online, and group batch fees, plus DELF/TEF/TCF exam costs.",
       keywords: [
         "French classes in Chandigarh with fees",
         "French language course fees",
@@ -710,9 +710,9 @@ export const blogs = [
    {
     id: 3,
     slug: "tcf-canada-exam-guide-registration-fees-score-chart",
-    title:
-      "TCF Canada Exam Guide 2026: Registration, Fees, Score Chart & Preparation Tips",
-    excerpt:
+   title:
+  "TCF Canada Exam Guide 2026: Fees, Registration & Score",
+   excerpt:
       "Planning to give TCF Canada for PR? Here's everything you need — registration process, exam fees in India, CLB score chart, exam pattern, and how to prepare.",
     category: "TEF/TCF Preparation",
     author: {
@@ -747,22 +747,22 @@ export const blogs = [
       certification: "Exam-Ready Score Guarantee Program",
     },
 
-    seo: {
-      title:
-        "TCF Canada Exam Guide 2026: Registration, Fees & Score Chart | Inquisitive Mind Academy",
-      description:
-        "Complete guide to the TCF Canada exam — registration process, exam fees in India, CLB score chart, exam pattern, and preparation tips for Canada PR aspirants.",
-      keywords: [
-        "TCF Canada registration",
-        "TCF Canada exam fees",
-        "TCF Canada exam pattern",
-        "TCF Canada CLB 7",
-        "TCF Canada mock test",
-        "TCF Canada score chart",
-        "TCF Canada exam preparation",
-        "Inquisitive Mind Academy",
-      ],
-    },
+   seo: {
+  title:
+    "TCF Canada Exam Guide 2026: Fees, Registration & Score",
+  description:
+    "Complete guide to the TCF Canada exam — registration process, exam fees in India, CLB score chart, exam pattern, and preparation tips for Canada PR aspirants.",
+  keywords: [
+    "TCF Canada registration",
+    "TCF Canada exam fees",
+    "TCF Canada exam pattern",
+    "TCF Canada CLB 7",
+    "TCF Canada mock test",
+    "TCF Canada score chart",
+    "TCF Canada exam preparation",
+    "Inquisitive Mind Academy",
+  ],
+},
     tags: [
       "TCF",
       "TCF Canada",

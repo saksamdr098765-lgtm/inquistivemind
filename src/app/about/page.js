@@ -11,20 +11,19 @@ export const metadata = {
   title: "About Us | Inquisitive Mind Academy",
 
   description:
-    "Learn more about Inquisitive Mind Academy, our mission, experienced French language tutors, teaching methodology, and commitment to helping students achieve fluency in French through interactive online learning.",
+    "Learn about Inquisitive Mind Academy — our mission, expert tutors, and teaching methodology across French, English, and academic tuition for students of all levels.",
 
   keywords: [
     "About Inquisitive Mind Academy",
+    "Online Tuition Academy",
     "French Language Institute",
-    "French Language Academy",
-    "French Tutors",
-    "Learn French",
-    "Online French Classes",
-    "French Coaching",
-    "French Language Teachers",
-    "French Learning Platform",
+    "English Speaking Institute",
+    "Academic Coaching Institute",
+    "Expert Tutors India",
+    "Online Learning Platform",
     "French Education",
-    "French Courses India",
+    "Tuition Classes India",
+    "Learning Academy India",
   ],
 
   alternates: {
@@ -39,7 +38,7 @@ export const metadata = {
   openGraph: {
     title: "About Inquisitive Mind Academy",
     description:
-      "Discover our mission, expert French tutors, and interactive learning approach designed to help students master the French language with confidence.",
+      "Discover our mission, expert tutors, and teaching approach across French, English, and academic tuition — built to help students learn with confidence.",
 
     url: "/about",
 
@@ -63,7 +62,7 @@ export const metadata = {
     title: "About Inquisitive Mind Academy",
 
     description:
-      "Meet the team behind Inquisitive Mind Academy and discover our mission to make French learning simple, engaging, and effective.",
+      "Meet the team behind Inquisitive Mind Academy and our mission to make learning simple, engaging, and effective.",
 
     images: ["/web-app-manifest-512x512.png"],
   },

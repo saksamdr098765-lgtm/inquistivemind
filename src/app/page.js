@@ -15,33 +15,33 @@ import StudentRequirements from "./Components/StudentRequirment";
 export const metadata = {
   metadataBase: new URL("https://www.inquistivemindacademy.com"),
   title: {
-    default: "Inquisitive Mind Academy | Learn French Online with Expert Tutors",
+    default: "Inquisitive Mind Academy | Tuition, French & Tutor Jobs",
     template: "%s | Inquisitive Mind Academy",
   },
 
   description:
-    "Learn French online with Inquisitive Mind Academy. Join beginner to advanced French language courses with expert tutors, interactive live classes, personalized guidance, and internationally recognized learning paths.",
+   "Learn or teach online with Inquisitive Mind Academy — French courses, academic tuition for Class 1-12, and tutor opportunities, all with expert guidance.",
 
-  keywords: [
-    "Inquisitive Mind Academy",
-    "Learn French Online",
-    "French Language Classes",
-    "French Language Course",
-    "Online French Classes",
-    "French for Beginners",
-    "French Tutor",
-    "French Coaching",
-    "French Grammar",
-    "French Speaking Course",
-    "French Vocabulary",
-    "Online Language Learning",
-    "French Certification",
-    "DELF Preparation",
-    "French Institute India",
-    "French Classes Online",
-    "French Learning Platform",
-    "French Academy",
-  ],
+keywords: [
+  "Inquisitive Mind Academy",
+  "Online Tuition Classes",
+  "Learn French Online",
+  "French Language Classes",
+  "French Language Course",
+  "French for Beginners",
+  "French Tutor",
+  "DELF Preparation",
+  "English Speaking Course",
+  "Spoken English Classes",
+  "Academic Tuition Online",
+  "CBSE ICSE Tuition",
+  "Class 1 to 12 Tuition",
+  "Online Tutor Jobs",
+  "Become a Tutor",
+  "Find a Tutor Online",
+  "French Academy India",
+  "Online Learning Platform",
+],
 
   authors: [
     {
@@ -79,17 +79,17 @@ export const metadata = {
     siteName: "Inquisitive Mind Academy",
 
     title:
-      "Inquisitive Mind Academy | Learn French Online",
+      "Inquisitive Mind Academy | Tuition, French & Tutor Jobs",
 
     description:
-      "Master the French language with live online classes, structured learning paths, experienced tutors, and personalized guidance for every learner.",
+      "Learn or teach online with Inquisitive Mind Academy — French courses, academic tuition for Class 1-12, and tutor opportunities, all with expert guidance.",
 
     images: [
       {
         url: "/web-app-manifest-512x512.png",
         width: 1200,
         height: 630,
-        alt: "Inquisitive Mind Academy - Learn French Online",
+        alt: "Inquisitive Mind Academy - Tuition, French & Tutor Jobs",
       },
     ],
   },
@@ -98,10 +98,10 @@ export const metadata = {
     card: "summary_large_image",
 
     title:
-      "Inquisitive Mind Academy | Learn French Online",
+      "Inquisitive Mind Academy | Tuition, French & Tutor Jobs",
 
     description:
-      "Join live French language classes with expert tutors and start speaking French confidently.",
+      "Learn or teach online with Inquisitive Mind Academy — French courses, academic tuition for Class 1-12, and tutor opportunities, all with expert guidance.",
 
     images: ["/web-app-manifest-512x512.png"],
   },

@@ -1,24 +1,24 @@
 import React, { Suspense } from 'react'
 import BecomeTutor from './components/BecomeTutor'
 export const metadata = {
-  title: "Become a French Tutor | Join Inquisitive Mind Academy",
+  title: "Become a Tutor | Join Inquisitive Mind Academy",
 
   description:
-    "Join Inquisitive Mind Academy as a French language tutor. Teach students worldwide through live online classes, enjoy flexible teaching hours, and become part of our growing team of passionate educators.",
+    "Join Inquisitive Mind Academy as a tutor for French, English, or academic subjects. Teach online, set flexible hours, and grow with our educator team.",
 
   keywords: [
-    "Become a French Tutor",
+    "Become a Tutor",
+    "Tutor Jobs",
+    "Online Teaching Jobs",
+    "Teach Online",
     "French Tutor Jobs",
-    "Online French Teacher",
-    "French Teaching Jobs",
-    "Teach French Online",
-    "French Language Tutor",
-    "French Instructor",
-    "French Educator",
-    "French Faculty",
-    "French Trainer",
-    "French Teacher Recruitment",
-    "Join Inquisitive Mind Academy"
+    "English Tutor Jobs",
+    "Academic Tutor Jobs",
+    "Home Tutor Jobs",
+    "Online Tutor Recruitment",
+    "Part Time Teaching Jobs",
+    "Work From Home Tutor",
+    "Join Inquisitive Mind Academy",
   ],
 
   alternates: {
@@ -31,10 +31,10 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "Become a French Tutor | Inquisitive Mind Academy",
+    title: "Become a Tutor | Inquisitive Mind Academy",
 
     description:
-      "Apply to become a French language tutor and teach students through live online classes with Inquisitive Mind Academy.",
+      "Apply to teach French, English, or academic subjects through live online classes with Inquisitive Mind Academy.",
 
     url: "/become-a-tutor",
 
@@ -45,7 +45,7 @@ export const metadata = {
         url: "/web-app-manifest-512x512.png",
         width: 1200,
         height: 630,
-        alt: "Become a French Tutor",
+        alt: "Become a Tutor",
       },
     ],
   },
@@ -53,10 +53,10 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
 
-    title: "Become a French Tutor",
+    title: "Become a Tutor",
 
     description:
-      "Join our team of expert French language tutors.",
+      "Join our team of expert tutors across French, English, and academic subjects.",
 
     images: ["/web-app-manifest-512x512.png"],
   },

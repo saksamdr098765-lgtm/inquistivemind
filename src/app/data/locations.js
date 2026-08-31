@@ -2,7 +2,7 @@ export const locations = [
   {
     slug: "french-classes-mohali",
     city: "Mohali",
-    title: "Inquisitive Mind Academy - Online French Classes for Mohali",
+    title: "French Classes in Mohali | Inquisitive Mind Academy",
     shortDescription:
       "Join live online French classes for Mohali with certified French faculty, small batch sizes, and DELF/TEF/TCF exam preparation for Phase 3B2, Phase 7, Phase 8, Sector 62, Sector 70 and nearby areas.",
     coverImage: "/locations/french-classes-mohali/cover.webp",
@@ -112,7 +112,7 @@ export const locations = [
       },
     ],
     seo: {
-      title: "French Classes for Mohali | Live Online Coaching | Inquisitive Mind Academy",
+      title: "French Classes in Mohali | Inquisitive Mind Academy",
       description:
         "Live online French classes for Mohali learners. Covers Phase 3B2, Phase 7, Phase 8, Sector 62, Sector 70, Zirakpur & Dera Bassi. DELF/TEF/TCF exam prep available.",
       keywords: [
@@ -133,7 +133,7 @@ export const locations = [
   {
     slug: "french-classes-zirakpur",
     city: "Zirakpur",
-    title: "Inquisitive Mind Academy - Online French Classes for Zirakpur",
+    title: "French Classes in Zirakpur | Inquisitive Mind Academy",
     shortDescription:
       "Join live online French classes for Zirakpur with certified French faculty, small batch sizes, and DELF/TEF/TCF exam preparation for VIP Road, Dhakoli, Baltana, Peer Muchalla and nearby areas.",
     coverImage: "/locations/french-classes-zirakpur/cover.webp",
@@ -257,7 +257,7 @@ export const locations = [
       },
     ],
     seo: {
-      title: "French Classes for Zirakpur | Live Online Coaching | Inquisitive Mind Academy",
+      title: "French Classes in Zirakpur | Inquisitive Mind Academy",
       description:
         "Live online French classes for Zirakpur learners. Covers VIP Road, Dhakoli, Baltana, Peer Muchalla & Dera Bassi. DELF/TEF/TCF exam prep available.",
       keywords: [

@@ -14,7 +14,6 @@ import { coursesData } from "../data";
 const frenchLevels = coursesData
   .filter(
     (course) =>
-      course.category === "French Language" &&
       /^French (A1|A2|B1|B2|C1|C2)/i.test(course.title)
   )
   .sort((a, b) => {
@@ -152,7 +151,7 @@ export default function FrenchCourseLevels() {
 
         {/* CTA */}
 
-        <div className="mt-20 rounded-[32px] border border-yellow-200 bg-gradient-to-r from-yellow-50 via-white to-yellow-50 p-10 text-center">
+        {/* <div className="mt-20 rounded-[32px] border border-yellow-200 bg-gradient-to-r from-yellow-50 via-white to-yellow-50 p-10 text-center">
           <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-yellow-500 text-2xl text-white">
             <FaGraduationCap />
           </div>
@@ -173,7 +172,7 @@ export default function FrenchCourseLevels() {
             Take Free Placement Test
             <FaArrowRight />
           </Link>
-        </div>
+        </div> */}
       </div>
     </section>
   );

@@ -1,24 +1,24 @@
 import React from 'react'
 import StudentOnboarding from './components/StudentOnboarding'
 export const metadata = {
-  title: "Find a French Tutor | Inquisitive Mind Academy",
+  title: "Find a Tutor Online | Inquisitive Mind Academy",
 
   description:
-    "Find experienced French language tutors at Inquisitive Mind Academy. Get personalized one-on-one guidance, live online classes, flexible schedules, and expert support to achieve your French learning goals.",
+    "Find qualified tutors at Inquisitive Mind Academy for French, English, and academic subjects. Live online classes, personalized guidance, flexible schedules.",
 
   keywords: [
+    "Find a Tutor",
+    "Online Tutor",
     "French Tutor",
-    "Find French Tutor",
-    "Online French Tutor",
-    "French Teacher",
+    "English Speaking Tutor",
+    "Academic Tutor",
+    "Home Tutor Online",
+    "Private Tutor India",
+    "One to One Classes",
+    "CBSE ICSE Tutor",
     "French Language Tutor",
-    "French Speaking Tutor",
-    "French Coaching",
-    "French Tutor India",
-    "Private French Classes",
-    "One to One French Classes",
-    "French Learning",
-    "Learn French Online"
+    "Online Tutor Jobs",
+    "Find French Tutor Online",
   ],
 
   alternates: {
@@ -31,10 +31,10 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "Find a French Tutor | Inquisitive Mind Academy",
+    title: "Find a Tutor Online | Inquisitive Mind Academy",
 
     description:
-      "Connect with experienced French tutors for personalized online learning and one-on-one guidance.",
+      "Connect with qualified tutors for French, English, and academic subjects — personalized online learning made simple.",
 
     url: "/find-tutor",
 
@@ -45,7 +45,7 @@ export const metadata = {
         url: "/web-app-manifest-512x512.png",
         width: 1200,
         height: 630,
-        alt: "Find a French Tutor",
+        alt: "Find a Tutor Online",
       },
     ],
   },
@@ -53,10 +53,10 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
 
-    title: "Find a French Tutor",
+    title: "Find a Tutor Online",
 
     description:
-      "Personalized French tutoring with experienced instructors.",
+      "Personalized tutoring across French, English, and academic subjects.",
 
     images: ["/web-app-manifest-512x512.png"],
   },

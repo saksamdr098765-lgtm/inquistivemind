@@ -122,7 +122,7 @@ const onContinue = async () => {
       </div>
 
       <div className="relative mx-auto max-w-7xl px-5 py-6 lg:px-8 lg:py-10">
-
+ <h1 className="sr-only">Find a Tutor — Search Qualified Tutors</h1>
         {/* PROGRESS */}
         <ProgressTracker currentStep={step} totalSteps={8} />
 

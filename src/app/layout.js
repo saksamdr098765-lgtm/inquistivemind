@@ -76,7 +76,7 @@ export const metadata = {
       "A modern French language learning platform featuring structured courses, interactive lessons, quizzes, assignments, progress tracking, and dedicated student and admin dashboards.",
 
     url:
-      "https://www.inquistivemindacademy.com/",
+      "https://www.inquistivemindacademy.com",
 
     siteName: "Inquisitive Mind Academy",
 

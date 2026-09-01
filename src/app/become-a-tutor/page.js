@@ -129,6 +129,7 @@ export default function page() {
     }),
   }}
 />
+  <h1 className="sr-only">Become a Tutor — Apply Now</h1>
 <Suspense fallback={null}>
     <BecomeTutor></BecomeTutor>
     </Suspense>

@@ -136,7 +136,7 @@ const next = async () => {
 
       <div className="relative mx-auto max-w-6xl px-5">
 
-  <h1 className="sr-only">Become a Tutor — Apply Now</h1>
+
         {/* Progress */}
         <ProgressTracker currentStep={step} totalSteps={9} />
 

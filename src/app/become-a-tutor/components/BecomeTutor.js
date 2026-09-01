@@ -125,14 +125,9 @@ const next = async () => {
   const canContinue = step === 7 ? true : !validateStep(step, form);
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-white py-20">
+    <section className="relative min-h-screen overflow-hidden py-20">
 
-      {/* Background */}
-      <div className="absolute inset-0">
-        <div className="absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-amber-400/10 blur-[120px]" />
-        <div className="absolute -right-40 bottom-0 h-[500px] w-[500px] rounded-full bg-sky-400/10 blur-[120px]" />
-        <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:70px_70px]" />
-      </div>
+     
 
       <div className="relative mx-auto max-w-6xl px-5">
 

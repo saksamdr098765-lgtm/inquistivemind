@@ -112,14 +112,9 @@ const onContinue = async () => {
 };
 
   return (
-    <section className="relative min-h-screen overflow-hidden bg-white py-20">
+    <section className="relative min-h-screen overflow-hidden py-20">
 
-      {/* BACKGROUND */}
-      <div className="absolute inset-0">
-        <div className="absolute -left-40 top-0 h-[500px] w-[500px] rounded-full bg-yellow-200/30 blur-[120px]" />
-        <div className="absolute -right-40 bottom-0 h-[500px] w-[500px] rounded-full bg-amber-200/20 blur-[120px]" />
-        <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:60px_60px]" />
-      </div>
+    
 
       <div className="relative mx-auto max-w-7xl px-5 py-6 lg:px-8 lg:py-10">
  <h1 className="sr-only">Find a Tutor — Search Qualified Tutors</h1>

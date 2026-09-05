@@ -31,28 +31,29 @@ export default function AddStudentForm() {
   };
 
   return (
-    <div className="space-y-8 max-w-7xl mx-auto">
+    <div className="space-y-4 sm:space-y-6 max-w-7xl mx-auto">
       {/* Top Hero Banner */}
-      <div className="rounded-[32px] bg-slate-900 border border-slate-800 p-6 sm:p-8 text-white shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-        <div>
-          <span className="inline-flex rounded-full bg-yellow-400/15 border border-yellow-400/30 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-yellow-300 backdrop-blur-md">
+      <div className="relative overflow-hidden rounded-2xl sm:rounded-[32px] bg-gradient-to-r from-amber-500 to-yellow-500 p-5 sm:p-8 text-white shadow-lg flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 sm:gap-6">
+        <div className="absolute -right-10 -top-10 h-48 sm:h-64 w-48 sm:w-64 rounded-full bg-white/20 blur-3xl pointer-events-none" />
+
+        <div className="relative">
+          <span className="inline-flex rounded-full bg-white/20 border border-white/30 px-3 py-0.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md">
             Student Admission
           </span>
-          <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl text-white">
-            Add New{" "}
-            <span className="bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-400 bg-clip-text text-transparent">
-              Student Profile
-            </span>
+          <h1 className="mt-2 text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
+            Add New Student Profile
           </h1>
-          <p className="mt-1 text-slate-300 font-medium text-sm max-w-xl">
+          <p className="mt-1 text-orange-100 font-medium text-xs sm:text-sm max-w-xl">
             Register a new student account, assign batches, courses, and fee structures.
           </p>
         </div>
 
         <PortalButton
-          variant="outline"
+          variant="secondary"
+          size="sm"
           icon={FaArrowLeft}
           onClick={() => router.push("/admin-panel/student")}
+          className="w-full sm:w-auto"
         >
           Back to Students
         </PortalButton>

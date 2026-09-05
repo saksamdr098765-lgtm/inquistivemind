@@ -30,27 +30,25 @@ const certificates = [
 export default function Certificates() {
   return (
     <div className="space-y-8">
-      {/* Executive Hero Banner */}
+      {/* Hero Header Banner */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-[32px] bg-slate-900 border border-slate-800 p-6 sm:p-8 text-white shadow-2xl flex items-center gap-5"
+        className="relative overflow-hidden rounded-[32px] bg-gradient-to-r from-amber-500 to-yellow-500 p-6 sm:p-8 text-white shadow-xl flex items-center gap-5"
       >
-        <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-yellow-400/15 border border-yellow-400/30 text-3xl text-yellow-300 shadow-inner">
+        <div className="absolute -right-10 -top-10 h-64 w-64 rounded-full bg-white/20 blur-3xl pointer-events-none" />
+        <div className="relative flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/20 border border-white/30 text-3xl text-white backdrop-blur-md shadow-xs">
           <FaAward />
         </div>
 
-        <div>
-          <span className="inline-flex rounded-full bg-yellow-400/15 border border-yellow-400/30 px-3 py-1 text-xs font-bold uppercase tracking-wider text-yellow-300 backdrop-blur-md">
+        <div className="relative">
+          <span className="inline-flex rounded-full bg-white/20 border border-white/30 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md">
             Achievements
           </span>
           <h1 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl text-white">
-            My Course{" "}
-            <span className="bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-400 bg-clip-text text-transparent">
-              Certificates
-            </span>
+            My Course Certificates
           </h1>
-          <p className="mt-1 text-slate-300 font-medium text-sm">
+          <p className="mt-1 text-orange-100 font-medium text-sm">
             View, verify, and download your accredited academy certificates.
           </p>
         </div>

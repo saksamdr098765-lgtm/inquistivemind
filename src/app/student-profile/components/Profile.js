@@ -17,7 +17,6 @@ import EmergencySection from "./profile/EmergencySection";
 import { useProfileUpdateMutation } from "@/app/mutations/studentMutation";
 import { useProfileImageMutation } from "@/app/mutations/userMutation";
 import ProfileSkeleton from "@/app/Skeletons/ProfileSkeleton";
-import PortalCard from "@/app/Components/portal-ui/PortalCard";
 import PortalButton from "@/app/Components/portal-ui/PortalButton";
 
 export default function Profile({ user, profile }) {
@@ -154,34 +153,36 @@ export default function Profile({ user, profile }) {
   if (!user || !profile) return <ProfileSkeleton />;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-4 sm:space-y-6">
       {/* Hero Header */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative overflow-hidden rounded-[32px] bg-gradient-to-r from-yellow-400 via-yellow-500 to-amber-400 p-6 sm:p-8 text-slate-900 shadow-lg shadow-yellow-200/50"
+        className="relative overflow-hidden rounded-2xl sm:rounded-[32px] bg-gradient-to-r from-amber-500 to-yellow-500 p-5 sm:p-8 text-white shadow-lg"
       >
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className="absolute -right-10 -top-10 h-48 sm:h-64 w-48 sm:w-64 rounded-full bg-white/20 blur-3xl pointer-events-none" />
+
+        <div className="relative flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div>
-            <span className="inline-flex rounded-full bg-slate-900/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-slate-900 backdrop-blur-md">
+            <span className="inline-flex rounded-full bg-white/20 border border-white/30 px-3 py-0.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md">
               Student Dashboard
             </span>
-            <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">
+            <h1 className="mt-2 text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
               My Profile & Information
             </h1>
-            <p className="mt-1 text-slate-800 font-medium text-sm max-w-xl">
+            <p className="mt-1 text-orange-100 font-medium text-xs sm:text-sm max-w-xl">
               Manage personal details, address, guardian contact info, and emergency references.
             </p>
           </div>
 
-          <div className="flex gap-3">
-            <div className="rounded-2xl border border-slate-900/10 bg-slate-900/5 p-3.5 backdrop-blur-md text-center min-w-[120px]">
-              <p className="text-[10px] uppercase font-bold text-slate-800">Account Status</p>
-              <p className="mt-1 text-base font-extrabold text-slate-900">Active</p>
+          <div className="grid grid-cols-2 gap-2.5 sm:gap-3 w-full sm:w-auto">
+            <div className="rounded-xl sm:rounded-2xl border border-white/30 bg-white/15 p-2.5 sm:p-3.5 backdrop-blur-md text-center text-white">
+              <p className="text-[10px] uppercase font-bold text-orange-100">Status</p>
+              <p className="mt-0.5 text-xs sm:text-base font-extrabold text-white">Active</p>
             </div>
-            <div className="rounded-2xl border border-slate-900/10 bg-slate-900/5 p-3.5 backdrop-blur-md text-center min-w-[120px]">
-              <p className="text-[10px] uppercase font-bold text-slate-800">Profile Level</p>
-              <p className="mt-1 text-base font-extrabold text-slate-900">{profile?.languageLevel || "Beginner"}</p>
+            <div className="rounded-xl sm:rounded-2xl border border-white/30 bg-white/15 p-2.5 sm:p-3.5 backdrop-blur-md text-center text-white">
+              <p className="text-[10px] uppercase font-bold text-orange-100">Level</p>
+              <p className="mt-0.5 text-xs sm:text-base font-extrabold text-white">{profile?.languageLevel || "Beginner"}</p>
             </div>
           </div>
         </div>
@@ -190,7 +191,7 @@ export default function Profile({ user, profile }) {
       {/* Main Grid Content */}
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)]"
+        className="grid gap-4 sm:gap-6 lg:grid-cols-[300px_minmax(0,1fr)]"
       >
         {/* Sidebar */}
         <div className="lg:sticky lg:top-24 lg:self-start">
@@ -203,37 +204,27 @@ export default function Profile({ user, profile }) {
         </div>
 
         {/* Form Sections */}
-        <div className="space-y-6">
-          <PortalCard header="Personal Information">
-            <PersonalInformation register={register} errors={errors} />
-          </PortalCard>
-
-          <PortalCard header="Residential Address">
-            <AddressSection register={register} errors={errors} />
-          </PortalCard>
-
-          <PortalCard header="Guardian Details">
-            <GuardianSection register={register} errors={errors} />
-          </PortalCard>
-
-          <PortalCard header="Emergency Contact">
-            <EmergencySection
-              register={register}
-              profileUpdateMutation={profileUpdateMutation}
-              errors={errors}
-              isSubmitting={isSubmitting}
-              handleCancel={handleCancel}
-            />
-          </PortalCard>
+        <div className="space-y-4 sm:space-y-6">
+          <PersonalInformation register={register} errors={errors} />
+          <AddressSection register={register} errors={errors} />
+          <GuardianSection register={register} errors={errors} />
+          <EmergencySection
+            register={register}
+            profileUpdateMutation={profileUpdateMutation}
+            errors={errors}
+            isSubmitting={isSubmitting}
+            handleCancel={handleCancel}
+          />
 
           {/* Action Bar */}
-          <div className="flex items-center justify-end gap-3 pt-4">
+          <div className="flex flex-col-reverse sm:flex-row items-center justify-end gap-2.5 sm:gap-3 pt-2 sm:pt-4">
             <PortalButton
               variant="outline"
               icon={FaUndo}
               type="button"
               onClick={handleCancel}
               disabled={isSubmitting}
+              className="w-full sm:w-auto"
             >
               Reset Changes
             </PortalButton>
@@ -243,6 +234,7 @@ export default function Profile({ user, profile }) {
               icon={FaSave}
               isLoading={isSubmitting}
               disabled={isSubmitting}
+              className="w-full sm:w-auto"
             >
               Save All Profile Details
             </PortalButton>

@@ -1,11 +1,7 @@
-import React from 'react'
-import StudentPortala from './StudentClient'
-import ProtectedRoute from '@/lib/ProtectedRoutes'
+import React from "react";
+import StudentClient from "./StudentClient";
 
-export default async function page({params}) {
-  const {section}=await params
-  return (
-    <ProtectedRoute roles={["student"]}><StudentPortala section={section}></StudentPortala></ProtectedRoute>
-   
-  )
+export default async function page({ params }) {
+  const { section } = await params;
+  return <StudentClient section={section} />;
 }

@@ -49,42 +49,41 @@ export default function LiveClasses() {
 
   return (
     <div className="space-y-8">
-      {/* Batch Executive Hero Banner */}
+      {/* Batch Hero Banner */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative overflow-hidden rounded-[32px] bg-slate-900 border border-slate-800 p-6 sm:p-8 text-white shadow-2xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6"
+        className="relative overflow-hidden rounded-2xl sm:rounded-[32px] bg-gradient-to-r from-amber-500 to-yellow-500 p-5 sm:p-8 text-white shadow-lg flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4 sm:gap-6"
       >
-        <div className="flex-1">
-          <span className="inline-flex rounded-full bg-yellow-400/15 border border-yellow-400/30 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-yellow-300 backdrop-blur-md">
+        <div className="absolute -right-10 -top-10 h-48 sm:h-64 w-48 sm:w-64 rounded-full bg-white/20 blur-3xl pointer-events-none" />
+        <div className="relative flex-1">
+          <span className="inline-flex rounded-full bg-white/20 border border-white/30 px-3 py-0.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md">
             Live Batch Environment
           </span>
-          <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl text-white">
-            <span className="bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-400 bg-clip-text text-transparent">
-              {batch?.name || "My Batch"}
-            </span>
+          <h1 className="mt-2 text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
+            {batch?.name || "My Batch"}
           </h1>
-          <p className="mt-1 text-slate-300 font-medium text-sm max-w-xl">
+          <p className="mt-1 text-orange-100 font-medium text-xs sm:text-sm max-w-xl">
             {batch?.course?.title || "Language Course"}
           </p>
 
-          <div className="mt-4 inline-flex items-center gap-2 rounded-2xl bg-white/5 px-4 py-2 backdrop-blur-md text-xs font-bold text-slate-200 border border-white/10">
-            <FaUserTie className="text-yellow-400" />
-            <span>
+          <div className="mt-3 sm:mt-4 inline-flex items-center gap-2 rounded-xl sm:rounded-2xl bg-white/15 px-3 sm:px-4 py-1.5 sm:py-2 backdrop-blur-md text-xs font-bold text-white border border-white/20">
+            <FaUserTie className="text-yellow-200 shrink-0" />
+            <span className="truncate">
               Trainers:{" "}
               {batch?.trainers?.map((t) => capitalizeFirstLetter(t.fullName)).join(", ") || "Not Assigned"}
             </span>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 w-full lg:w-72">
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-md text-center">
-            <p className="text-[10px] uppercase font-bold text-slate-400">Course</p>
-            <p className="mt-1 text-xs font-extrabold text-yellow-300 truncate">{batch?.course?.title}</p>
+        <div className="relative grid grid-cols-2 gap-2.5 sm:gap-3 w-full lg:w-72">
+          <div className="rounded-xl sm:rounded-2xl border border-white/30 bg-white/15 p-2.5 sm:p-3.5 backdrop-blur-md text-center">
+            <p className="text-[10px] uppercase font-bold text-amber-100">Course</p>
+            <p className="mt-0.5 text-xs sm:text-xs font-extrabold text-white truncate">{batch?.course?.title}</p>
           </div>
-          <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-md text-center">
-            <p className="text-[10px] uppercase font-bold text-slate-400">Trainers</p>
-            <p className="mt-1 text-base font-extrabold text-yellow-300">{batch?.trainers?.length || 0}</p>
+          <div className="rounded-xl sm:rounded-2xl border border-white/30 bg-white/15 p-2.5 sm:p-3.5 backdrop-blur-md text-center">
+            <p className="text-[10px] uppercase font-bold text-amber-100">Trainers</p>
+            <p className="mt-0.5 text-sm sm:text-base font-extrabold text-white">{batch?.trainers?.length || 0}</p>
           </div>
         </div>
       </motion.div>

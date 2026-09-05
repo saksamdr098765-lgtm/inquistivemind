@@ -8,17 +8,15 @@ import {
   FaBookOpen,
   FaVideo,
   FaUsers,
-  FaCertificate,
   FaCog,
 } from "react-icons/fa";
 
 const navItems = [
   { id: "dashboard", label: "Dashboard", icon: FaHome },
   { id: "profile", label: "Profile", icon: FaUser },
-  { id: "courses", label: "Enrolled Courses", icon: FaBookOpen },
+  { id: "courses", label: "Courses", icon: FaBookOpen },
   { id: "classes", label: "Live Classes", icon: FaVideo },
   { id: "batches", label: "My Batches", icon: FaUsers },
-  { id: "certificates", label: "Certificates", icon: FaCertificate },
   { id: "settings", label: "Settings", icon: FaCog },
 ];
 
@@ -26,12 +24,12 @@ export default function StudentNavbar({ section }) {
   const router = useRouter();
 
   return (
-    <motion.div
+    <motion.nav
       initial={{ opacity: 0, y: -10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="mb-8 overflow-x-auto scrollbar-none pb-2"
+      className="mb-8 rounded-[28px] border border-slate-200/90 bg-white p-2 sm:p-2.5 shadow-sm backdrop-blur-md"
     >
-      <div className="inline-flex min-w-max gap-2 rounded-[28px] border border-slate-200/90 bg-white p-2 shadow-xs backdrop-blur-md">
+      <div className="grid grid-cols-3 sm:flex sm:items-center sm:justify-start gap-1.5 sm:gap-2">
         {navItems.map((item) => {
           const Icon = item.icon;
           const active = section === item.id;
@@ -40,32 +38,18 @@ export default function StudentNavbar({ section }) {
             <button
               key={item.id}
               onClick={() => router.push(`/student-profile/${item.id}`)}
-              className={`relative flex min-h-[44px] items-center gap-2.5 rounded-2xl px-5 py-2.5 text-sm font-bold transition-all duration-200 focus:outline-none ${
+              className={`relative flex min-h-[46px] flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2.5 rounded-2xl px-2.5 sm:px-4 py-2 text-xs sm:text-sm font-bold transition-all duration-200 focus:outline-none ${
                 active
-                  ? "text-slate-900"
-                  : "text-slate-600 hover:bg-yellow-50 hover:text-yellow-600"
+                  ? "bg-yellow-400 text-slate-950 shadow-md shadow-yellow-200/60 font-extrabold"
+                  : "text-slate-600 hover:bg-yellow-50 hover:text-yellow-700"
               }`}
             >
-              {active && (
-                <motion.div
-                  layoutId="student-nav-pill"
-                  transition={{
-                    type: "spring",
-                    stiffness: 350,
-                    damping: 30,
-                  }}
-                  className="absolute inset-0 rounded-2xl bg-yellow-400 shadow-sm shadow-yellow-200/60"
-                />
-              )}
-
-              <span className="relative z-10 flex items-center gap-2 whitespace-nowrap">
-                <Icon className={active ? "text-slate-900" : "text-yellow-500"} />
-                {item.label}
-              </span>
+              <Icon className={`text-sm sm:text-base shrink-0 ${active ? "text-slate-950" : "text-yellow-600"}`} />
+              <span className="truncate text-center sm:text-left">{item.label}</span>
             </button>
           );
         })}
       </div>
-    </motion.div>
+    </motion.nav>
   );
 }

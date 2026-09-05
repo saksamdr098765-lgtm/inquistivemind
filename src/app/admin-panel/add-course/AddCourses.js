@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useCreateCourseMutation, useUpdateCourseMutation } from "@/app/mutations/coursesMutations";
 import Input from "@/app/student-profile/components/profile/Input";
 import Select from "@/app/student-profile/components/profile/Select";
@@ -114,8 +115,28 @@ formData.append(
   return (
     <form
       onSubmit={handleSubmit(onSubmit,(error)=>console.log(error))}
-      className="space-y-8"
+      className="space-y-4 sm:space-y-6 max-w-7xl mx-auto"
     >
+      {/* Hero Header Banner */}
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="relative overflow-hidden rounded-2xl sm:rounded-[32px] bg-gradient-to-r from-amber-500 to-yellow-500 p-5 sm:p-8 text-white shadow-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6"
+      >
+        <div className="absolute -right-10 -top-10 h-48 sm:h-64 w-48 sm:w-64 rounded-full bg-white/20 blur-3xl pointer-events-none" />
+
+        <div className="relative">
+          <span className="inline-flex rounded-full bg-white/20 border border-white/30 px-3 py-0.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md">
+            Catalog Management
+          </span>
+          <h1 className="mt-2 text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
+            {isEdit ? "Edit Course Details" : "Create New Course"}
+          </h1>
+          <p className="mt-1 text-orange-100 font-medium text-xs sm:text-sm max-w-xl">
+            Configure course title, pricing, modules, difficulty level, and thumbnail assets.
+          </p>
+        </div>
+      </motion.div>
       {/* Basic Information */}
 
       <div>

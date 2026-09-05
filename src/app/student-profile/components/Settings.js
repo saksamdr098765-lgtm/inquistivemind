@@ -59,31 +59,32 @@ export default function Settings() {
   };
 
   return (
-    <div className="space-y-8">
-      {/* Executive Hero Banner */}
+    <div className="space-y-4 sm:space-y-6">
+      {/* Hero Header Banner */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-[32px] bg-slate-900 border border-slate-800 p-6 sm:p-8 text-white shadow-2xl"
+        className="relative overflow-hidden rounded-2xl sm:rounded-[32px] bg-gradient-to-r from-amber-500 to-yellow-500 p-5 sm:p-8 text-white shadow-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6"
       >
-        <span className="inline-flex rounded-full bg-yellow-400/15 border border-yellow-400/30 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-yellow-300 backdrop-blur-md">
-          Preferences & Security
-        </span>
-        <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl text-white">
-          Account{" "}
-          <span className="bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-400 bg-clip-text text-transparent">
-            Settings
+        <div className="absolute -right-10 -top-10 h-48 sm:h-64 w-48 sm:w-64 rounded-full bg-white/20 blur-3xl pointer-events-none" />
+
+        <div className="relative">
+          <span className="inline-flex rounded-full bg-white/20 border border-white/30 px-3 py-0.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md">
+            Preferences & Security
           </span>
-        </h1>
-        <p className="mt-1 text-slate-300 font-medium text-sm max-w-xl">
-          Manage your password, notification preferences, and account controls.
-        </p>
+          <h1 className="mt-2 text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
+            Account Settings
+          </h1>
+          <p className="mt-1 text-orange-100 font-medium text-xs sm:text-sm max-w-xl">
+            Manage your password, notification preferences, and account controls.
+          </p>
+        </div>
       </motion.div>
 
       {/* Change Password Card */}
-      <PortalCard header="Security & Password Change">
-        <form onSubmit={handleSubmit(onPasswordSubmit)} className="space-y-5">
-          <div className="grid gap-5 sm:grid-cols-2">
+      <PortalCard header="Security & Password Change" padding="p-4 sm:p-6">
+        <form onSubmit={handleSubmit(onPasswordSubmit)} className="space-y-4 sm:space-y-5">
+          <div className="grid gap-4 sm:gap-5 sm:grid-cols-2">
             <PortalInput
               label="Current Password"
               type="password"
@@ -116,9 +117,11 @@ export default function Settings() {
           <div className="pt-2">
             <PortalButton
               type="submit"
+              size="sm"
               icon={FaSave}
               isLoading={isSubmitting || updatePasswordMutation.isPending}
               disabled={isSubmitting || updatePasswordMutation.isPending}
+              className="w-full sm:w-auto"
             >
               Update Security Password
             </PortalButton>
@@ -127,9 +130,9 @@ export default function Settings() {
       </PortalCard>
 
       {/* Notification Preferences */}
-      <PortalCard header="Notification Settings" className="relative">
+      <PortalCard header="Notification Settings" className="relative" padding="p-4 sm:p-6">
         <CommingSoon />
-        <div className="space-y-3">
+        <div className="space-y-2.5 sm:space-y-3">
           <Switch
             title="Email Notifications & Lesson Reminders"
             value={settings.emailNotifications}
@@ -144,9 +147,15 @@ export default function Settings() {
       </PortalCard>
 
       {/* Account Session & Sign Out */}
-      <PortalCard header="Account Management">
+      <PortalCard header="Account Management" padding="p-4 sm:p-6">
         <div className="flex flex-col sm:flex-row gap-3">
-          <PortalButton variant="danger" icon={FaSignOutAlt} onClick={handleLogout}>
+          <PortalButton
+            variant="danger"
+            size="sm"
+            icon={FaSignOutAlt}
+            onClick={handleLogout}
+            className="w-full sm:w-auto"
+          >
             Sign Out of Account
           </PortalButton>
         </div>
@@ -157,18 +166,18 @@ export default function Settings() {
 
 function Switch({ title, value, onClick }) {
   return (
-    <div className="flex items-center justify-between rounded-2xl border border-slate-200/80 bg-slate-50/60 p-4">
-      <span className="text-sm font-semibold text-slate-800">{title}</span>
+    <div className="flex items-center justify-between rounded-xl sm:rounded-2xl border border-slate-200/80 bg-slate-50/60 p-3 sm:p-4">
+      <span className="text-xs sm:text-sm font-semibold text-slate-800">{title}</span>
       <button
         type="button"
         onClick={onClick}
-        className={`relative h-7 w-13 rounded-full transition-all duration-200 focus:outline-none ${
+        className={`relative h-6 sm:h-7 w-11 sm:w-13 shrink-0 rounded-full transition-all duration-200 focus:outline-none ${
           value ? "bg-yellow-400" : "bg-slate-300"
         }`}
       >
         <span
-          className={`absolute top-1 h-5 w-5 rounded-full bg-white shadow-xs transition-all duration-200 ${
-            value ? "left-7" : "left-1"
+          className={`absolute top-0.5 sm:top-1 h-5 w-5 rounded-full bg-white shadow-xs transition-all duration-200 ${
+            value ? "left-5 sm:left-7" : "left-0.5 sm:left-1"
           }`}
         />
       </button>

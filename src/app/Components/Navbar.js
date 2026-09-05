@@ -115,8 +115,11 @@ export default function Navbar() {
     setProfileOpen((prev) => !prev);
   }, []);
 
-  // Hide global navbar on Admin Panel since it has its own dedicated portal header and drawer
-  if (pathname?.startsWith("/admin-panel")) {
+  // Hide global navbar on Admin Panel and Student Profile since they have dedicated portal navigation
+  if (
+    pathname?.startsWith("/admin-panel") ||
+    pathname?.startsWith("/student-profile")
+  ) {
     return null;
   }
 

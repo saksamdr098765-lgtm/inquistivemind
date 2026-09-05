@@ -6,27 +6,30 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FaChartLine,
-  FaUsers,
-  FaBookOpen,
-  FaCog,
   FaUserCircle,
+  FaBookOpen,
+  FaVideo,
+  FaUsers,
+  FaCog,
   FaBars,
   FaTimes,
   FaSignOutAlt,
-  FaShieldAlt
+  FaGraduationCap,
+  FaGlobe,
 } from "react-icons/fa";
 import useAuthStore from "@/store/authStore";
 import { useLogoutMutation } from "@/app/mutations/AuthenticationMutations";
 
-const adminNavItems = [
-  { name: "Dashboard", href: "/admin-panel/dashboard", icon: FaChartLine },
-  { name: "Students", href: "/admin-panel/student", icon: FaUsers },
-  { name: "Courses", href: "/admin-panel/courses", icon: FaBookOpen },
-  { name: "Profile", href: "/admin-panel/profile", icon: FaUserCircle },
-  { name: "Settings", href: "/admin-panel/settings", icon: FaCog },
+const studentNavItems = [
+  { name: "Dashboard", href: "/student-profile/dashboard", icon: FaChartLine },
+  { name: "My Profile", href: "/student-profile/profile", icon: FaUserCircle },
+  { name: "My Courses", href: "/student-profile/courses", icon: FaBookOpen },
+  { name: "Live Classes", href: "/student-profile/classes", icon: FaVideo },
+  { name: "My Batches", href: "/student-profile/batches", icon: FaUsers },
+  { name: "Settings", href: "/student-profile/settings", icon: FaCog },
 ];
 
-export default function AdminDrawerNav({ children }) {
+export default function StudentDrawerNav({ children }) {
   const pathname = usePathname();
   const [mobileOpen, setMobileOpen] = useState(false);
   const user = useAuthStore((state) => state.user);
@@ -52,20 +55,20 @@ export default function AdminDrawerNav({ children }) {
           >
             <FaBars className="text-lg text-slate-800" />
           </button>
-          <Link href="/admin-panel/dashboard" className="flex items-center gap-2">
+          <Link href="/student-profile/dashboard" className="flex items-center gap-2">
             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-yellow-400 to-amber-500 text-slate-950 font-bold shadow-xs">
-              <FaShieldAlt className="text-sm" />
+              <FaGraduationCap className="text-base" />
             </div>
-            <span className="font-extrabold text-slate-900 tracking-tight text-base">Admin Portal</span>
+            <span className="font-extrabold text-slate-900 tracking-tight text-base">Student Portal</span>
           </Link>
         </div>
 
         <div className="flex items-center gap-2">
           <Link
-            href="/admin-panel/profile"
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-100 text-yellow-800 font-bold border border-yellow-300"
+            href="/student-profile/profile"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-100 text-yellow-800 font-bold border border-yellow-300 shadow-xs"
           >
-            {user?.fullName?.charAt(0) || "A"}
+            {user?.fullName?.charAt(0) || "S"}
           </Link>
         </div>
       </header>
@@ -92,10 +95,10 @@ export default function AdminDrawerNav({ children }) {
                 <div className="flex items-center justify-between pb-6 border-b border-slate-100 shrink-0">
                   <div className="flex items-center gap-3">
                     <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-yellow-400 to-amber-500 text-slate-950 font-bold shadow-xs">
-                      <FaShieldAlt />
+                      <FaGraduationCap className="text-lg" />
                     </div>
                     <div>
-                      <h2 className="font-extrabold text-slate-900">Admin Panel</h2>
+                      <h2 className="font-extrabold text-slate-900">Student Hub</h2>
                       <p className="text-xs font-semibold text-yellow-600">Inquisitive Mind</p>
                     </div>
                   </div>
@@ -109,7 +112,7 @@ export default function AdminDrawerNav({ children }) {
                 </div>
 
                 <nav className="mt-6 space-y-1.5 overflow-y-auto flex-1 pr-1">
-                  {adminNavItems.map((item) => {
+                  {studentNavItems.map((item) => {
                     const isActive = pathname === item.href || pathname?.startsWith(item.href + "/");
                     const Icon = item.icon;
                     return (
@@ -127,16 +130,26 @@ export default function AdminDrawerNav({ children }) {
                       </Link>
                     );
                   })}
+
+                  <div className="pt-2 my-2 border-t border-slate-100">
+                    <Link
+                      href="/"
+                      className="flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-bold text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-all"
+                    >
+                      <FaGlobe className="text-lg text-slate-400" />
+                      <span>Main Website</span>
+                    </Link>
+                  </div>
                 </nav>
               </div>
 
               <div className="pt-4 border-t border-slate-100 shrink-0 bg-white mt-auto">
                 <div className="flex items-center gap-3 mb-3 p-3 rounded-2xl bg-slate-50 border border-slate-100">
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-100 font-bold text-yellow-800 border border-yellow-300">
-                    {user?.fullName?.charAt(0) || "A"}
+                    {user?.fullName?.charAt(0) || "S"}
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="truncate text-sm font-bold text-slate-900">{user?.fullName || "Administrator"}</p>
+                    <p className="truncate text-sm font-bold text-slate-900">{user?.fullName || "Student"}</p>
                     <p className="truncate text-xs text-slate-500">{user?.email}</p>
                   </div>
                 </div>
@@ -159,19 +172,19 @@ export default function AdminDrawerNav({ children }) {
         <div className="flex flex-col min-h-0 overflow-hidden flex-1">
           <div className="flex items-center gap-3.5 pb-6 border-b border-slate-100 shrink-0">
             <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-gradient-to-br from-yellow-400 to-amber-500 text-slate-950 font-extrabold shadow-xs">
-              <FaShieldAlt className="text-lg" />
+              <FaGraduationCap className="text-xl" />
             </div>
             <div>
-              <h1 className="font-extrabold text-slate-900 text-lg tracking-tight">Admin Console</h1>
+              <h1 className="font-extrabold text-slate-900 text-lg tracking-tight">Student Hub</h1>
               <p className="text-[10px] tracking-[0.25em] font-bold text-yellow-600 uppercase">
                 INQUISITIVE MIND
               </p>
             </div>
           </div>
 
-          <nav className="mt-6 space-y-2 overflow-y-auto flex-1 pr-1">
-            {adminNavItems.map((item) => {
-              const isActive = pathname === item.href || (item.href !== "/admin-panel/dashboard" && pathname?.startsWith(item.href));
+          <nav className="mt-6 space-y-1.5 overflow-y-auto flex-1 pr-1">
+            {studentNavItems.map((item) => {
+              const isActive = pathname === item.href || pathname?.startsWith(item.href + "/");
               const Icon = item.icon;
               return (
                 <Link
@@ -188,17 +201,27 @@ export default function AdminDrawerNav({ children }) {
                 </Link>
               );
             })}
+
+            <div className="pt-3 mt-3 border-t border-slate-100">
+              <Link
+                href="/"
+                className="flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-bold text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-all"
+              >
+                <FaGlobe className="text-lg text-slate-400" />
+                <span>Main Website</span>
+              </Link>
+            </div>
           </nav>
         </div>
 
         <div className="pt-4 border-t border-slate-100 space-y-3 shrink-0 bg-white mt-auto">
           <div className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-slate-50 border border-slate-100">
             <div className="flex h-11 w-11 items-center justify-center rounded-full bg-yellow-100 font-bold text-yellow-800 text-base border border-yellow-300">
-              {user?.fullName?.charAt(0) || "A"}
+              {user?.fullName?.charAt(0) || "S"}
             </div>
             <div className="min-w-0 flex-1">
-              <p className="truncate text-sm font-bold text-slate-900">{user?.fullName || "Admin"}</p>
-              <p className="truncate text-xs text-slate-400 font-medium">{user?.role || "admin"}</p>
+              <p className="truncate text-sm font-bold text-slate-900">{user?.fullName || "Student"}</p>
+              <p className="truncate text-xs text-slate-400 font-medium">{user?.role || "student"}</p>
             </div>
           </div>
 

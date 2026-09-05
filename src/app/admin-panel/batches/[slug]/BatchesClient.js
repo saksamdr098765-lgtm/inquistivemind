@@ -34,25 +34,24 @@ export default function BatchesClient({ slug }) {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-[32px] bg-slate-900 border border-slate-800 p-6 sm:p-8 text-white shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+        className="relative overflow-hidden rounded-[32px] bg-gradient-to-r from-amber-500 to-yellow-500 p-6 sm:p-8 text-white shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
       >
-        <div>
-          <span className="inline-flex rounded-full bg-yellow-400/15 border border-yellow-400/30 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-yellow-300 backdrop-blur-md">
+        <div className="absolute -right-10 -top-10 h-64 w-64 rounded-full bg-white/20 blur-3xl pointer-events-none" />
+
+        <div className="relative">
+          <span className="inline-flex rounded-full bg-white/20 border border-white/30 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md">
             Batch Operations
           </span>
           <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl text-white">
-            Manage{" "}
-            <span className="bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-400 bg-clip-text text-transparent">
-              Batches
-            </span>
+            Manage Batches
           </h1>
-          <p className="mt-1 text-slate-300 font-medium text-sm max-w-xl">
+          <p className="mt-1 text-orange-100 font-medium text-sm max-w-xl">
             Create classroom & online live batches, schedule timings, and assign trainers.
           </p>
         </div>
 
         <PortalButton
-          variant="primary"
+          variant="secondary"
           icon={FaPlus}
           onClick={() => router.push("/admin-panel/add-batch")}
         >

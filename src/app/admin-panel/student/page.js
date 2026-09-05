@@ -125,40 +125,41 @@ export default function Students() {
   ];
 
   return (
-    <div className="space-y-8 max-w-7xl mx-auto">
+    <div className="space-y-4 sm:space-y-6 max-w-7xl mx-auto">
       {/* Executive Hero Banner */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        className="rounded-[32px] bg-slate-900 border border-slate-800 p-6 sm:p-8 text-white shadow-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6"
+        className="relative overflow-hidden rounded-2xl sm:rounded-[32px] bg-gradient-to-r from-amber-500 to-yellow-500 p-5 sm:p-8 text-white shadow-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6"
       >
-        <div>
-          <span className="inline-flex rounded-full bg-yellow-400/15 border border-yellow-400/30 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-yellow-300 backdrop-blur-md">
+        <div className="absolute -right-10 -top-10 h-48 sm:h-64 w-48 sm:w-64 rounded-full bg-white/20 blur-3xl pointer-events-none" />
+
+        <div className="relative">
+          <span className="inline-flex rounded-full bg-white/20 border border-white/30 px-3 py-0.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md">
             Administration
           </span>
-          <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl text-white">
-            Student{" "}
-            <span className="bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-400 bg-clip-text text-transparent">
-              Management
-            </span>
+          <h1 className="mt-2 text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
+            Student Management
           </h1>
-          <p className="mt-1 text-slate-300 font-medium text-sm max-w-xl">
+          <p className="mt-1 text-orange-100 font-medium text-xs sm:text-sm max-w-xl">
             Monitor, approve, update, and manage student accounts across all courses.
           </p>
         </div>
 
         <PortalButton
-          variant="primary"
+          variant="secondary"
+          size="sm"
           icon={FaPlus}
           onClick={() => router.push("/admin-panel/add-student")}
+          className="w-full sm:w-auto"
         >
           Add New Student
         </PortalButton>
       </motion.div>
 
       {/* Filter and Search Bar */}
-      <PortalCard padding="p-5 sm:p-6">
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <PortalCard padding="p-4 sm:p-6">
+        <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <PortalInput
             icon={FaSearch}
             placeholder="Search by name, email..."
@@ -206,15 +207,15 @@ export default function Students() {
           emptyTitle="No students found"
           emptyDescription="No student records matched your search parameters."
           renderMobileCard={(student) => (
-            <div className="space-y-3">
+            <div className="space-y-2.5">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-100 font-bold text-yellow-800 border border-yellow-300">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-yellow-100 font-bold text-yellow-800 border border-yellow-300 text-xs">
                     {student.fullName?.charAt(0) || "U"}
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-900 text-sm">{student.fullName}</h4>
-                    <p className="text-xs text-slate-400">{student.email}</p>
+                    <h4 className="font-bold text-slate-900 text-xs sm:text-sm">{student.fullName}</h4>
+                    <p className="text-[11px] text-slate-400">{student.email}</p>
                   </div>
                 </div>
                 <PortalBadge variant={student.status}>{student.status}</PortalBadge>
@@ -247,13 +248,13 @@ export default function Students() {
 
         {/* Pagination Footer */}
         {users.length > 0 && pagination.totalPages > 1 && (
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 rounded-2xl bg-white border border-slate-200 shadow-xs">
-            <p className="text-xs font-semibold text-slate-500">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-xs">
+            <p className="text-xs font-semibold text-slate-500 text-center sm:text-left">
               Showing Page <span className="text-slate-900">{pagination.page}</span> of{" "}
               <span className="text-slate-900">{pagination.totalPages}</span> ({pagination.total} total students)
             </p>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               <PortalButton
                 variant="outline"
                 size="sm"
@@ -267,7 +268,7 @@ export default function Students() {
                 <button
                   key={pageNum}
                   onClick={() => setPage(pageNum)}
-                  className={`h-9 w-9 rounded-xl text-xs font-bold transition-all ${
+                  className={`h-8 w-8 sm:h-9 sm:w-9 rounded-xl text-xs font-bold transition-all ${
                     page === pageNum
                       ? "bg-yellow-400 text-slate-950 font-extrabold shadow-xs"
                       : "border border-slate-200 text-slate-700 hover:bg-slate-50"

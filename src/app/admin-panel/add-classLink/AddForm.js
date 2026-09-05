@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -68,6 +69,25 @@ await createClassLinkMutation.mutateAsync({
       )}
       className="space-y-8"
     >
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="relative overflow-hidden rounded-2xl sm:rounded-[32px] bg-gradient-to-r from-amber-500 to-yellow-500 p-5 sm:p-8 text-white shadow-lg flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-6 mb-8"
+      >
+        <div className="absolute -right-10 -top-10 h-48 sm:h-64 w-48 sm:w-64 rounded-full bg-white/20 blur-3xl pointer-events-none" />
+        <div className="relative">
+          <span className="inline-flex rounded-full bg-white/20 border border-white/30 px-3 py-0.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md">
+            Live Session
+          </span>
+          <h1 className="mt-2 text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
+            Schedule Live Class
+          </h1>
+          <p className="mt-1 text-orange-100 font-medium text-xs sm:text-sm max-w-xl">
+            Add a new live class link and schedule details for your batch students.
+          </p>
+        </div>
+      </motion.div>
+
       {/* Basic Information */}
 
    <div>

@@ -77,10 +77,12 @@ export default function Footer() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Hide footer completely on Admin Panel and Student Profile pages
+  // Hide footer completely on Admin Panel, Student Profile, Login, and Signup pages
   if (
     pathname?.startsWith("/admin-panel") ||
-    pathname?.startsWith("/student-profile")
+    pathname?.startsWith("/student-profile") ||
+    pathname?.startsWith("/login") ||
+    pathname?.startsWith("/signup")
   ) {
     return null;
   }

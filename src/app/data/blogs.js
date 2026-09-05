@@ -32,7 +32,7 @@ export const blogs = [
     publishedAt: "August 20, 2026",
     readingTime: "10 min read",
     coverImage: "/blogs/what-is-tef-tcf-exam-comparison-scores-fees/cover.webp",
-    featured: true,
+    featured: false,
     quickInfo: {
       courseName: "TEF/TCF Canada Preparation",
       duration: "4 Months",
@@ -374,7 +374,7 @@ export const blogs = [
     lastUpdated: "August 14, 2026",
     readingTime: "8 min read",
     coverImage: "/blogs/french-classes-fees-in-chandigarh-cost-guide/cover.webp",
-    featured: true,
+    featured: false,
     quickInfo: {
       courseName: "French Classes Chandigarh — Fee Guide",
       duration: "8 mins",

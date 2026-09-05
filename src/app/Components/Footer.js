@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   FaPhone,
   FaEnvelope,
@@ -22,9 +23,6 @@ import SITE_CONFIG from "../siteConfig";
 const links = [
   { name: "Home", path: "/" },
   { name: "Courses", path: "/courses" },
-  // { name: "Services", path: "/services" },
-  // { name: "Locations", path: "/locations" },
-  // { name: "Pricing", path: "/prices" },
   { name: "Blogs", path: "/blogs" },
   { name: "About Us", path: "/about" },
 ];
@@ -32,9 +30,6 @@ const links = [
 const socials = [
   { name: "Instagram", link: SITE_CONFIG.socialLinks.instagram, icon: FaInstagram },
   { name: "Whatsapp", link: SITE_CONFIG.socialLinks.whatsapp, icon: FaWhatsapp },
-  // { name: "Facebook", link: "https://www.facebook.com", icon: FaFacebookF },
-  // { name: "LinkedIn", link: "https://www.linkedin.com", icon: FaLinkedinIn },
-  // { name: "YouTube", link: "https://www.youtube.com", icon: FaYoutube },
 ];
 
 const serviceCategories = [
@@ -42,8 +37,6 @@ const serviceCategories = [
     id: "tef-delf",
     title: "Exam & Immigration Prep",
     links: [
-      // { name: "TEF Canada Prep", path: "/services/french-classes-chandigarh" },
-      // { name: "DELF Exam Prep", path: "/services/french-classes-chandigarh" },
       { name: "Spoken French Online", path: "/services/french-classes-chandigarh" },
     ],
   },
@@ -66,12 +59,13 @@ const serviceCategories = [
 ];
 
 export default function Footer() {
+  const pathname = usePathname();
   const [selectedCategory, setSelectedCategory] = useState(serviceCategories[0].id);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
   const phone = SITE_CONFIG.phone;
-  const email =SITE_CONFIG.email;
+  const email = SITE_CONFIG.email;
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -82,6 +76,14 @@ export default function Footer() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  // Hide footer completely on Admin Panel and Student Profile pages
+  if (
+    pathname?.startsWith("/admin-panel") ||
+    pathname?.startsWith("/student-profile")
+  ) {
+    return null;
+  }
 
   const activeCat = serviceCategories.find((c) => c.id === selectedCategory) || serviceCategories[0];
 
@@ -128,7 +130,7 @@ export default function Footer() {
               designed for real-world communication.
             </p>
 
-            {/* SOCIALS (Min 44x44px touch targets) */}
+            {/* SOCIALS */}
             <div className="mt-6 flex gap-3 text-lg">
               {socials.map((item, i) => {
                 const Icon = item.icon;
@@ -169,7 +171,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* SERVICES (DESKTOP: Dropdown) */}
+          {/* SERVICES (DESKTOP) */}
           <div className="hidden lg:block">
             <div className="flex items-center justify-between">
               <h4 className="font-semibold text-slate-900">Services</h4>
@@ -183,7 +185,6 @@ export default function Footer() {
               </TrackedLink>
             </div>
 
-            {/* Category Dropdown */}
             <div className="relative mt-4" ref={dropdownRef}>
               <TrackedButton
                 type="button"
@@ -222,7 +223,6 @@ export default function Footer() {
               )}
             </div>
 
-            {/* Service Links for Active Category */}
             <div className="mt-3.5 space-y-1 text-sm text-slate-600">
               {activeCat.links.map((item) => (
                 <TrackedLink
@@ -239,7 +239,7 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* SERVICES (MOBILE: Simple List) */}
+          {/* SERVICES (MOBILE) */}
           <div className="block lg:hidden">
             <div className="flex items-center justify-between">
               <h4 className="font-semibold text-slate-900">Services</h4>
@@ -295,7 +295,7 @@ export default function Footer() {
 
               <div className="flex items-center gap-3 p-2">
                 <FaEnvelope className="text-yellow-500 shrink-0" />
-                <span className="">{email}</span>
+                <span>{email}</span>
               </div>
 
               <div className="flex items-center gap-3 p-2">

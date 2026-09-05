@@ -1,302 +1,142 @@
 "use client";
 
-import BatchesSkeleton from "@/app/Skeletons/BatchSkeleton";
-import { useGetStudentBatches } from "@/Hooks/useGetStudentBatches";
-import { formatISTDateTime } from "@/Utils/formatDate";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import {
+import { FaEye, FaUsers } from "react-icons/fa";
 
-  FaEye,
-} from "react-icons/fa";
+import { useGetStudentBatches } from "@/Hooks/useGetStudentBatches";
+import { formatISTDateTime } from "@/Utils/formatDate";
+import BatchesSkeleton from "@/app/Skeletons/BatchSkeleton";
 
-
+import PortalCard from "@/app/Components/portal-ui/PortalCard";
+import PortalBadge from "@/app/Components/portal-ui/PortalBadge";
+import PortalButton from "@/app/Components/portal-ui/PortalButton";
+import PortalEmptyState from "@/app/Components/portal-ui/PortalEmptyState";
 
 export default function Batches() {
-  const {data:batches,isLoading}=useGetStudentBatches()
-  const router=useRouter()
-  if(isLoading) return <BatchesSkeleton></BatchesSkeleton>
+  const { data: batches, isLoading } = useGetStudentBatches();
+  const router = useRouter();
+
+  if (isLoading) return <BatchesSkeleton />;
+
   return (
-  <div className="min-h-screen bg-slate-50">
-  <div className="mx-auto max-w-7xl px-4 py-6  md:px-0">
-    <div className="space-y-6 sm:space-y-8">
-
-      {/* Header */}
-
-    <motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: .4 }}
-  className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-yellow-500  to-amber-400 p-6 shadow-xl sm:p-8 lg:p-10"
->
-  <div className="absolute inset-0">
-    <div className="absolute -right-12 -top-12 h-52 w-52 rounded-full bg-white/10 blur-3xl" />
-    <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-orange-300/20 blur-3xl" />
-  </div>
-
-  <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-    <div>
-      <span className="inline-flex rounded-full bg-white/15 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-orange-100 backdrop-blur">
-        Student Dashboard
-      </span>
-
-      <h1 className="mt-4 text-3xl font-bold text-white sm:text-4xl lg:text-5xl">
-        My Batches
-      </h1>
-
-      <p className="mt-3 max-w-xl text-sm leading-7 text-orange-100 sm:text-base">
-        Access your assigned batches, schedules, trainers and class information.
-      </p>
-    </div>
-
-    <div className="grid grid-cols-2 gap-3 sm:w-[320px]">
-      <div className="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur">
-        <p className="text-xs uppercase text-orange-100">
-          Batches
-        </p>
-
-        <h3 className="mt-2 text-2xl font-bold text-white">
-          {batches?.length || 0}
-        </h3>
-      </div>
-
-      <div className="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur">
-        <p className="text-xs uppercase text-orange-100">
-          Active
-        </p>
-
-        <h3 className="mt-2 text-2xl font-bold text-white">
-          {
-            batches?.filter(
-              batch => batch.status === "active"
-            ).length || 0
-          }
-        </h3>
-      </div>
-    </div>
-  </div>
-</motion.div>
-
-      {/* Cards */}
-
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 2xl:grid-cols-3">
-          
-            {batches
-              ?.map((batch) => (
-    
-              <motion.div
-      key={batch._id}
-      whileHover={{ y: -4 }}
-     className="
-group
-rounded-3xl
-border
-border-slate-200
-bg-white
-p-5
-shadow-sm
-transition-all
-duration-300
-hover:-translate-y-1
-hover:border-orange-200
-hover:shadow-xl
-sm:p-6
-"
-    >
-      {/* Header */}
-      <div className="flex items-start justify-between gap-3">
-        <div className="min-w-0 flex-1">
-          <h2 className="truncate text-xl font-bold text-slate-900">
-            {batch.name}
-          </h2>
-    
-          <p className="mt-1 text-sm text-slate-500">
-            {batch.course?.title}
-          </p>
-        </div>
-    
-        <span
-          className={`shrink-0 rounded-xl px-3 py-1 text-xs font-semibold ${
-            batch.status === "active"
-              ? "bg-green-100 text-green-700"
-              : batch.status === "completed"
-              ? "bg-blue-100 text-blue-700"
-              : batch.status === "cancelled"
-              ? "bg-red-100 text-red-700"
-              : "bg-yellow-100 text-yellow-700"
-          }`}
-        >
-          {batch.status}
-        </span>
-      </div>
-    
-      {/* Enrollment */}
-      <div className="mt-3">
-        <span
-          className={`rounded-xl px-3 py-1 text-xs font-medium ${
-            batch.enrollmentOpen
-              ? "bg-blue-100 text-blue-700"
-              : "bg-red-100 text-red-700"
-          }`}
-        >
-          {batch.enrollmentOpen
-            ? "Enrollment Open"
-            : "Enrollment Closed"}
-        </span>
-      </div>
-    
-      {/* Description */}
-<p className="mt-5 min-h-[48px] text-sm leading-6 text-slate-500 line-clamp-2">
-        {batch.description ||
-          "No description available"}
-      </p>
-    
-      {/* Stats */}
-      <div className="mt-5 grid grid-cols-2 gap-3">
-        <div className="
-rounded-2xl
-border
-border-slate-100
-bg-slate-50
-p-4
-">
-          <p className="text-xs text-slate-500">
-            Students
-          </p>
-    
-          <p className="mt-1 font-semibold text-slate-900">
-            {batch.students?.length || 0}/
-            {batch.maxStudents}
-          </p>
-        </div>
-    
-        <div className="rounded-2xl bg-slate-50 p-3">
-          <p className="text-xs text-slate-500">
-            Trainers
-          </p>
-    
-          <p className="mt-1 font-semibold text-slate-900">
-            {batch.trainers?.length || 0}
-          </p>
-        </div>
-      </div>
-    
-      {/* Dates */}
-      <div className="
-mt-5
-grid
-grid-cols-2
-gap-3
-rounded-2xl
-border
-border-slate-100
-bg-slate-50
-p-4
-">
+    <div className="space-y-8">
+      {/* Executive Hero Banner */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="relative overflow-hidden rounded-[32px] bg-slate-900 border border-slate-800 p-6 sm:p-8 text-white shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+      >
         <div>
-          <p className="text-xs text-slate-500">
-            Start Date
-          </p>
-    
-          <p className="mt-1 text-sm font-medium">
-            {formatISTDateTime(batch.startDate).split(",")[0]}
-          </p>
-        </div>
-    
-        <div className="text-right">
-          <p className="text-xs text-slate-500">
-            End Date
-          </p>
-    
-          <p className="mt-1 text-sm font-medium">
-          {formatISTDateTime(batch.endDate).split(",")[0]}
-          </p>
-        </div>
-      </div>
-    
-      {/* Schedule */}
-      <div className="
-mt-5
-rounded-2xl
-border
-border-slate-100
-bg-slate-50
-p-5
-">
-        <p className="text-xs text-slate-500">
-          Schedule
-        </p>
-    
-        <p className="mt-1 font-medium text-slate-900">
-          {batch?.schedule?.days?.length
-            ? batch.schedule.days.join(", ")
-            : "Schedule Not Set"}
-        </p>
-    
-        <p className="mt-2 text-sm text-slate-500">
-          {batch?.schedule?.startTime || "--"}
-          {" - "}
-          {batch?.schedule?.endTime || "--"}
-        </p>
-    
-        <div className="mt-3 flex items-center justify-between">
-          <span className="text-xs text-slate-500">
-            Platform
+          <span className="inline-flex rounded-full bg-yellow-400/15 border border-yellow-400/30 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-yellow-300 backdrop-blur-md">
+            Student Dashboard
           </span>
-    
-          <span className="rounded-lg bg-white px-2 py-1 text-sm font-medium capitalize">
-            {batch.meetingPlatform}
-          </span>
+          <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl text-white">
+            My Enrolled{" "}
+            <span className="bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-400 bg-clip-text text-transparent">
+              Batches
+            </span>
+          </h1>
+          <p className="mt-1 text-slate-300 font-medium text-sm max-w-xl">
+            Access assigned live classroom batches, schedule details, and meeting platforms.
+          </p>
         </div>
-      </div>
-    
-      {/* Actions */}
-      <div className="mt-5 border-t border-slate-100 pt-4">
-  <button
-    onClick={() =>
-      router.push(
-        `/student-profile/classes?batchId=${batch._id}`
-      )
-    }
-   className="
-mt-2
-flex
-h-12
-w-full
-items-center
-justify-center
-gap-2
-rounded-2xl
-bg-yellow-500
-font-semibold
-text-white
-transition-all
 
-active:scale-[0.98]
-"
-  >
-    <FaEye />
-    View Batch
-  </button>
-</div>
-    </motion.div>
-    
-              ))}
-              {batches?.length === 0 && (
-  <div className="rounded-3xl border border-slate-200 bg-white py-16 text-center shadow-sm">
-    <h2 className="text-2xl font-bold">
-      No Batches Assigned
-    </h2>
-
-    <p className="mt-2 text-slate-500">
-      Your assigned batches will appear here.
-    </p>
-  </div>
-)}
-    
+        <div className="flex gap-3">
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-md text-center min-w-[110px]">
+            <p className="text-[10px] uppercase font-bold text-slate-400">Batches</p>
+            <p className="mt-1 text-xl font-extrabold text-yellow-300">{batches?.length || 0}</p>
           </div>
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-md text-center min-w-[110px]">
+            <p className="text-[10px] uppercase font-bold text-slate-400">Active</p>
+            <p className="mt-1 text-xl font-extrabold text-yellow-300">
+              {batches?.filter((b) => b.status === "active").length || 0}
+            </p>
+          </div>
+        </div>
+      </motion.div>
 
-    </div></div></div>
+      {/* Batches Cards Grid */}
+      {batches && batches.length > 0 ? (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {batches.map((batch) => (
+            <motion.div
+              key={batch._id}
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.2 }}
+              className="rounded-[28px] border border-slate-200/90 bg-white p-6 shadow-xs hover:shadow-md transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0 flex-1">
+                    <h3 className="truncate text-lg font-extrabold text-slate-900">
+                      {batch.name}
+                    </h3>
+                    <p className="text-xs text-slate-400 mt-0.5">{batch.course?.title}</p>
+                  </div>
+                  <PortalBadge variant={batch.status}>{batch.status}</PortalBadge>
+                </div>
+
+                <p className="mt-3 line-clamp-2 text-xs text-slate-500 min-h-[32px]">
+                  {batch.description || "Active batch classroom environment."}
+                </p>
+
+                <div className="mt-4 grid grid-cols-2 gap-3">
+                  <div className="rounded-2xl bg-yellow-50/60 p-3 border border-yellow-200/60">
+                    <p className="text-[11px] font-bold uppercase text-yellow-800">Class Size</p>
+                    <p className="mt-0.5 font-extrabold text-slate-900 text-sm">
+                      {batch.students?.length || 0} / {batch.maxStudents}
+                    </p>
+                  </div>
+
+                  <div className="rounded-2xl bg-slate-50 p-3 border border-slate-100">
+                    <p className="text-[11px] font-semibold uppercase text-slate-400">Trainers</p>
+                    <p className="mt-0.5 font-bold text-slate-800 text-sm">
+                      {batch.trainers?.length || 0}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-4 rounded-2xl bg-slate-50/70 p-3.5 border border-slate-100 space-y-2 text-xs">
+                  <div className="flex justify-between text-slate-500">
+                    <span>Start Date</span>
+                    <strong className="text-slate-800">
+                      {formatISTDateTime(batch.startDate).split(",")[0]}
+                    </strong>
+                  </div>
+                  <div className="flex justify-between text-slate-500">
+                    <span>Schedule</span>
+                    <strong className="text-slate-800">
+                      {batch?.schedule?.days?.length ? batch.schedule.days.join(", ") : "TBD"}
+                    </strong>
+                  </div>
+                  <div className="flex justify-between text-slate-500 capitalize">
+                    <span>Platform</span>
+                    <strong className="text-slate-800">{batch.meetingPlatform}</strong>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Button */}
+              <div className="mt-5 border-t border-slate-100 pt-4">
+                <PortalButton
+                  className="w-full"
+                  icon={FaEye}
+                  onClick={() => router.push(`/student-profile/classes?batchId=${batch._id}`)}
+                >
+                  Enter Batch Room
+                </PortalButton>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      ) : (
+        <PortalEmptyState
+          icon={FaUsers}
+          title="No Batches Assigned"
+          description="Your assigned learning batches will appear here once registered."
+        />
+      )}
+    </div>
   );
 }
-

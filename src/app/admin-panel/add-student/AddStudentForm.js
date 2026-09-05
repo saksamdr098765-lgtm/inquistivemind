@@ -1,14 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import {
-  FaArrowLeft,
-  FaSave,
-  FaUpload,
-  FaUserGraduate,
-} from "react-icons/fa";
+import { useRouter } from "next/navigation";
+import { FaArrowLeft, FaSave, FaUpload, FaUserGraduate } from "react-icons/fa";
+
+import PortalCard from "@/app/Components/portal-ui/PortalCard";
+import PortalInput from "@/app/Components/portal-ui/PortalInput";
+import PortalSelect from "@/app/Components/portal-ui/PortalSelect";
+import PortalTextArea from "@/app/Components/portal-ui/PortalTextArea";
+import PortalButton from "@/app/Components/portal-ui/PortalButton";
 
 export default function AddStudentForm() {
+  const router = useRouter();
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -28,284 +31,175 @@ export default function AddStudentForm() {
   };
 
   return (
-    <div className="space-y-8 max-w-7xl mx-auto py-20">
-      {/* Hero */}
-      <div className="rounded-[32px] bg-gradient-to-r from-[#D6451B] to-orange-500 p-8 text-white shadow-xl">
-        <div className="flex flex-wrap items-center justify-between gap-6">
-          <div>
-            <span className="rounded-full bg-white/20 px-4 py-2 text-sm">
-              Student Admission
+    <div className="space-y-8 max-w-7xl mx-auto">
+      {/* Top Hero Banner */}
+      <div className="rounded-[32px] bg-slate-900 border border-slate-800 p-6 sm:p-8 text-white shadow-2xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div>
+          <span className="inline-flex rounded-full bg-yellow-400/15 border border-yellow-400/30 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-yellow-300 backdrop-blur-md">
+            Student Admission
+          </span>
+          <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl text-white">
+            Add New{" "}
+            <span className="bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-400 bg-clip-text text-transparent">
+              Student Profile
             </span>
-
-            <h1 className="mt-5 text-4xl font-bold">
-              Add New Student
-            </h1>
-
-            <p className="mt-3 max-w-2xl text-orange-100">
-              Fill in the admission details to create a new student profile.
-            </p>
-          </div>
-
-          <button className="flex items-center gap-2 rounded-2xl bg-white px-6 py-3 font-semibold text-[#D6451B]">
-            <FaArrowLeft />
-            Back
-          </button>
+          </h1>
+          <p className="mt-1 text-slate-300 font-medium text-sm max-w-xl">
+            Register a new student account, assign batches, courses, and fee structures.
+          </p>
         </div>
+
+        <PortalButton
+          variant="outline"
+          icon={FaArrowLeft}
+          onClick={() => router.push("/admin-panel/student")}
+        >
+          Back to Students
+        </PortalButton>
       </div>
 
-      {/* Student Photo */}
-      <div className="rounded-[30px] border border-slate-200 bg-white p-8 shadow-lg">
-        <h2 className="text-2xl font-bold">Student Photo</h2>
-
-        <div className="mt-8 flex flex-col items-center gap-6 md:flex-row">
-          <div className="flex h-36 w-36 items-center justify-center rounded-full bg-orange-50 text-5xl text-[#D6451B]">
+      {/* Student Photo Section */}
+      <PortalCard header="Student Avatar & Photo">
+        <div className="flex flex-col items-center gap-6 sm:flex-row">
+          <div className="flex h-28 w-28 items-center justify-center rounded-3xl bg-yellow-50 text-4xl text-yellow-700 border border-yellow-200 shadow-xs">
             <FaUserGraduate />
           </div>
 
-          <label className="cursor-pointer rounded-2xl border border-dashed border-[#D6451B] px-8 py-5 text-center">
-            <FaUpload className="mx-auto text-2xl text-[#D6451B]" />
-            <p className="mt-3 font-medium">Upload Student Photo</p>
+          <label className="cursor-pointer flex-1 w-full rounded-2xl border-2 border-dashed border-slate-300 p-6 text-center hover:border-yellow-500 hover:bg-yellow-50/50 transition-all">
+            <FaUpload className="mx-auto text-2xl text-yellow-600" />
+            <p className="mt-2 font-bold text-slate-800 text-sm">Upload High-Res Profile Photo</p>
+            <p className="text-xs text-slate-400 mt-1">PNG, JPG or WEBP up to 5MB</p>
             <input type="file" className="hidden" />
           </label>
         </div>
-      </div>
+      </PortalCard>
 
-      {/* Personal Information */}
-      <div className="rounded-[30px] border border-slate-200 bg-white p-8 shadow-lg">
-        <h2 className="text-2xl font-bold">Personal Information</h2>
-
-        <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          <Input
+      {/* Personal Details */}
+      <PortalCard header="Personal Information">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <PortalInput
             label="First Name"
             name="firstName"
             value={form.firstName}
             onChange={handleChange}
+            placeholder="John"
           />
-
-          <Input
+          <PortalInput
             label="Last Name"
             name="lastName"
             value={form.lastName}
             onChange={handleChange}
+            placeholder="Doe"
           />
-
-          <div>
-            <label className="mb-2 block font-medium">Gender</label>
-            <select
-              name="gender"
-              value={form.gender}
-              onChange={handleChange}
-              className="w-full rounded-2xl border border-slate-200 p-3 outline-none focus:border-[#D6451B]"
-            >
-              <option>Select</option>
-              <option>Male</option>
-              <option>Female</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <Input
+          <PortalSelect
+            label="Gender"
+            name="gender"
+            value={form.gender}
+            onChange={handleChange}
+            options={["Select Gender", "Male", "Female", "Other"]}
+          />
+          <PortalInput
             label="Date of Birth"
             type="date"
             name="dob"
             value={form.dob}
             onChange={handleChange}
           />
-
-          <Input
+          <PortalInput
             label="Blood Group"
             name="bloodGroup"
             value={form.bloodGroup}
             onChange={handleChange}
+            placeholder="O+"
           />
         </div>
-      </div>
+      </PortalCard>
 
-      {/* Contact */}
-      <div className="rounded-[30px] border border-slate-200 bg-white p-8 shadow-lg">
-        <h2 className="text-2xl font-bold">Contact Information</h2>
-
-        <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          <Input
-            label="Email"
+      {/* Contact Details */}
+      <PortalCard header="Contact Details">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <PortalInput
+            label="Email Address"
+            type="email"
             name="email"
             value={form.email}
             onChange={handleChange}
+            placeholder="john.doe@example.com"
           />
-
-          <Input
-            label="Phone"
+          <PortalInput
+            label="Phone Number"
             name="phone"
             value={form.phone}
             onChange={handleChange}
+            placeholder="+91 98765 43210"
           />
-
-          <Input
+          <PortalInput
             label="Alternate Phone"
             name="alternatePhone"
             value={form.alternatePhone}
             onChange={handleChange}
+            placeholder="+91 98765 43211"
           />
         </div>
-      </div>
+      </PortalCard>
 
       {/* Guardian Details */}
-      <div className="rounded-[30px] border border-slate-200 bg-white p-8 shadow-lg">
-        <h2 className="text-2xl font-bold">Guardian Details</h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          <Input label="Father Name" />
-          <Input label="Mother Name" />
-          <Input label="Guardian Phone" />
-          <Input label="Occupation" />
+      <PortalCard header="Guardian Information">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <PortalInput label="Father Name" placeholder="Father's full name" />
+          <PortalInput label="Mother Name" placeholder="Mother's full name" />
+          <PortalInput label="Guardian Phone" placeholder="Contact number" />
+          <PortalInput label="Occupation" placeholder="Business / Profession" />
         </div>
-      </div>
+      </PortalCard>
 
-      {/* Course Information */}
-      <div className="rounded-[30px] border border-slate-200 bg-white p-8 shadow-lg">
-        <h2 className="text-2xl font-bold">Course Information</h2>
-
-        <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          <Select
-            label="Course"
+      {/* Course Enrollment */}
+      <PortalCard header="Course & Batch Assignment">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <PortalSelect
+            label="Select Course"
             options={[
-              "General English",
-              "Spoken English",
-              "IELTS",
-              "Business English",
+              "Select Course",
+              "French Language Program",
+              "Spoken French Online",
+              "TEF Canada Prep",
+              "DELF B2 Masterclass",
             ]}
           />
-
-          <Select
-            label="Batch"
-            options={["Morning", "Evening", "Weekend"]}
+          <PortalSelect
+            label="Select Batch"
+            options={["Select Batch", "Morning Batch A", "Evening Batch B", "Weekend Special"]}
           />
-
-          <Select
-            label="Trainer"
-            options={["John Smith", "Emma Johnson", "David Wilson"]}
+          <PortalSelect
+            label="Assigned Trainer"
+            options={["Select Trainer", "Sakshi Goel", "John Smith", "Emma Johnson"]}
           />
-
-          <Input label="Joining Date" type="date" />
-          <Input label="Course Duration" placeholder="6 Months" />
-          <Input label="Student ID" placeholder="Auto Generated" />
+          <PortalInput label="Joining Date" type="date" />
+          <PortalInput label="Course Duration" placeholder="e.g. 6 Months" />
+          <PortalInput label="Student ID" placeholder="Auto Generated" readOnly />
         </div>
-      </div>
+      </PortalCard>
 
-      {/* Address */}
-      <div className="rounded-[30px] border border-slate-200 bg-white p-8 shadow-lg">
-        <h2 className="text-2xl font-bold">Address Information</h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          <Input label="Country" />
-          <Input label="State" />
-          <Input label="City" />
-          <Input label="Pincode" />
+      {/* Address Details */}
+      <PortalCard header="Residential Address">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4 mb-5">
+          <PortalInput label="Country" placeholder="India" />
+          <PortalInput label="State" placeholder="Punjab" />
+          <PortalInput label="City" placeholder="Chandigarh" />
+          <PortalInput label="Pincode" placeholder="160017" />
         </div>
+        <PortalTextArea label="Complete Street Address" placeholder="House number, street, area details..." rows={3} />
+      </PortalCard>
 
-        <div className="mt-5">
-          <label className="mb-2 block font-medium">Address</label>
-          <textarea
-            rows={4}
-            className="w-full rounded-2xl border border-slate-200 p-4 outline-none focus:border-[#D6451B]"
-            placeholder="Complete Address"
-          />
-        </div>
-      </div>
-
-      {/* Login Credentials */}
-      <div className="rounded-[30px] border border-slate-200 bg-white p-8 shadow-lg">
-        <h2 className="text-2xl font-bold">Student Login</h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
-          <Input label="Username" placeholder="username" />
-          <Input type="password" label="Password" />
-          <Input type="password" label="Confirm Password" />
-        </div>
-      </div>
-
-      {/* Fees */}
-      <div className="rounded-[30px] border border-slate-200 bg-white p-8 shadow-lg">
-        <h2 className="text-2xl font-bold">Fees Details</h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
-          <Input label="Admission Fee" placeholder="1000" />
-          <Input label="Course Fee" placeholder="15000" />
-          <Input label="Discount" placeholder="1000" />
-          <Input label="Total" placeholder="15000" />
-          <Select
-            label="Payment Status"
-            options={["Paid", "Pending", "Partial"]}
-          />
-        </div>
-      </div>
-
-      {/* Documents */}
-      <div className="rounded-[30px] border border-slate-200 bg-white p-8 shadow-lg">
-        <h2 className="text-2xl font-bold">Upload Documents</h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-          {[
-            "Student Photo",
-            "Aadhar Card",
-            "Previous Certificate",
-            "Signature",
-          ].map((doc) => (
-            <label
-              key={doc}
-              className="cursor-pointer rounded-2xl border-2 border-dashed border-slate-300 p-8 text-center transition hover:border-[#D6451B]"
-            >
-              <FaUpload className="mx-auto text-3xl text-[#D6451B]" />
-              <p className="mt-4 font-medium">{doc}</p>
-              <input type="file" className="hidden" />
-            </label>
-          ))}
-        </div>
-      </div>
-
-      {/* Buttons */}
-      <div className="flex flex-wrap justify-end gap-4">
-        <button className="rounded-2xl border border-slate-300 px-8 py-4 font-semibold hover:bg-slate-50">
+      {/* Form Submission Controls */}
+      <div className="flex items-center justify-end gap-4 pt-4">
+        <PortalButton variant="outline" onClick={() => router.push("/admin-panel/student")}>
           Cancel
-        </button>
-
-        <button className="flex items-center gap-3 rounded-2xl bg-[#D6451B] px-8 py-4 font-semibold text-white hover:opacity-90">
-          <FaSave />
-          Save Student
-        </button>
+        </PortalButton>
+        <PortalButton icon={FaSave} type="submit">
+          Save Student Profile
+        </PortalButton>
       </div>
-    </div>
-  );
-}
-
-function Input({
-  label,
-  type = "text",
-  placeholder,
-  name,
-  value,
-  onChange,
-}) {
-  return (
-    <div>
-      <label className="mb-2 block font-medium">{label}</label>
-      <input
-        type={type}
-        placeholder={placeholder}
-        name={name}
-        value={value}
-        onChange={onChange}
-        className="w-full rounded-2xl border border-slate-200 p-3.5 outline-none transition focus:border-[#D6451B]"
-      />
-    </div>
-  );
-}
-
-function Select({ label, options = [] }) {
-  return (
-    <div>
-      <label className="mb-2 block font-medium">{label}</label>
-      <select className="w-full rounded-2xl border border-slate-200 p-3.5 outline-none focus:border-[#D6451B]">
-        <option>Select {label}</option>
-        {options.map((option) => (
-          <option key={option}>{option}</option>
-        ))}
-      </select>
     </div>
   );
 }

@@ -1,734 +1,299 @@
 "use client";
 
-import { useGetStudentClassLInks } from "@/Hooks/useGetStudentClassLinks";
-import { useGetStudentNotes } from "@/Hooks/useGetStudentNotes";
-import { motion } from "framer-motion";
-import { useSearchParams } from "next/navigation";
 import { useState } from "react";
-import Modal from "@/app/Components/ui/Modals";
-import PdfViewer from "@/Utils/pdfViewer";
+import { useSearchParams } from "next/navigation";
+import { motion } from "framer-motion";
 import {
-
   FaUserTie,
-  
   FaFilePdf,
-  FaPlus,
   FaBullhorn,
   FaVideo,
   FaExternalLinkAlt,
-  FaEdit,
   FaBookOpen,
   FaLink,
 } from "react-icons/fa";
-import { formatISTDateTime } from "@/Utils/formatDate";
+
+import { useGetStudentClassLInks } from "@/Hooks/useGetStudentClassLinks";
+import { useGetStudentNotes } from "@/Hooks/useGetStudentNotes";
 import { useGetStudentBatchById } from "@/Hooks/useGetStudentBatchById";
-import capitalizeFirstLetter from "@/Utils/captilizeFirstLetter";
 import { useAnnouncementByBatchId } from "@/Hooks/useAnnouncementByBatchId";
+import capitalizeFirstLetter from "@/Utils/captilizeFirstLetter";
+import { formatISTDateTime } from "@/Utils/formatDate";
+import PdfViewer from "@/Utils/pdfViewer";
+
+import Modal from "@/app/Components/ui/Modals";
 import Loading from "@/app/Components/ui/Loading";
 import { NotesSkeleton } from "@/app/Skeletons/NotesSkeleton";
 import { ClassLinksSkeleton } from "@/app/Skeletons/ClassesSkeleton";
 import { AnnouncementsSkeleton } from "@/app/Skeletons/AnnouncementSkeleton";
 
+import PortalCard from "@/app/Components/portal-ui/PortalCard";
+import PortalBadge from "@/app/Components/portal-ui/PortalBadge";
+import PortalButton from "@/app/Components/portal-ui/PortalButton";
+import PortalEmptyState from "@/app/Components/portal-ui/PortalEmptyState";
 
 export default function LiveClasses() {
-  const searchParams=useSearchParams()
-    const [activeTab,setActiveTab]=useState("notes")
-  const batchId=searchParams.get("batchId")
-  const {data:classLinks,isLoading:classLoading}=useGetStudentClassLInks(batchId,activeTab)
-  const {data:notes,isLoading:notesLoading}=useGetStudentNotes(batchId,activeTab)
-  const {data:batch,isLoading:batchLoading}=useGetStudentBatchById(batchId)
-    const {data:announcements,isLoading:annoucementLoading}=useAnnouncementByBatchId(batchId,activeTab)
-   const [pdfOpen,setPdfOpen]=useState(false)
-    const [pdfUrl,setPdfUrl]=useState("")
+  const searchParams = useSearchParams();
+  const [activeTab, setActiveTab] = useState("notes");
+  const batchId = searchParams.get("batchId");
 
-if(batchLoading) return <Loading></Loading>
+  const { data: classLinks, isLoading: classLoading } = useGetStudentClassLInks(batchId, activeTab);
+  const { data: notes, isLoading: notesLoading } = useGetStudentNotes(batchId, activeTab);
+  const { data: batch, isLoading: batchLoading } = useGetStudentBatchById(batchId);
+  const { data: announcements, isLoading: annoucementLoading } = useAnnouncementByBatchId(batchId, activeTab);
+
+  const [pdfOpen, setPdfOpen] = useState(false);
+  const [pdfUrl, setPdfUrl] = useState("");
+
+  if (batchLoading) return <Loading />;
+
   return (
-<div className="mx-auto w-full max-w-7xl px-4 py-5 md:px-0 sm:py-6 lg:py-8">
-  <div className="space-y-6 sm:space-y-8">
-
-    {/* Hero */}
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.35 }}
-      className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-amber-500 to-yellow-500 p-5 text-white shadow-xl sm:p-8 lg:p-10"
-    >
-      {/* Background Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,.18),transparent_55%)]" />
-
-      <div className="relative flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-
-        {/* Left */}
+    <div className="space-y-8">
+      {/* Batch Executive Hero Banner */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="relative overflow-hidden rounded-[32px] bg-slate-900 border border-slate-800 p-6 sm:p-8 text-white shadow-2xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6"
+      >
         <div className="flex-1">
-
-          <span className="inline-flex w-fit rounded-full bg-white/15 px-3 py-1.5 text-xs font-semibold tracking-wide backdrop-blur sm:px-4 sm:text-sm">
-            Student Batch
+          <span className="inline-flex rounded-full bg-yellow-400/15 border border-yellow-400/30 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-yellow-300 backdrop-blur-md">
+            Live Batch Environment
           </span>
-
-          <h1 className="mt-4 break-words text-2xl font-bold leading-tight sm:text-3xl lg:text-5xl">
-            {batch?.name}
+          <h1 className="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl text-white">
+            <span className="bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-400 bg-clip-text text-transparent">
+              {batch?.name || "My Batch"}
+            </span>
           </h1>
-
-          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-orange-100 sm:text-base">
-            {batch?.course?.title}
+          <p className="mt-1 text-slate-300 font-medium text-sm max-w-xl">
+            {batch?.course?.title || "Language Course"}
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-3">
-
-            <div className="flex items-center gap-2 rounded-2xl bg-white/10 px-4 py-2 backdrop-blur">
-
-              <FaUserTie className="text-sm" />
-
-              <span className="text-sm font-medium">
-                {batch?.trainers
-                  ?.map((t) => capitalizeFirstLetter(t.fullName))
-                  .join(", ")}
-              </span>
-
-            </div>
-
+          <div className="mt-4 inline-flex items-center gap-2 rounded-2xl bg-white/5 px-4 py-2 backdrop-blur-md text-xs font-bold text-slate-200 border border-white/10">
+            <FaUserTie className="text-yellow-400" />
+            <span>
+              Trainers:{" "}
+              {batch?.trainers?.map((t) => capitalizeFirstLetter(t.fullName)).join(", ") || "Not Assigned"}
+            </span>
           </div>
-
         </div>
 
-        {/* Right Stats */}
-
-        <div className="grid w-full grid-cols-2 gap-3 lg:w-72">
-
-          <div className="rounded-2xl bg-white/10 p-4 backdrop-blur">
-
-            <p className="text-xs uppercase tracking-wide text-orange-100">
-              Course
-            </p>
-
-            <p className="mt-2 line-clamp-2 text-sm font-semibold">
-              {batch?.course?.title}
-            </p>
-
+        <div className="grid grid-cols-2 gap-3 w-full lg:w-72">
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-md text-center">
+            <p className="text-[10px] uppercase font-bold text-slate-400">Course</p>
+            <p className="mt-1 text-xs font-extrabold text-yellow-300 truncate">{batch?.course?.title}</p>
           </div>
-
-          <div className="rounded-2xl bg-white/10 p-4 backdrop-blur">
-
-            <p className="text-xs uppercase tracking-wide text-orange-100">
-              Trainers
-            </p>
-
-            <p className="mt-2 text-lg font-bold">
-              {batch?.trainers?.length || 0}
-            </p>
-
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-md text-center">
+            <p className="text-[10px] uppercase font-bold text-slate-400">Trainers</p>
+            <p className="mt-1 text-base font-extrabold text-yellow-300">{batch?.trainers?.length || 0}</p>
           </div>
-
         </div>
+      </motion.div>
 
+      {/* Content Section Tabs Switcher */}
+      <div className="rounded-2xl border border-slate-200 bg-white p-1.5 shadow-xs">
+        <div className="grid grid-cols-3 gap-1">
+          <button
+            onClick={() => setActiveTab("notes")}
+            className={`flex items-center justify-center gap-2 min-h-[44px] rounded-xl text-xs sm:text-sm font-bold transition-all ${
+              activeTab === "notes"
+                ? "bg-yellow-400 text-slate-950 shadow-xs"
+                : "text-slate-600 hover:bg-slate-50"
+            }`}
+          >
+            <FaBookOpen />
+            <span>Class Notes</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab("links")}
+            className={`flex items-center justify-center gap-2 min-h-[44px] rounded-xl text-xs sm:text-sm font-bold transition-all ${
+              activeTab === "links"
+                ? "bg-yellow-400 text-slate-950 shadow-xs"
+                : "text-slate-600 hover:bg-slate-50"
+            }`}
+          >
+            <FaLink />
+            <span>Class Links</span>
+          </button>
+
+          <button
+            onClick={() => setActiveTab("announcements")}
+            className={`flex items-center justify-center gap-2 min-h-[44px] rounded-xl text-xs sm:text-sm font-bold transition-all ${
+              activeTab === "announcements"
+                ? "bg-yellow-400 text-slate-950 shadow-xs"
+                : "text-slate-600 hover:bg-slate-50"
+            }`}
+          >
+            <FaBullhorn />
+            <span>Updates</span>
+          </button>
+        </div>
       </div>
-    </motion.div>
 
-    {/* Tabs */}
+      {/* Notes Tab Content */}
+      {!notesLoading && activeTab === "notes" && (
+        <div className="space-y-6">
+          <h2 className="text-xl font-bold text-slate-900">Study Materials & Notes</h2>
 
+          {notes && notes.length > 0 ? (
+            <div className="grid gap-5 md:grid-cols-2">
+              {notes.map((note) => (
+                <PortalCard key={note._id} padding="p-5">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <div className="flex gap-2 mb-2">
+                        <PortalBadge variant="info" size="sm">Note #{note?.noteNumber || "-"}</PortalBadge>
+                        <PortalBadge variant={note?.visibility === "public" ? "active" : "blocked"} size="sm">
+                          {note?.visibility}
+                        </PortalBadge>
+                      </div>
+                      <h4 className="font-bold text-slate-900 text-base">{note?.title}</h4>
+                      <p className="text-xs text-slate-500 mt-1 line-clamp-2">{note?.description}</p>
+                    </div>
+                  </div>
 
+                  <div className="mt-4 flex items-center justify-between p-3 rounded-2xl bg-slate-50 border border-slate-100">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-rose-100 text-rose-600 text-lg">
+                        <FaFilePdf />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="truncate text-xs font-bold text-slate-800">
+                          {note?.file?.originalName || "Class Document"}
+                        </p>
+                        <p className="text-[10px] text-slate-400">
+                          {new Date(note.createdAt).toLocaleDateString("en-IN")}
+                        </p>
+                      </div>
+                    </div>
 
+                    <PortalButton
+                      size="sm"
+                      variant="yellowOutline"
+                      onClick={() => {
+                        setPdfUrl(note?.file?.url);
+                        setPdfOpen(true);
+                      }}
+                    >
+                      View PDF
+                    </PortalButton>
+                  </div>
+                </PortalCard>
+              ))}
+            </div>
+          ) : (
+            <PortalEmptyState
+              icon={FaBookOpen}
+              title="No Notes Uploaded"
+              description="Your instructor hasn't uploaded notes for this batch yet."
+            />
+          )}
+        </div>
+      )}
+      {notesLoading && <NotesSkeleton />}
 
-  <div className="rounded-2xl border border-slate-200 bg-white p-1.5 shadow-sm">
-    <div className="grid grid-cols-3 gap-1">
+      {/* Class Links Tab Content */}
+      {!classLoading && activeTab === "links" && (
+        <div className="space-y-6">
+          <h2 className="text-xl font-bold text-slate-900">Live Meeting Links & Recordings</h2>
 
-      <button
-        onClick={() => setActiveTab("notes")}
-        className={`flex flex-col items-center justify-center gap-1 rounded-xl py-3 text-xs font-semibold transition-all sm:flex-row sm:text-sm ${
-          activeTab === "notes"
-            ? "bg-yellow-500 text-white shadow-md"
-            : "text-slate-600 hover:bg-slate-50"
-        }`}
-      >
-        <FaBookOpen className="text-sm" />
-        <span>Notes</span>
-      </button>
+          {classLinks && classLinks.length > 0 ? (
+            <div className="space-y-4">
+              {classLinks.map((link) => (
+                <PortalCard key={link._id} padding="p-5">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                    <div>
+                      <div className="flex gap-2 mb-2">
+                        <PortalBadge variant="info" size="sm">Class #{link.classNumber || "-"}</PortalBadge>
+                        <PortalBadge variant={link.status} size="sm">{link.status}</PortalBadge>
+                      </div>
+                      <h4 className="font-bold text-slate-900 text-base">{link.title}</h4>
+                      <p className="text-xs text-yellow-700 font-semibold mt-1">
+                        Scheduled: {formatISTDateTime(link.meetingDate)} ({link.durationMinutes} mins)
+                      </p>
+                    </div>
 
-      <button
-        onClick={() => setActiveTab("links")}
-        className={`flex flex-col items-center justify-center gap-1 rounded-xl py-3 text-xs font-semibold transition-all sm:flex-row sm:text-sm ${
-          activeTab === "links"
-            ? "bg-yellow-500 text-white shadow-md"
-            : "text-slate-600 hover:bg-slate-50"
-        }`}
-      >
-        <FaLink className="text-sm" />
-        <span>Links</span>
-      </button>
+                    <div className="flex gap-2">
+                      <a
+                        href={link.meetingLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 min-h-[44px] px-5 rounded-2xl bg-emerald-600 text-white font-bold text-xs hover:bg-emerald-700 transition-colors shadow-xs"
+                      >
+                        <FaExternalLinkAlt /> Join Live Meeting
+                      </a>
+                      {link.recordingUrl && (
+                        <a
+                          href={link.recordingUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 min-h-[44px] px-4 rounded-2xl bg-blue-50 text-blue-700 font-bold text-xs hover:bg-blue-100 transition-colors"
+                        >
+                          🎥 Recording
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </PortalCard>
+              ))}
+            </div>
+          ) : (
+            <PortalEmptyState
+              icon={FaVideo}
+              title="No Class Links Available"
+              description="No live meeting links have been added for this batch."
+            />
+          )}
+        </div>
+      )}
+      {classLoading && <ClassLinksSkeleton />}
 
-      <button
-        onClick={() => setActiveTab("announcements")}
-        className={`flex flex-col items-center justify-center gap-1 rounded-xl py-3 text-xs font-semibold transition-all sm:flex-row sm:text-sm ${
-          activeTab === "announcements"
-            ? "bg-yellow-500 text-white shadow-md"
-            : "text-slate-600 hover:bg-slate-50"
-        }`}
-      >
-        <FaBullhorn className="text-sm" />
-        <span>Updates</span>
-      </button>
+      {/* Announcements Tab Content */}
+      {!annoucementLoading && activeTab === "announcements" && (
+        <div className="space-y-6">
+          <h2 className="text-xl font-bold text-slate-900">Batch Announcements & Updates</h2>
 
+          {announcements && announcements.length > 0 ? (
+            <div className="space-y-4">
+              {announcements.map((announcement) => (
+                <PortalCard key={announcement._id} padding="p-5">
+                  <div className="flex gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-yellow-100 text-yellow-800 text-xl border border-yellow-300">
+                      <FaBullhorn />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 text-xs text-slate-400">
+                        {announcement?.pinned && (
+                          <span className="rounded-full bg-amber-100 px-2.5 py-0.5 font-bold text-amber-800">
+                            📌 Pinned
+                          </span>
+                        )}
+                        <span>{formatISTDateTime(announcement?.createdAt)}</span>
+                      </div>
+                      <h4 className="font-bold text-slate-900 text-base mt-1">{announcement?.title}</h4>
+                      <p className="text-xs text-slate-600 mt-2 leading-relaxed whitespace-pre-wrap">
+                        {announcement?.message}
+                      </p>
+                    </div>
+                  </div>
+                </PortalCard>
+              ))}
+            </div>
+          ) : (
+            <PortalEmptyState
+              icon={FaBullhorn}
+              title="No Batch Announcements"
+              description="No specific announcements posted for this batch yet."
+            />
+          )}
+        </div>
+      )}
+      {annoucementLoading && <AnnouncementsSkeleton />}
 
-  </div>
-</div>
-      {/* Schedule */}
-   {!notesLoading && activeTab === "notes" && (
-   <>
-     {/* Header */}
- 
-     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
- 
-       <div>
- 
-         <h2 className="text-2xl font-bold sm:text-3xl">
-           Notes
-         </h2>
- 
-         <p className="mt-1 text-sm text-slate-500 sm:text-base">
-           Manage study materials for this batch
-         </p>
- 
-       </div>
- 
-   
- 
-     </div>
- 
-     {/* Notes Grid */}
- 
-     <div className="mt-6 grid gap-5 md:grid-cols-2">
- 
-       {notes.map((note) => (
- 
-         <div
-           key={note._id}
-           className="
-             group overflow-hidden
-             rounded-3xl border border-slate-200
-             bg-white p-4 shadow-sm
-             transition-all duration-300
-             hover:-translate-y-1
-             hover:border-yellow-500
-             hover:shadow-xl
-             sm:p-5
-           "
-         >
- 
-           {/* Header */}
- 
-           <div className="flex items-start justify-between gap-3">
- 
-             <div className="min-w-0 flex-1">
- 
-               <div className="flex flex-wrap items-center gap-2">
- 
-                 <span className="rounded-full bg-orange-50 px-3 py-1 text-xs font-semibold text-[#D6451B]">
-                   Note #{note?.noteNumber || "-"}
-                 </span>
- 
-                 <span
-                   className={`
-                     rounded-full px-3 py-1 text-xs font-semibold
-                     ${
-                       note?.visibility === "public"
-                         ? "bg-green-50 text-green-600"
-                         : "bg-red-50 text-red-600"
-                     }
-                   `}
-                 >
-                   {note?.visibility}
-                 </span>
- 
-               </div>
- 
-               <h3 className="mt-3 text-base font-bold text-slate-900 sm:text-lg">
-                 {note?.title}
-               </h3>
- 
-               <p className="mt-2 text-sm text-slate-500 line-clamp-3">
-                 {note?.description ||
-                   "No description available"}
-               </p>
- 
-             </div>
- 
-          
- 
-           </div>
- 
-           {/* Stats */}
- 
-           <div className="mt-5 grid grid-cols-2 gap-3">
- 
-             <div className="rounded-2xl bg-slate-50 p-3">
- 
-               <p className="text-xs text-slate-500">
-                 Type
-               </p>
- 
-               <p className="font-semibold uppercase">
-                 {note?.type}
-               </p>
- 
-             </div>
- 
-             <div className="rounded-2xl bg-slate-50 p-3">
- 
-               <p className="text-xs text-slate-500">
-                 Size
-               </p>
- 
-               <p className="font-semibold">
-                 {note?.file?.size
-                   ? `${(
-                       note.file.size /
-                       1024 /
-                       1024
-                     ).toFixed(2)} MB`
-                   : "-"}
-               </p>
- 
-             </div>
- 
-           </div>
- 
-           {/* File Section */}
- 
-           <div
-             className="
-               mt-5 flex flex-col gap-4
-               rounded-2xl border border-slate-100
-               bg-slate-50 p-4
-               sm:flex-row sm:items-center sm:justify-between
-             "
-           >
- 
-             <div className="flex min-w-0 items-center gap-3">
- 
-               <div
-                 className="
-                   flex h-12 w-12 shrink-0
-                   items-center justify-center
-                   rounded-2xl bg-red-100
-                 "
-               >
-                 <FaFilePdf className="text-xl text-red-500" />
-               </div>
- 
-               <div className="min-w-0">
- 
-                 <p className="truncate font-medium">
-                   {note?.file?.originalName ||
-                     "Attachment"}
-                 </p>
- 
-                 <p className="text-xs text-slate-500">
-                   {new Date(
-                     note.createdAt
-                   ).toLocaleDateString("en-IN")}
-                 </p>
- 
-               </div>
- 
-             </div>
- 
-             <button
-               onClick={() => {
-                 setPdfUrl(note?.file?.url);
-                 setPdfOpen(true);
-               }}
-               className="
-                 w-full rounded-xl
-                 bg-blue-50 px-4 py-2
-                 text-sm font-medium
-                 text-blue-600
-                 hover:bg-blue-100
-                 sm:w-auto
-               "
-             >
-               View
-             </button>
- 
-           </div>
- 
-         </div>
- 
-       ))}
- 
-     </div>
-   </>
- )} {notesLoading && <NotesSkeleton></NotesSkeleton>}
- 
-       {/* Class Links */}
- 
-   {!classLoading && activeTab === "links" && (
-   <div >
-     
-     {/* Header */}
- 
-     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
- 
-       <div>
-         <h2 className="text-2xl font-bold sm:text-3xl">
-           Class Links
-         </h2>
- 
-         <p className="mt-1 text-sm text-slate-500 sm:text-base">
-           Manage online meetings and recordings
-         </p>
-       </div>
- 
-   
- 
-     </div>
- 
-     {/* Content */}
- 
-     <div className="mt-6 space-y-4 sm:mt-8">
- 
-       {classLinks?.length > 0 ? (
-         classLinks.map((link) => (
-           <div
-             key={link._id}
-             className="
-               rounded-2xl border border-slate-200
-               bg-white p-4 shadow-sm
-               transition-all duration-300
-               hover:border-[#D6451B]
-               hover:shadow-lg
-             "
-           >
-             {/* Top Section */}
- 
-             <div>
- 
-               <div className="flex flex-wrap gap-2">
- 
-                 <span className="rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold text-[#D6451B]">
-                   Class #{link.classNumber || "-"}
-                 </span>
- 
-                 <span
-                   className={`rounded-full px-3 py-1 text-xs font-semibold ${
-                     link.status === "live"
-                       ? "bg-green-100 text-green-700"
-                       : link.status === "completed"
-                       ? "bg-blue-100 text-blue-700"
-                       : link.status === "cancelled"
-                       ? "bg-red-100 text-red-700"
-                       : "bg-slate-100 text-slate-700"
-                   }`}
-                 >
-                   {link.status}
-                 </span>
- 
-               </div>
- 
-               <h3 className="mt-3 break-words text-lg font-bold text-slate-900">
-                 {link.title}
-               </h3>
- 
-               <p className="mt-2 text-sm text-slate-500 line-clamp-3">
-                 {link.description || "No description provided"}
-               </p>
- 
-             </div>
- 
-             {/* Stats */}
- 
-             <div className="mt-5 grid grid-cols-2 gap-3">
- 
-               <div className="rounded-xl bg-slate-50 p-3">
-                 <p className="text-xs text-slate-500">
-                   Meeting Date
-                 </p>
- 
-                 <p className="mt-1 text-sm font-semibold">
-                   {formatISTDateTime(link.meetingDate)}
-                 </p>
-               </div>
- 
-               <div className="rounded-xl bg-slate-50 p-3">
-                 <p className="text-xs text-slate-500">
-                   Platform
-                 </p>
- 
-                 <p className="mt-1 text-sm font-semibold capitalize">
-                   {link.platform}
-                 </p>
-               </div>
- 
-               <div className="rounded-xl bg-slate-50 p-3">
-                 <p className="text-xs text-slate-500">
-                   Duration
-                 </p>
- 
-                 <p className="mt-1 text-sm font-semibold">
-                   {link.durationMinutes} min
-                 </p>
-               </div>
- 
-               <div className="rounded-xl bg-slate-50 p-3">
-                 <p className="text-xs text-slate-500">
-                   Attendance
-                 </p>
- 
-                 <p className="mt-1 text-sm font-semibold">
-                   {link.attendanceEnabled
-                     ? "Enabled"
-                     : "Disabled"}
-                 </p>
-               </div>
- 
-             </div>
- 
-         
- 
-             {/* Footer */}
- 
-             <div className="mt-5 border-t border-slate-200 pt-5">
- 
-               <div className="flex flex-col gap-3 sm:flex-row">
- 
-                 <a
-                   href={link.meetingLink}
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   className="
-                     flex flex-1 items-center justify-center gap-2
-                     rounded-xl bg-green-50
-                     px-4 py-3
-                     text-sm font-medium text-green-700
-                     hover:bg-green-100
-                   "
-                 >
-                   <FaExternalLinkAlt />
-                   Join Meeting
-                 </a>
- 
-                 {link.recordingUrl && (
-                   <a
-                     href={link.recordingUrl}
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="
-                       flex flex-1 items-center justify-center gap-2
-                       rounded-xl bg-blue-50
-                       px-4 py-3
-                       text-sm font-medium text-blue-700
-                       hover:bg-blue-100
-                     "
-                   >
-                     🎥 Recording
-                   </a>
-                 )}
- 
-               </div>
- 
-             </div>
- 
-           </div>
-         ))
-       ) : (
-         <div className="rounded-2xl border border-dashed border-slate-300 py-12 text-center">
- 
-           <h3 className="text-lg font-semibold">
-             No Class Links Yet
-           </h3>
- 
-           <p className="mt-2 text-sm text-slate-500">
-             Create your first online class link.
-           </p>
- 
-      
- 
-         </div>
-       )}
- 
-     </div>
- 
-   </div>
- )} {classLoading && <ClassLinksSkeleton></ClassLinksSkeleton>}
- { !annoucementLoading && activeTab === "announcements" && (
-   <div >
- 
-     {/* Header */}
- 
-     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
- 
-       <div>
- 
-         <h2 className="text-2xl sm:text-3xl font-bold">
-           Announcements
-         </h2>
- 
-         <p className="mt-1 sm:mt-2 text-sm sm:text-base text-slate-500">
-           Important updates, notices and reminders for students
-         </p>
- 
-       </div>
- 
-     
-     </div>
- 
-     {announcements?.length > 0 ? (
- 
-       <div className="mt-6 sm:mt-8 space-y-4">
- 
-         {announcements?.map((announcement) => (
- 
-           <div
-             key={announcement._id}
-             className="
-               group relative overflow-hidden
-               rounded-2xl sm:rounded-3xl
-               border border-slate-200
-               bg-white
-               p-4 sm:p-5
-               shadow-sm
-               transition-all duration-300
-               hover:border-yellow-500
-               hover:shadow-lg
-             "
-           >
- 
-             {/* Accent */}
- 
-             <div className="absolute left-0 top-0 h-full w-1 bg-yellow-500" />
- 
-             <div className="flex flex-col sm:flex-row gap-4">
- 
-               {/* Icon */}
- 
-               <div
-                 className="
-                   flex h-12 w-12 sm:h-14 sm:w-14 shrink-0
-                   items-center justify-center
-                   rounded-xl sm:rounded-2xl
-                   bg-orange-100
-                   text-[#D6451B]
-                 "
-               >
-                 <FaBullhorn className="text-lg sm:text-xl" />
-               </div>
- 
-               {/* Content */}
- 
-               <div className="flex-1 min-w-0">
- 
-                 {/* Meta */}
- 
-                 <div className="flex flex-wrap items-center gap-2">
- 
-                   {announcement?.pinned && (
-                     <span className="rounded-full bg-yellow-100 px-3 py-1 text-xs font-semibold text-yellow-700">
-                       📌 Pinned
-                     </span>
-                   )}
- 
-                   <span
-                     className={`
-                       rounded-full px-3 py-1 text-xs font-semibold
-                       ${
-                         announcement?.type === "system"
-                           ? "bg-purple-100 text-purple-700"
-                           : announcement?.type === "course"
-                           ? "bg-blue-100 text-blue-700"
-                           : "bg-green-100 text-green-700"
-                       }
-                     `}
-                   >
-                     {announcement?.type}
-                   </span>
- 
-                   <span className="text-xs text-slate-500">
-                     {formatISTDateTime(
-                       announcement?.createdAt
-                     )}
-                   </span>
- 
-                 </div>
- 
-                 {/* Title */}
- 
-                 <h3 className="mt-3 text-lg sm:text-xl font-bold text-slate-900 break-words">
-                   {announcement?.title}
-                 </h3>
- 
-                 {/* Message */}
- 
-                 <p className="mt-3 text-sm sm:text-base whitespace-pre-wrap leading-relaxed text-slate-600">
-                   {announcement?.message}
-                 </p>
- 
-                 {/* Footer */}
- 
-                 <div className="mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between border-t border-slate-100 pt-4">
- 
-                   <div>
- 
-                     <p className="text-xs text-slate-500">
-                       Posted By
-                     </p>
- 
-                     <p className="font-medium text-slate-700 break-words">
-                       {announcement?.createdBy?.fullName ||
-                         "Admin"}
-                     </p>
- 
-                   </div>
- 
-               
- 
-                 </div>
- 
-               </div>
- 
-             </div>
- 
-           </div>
- 
-         ))}
- 
-       </div>
- 
-     ) : (
- 
-       <div className="flex flex-col items-center justify-center py-12 sm:py-16">
- 
-         <div
-           className="
-             flex h-16 w-16 sm:h-20 sm:w-20
-             items-center justify-center
-             rounded-full bg-orange-100
-           "
-         >
-           <FaBullhorn className="text-2xl sm:text-3xl text-[#D6451B]" />
-         </div>
- 
-         <h3 className="mt-5 text-lg sm:text-xl font-semibold text-slate-700">
-           No Announcements Yet
-         </h3>
- 
-         <p className="mt-2 max-w-md text-center text-sm sm:text-base text-slate-500">
-           Create your first announcement to notify students.
-         </p>
- 
-       </div>
- 
-     )}
- 
-   </div>
- )}  { annoucementLoading && <AnnouncementsSkeleton></AnnouncementsSkeleton>}
-
-    </div>
-     <Modal
-         isOpen={pdfOpen}
-          onClose={() => setPdfOpen(false)}>
-          <PdfViewer url={pdfUrl}></PdfViewer>
-          
-    
-        </Modal>
+      {/* PDF Modal Viewer */}
+      <Modal isOpen={pdfOpen} onClose={() => setPdfOpen(false)}>
+        <PdfViewer url={pdfUrl} />
+      </Modal>
     </div>
   );
 }

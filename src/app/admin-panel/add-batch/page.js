@@ -1,33 +1,38 @@
-import { FaBookOpen } from "react-icons/fa";
+import { FaLayerGroup } from "react-icons/fa";
 import AddBatchForm from "./AddBatch";
 
 export default function AddBatchPage() {
   return (
-    <div className="py-28">
-      <div className="mx-auto max-w-6xl space-y-8">
-        {/* Hero Banner */}
-        <div className="rounded-[30px] bg-gradient-to-r from-amber-500 to-yellow-500 p-8 text-white shadow-xl">
-          <div className="flex items-center gap-4">
-            <div className="rounded-2xl bg-white/20 p-4">
-              <FaBookOpen className="text-3xl" />
-            </div>
+    <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8">
+      {/* Executive Mobile-Friendly Hero Banner */}
+      <div className="relative overflow-hidden rounded-[32px] bg-slate-900 border border-slate-800 p-6 sm:p-8 text-white shadow-2xl">
+        <div className="absolute -right-10 -top-10 h-64 w-64 rounded-full bg-yellow-400/10 blur-3xl pointer-events-none" />
 
-            <div>
-              <h1 className="text-4xl font-bold">
-                Create New Batch
-              </h1>
+        <div className="flex items-center gap-4 sm:gap-6">
+          <div className="flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl bg-yellow-400/15 border border-yellow-400/30 text-yellow-300 text-xl sm:text-2xl shrink-0">
+            <FaLayerGroup />
+          </div>
 
-              <p className="mt-2 text-orange-100">
-                Add a new Batch for your course.
-              </p>
-            </div>
+          <div>
+            <span className="inline-flex rounded-full bg-yellow-400/15 border border-yellow-400/30 px-3 py-0.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-yellow-300 backdrop-blur-md">
+              Batch Management
+            </span>
+            <h1 className="mt-1 text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white">
+              Create New{" "}
+              <span className="bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-400 bg-clip-text text-transparent">
+                Batch
+              </span>
+            </h1>
+            <p className="mt-1 text-xs sm:text-sm text-slate-300 font-medium">
+              Configure batch schedules, platforms, capacity, and trainers.
+            </p>
           </div>
         </div>
+      </div>
 
-        {/* Form Container */}
-        <div className="rounded-[30px] border border-slate-200 bg-white p-8 shadow-lg">
-          <AddBatchForm />
-        </div>
+      {/* Form Container */}
+      <div className="rounded-[32px] border border-slate-200/90 bg-white p-5 sm:p-8 shadow-xs">
+        <AddBatchForm />
       </div>
     </div>
   );

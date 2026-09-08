@@ -378,7 +378,6 @@ export default function ServicesClient({ services = [] }) {
                         alt={service.title}
                         className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
 
                       {/* Top Badges Overlay */}
                       <div className="absolute top-3 left-3 flex flex-wrap gap-1.5 max-w-[85%]">

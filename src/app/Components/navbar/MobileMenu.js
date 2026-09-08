@@ -167,7 +167,7 @@ function MobileMenu({
 
             {/* Bottom Actions */}
             <div className="border-t border-slate-200 bg-white p-6 shrink-0">
-              {user ? (
+              {user && (
                 <TrackedButton
                   onClick={handleLogout}
                   label="Mobile Logout"
@@ -177,19 +177,9 @@ function MobileMenu({
                   <FaSignOutAlt />
                   <span>Logout</span>
                 </TrackedButton>
-              ) : (
-                <TrackedLink
-                  href="/login"
-                  onClick={closeMenu}
-                  label="Mobile Footer Login"
-                  category="Mobile Auth"
-                  className="flex min-h-[44px] w-full items-center justify-center rounded-2xl bg-yellow-400 py-3 font-semibold text-slate-900 transition hover:bg-yellow-500"
-                >
-                  Login
-                </TrackedLink>
               )}
 
-              <p className="mt-4 text-center text-xs text-slate-400">
+              <p className={`${user ? "mt-4" : ""} text-center text-xs text-slate-400`}>
                 © 2026 Inquisitive Mind Academy
               </p>
             </div>

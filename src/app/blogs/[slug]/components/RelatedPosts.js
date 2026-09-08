@@ -31,13 +31,13 @@ export default function RelatedPosts({ blogs = [] }) {
               href={`/blogs/${blog.slug}`}
               className="group flex flex-row lg:flex-col overflow-hidden rounded-2xl sm:rounded-3xl border border-amber-100/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-amber-300 hover:shadow-xl"
             >
-              <div className="relative w-28 sm:w-44 lg:w-full shrink-0 overflow-hidden bg-slate-100">
+              <div className="relative w-28 sm:w-44 lg:w-full shrink-0 overflow-hidden bg-slate-900/5 p-1.5 flex items-center justify-center">
                 <Image
                   src={blog.coverImage}
                   alt={blog.title}
                   width={700}
                   height={450}
-                  className="aspect-square sm:aspect-[16/10] lg:aspect-[16/10] h-full w-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  className="aspect-square sm:aspect-[16/10] lg:aspect-[16/10] h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
                 />
 
                 <span className="hidden sm:inline-block absolute left-3.5 top-3.5 sm:left-4 sm:top-4 rounded-full border border-amber-200 bg-white/95 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-bold text-amber-900 backdrop-blur shadow-xs">

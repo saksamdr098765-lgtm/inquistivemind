@@ -15,13 +15,13 @@ export default function BlogCard({ blog }) {
       className="group flex flex-row lg:flex-col h-full overflow-hidden rounded-2xl sm:rounded-3xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-yellow-200 hover:shadow-xl min-h-[44px]"
     >
       {/* Cover Image */}
-      <div className="relative w-32 sm:w-48 lg:w-full shrink-0 overflow-hidden bg-slate-100">
+      <div className="relative w-32 sm:w-48 lg:w-full shrink-0 overflow-hidden bg-slate-900/5 p-1.5 flex items-center justify-center">
         <Image
           src={blog.coverImage}
           alt={blog.title}
           width={700}
           height={450}
-          className="aspect-square sm:aspect-[16/10] lg:aspect-[16/10] h-full w-full object-cover object-center transition duration-700 group-hover:scale-105"
+          className="aspect-square sm:aspect-[16/10] lg:aspect-[16/10] h-full w-full object-contain transition duration-700 group-hover:scale-105"
         />
 
         {/* Category badge on desktop/tablet */}

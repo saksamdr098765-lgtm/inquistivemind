@@ -93,7 +93,6 @@ export default function ServicePricingAndAreas({ service }) {
                       fill
                       className="object-contain transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-transparent opacity-70" />
                     <span className="absolute top-2.5 left-2.5 rounded-full bg-yellow-500 px-2.5 py-0.5 text-[10px] font-bold text-slate-950 shadow-xs">
                       {badgeText}
                     </span>

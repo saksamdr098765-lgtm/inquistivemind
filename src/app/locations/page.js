@@ -52,11 +52,11 @@ export default function LocationsPage() {
                 className="flex flex-col justify-between rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:border-yellow-300"
               >
                 {/* Image & Badge */}
-                <div className="relative h-60 w-full overflow-hidden bg-slate-100">
+                <div className="relative h-52 sm:h-60 w-full overflow-hidden bg-slate-900/5 p-2 flex items-center justify-center">
                   <img
                     src={loc.coverImage}
                     alt={loc.title}
-                    className="h-full w-full object-cover object-center transition-transform duration-500 hover:scale-105"
+                    className="h-full w-full object-contain transition-transform duration-500 hover:scale-105"
                   />
                   <div className="absolute top-4 left-4 rounded-full bg-yellow-500 px-3.5 py-1 text-xs font-bold text-slate-950 shadow-md">
                     {offersVisits ? `★ ${loc.city} Center` : `★ ${loc.city} Online Hub`}

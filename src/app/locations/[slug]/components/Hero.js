@@ -76,14 +76,14 @@ export default function Hero({ location }) {
           {/* Right Cover Image & Facilities Card */}
           <div className="lg:col-span-5 space-y-6">
             {location.coverImage && (
-              <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-md">
+              <div className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-900/5 p-2 sm:p-3 shadow-md flex items-center justify-center">
                 <Image
                   src={location.coverImage}
                   alt={location.title}
                   width={800}
                   height={450}
                   priority
-                  className="aspect-[16/10] w-full object-cover object-center transition-transform duration-500 hover:scale-102"
+                  className="aspect-[16/10] w-full object-contain transition-transform duration-500 hover:scale-102"
                 />
               </div>
             )}

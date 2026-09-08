@@ -274,6 +274,143 @@ export const locations = [
    
   },
 
+  {
+  slug: "french-classes-panchkula",
+  city: "Panchkula",
+  title: "French Classes in Panchkula | Inquisitive Mind Academy",
+  shortDescription:
+    "Structured live online French coaching for Panchkula learners — school students, working professionals, and exam candidates — with certified faculty and small-batch, one-on-one attention for Sector 5, Sector 9, Sector 20, MDC and nearby sectors.",
+  coverImage: "/locations/french-classes-panchkula/cover.webp",
+  address: "Live Online Interactive Classes (Serving Panchkula & Worldwide)",
+  phone: "+91 98787 61488",
+  hours: "Mon - Sat: 09:00 AM - 07:00 PM | Live Online Batches: 07:00 AM - 10:00 PM IST",
+
+  offersVisits: false,
+  isOnlineOnly: true,
+  physicalAddress: "Sector 9, Panchkula, Haryana 134109",
+
+  centralHub: [
+    {
+      title: "French for School Students in Panchkula",
+      desc: "Structured French coaching aligned with CBSE/ICSE second-language requirements, for students in Sector 15, Sector 20 and nearby schools",
+      href: "/services/french-for-school-students",
+      badge: "Featured Service",
+      buttonText: "Explore School Program",
+    },
+    {
+      title: "French Tutor Jobs in Chandigarh & Mohali",
+      desc: "Apply for French tutor jobs and teach students through flexible home and online opportunities",
+      href: "/services/french-tutor-jobs-chandigarh",
+      badge: "Career Opportunity",
+      buttonText: "Apply as Tutor",
+    },
+  ],
+  areas: [
+    "Sector 5",
+    "Sector 9",
+    "Sector 11",
+    "Sector 15",
+    "Sector 20",
+    "MDC",
+    "Sector 25",
+    "Sector 26",
+    "Kalka Road",
+    "Pinjore",
+  ],
+  courses: [
+    "french-a1-beginner-course",
+    "french-a2-elementary-course",
+    "french-b1-intermediate-course",
+    "french-b2-advanced-course",
+    "delf-b2-exam-prep-masterclass",
+    "tef-canada-preparation-bundle",
+  ],
+  features: [
+    "Academic-Year Batches for School & College Students",
+    "Weekend & Evening Slots for Working Professionals",
+    "Small Batch Sizes (Max 6–8 Students)",
+    "Optional DELF/TEF/TCF Track for Exam Candidates",
+  ],
+  whyChoose: [
+    {
+      title: "Coaching Built for Panchkula's Mixed Learner Base",
+      description:
+        "Panchkula has a wide mix of school students needing a second language, government and defence-sector professionals, and a smaller group preparing for Canada PR — so our batches are grouped by goal, not just by level, and each group follows a different pace and syllabus.",
+    },
+    {
+      title: "Evening Batches Timed Around Panchkula's Commute Pattern",
+      description:
+        "A large share of our Panchkula learners work in Chandigarh or Mohali and commute daily, so our weekday batches run after 6 PM and weekend batches run in the morning, avoiding the usual after-work slump.",
+    },
+    {
+      title: "Academic-Term Planning for Student Batches",
+      description:
+        "For school and college students, we map the course to the academic calendar — exams, board schedules, and vacations — rather than running an open-ended adult-style course.",
+    },
+    {
+      title: "Free Trial Class Before You Commit",
+      description:
+        "Sit in on one live session, in the batch type that matches your goal, before deciding whether to enroll.",
+    },
+  ],
+  faq: [
+    {
+      question: "Is French coaching in Panchkula only for Canada PR aspirants?",
+      answer:
+        "No — most of our Panchkula learners are school students meeting a second-language requirement or adults learning French for travel and general interest. We run a separate DELF/TEF/TCF track only for the smaller group preparing for exams.",
+    },
+    {
+      question: "Do you follow the school syllabus for French?",
+      answer:
+        "For student batches, yes — we align lessons with common CBSE/ICSE second-language French requirements so classwork and exam prep stay in sync with what's taught in school.",
+    },
+    {
+      question: "I work in Chandigarh and commute from Panchkula — what batch timings are available?",
+      answer:
+        "We run weekday batches after 6 PM and weekend morning batches specifically for learners who commute into Chandigarh or Mohali during the day.",
+    },
+    {
+      question: "Where is the nearest test center if I do want to take TEF or TCF Canada?",
+      answer:
+        "Panchkula students who opt into our exam track typically take the actual TEF/TCF or DELF exam at Alliance Française Chandigarh or another authorized Tricity center; all coaching itself stays fully online.",
+    },
+    {
+      question: "Can students from Kalka Road, Pinjore, or MDC join the same batch?",
+      answer:
+        "Yes, learners from Kalka Road, Pinjore, MDC, and the rest of Panchkula's sectors are grouped by level and goal rather than by exact locality, since all classes are live online.",
+    },
+    {
+      question: "What does the French course fee for Panchkula depend on?",
+      answer:
+        "Fee depends on batch type — student academic-year batches, adult group batches, and 1-on-1 exam-focused mentorship are priced differently. Ask for the current fee sheet for a breakdown by track.",
+    },
+    {
+      question: "Will physical classes in Panchkula resume?",
+      answer:
+        "Not currently — all Panchkula batches run live online for now. This page will be updated with in-person options if and when they resume.",
+    },
+  ],
+seo: {
+  title: "French Classes in Panchkula | School & Adult Batches",
+  // 54 characters — safely under Google's ~60 char title cutoff
+  description:
+    "Live online French classes in Panchkula for school students, professionals & exam candidates. Small batches, flexible timings, DELF/TEF/TCF prep available.",
+  // 155 characters — within the ~155-160 char description cutoff
+  keywords: [
+    "French classes Panchkula",
+    "French for school students Panchkula",
+    "CBSE French classes Panchkula",
+    "French tutor Panchkula",
+    "Evening French classes Panchkula",
+    "Learn French Panchkula",
+  ],
+},
+  googleMaps: {
+    iframe: "",
+    direction: "",
+  },
+},
+
 ];
 
 export function getLocation(slug) {

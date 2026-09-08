@@ -413,6 +413,184 @@ title: "TCF Canada Coaching Chandigarh | Inquisitive Mind Academy",
   ],
 },
   },
+  {
+    slug: "tef-canada-coaching-chandigarh",
+    category: "student",
+    targetAudience: "For Canada PR & Immigration Aspirants in Chandigarh",
+    ctaType: "enroll",
+    title: "TEF Canada Coaching Chandigarh | Inquisitive Mind Academy",
+    subtitle: "Structured TEF Canada Preparation for Express Entry, PR & CRS Points — Live Online Classes for Chandigarh Students",
+    description:
+      "Join TEF Canada coaching for Chandigarh students with Inquisitive Mind Academy. Expert-led live online batches covering Listening, Speaking, Reading & Writing, mock tests, and a personalized study plan to help you hit your target CLB score for Canada PR.",
+    coverImage:
+      "/services/tef-canada-coaching-chandigarh/cover.webp",
+
+    trustBadges: [
+      "100% Live Online Classes",
+      "Free Mock Test Included",
+      "Certified French Faculty",
+      "Small Batch Sizes (6–10 Students)",
+    ],
+
+    briefOverview: {
+      summary:
+        "Searching for TEF Canada coaching near you in Chandigarh? Inquisitive Mind Academy offers structured, exam-focused TEF Canada preparation through live online batches for students across Chandigarh, Mohali, Panchkula, and Zirakpur — whether you're targeting Express Entry CRS points, a study permit, or Canadian citizenship. Our trainers focus on all four TEF modules with regular mock tests so you walk into the exam center knowing exactly what to expect.",
+      highlights: [
+        "Dedicated TEF Canada batches — not a generic French class repurposed for exam prep",
+        "Live online classes accessible from anywhere in Chandigarh and the wider Tricity area",
+        "Regular full-length mock tests with detailed score feedback",
+        "Guidance on registration, exam centers, and CLB score targets for your PR goals",
+      ],
+    },
+
+    quickInfo: {
+      duration: "4 Months (Standard Track) / 2 Months (Crash Course)",
+      mode: "100% Live Online",
+      level: "A1 to C2 — Based on Your Target CLB Score",
+      batchSize: "6–10 Students",
+      certification: "Exam-Ready Score Guarantee Program",
+    },
+
+    howItWorks: [
+      {
+        step: "01",
+        title: "Free Level Assessment",
+        desc: "Take a quick diagnostic to identify your current French level and the CLB score you're realistically targeting.",
+      },
+      {
+        step: "02",
+        title: "Join Your Batch",
+        desc: "Get placed in a live online batch matched to your level and preferred timing.",
+      },
+      {
+        step: "03",
+        title: "Structured TEF Preparation",
+        desc: "Work through Listening, Reading, Speaking, and Writing modules with weekly progress checks and mock tests.",
+      },
+      {
+        step: "04",
+        title: "Exam Booking Support",
+        desc: "Get guidance on registering at your nearest TEF Canada test center and choosing the right exam date.",
+      },
+    ],
+
+    whatsCovered: [
+      {
+        title: "All Four TEF Canada Modules",
+        desc: "Focused practice on Listening, Reading, Speaking, and Writing — matched to TEF's fixed-difficulty exam format.",
+      },
+      {
+        title: "Full-Length Mock Tests",
+        desc: "Simulated TEF Canada mock tests under timed conditions, with detailed feedback on your CLB-equivalent score.",
+      },
+      {
+        title: "CLB Score Targeting",
+        desc: "Preparation mapped directly to your required CLB level — whether that's CLB 7 for a solid CRS boost or CLB 9 for maximum points.",
+      },
+      {
+        title: "Speaking & Writing Feedback",
+        desc: "One-on-one correction for the two modules most students struggle to self-assess.",
+      },
+    ],
+
+    whyChooseUs: [
+      {
+        title: "Built for Chandigarh Students",
+        desc: "Live online batches timed and structured specifically for students across Chandigarh and the Tricity area — no commute needed.",
+      },
+      {
+        title: "Exam-Focused, Not Generic",
+        desc: "Our TEF batches are built specifically around the exam's fixed-difficulty format and longer passages, not a general spoken French course.",
+      },
+      {
+        title: "Experienced French Faculty",
+        desc: "Learn from DELF/DALF-trained trainers with a decade of teaching experience across adult and exam-prep learners.",
+      },
+      {
+        title: "Flexible Batch Timings",
+        desc: "Weekday, weekend, and evening batches available for working professionals and students alike.",
+      },
+    ],
+
+    pricing: {
+      planName: "TEF Canada Coaching Fee",
+      fee: "Contact for Current Batch Fees",
+      originalFee: "",
+      duration: "Per Course (4 Months) or Crash Course (2 Months)",
+      includes: [
+        "All 4 Module Training (Listening, Reading, Speaking, Writing)",
+        "Full-Length Mock Tests",
+        "Personalized Study Plan",
+        "Exam Registration Guidance",
+      ],
+      discountNote: "Fees vary by batch type and duration. Message us for current pricing and available slots.",
+      pricePageLink: "/services/tef-canada-coaching-chandigarh",
+      pricePageTitle: "Contact Us for Current Fees & Batch Availability",
+    },
+
+    faq: [
+      {
+        question: "Where can I take TEF Canada coaching in Chandigarh?",
+        answer:
+          "Inquisitive Mind Academy offers TEF Canada coaching through live online batches for students across Chandigarh, Mohali, Panchkula, and Zirakpur — you can join from home without needing to travel.",
+      },
+      {
+        question: "Is TEF Canada accepted for PR?",
+        answer:
+          "Yes, TEF Canada is fully recognized by IRCC and can be used to claim French-language CRS points under Express Entry, alongside TCF Canada.",
+      },
+      {
+        question: "What CLB score do I need for Canada PR?",
+        answer:
+          "It depends on your CRS goals — many candidates target at least CLB 7 for a meaningful points boost, while CLB 9 unlocks higher point brackets. Your trainer will help set a realistic target based on your current level.",
+      },
+      {
+        question: "How long does it take to prepare for TEF Canada?",
+        answer:
+          "Most students take our 4-month standard track to build proficiency from scratch, though a 2-month crash course is available for candidates who already have a base level of French.",
+      },
+      {
+        question: "Is TEF or TCF better for Canada PR?",
+        answer:
+          "Both are equally valid and IRCC-recognized. TEF Canada's fixed-difficulty format tends to suit stronger candidates targeting CLB 7+, while TCF Canada's adaptive format tends to suit beginners. We can help you decide based on a quick assessment.",
+      },
+      {
+        question: "Where can I take the TEF exam in Chandigarh?",
+        answer:
+          "TEF Canada is conducted through Alliance Française Chandigarh and other CCIP-authorized centers in the Tricity region. We guide students through registration and exam-date selection as part of our coaching.",
+      },
+    ],
+
+    relatedBlogs: [
+      "tef-canada-exam-guide-registration-fees-score-chart",
+      "what-is-tef-tcf-exam-comparison-scores-fees",
+      "french-classes-fees-in-chandigarh-cost-guide",
+    ],
+
+    finalCta: {
+      title: "Start Your TEF Canada Preparation in Chandigarh Today",
+      description:
+        "Book a free consultation, get your level assessed, and start preparing for your target CLB score with structured, exam-focused batches.",
+      buttonText: "Book Free Consultation",
+      whatsappMsg: "Hi Inquisitive Mind Academy! I want to know more about TEF Canada coaching in Chandigarh. Please share batch timings and fees.",
+    },
+
+  seo: {
+  title: "TEF Canada Coaching Chandigarh | Inquisitive Mind Academy",
+  description:
+    "TEF Canada coaching for Chandigarh students — live online batches, mock tests & a study plan for your target CLB score.",
+  keywords: [
+    "TEF Canada coaching Chandigarh",
+    "TEF classes in Chandigarh",
+    "TEF Canada institute Chandigarh",
+    "best TEF coaching in Chandigarh",
+    "TEF coaching center Chandigarh",
+    "TEF Canada coaching Punjab",
+    "TEF Canada coaching Tricity",
+    "TEF Canada trainer near me",
+  ],
+},
+  },
 
 
   // ==========================================

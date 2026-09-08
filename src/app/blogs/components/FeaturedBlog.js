@@ -37,13 +37,13 @@ export default function FeaturedBlog({ blog }) {
         >
           <div className="grid lg:grid-cols-2">
             {/* Image */}
-            <div className="relative aspect-[16/10] overflow-hidden lg:aspect-auto min-h-[220px] bg-slate-100">
+            <div className="relative aspect-[16/10] overflow-hidden lg:aspect-auto min-h-[220px] sm:min-h-[300px] bg-slate-900/5 p-3 flex items-center justify-center">
               <Image
                 src={blog.coverImage}
                 alt={blog.title}
                 fill
                 priority
-                className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                className="object-contain transition-transform duration-700 group-hover:scale-105"
               />
 
               {/* Category */}

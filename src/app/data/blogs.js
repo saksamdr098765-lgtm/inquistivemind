@@ -737,7 +737,7 @@ export const blogs = [
     publishedAt: "August 26, 2026",
     readingTime: "9 min read",
     coverImage: "/blogs/tcf-canada-exam-guide-registration-fees-score-chart/cover.webp",
-    featured: true,
+    featured: false,
     quickInfo: {
       courseName: "TCF Canada Preparation",
       duration: "4 Months",
@@ -1034,6 +1034,342 @@ export const blogs = [
         `https://wa.me/${SITE_CONFIG.whatsapp}?text=Hi%2C%20I%20want%20to%20book%20a%20free%20consultation%20for%20TCF%20Canada%20preparation.%20Please%20share%20the%20available%20batch%20timings.`,
       whatsappLink:
         `https://wa.me/${SITE_CONFIG.whatsapp}?text=Hi%2C%20I%20have%20a%20question%20about%20TCF%20Canada%20classes.`,
+      features: [
+        "Live Online & Offline Batches",
+        "Free Mock Test Included",
+        "Personalized Study Plan",
+        "Experienced French Tutors",
+        "Flexible Batch Timings",
+      ],
+    },
+  },
+  {
+    id: 4,
+    slug: "tef-canada-exam-guide-registration-fees-score-chart",
+    title:
+      "TEF Canada Exam Guide 2026: Fees, Registration & Score",
+    excerpt:
+      "Planning to give TEF Canada for PR? Here's everything you need — registration process, exam fees in India, CLB score chart, exam pattern, and how to prepare.",
+    category: "TEF/TCF Preparation",
+    author: {
+      name: "Sakshi Goel",
+      credentials: "French Faculty · 10+ Years Teaching Experience · DELF/DALF Trained",
+      image: "/founder.webp",
+      bio:
+        "French language educator with 10+ years of teaching experience, having taught both adults and young learners across different institutions. Experienced in preparing students for TEF/TCF-style examinations, with specialization in French language, communication skills, and exam-oriented preparation across beginner to advanced levels.",
+    },
+    relatedCourses: [
+      "french-c2-mastery-course",
+      "french-a1-beginner-course",
+      "french-a2-elementary-course",
+      "french-b1-intermediate-course",
+      "french-b2-advanced-course",
+      "french-c1-proficiency-course"
+    ],
+    reviewedBy: {
+      name: "Sakshi Goel",
+      role: "French Faculty",
+    },
+    publishedAt: "September 8, 2026",
+    readingTime: "9 min read",
+    coverImage: "/blogs/tef-canada-exam-guide-registration-fees-score-chart/cover.webp",
+    featured: true,
+    quickInfo: {
+      courseName: "TEF Canada Preparation",
+      duration: "4 Months",
+      mode: "Online & Offline",
+      level: "A1 to C2 (All Levels)",
+      batchSize: "6–10 Students",
+      certification: "Exam-Ready Score Guarantee Program",
+    },
+
+  seo: {
+  title:
+    "TEF Canada Exam Guide 2026: Fees, Registration & Score",
+  description:
+    "Planning to give TEF Canada for PR? Get registration steps, exam fees, CLB score chart, exam pattern, and prep tips in one complete guide.",
+  keywords: [
+    "TEF Canada registration",
+    "TEF Canada fees",
+    "TEF Canada exam pattern",
+    "TEF Canada CLB score",
+    "TEF Canada mock test",
+    "TEF Canada score chart",
+    "TEF Canada preparation",
+    "Inquisitive Mind Academy",
+  ],
+},
+    tags: [
+      "TEF",
+      "TEF Canada",
+      "Canada PR",
+      "Exam Fees",
+      "CLB Score",
+    ],
+    content: [
+      {
+        type: "paragraph",
+        text:
+          "If you've decided to take TEF Canada for your Express Entry or PR application, the next questions are usually practical ones — how do I register, what does it cost, what score do I actually need, and how do I prepare. This guide walks through all of it in one place, so you can plan your exam timeline with confidence.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "What is TEF Canada?",
+      },
+      {
+        type: "paragraph",
+        text:
+          "TEF Canada (Test d'Évaluation de Français pour le Canada) is a French proficiency test developed by the Chambre de Commerce et d'Industrie de Paris (CCIP). It is one of the two IRCC-recognized French tests — the other being TCF Canada — accepted for Express Entry, Canadian citizenship, and provincial nomination programs.",
+      },
+      {
+        type: "list",
+        items: [
+          "Purpose: Measures French proficiency for Canadian immigration, PR, and citizenship applications",
+          "Recognized by: IRCC (Immigration, Refugees and Citizenship Canada)",
+          "Modules tested: Listening (Compréhension Orale), Speaking (Expression Orale), Reading (Compréhension Écrite), Writing (Expression Écrite)",
+          "Validity: Test results are generally valid for 2 years from the test date",
+        ],
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "TEF Canada Registration Process",
+      },
+      {
+        type: "paragraph",
+        text:
+          "TEF Canada is administered through Alliance Française centers and other CCIP-authorized test centers rather than one central portal, so the exact steps vary slightly by center.",
+      },
+      {
+        type: "list",
+        items: [
+          "Locate your nearest authorized TEF Canada test center — Alliance Française branches conduct the test across major Indian cities",
+          "Create an account or fill the registration form on the test center's official booking page",
+          "Choose your preferred test date — slots near CRS draw cycles fill up quickly",
+          "Pay the exam fee online or at the center to confirm your booking",
+          "Carry a valid passport (or the ID specified by the center) along with your registration confirmation on exam day",
+        ],
+      },
+      {
+        type: "tip",
+        title: "Study Tip",
+        text:
+          "Book your slot at least 4–6 weeks in advance, especially around peak PR application season — Tricity and Delhi NCR centers often have limited seats.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "TEF Canada Exam Pattern",
+      },
+      {
+        type: "list",
+        items: [
+          "Listening (Compréhension Orale): Fixed-difficulty audio passages with multiple-choice questions, roughly 40 minutes",
+          "Reading (Compréhension Écrite): Longer reading passages with multiple-choice questions, roughly 60 minutes",
+          "Speaking (Expression Orale): One-on-one or recorded oral task with an examiner, roughly 15 minutes",
+          "Writing (Expression Écrite): Two structured writing tasks, roughly 60 minutes",
+          "Total duration: approximately 3 hours across all four modules",
+        ],
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "TEF Canada Score Chart (CLB Conversion)",
+      },
+      {
+        type: "list",
+        items: [
+          "CLB 4 (Basic): TEF ~121–150",
+          "CLB 5 (Basic): TEF ~151–180",
+          "CLB 6 (Intermediate): TEF ~181–216",
+          "CLB 7 (Intermediate): TEF ~248–279",
+          "CLB 8 (Advanced): TEF ~280–307",
+          "CLB 9 (Advanced): TEF ~309–348",
+        ],
+      },
+      {
+        type: "warning",
+        title: "Important Note",
+        text:
+          "CLB conversion thresholds are periodically updated by IRCC. Always verify the current chart on the official IRCC website before setting your target score.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "TEF Canada Exam Fees in India",
+      },
+      {
+        type: "list",
+        items: [
+          "TEF Canada exam fee: approximately ₹18,000–₹20,000 (varies by test center)",
+          "Some centers charge separately for individual modules if taken apart from the full test",
+          "Additional charges may apply for late registration, rescheduling, or result rechecking",
+          "Fees are subject to change — always confirm the latest amount directly with your test center before booking",
+        ],
+      },
+      {
+        type: "interlinking",
+        title: "Explore Courses, Services & Pricing",
+        description:
+          "Explore our specialized French coaching programs, TEF exam preparation, French classes, tutor opportunities, and fee plans.",
+        items: [
+          {
+            title: "TEF Canada Coaching Chandigarh",
+            description: "Structured TEF Canada preparation with mock tests and personalized study plans.",
+            href: "/services/tef-canada-coaching-chandigarh",
+            badge: "Service",
+          },
+          {
+            title: "TEF vs TCF Exam: Comparison, Scores & Fees",
+            description: "Not sure which exam to take? Compare TEF and TCF Canada side by side.",
+            href: "/blogs/what-is-tef-tcf-exam-comparison-scores-fees",
+            badge: "Blog",
+          },
+          {
+            title: "French Classes in Chandigarh",
+            description: "In-person and online French language classes for all proficiency levels.",
+            href: "/services/french-classes-chandigarh",
+            badge: "Service",
+          },
+          {
+            title: "French Tutor Jobs in Chandigarh",
+            description: "Discover French tutor opportunities in Chandigarh for qualified French teachers.",
+            href: "/services/french-tutor-jobs-chandigarh",
+            badge: "Service",
+          },
+        ],
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "How to Prepare for TEF Canada",
+      },
+      {
+        type: "paragraph",
+        text:
+          "TEF Canada's fixed-difficulty format rewards consistency rather than adaptive pacing, so building steady accuracy across all four modules matters more than any single strategy.",
+      },
+      {
+        type: "list",
+        items: [
+          "Start with a diagnostic mock test to identify your current CLB level before building a study plan",
+          "Practice listening daily with authentic French audio — news clips, podcasts, and past TEF listening samples",
+          "Build reading speed with longer passages, since TEF's reading section runs longer than TCF's",
+          "Record yourself for the speaking module and get feedback from a trainer — self-assessment alone often misses pronunciation and fluency gaps",
+          "Practice the two structured writing tasks under timed conditions to match the actual exam format",
+        ],
+      },
+      {
+        type: "tip",
+        title: "Study Tip",
+        text:
+          "Because TEF uses fixed-difficulty passages rather than adapting to your answers, pacing matters more than in TCF — practicing under a strict clock is the single biggest score lever for most students.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "Conclusion",
+      },
+      {
+        type: "paragraph",
+        text:
+          "TEF Canada is a well-recognized, IRCC-accepted path to strengthen your CRS score or meet language requirements for PR. Registering early, understanding the score chart, and preparing with structured mock tests will put you in the best position to hit your target CLB level.",
+      },
+      {
+        type: "interlinking",
+        title: "Locations & Study Centers We Serve",
+        description:
+          "Join live online French batches for Mohali, Zirakpur & nearby areas, or connect from anywhere worldwide.",
+        items: [
+          {
+            title: "French Classes for Mohali — Live Online",
+            description: "Certified faculty, small batches, and DELF/TEF/TCF exam prep for Phase 7, Phase 8, Sector 62 & nearby.",
+            href: "/locations/french-classes-mohali",
+            badge: "Mohali",
+          },
+          {
+            title: "French Classes for Zirakpur — Live Online",
+            description: "Live online French batches with DELF/TEF/TCF exam prep for VIP Road, Dhakoli, Baltana & nearby.",
+            href: "/locations/french-classes-zirakpur",
+            badge: "Zirakpur",
+          },
+          {
+            title: "French Classes in Chandigarh",
+            description: "Home tuition and live online French classes for Chandigarh, Mohali & Panchkula learners.",
+            href: "/services/french-classes-chandigarh",
+            badge: "Chandigarh (Service)",
+          },
+        ],
+      },
+      {
+        type: "references",
+        items: [
+          {
+            title: "TEF Canada Test Information",
+            publisher: "Chambre de Commerce et d'Industrie de Paris (CCIP)",
+            url: "https://www.lefrancaisdesaffaires.fr/en/tests-diplomas/tef-canada/",
+          },
+          {
+            title: "Canadian Language Benchmarks (CLB)",
+            publisher: "Language Canada",
+            url: "https://www.language.ca/",
+          },
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "What is the TEF exam for Canada?",
+        answer:
+          "TEF Canada evaluates French language proficiency for immigration, education, and professional purposes, and is widely used to claim French-language points for Canada PR through Express Entry.",
+      },
+      {
+        question: "Which is better, TEF or TCF?",
+        answer:
+          "Neither is officially better — both are equally IRCC-recognized. TEF Canada's fixed-difficulty format tends to suit stronger candidates targeting CLB 7 or higher, while TCF Canada's adaptive format tends to suit beginners.",
+      },
+      {
+        question: "What is the CLB 7 score in TEF?",
+        answer:
+          "A TEF Canada score of roughly 248–279 typically converts to CLB 7, though IRCC periodically updates these thresholds — always verify the current chart before setting your target.",
+      },
+      {
+        question: "How much does the TEF exam cost in India?",
+        answer:
+          "TEF Canada exam fees in India are typically in the range of ₹18,000–₹20,000, though this varies by test center and is subject to change. Always confirm the current fee directly with your center before booking.",
+      },
+      {
+        question: "Is the TEF exam hard to pass?",
+        answer:
+          "Difficulty depends on your current French level and comfort with TEF's fixed-difficulty, longer-passage format. Candidates already comfortable at B2+ level tend to find it more manageable than TCF's adaptive style.",
+      },
+      {
+        question: "Can I give TEF from India?",
+        answer:
+          "Yes, TEF Canada is conducted at Alliance Française branches and other CCIP-authorized test centers across India, including the Chandigarh–Tricity region. You do not need to travel abroad.",
+      },
+      {
+        question: "What TEF level is needed for PR?",
+        answer:
+          "It depends on your target CRS points, but many Express Entry candidates aim for at least CLB 7 (TEF score roughly 248–279) to claim meaningful French-language points, with CLB 9 (roughly 309–348) unlocking higher point brackets.",
+      },
+      {
+        question: "How are TEF Canada tests scored?",
+        answer:
+          "Each of the four modules — listening, speaking, reading, and writing — is scored separately and then converted to a CLB-equivalent benchmark used by IRCC for CRS point calculation.",
+      },
+    ],
+    cta: {
+      title: "Start Your TEF Canada Preparation Today",
+      description:
+        "Looking for reliable TEF Canada coaching? Book a free consultation with expert tutors, get a personalized study plan, and prepare confidently for your target CLB score.",
+      serviceName: "TEF Canada Coaching",
+      serviceLink: "/services/tef-canada-coaching-chandigarh",
+      bookingLink:
+        `https://wa.me/${SITE_CONFIG.whatsapp}?text=Hi%2C%20I%20want%20to%20book%20a%20free%20consultation%20for%20TEF%20Canada%20preparation.%20Please%20share%20the%20available%20batch%20timings.`,
+      whatsappLink:
+        `https://wa.me/${SITE_CONFIG.whatsapp}?text=Hi%2C%20I%20have%20a%20question%20about%20TEF%20Canada%20classes.`,
       features: [
         "Live Online & Offline Batches",
         "Free Mock Test Included",

@@ -710,10 +710,10 @@ export const blogs = [
    {
     id: 3,
     slug: "tcf-canada-exam-guide-registration-fees-score-chart",
-   title:
-  "TCF Canada Exam Guide 2026: Fees, Registration & Score",
-   excerpt:
-      "Planning to give TCF Canada for PR? Here's everything you need — registration process, exam fees in India, CLB score chart, exam pattern, and how to prepare.",
+    title:
+      "TCF Exam Fees & Registration Guide 2026",
+    excerpt:
+      "Wondering how much the TCF exam costs? Here's the full fee breakdown, registration process, CLB score chart, exam pattern, and how to prepare — all in one guide.",
     category: "TEF/TCF Preparation",
     author: {
       name: "Sakshi Goel",
@@ -747,34 +747,55 @@ export const blogs = [
       certification: "Exam-Ready Score Guarantee Program",
     },
 
-   seo: {
-  title:
-    "TCF Canada Exam Guide 2026: Fees, Registration & Score",
-  description:
-    "Complete guide to the TCF Canada exam — registration process, exam fees in India, CLB score chart, exam pattern, and preparation tips for Canada PR aspirants.",
-  keywords: [
-    "TCF Canada registration",
-    "TCF Canada exam fees",
-    "TCF Canada exam pattern",
-    "TCF Canada CLB 7",
-    "TCF Canada mock test",
-    "TCF Canada score chart",
-    "TCF Canada exam preparation",
-    "Inquisitive Mind Academy",
-  ],
-},
+    seo: {
+      title:
+        "TCF Exam Fees & Registration Guide 2026",
+      description:
+        "TCF exam fees explained — full cost breakdown, registration process, CLB score chart, and exam pattern. Complete 2026 guide for Canada PR aspirants.",
+      keywords: [
+        "TCF exam fees",
+        "TCF Canada exam fees",
+        "TCF Canada registration",
+        "TCF Canada exam pattern",
+        "TCF Canada CLB 7",
+        "TCF Canada mock test",
+        "TCF Canada score chart",
+        "TCF Canada exam preparation",
+        "Inquisitive Mind Academy",
+      ],
+    },
     tags: [
       "TCF",
       "TCF Canada",
+      "TCF Exam Fees",
       "Canada PR",
-      "Exam Fees",
       "CLB Score",
     ],
     content: [
       {
         type: "paragraph",
         text:
-          "If you've decided to take TCF Canada for your Express Entry or PR application, the next questions are usually practical ones — how do I register, what does it cost, what score do I actually need, and how do I prepare. This guide walks through all of it in one place, so you can plan your exam timeline with confidence.",
+          "If you've decided to take TCF Canada for your Express Entry or PR application, the first practical question is usually cost — followed by how to register, what score you need, and how to prepare. This guide covers all of it in one place, starting with the fees.",
+      },
+      {
+        type: "tip",
+        title: "TCF Exam Fees at a Glance",
+        text:
+          "TCF Canada exam fees in India typically range from ₹18,000–₹19,500, depending on the test center. Some centers charge separately per module if taken individually, and additional charges may apply for late registration or rescheduling. See the full breakdown below.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "TCF Canada Exam Fees in India",
+      },
+      {
+        type: "list",
+        items: [
+          "TCF Canada exam fee: approximately ₹18,000–₹19,500 (varies by test center)",
+          "Some centers charge separately for the four modules if taken individually",
+          "Additional charges may apply for late registration, rescheduling, or result rechecking",
+          "Fees are subject to change — always confirm the latest amount directly with your test center before booking",
+        ],
       },
       {
         type: "heading",
@@ -859,56 +880,41 @@ export const blogs = [
           "CLB conversion thresholds are periodically updated by IRCC. Always verify the current chart on the official IRCC website before setting your target score, especially if you're relying on French points to boost your CRS score.",
       },
       {
-        type: "heading",
-        level: 2,
-        text: "TCF Canada Exam Fees in India",
-      },
-      {
-        type: "list",
+        type: "interlinking",
+        title: "Explore Courses, Services & Pricing",
+        description:
+          "Explore our specialized French coaching programs, TCF exam preparation, French classes, tutor opportunities, and fee plans.",
         items: [
-          "TCF Canada exam fee: approximately ₹18,000–₹19,500 (varies by test center)",
-          "Some centers charge separately for the four modules if taken individually",
-          "Additional charges may apply for late registration, rescheduling, or result rechecking",
-          "Fees are subject to change — always confirm the latest amount directly with your test center before booking",
+          {
+            title: "TCF Canada Coaching",
+            description:
+              "Structured TCF Canada preparation with mock tests and personalized study plans.",
+            href: "/services/tcf-canada-coaching-chandigarh",
+            badge: "Service",
+          },
+          {
+            title: "French Classes in Chandigarh",
+            description:
+              "In-person French language classes in Chandigarh for all proficiency levels.",
+            href: "/services/french-classes-chandigarh",
+            badge: "Service",
+          },
+          {
+            title: "Online French Tutor Jobs",
+            description:
+              "Explore online French tutor opportunities for teaching French remotely.",
+            href: "/services/online-french-tutor-jobs",
+            badge: "Service",
+          },
+          {
+            title: "French Tutor Jobs in Chandigarh",
+            description:
+              "Discover French tutor opportunities in Chandigarh for qualified French teachers.",
+            href: "/services/french-tutor-jobs-chandigarh",
+            badge: "Service",
+          },
         ],
       },
-    {
-  type: "interlinking",
-  title: "Explore Courses, Services & Pricing",
-  description:
-    "Explore our specialized French coaching programs, TCF exam preparation, French classes, tutor opportunities, and fee plans.",
-  items: [
-   
-    {
-      title: "TCF Canada Coaching",
-      description:
-        "Structured TCF Canada preparation with mock tests and personalized study plans.",
-      href: "/services/tcf-canada-coaching-chandigarh",
-      badge: "Service",
-    },
-    {
-      title: "French Classes in Chandigarh",
-      description:
-        "In-person French language classes in Chandigarh for all proficiency levels.",
-      href: "/services/french-classes-chandigarh",
-      badge: "Service",
-    },
-    {
-      title: "Online French Tutor Jobs",
-      description:
-        "Explore online French tutor opportunities for teaching French remotely.",
-      href: "/services/online-french-tutor-jobs",
-      badge: "Service",
-    },
-    {
-      title: "French Tutor Jobs in Chandigarh",
-      description:
-        "Discover French tutor opportunities in Chandigarh for qualified French teachers.",
-      href: "/services/french-tutor-jobs-chandigarh",
-      badge: "Service",
-    },
-  ],
-},
       {
         type: "heading",
         level: 2,
@@ -943,7 +949,7 @@ export const blogs = [
       {
         type: "paragraph",
         text:
-          "TCF Canada is a well-recognized, IRCC-accepted path to strengthen your CRS score or meet language requirements for PR. Registering early, understanding the score chart, and preparing with structured mock tests will put you in the best position to hit your target CLB level.",
+          "TCF Canada is a well-recognized, IRCC-accepted path to strengthen your CRS score or meet language requirements for PR. Knowing the exact fees upfront, registering early, and preparing with structured mock tests will put you in the best position to hit your target CLB level.",
       },
       {
         type: "interlinking",
@@ -989,6 +995,11 @@ export const blogs = [
     ],
     faq: [
       {
+        question: "How much does TCF Canada cost in India?",
+        answer:
+          "TCF Canada exam fees in India are typically in the range of ₹18,000–₹19,500, though this varies by test center and is subject to change. Always confirm the current fee directly with your center before booking.",
+      },
+      {
         question: "How do I prepare for TCF?",
         answer:
           "Start with a diagnostic mock test to find your current CLB level, then build a daily routine covering all four modules — listening, reading, speaking, and writing — with extra focus on timed practice for the writing and speaking sections.",
@@ -997,11 +1008,6 @@ export const blogs = [
         question: "Is there a TCF exam in India?",
         answer:
           "Yes, TCF Canada is conducted at Alliance Française branches and other FEI-authorized test centers across India, including cities in the Chandigarh–Tricity region.",
-      },
-      {
-        question: "How much does TCF Canada cost in India?",
-        answer:
-          "TCF Canada exam fees in India are typically in the range of ₹18,000–₹19,500, though this varies by test center and is subject to change. Always confirm the current fee directly with your center before booking.",
       },
       {
         question: "Is TCF accepted for PR?",

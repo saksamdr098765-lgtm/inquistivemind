@@ -119,7 +119,7 @@ export default async function CourseDetailPage({ params }) {
                     href="#enroll"
                     className="rounded-xl bg-yellow-500 px-8 py-4 text-sm font-bold text-slate-950 hover:bg-yellow-400 transition-all shadow-lg"
                   >
-                    Enroll Now at ₹{course.price.toLocaleString()}
+                    Enroll Now at ₹{course?.price?.toLocaleString()}
                   </a>
                 </div>
               </div>
@@ -143,12 +143,12 @@ export default async function CourseDetailPage({ params }) {
                     <div>
                       <span className="text-xs text-slate-400">Enrollment Fee</span>
                       <p className="text-3xl font-extrabold text-white">
-                        ₹{course.price.toLocaleString()}
+                        ₹{course?.price?.toLocaleString()}
                       </p>
                     </div>
                     {course.originalPrice && (
                       <span className="text-sm font-semibold text-slate-400 line-through">
-                        ₹{course.originalPrice.toLocaleString()}
+                        ₹{course?.originalPrice?.toLocaleString()}
                       </span>
                     )}
                   </div>

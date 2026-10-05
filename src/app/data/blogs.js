@@ -1079,7 +1079,7 @@ export const blogs = [
     publishedAt: "September 8, 2026",
     readingTime: "9 min read",
     coverImage: "/blogs/tef-canada-exam-guide-registration-fees-score-chart/cover.webp",
-    featured: true,
+    featured: false,
     quickInfo: {
       courseName: "TEF Canada Preparation",
       duration: "4 Months",
@@ -1382,6 +1382,309 @@ export const blogs = [
         "Personalized Study Plan",
         "Experienced French Tutors",
         "Flexible Batch Timings",
+      ],
+    },
+  },
+    {
+    id: 5,
+    slug: "home-tutor-salary-in-chandigarh-how-much-can-you-earn",
+    title: "Home Tutor Salary in Chandigarh (2026): What You Can Earn",
+    excerpt:
+      "How much does a home tutor earn in Chandigarh? See what decides tuition pay, how to calculate your monthly income, and how freshers and college students can start earning.",
+    category: "Tutor Careers",
+    author: {
+      name: "Sakshi Goel",
+      credentials: "French Faculty · 10+ Years Teaching Experience · DELF/DALF Trained",
+      image: "/founder.webp",
+      bio:
+        "French language educator with 10+ years of teaching experience, having taught both adults and young learners across different institutions. Experienced in preparing students for TEF/TCF-style examinations, with specialization in French language, communication skills, and exam-oriented preparation across beginner to advanced levels.",
+    },
+    reviewedBy: {
+      name: "Sakshi Goel",
+      role: "French Faculty",
+    },
+    relatedCourses: [
+      "academic-excellence-program",
+      "english-speaking-mastery",
+      "french-language-program",
+    ],
+    publishedAt: "October 5, 2026",
+    lastUpdated: "October 5, 2026",
+    readingTime: "8 min read",
+    coverImage: "/blogs/home-tutor-salary-in-chandigarh-how-much-can-you-earn/cover.webp",
+    featured: true,
+    quickInfo: {
+      courseName: "Home Tutor Jobs — Earnings Guide",
+      duration: "8 mins",
+      mode: "Home Tuition & Online",
+      level: "Freshers to Experienced Tutors",
+      batchSize: "1-on-1 & Small Groups",
+      certification: "N/A",
+    },
+    seo: {
+      title: "Home Tutor Salary in Chandigarh (2026): What You Can Earn",
+      description:
+        "How much does a home tutor earn in Chandigarh? Learn what decides tuition pay, how to calculate monthly income, and how freshers can start earning.",
+      keywords: [
+        "home tutor salary",
+        "home tutor salary per month",
+        "home tutor salary in Chandigarh",
+        "tutor jobs salary for freshers",
+        "how much do home tutors earn",
+        "can I tutor without a degree",
+        "can I make a living as a tutor",
+        "home tutor jobs in Chandigarh",
+      ],
+    },
+    tags: [
+      "Home Tutor Salary",
+      "Tutor Jobs",
+      "Chandigarh",
+      "Home Tuition",
+      "Freshers",
+    ],
+    content: [
+      {
+        type: "paragraph",
+        text:
+          "If you are thinking about becoming a home tutor in Chandigarh, the first question is usually simple: how much will I actually earn? There is no single fixed salary for home tutors, because pay depends on your subject, the class you teach, how you teach, and how many students you take on. This guide explains what decides tuition pay, shows you how to calculate your own monthly income, and covers what freshers and college students can realistically expect.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "How Much Does a Home Tutor Earn in Chandigarh?",
+      },
+      {
+        type: "paragraph",
+        text:
+          "Unlike a salaried job, home tutors are usually paid per session or per month for each student. So your monthly income is not one number. It is the total of what you earn from every student you teach. A tutor with two students and a tutor with ten students can earn very differently even at the same hourly rate.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "What Decides a Home Tutor's Pay?",
+      },
+      {
+        type: "list",
+        items: [
+          "Subject: specialist subjects such as French, spoken English, and exam preparation generally pay more than basic school-level tuition",
+          "Class level: senior classes and board-exam preparation usually pay more than primary classes",
+          "Experience and results: tutors with proven student results can charge higher rates",
+          "Mode: home tuition involves travel time, while online tuition lets you fit more sessions into the same day",
+          "Group size: 1-on-1 sessions pay more per student, while small groups let you earn more per hour overall",
+          "Number of students: your total income depends on how many students you teach each week",
+        ],
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "How to Calculate Your Monthly Tuition Income",
+      },
+      {
+        type: "paragraph",
+        text:
+          "A simple formula works for any subject: number of students × sessions per week × about 4 weeks × your rate per session. Here are two illustrative examples using ₹400 per one-hour session, the lower end of the rate range our French tutors currently earn.",
+      },
+      {
+        type: "list",
+        items: [
+          "2 students × 3 sessions a week × 4 weeks = 24 sessions, so 24 × ₹400 = ₹9,600 a month",
+          "5 students × 3 sessions a week × 4 weeks = 60 sessions, so 60 × ₹400 = ₹24,000 a month",
+          "Higher rates, such as French or exam-prep sessions, raise these totals without adding more hours",
+        ],
+      },
+      {
+        type: "warning",
+        title: "Illustrative Examples Only",
+        text:
+          "These figures show how the calculation works and are not a guaranteed income. Your actual earnings depend on your subject, your students, and how many sessions you teach each month.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "Home Tutor Salary for Freshers and College Students",
+      },
+      {
+        type: "paragraph",
+        text:
+          "Freshers usually start with a few students at the lower end of the rate range, then raise their rates as they build results, reviews, and referrals. College students often begin with one or two evening or weekend batches and grow from there. The fastest way to move up is to teach one subject really well, not many subjects averagely.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "Can You Become a Home Tutor Without a Degree?",
+      },
+      {
+        type: "paragraph",
+        text:
+          "Unlike school teaching jobs, which require qualifications such as B.Ed, private home tuition has no mandatory degree requirement. Parents and students mainly look for strong command of the subject, clear explanations, and good results. That said, a relevant degree or certificate helps you get higher-level students and higher rates, for example DELF/DALF for French or a B.Ed for school subjects.",
+      },
+      {
+        type: "tip",
+        title: "Tutor Tip — From Sakshi",
+        text:
+          "In my experience, students stay longest with tutors who give a short progress update after every few sessions. It takes five minutes, and it is the easiest way to earn referrals, which are the cheapest way to fill your schedule.",
+      },
+      {
+        type: "interlinking",
+        title: "Explore Tutor Jobs & Opportunities",
+        description:
+          "Apply for home tuition jobs across Chandigarh, Mohali and Panchkula, or teach French online.",
+        items: [
+          {
+            title: "Home Tutor Jobs in Chandigarh",
+            description: "Get matched with students near you for home or online tuition. Freshers and college students welcome.",
+            href: "/services/home-tutor-jobs-chandigarh",
+            badge: "Service",
+          },
+          {
+            title: "Home Tutor Jobs in Mohali",
+            description: "Home tuition jobs across Mohali phases and sectors, Kharar, Zirakpur and Panchkula.",
+            href: "/locations/home-tutor-jobs-mohali",
+            badge: "Location",
+          },
+          {
+            title: "French Tutor Jobs in Chandigarh",
+            description: "Teach French at home or online and earn ₹400–₹1,200 per hour.",
+            href: "/services/french-tutor-jobs-chandigarh",
+            badge: "Service",
+          },
+          {
+            title: "Online French Tutor Jobs",
+            description: "Teach French online to students across India and worldwide on your own schedule.",
+            href: "/services/online-french-tutor-jobs",
+            badge: "Service",
+          },
+        ],
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "Can You Make a Living as a Tutor?",
+      },
+      {
+        type: "paragraph",
+        text:
+          "Yes, many tutors do, but it takes a steady base of students and a good use of your time. Full-time tutors usually combine home tuition, online classes, and a specialist subject, so travel time does not eat into their earning hours.",
+      },
+      {
+        type: "list",
+        items: [
+          "Cluster students by area so you are not travelling across the city between sessions",
+          "Add online students to fill gaps in your day, since online sessions need no travel",
+          "Build a specialist subject, such as French or spoken English, that pays more than general tuition",
+          "Ask satisfied parents for referrals, which usually bring in the most reliable students",
+        ],
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "How to Find Home Tutor Jobs in Chandigarh",
+      },
+      {
+        type: "paragraph",
+        text:
+          "You can search job boards and local groups, but the simplest route is to apply to a platform that matches students to tutors, so requests come to you instead of you chasing them.",
+      },
+      {
+        type: "list",
+        items: [
+          "Apply through a tutor-matching platform with your subjects, class levels, and areas",
+          "Keep your profile specific: name the classes and boards you teach, and your areas",
+          "Be ready for a short demo class, since most students ask for one before confirming",
+          "Respond quickly when a match comes in, because students usually contact more than one tutor",
+        ],
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "Conclusion",
+      },
+      {
+        type: "paragraph",
+        text:
+          "A home tutor's income in Chandigarh depends on subject, class level, mode, and the number of students, rather than one fixed salary. Start with the simple formula above to estimate your own monthly income, build one strong subject, and fill your week with a mix of home and online sessions. When you are ready, apply and we will match you with students near you.",
+      },
+      {
+        type: "interlinking",
+        title: "Locations & Study Centers We Serve",
+        description:
+          "Home tuition and online classes across Chandigarh, Mohali, Zirakpur and Panchkula.",
+        items: [
+          {
+            title: "Home Tutor Jobs in Mohali",
+            description: "Phase 3B2, Phase 7, Phase 8, Sector 62, Sector 70, Kharar and nearby.",
+            href: "/locations/home-tutor-jobs-mohali",
+            badge: "Mohali",
+          },
+          {
+            title: "French Classes for Zirakpur — Live Online",
+            description: "Live online French batches for VIP Road, Dhakoli, Baltana and nearby.",
+            href: "/locations/french-classes-zirakpur",
+            badge: "Zirakpur",
+          },
+          {
+            title: "French Classes for Panchkula — Live Online",
+            description: "School, adult and exam batches for Panchkula learners.",
+            href: "/locations/french-classes-panchkula",
+            badge: "Panchkula",
+          },
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "What is the salary of a home tutor per month?",
+        answer:
+          "There is no fixed monthly salary. Home tutors are paid per session or per month for each student, so income depends on your subject, class level, rate, and number of students. Use the formula in this guide to estimate yours.",
+      },
+      {
+        question: "How much can a home tutor get paid in Chandigarh?",
+        answer:
+          "Rates vary by subject and class level. French tutors with Inquisitive Mind Academy currently earn ₹400–₹1,200 per hour, and rates for other subjects depend on the class and your experience.",
+      },
+      {
+        question: "What is the tutor jobs salary for freshers?",
+        answer:
+          "Freshers usually start toward the lower end of the rate range with a few students, then raise rates as they build results and referrals.",
+      },
+      {
+        question: "Can I tutor without a degree?",
+        answer:
+          "Yes. Private home tuition has no mandatory degree requirement, unlike school teaching jobs. Subject knowledge and results matter most, though a relevant degree or certificate helps with higher-level students.",
+      },
+      {
+        question: "Can I make a living as a home tutor?",
+        answer:
+          "Yes, if you build a steady base of students. Full-time tutors usually combine home and online sessions and teach a specialist subject so travel time does not limit their earning hours.",
+      },
+      {
+        question: "How do I find tutor jobs online?",
+        answer:
+          "Apply through a tutor-matching platform with your subjects and areas, keep your profile specific, and respond quickly when a student request matches.",
+      },
+      {
+        question: "Are part-time home tutor jobs available in Chandigarh?",
+        answer:
+          "Yes. You can take a few hours a week in the evenings or on weekends, which suits college students and working professionals.",
+      },
+    ],
+    cta: {
+      title: "Ready to Start Earning as a Home Tutor?",
+      description:
+        "Share your subjects, areas, and timings, and get matched with students looking for a home or online tutor near you.",
+      serviceName: "Home Tutor Jobs in Chandigarh",
+      serviceLink: "/services/home-tutor-jobs-chandigarh",
+      bookingLink:
+        `https://wa.me/${SITE_CONFIG.whatsapp}?text=Hi%2C%20I%20want%20to%20apply%20for%20home%20tutor%20jobs%20in%20Chandigarh.%20Please%20share%20the%20application%20process.`,
+      whatsappLink:
+        `https://wa.me/${SITE_CONFIG.whatsapp}?text=Hi%2C%20I%20have%20a%20question%20about%20home%20tutor%20jobs%20and%20earnings.`,
+      features: [
+        "Home & Online Tuition Jobs",
+        "Freshers Welcome",
+        "Flexible Teaching Hours",
+        "Students Matched For You",
+        "Part-Time or Full-Time",
       ],
     },
   },

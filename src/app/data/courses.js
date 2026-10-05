@@ -12,7 +12,6 @@ import {
 export const courses = [
   // 1. English Speaking Mastery
   {
-    _id: "685a1f4a7b9c4d001f2e1234",
     id: "course-eng-1",
     title: "English Speaking Mastery Course",
     slug: "english-speaking-mastery",
@@ -22,8 +21,6 @@ export const courses = [
     durationInMonths: 3,
     mode: "Live Online Batches",
     classType: "Live Online",
-    price: 4999,
-    originalPrice: 7999,
     language: "English",
     status: "published",
     enrollmentOpen: true,
@@ -133,17 +130,16 @@ The course focuses on practical communication rather than memorization. Students
       "Mock Interviews & HR Q&A Sessions",
       "Accredited Certificate of Completion",
     ],
-    seoTitle: "English Speaking Course | Spoken English Classes & Communication Skills Training",
-    seoDescription: "Join our English Speaking Mastery Course to improve spoken English, fluency, communication skills, public speaking, and interview preparation.",
+    // SEO title kept to 50-60 characters; meta description kept to 140-160 characters
+    seoTitle: "Spoken English Classes in Chandigarh | IMA Course",
+    seoDescription:
+      "Join live Spoken English classes in Chandigarh. Build fluency, pronunciation, vocabulary and interview confidence with expert trainers at IMA.",
     seo: {
-      title: "English Speaking Course | Spoken English Classes | Inquisitive Mind Academy",
-      description: "Improve spoken English fluency, public speaking, and interview skills with live interactive classes.",
+      title: "Spoken English Classes in Chandigarh | IMA Course",
+      description:
+        "Join live Spoken English classes in Chandigarh. Build fluency, pronunciation, vocabulary and interview confidence with expert trainers at IMA.",
       keywords: ["English speaking course", "Spoken English classes", "Communication skills"],
     },
-    batches: [
-      { _id: "eng-batch-1", name: "Morning Batch", startDate: "2026-07-01", students: 35 },
-      { _id: "eng-batch-2", name: "Evening Batch", startDate: "2026-07-10", students: 28 },
-    ],
     results: [
       {
         name: "Aman Sharma",
@@ -169,15 +165,19 @@ The course focuses on practical communication rather than memorization. Students
       { icon: <FaBullhorn />, title: "Public Speaking", description: "Develop presentation skills and confidence." },
     ],
     faq: [
-      { question: "Do I need prior English knowledge?", answer: "No! This course starts from basic sentence building." },
-      { question: "Will I get a certificate?", answer: "Yes, an accredited certificate is provided upon completion." },
+      { question: "Do I need prior English knowledge to join?", answer: "No! This course starts from basic sentence building, so complete beginners are welcome." },
+      { question: "Will I get a certificate after completion?", answer: "Yes, an accredited certificate of completion is provided at the end of the course." },
+      { question: "How can I improve my spoken English fast?", answer: "Consistent daily speaking practice, live role plays, and immediate feedback — exactly what this course provides — is the fastest way to improve." },
+      { question: "Is 3 months enough to become fluent in English?", answer: "For most beginner to intermediate learners, 60 hours of structured live practice over 3 months builds noticeable, lasting fluency." },
+      { question: "Can I learn spoken English online from home?", answer: "Yes, all sessions are live and interactive online, so you can join from anywhere with a stable internet connection." },
+      { question: "How do I overcome hesitation while speaking English?", answer: "Regular group discussions, role plays, and low-pressure speaking drills in class gradually remove hesitation and build confidence." },
+      { question: "What is the best way to prepare for an English interview?", answer: "Mock interviews, HR question practice, and professional vocabulary building — all covered in this course — are the most effective preparation methods." },
     ],
     relatedCourses: ["french-language-program", "academic-excellence-program", "spoken-french-masterclass"],
   },
 
   // 2. French Language Mastery Program
   {
-    _id: "685a1f4a7b9c4d001f2e1235",
     id: "course-fr-program",
     title: "French Language Mastery Program",
     slug: "french-language-program",
@@ -187,8 +187,6 @@ The course focuses on practical communication rather than memorization. Students
     durationInMonths: 6,
     mode: "Live Online & Offline Center",
     classType: "Live Online",
-    price: 6999,
-    originalPrice: 9999,
     language: "French",
     status: "published",
     enrollmentOpen: true,
@@ -283,17 +281,15 @@ The course focuses on all four language skills—speaking, listening, reading, a
       "DELF & TEF Canada Mock Exam Practice",
       "Small Group Interactive Batches",
     ],
-    seoTitle: "French Language Course | Learn French Online | DELF Preparation Classes",
-    seoDescription: "Join our French Language Mastery Program to learn French speaking, grammar, vocabulary, pronunciation, and DELF exam preparation.",
+    seoTitle: "French Language Course in Chandigarh | A1 to B2",
+    seoDescription:
+      "Learn French from A1 to B2 in Chandigarh with live classes covering speaking, grammar, vocabulary and DELF exam preparation at IMA.",
     seo: {
-      title: "French Language Mastery Program | Inquisitive Mind Academy",
-      description: "Learn French online from A1 to B2 level with certified native-aligned tutors.",
+      title: "French Language Course in Chandigarh | A1 to B2",
+      description:
+        "Learn French from A1 to B2 in Chandigarh with live classes covering speaking, grammar, vocabulary and DELF exam preparation at IMA.",
       keywords: ["French language course", "Learn French online", "DELF prep"],
     },
-    batches: [
-      { _id: "fr-batch-1", name: "Weekend Batch", startDate: "2026-07-15", students: 20 },
-      { _id: "fr-batch-2", name: "Evening Batch", startDate: "2026-08-01", students: 18 },
-    ],
     results: [
       {
         name: "Neha Kapoor",
@@ -310,14 +306,19 @@ The course focuses on all four language skills—speaking, listening, reading, a
       { icon: <FaCheckCircle />, title: "DELF Preparation", description: "Prepare confidently for French certification exams." },
     ],
     faq: [
-      { question: "Is this suitable for beginners?", answer: "Yes, it covers starting from zero up to advanced level." },
+      { question: "Is this suitable for complete beginners?", answer: "Yes, it covers everything from zero knowledge up to an advanced B2 level." },
+      { question: "How long does it take to become fluent in French?", answer: "With 120 hours of structured live classes over 6 months, most learners reach conversational B1-B2 fluency." },
+      { question: "Which is better for Canada PR, DELF or TEF?", answer: "TEF Canada is the exam accepted for Express Entry CRS points, while DELF is a general proficiency diploma; this program prepares you for both pathways." },
+      { question: "Can I learn French online from India?", answer: "Yes, this program is delivered through live online classes as well as an offline center, so you can choose either mode." },
+      { question: "Is French difficult to learn for Hindi or Punjabi speakers?", answer: "French has a learning curve for pronunciation and grammar, but with structured, step-by-step teaching it becomes manageable even for absolute beginners." },
+      { question: "How many levels of French are there?", answer: "French proficiency follows the CEFR framework with six levels: A1, A2, B1, B2, C1, and C2, and this program covers A1 through B2." },
+      { question: "Do you provide DELF exam mock tests?", answer: "Yes, the program includes DELF and TEF Canada mock exam practice as part of the curriculum." },
     ],
     relatedCourses: ["french-a1-beginner-course", "french-a2-elementary-course", "tef-canada-preparation-bundle"],
   },
 
   // 3. Academic Excellence Program
   {
-    _id: "685a1f4a7b9c4d001f2e1236",
     id: "course-acad-1",
     title: "Academic Excellence Program",
     slug: "academic-excellence-program",
@@ -327,8 +328,6 @@ The course focuses on all four language skills—speaking, listening, reading, a
     durationInMonths: 12,
     mode: "Online & Offline Centers",
     classType: "Online & Offline",
-    price: 3999,
-    originalPrice: 6999,
     language: "English & Hindi",
     status: "published",
     enrollmentOpen: true,
@@ -414,17 +413,15 @@ The program focuses on building strong subject fundamentals, improving academic 
       "Regular Chapter Tests & Parent Progress Meetings",
       "Small Batch Personal Attention",
     ],
-    seoTitle: "Academic Tuition Classes | Class 1 to 12 Coaching & Board Exam Preparation",
-    seoDescription: "Join our Academic Excellence Program for Class 1 to 12 students. Improve grades, strengthen concepts, and prepare for board exams.",
+    seoTitle: "Tuition Classes in Chandigarh | Class 1-12 CBSE/ICSE",
+    seoDescription:
+      "Academic tuition in Chandigarh for Class 1-12 CBSE, ICSE and PSEB students. Improve grades, strengthen concepts and ace board exams.",
     seo: {
-      title: "Academic Excellence Program | Class 1-12 Tuition | Inquisitive Mind Academy",
-      description: "Comprehensive school tuition for Class 1 to 12 students in CBSE, ICSE, and Board exams.",
+      title: "Tuition Classes in Chandigarh | Class 1-12 CBSE/ICSE",
+      description:
+        "Academic tuition in Chandigarh for Class 1-12 CBSE, ICSE and PSEB students. Improve grades, strengthen concepts and ace board exams.",
       keywords: ["School tuition", "CBSE coaching", "Class 1-12 tuition"],
     },
-    batches: [
-      { _id: "acad-batch-1", name: "Regular Batch", startDate: "2026-07-01", students: 50 },
-      { _id: "acad-batch-2", name: "Weekend Batch", startDate: "2026-07-10", students: 35 },
-    ],
     results: [
       {
         name: "Rahul Singh",
@@ -440,7 +437,12 @@ The program focuses on building strong subject fundamentals, improving academic 
       { icon: <FaBookOpen />, title: "Subject Mastery", description: "Develop deep understanding of core subjects." },
     ],
     faq: [
-      { question: "Which boards are covered?", answer: "CBSE, ICSE, PSEB, and all state educational boards." },
+      { question: "Which boards are covered in this tuition program?", answer: "CBSE, ICSE, PSEB, and all major state educational boards are covered." },
+      { question: "Which is the best tuition center in Chandigarh?", answer: "Look for a center offering small batches, regular assessments, and board-aligned curriculum — all of which this program provides." },
+      { question: "How can I improve my child's grades quickly?", answer: "Regular chapter tests, doubt-clearing sessions, and personalized attention, as offered in this program, are the fastest way to improve grades." },
+      { question: "Do you provide both online and offline tuition classes?", answer: "Yes, this program is available through both online sessions and offline center classes." },
+      { question: "What is the fee for tuition classes in Chandigarh?", answer: "Fees vary by class and subject; contact us directly for the latest fee structure for your child's grade." },
+      { question: "Do you offer one-on-one doubt clearing sessions?", answer: "Yes, dedicated doubt sessions are built into the exam preparation module for every student." },
     ],
     relatedCourses: ["english-speaking-mastery", "french-a1-beginner-course"],
   },
@@ -457,8 +459,6 @@ The program focuses on building strong subject fundamentals, improving academic 
     durationInMonths: 2,
     mode: "Online Live & Offline Center",
     classType: "Live Online",
-    price: 4999,
-    originalPrice: 7999,
     language: "French",
     status: "published",
     enrollmentOpen: true,
@@ -528,18 +528,22 @@ The program focuses on building strong subject fundamentals, improving academic 
     whoIsThisFor: ["Complete beginners starting French", "Students planning study in France or Canada"],
     relatedCourses: ["french-a2-elementary-course", "french-b1-intermediate-course", "spoken-french-masterclass"],
     faq: [
-      { question: "Do I need any previous knowledge of French?", answer: "No! This course starts from absolute zero." },
+      { question: "Do I need any previous knowledge of French?", answer: "No! This course starts from absolute zero, ideal for complete beginners." },
+      { question: "How long does it take to complete French A1?", answer: "This course runs for 8 weeks (60 hours) of live, structured instruction." },
+      { question: "Is French A1 enough to work or settle in Canada?", answer: "A1 is only a starting point; Canada PR pathways like TEF Canada typically require at least a B1-B2 level for meaningful CRS points." },
+      { question: "Can a complete beginner learn French A1 in 2 months?", answer: "Yes, with consistent attendance and practice, most learners comfortably complete the A1 level within this 8-week course." },
+      { question: "What is covered in the French A1 syllabus?", answer: "The A1 syllabus covers phonetics, greetings, basic grammar (être, avoir, -ER verbs), articles, and everyday vocabulary." },
+      { question: "Is there a certificate after completing French A1?", answer: "Yes, a certificate of completion is provided along with DELF A1 pattern mock test practice." },
     ],
-    seoTitle: "French A1 Beginner Course | Learn French Online | Inquisitive Mind Academy",
-    seoDescription: "Enroll in the top-rated French A1 Beginner Course. Learn greetings, phonetics, grammar, and daily conversations.",
+    seoTitle: "French A1 Beginner Course in Chandigarh | IMA",
+    seoDescription:
+      "Start learning French from scratch with our A1 Beginner Course in Chandigarh. Master greetings, phonetics, grammar and daily conversation.",
     seo: {
-      title: "French A1 Beginner Course | Learn French Online | Inquisitive Mind Academy",
-      description: "Enroll in the top-rated French A1 Beginner Course.",
+      title: "French A1 Beginner Course in Chandigarh | IMA",
+      description:
+        "Start learning French from scratch with our A1 Beginner Course in Chandigarh. Master greetings, phonetics, grammar and daily conversation.",
       keywords: ["French A1 course", "Learn French for beginners"],
     },
-    batches: [
-      { _id: "fr-a1-b1", name: "Morning Batch", startDate: "2026-07-05", students: 22 },
-    ],
     results: [
       {
         name: "Neha Kapoor",
@@ -567,8 +571,6 @@ The program focuses on building strong subject fundamentals, improving academic 
     durationInMonths: 3,
     mode: "Online Live & Offline Center",
     classType: "Live Online",
-    price: 5999,
-    originalPrice: 8999,
     language: "French",
     status: "published",
     enrollmentOpen: true,
@@ -620,15 +622,22 @@ The program focuses on building strong subject fundamentals, improving academic 
     targetAudience: ["A1 Graduates", "Study Abroad Aspirants", "DELF A2 Candidates"],
     whoIsThisFor: ["Learners who completed A1 level", "Students preparing for DELF A2"],
     relatedCourses: ["french-a1-beginner-course", "french-b1-intermediate-course", "delf-b2-exam-prep-masterclass"],
-    faq: [{ question: "What is the prerequisite?", answer: "Completion of French A1 level." }],
-    seoTitle: "French A2 Elementary Course | DELF A2 Prep | Inquisitive Mind Academy",
-    seoDescription: "Master past tenses, future plans, and routine conversations with our French A2 Elementary Course.",
+    faq: [
+      { question: "What is the prerequisite for French A2?", answer: "Completion of French A1 level or equivalent basic knowledge is required." },
+      { question: "What is the difference between French A1 and A2?", answer: "A1 covers basic greetings and present tense, while A2 adds past and future tenses, opinions, and more complex everyday conversation." },
+      { question: "How long does it take to reach A2 level in French?", answer: "This course covers A2 in 10 weeks (75 hours) of live classes, assuming A1 is already completed." },
+      { question: "Is DELF A2 certification required for Canada immigration?", answer: "DELF A2 alone is generally not sufficient for Canada PR points; higher levels like B1-B2 via TEF Canada are usually needed." },
+      { question: "Can I join French A2 directly without doing A1?", answer: "You'll need A1-level knowledge first; if you already know the basics from elsewhere, we assess your level before enrollment." },
+    ],
+    seoTitle: "French A2 Elementary Course in Chandigarh | DELF A2",
+    seoDescription:
+      "Advance to French A2 level in Chandigarh. Master past & future tenses, opinions and everyday conversation with DELF A2 exam prep.",
     seo: {
-      title: "French A2 Elementary Course | DELF A2 Prep",
-      description: "Master past tenses and routine conversations.",
+      title: "French A2 Elementary Course in Chandigarh | DELF A2",
+      description:
+        "Advance to French A2 level in Chandigarh. Master past & future tenses, opinions and everyday conversation with DELF A2 exam prep.",
       keywords: ["French A2 course", "DELF A2 coaching"],
     },
-    batches: [{ _id: "fr-a2-b1", name: "Morning Batch", startDate: "2026-07-08", students: 20 }],
     results: [
       {
         name: "Riya Sharma",
@@ -655,8 +664,6 @@ The program focuses on building strong subject fundamentals, improving academic 
     durationInMonths: 3,
     mode: "Online Live & Offline Center",
     classType: "Live Online",
-    price: 7499,
-    originalPrice: 11999,
     language: "French",
     status: "published",
     enrollmentOpen: true,
@@ -707,15 +714,22 @@ The program focuses on building strong subject fundamentals, improving academic 
     targetAudience: ["A2 Graduates", "Canada Immigration Aspirants", "DELF B1 Candidates"],
     whoIsThisFor: ["Learners completing A2 level", "Students preparing for DELF B1"],
     relatedCourses: ["french-a2-elementary-course", "french-b2-advanced-course", "tef-canada-preparation-bundle"],
-    faq: [{ question: "Is B1 sufficient for work?", answer: "B1 provides solid working proficiency for basic business." }],
-    seoTitle: "French B1 Intermediate Course | DELF B1 Prep | Inquisitive Mind Academy",
-    seoDescription: "Master independent French communication, Subjunctive mood, and debating skills with French B1 Course.",
+    faq: [
+      { question: "Is French B1 sufficient for a job in a French-speaking country?", answer: "B1 provides solid working proficiency for basic business and daily workplace communication." },
+      { question: "Is French B1 enough for Canada PR CRS points?", answer: "B1 level (NCLC 7) via TEF Canada can earn you meaningful CRS points, though higher levels earn more." },
+      { question: "What comes after B1 in French learning?", answer: "After B1, learners typically progress to B2 (upper-intermediate), followed by C1 and C2 for professional/academic mastery." },
+      { question: "How many CRS points does TEF Canada B1 give?", answer: "NCLC 7, roughly equivalent to B1-B2, is the common target for meaningful Express Entry bonus points — exact figures depend on IRCC's current point grid." },
+      { question: "What is covered in the DELF B1 exam?", answer: "DELF B1 tests listening, reading, writing (formal letters/essays), and speaking on familiar and abstract everyday topics." },
+    ],
+    seoTitle: "French B1 Intermediate Course in Chandigarh | DELF B1",
+    seoDescription:
+      "Achieve independent French fluency at B1 level in Chandigarh. Master subjunctive mood, debates and writing with DELF B1 exam prep.",
     seo: {
-      title: "French B1 Intermediate Course | DELF B1 Prep",
-      description: "Master independent French communication.",
+      title: "French B1 Intermediate Course in Chandigarh | DELF B1",
+      description:
+        "Achieve independent French fluency at B1 level in Chandigarh. Master subjunctive mood, debates and writing with DELF B1 exam prep.",
       keywords: ["French B1 course", "DELF B1 coaching"],
     },
-    batches: [{ _id: "fr-b1-b1", name: "Evening Batch", startDate: "2026-07-10", students: 18 }],
     results: [
       {
         name: "Ananya Gupta",
@@ -742,8 +756,6 @@ The program focuses on building strong subject fundamentals, improving academic 
     durationInMonths: 3,
     mode: "Online Live & Offline Center",
     classType: "Live Online",
-    price: 8999,
-    originalPrice: 14999,
     language: "French",
     status: "published",
     enrollmentOpen: true,
@@ -801,15 +813,22 @@ The program focuses on building strong subject fundamentals, improving academic 
     targetAudience: ["DELF B2 Candidates", "France University Aspirants"],
     whoIsThisFor: ["Candidates sitting for official DELF B2 diploma"],
     relatedCourses: ["french-b1-intermediate-course", "french-b2-advanced-course", "tef-canada-preparation-bundle"],
-    faq: [{ question: "Does DELF B2 expire?", answer: "No, DELF B2 is a lifetime valid diploma." }],
-    seoTitle: "DELF B2 Prep Masterclass | Inquisitive Mind Academy",
-    seoDescription: "Prepare for DELF B2 exam with certified evaluators. Master writing, oral defense, and synthesis.",
+    faq: [
+      { question: "Does the DELF B2 diploma expire?", answer: "No, DELF B2 is a lifetime-valid diploma with no expiry date." },
+      { question: "What is the DELF B2 exam pattern?", answer: "It tests four skills — listening, reading, writing (essay/synthesis), and oral presentation with examiner debate." },
+      { question: "How difficult is the DELF B2 exam?", answer: "B2 is upper-intermediate level, more demanding than B1, requiring nuanced argumentation and formal writing — this masterclass is built specifically to prepare for it." },
+      { question: "Which universities accept DELF B2 for admission?", answer: "Many French public universities accept DELF B2 as proof of language proficiency, waiving separate language entrance tests." },
+      { question: "How many mock exams are included in this masterclass?", answer: "Five full-length, timed DELF B2 mock examinations are included, along with personalized essay grading." },
+    ],
+    seoTitle: "DELF B2 Exam Prep Masterclass in Chandigarh | IMA",
+    seoDescription:
+      "Prepare for DELF B2 in Chandigarh with certified evaluators. Master writing, oral defense and synthesis with 5 full mock exams.",
     seo: {
-      title: "DELF B2 Prep Masterclass",
-      description: "Prepare for DELF B2 exam with certified evaluators.",
+      title: "DELF B2 Exam Prep Masterclass in Chandigarh | IMA",
+      description:
+        "Prepare for DELF B2 in Chandigarh with certified evaluators. Master writing, oral defense and synthesis with 5 full mock exams.",
       keywords: ["DELF B2 masterclass", "DELF B2 exam coaching"],
     },
-    batches: [{ _id: "delf-b2-b1", name: "Weekend Sprint", startDate: "2026-07-20", students: 15 }],
     results: [
       {
         name: "Rohan Mehta",
@@ -836,8 +855,6 @@ The program focuses on building strong subject fundamentals, improving academic 
     durationInMonths: 3,
     mode: "Online Live Batches",
     classType: "Live Online",
-    price: 12999,
-    originalPrice: 19999,
     language: "French",
     status: "published",
     enrollmentOpen: true,
@@ -895,15 +912,22 @@ The program focuses on building strong subject fundamentals, improving academic 
     targetAudience: ["Canada PR Express Entry Applicants", "PNP Candidates"],
     whoIsThisFor: ["Express Entry & PNP candidates aiming for NCLC 7+"],
     relatedCourses: ["delf-b2-exam-prep-masterclass", "french-b1-intermediate-course", "french-b2-advanced-course"],
-    faq: [{ question: "How long is TEF valid for IRCC?", answer: "TEF Canada results are valid for 2 years." }],
-    seoTitle: "TEF Canada Exam Prep Bundle | Inquisitive Mind Academy",
-    seoDescription: "Prepare for TEF Canada to get NCLC 7+ and 50 bonus CRS points for Express Entry Canadian PR.",
+    faq: [
+      { question: "How long is TEF Canada valid for IRCC?", answer: "TEF Canada results are valid for 2 years from the test date for Express Entry purposes." },
+      { question: "What is a good TEF Canada score for Express Entry?", answer: "NCLC 7 or higher across all four modules is generally targeted to unlock significant CRS bonus points." },
+      { question: "What is the difference between TEF Canada and TCF Canada?", answer: "Both are IRCC-approved French tests for Express Entry; TEF is administered by CCI Paris, while TCF is administered by France Éducation International — this bundle focuses on TEF Canada strategy." },
+      { question: "How many CRS points can TEF Canada add to my profile?", answer: "Strong French scores (NCLC 7+) combined with English ability can unlock up to 50 bonus CRS points under current Express Entry rules — always verify the latest IRCC point grid." },
+      { question: "Is TEF Canada harder than a regular French exam?", answer: "TEF Canada is fast-paced and computer-based with strict time limits, which is why this bundle focuses heavily on speed and accuracy drills." },
+    ],
+    seoTitle: "TEF Canada Exam Prep in Chandigarh | NCLC 7+ Coaching",
+    seoDescription:
+      "Boost your Express Entry CRS score with TEF Canada coaching in Chandigarh. Targeted drills to help you reach NCLC 7+ across all modules.",
     seo: {
-      title: "TEF Canada Exam Prep Bundle",
-      description: "Get NCLC 7+ and 50 bonus CRS points for Express Entry.",
+      title: "TEF Canada Exam Prep in Chandigarh | NCLC 7+ Coaching",
+      description:
+        "Boost your Express Entry CRS score with TEF Canada coaching in Chandigarh. Targeted drills to help you reach NCLC 7+ across all modules.",
       keywords: ["TEF Canada prep course", "TEF French coaching"],
     },
-    batches: [{ _id: "tef-b1", name: "Express PR Batch", startDate: "2026-07-12", students: 25 }],
     results: [
       {
         name: "Vikramjit Singh",
@@ -930,8 +954,6 @@ The program focuses on building strong subject fundamentals, improving academic 
     durationInMonths: 1,
     mode: "Online Live & Offline Center",
     classType: "Live Online",
-    price: 3999,
-    originalPrice: 5999,
     language: "French",
     status: "published",
     enrollmentOpen: true,
@@ -981,15 +1003,22 @@ The program focuses on building strong subject fundamentals, improving academic 
     targetAudience: ["Learners seeking oral fluency", "Travelers", "Job Seekers"],
     whoIsThisFor: ["Learners who know grammar but hesitate when speaking"],
     relatedCourses: ["french-a1-beginner-course", "french-a2-elementary-course"],
-    faq: [{ question: "Is there a written exam?", answer: "No, this workshop is 100% oral speaking practice." }],
-    seoTitle: "Spoken French Masterclass | Inquisitive Mind Academy",
-    seoDescription: "Boost spoken French fluency, eliminate accent barriers, and gain confidence in conversation.",
+    faq: [
+      { question: "Is there a written exam in this masterclass?", answer: "No, this workshop is 100% oral speaking practice with no written examination." },
+      { question: "How can I improve my French speaking fluency fast?", answer: "Focused speaking-only practice, like the small group discussions in this 4-week workshop, is the fastest way to build fluency." },
+      { question: "Why do I hesitate while speaking French even though I know grammar?", answer: "Hesitation usually comes from lack of speaking practice, not grammar gaps — this masterclass is designed specifically to close that gap through constant conversation practice." },
+      { question: "Do I need any prior French knowledge to join?", answer: "Yes, basic French vocabulary knowledge is required since this workshop focuses purely on speaking, not grammar basics." },
+      { question: "How is this different from the Spoken French sessions in other courses?", answer: "This is a dedicated, intensive 4-week workshop focused exclusively on accent, idioms, and conversational flow for learners at any level from A1 to B2." },
+    ],
+    seoTitle: "Spoken French Classes in Chandigarh | Fluency Workshop",
+    seoDescription:
+      "Overcome hesitation and speak French fluently. Join our Spoken French Masterclass in Chandigarh for accent, idioms and conversation practice.",
     seo: {
-      title: "Spoken French Masterclass",
-      description: "Boost spoken French fluency and eliminate accent barriers.",
+      title: "Spoken French Classes in Chandigarh | Fluency Workshop",
+      description:
+        "Overcome hesitation and speak French fluently. Join our Spoken French Masterclass in Chandigarh for accent, idioms and conversation practice.",
       keywords: ["Spoken French masterclass", "French speaking course"],
     },
-    batches: [{ _id: "spk-b1", name: "Oral Fluency Batch", startDate: "2026-07-05", students: 12 }],
     results: [
       {
         name: "Karan Johar",
@@ -1016,8 +1045,6 @@ The program focuses on building strong subject fundamentals, improving academic 
     durationInMonths: 3,
     mode: "Online Live & Offline Center",
     classType: "Live Online",
-    price: 8499,
-    originalPrice: 12999,
     language: "French",
     status: "published",
     enrollmentOpen: true,
@@ -1067,15 +1094,22 @@ The program focuses on building strong subject fundamentals, improving academic 
     targetAudience: ["B1 Graduates", "University Aspirants"],
     whoIsThisFor: ["Learners who completed B1 level"],
     relatedCourses: ["french-b1-intermediate-course", "delf-b2-exam-prep-masterclass", "french-c1-proficiency-course"],
-    faq: [{ question: "Is this different from DELF B2 Masterclass?", answer: "Yes, this builds general B2 fluency while the masterclass focuses on exam strategy." }],
-    seoTitle: "French B2 Advanced Course | Near-Fluent French | Inquisitive Mind Academy",
-    seoDescription: "Reach near-fluent French with our B2 Advanced Course. Master nuanced grammar and formal writing.",
+    faq: [
+      { question: "Is this course different from the DELF B2 Masterclass?", answer: "Yes, this course builds general B2 fluency across all skills, while the DELF B2 Masterclass focuses specifically on exam strategy and scoring." },
+      { question: "What is B2 level French equivalent to?", answer: "B2 (CEFR upper-intermediate) is roughly equivalent to being able to work and study comfortably in a French-speaking environment." },
+      { question: "Is B2 French enough to get a job in France?", answer: "B2 provides strong working proficiency for many roles, though some professional or academic positions may require C1." },
+      { question: "How long does it take to reach B2 level from B1?", answer: "This course covers B1-to-B2 progression in 10 weeks (75 hours) of live, structured classes." },
+      { question: "What topics are covered in French B2 grammar?", answer: "Advanced grammar including Subjonctif Passé, gérondif, participe présent, and nuanced argumentative structures." },
+    ],
+    seoTitle: "French B2 Advanced Course in Chandigarh | Near-Fluent",
+    seoDescription:
+      "Reach near-fluent French at B2 level in Chandigarh. Master advanced grammar, formal writing and spontaneous conversation with IMA.",
     seo: {
-      title: "French B2 Advanced Course",
-      description: "Reach near-fluent French with our B2 Advanced Course.",
+      title: "French B2 Advanced Course in Chandigarh | Near-Fluent",
+      description:
+        "Reach near-fluent French at B2 level in Chandigarh. Master advanced grammar, formal writing and spontaneous conversation with IMA.",
       keywords: ["French B2 course", "Advanced French classes"],
     },
-    batches: [{ _id: "fr-b2-b1", name: "Evening Batch", startDate: "2026-07-15", students: 16 }],
     results: [
       {
         name: "Siddharth Sen",
@@ -1102,8 +1136,6 @@ The program focuses on building strong subject fundamentals, improving academic 
     durationInMonths: 3,
     mode: "Online Live & Offline Center",
     classType: "Live Online",
-    price: 10999,
-    originalPrice: 16999,
     language: "French",
     status: "published",
     enrollmentOpen: true,
@@ -1153,15 +1185,22 @@ The program focuses on building strong subject fundamentals, improving academic 
     targetAudience: ["B2 Graduates", "Postgraduate Aspirants"],
     whoIsThisFor: ["Learners requiring professional or academic French C1"],
     relatedCourses: ["french-b2-advanced-course", "french-c2-mastery-course"],
-    faq: [{ question: "Is C1 required for postgraduate study?", answer: "Many postgraduate programs in France request a C1 certificate." }],
-    seoTitle: "French C1 Proficiency Course | DALF C1 Prep | Inquisitive Mind Academy",
-    seoDescription: "Reach professional and academic French proficiency with our C1 course.",
+    faq: [
+      { question: "Is C1 required for postgraduate study in France?", answer: "Many postgraduate programs in France request a C1 certificate, especially for programs taught in French." },
+      { question: "What jobs require French C1 proficiency?", answer: "Senior professional, academic, diplomatic, and client-facing roles in Francophone environments often require C1-level proficiency." },
+      { question: "Is the DALF C1 exam hard?", answer: "DALF C1 is demanding, testing nuanced argumentation, document synthesis, and oral defense — this course is built specifically around those exam requirements." },
+      { question: "How long does it take to reach C1 from B2?", answer: "This course covers the B2-to-C1 progression in 12 weeks (90 hours) of professional-level coaching." },
+      { question: "What is the difference between C1 and C2 French?", answer: "C1 is effective operational proficiency for professional/academic use, while C2 is near-native mastery with full command over every register." },
+    ],
+    seoTitle: "French C1 Proficiency Course in Chandigarh | DALF C1",
+    seoDescription:
+      "Reach professional French C1 proficiency in Chandigarh. Master idiomatic expression, document synthesis and oral defense for DALF C1.",
     seo: {
-      title: "French C1 Proficiency Course",
-      description: "Reach professional and academic French proficiency.",
+      title: "French C1 Proficiency Course in Chandigarh | DALF C1",
+      description:
+        "Reach professional French C1 proficiency in Chandigarh. Master idiomatic expression, document synthesis and oral defense for DALF C1.",
       keywords: ["French C1 course", "DALF C1 coaching"],
     },
-    batches: [{ _id: "fr-c1-b1", name: "Academic Batch", startDate: "2026-07-18", students: 10 }],
     results: [
       {
         name: "Meera Nair",
@@ -1188,8 +1227,6 @@ The program focuses on building strong subject fundamentals, improving academic 
     durationInMonths: 3,
     mode: "Online Live & Offline Center",
     classType: "Live Online",
-    price: 12999,
-    originalPrice: 18999,
     language: "French",
     status: "published",
     enrollmentOpen: true,
@@ -1239,15 +1276,22 @@ The program focuses on building strong subject fundamentals, improving academic 
     targetAudience: ["Diplomats", "Translators", "C1 Graduates"],
     whoIsThisFor: ["Advanced C1 speakers aiming for near-native mastery"],
     relatedCourses: ["french-c1-proficiency-course", "french-b2-advanced-course"],
-    faq: [{ question: "Who needs C2 French?", answer: "Those pursuing senior diplomatic, academic research, or interpretation roles." }],
-    seoTitle: "French C2 Mastery Course | DALF C2 Prep | Inquisitive Mind Academy",
-    seoDescription: "Achieve near-native French mastery with our C2 course. Refine precision and literary fluency.",
+    faq: [
+      { question: "Who needs French C2 level proficiency?", answer: "Diplomats, senior translators, interpreters, and those pursuing advanced academic research typically require C2 level." },
+      { question: "Is DALF C2 the highest official French certification?", answer: "Yes, DALF C2 is the highest diploma in the official French CEFR certification system, above C1." },
+      { question: "How rare is C2-level French proficiency?", answer: "C2 represents near-native mastery and is achieved by a very small percentage of non-native French learners." },
+      { question: "How long does it take to go from C1 to C2?", answer: "This course covers the C1-to-C2 progression in 12 weeks (90 hours) of near-native level coaching." },
+      { question: "What kind of material is studied at C2 level?", answer: "Learners work with complex literary texts, technical documents, and diplomatic-register material to refine precision and nuance." },
+    ],
+    seoTitle: "French C2 Mastery Course in Chandigarh | DALF C2",
+    seoDescription:
+      "Achieve near-native French mastery at C2 level in Chandigarh. Refine precision, literary fluency and prepare for the DALF C2 diploma.",
     seo: {
-      title: "French C2 Mastery Course",
-      description: "Achieve near-native French mastery with our C2 course.",
+      title: "French C2 Mastery Course in Chandigarh | DALF C2",
+      description:
+        "Achieve near-native French mastery at C2 level in Chandigarh. Refine precision, literary fluency and prepare for the DALF C2 diploma.",
       keywords: ["French C2 course", "DALF C2 coaching"],
     },
-    batches: [{ _id: "fr-c2-b1", name: "Mastery Seminar", startDate: "2026-08-01", students: 8 }],
     results: [
       {
         name: "David Chen",

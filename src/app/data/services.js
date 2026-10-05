@@ -949,5 +949,214 @@ title: "TCF Canada Coaching Chandigarh | Inquisitive Mind Academy",
   ],
 },
   },
+    {
+    slug: "home-tutor-jobs-chandigarh",
+    category: "teacher",
+    targetAudience: "For Home Tutors, Freshers & College Students",
+    ctaType: "apply",
+    title: "Home Tutor Jobs in Chandigarh | Inquisitive Mind Academy",
+    subtitle: "Home Tuition Jobs for All Subjects — Get Matched With Students Near You",
+    description:
+      "Looking for home tutor jobs in Chandigarh? Apply with Inquisitive Mind Academy and get matched with students and parents looking for home or online tuition in Chandigarh, Mohali, and Panchkula. Set your own hours, choose your subjects and areas, and start teaching part-time, full-time, or on weekends. Freshers and college students are welcome.",
+    coverImage: "/services/home-tutor-jobs-chandigarh/cover.webp",
+
+    trustBadges: [
+      "Home & Online Tuition Jobs",
+      "Freshers & College Students Welcome",
+      "Flexible Teaching Hours",
+      "Students Matched For You",
+    ],
+
+    briefOverview: {
+      summary:
+        "Looking for home tutor jobs near you in Chandigarh? Inquisitive Mind Academy connects tutors with students and parents who are actively searching for home tuition and online classes across Chandigarh, Mohali, and Panchkula. Instead of posting ads or searching job boards every day, you share your subjects, class levels, and preferred areas once. When a student request matches your profile, we put you in touch. Teach home tuition, live online classes, or both, part-time, full-time, or only on weekends.",
+      highlights: [
+        "Home tuition jobs across Chandigarh, Mohali and Panchkula, plus online tuition from home",
+        "Part-time home tutor jobs that fit around college, a job, or your own studies",
+        "Choose your own subjects, class levels, areas, and timings",
+        "Open to freshers, college students, homemakers, and experienced teachers",
+      ],
+    },
+
+    quickInfo: {
+      duration: "Flexible — Part-Time, Full-Time or Weekends",
+      mode: "Home Tuition & Live Online",
+      level: "Class 1–12, Spoken English, French & More",
+      batchSize: "1-on-1 & Small Groups",
+      certification: "No Certificate Required — Subject Knowledge Matters",
+    },
+
+    howItWorks: [
+      {
+        step: "01",
+        title: "Apply as a Home Tutor",
+        desc: "Share the subjects and class levels you can teach, your area in Chandigarh, Mohali or Panchkula, and whether you want home tuition, online, or both.",
+      },
+      {
+        step: "02",
+        title: "Quick Profile Check & Demo",
+        desc: "We review your profile and hold a short conversation or demo so we can match you with the right student level and subject.",
+      },
+      {
+        step: "03",
+        title: "Get Matched With Students",
+        desc: "When a student request fits your subject, area, and timing, we connect you so you can discuss the schedule and start with a trial class.",
+      },
+      {
+        step: "04",
+        title: "Teach and Earn",
+        desc: "Teach at the agreed timings and get paid per session or per month, with a clear payout structure explained during onboarding.",
+      },
+    ],
+
+    whatsCovered: [
+      {
+        title: "Home Tuition Across the Tricity",
+        desc: "Teach students at their homes in Chandigarh sectors, Mohali phases, and Panchkula, close to where you live.",
+      },
+      {
+        title: "Online Tuition From Home",
+        desc: "Prefer not to travel? Take live online classes and teach students in Chandigarh, across India, and abroad.",
+      },
+      {
+        title: "School Subjects, English & French",
+        desc: "Maths, Science, English, Hindi, Punjabi, Computer, spoken English, and French, from primary classes to board-exam level.",
+      },
+      {
+        title: "Part-Time & Weekend Slots",
+        desc: "Take one or two students after college or work, or build a full-time tuition schedule over time.",
+      },
+    ],
+
+    whyChooseUs: [
+      {
+        title: "Students Come to You",
+        desc: "No need to put up posters, post in groups, or keep checking job boards. We match you with students searching for a tutor in your area.",
+      },
+      {
+        title: "You Choose Your Hours and Areas",
+        desc: "Pick the sectors you are comfortable travelling to, the days you are free, and the subjects you teach best.",
+      },
+      {
+        title: "Freshers & College Students Welcome",
+        desc: "Strong command of a subject and clear communication matter most. We guide first-time tutors through their first batch.",
+      },
+      {
+        title: "Home or Online, Your Choice",
+        desc: "Start with home tuition near you, add online classes later, or run both to fill your week.",
+      },
+    ],
+
+    pricing: {
+      planName: "Home Tutor Earnings",
+      fee: "Paid Per Session / Per Month",
+      originalFee: "",
+      duration: "Based on Sessions Taught",
+      includes: [
+        "Home Tuition Session Payouts",
+        "Online Class Session Payouts",
+        "Group Batch Teaching Bonuses",
+        "Exam-Prep & Specialist Subject Rates (French, Spoken English)",
+      ],
+      discountNote:
+        "Earnings depend on subject, class level, mode (home or online), batch size and your experience. French tutors currently earn ₹400–₹1,200 per hour. Other subjects are discussed during onboarding.",
+      pricePageLink: "/blogs/home-tutor-salary-in-chandigarh-how-much-can-you-earn",
+      pricePageTitle: "Read the Home Tutor Salary Guide",
+    },
+
+    tutorCallout: {
+      title: "Looking for a Tutor, Not a Tutor Job?",
+      description:
+        "Students and parents can request a home or online tutor for French, spoken English and more, with a free trial class.",
+      buttonText: "Find a Tutor",
+      link: "/services/french-classes-chandigarh",
+    },
+
+    faq: [
+      {
+        question: "How do I get home tutor jobs in Chandigarh?",
+        answer:
+          "Apply through our tutor form with your subjects, class levels, and preferred areas. After a quick profile check, we notify you when a student request in your area matches your subject and timing.",
+      },
+      {
+        question: "Can college students do home tuition jobs?",
+        answer:
+          "Yes. If you know your subject well and can explain it clearly, you can start as a part-time home tutor alongside your studies. Many tutors begin with one or two students and add more over time.",
+      },
+      {
+        question: "Are there home tutor jobs for females in Chandigarh?",
+        answer:
+          "Yes. Home tutor jobs are open to women and men alike. You choose the areas and timings you are comfortable with, and online tuition is available if you prefer to teach from home.",
+      },
+      {
+        question: "Do I need a B.Ed or a teaching degree to become a home tutor?",
+        answer:
+          "No degree is mandatory for private home tuition. Subject knowledge, communication, and results matter most. A relevant degree or certificate such as B.Ed or DELF/DALF for French can help you get higher-level students.",
+      },
+      {
+        question: "What is the salary of a home tutor in Chandigarh?",
+        answer:
+          "It depends on the subject, class level, mode, and how many students you teach. French tutors with us currently earn ₹400–₹1,200 per hour. Our home tutor salary guide shows how to work out your monthly income.",
+      },
+      {
+        question: "Are part-time home tutor jobs available?",
+        answer:
+          "Yes. You can take just a few hours a week, such as evenings or weekends, and increase your schedule whenever you want.",
+      },
+      {
+        question: "Are there urgent home tutor vacancies in Chandigarh?",
+        answer:
+          "Student requests are added regularly across Chandigarh, Mohali, and Panchkula. Once your profile is approved, we notify you whenever a request matches your subject, area, and timing.",
+      },
+      {
+        question: "Can I find online tutor jobs from home through you?",
+        answer:
+          "Yes. You can teach live online classes to students across India and abroad. Home tuition and online tuition can be combined in the same schedule.",
+      },
+    ],
+
+    areasWeServe: [
+      { city: "Chandigarh", center: "All Sectors", href: "/services/home-tutor-jobs-chandigarh" },
+      { city: "Mohali", center: "Phase 3B2 to Phase 11, Sector 62–71", href: "/locations/home-tutor-jobs-mohali" },
+      { city: "Panchkula", center: "All Sectors", href: "/locations/french-classes-panchkula" },
+      { city: "Online Global", center: "Work From Anywhere", href: "/services/online-french-tutor-jobs" },
+    ],
+
+    relatedServices: [
+      "french-tutor-jobs-chandigarh",
+      "online-french-tutor-jobs",
+    ],
+
+    relatedBlogs: [
+      "home-tutor-salary-in-chandigarh-how-much-can-you-earn",
+      "french-classes-fees-in-chandigarh-cost-guide",
+    ],
+
+    finalCta: {
+      title: "Apply for Home Tutor Jobs in Chandigarh Today",
+      description:
+        "Share your subjects, areas, and timings, and we will match you with students looking for a tutor near you.",
+      buttonText: "Apply as a Tutor Now",
+      whatsappMsg:
+        "Hi Inquisitive Mind Academy! I want to apply for home tutor jobs in Chandigarh. Please share the application process.",
+    },
+
+    seo: {
+      title: "Home Tutor Jobs in Chandigarh | Inquisitive Mind Academy",
+      description:
+        "Home tutor jobs in Chandigarh for all subjects. Get matched with students near you, set your own hours, freshers welcome. Apply today.",
+      keywords: [
+        "home tutor jobs in Chandigarh",
+        "home tuition jobs in Chandigarh",
+        "tutor jobs in Chandigarh",
+        "part time home tutor jobs",
+        "home tutor jobs near me",
+        "home tutor jobs for females",
+        "urgent home tutor jobs in Chandigarh",
+        "home tutor vacancy",
+        "online tutor jobs in Chandigarh",
+      ],
+    },
+  },
 
 ];

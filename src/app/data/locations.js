@@ -410,6 +410,143 @@ seo: {
     direction: "",
   },
 },
+  {
+    slug: "home-tutor-jobs-mohali",
+    city: "Mohali",
+    title: "Home Tutor Jobs in Mohali | Inquisitive Mind Academy",
+    shortDescription:
+      "Find home tutor jobs in Mohali with Inquisitive Mind Academy. Get matched with students in Phase 3B2, Phase 7, Phase 8, Sector 62, Sector 70, Kharar and Zirakpur for home tuition or online classes, part-time or full-time.",
+    coverImage: "/locations/home-tutor-jobs-mohali/cover.webp",
+    address: "Home Tuition Across Mohali + Live Online Classes",
+    phone: "+91 98787 61488",
+    hours: "Mon - Sat: 09:00 AM - 07:00 PM | Tutor Applications Open Daily",
+
+    // Tutor-jobs page: home tuition visits are the core service here.
+    offersVisits: true,
+    isOnlineOnly: false,
+    physicalAddress: "Sector 62, Phase 8, Mohali, Punjab 160062",
+
+    centralHub: [
+      {
+        title: "Home Tutor Jobs in Chandigarh",
+        desc: "Apply for home tuition jobs across Chandigarh, Mohali and Panchkula, for school subjects, spoken English and French",
+        href: "/services/home-tutor-jobs-chandigarh",
+        badge: "Career Opportunity",
+        buttonText: "Apply as Tutor",
+      },
+      {
+        title: "French Tutor Jobs in Chandigarh & Mohali",
+        desc: "Teach French through flexible home and online opportunities with steady student matches",
+        href: "/services/french-tutor-jobs-chandigarh",
+        badge: "Career Opportunity",
+        buttonText: "Apply as French Tutor",
+      },
+      {
+        title: "French Classes in Mohali",
+        desc: "Looking for a tutor instead? Explore live online French classes for Mohali learners",
+        href: "/locations/french-classes-mohali",
+        badge: "Location",
+        buttonText: "Explore French Classes",
+      },
+    ],
+    areas: [
+      "Phase 3B2",
+      "Phase 5",
+      "Phase 7",
+      "Phase 8",
+      "Phase 9",
+      "Phase 11",
+      "Sector 62",
+      "Sector 70",
+      "Sector 71",
+      "Kharar",
+      "Zirakpur",
+      "Panchkula",
+    ],
+    courses: [
+      "academic-excellence-program",
+      "english-speaking-mastery",
+      "french-language-program",
+    ],
+    features: [
+      "Home Tuition Jobs Across Mohali Phases and Sectors",
+      "Part-Time, Weekend and Full-Time Tutor Roles",
+      "Teach Home Tuition, Online, or Both",
+      "Freshers and College Students Welcome",
+    ],
+    whyChoose: [
+      {
+        title: "Home Tutor Jobs Close to Where You Live",
+        description:
+          "Tell us which Mohali phases or sectors you can travel to, and we match you with students nearby, so you spend more time teaching and less time commuting.",
+      },
+      {
+        title: "Part-Time Roles Around Mohali's Student and Working Crowd",
+        description:
+          "Many Mohali tutors are college students or working professionals, so we match evening and weekend slots that fit around classes and office hours.",
+      },
+      {
+        title: "Add Online Classes to Fill Your Week",
+        description:
+          "If your home tuition schedule has gaps, you can take live online students from Chandigarh, Panchkula, across India, and abroad in the same schedule.",
+      },
+      {
+        title: "A Quick Profile Check, Then Real Student Requests",
+        description:
+          "After a short profile check, you are notified when a student request matches your subject, class level and area, with no need to chase leads.",
+      },
+    ],
+    faq: [
+      {
+        question: "How can I get home tutor jobs in Mohali?",
+        answer:
+          "Apply through our tutor form with your subjects, class levels, and the Mohali phases or sectors you can cover. Once your profile is approved, we connect you with students whose requests match.",
+      },
+      {
+        question: "Are there home tuition jobs in Mohali for college students?",
+        answer:
+          "Yes. College students can start part-time with one or two students after class or on weekends, and increase their schedule as they build experience.",
+      },
+      {
+        question: "Which Mohali areas do you cover for home tuition?",
+        answer:
+          "We cover Phase 3B2, Phase 7, Phase 8, Phase 9, Phase 11, Sector 62, Sector 70, Sector 71, Kharar, Zirakpur, and nearby areas. Panchkula is also covered if you can travel there.",
+      },
+      {
+        question: "Can I teach online instead of travelling to students' homes?",
+        answer:
+          "Yes. If you prefer to teach from home, you can take live online classes only, or combine online and home tuition.",
+      },
+      {
+        question: "Are there home tutor jobs in Panchkula and Zirakpur as well?",
+        answer:
+          "Yes. We match tutors with students in Panchkula and Zirakpur too. Mention these areas in your application if you can travel there.",
+      },
+      {
+        question: "What subjects can I teach as a home tutor in Mohali?",
+        answer:
+          "School subjects for Class 1 to 12 (Maths, Science, English, Hindi, Punjabi, Computer), spoken English, and French. Tell us your strongest subjects in your application.",
+      },
+    ],
+    seo: {
+      title: "Home Tutor Jobs in Mohali | Inquisitive Mind Academy",
+      description:
+        "Home tutor jobs in Mohali for Phase 7, Phase 8, Sector 62, Kharar & Zirakpur. Get matched with students, teach home or online, freshers welcome.",
+      keywords: [
+        "home tutor jobs in Mohali",
+        "home tuition jobs in Mohali",
+        "tutor jobs in Mohali",
+        "part time home tutor jobs Mohali",
+        "home tutor jobs in Panchkula",
+        "home tuition jobs in Panchkula",
+        "home tutor jobs in Zirakpur",
+      ],
+    },
+    googleMaps: {
+      iframe: "",
+      direction: "",
+    },
+  },
 
 ];
 

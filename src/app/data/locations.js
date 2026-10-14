@@ -1,3 +1,4 @@
+import SITE_CONFIG from "../siteConfig";
 export const locations = [
   {
     slug: "french-classes-mohali",
@@ -540,6 +541,157 @@ seo: {
         "home tutor jobs in Panchkula",
         "home tuition jobs in Panchkula",
         "home tutor jobs in Zirakpur",
+      ],
+    },
+    googleMaps: {
+      iframe: "",
+      direction: "",
+    },
+  },
+    {
+    slug: "delf-classes-mohali",
+    city: "Mohali",
+    title: "DELF Classes in Mohali | Inquisitive Mind Academy",
+    shortDescription:
+      "Live online DELF A1 to B2 classes for Mohali learners, with small batches, timed mock papers and speaking practice. Open to learners in Phase 3B2, Phase 7, Phase 8, Sector 62, Sector 70, Kharar and nearby areas.",
+    coverImage: "/locations/delf-classes-mohali/cover.webp",
+    address: "Live Online Interactive Classes (Serving Mohali & Worldwide)",
+    phone: SITE_CONFIG.phone,
+    hours: "Mon - Fri: 09:00 AM - 07:00 PM | Sat: 09:00 AM - 05:00 PM | Live Online Batches: 07:00 AM - 10:00 PM IST",
+
+    // Data-driven flags
+    offersVisits: false,
+    isOnlineOnly: true,
+    // Academy office (not a Mohali centre), kept for NAP consistency with siteConfig
+    physicalAddress: `${SITE_CONFIG.address.line1}, ${SITE_CONFIG.address.city}, ${SITE_CONFIG.address.postalCode}`,
+
+    centralHub: [
+      {
+        title: "DELF Coaching in Chandigarh",
+        desc: "Level-wise DELF A1 to B2 preparation with mock papers, writing correction and speaking practice",
+        href: "/services/delf-coaching-chandigarh",
+        badge: "Featured Service",
+        buttonText: "Explore DELF Coaching",
+      },
+      {
+        title: "DELF Exam Guide: Levels, Fees, Pattern & Results",
+        desc: "Understand the exam, the 2026 fees in India, passing marks and how to register",
+        href: "/blogs/delf-exam-guide-levels-fees-pattern-results",
+        badge: "Free Guide",
+        buttonText: "Read the Guide",
+      },
+      {
+        title: "French Classes in Mohali",
+        desc: "Starting from zero? Explore live online French classes for Mohali learners",
+        href: "/locations/french-classes-mohali",
+        badge: "Location",
+        buttonText: "Explore French Classes",
+      },
+    ],
+    areas: [
+      "Phase 3B2",
+      "Phase 5",
+      "Phase 7",
+      "Phase 8",
+      "Phase 9",
+      "Phase 11",
+      "Sector 62",
+      "Sector 70",
+      "Sector 71",
+      "Kharar",
+      "Zirakpur",
+      "Dera Bassi",
+    ],
+    courses: [
+      "french-a1-beginner-course",
+      "french-a2-elementary-course",
+      "french-b1-intermediate-course",
+      "french-b2-advanced-course",
+      "delf-b2-exam-prep-masterclass",
+    ],
+    features: [
+      "Separate Live Online Batches for DELF A1, A2, B1 and B2",
+      "Timed Mock Papers Scored Paper by Paper",
+      "Writing Correction & Speaking Feedback",
+      "Free Level Check & Trial Class",
+    ],
+    whyChoose: [
+      {
+        title: "DELF Preparation Built Around the Exam, Not Just the Language",
+        description:
+          "Each class maps to one of the four DELF papers, so Mohali learners spend their time on the writing and speaking skills that decide the result, not only on vocabulary.",
+      },
+      {
+        title: "Join From Any Mohali Phase or Sector",
+        description:
+          "Live online sessions mean no commute to Chandigarh. Learners in Phase 7, Phase 8, Sector 62, Sector 70 and Kharar join from home with real-time tutor feedback.",
+      },
+      {
+        title: "Straight Answers on Exam Centres, Dates and Fees",
+        description:
+          "We explain where to register, how the national exam calendar works and what the exam fee is, so you can plan the exam and the coaching together.",
+      },
+      {
+        title: "Free Level Check Before You Pay",
+        description:
+          "A short assessment and a trial class show you the right DELF level and our teaching style before you enrol.",
+      },
+    ],
+    faq: [
+      {
+        question: "Are DELF classes in Mohali available online?",
+        answer:
+          "Yes. All our DELF batches run live online, so learners in Mohali, Kharar, Zirakpur and Dera Bassi can join from home with small batches and 1-on-1 options.",
+      },
+      {
+        question: "Where can Mohali students take the DELF exam?",
+        answer:
+          "DELF is held at authorised centres such as Alliance Française. The Chandigarh centre is the closest option for Mohali learners, and seats can be limited, so register as soon as its registration window opens.",
+      },
+      {
+        question: "Where do I find DELF exam dates for 2026 in Chandigarh?",
+        answer:
+          "Check the Alliance Française de Chandigarh website for its current calendar. DELF is a national exam in India, so written papers fall on the same dates across centres, with speaking tests scheduled within about a week.",
+      },
+      {
+        question: "Which DELF level do I need to study in France?",
+        answer:
+          "It depends on the university and programme, but B2 is the level most French-taught degree programmes ask for. Check your programme's requirements before choosing a level, and use our level check to see how far you are from it.",
+      },
+      {
+        question: "Can working professionals in Mohali join evening or weekend batches?",
+        answer:
+          "Yes. We run weekday evening and weekend batches alongside daytime ones, so you can prepare around work or college.",
+      },
+      {
+        question: "Do you offer 1-on-1 DELF coaching in Mohali?",
+        answer:
+          "Yes. If you have a fixed exam date or want to focus on weaker papers, 1-on-1 live online sessions are available alongside group batches.",
+      },
+      {
+        question: "Is the DELF exam fee included in the coaching fee?",
+        answer:
+          "No. The exam fee is paid to the exam centre and is separate from coaching. Our DELF exam guide lists the 2026 fees published by Alliance Française.",
+      },
+      {
+        question: "Do you have a centre in Mohali?",
+        answer:
+          `All DELF classes are live online at present. Our academy office is at ${SITE_CONFIG.address.line1}, ${SITE_CONFIG.address.city}. Call or WhatsApp ${SITE_CONFIG.phone} for batch timings.`,
+      },
+    ],
+    seo: {
+      title: "DELF Classes in Mohali | Inquisitive Mind Academy",
+      // 49 characters
+      description:
+        "Live online DELF A1-B2 classes for Mohali learners. Small batches, past-paper practice, speaking mocks and exam guidance. Book a free trial class.",
+      // 146 characters
+      keywords: [
+        "DELF classes in Mohali",
+        "DELF coaching in Mohali",
+        "DELF preparation Mohali",
+        "DELF A1 B2 classes Mohali",
+        "French classes for DELF",
+        "DELF coaching near me",
       ],
     },
     googleMaps: {

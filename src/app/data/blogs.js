@@ -1412,7 +1412,7 @@ export const blogs = [
     lastUpdated: "October 5, 2026",
     readingTime: "8 min read",
     coverImage: "/blogs/home-tutor-salary-in-chandigarh-how-much-can-you-earn/cover.webp",
-    featured: true,
+    featured: false,
     quickInfo: {
       courseName: "Home Tutor Jobs — Earnings Guide",
       duration: "8 mins",
@@ -1685,6 +1685,452 @@ export const blogs = [
         "Flexible Teaching Hours",
         "Students Matched For You",
         "Part-Time or Full-Time",
+      ],
+    },
+  },
+  {
+    id: 6,
+    slug: "delf-exam-guide-levels-fees-pattern-results",
+    title: "DELF Exam Guide 2026: Levels, Fees, Pattern & Results",
+    excerpt:
+      "What is the DELF exam, which level should you take, and what does it cost in India? A clear guide to DELF levels, exam pattern, passing marks, 2026 fees, dates and results.",
+    category: "DELF Preparation",
+    author: {
+      name: "Sakshi Goel",
+      credentials: "French Faculty · 10+ Years Teaching Experience · DELF/DALF Trained",
+      image: "/founder.webp",
+      bio:
+        "French language educator with 10+ years of teaching experience, having taught both adults and young learners across different institutions. Experienced in preparing students for TEF/TCF-style examinations, with specialization in French language, communication skills, and exam-oriented preparation across beginner to advanced levels.",
+    },
+    relatedCourses: [
+      "french-a1-beginner-course",
+      "french-a2-elementary-course",
+      "french-b1-intermediate-course",
+      "french-b2-advanced-course",
+      "delf-b2-exam-prep-masterclass",
+    ],
+    reviewedBy: {
+      name: "Sakshi Goel",
+      role: "French Faculty",
+    },
+    publishedAt: "October 14, 2026",
+    lastUpdated: "October 14, 2026",
+    readingTime: "11 min read",
+    coverImage: "/blogs/delf-exam-guide-levels-fees-pattern-results/cover.webp",
+    featured: true,
+    quickInfo: {
+      courseName: "DELF A1 to B2 Preparation",
+      duration: "8–10 Weeks per Level",
+      mode: "Live Online",
+      level: "A1 to B2",
+      batchSize: "6–10 Students",
+      certification: "Official DELF diploma (exam fee paid to the exam centre)",
+    },
+
+    seo: {
+      title: "DELF Exam Guide 2026: Levels, Fees, Pattern & Results",
+      // 53 characters
+      description:
+        "What is the DELF exam? Understand levels A1 to B2, 2026 fees in India, exam pattern, passing marks, results and how to prepare, from a French tutor.",
+      // 148 characters
+      keywords: [
+        "DELF exam",
+        "DELF exam fees in India",
+        "DELF levels",
+        "DELF exam pattern",
+        "DELF passing marks",
+        "DELF exam dates 2026",
+        "DELF vs DALF",
+        "DELF exam centres in India",
+        "Inquisitive Mind Academy",
+      ],
+    },
+    tags: ["DELF", "DELF Exam", "DELF Levels", "DELF Fees", "French Certification"],
+
+    content: [
+      {
+        type: "paragraph",
+        text:
+          "DELF is the official French language diploma that most learners in India take to prove their French for study, work or personal goals. If you are new to it, the questions are usually the same: what does DELF stand for, which level should you take, how much does it cost, and how hard is it? This guide answers each of them in one place, with 2026 fee details and a practical preparation plan.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "What Is the DELF Exam?",
+      },
+      {
+        type: "paragraph",
+        text:
+          "DELF stands for Diplôme d'études en langue française. It is an official diploma awarded by the French Ministry of Education to certify the French skills of non-native speakers, and the exams are run by France Éducation international (FEI). In India, DELF is conducted through Alliance Française centres, including Chandigarh. Once you pass a level, the diploma does not expire.",
+      },
+      {
+        type: "list",
+        items: [
+          "Awarded by: the French Ministry of Education, administered by France Éducation international",
+          "Validity: the diploma is valid for life, unlike TEF Canada and TCF Canada results",
+          "Skills tested: listening, reading, writing and speaking, each as a separate paper",
+          "Format: taken in person at an authorised exam centre, not online",
+        ],
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "DELF Levels Explained: A1 to B2 (and DALF C1 and C2)",
+      },
+      {
+        type: "paragraph",
+        text:
+          "DELF has four independent diplomas aligned to the Common European Framework of Reference (CEFR). The two advanced levels, C1 and C2, are awarded as DALF (Diplôme approfondi de langue française).",
+      },
+      {
+        type: "list",
+        items: [
+          "DELF A1 (beginner): use familiar everyday expressions, introduce yourself and ask simple questions",
+          "DELF A2 (elementary): handle routine tasks, describe your background and talk about past events in simple terms",
+          "DELF B1 (intermediate): deal with most situations while travelling or working, give opinions and explain plans and reasons",
+          "DELF B2 (upper-intermediate): follow complex texts, argue a point of view and interact fluently. This is the level most French-taught degree programmes ask for, though requirements vary by university",
+          "DALF C1 and C2 (advanced to near-native): used for high-level academic and professional purposes",
+        ],
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "DELF Exam Pattern and Passing Marks",
+      },
+      {
+        type: "paragraph",
+        text:
+          "Every DELF level tests the same four skills, each as its own paper: listening comprehension, reading comprehension, written production and spoken production. Each paper is scored out of 25, which makes a total of 100.",
+      },
+      {
+        type: "list",
+        items: [
+          "Passing mark: at least 50 out of 100 overall, and at least 5 out of 25 in every paper",
+          "Listening: recorded audio with questions, with longer and faster recordings as the level rises",
+          "Reading: short everyday texts at A1 and A2, longer articles at B1 and B2",
+          "Writing: short messages at A1 and A2, a structured opinion or letter at B1, an argued essay or formal letter at B2",
+          "Speaking: a short guided interview at A1 and A2, moving to a prepared presentation and discussion at B1 and B2",
+          "Approximate time: about 1.5 hours of written papers at A1, rising to about 2.5 hours at B2, plus a separate speaking test",
+        ],
+      },
+      {
+        type: "warning",
+        title: "Check the Official Guide",
+        text:
+          "Timings and task types are set by the exam body and can be updated. Read the official exam guide and sample papers for your level before you start preparing.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "DELF Exam Fees in India (2026)",
+      },
+      {
+        type: "paragraph",
+        text:
+          "DELF exam fees in India are set nationally and published each year by Alliance Française. The 2026 rates below include GST.",
+      },
+      {
+        type: "list",
+        items: [
+          "DELF A1 and A2: ₹11,210 for external candidates",
+          "DELF B1 and B2: ₹13,265 for external candidates",
+          "DALF C1 and C2: ₹14,553 for external candidates",
+          "Candidates enrolled at an Alliance Française pay a lower rate, roughly ₹7,300 to ₹8,800 for A1 to B2",
+        ],
+      },
+      {
+        type: "warning",
+        title: "Exam Fee vs Coaching Fee",
+        text:
+          "The exam fee is paid to the exam centre and is separate from any coaching fee. Fees are revised periodically, so confirm the current amount with Alliance Française Chandigarh before you register.",
+      },
+      {
+        type: "interlinking",
+        title: "Prepare for DELF With Inquisitive Mind Academy",
+        description:
+          "Level-wise DELF coaching, fee guidance and exam comparisons in one place.",
+        items: [
+          {
+            title: "DELF Coaching in Chandigarh",
+            description: "Live online A1 to B2 batches with mock papers, writing correction and speaking practice.",
+            href: "/services/delf-coaching-chandigarh",
+            badge: "Service",
+          },
+          {
+            title: "French Classes Fees in Chandigarh: Cost Guide",
+            description: "What home, online and group French classes cost, separate from exam fees.",
+            href: "/blogs/french-classes-fees-in-chandigarh-cost-guide",
+            badge: "Blog",
+          },
+          {
+            title: "TEF vs TCF Exam: Comparison, Scores & Fees",
+            description: "Aiming for Canada PR instead? Compare the two exams IRCC accepts.",
+            href: "/blogs/what-is-tef-tcf-exam-comparison-scores-fees",
+            badge: "Blog",
+          },
+          {
+            title: "French Classes in Chandigarh",
+            description: "Home tuition and live online French classes from beginner to advanced.",
+            href: "/services/french-classes-chandigarh",
+            badge: "Service",
+          },
+        ],
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "DELF Exam Dates, Registration and Centres in India",
+      },
+      {
+        type: "paragraph",
+        text:
+          "DELF is a national exam in India, so written papers are held on the same dates across Alliance Française centres, and each centre schedules the speaking test within about a week of those dates. There are several sessions a year, and each registration window is short.",
+      },
+      {
+        type: "list",
+        items: [
+          "Check the exam calendar of your nearest centre. Learners in the Tricity can start with Alliance Française de Chandigarh",
+          "Register within the announced window, since late applications are generally not accepted",
+          "Pay the exam fee to confirm your seat",
+          "Carry the photo ID your centre specifies and check your exam timings and room before the day",
+        ],
+      },
+      {
+        type: "tip",
+        title: "Register Early",
+        text:
+          "Windows can close within about two weeks. For example, Alliance Française de Delhi opened registration for its September 2026 session on 17 August and closed it on 31 August, with written papers from 15 to 19 September. Seats can also be limited: the June 2024 session at Alliance Française de Chandigarh listed just six seats per level.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "Who Can Take DELF? Eligibility and Choosing Your Level",
+      },
+      {
+        type: "paragraph",
+        text:
+          "There is no prerequisite diploma for DELF. You can register for any level directly: you do not need A1 to sit A2, or B1 to sit B2. Adults and young adults usually take DELF Tout Public, while DELF Prim and DELF Junior exist for children and school students. Age rules can differ slightly by centre, so check before you register.",
+      },
+      {
+        type: "list",
+        items: [
+          "Complete beginner: start with A1, then plan A2",
+          "Comfortable with basics but hesitant when speaking: A2",
+          "Can speak and write simple opinions: B1",
+          "Need French for a degree in France: check the level your programme asks for, which is most often B2",
+        ],
+      },
+      {
+        type: "tip",
+        title: "Test Your Level First",
+        text:
+          "Do a level check before you pay the exam fee. Registering one level too high is an expensive way to find out where you actually are.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "Is the DELF Exam Easy?",
+      },
+      {
+        type: "paragraph",
+        text:
+          "DELF tests whether you can use French at the level you register for, so the answer depends on the level. A1 and A2 are manageable for most beginners after structured study. The jump comes at B1 and B2, where writing an organised opinion and speaking without notes carry as much weight as understanding. Because you need at least 5 out of 25 in every paper, one weak skill can fail you even when your total is above 50, so prepare all four skills evenly.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "How to Prepare for the DELF Exam",
+      },
+      {
+        type: "list",
+        items: [
+          "Take a level check to choose the right exam level",
+          "Download the official exam guide and sample papers for your level and read the task instructions closely",
+          "Listen to French audio daily, starting with slow, clear recordings and moving to news and interviews",
+          "Write one short piece a week in the format your level requires, and get it corrected by a tutor",
+          "Practise speaking aloud, record yourself and review fluency and pronunciation with feedback",
+          "Sit at least two full timed mock papers in the last weeks, and review your score paper by paper",
+        ],
+      },
+      {
+        type: "tip",
+        title: "Study Tip",
+        text:
+          "Official sample papers are the best free resource. What they cannot do is correct your writing and speaking, which are the papers candidates find hardest to judge on their own.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "DELF Results and Certificate",
+      },
+      {
+        type: "paragraph",
+        text:
+          "Results are not instant. Centres announce them some weeks after the exam: the September 2026 session at Alliance Française de Delhi, for example, listed its result date about a month after the written papers. You are scored out of 25 in each paper, and you pass with at least 50 out of 100 and no paper below 5. A passed diploma is valid for life. How results and diplomas are issued differs by centre, so ask your centre.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "DELF vs DALF, TEF and TCF",
+      },
+      {
+        type: "paragraph",
+        text:
+          "DELF and DALF are two halves of one system: DELF covers A1 to B2 and DALF covers C1 and C2. TEF Canada and TCF Canada are separate tests built for immigration.",
+      },
+      {
+        type: "warning",
+        title: "DELF Is Not Accepted for Express Entry",
+        text:
+          "IRCC accepts only TEF Canada and TCF Canada as French tests for Express Entry. If Canada PR is your goal, DELF is the wrong exam, and you should prepare for TEF or TCF instead.",
+      },
+      {
+        type: "list",
+        items: [
+          "DELF/DALF: lifetime diploma, used for study, work and personal certification",
+          "TEF Canada / TCF Canada: scored against Canadian language benchmarks, results valid for 2 years, used for immigration",
+        ],
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "Is the DELF Exam Worth It?",
+      },
+      {
+        type: "paragraph",
+        text:
+          "It is worth it when it matches your goal. A DELF diploma never expires, it is the standard proof of French for many French-taught university programmes, and employers recognise it. At ₹11,210 to ₹13,265 for external candidates, it is a real investment, so choose the level by your goal rather than by guesswork, and pick TEF or TCF if your goal is Canadian immigration.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        text: "Conclusion",
+      },
+      {
+        type: "paragraph",
+        text:
+          "DELF is a lifetime French diploma with four independent levels, a clear pass mark and a short registration window. Check your level, read the official guide, register as soon as the window opens and practise all four skills evenly. If you want structured help, our live online batches follow the exam paper by paper.",
+      },
+      {
+        type: "interlinking",
+        title: "Locations & Study Centers We Serve",
+        description:
+          "Join live online DELF and French batches from Mohali, Zirakpur, Panchkula and across the Tricity.",
+        items: [
+          {
+            title: "DELF Classes in Mohali — Live Online",
+            description: "Level-wise DELF preparation for Phase 3B2, Phase 7, Phase 8, Sector 62, Sector 70 and nearby.",
+            href: "/locations/delf-classes-mohali",
+            badge: "Mohali",
+          },
+          {
+            title: "French Classes for Zirakpur — Live Online",
+            description: "Live online French batches for VIP Road, Dhakoli, Baltana and nearby.",
+            href: "/locations/french-classes-zirakpur",
+            badge: "Zirakpur",
+          },
+          {
+            title: "French Classes for Panchkula — Live Online",
+            description: "School, adult and exam batches for Panchkula learners.",
+            href: "/locations/french-classes-panchkula",
+            badge: "Panchkula",
+          },
+        ],
+      },
+      {
+        type: "references",
+        items: [
+          {
+            title: "DELF/DALF Official Exam Information",
+            publisher: "France Éducation international",
+            url: "https://www.france-education-international.fr/en",
+          },
+          {
+            title: "DELF-DALF Examination Fees 2026",
+            publisher: "Alliance Française (national rates for India)",
+            url: "https://lucknow.afindia.org/delf-dalf-fees/",
+          },
+          {
+            title: "DELF-DALF TP September 2026 Exam Notice",
+            publisher: "Alliance Française de Delhi",
+            url: "https://afdelhi.org/?p=93157",
+          },
+          {
+            title: "Language Testing for Express Entry",
+            publisher: "Immigration, Refugees and Citizenship Canada (IRCC)",
+            url: "https://www.canada.ca/en/immigration-refugees-citizenship/services/immigrate-canada/express-entry/documents/language-requirements/language-testing.html",
+          },
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "What does DELF stand for?",
+        answer:
+          "DELF stands for Diplôme d'études en langue française, an official French diploma awarded by the French Ministry of Education. The advanced C1 and C2 levels are called DALF.",
+      },
+      {
+        question: "What is the DELF exam for?",
+        answer:
+          "It certifies your French at a level from A1 to B2. People use it for admission to French-taught programmes, for jobs that ask for proof of French, and as a personal milestone. It is not used for Canada Express Entry.",
+      },
+      {
+        question: "How many DELF levels are there?",
+        answer:
+          "There are four DELF levels (A1, A2, B1 and B2) and two DALF levels (C1 and C2). Each level is a separate exam and diploma.",
+      },
+      {
+        question: "Is the DELF exam easy?",
+        answer:
+          "It depends on the level. A1 and A2 are manageable after structured study, while B1 and B2 ask for organised writing and confident speaking. You need 50 out of 100 overall and at least 5 out of 25 in each paper.",
+      },
+      {
+        question: "How much does the DELF exam cost in India?",
+        answer:
+          "For 2026, external candidates pay ₹11,210 for A1 and A2 and ₹13,265 for B1 and B2, including GST, according to Alliance Française's published rates. Students enrolled at an Alliance Française pay less. Confirm the current fee with your centre.",
+      },
+      {
+        question: "Where can I take the DELF exam in Chandigarh?",
+        answer:
+          "Alliance Française de Chandigarh conducts DELF sessions, and seats can be limited. Check its website for the current calendar and register as soon as the window opens.",
+      },
+      {
+        question: "What is the passing score for DELF?",
+        answer:
+          "You pass with at least 50 out of 100 overall and at least 5 out of 25 in each of the four papers.",
+      },
+      {
+        question: "Can I take the DELF exam online?",
+        answer:
+          "No. DELF is currently taken in person at an authorised exam centre. You can prepare through live online classes, but the exam itself is held at the centre.",
+      },
+      {
+        question: "Is DELF valid for Canada PR?",
+        answer:
+          "No. IRCC accepts TEF Canada and TCF Canada for Express Entry, and DELF is not on that list. DELF remains useful for study, work and lifetime certification.",
+      },
+      {
+        question: "What is the difference between DELF and DALF?",
+        answer:
+          "They belong to the same system. DELF covers levels A1 to B2, and DALF covers the advanced levels C1 and C2.",
+      },
+    ],
+    cta: {
+      title: "Start Your DELF Preparation Today",
+      description:
+        "Book a free trial class, get your French level checked and join a live online batch built around the DELF exam paper by paper.",
+      serviceName: "DELF Coaching in Chandigarh",
+      serviceLink: "/services/delf-coaching-chandigarh",
+      bookingLink:
+        `https://wa.me/${SITE_CONFIG.whatsapp}?text=Hi%2C%20I%20want%20to%20book%20a%20free%20trial%20class%20for%20DELF%20coaching.%20Please%20share%20the%20available%20batch%20timings.`,
+      whatsappLink:
+        `https://wa.me/${SITE_CONFIG.whatsapp}?text=Hi%2C%20I%20have%20a%20question%20about%20DELF%20exam%20preparation.`,
+      features: [
+        "Live Online Batches",
+        "Free Level Check & Trial Class",
+        "Timed Mock Papers",
+        "Experienced French Tutors",
+        "Flexible Batch Timings",
       ],
     },
   },

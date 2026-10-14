@@ -591,6 +591,224 @@ title: "TCF Canada Coaching Chandigarh | Inquisitive Mind Academy",
   ],
 },
   },
+    {
+    slug: "delf-coaching-chandigarh",
+    category: "student",
+    targetAudience: "For Study-Abroad Aspirants, Students & Working Professionals",
+    ctaType: "enroll",
+    title: "DELF Coaching in Chandigarh: A1, A2, B1 & B2 Exam Preparation",
+    subtitle: "Level-Wise DELF Preparation with Live Online Classes, Mock Papers and Speaking Practice",
+    description:
+      "Prepare for the DELF exam with level-wise coaching from Inquisitive Mind Academy, Sector 17-C, Chandigarh. Live online batches cover listening, reading, writing and speaking, with timed mock papers, tutor feedback and guidance on exam registration.",
+    coverImage: "/services/delf-coaching-chandigarh/cover.webp",
+
+    trustBadges: [
+      "Live Online Batches",
+      "DELF/DALF-Trained Faculty",
+      "Timed Mock Papers",
+      "Free Level Check & Trial Class",
+    ],
+
+    briefOverview: {
+      summary:
+        "The DELF exam rewards preparation that matches its format, not just general French. Our DELF coaching in Chandigarh follows the exam paper by paper: you practise each of the four skills at your level, sit timed mock papers and get written and spoken feedback before exam day. Batches run live online for learners across Chandigarh, Mohali, Panchkula and Zirakpur, taught by DELF/DALF-trained faculty from our Sector 17-C academy.",
+      highlights: [
+        "Separate batches for DELF A1, A2, B1 and B2, so you study at the level you will sit",
+        "Practice built around the four papers: listening, reading, writing and speaking",
+        "Timed mock papers scored out of 25 per skill, so you can see where marks are lost",
+        "Guidance on reading the exam calendar and registering within the window",
+      ],
+    },
+
+    quickInfo: {
+      duration: "8–10 Weeks per Level",
+      mode: "Live Online Batches & 1-on-1 Sessions",
+      level: "DELF A1 to B2 (DALF C1–C2 on request)",
+      batchSize: "6–10 Students (or 1-on-1)",
+      certification: "Official DELF diploma from the exam centre (exam fee paid separately)",
+    },
+
+    howItWorks: [
+      {
+        step: "01",
+        title: "Free Level Check",
+        desc: "A short assessment shows which DELF level you should sit now and which one to plan next.",
+      },
+      {
+        step: "02",
+        title: "Join a Level-Wise Batch",
+        desc: "Get placed in a live online batch for your level, or choose 1-on-1 sessions if you need a faster or more flexible schedule.",
+      },
+      {
+        step: "03",
+        title: "Practise Paper by Paper",
+        desc: "Work through listening, reading, writing and speaking with weekly tasks, corrections and timed mock papers.",
+      },
+      {
+        step: "04",
+        title: "Register and Sit the Exam",
+        desc: "We help you read your centre's calendar, register within the window and prepare for exam day.",
+      },
+    ],
+
+    whatsCovered: [
+      {
+        title: "Listening & Reading Papers",
+        desc: "Timed practice with level-appropriate audio and texts, plus strategies for each question type.",
+      },
+      {
+        title: "Writing Tasks by Level",
+        desc: "Messages, letters, opinion pieces and argued essays, with line-by-line correction from your tutor.",
+      },
+      {
+        title: "Speaking Test Practice",
+        desc: "Guided interviews, presentations and examiner-style questions, with feedback on fluency and pronunciation.",
+      },
+      {
+        title: "Mock Papers & Score Review",
+        desc: "Full timed mocks scored against the pass mark of 50 out of 100 and the 5 out of 25 minimum per paper.",
+      },
+      {
+        title: "Registration & Exam-Day Guidance",
+        desc: "How to find exam dates, register on time, and what to carry on the day.",
+      },
+    ],
+
+    whyChooseUs: [
+      {
+        title: "Prepared Paper by Paper",
+        desc: "Every class ties back to one of the four exam papers, so your study time goes where the marks are.",
+      },
+      {
+        title: "Honest Advice on the Right Exam",
+        desc: "DELF is not accepted for Canada Express Entry. If PR is your goal, we will point you to TEF or TCF instead of selling you the wrong course.",
+      },
+      {
+        title: "Small Batches, Real Feedback",
+        desc: "Batches are capped small so every learner gets corrected writing and speaking practice, not only listening drills.",
+      },
+      {
+        title: "DELF/DALF-Trained Faculty",
+        desc: "Learn from faculty with 10+ years of teaching experience across adult and exam-preparation learners.",
+      },
+    ],
+
+    pricing: {
+      planName: "DELF Coaching — Level-Wise Batches",
+      fee: "Contact for Current Batch Fees",
+      originalFee: "",
+      duration: "Per Level (8–10 Weeks)",
+      includes: [
+        "Level-wise live batch (A1 to B2)",
+        "Timed mock papers with score review",
+        "Writing correction and speaking feedback",
+        "Exam registration guidance",
+        "Free level check and trial class",
+      ],
+      discountNote:
+        "Coaching fees are separate from the official DELF exam fee, which is paid to the exam centre. See our DELF exam guide for 2026 exam fees.",
+      pricePageLink: "/blogs/delf-exam-guide-levels-fees-pattern-results",
+      pricePageTitle: "Read the DELF Exam Guide & 2026 Fees",
+    },
+
+    faq: [
+      {
+        question: "How can I prepare for the DELF exam?",
+        answer:
+          "Start with a level check, read the official exam guide for your level, then practise all four skills every week: daily listening, a corrected writing task, spoken practice with feedback and timed mock papers before the exam. A structured batch keeps all four on schedule.",
+      },
+      {
+        question: "Which DELF level should I start with?",
+        answer:
+          "It depends on how much French you can already use. Complete beginners start with A1, and learners who can handle basic conversation usually start with A2 or B1. Our free level check gives you a clear answer before you pay anything.",
+      },
+      {
+        question: "Can I give DELF A2 without A1, or go straight to B2?",
+        answer:
+          "Yes, there is no prerequisite diploma, and you can register for any level directly. The real question is whether your French is ready for that level, and a level check answers that. Joining B2 without a solid B1 base usually means struggling with the writing and speaking papers.",
+      },
+      {
+        question: "How long does DELF preparation take?",
+        answer:
+          "Our A1 course runs 8 weeks (60 hours), and the A2, B1 and B2 courses run 10 weeks (75 hours) each. Your own timeline depends on your starting level and how often you practise between classes.",
+      },
+      {
+        question: "How do I prepare for the DELF A1 exam?",
+        answer:
+          "Focus on pronunciation, greetings, numbers, the verbs être and avoir, and short spoken answers about yourself. Then practise the four papers in the A1 format, including a short writing task and a brief speaking interview.",
+      },
+      {
+        question: "Is DELF B2 hard to pass?",
+        answer:
+          "B2 is demanding because it asks you to argue a point of view in writing and in speech. It is very passable with steady preparation, particularly if you practise the argued essay and the spoken presentation with feedback rather than on your own.",
+      },
+      {
+        question: "Are there free DELF courses online?",
+        answer:
+          "Free material exists, including official sample papers and listening recordings, and it is useful for practice. What free material rarely gives you is a tutor who corrects your writing and speaking. We offer a free level check and trial class so you can see the difference before you commit.",
+      },
+      {
+        question: "Does Inquisitive Mind Academy conduct the DELF exam?",
+        answer:
+          "No. The DELF exam is held at authorised centres such as Alliance Française. We prepare you for it and guide your registration, and you pay the exam fee to the centre, separately from coaching fees.",
+      },
+      {
+        question: "Is DELF accepted for Canada PR?",
+        answer:
+          "No. IRCC accepts TEF Canada and TCF Canada for Express Entry. If you are preparing for Canadian immigration, see our TEF and TCF coaching. If your goal is study in France or a lifetime French certificate, DELF is the right exam.",
+      },
+      {
+        question: "Where is Inquisitive Mind Academy located?",
+        answer:
+          `Our academy office is at ${SITE_CONFIG.address.line1}, ${SITE_CONFIG.address.city} ${SITE_CONFIG.address.postalCode} (Mon–Fri 9 AM–7 PM, Sat 9 AM–5 PM). DELF batches run live online, so you can join from anywhere in the Tricity. Call or WhatsApp ${SITE_CONFIG.phone} for batch timings.`,
+      },
+    ],
+
+    areasWeServe: [
+      { city: "Chandigarh", center: "Live Online & Sector 17-C Academy Office", href: "/services/delf-coaching-chandigarh" },
+      { city: "Mohali", center: "Live Online DELF Batches", href: "/locations/delf-classes-mohali" },
+      { city: "Panchkula", center: "Live Online French Batches", href: "/locations/french-classes-panchkula" },
+      { city: "Zirakpur", center: "Live Online French Batches", href: "/locations/french-classes-zirakpur" },
+    ],
+
+    relatedServices: [
+      "french-classes-chandigarh",
+      "tef-canada-coaching-chandigarh",
+      "tcf-canada-coaching-chandigarh",
+    ],
+
+    relatedBlogs: [
+      "delf-exam-guide-levels-fees-pattern-results",
+      "french-classes-fees-in-chandigarh-cost-guide",
+      "what-is-tef-tcf-exam-comparison-scores-fees",
+    ],
+
+    finalCta: {
+      title: "Start Your DELF Preparation in Chandigarh Today",
+      description:
+        "Book a free level check and trial class, then join a live online batch built around the DELF exam paper by paper.",
+      buttonText: "Book Free Trial Class",
+      whatsappMsg:
+        "Hi Inquisitive Mind Academy! I want to know more about DELF coaching in Chandigarh. Please share batch timings and fees.",
+    },
+
+    seo: {
+      title: "DELF Coaching in Chandigarh | Inquisitive Mind Academy",
+      // 54 characters
+      description:
+        "Prepare for DELF A1 to B2 with live online coaching for Chandigarh learners. Level-wise batches, mock tests, speaking practice and a free trial class.",
+      // 150 characters
+      keywords: [
+        "DELF coaching in Chandigarh",
+        "DELF classes in Chandigarh",
+        "DELF preparation classes online",
+        "DELF exam preparation course",
+        "DELF A1 coaching",
+        "DELF B2 coaching",
+        "French classes for DELF",
+      ],
+    },
+  },
 
 
   // ==========================================

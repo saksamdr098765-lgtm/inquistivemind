@@ -100,7 +100,7 @@ function DesktopNav({
               category="Header Profile"
               className="flex items-center gap-3 rounded-full border border-slate-200 bg-white px-2 py-2 transition hover:border-yellow-400 hover:shadow-lg"
             >
-              {user.profileImage.url ? (
+              {user.profileImage?.url ? (
                 <Image
                   src={user.profileImage.url}
                   alt={user.fullName}

@@ -37,7 +37,7 @@ import ProfileItem from './ProfileItem'
 
   <div className="flex items-center gap-4">
 
-    {user.profileImage.url ? (
+    {user.profileImage?.url ? (
      <Image
   src={user.profileImage.url}
   alt={user.fullName}

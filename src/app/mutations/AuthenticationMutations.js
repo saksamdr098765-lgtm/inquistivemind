@@ -21,10 +21,13 @@ export const useLoginMutation=()=>{
  
   login({user:data.user,accessToken:data.accessToken})
     if(data.user.role==="student"){
-    router.push('/student-profile/profile')
+    router.push('/student-profile/dashboard')
      }
      if(data.user.role==="admin"){
-    router.push('/admin-panel/student')
+    router.push('/admin-panel/dashboard')
+     }
+     if(data.user.role==="teacher"){
+    router.push('/teacher-profile/dashboard')
      }
      toast.success("You Logged in Successlly ")
   

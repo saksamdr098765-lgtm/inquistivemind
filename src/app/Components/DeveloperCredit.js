@@ -6,10 +6,11 @@ import { usePathname } from "next/navigation";
 export default function DeveloperCredit() {
   const pathname = usePathname();
 
-  // Hide developer credit on Admin Panel, Student Profile, Login, and Signup pages
+  // Hide developer credit on Admin Panel, Student Profile, Teacher Profile, Login, and Signup pages
   if (
     pathname?.startsWith("/admin-panel") ||
     pathname?.startsWith("/student-profile") ||
+    pathname?.startsWith("/teacher-profile") ||
     pathname?.startsWith("/login") ||
     pathname?.startsWith("/signup")
   ) {

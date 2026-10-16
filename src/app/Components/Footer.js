@@ -54,6 +54,7 @@ const serviceCategories = [
     links: [
       { name: "French Tutor Jobs", path: "/services/french-tutor-jobs-chandigarh" },
       { name: "Become a Tutor", path: "/become-a-tutor" },
+      { name: "Teacher Portal", path: "/teacher-profile/dashboard" },
     ],
   },
 ];
@@ -77,10 +78,11 @@ export default function Footer() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Hide footer completely on Admin Panel, Student Profile, Login, and Signup pages
+  // Hide footer completely on Admin Panel, Student Profile, Teacher Profile, Login, and Signup pages
   if (
     pathname?.startsWith("/admin-panel") ||
     pathname?.startsWith("/student-profile") ||
+    pathname?.startsWith("/teacher-profile") ||
     pathname?.startsWith("/login") ||
     pathname?.startsWith("/signup")
   ) {

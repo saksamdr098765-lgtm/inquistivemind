@@ -81,6 +81,20 @@ export default function Navbar() {
             },
           ]
         : []),
+      ...(path === "teacher-profile"
+        ? [
+            {
+              title: "My Batches",
+              icon: FaUsers,
+              href: `/${path}/batches`,
+            },
+            {
+              title: "Live Classes",
+              icon: FaChalkboardTeacher,
+              href: `/${path}/classes`,
+            },
+          ]
+        : []),
       ...(path === "admin-panel"
         ? [
             {
@@ -99,6 +113,16 @@ export default function Navbar() {
     [path]
   );
 
+  const navLinks = useMemo(() => {
+    if (user?.role === "teacher") {
+      return [
+        ...links,
+        { name: "Teacher Portal", path: "/teacher-profile/dashboard", icon: FaChalkboardTeacher },
+      ];
+    }
+    return links;
+  }, [user?.role]);
+
   const handleLogout = useCallback(() => {
     logoutMutation.mutate();
   }, [logoutMutation]);
@@ -115,10 +139,11 @@ export default function Navbar() {
     setProfileOpen((prev) => !prev);
   }, []);
 
-  // Hide global navbar on Admin Panel and Student Profile since they have dedicated portal navigation
+  // Hide global navbar on Admin Panel, Student Profile, and Teacher Profile since they have dedicated portal navigation
   if (
     pathname?.startsWith("/admin-panel") ||
-    pathname?.startsWith("/student-profile")
+    pathname?.startsWith("/student-profile") ||
+    pathname?.startsWith("/teacher-profile")
   ) {
     return null;
   }
@@ -130,7 +155,7 @@ export default function Navbar() {
       }`}
     >
       <DesktopNav
-        links={links}
+        links={navLinks}
         toggleProfile={toggleProfile}
         toggleMenu={toggleMenu}
         profileItems={profileItems}
@@ -147,7 +172,7 @@ export default function Navbar() {
         open={open}
         closeMenu={closeMenu}
         user={user}
-        links={links}
+        links={navLinks}
         profileItems={profileItems}
         handleLogout={handleLogout}
       />

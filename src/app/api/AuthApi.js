@@ -18,4 +18,7 @@ export  function logoutApi(){
 export  function updatePasswordApi(data){
     return api.patch('/auth/update-password',data)
 }
+export  function forgotPasswordApi(data){
+    return api.patch('/auth/forgot-password',data)
+}
 

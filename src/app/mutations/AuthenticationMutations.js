@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { toast } from 'sonner';
 
-import { loginApi,logoutApi,sendOtp,signUpApi, updatePasswordApi, verifyOtp } from '../api/AuthApi';
+import { forgotPasswordApi, loginApi,logoutApi,sendOtp,signUpApi, updatePasswordApi, verifyOtp } from '../api/AuthApi';
 import { useRouter } from 'next/navigation';
 import handleError from '@/Utils/handleError';
 import useAuthStore from '@/store/authStore';
@@ -98,6 +98,24 @@ export const useSignUpMutation=(resetForm)=>{
   setTimeout(() => {
     router.push("/signup/pending");
   }, 1500);
+  
+        }
+    })
+}
+export const useForgotPassword=(resetForm)=>{
+   
+    const router=useRouter()
+    return useMutation({
+        mutationFn:async(data)=>{
+         return await forgotPasswordApi(data)
+        },
+         retry:false,
+        onError:(error)=>handleError(error),
+         onSuccess:()=>{
+             resetForm();
+                 router.push("/login");
+             
+                toast.success("Your Passwrod Updated successfully ")
   
         }
     })

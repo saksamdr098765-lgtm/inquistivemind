@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import useAuthStore from "@/store/authStore";
-import StudentLoading from "@/app/student-profile/components/StudentLoading";
+import PortalLoading from "@/app/Components/portal-ui/PortalLoading";
 
 export default function ProtectedRoute({
   children,
@@ -31,7 +31,15 @@ export default function ProtectedRoute({
   }, [isAuthenticated, isInitialized, user, roles, router]);
 
   if (!isInitialized) {
-    return <StudentLoading />;
+    const defaultType = roles.includes("admin") && !roles.includes("student")
+      ? "admin"
+      : roles.includes("teacher") && !roles.includes("student")
+      ? "teacher"
+      : roles.includes("student")
+      ? "student"
+      : undefined;
+
+    return <PortalLoading type={defaultType} />;
   }
 
   if (!isAuthenticated) {

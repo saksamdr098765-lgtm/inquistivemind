@@ -191,7 +191,10 @@ export default function Dashboard() {
       <div className="grid gap-4 sm:gap-6 lg:grid-cols-3">
         {/* Revenue Overview Widget */}
         <PortalCard className="lg:col-span-2 relative" padding="p-4 sm:p-6">
-          <CommingSoon />
+          <CommingSoon
+            title="Revenue & Analytics Coming Soon"
+            message="Comprehensive revenue charts and student enrollment tracking will be available soon in this widget."
+          />
           <div className="flex items-center justify-between mb-4 sm:mb-6">
             <div>
               <h3 className="text-base sm:text-xl font-bold text-slate-900">Revenue & Enrollment Analytics</h3>

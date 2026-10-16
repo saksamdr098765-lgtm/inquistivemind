@@ -120,7 +120,8 @@ export default function TeacherSettings() {
               size="sm"
               icon={FaSave}
               isLoading={isSubmitting || updatePasswordMutation.isPending}
-              disabled={isSubmitting || updatePasswordMutation.isPending}
+              // disabled={isSubmitting || updatePasswordMutation.isPending}
+              disabled={true}
               className="w-full sm:w-auto"
             >
               Update Security Password

@@ -109,7 +109,8 @@ export default function TeacherProfile({ user, profile }) {
               type="submit"
               icon={FaSave}
               isLoading={isSubmitting || profileUpdateMutation.isPending}
-              disabled={isSubmitting || profileUpdateMutation.isPending}
+              // disabled={isSubmitting || profileUpdateMutation.isPending}
+              disabled={true}
               className="w-full sm:w-auto"
             >
               Save Profile Changes

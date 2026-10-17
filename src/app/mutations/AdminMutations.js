@@ -3,7 +3,7 @@ import handleError from "@/Utils/handleError"
 
 import { useMutation } from "@tanstack/react-query"
 import { toast } from "sonner"
-import { adminApproveUserApi, adminBlockUserApi, adminDeleteUserByIdApi, adminGetUserById, adminRejectUserApi, adminUnblockUserApi, adminUpdateUserById } from "../api/adminApi"
+import { adminApproveUserApi, adminBlockUserApi, adminDeleteUserByIdApi, adminGetUserById, adminRejectUserApi, adminUnblockUserApi, adminUpdateTeacherById, adminUpdateUserById } from "../api/adminApi"
 import queryClient from "@/lib/queryClient"
 
 export const useAdminUserUpdateMutation=(id)=>{
@@ -16,6 +16,30 @@ export const useAdminUserUpdateMutation=(id)=>{
          onSuccess:(data)=>{
             queryClient.invalidateQueries({
                 queryKey:["Admin-User",id]
+            })
+            queryClient.invalidateQueries({
+  queryKey: ["Admin-Student-List"],
+});
+     toast.success(data.message)
+        },
+     onError:(error)=> handleError(error)
+    
+
+    })
+}
+export const useAdminTeacherUpdateMutation=(id)=>{
+    return useMutation({
+        mutationFn:async(data)=>{
+          const response=await  adminUpdateTeacherById(id,data)
+          return response.data
+        },
+         retry:false,
+         onSuccess:(data)=>{
+            queryClient.invalidateQueries({
+                queryKey:["Admin-User",id]
+            })
+            queryClient.invalidateQueries({
+                queryKey:["Admin-teacher",id]
             })
             queryClient.invalidateQueries({
   queryKey: ["Admin-Student-List"],

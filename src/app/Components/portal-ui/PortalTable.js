@@ -73,22 +73,22 @@ export default function PortalTable({
       </div>
 
       {/* Mobile Card Stack View (< 1024px) */}
-      <div className="block lg:hidden divide-y divide-slate-100 p-4 space-y-4 divide-y-0">
+      <div className="block lg:hidden divide-y divide-slate-100 p-3 sm:p-4 space-y-3 sm:space-y-4 divide-y-0">
         {data.map((item, index) => (
           <div
             key={keyExtractor(item, index)}
-            className="rounded-2xl border border-slate-200/90 bg-white p-4 shadow-xs"
+            className="rounded-2xl border border-slate-200/90 bg-white p-3.5 sm:p-5 shadow-xs min-w-0 overflow-hidden"
           >
             {renderMobileCard ? (
               renderMobileCard(item, index)
             ) : (
-              <div className="space-y-3">
+              <div className="space-y-3 min-w-0">
                 {columns.map((col, idx) => (
-                  <div key={col.key || idx} className="flex justify-between items-center text-sm">
-                    <span className="text-xs font-semibold uppercase text-slate-400">
+                  <div key={col.key || idx} className="flex justify-between items-center text-sm gap-2 min-w-0">
+                    <span className="text-xs font-semibold uppercase text-slate-400 shrink-0">
                       {col.header}
                     </span>
-                    <div className="font-medium text-slate-800">
+                    <div className="font-medium text-slate-800 min-w-0 break-words text-right">
                       {col.render ? col.render(item, index) : item[col.key]}
                     </div>
                   </div>

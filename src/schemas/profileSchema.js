@@ -18,8 +18,20 @@ export const profileSchema = z.object({
 
   dateOfBirth: z.string().optional(),
 
-  gender: z.enum(["male", "female", "other"]).optional(),
+  gender: z.enum(["male", "female", "other"]).optional().or(z.literal("")),
   role: z.enum(["student", "teacher"]).optional(),
+
+  // Tutor & Teacher fields
+  city: z.string().optional(),
+  subject: z.string().optional(),
+  experience: z.string().optional(),
+  studentLevel: z.string().optional(),
+  mode: z.string().optional(),
+  teachingMode: z.string().optional(),
+  qualification: z.string().optional(),
+  availability: z.array(z.string()).optional(),
+  timeSlot: z.array(z.string()).optional(),
+  bio: z.string().optional(),
 
   languageLevel: z.enum([
     "Beginner",

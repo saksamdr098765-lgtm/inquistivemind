@@ -61,18 +61,18 @@ export default function Students() {
       header: "Student Name",
       key: "fullName",
       render: (student) => (
-        <div className="flex items-center gap-3.5">
-          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-yellow-100 font-bold text-yellow-800 border border-yellow-300 text-lg">
+        <div className="flex items-center gap-3.5 min-w-0 max-w-[240px]">
+          <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-yellow-100 font-bold text-yellow-800 border border-yellow-300 text-lg shadow-xs">
             {student.fullName?.charAt(0) || "U"}
           </div>
-          <div>
-            <h4 className="font-bold text-slate-900 leading-snug">
+          <div className="min-w-0 flex-1">
+            <h4 className="font-bold text-slate-900 leading-snug truncate" title={student.fullName}>
               {student.fullName}
               <span className="ml-2 text-xs font-semibold text-slate-400">
                 ({capitalizeFirstLetter(student.role)})
               </span>
             </h4>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-400 font-medium">
               ID #{student._id?.toString().slice(-6).toUpperCase()}
             </p>
           </div>
@@ -83,9 +83,14 @@ export default function Students() {
       header: "Contact Info",
       key: "email",
       render: (student) => (
-        <div>
-          <p className="font-semibold text-slate-800 text-sm">{student.email}</p>
-          <p className="text-xs text-slate-400 mt-0.5">{student.phone || "No phone"}</p>
+        <div className="max-w-[220px] xl:max-w-[280px] min-w-0">
+          <p
+            className="font-semibold text-slate-800 text-sm break-all leading-snug"
+            title={student.email}
+          >
+            {student.email}
+          </p>
+          <p className="text-xs text-slate-400 mt-0.5 truncate">{student.phone || "No phone"}</p>
         </div>
       ),
     },
@@ -207,39 +212,87 @@ export default function Students() {
           emptyTitle="No students found"
           emptyDescription="No student records matched your search parameters."
           renderMobileCard={(student) => (
-            <div className="space-y-2.5">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-yellow-100 font-bold text-yellow-800 border border-yellow-300 text-xs">
+            <div className="space-y-3 min-w-0 w-full">
+              {/* Header: Avatar, Name, Role, ID & Status Badge */}
+              <div className="flex items-start justify-between gap-3 min-w-0">
+                <div className="flex items-center gap-3 min-w-0 flex-1">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-yellow-100 font-bold text-yellow-800 border border-yellow-300 text-base shadow-xs">
                     {student.fullName?.charAt(0) || "U"}
                   </div>
-                  <div>
-                    <h4 className="font-bold text-slate-900 text-xs sm:text-sm">{student.fullName}</h4>
-                    <p className="text-[11px] text-slate-400">{student.email}</p>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <h4
+                        className="font-bold text-slate-900 text-sm sm:text-base leading-snug truncate"
+                        title={student.fullName}
+                      >
+                        {student.fullName}
+                      </h4>
+                      <span className="inline-flex items-center rounded-md bg-amber-50 px-1.5 py-0.5 text-[10px] font-bold text-amber-800 border border-amber-200/60">
+                        {capitalizeFirstLetter(student.role)}
+                      </span>
+                    </div>
+                    <p className="text-[11px] font-semibold text-slate-400 mt-0.5">
+                      ID #{student._id?.toString().slice(-6).toUpperCase()}
+                    </p>
                   </div>
                 </div>
-                <PortalBadge variant={student.status}>{student.status}</PortalBadge>
+                <div className="shrink-0">
+                  <PortalBadge variant={student.status} size="sm">
+                    {student.status}
+                  </PortalBadge>
+                </div>
               </div>
 
-              <div className="flex items-center justify-between pt-2 border-t border-slate-100 text-xs text-slate-500">
-                <span>Approval: <strong className="capitalize text-slate-700">{student.approvalStatus}</strong></span>
-                <span>Phone: <strong className="text-slate-700">{student.phone || "N/A"}</strong></span>
+              {/* Contact Info: Email & Phone (break-all prevents overflow from long emails) */}
+              <div className="rounded-xl bg-slate-50/90 p-3 border border-slate-100 space-y-2 min-w-0">
+                <div className="flex items-start gap-2.5 min-w-0">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 shrink-0 w-14 pt-0.5">
+                    Email
+                  </span>
+                  <span
+                    className="text-xs font-semibold text-slate-800 break-all leading-relaxed select-all min-w-0 flex-1"
+                    title={student.email}
+                  >
+                    {student.email}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2.5 min-w-0 pt-2 border-t border-slate-200/60">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 shrink-0 w-14">
+                    Phone
+                  </span>
+                  <span className="text-xs font-semibold text-slate-700 truncate">
+                    {student.phone || "No phone provided"}
+                  </span>
+                </div>
               </div>
 
-              <div className="flex gap-2 pt-2">
+              {/* Approval Status Row */}
+              <div className="flex items-center justify-between gap-2 pt-0.5 text-xs">
+                <span className="text-xs font-semibold text-slate-500">Approval Status</span>
+                <PortalBadge variant={student.approvalStatus} size="sm">
+                  {student.approvalStatus}
+                </PortalBadge>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex items-center gap-2 pt-1.5">
                 <PortalButton
                   variant="yellowOutline"
                   size="sm"
-                  className="flex-1"
+                  icon={FaEdit}
+                  className="flex-1 justify-center shadow-xs"
                   onClick={() => router.push(`/admin-panel/user/${student._id}`)}
                 >
                   Edit Details
                 </PortalButton>
                 <button
+                  type="button"
                   onClick={() => handleDelete(student._id, student.fullName)}
-                  className="px-3.5 py-2 rounded-xl bg-rose-50 text-rose-600 font-bold text-xs hover:bg-rose-100 transition-colors"
+                  className="inline-flex items-center justify-center gap-1.5 px-4 min-h-[40px] rounded-xl bg-rose-50 border border-rose-200 text-rose-600 font-bold text-xs hover:bg-rose-100 active:scale-[0.98] transition-all shadow-xs"
+                  title="Delete Student"
                 >
-                  Delete
+                  <FaTrash className="text-xs" />
+                  <span>Delete</span>
                 </button>
               </div>
             </div>
@@ -254,7 +307,7 @@ export default function Students() {
               <span className="text-slate-900">{pagination.totalPages}</span> ({pagination.total} total students)
             </p>
 
-            <div className="flex items-center gap-1.5 sm:gap-2">
+            <div className="flex flex-wrap items-center justify-center sm:justify-end gap-1.5 sm:gap-2">
               <PortalButton
                 variant="outline"
                 size="sm"

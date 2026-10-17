@@ -149,11 +149,22 @@ const TUTOR_PROFILES = [
     name: "Sakshi Goel",
     role: "Lead French Faculty",
     credentials: "DELF Certified • 10+ Yrs Exp",
-    rating: "5.0",
+    // rating: "5.0",
     // reviews: "140+ reviews",
     focus: "DELF A1–B2 Prep, TEF Canada & Fluency",
     avatarBg: "from-amber-400 to-yellow-500",
     initials: "SG",
+  },
+  {
+    subject: "Math",
+    name: "Priyanka ",
+    role: "Lead Mathematics Faculty",
+    credentials: " • 3+ Yrs Exp",
+    // rating: "5.0",
+    // reviews: "140+ reviews",
+    focus: "Conceptual Understanding, Logical Reasoning",
+    avatarBg: "from-amber-400 to-yellow-500",
+    initials: "P",
   },
   // {
   //   subject: "English",
@@ -578,8 +589,8 @@ export default function Hero() {
                         </div>
 
                         <div className="grid grid-cols-4 gap-1.5 w-full">
-                          {/* {["French", "English", "Math", "Science"].map((sub) => ( */}
-                          {["French"].map((sub) => (
+                          {/* {["French", "English", "Science"].map((sub) => ( */}
+                          {["French","Math"].map((sub) => (
                             <TrackedButton
                               key={sub}
                               label={`Tutor Filter: ${sub}`}

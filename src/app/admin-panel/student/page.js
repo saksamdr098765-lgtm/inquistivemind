@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import {
@@ -8,6 +8,10 @@ import {
   FaPlus,
   FaEdit,
   FaTrash,
+  FaFilter,
+  FaUserCheck,
+  FaUserGraduate,
+  FaUndo,
 } from "react-icons/fa";
 
 import { useAdminStudent } from "@/Hooks/useAdminStudents";
@@ -26,8 +30,8 @@ export default function Students() {
   const router = useRouter();
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
+  const changingFilterRef = useRef(null);
   const [filters, setFilters] = useState({
-    search: "",
     status: "",
     approvalStatus: "",
     role: "",
@@ -35,9 +39,9 @@ export default function Students() {
 
   const debouncedSearch = useDebounce(search, 500);
   const deleteUserMutation = useAdminDeleteUser();
-  const { data, isLoading } = useAdminStudent(
+  const { data, isLoading, isFetching } = useAdminStudent(
     page,
-    filters.search,
+    debouncedSearch,
     filters.status,
     filters.approvalStatus,
     filters.role
@@ -45,10 +49,46 @@ export default function Students() {
 
   const users = data?.users || [];
   const pagination = data?.pagination || {};
+  const activeChangingFilter = isFetching ? changingFilterRef.current : null;
 
-  useEffect(() => {
-    setFilters((prev) => ({ ...prev, search: debouncedSearch }));
-  }, [debouncedSearch]);
+  const handleStatusChange = (e) => {
+    changingFilterRef.current = "status";
+    setPage(1);
+    setFilters((prev) => ({ ...prev, status: e.target.value }));
+  };
+
+  const handleApprovalChange = (e) => {
+    changingFilterRef.current = "approvalStatus";
+    setPage(1);
+    setFilters((prev) => ({ ...prev, approvalStatus: e.target.value }));
+  };
+
+  const handleRoleChange = (e) => {
+    changingFilterRef.current = "role";
+    setPage(1);
+    setFilters((prev) => ({ ...prev, role: e.target.value }));
+  };
+
+  const handleResetFilters = () => {
+    changingFilterRef.current = "all";
+    setSearch("");
+    setPage(1);
+    setFilters({
+      status: "",
+      approvalStatus: "",
+      role: "",
+    });
+  };
+
+  const hasActiveFilters = Boolean(
+    filters.status || filters.approvalStatus || filters.role || search
+  );
+  const activeCount = [
+    filters.status,
+    filters.approvalStatus,
+    filters.role,
+    search,
+  ].filter(Boolean).length;
 
   const handleDelete = (userId, name) => {
     if (confirm(`Are you sure you want to delete ${name}?`)) {
@@ -163,43 +203,87 @@ export default function Students() {
       </motion.div>
 
       {/* Filter and Search Bar */}
-      <PortalCard padding="p-4 sm:p-6">
-        <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <PortalInput
-            icon={FaSearch}
-            placeholder="Search by name, email..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
+      <PortalCard padding="p-4 sm:p-6" className="relative overflow-hidden">
+        {isFetching && (
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 animate-pulse z-10" />
+        )}
 
-          <PortalSelect
-            value={filters.status}
-            onChange={(e) => setFilters((prev) => ({ ...prev, status: e.target.value }))}
-          >
-            <option value="">All Statuses</option>
-            <option value="active">Active</option>
-            <option value="pending">Pending</option>
-            <option value="blocked">Blocked</option>
-          </PortalSelect>
+        <div className="space-y-3 sm:space-y-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <span className="flex h-7 w-7 items-center justify-center rounded-xl bg-amber-50 text-amber-600 border border-amber-200/70 text-xs shadow-2xs">
+                <FaFilter />
+              </span>
+              <span className="text-xs sm:text-sm font-bold text-slate-800">
+                Filter & Search
+              </span>
+              {hasActiveFilters && (
+                <span className="inline-flex items-center rounded-full bg-amber-100 border border-amber-200 px-2 py-0.5 text-[10px] sm:text-[11px] font-bold text-amber-800">
+                  {activeCount} active
+                </span>
+              )}
+            </div>
 
-          <PortalSelect
-            value={filters.approvalStatus}
-            onChange={(e) => setFilters((prev) => ({ ...prev, approvalStatus: e.target.value }))}
-          >
-            <option value="">All Approvals</option>
-            <option value="approved">Approved</option>
-            <option value="pending">Pending Approval</option>
-            <option value="rejected">Rejected</option>
-          </PortalSelect>
+            {hasActiveFilters && (
+              <button
+                type="button"
+                onClick={handleResetFilters}
+                className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 hover:text-amber-800 transition-colors cursor-pointer"
+              >
+                <FaUndo className="text-[10px]" />
+                <span>Reset Filters</span>
+              </button>
+            )}
+          </div>
 
-          <PortalSelect
-            value={filters.role}
-            onChange={(e) => setFilters((prev) => ({ ...prev, role: e.target.value }))}
-          >
-            <option value="">All Roles</option>
-            <option value="student">Student</option>
-            <option value="teacher">Teacher</option>
-          </PortalSelect>
+          <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <PortalInput
+              icon={FaSearch}
+              placeholder="Search by name, email..."
+              value={search}
+              isLoading={isFetching && activeChangingFilter === "search"}
+              onChange={(e) => {
+                changingFilterRef.current = "search";
+                setPage(1);
+                setSearch(e.target.value);
+              }}
+            />
+
+            <PortalSelect
+              icon={FaFilter}
+              value={filters.status}
+              isLoading={isFetching && (activeChangingFilter === "status" || activeChangingFilter === "all")}
+              onChange={handleStatusChange}
+            >
+              <option value="">All Statuses</option>
+              <option value="active">Active</option>
+              <option value="pending">Pending</option>
+              <option value="blocked">Blocked</option>
+            </PortalSelect>
+
+            <PortalSelect
+              icon={FaUserCheck}
+              value={filters.approvalStatus}
+              isLoading={isFetching && (activeChangingFilter === "approvalStatus" || activeChangingFilter === "all")}
+              onChange={handleApprovalChange}
+            >
+              <option value="">All Approvals</option>
+              <option value="approved">Approved</option>
+              <option value="pending">Pending Approval</option>
+              <option value="rejected">Rejected</option>
+            </PortalSelect>
+
+            <PortalSelect
+              icon={FaUserGraduate}
+              value={filters.role}
+              isLoading={isFetching && (activeChangingFilter === "role" || activeChangingFilter === "all")}
+              onChange={handleRoleChange}
+            >
+              <option value="">All Roles</option>
+              <option value="student">Student</option>
+              <option value="teacher">Teacher</option>
+            </PortalSelect>
+          </div>
         </div>
       </PortalCard>
 
@@ -209,6 +293,7 @@ export default function Students() {
           columns={columns}
           data={users}
           isLoading={isLoading}
+          isFetching={isFetching}
           emptyTitle="No students found"
           emptyDescription="No student records matched your search parameters."
           renderMobileCard={(student) => (

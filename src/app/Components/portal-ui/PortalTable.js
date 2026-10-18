@@ -10,6 +10,7 @@ export default function PortalTable({
   emptyTitle = "No records found",
   emptyDescription = "There are no items matching your criteria.",
   isLoading = false,
+  isFetching = false,
   className = "",
 }) {
   if (isLoading) {
@@ -35,7 +36,40 @@ export default function PortalTable({
   }
 
   return (
-    <div className={`w-full overflow-hidden rounded-[28px] border border-slate-200/80 bg-white shadow-xs ${className}`}>
+    <div className={`relative w-full overflow-hidden rounded-[28px] border border-slate-200/80 bg-white shadow-xs ${className}`}>
+      {/* Top indeterminate progress bar when refetching */}
+      {isFetching && (
+        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 animate-pulse z-40" />
+      )}
+
+      {/* Loading overlay when refetching / changing filter */}
+      {isFetching && (
+        <div className="absolute inset-0 z-30 flex items-center justify-center bg-white/50 backdrop-blur-[1px] transition-all duration-200">
+          <div className="inline-flex items-center gap-2.5 rounded-2xl bg-slate-900/90 px-4 py-2 text-xs font-semibold text-white shadow-xl backdrop-blur-md">
+            <svg
+              className="h-3.5 w-3.5 animate-spin text-amber-400"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                className="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                strokeWidth="3.5"
+              />
+              <path
+                className="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+              />
+            </svg>
+            <span>Updating records...</span>
+          </div>
+        </div>
+      )}
       {/* Desktop Table View */}
       <div className="hidden lg:block overflow-x-auto">
         <table className="w-full text-left border-collapse">

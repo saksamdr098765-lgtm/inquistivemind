@@ -44,7 +44,7 @@ export default function Dashboard() {
   const { data: recentStudents, isLoading: activitiesLoading } = useAdminGetRecentActivities();
   const { data: classes, isLoading: classesLoading } = useAdminGetAllClasses();
   const { data: announcements, isLoading: annoucementsLoading } = useAdminGetAllAnnoucements();
-
+console.log(recentStudents)
   const stats = [
     {
       title: "Total Students",

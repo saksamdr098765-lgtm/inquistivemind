@@ -16,8 +16,27 @@ import {
 } from "../mutations/AuthenticationMutations";
 import { toast } from "sonner";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import useAuthStore from "@/store/authStore";
 
 export default function ForgetPasswordPage() {
+  const router = useRouter();
+  const user = useAuthStore((state) => state.user);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  const isInitialized = useAuthStore((state) => state.isInitialized);
+
+  useEffect(() => {
+    if (isInitialized && isAuthenticated && user) {
+      if (user.role === "admin") {
+        router.replace("/admin-panel/dashboard");
+      } else if (user.role === "teacher") {
+        router.replace("/teacher-profile/dashboard");
+      } else {
+        router.replace("/student-profile/dashboard");
+      }
+    }
+  }, [isInitialized, isAuthenticated, user, router]);
+
   const [otpSent, setOtpSent] = useState(false);
   const [otp, setOtp] = useState("");
   const [timer, setTimer] = useState(0);
@@ -129,6 +148,14 @@ export default function ForgetPasswordPage() {
 
     forgotPassword.mutate(data);
   };
+
+  if (isInitialized && isAuthenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-amber-50/40 via-white to-slate-50/50">
+        <FaSpinner className="animate-spin text-amber-500 text-3xl" />
+      </div>
+    );
+  }
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-gradient-to-b from-amber-50/40 via-white to-slate-50/50 pt-28 sm:pt-36 pb-12 sm:pb-16 px-4 sm:px-6">

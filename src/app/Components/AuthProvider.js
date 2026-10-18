@@ -1,46 +1,47 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import useAuthStore from "@/store/authStore";
-import PortalLoading from "./portal-ui/PortalLoading";
+
+let refreshPromise = null;
 
 export default function AuthProvider({ children }) {
   const login = useAuthStore((state) => state.login);
   const logout = useAuthStore((state) => state.logout);
-  const setInitialized = useAuthStore(
-    (state) => state.setInitialized
-  );
-
-  const [loading, setLoading] = useState(true);
+  const setInitialized = useAuthStore((state) => state.setInitialized);
+  const isInitialized = useAuthStore((state) => state.isInitialized);
 
   useEffect(() => {
-    const refresh = async () => {
-      try {
-        const res = await axios.post(
+    if (isInitialized) return;
+
+    if (!refreshPromise) {
+      refreshPromise = axios
+        .post(
           `${process.env.NEXT_PUBLIC_API}/auth/refresh-token`,
           {},
           { withCredentials: true }
-        );
-
-        login({
-          user: res.data.user,
-          accessToken: res.data.accessToken,
+        )
+        .then((res) => {
+          if (res.data?.user) {
+            login({
+              user: res.data.user,
+              accessToken: res.data.accessToken,
+            });
+          } else {
+            logout();
+          }
+          return res.data;
+        })
+        .catch(() => {
+          logout();
+        })
+        .finally(() => {
+          setInitialized();
+          refreshPromise = null;
         });
-      } catch (err) {
-        logout();
-      } finally {
-        setInitialized();
-        setLoading(false);
-      }
-    };
-
-    refresh();
-  }, []);
-
-  if (loading) {
-    return <PortalLoading />;
-  }
+    }
+  }, [isInitialized, login, logout, setInitialized]);
 
   return children;
 }

@@ -103,20 +103,20 @@ function DesktopNav({
               {user.profileImage?.url ? (
                 <Image
                   src={user.profileImage.url}
-                  alt={user.fullName}
+                  alt={user.fullName || user.name || "User"}
                   width={44}
                   height={44}
                   className="rounded-full object-cover object-top shrink-0"
                 />
               ) : (
                 <div className="flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-r from-yellow-400 to-yellow-500 text-lg font-bold text-white">
-                  {user.fullName.charAt(0).toUpperCase()}
+                  {(user?.fullName || user?.name || "U").charAt(0).toUpperCase()}
                 </div>
               )}
 
               <div className="hidden text-left xl:block">
                 <h3 className="text-sm font-semibold text-slate-900">
-                  {capitalizeFirstLetter(user?.fullName)}
+                  {capitalizeFirstLetter(user?.fullName || user?.name || "User")}
                 </h3>
 
                 <p className="text-xs capitalize text-slate-500">

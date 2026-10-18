@@ -69,19 +69,19 @@ function MobileMenu({
                     {user.profileImage?.url ? (
                       <Image
                         src={user.profileImage.url}
-                        alt={user.fullName}
+                        alt={user.fullName || user.name || "User"}
                         width={64}
                         height={64}
                         className="rounded-full border-2 border-white object-cover object-top shrink-0"
                       />
                     ) : (
                       <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/20 text-2xl font-bold">
-                        {user.fullName?.[0]}
+                        {(user?.fullName || user?.name || "U")[0]?.toUpperCase()}
                       </div>
                     )}
 
                     <div>
-                      <h2 className="text-lg font-semibold">{user.fullName}</h2>
+                      <h2 className="text-lg font-semibold">{user.fullName || user.name || "User"}</h2>
                       <p className="text-sm text-yellow-100">{user.email}</p>
                       <span className="mt-2 inline-block rounded-full bg-white/20 px-3 py-1 text-xs capitalize">
                         {user.role}

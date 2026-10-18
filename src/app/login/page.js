@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import {
@@ -12,8 +12,26 @@ import {
 } from "react-icons/fa";
 import { useLoginMutation } from "../mutations/AuthenticationMutations";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import useAuthStore from "@/store/authStore";
 
 export default function LoginPage() {
+  const router = useRouter();
+  const user = useAuthStore((state) => state.user);
+  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  const isInitialized = useAuthStore((state) => state.isInitialized);
+
+  useEffect(() => {
+    if (isInitialized && isAuthenticated && user) {
+      if (user.role === "admin") {
+        router.replace("/admin-panel/dashboard");
+      } else if (user.role === "teacher") {
+        router.replace("/teacher-profile/dashboard");
+      } else {
+        router.replace("/student-profile/dashboard");
+      }
+    }
+  }, [isInitialized, isAuthenticated, user, router]);
 
    const [formData, setFormData] = useState({
     email: "",
@@ -62,6 +80,14 @@ export default function LoginPage() {
       password: formData.password,
     });
   };
+
+  if (isInitialized && isAuthenticated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-amber-50/40 via-white to-slate-50/50">
+        <FaSpinner className="animate-spin text-amber-500 text-3xl" />
+      </div>
+    );
+  }
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-gradient-to-b from-amber-50/40 via-white to-slate-50/50 pt-28 sm:pt-36 pb-12 sm:pb-16 px-4 sm:px-6">
@@ -197,7 +223,7 @@ export default function LoginPage() {
 
             {/* Footer */}
             <div className="pt-2 text-center text-xs sm:text-sm text-slate-600">
-              <span>Don't have an account?</span>
+              <span>Don&apos;t have an account?</span>
               <Link
                 href="/signup"
                 className="ml-1.5 font-bold text-amber-600 hover:text-amber-700 hover:underline transition"

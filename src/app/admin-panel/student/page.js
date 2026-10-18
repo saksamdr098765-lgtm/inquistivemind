@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import {
@@ -30,7 +30,6 @@ export default function Students() {
   const router = useRouter();
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
-  const changingFilterRef = useRef(null);
   const [filters, setFilters] = useState({
     status: "",
     approvalStatus: "",
@@ -49,28 +48,23 @@ export default function Students() {
 
   const users = data?.users || [];
   const pagination = data?.pagination || {};
-  const activeChangingFilter = isFetching ? changingFilterRef.current : null;
 
   const handleStatusChange = (e) => {
-    changingFilterRef.current = "status";
     setPage(1);
     setFilters((prev) => ({ ...prev, status: e.target.value }));
   };
 
   const handleApprovalChange = (e) => {
-    changingFilterRef.current = "approvalStatus";
     setPage(1);
     setFilters((prev) => ({ ...prev, approvalStatus: e.target.value }));
   };
 
   const handleRoleChange = (e) => {
-    changingFilterRef.current = "role";
     setPage(1);
     setFilters((prev) => ({ ...prev, role: e.target.value }));
   };
 
   const handleResetFilters = () => {
-    changingFilterRef.current = "all";
     setSearch("");
     setPage(1);
     setFilters({
@@ -241,9 +235,8 @@ export default function Students() {
               icon={FaSearch}
               placeholder="Search by name, email..."
               value={search}
-              isLoading={isFetching && activeChangingFilter === "search"}
+              isLoading={isFetching && Boolean(search)}
               onChange={(e) => {
-                changingFilterRef.current = "search";
                 setPage(1);
                 setSearch(e.target.value);
               }}
@@ -252,7 +245,7 @@ export default function Students() {
             <PortalSelect
               icon={FaFilter}
               value={filters.status}
-              isLoading={isFetching && (activeChangingFilter === "status" || activeChangingFilter === "all")}
+              isLoading={isFetching}
               onChange={handleStatusChange}
             >
               <option value="">All Statuses</option>
@@ -264,7 +257,7 @@ export default function Students() {
             <PortalSelect
               icon={FaUserCheck}
               value={filters.approvalStatus}
-              isLoading={isFetching && (activeChangingFilter === "approvalStatus" || activeChangingFilter === "all")}
+              isLoading={isFetching}
               onChange={handleApprovalChange}
             >
               <option value="">All Approvals</option>
@@ -276,7 +269,7 @@ export default function Students() {
             <PortalSelect
               icon={FaUserGraduate}
               value={filters.role}
-              isLoading={isFetching && (activeChangingFilter === "role" || activeChangingFilter === "all")}
+              isLoading={isFetching}
               onChange={handleRoleChange}
             >
               <option value="">All Roles</option>

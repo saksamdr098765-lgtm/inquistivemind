@@ -51,7 +51,7 @@ export default function RelatedCourses({ relatedCourses = [] }) {
             </div>
             <div className="mt-6 pt-4 border-t border-slate-100">
               <Link
-                href={`/course/${course.slug}`}
+                href={`/courses/${course.slug}`}
                 className="inline-flex items-center gap-2 text-sm font-semibold text-yellow-600 hover:text-yellow-700"
               >
                 <span>View Course Details</span>

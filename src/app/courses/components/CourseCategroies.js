@@ -67,14 +67,14 @@ export default function CourseCategories() {
               key={category.title}
               className="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl"
             >
-              <div className="relative h-60 sm:h-72 overflow-hidden bg-slate-900">
+              <div className="relative h-60 sm:h-72 overflow-hidden bg-amber-100">
                 <img
                   src={category.image}
                   alt={category.title}
                   className="h-full w-full object-cover object-center transition duration-700 group-hover:scale-110"
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-amber-950/70 to-transparent" />
 
                 <div className="absolute left-6 top-6">
                   <span className="rounded-full bg-white px-4 py-2 text-xs font-semibold text-yellow-600 shadow">
@@ -92,7 +92,7 @@ export default function CourseCategories() {
                   </p>
 
                   <TrackedLink
-                    href={`/course/${category.slug}`}
+                    href={`/courses/${category.slug}`}
                     label={`Explore Program: ${category.title}`}
                     category="Course Categories"
                     className="mt-6 inline-flex min-h-[44px] items-center gap-2 font-semibold text-yellow-400 transition-all duration-300 group-hover:gap-4 group-hover:text-yellow-300"

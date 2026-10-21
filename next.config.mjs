@@ -8,7 +8,21 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/course",
+        destination: "/courses",
+        permanent: true,
+      },
+      {
+        source: "/course/:slug*",
+        destination: "/courses/:slug*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
-
 export default nextConfig;
+

@@ -65,7 +65,7 @@ const SITE_CONFIG = {
     street: "Main Commercial Belt",
     city: "Chandigarh",
     district: "Chandigarh",
-    state: "Punjab",
+    state: "Chandigarh",
     postalCode: "160017",
     country: "India",
   },

@@ -166,7 +166,7 @@ export default function Programs() {
                 </div>
 
                 <TrackedLink
-                  href={`/course/${current.slug}`}
+                  href={`/courses/${current.slug}`}
                   label={`Explore Program: ${current.title}`}
                   category="Program Selector"
                   className="mt-8 inline-flex min-h-[44px] w-full items-center justify-center rounded-full bg-yellow-500 px-8 py-3 text-center text-white shadow-md shadow-yellow-200 transition hover:bg-yellow-600 sm:w-auto"

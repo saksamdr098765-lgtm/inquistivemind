@@ -102,7 +102,7 @@ export default function ServiceCoursesWeOffer({ service }) {
 
               <div className="p-6 pt-0">
                 <Link
-                  href={`/course/${course.slug}`}
+                  href={`/courses/${course.slug}`}
                   className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-xs font-bold text-white transition-all hover:bg-yellow-500 hover:text-slate-950 shadow-sm"
                 >
                   <span>{isTeacher ? "View Course Curriculum" : "Explore Course Details"}</span>

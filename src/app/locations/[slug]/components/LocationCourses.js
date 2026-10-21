@@ -62,7 +62,7 @@ export default function LocationCourses({ location }) {
                   </p>
                 </div> */}
                 <Link
-                  href={`/course/${c.slug}`}
+                  href={`/courses/${c.slug}`}
                   className="rounded-full bg-yellow-500 px-4 py-2 text-xs font-bold text-slate-950 hover:bg-yellow-400 transition-all shadow-xs"
                 >
                   View Details

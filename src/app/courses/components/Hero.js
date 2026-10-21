@@ -144,7 +144,7 @@ export default function Hero() {
               className="group overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl"
             >
 
-              <div className="relative h-60 sm:h-72 overflow-hidden bg-slate-900">
+              <div className="relative h-60 sm:h-72 overflow-hidden bg-amber-100">
 
                 <img
                   src={goal.image}
@@ -164,7 +164,7 @@ export default function Hero() {
                   </p>
                                     <button
                     onClick={() =>
-                      router.push(`/course/${goal.slug}`)
+                      router.push(`/courses/${goal.slug}`)
                     }
                     className="mt-6 flex items-center gap-2 font-semibold text-yellow-400 transition-all duration-300 group-hover:gap-4"
                   >

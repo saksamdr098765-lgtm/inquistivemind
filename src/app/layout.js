@@ -35,10 +35,12 @@ export const metadata = {
     "Education Platform",
     "Student Dashboard",
     "Learning Management System",
-    "Next.js",
-    "Node.js",
-    "MongoDB",
-    "Full Stack Web Application",
+    "French Classes in Chandigarh",
+    "French Classes in Mohali",
+    "DELF B2 Preparation Online",
+    "TEF Canada French Coaching",
+    "French Home Tutor Panchkula",
+    "French Tutor Zirakpur",
   ],
 
   authors: [
@@ -83,7 +85,7 @@ export const metadata = {
 
     type: "website",
 
-    locale: "en_US",
+    locale: "en_IN",
 
     images: [
       {
@@ -177,47 +179,32 @@ export default function RootLayout({ children }) {
           url: "https://www.inquistivemindacademy.com",
           logo: "https://www.inquistivemindacademy.com/web-app-manifest-512x512.png",
           description:
-            "Inquisitive Mind Academy is an online French language learning platform offering structured French courses for beginners and advanced learners.",
-          // sameAs: [
-          //   "https://www.instagram.com/YOUR_HANDLE",
-          //   "https://www.facebook.com/YOUR_PAGE",
-          //   "https://www.linkedin.com/company/YOUR_COMPANY"
-          // ]
+            "Inquisitive Mind Academy offers 100% live interactive online French classes and 1-on-1 home tutoring across Chandigarh, Mohali, Panchkula, and Zirakpur.",
+          telephone: "+91 98787 61488",
+          email: "inquisitivemindacademy@gmail.com",
+          sameAs: [
+            "https://www.instagram.com/theinquisitivemindacademy",
+            "https://wa.me/919878761488"
+          ]
         },
         {
           "@type": "WebSite",
           "@id": "https://www.inquistivemindacademy.com/#website",
           url: "https://www.inquistivemindacademy.com",
           name: "Inquisitive Mind Academy",
+          alternateName: "IMA",
+          description:
+            "Learn French online with expert tutors through live interactive classes, structured courses, and personalized home tutoring at Inquisitive Mind Academy.",
+          inLanguage: "en-IN",
           publisher: {
             "@id": "https://www.inquistivemindacademy.com/#organization"
-          },
-          inLanguage: "en",
+          }
         }
       ]
     }),
   }}
 />
-<script
-  type="application/ld+json"
-  dangerouslySetInnerHTML={{
-    __html: JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": "https://www.inquistivemindacademy.com/#website",
-      url: "https://www.inquistivemindacademy.com",
-      name: "Inquisitive Mind Academy",
-      alternateName: "IMA",
-      description:
-        "Learn French online with expert tutors through live interactive classes, structured courses, and personalized guidance at Inquisitive Mind Academy.",
-      inLanguage: "en-IN",
-      publisher: {
-        "@id": "https://www.inquistivemindacademy.com/#organization"
-      }
-    }),
-  }}
-/>
-        </body>
+</body>
         <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID}  />
     </html>
   );

@@ -1,28 +1,39 @@
-
 module.exports = {
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL,
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://www.inquistivemindacademy.com",
   generateRobotsTxt: true,
 
   sitemapSize: 7000,
-
   changefreq: "weekly",
-
   priority: 0.7,
-
   autoLastmod: true,
 
   exclude: [
+    "/admin-panel",
     "/admin-panel/*",
+    "/student-profile",
+    "/student-profile/*",
+    "/teacher-profile",
+    "/teacher-profile/*",
+    "/dashboard",
     "/dashboard/*",
     "/mutations/*",
     "/Skeletons/*",
-    "/student-profile/*",
     "/api/*",
     "/login",
     "/signup",
+    "/signup/*",
+    "/forget-password",
     "/forgot-password",
     "/reset-password",
     "/verify-email",
+    "/prices",
+    "/prices/*",
+    "/apple-icon.png",
+    "/icon0.svg",
+    "/icon1.png",
+    "/manifest.json",
+    "/robots.txt",
+    "/sitemap.xml",
   ],
 
   robotsTxtOptions: {
@@ -30,11 +41,20 @@ module.exports = {
       {
         userAgent: "*",
         allow: "/",
+        disallow: [
+          "/admin-panel",
+          "/admin-panel/*",
+          "/student-profile",
+          "/student-profile/*",
+          "/teacher-profile",
+          "/teacher-profile/*",
+          "/login",
+          "/signup",
+          "/signup/*",
+          "/forget-password",
+          "/api/*",
+        ],
       },
-    ],
-
-    additionalSitemaps: [
-      `${process.env.NEXT_PUBLIC_SITE_URL}/sitemap.xml`,
     ],
   },
 };

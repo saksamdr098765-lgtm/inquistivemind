@@ -1,9 +1,20 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /admin-panel
+Disallow: /admin-panel/*
+Disallow: /student-profile
+Disallow: /student-profile/*
+Disallow: /teacher-profile
+Disallow: /teacher-profile/*
+Disallow: /login
+Disallow: /signup
+Disallow: /signup/*
+Disallow: /forget-password
+Disallow: /api/*
 
 # Host
-Host: https://inquistivemindacademy.com
+Host: https://www.inquistivemindacademy.com
 
 # Sitemaps
-Sitemap: https://inquistivemindacademy.com/sitemap.xml
+Sitemap: https://www.inquistivemindacademy.com/sitemap.xml

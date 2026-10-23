@@ -17,6 +17,30 @@ export const metadata = {
   alternates: {
     canonical: `${SITE_CONFIG.url}/locations`,
   },
+  openGraph: {
+    title: "Online Classes & Home Tutoring Across Tricity & Punjab | Inquisitive Mind Academy",
+    description:
+      "Join live online French classes and find certified 1-on-1 home tutors across Chandigarh, Mohali, Panchkula, and Zirakpur.",
+    url: `${SITE_CONFIG.url}/locations`,
+    siteName: SITE_CONFIG.name,
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: `${SITE_CONFIG.url}/icon1.png`,
+        width: 1200,
+        height: 630,
+        alt: "French Classes and Home Tutoring Locations",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Online Classes & Home Tutoring Across Tricity & Punjab | IMA",
+    description:
+      "Live online French classes and 1-on-1 home tutoring across Chandigarh, Mohali, Panchkula, and Zirakpur.",
+    images: [`${SITE_CONFIG.url}/icon1.png`],
+  },
 };
 
 export default function LocationsPage() {

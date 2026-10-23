@@ -194,7 +194,7 @@ export const blogs = [
   },
   {
     title: "French Classes in Chandigarh",
-    description: "In-person French language classes in Chandigarh for all proficiency levels.",
+    description: "Home tuition and live online French classes in Chandigarh for all proficiency levels.",
     href: "/services/french-classes-chandigarh",
     badge: "Service",
   },
@@ -693,7 +693,7 @@ export const blogs = [
       description:
         "Want an exact fee breakdown based on your goals, level, and preferred mode (home, online, or group)? Book a free consultation and get a plan tailored to you.",
       serviceName: "French Classes Chandigarh",
-      serviceLink: "/french-classes-chandigarh",
+      serviceLink: "/services/french-classes-chandigarh",
       bookingLink:
         `https://wa.me/${SITE_CONFIG.whatsapp}?text=Hi%2C%20I%20want%20to%20know%20the%20fees%20for%20French%20classes%20in%20Chandigarh.%20Please%20share%20the%20available%20batch%20timings%20and%20pricing.`,
       whatsappLink:
@@ -895,7 +895,7 @@ export const blogs = [
           {
             title: "French Classes in Chandigarh",
             description:
-              "In-person French language classes in Chandigarh for all proficiency levels.",
+              "Home tuition and live online French classes in Chandigarh for all proficiency levels.",
             href: "/services/french-classes-chandigarh",
             badge: "Service",
           },
@@ -1234,7 +1234,7 @@ export const blogs = [
           },
           {
             title: "French Classes in Chandigarh",
-            description: "In-person and online French language classes for all proficiency levels.",
+            description: "Home tuition and live online French classes for all proficiency levels.",
             href: "/services/french-classes-chandigarh",
             badge: "Service",
           },

@@ -91,7 +91,7 @@ export default function PendingApprovalPage() {
             </Link>
 
             <Link
-              href="/contact"
+              href="/about"
               className="flex-1 flex items-center justify-center gap-2 rounded-xl sm:rounded-2xl border border-amber-200/80 bg-white py-3.5 font-semibold text-sm text-slate-700 transition hover:bg-amber-50/60"
             >
               <FaHeadset />

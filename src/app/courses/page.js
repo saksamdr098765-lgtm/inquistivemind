@@ -51,7 +51,7 @@ export const metadata = {
 
 export default function CoursesHubPage() {
   const allCourses = getAllCourses();
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://inquistivemindacademy.com").replace(/\/$/, "");
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.inquistivemindacademy.com").replace(/\/$/, "");
 
   // Hub JSON-LD Graph
   const jsonLd = {

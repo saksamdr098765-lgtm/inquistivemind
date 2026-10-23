@@ -22,7 +22,7 @@ export async function generateMetadata({ params }) {
     };
   }
 
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://inquistivemindacademy.com").replace(/\/$/, "");
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.inquistivemindacademy.com").replace(/\/$/, "");
   const canonicalUrl = `${siteUrl}/courses/${course.slug}`;
 
   // CTR Title formula: "[Course] in Chandigarh | [Benefit] | Free Trial Class" (max ~60 chars)

@@ -4,7 +4,7 @@ import { services } from "@/app/data/services";
 import { locations } from "@/app/data/locations";
 
 export default function sitemap() {
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://inquistivemindacademy.com").replace(/\/$/, "");
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.inquistivemindacademy.com").replace(/\/$/, "");
   const currentDate = new Date();
 
   // 1. Core High-Priority Pages
@@ -18,7 +18,6 @@ export default function sitemap() {
     { url: `${siteUrl}/blogs`, lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
     { url: `${siteUrl}/services`, lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
     { url: `${siteUrl}/locations`, lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${siteUrl}/prices`, lastModified: currentDate, changeFrequency: "weekly", priority: 0.8 },
   ];
 
   // 2. Dynamic Course Routes (The primary deliverable)

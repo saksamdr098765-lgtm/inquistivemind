@@ -172,10 +172,7 @@ export default function Faculty() {
             Real guidance from real professionals.
           </p>
 
-          <button className="mt-6 rounded-full bg-[#D6451B] px-8 py-3 text-white transition hover:opacity-90">
-           <Link href='/contact'>  Book a Session</Link>
-          
-          </button>
+          <Link href="/book-free-trial" className="mt-6 inline-block rounded-full bg-[#D6451B] px-8 py-3 text-white font-medium transition hover:opacity-90">Book a Free Demo</Link>
         </div>
       </div>
     </section>

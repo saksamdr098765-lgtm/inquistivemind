@@ -1,15 +1,39 @@
 import BookFreeTrialClient from "./BookFreeTrialClient";
 
 export const metadata = {
-  title: "Book Free Trial Class | Inquisitive Mind Academy Chandigarh",
+  title: "Book Free Trial Class | Inquisitive Mind Academy",
   description:
-    "Reserve your free 30-minute live trial class for French (A1-C2), Spoken English, or School Tuition at Inquisitive Mind Academy. Zero fees, zero obligation.",
+    "Reserve your free 30-minute live interactive trial class for French (A1-C2), Spoken English, or School Tuition with certified faculty. Zero fees, zero obligation.",
   alternates: {
     canonical: "/book-free-trial",
   },
   robots: {
     index: true,
     follow: true,
+  },
+  openGraph: {
+    title: "Book Free Trial Class | Inquisitive Mind Academy",
+    description:
+      "Reserve your free 30-minute live interactive trial class for French (A1-C2), Spoken English, or School Tuition with certified faculty. Zero fees, zero obligation.",
+    url: "/book-free-trial",
+    siteName: "Inquisitive Mind Academy",
+    locale: "en_IN",
+    type: "website",
+    images: [
+      {
+        url: "/web-app-manifest-512x512.png",
+        width: 1200,
+        height: 630,
+        alt: "Book a Free Trial Class at Inquisitive Mind Academy",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Book Free Trial Class | Inquisitive Mind Academy",
+    description:
+      "Reserve your free 30-minute live interactive trial class for French (A1-C2), Spoken English, or School Tuition with certified faculty.",
+    images: ["/web-app-manifest-512x512.png"],
   },
 };
 

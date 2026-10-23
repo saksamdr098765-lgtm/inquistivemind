@@ -1,7 +1,7 @@
 export default function CourseJsonLd({ course }) {
   if (!course) return null;
 
-  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://inquistivemindacademy.com").replace(/\/$/, "");
+  const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.inquistivemindacademy.com").replace(/\/$/, "");
   const courseUrl = `${siteUrl}/courses/${course.slug}`;
 
   // 1. EducationalOrganization Schema (Service-area business; NO street address anywhere)
@@ -11,7 +11,7 @@ export default function CourseJsonLd({ course }) {
     name: "Inquisitive Mind Academy",
     url: siteUrl,
     logo: `${siteUrl}/web-app-manifest-512x512.png`,
-    description: "Language learning and academic excellence academy serving Chandigarh, Mohali, Panchkula, and Zirakpur.",
+    description: "Language learning and academic excellence academy offering live online interactive classes and 1-on-1 home tutoring across Chandigarh, Mohali, Panchkula, and Zirakpur.",
     areaServed: [
       { "@type": "City", name: "Chandigarh" },
       { "@type": "City", name: "Mohali" },
@@ -33,12 +33,12 @@ export default function CourseJsonLd({ course }) {
     provider: {
       "@id": `${siteUrl}/#organization`,
     },
-    courseMode: course.mode === "both" ? ["online", "onsite"] : [course.mode],
+    courseMode: ["online"],
     educationalLevel: course.level,
     inLanguage: course.languageOfInstruction,
     hasCourseInstance: {
       "@type": "CourseInstance",
-      courseMode: course.mode === "both" ? "blended" : course.mode,
+      courseMode: "online",
       duration: `P${course.durationWeeks}W`,
       instructor: {
         "@type": "Person",

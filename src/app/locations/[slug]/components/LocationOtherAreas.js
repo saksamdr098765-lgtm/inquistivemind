@@ -12,10 +12,10 @@ export default function LocationOtherAreas({ currentSlug }) {
           <div>
             <span className="inline-flex items-center gap-1.5 rounded-full bg-yellow-100 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-yellow-700">
               <FiMapPin />
-              <span>Network of Campuses</span>
+              <span>Service Locations</span>
             </span>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              Other Study Centers & Locations We Serve
+              Other Areas & Cities We Serve
             </h2>
           </div>
 
@@ -36,7 +36,7 @@ export default function LocationOtherAreas({ currentSlug }) {
             >
               <div>
                 <span className="inline-block rounded-md bg-yellow-100 px-2.5 py-0.5 text-[11px] font-bold text-yellow-800 mb-2">
-                  {loc.city} Center
+                  {loc.city}
                 </span>
                 <h3 className="text-lg font-bold text-slate-900 group-hover:text-yellow-700 transition-colors">
                   {loc.title}
@@ -51,7 +51,7 @@ export default function LocationOtherAreas({ currentSlug }) {
                   href={`/locations/${loc.slug}`}
                   className="inline-flex items-center gap-1 text-xs font-bold text-yellow-600 hover:text-yellow-800 transition-colors"
                 >
-                  <span>Explore {loc.city} Campus</span>
+                  <span>Explore {loc.city} Classes</span>
                   <FiArrowRight size={12} />
                 </Link>
               </div>

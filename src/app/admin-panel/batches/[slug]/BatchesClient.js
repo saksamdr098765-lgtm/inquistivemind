@@ -46,7 +46,7 @@ export default function BatchesClient({ slug }) {
             Manage Batches
           </h1>
           <p className="mt-1 text-orange-100 font-medium text-sm max-w-xl">
-            Create classroom & online live batches, schedule timings, and assign trainers.
+            Create home tutoring & online live batches, schedule timings, and assign trainers.
           </p>
         </div>
 

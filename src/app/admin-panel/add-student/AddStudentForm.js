@@ -187,7 +187,7 @@ export default function AddStudentForm() {
           <PortalInput label="Country" placeholder="India" />
           <PortalInput label="State" placeholder="Punjab" />
           <PortalInput label="City" placeholder="Chandigarh" />
-          <PortalInput label="Pincode" placeholder="160017" />
+          <PortalInput label="Pincode" placeholder="160001" />
         </div>
         <PortalTextArea label="Complete Street Address" placeholder="House number, street, area details..." rows={3} />
       </PortalCard>

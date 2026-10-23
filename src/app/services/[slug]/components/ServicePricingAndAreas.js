@@ -63,9 +63,7 @@ export default function ServicePricingAndAreas({ service }) {
               ? item.category
               : isService
               ? item.targetAudience || (item.category === "teacher" ? "Teacher Job" : "Course")
-              : item.offersVisits
-              ? `★ ${item.city} Center`
-              : `★ ${item.city} Online`;
+              : `★ ${item.city} Online & Home`;
 
             const descriptionText = isBlog
               ? item.excerpt
@@ -77,7 +75,7 @@ export default function ServicePricingAndAreas({ service }) {
               ? "Read Guide"
               : isService
               ? "Explore Service"
-              : "Explore Center";
+              : "Explore Classes";
 
             return (
               <Link

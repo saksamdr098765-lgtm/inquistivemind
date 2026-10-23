@@ -35,7 +35,7 @@ export default function Batches() {
             My Enrolled Batches
           </h1>
           <p className="mt-1 text-orange-100 font-medium text-xs sm:text-sm max-w-xl">
-            Access assigned live classroom batches, schedule details, and meeting platforms.
+            Access assigned live online batches, schedule details, and meeting platforms.
           </p>
         </div>
 

@@ -17,7 +17,7 @@ export default function PopularCourses({ location }) {
               Curriculum & Programs
             </span>
             <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-              Popular Courses at {location.city} Center
+              Popular Courses for {location.city} Learners
             </h2>
           </div>
           <Link

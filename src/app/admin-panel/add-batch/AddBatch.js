@@ -77,7 +77,7 @@ console.log(data)
             Batch Management
           </span>
           <h1 className="mt-2 text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
-            Create Live Classroom Batch
+            Create Live Batch
           </h1>
           <p className="mt-1 text-orange-100 font-medium text-xs sm:text-sm max-w-xl">
             Assign courses, schedule days/times, maximum capacity, and meeting link parameters.
@@ -261,7 +261,7 @@ console.log(data)
       value: "google-meet",
     },
     {
-      label: "Offline",
+      label: "Home Tutoring / In-Person",
       value: "offline",
     },
     {

@@ -109,7 +109,7 @@ export default async function LocationPage({ params }) {
           {/* 6. Other Services Offered */}
           <LocationOtherServices />
 
-          {/* 7. Other Locations & Study Centers We Serve */}
+          {/* 7. Other Locations We Serve */}
           <LocationOtherAreas currentSlug={location.slug} />
 
           {/* 8. French Courses Offered */}

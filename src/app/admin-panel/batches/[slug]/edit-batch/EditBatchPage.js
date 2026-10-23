@@ -233,7 +233,7 @@ if(isLoading) return
       value: "google-meet",
     },
     {
-      label: "Offline",
+      label: "Home Tutoring / In-Person",
       value: "offline",
     },
     {

@@ -36,7 +36,7 @@ export const blogs = [
     quickInfo: {
       courseName: "TEF/TCF Canada Preparation",
       duration: "4 Months",
-      mode: "Online & Offline",
+      mode: "Live Online & Home Tutoring",
       level: "A1 to C2 (All Levels)",
       batchSize: "6–10 Students",
       certification: "Exam-Ready Score Guarantee Program",
@@ -250,7 +250,7 @@ export const blogs = [
      
      {
   type: "interlinking",
-  title: "Locations & Study Centers We Serve",
+  title: "Locations & Areas We Serve",
   description:
     "Join live online French batches for Mohali, Zirakpur & nearby areas, or connect from anywhere worldwide.",
   items: [
@@ -343,7 +343,7 @@ export const blogs = [
   whatsappLink:
     `https://wa.me/${SITE_CONFIG.whatsapp}?text=Hi%2C%20I%20have%20a%20question%20about%20TEF%2FTCF%20Canada%20classes.`,
   features: [
-    "Live Online & Offline Batches",
+    "Live Online & Home Tutoring",
     "Free Mock Test Included",
     "Personalized Study Plan",
     "Experienced French Tutors",
@@ -378,7 +378,7 @@ export const blogs = [
     quickInfo: {
       courseName: "French Classes Chandigarh — Fee Guide",
       duration: "8 mins",
-      mode: "Online & Offline",
+      mode: "Live Online & Home Tutoring",
       level: "A1 to C2 (All Levels)",
       batchSize: "6–10 Students",
       certification: "N/A",
@@ -397,7 +397,7 @@ export const blogs = [
     //     author: "Gurpreet Kaur",
     //     role: "DELF B1 Student · Chandigarh",
     //     rating: 5,
-    //     comment: "This fee guide was super accurate! I booked Sakshi ma'am's French batch in Sector 17 and passed DELF B1 with 84%. Highly recommended!",
+    //     comment: "This fee guide was super accurate! I booked Sakshi ma'am's French batch and passed DELF B1 with 84%. Highly recommended!",
     //     date: "August 2026",
     //     avatar: "/logo.jpg"
     //   },
@@ -509,17 +509,17 @@ export const blogs = [
       {
         type: "heading",
         level: 2,
-        text: "Group Batch Fees (Offline)",
+        text: "Group Batch Fees (Live Online)",
       },
       {
         type: "paragraph",
         text:
-          "Classroom-style group batches sit between online and home tuition in cost — you get in-person interaction and peer practice at a lower price than 1-on-1 home tuition.",
+          "Live online group batches sit between self-study and 1-on-1 home tuition in cost — you get live tutor interaction, peer practice, and structured schedules at an affordable group price.",
       },
       {
         type: "list",
         items: [
-          "Best suited for: students who learn well with peer interaction and structured classroom timing",
+          "Best suited for: students who learn well with peer interaction and structured live class timing",
           "Typically billed monthly or per-level (A1, A2, B1, etc.)",
         ],
       },
@@ -584,7 +584,7 @@ export const blogs = [
         items: [
           "On a tight budget and just starting out: online group batch",
           "Want personal attention without home-tuition pricing: online 1-on-1 sessions",
-          "Prefer in-person learning with peers: offline group batch",
+          "Prefer in-person learning at home: 1-on-1 home tuition in Tricity",
           "Need maximum personal attention or have a young child: home tuition",
           "Preparing for DELF/TEF/TCF: factor in exam fees on top of coaching, and consider 1-on-1 sessions closer to the exam date",
         ],
@@ -626,9 +626,9 @@ export const blogs = [
       },
       {
         type: "interlinking",
-        title: "Locations & Study Centers We Serve",
+        title: "Locations & Areas We Serve",
         description:
-          "Join classroom batches at our study centers across Punjab or connect live online from anywhere worldwide.",
+          "Join live online batches from anywhere worldwide or request 1-on-1 home tutoring across the Tricity region.",
         items: [
           {
             title: "French Classes in Chandigarh",
@@ -741,7 +741,7 @@ export const blogs = [
     quickInfo: {
       courseName: "TCF Canada Preparation",
       duration: "4 Months",
-      mode: "Online & Offline",
+      mode: "Live Online & Home Tutoring",
       level: "A1 to C2 (All Levels)",
       batchSize: "6–10 Students",
       certification: "Exam-Ready Score Guarantee Program",
@@ -953,7 +953,7 @@ export const blogs = [
       },
       {
         type: "interlinking",
-        title: "Locations & Study Centers We Serve",
+        title: "Locations & Areas We Serve",
         description:
           "Join live online French batches for Mohali, Zirakpur & nearby areas, or connect from anywhere worldwide.",
         items: [
@@ -1041,7 +1041,7 @@ export const blogs = [
       whatsappLink:
         `https://wa.me/${SITE_CONFIG.whatsapp}?text=Hi%2C%20I%20have%20a%20question%20about%20TCF%20Canada%20classes.`,
       features: [
-        "Live Online & Offline Batches",
+        "Live Online & Home Tutoring",
         "Free Mock Test Included",
         "Personalized Study Plan",
         "Experienced French Tutors",
@@ -1083,7 +1083,7 @@ export const blogs = [
     quickInfo: {
       courseName: "TEF Canada Preparation",
       duration: "4 Months",
-      mode: "Online & Offline",
+      mode: "Live Online & Home Tutoring",
       level: "A1 to C2 (All Levels)",
       batchSize: "6–10 Students",
       certification: "Exam-Ready Score Guarantee Program",
@@ -1284,7 +1284,7 @@ export const blogs = [
       },
       {
         type: "interlinking",
-        title: "Locations & Study Centers We Serve",
+        title: "Locations & Areas We Serve",
         description:
           "Join live online French batches for Mohali, Zirakpur & nearby areas, or connect from anywhere worldwide.",
         items: [
@@ -1377,7 +1377,7 @@ export const blogs = [
       whatsappLink:
         `https://wa.me/${SITE_CONFIG.whatsapp}?text=Hi%2C%20I%20have%20a%20question%20about%20TEF%20Canada%20classes.`,
       features: [
-        "Live Online & Offline Batches",
+        "Live Online & Home Tutoring",
         "Free Mock Test Included",
         "Personalized Study Plan",
         "Experienced French Tutors",
@@ -1607,7 +1607,7 @@ export const blogs = [
       },
       {
         type: "interlinking",
-        title: "Locations & Study Centers We Serve",
+        title: "Locations & Areas We Serve",
         description:
           "Home tuition and online classes across Chandigarh, Mohali, Zirakpur and Panchkula.",
         items: [
@@ -2013,7 +2013,7 @@ export const blogs = [
       },
       {
         type: "interlinking",
-        title: "Locations & Study Centers We Serve",
+        title: "Locations & Areas We Serve",
         description:
           "Join live online DELF and French batches from Mohali, Zirakpur, Panchkula and across the Tricity.",
         items: [

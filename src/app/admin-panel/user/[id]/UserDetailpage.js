@@ -84,7 +84,7 @@ const studentLevelOptions = [
 
 const teachingModeOptions = [
   "Online Classes",
-  "Offline Classes",
+  "Home Tutoring",
   "Hybrid Teaching",
 ];
 

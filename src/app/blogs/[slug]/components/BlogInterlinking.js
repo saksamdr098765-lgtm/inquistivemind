@@ -58,7 +58,7 @@ export default function BlogInterlinking({ block }) {
                     ) : (
                       <FiTag className="h-3 w-3 text-amber-700 shrink-0" />
                     )}
-                    <span>{item.badge || (isLocation ? "Study Center" : isPrice ? "Pricing Plan" : "Course")}</span>
+                    <span>{item.badge || (isLocation ? "Location" : isPrice ? "Pricing Plan" : "Course")}</span>
                   </span>
                 )}
 

@@ -181,12 +181,6 @@ export const services = [
       },
     ],
 
-    // areasWeServe: [
-    //   { city: "Chandigarh", center: "Sector 17 Learning Center", href: "/locations/chandigarh-center" },
-    //   { city: "Mohali", center: "Phase 8 / Sector 62 Campus", href: "/french-classes-mohali" },
-    //   { city: "Panchkula", center: "Home Tuition Coverage", href: "/locations/chandigarh-center" },
-    //   { city: "Online Global", center: "Virtual Live Academy", href: "/locations/online-global-hub" },
-    // ],
 relatedServices:[
   "french-tutor-jobs-chandigarh"
 ],
@@ -599,7 +593,7 @@ title: "TCF Canada Coaching Chandigarh | Inquisitive Mind Academy",
     title: "DELF Coaching in Chandigarh: A1, A2, B1 & B2 Exam Preparation",
     subtitle: "Level-Wise DELF Preparation with Live Online Classes, Mock Papers and Speaking Practice",
     description:
-      "Prepare for the DELF exam with level-wise coaching from Inquisitive Mind Academy, Sector 17-C, Chandigarh. Live online batches cover listening, reading, writing and speaking, with timed mock papers, tutor feedback and guidance on exam registration.",
+      "Prepare for the DELF exam with level-wise coaching from Inquisitive Mind Academy. Live online batches cover listening, reading, writing and speaking, with timed mock papers, tutor feedback and guidance on exam registration.",
     coverImage: "/services/delf-coaching-chandigarh/cover.webp",
 
     trustBadges: [
@@ -611,7 +605,7 @@ title: "TCF Canada Coaching Chandigarh | Inquisitive Mind Academy",
 
     briefOverview: {
       summary:
-        "The DELF exam rewards preparation that matches its format, not just general French. Our DELF coaching in Chandigarh follows the exam paper by paper: you practise each of the four skills at your level, sit timed mock papers and get written and spoken feedback before exam day. Batches run live online for learners across Chandigarh, Mohali, Panchkula and Zirakpur, taught by DELF/DALF-trained faculty from our Sector 17-C academy.",
+        "The DELF exam rewards preparation that matches its format, not just general French. Our DELF coaching in Chandigarh follows the exam paper by paper: you practise each of the four skills at your level, sit timed mock papers and get written and spoken feedback before exam day. Batches run live online for learners across Chandigarh, Mohali, Panchkula and Zirakpur, taught by certified DELF/DALF-trained faculty.",
       highlights: [
         "Separate batches for DELF A1, A2, B1 and B2, so you study at the level you will sit",
         "Practice built around the four papers: listening, reading, writing and speaking",
@@ -760,12 +754,12 @@ title: "TCF Canada Coaching Chandigarh | Inquisitive Mind Academy",
       {
         question: "Where is Inquisitive Mind Academy located?",
         answer:
-          `Our academy office is at ${SITE_CONFIG.address.line1}, ${SITE_CONFIG.address.city} ${SITE_CONFIG.address.postalCode} (Mon–Fri 9 AM–7 PM, Sat 9 AM–5 PM). DELF batches run live online, so you can join from anywhere in the Tricity. Call or WhatsApp ${SITE_CONFIG.phone} for batch timings.`,
+          `Inquisitive Mind Academy is an online academy offering 100% live interactive classes across India and worldwide, plus 1-on-1 home tutoring across the Tricity region (Chandigarh, Mohali, Panchkula, and Zirakpur). We do not operate a walk-in office or physical center. Call or WhatsApp ${SITE_CONFIG.phone} for batch timings and home tutoring consultations.`,
       },
     ],
 
     areasWeServe: [
-      { city: "Chandigarh", center: "Live Online & Sector 17-C Academy Office", href: "/services/delf-coaching-chandigarh" },
+      { city: "Chandigarh", center: "Live Online & Home Tutoring", href: "/services/delf-coaching-chandigarh" },
       { city: "Mohali", center: "Live Online DELF Batches", href: "/locations/delf-classes-mohali" },
       { city: "Panchkula", center: "Live Online French Batches", href: "/locations/french-classes-panchkula" },
       { city: "Zirakpur", center: "Live Online French Batches", href: "/locations/french-classes-zirakpur" },
@@ -955,10 +949,10 @@ title: "TCF Canada Coaching Chandigarh | Inquisitive Mind Academy",
     ],
 
     areasWeServe: [
-      { city: "Chandigarh", center: "Sector 17 & All Sectors", href: "/locations/chandigarh-center" },
-      { city: "Mohali", center: "Phase 8 / Sector 62", href: "/french-classes-mohali" },
-      { city: "Panchkula", center: "All Sectors", href: "/locations/chandigarh-center" },
-      { city: "Online Global", center: "Work From Anywhere", href: "/locations/online-global-hub" },
+      { city: "Chandigarh", center: "All Sectors (Home & Online)", href: "/services/french-tutor-jobs-chandigarh" },
+      { city: "Mohali", center: "All Phases & Sectors", href: "/locations/french-classes-mohali" },
+      { city: "Panchkula", center: "All Sectors", href: "/locations/french-classes-panchkula" },
+      { city: "Online Global", center: "Work From Anywhere", href: "/services/online-french-tutor-jobs" },
     ],
 
     relatedBlogs: [

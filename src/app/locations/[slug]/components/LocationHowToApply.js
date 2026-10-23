@@ -4,29 +4,21 @@ import { FiEdit3, FiCheckCircle, FiArrowRight } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 
 export default function LocationHowToApply({ location }) {
-  const offersVisits = location.offersVisits ?? false;
-
   const steps = [
     {
       step: "Step 01",
       title: "Select Course & Batch Timing",
-      desc: offersVisits
-        ? `Choose from French A1-B2, TEF Canada prep, or Spoken French modules in morning, evening, or weekend slots at our ${location.city} center.`
-        : `Choose from French A1-B2, TEF Canada prep, or Spoken French modules in live online morning, evening, or weekend slots for ${location.city}.`,
+      desc: `Choose from French A1-B2, TEF Canada prep, or Spoken French modules in live online or 1-on-1 home tutoring slots for ${location.city}.`,
     },
     {
       step: "Step 02",
       title: "Book Free Demo & Placement Evaluation",
-      desc: offersVisits
-        ? `Attend a free trial session at our ${location.city} campus or take a quick diagnostic level test with a senior instructor.`
-        : `Attend a free live online trial session or take a quick diagnostic level test with a senior instructor.`,
+      desc: `Attend a free live online trial session or take a quick diagnostic level test with a senior instructor.`,
     },
     {
       step: "Step 03",
       title: "Complete Registration & Start Classes",
-      desc: offersVisits
-        ? `Finalize seat reservation, collect your printed workbooks, and begin your live interactive French classes.`
-        : `Finalize seat reservation, receive your digital workbooks, and begin your live interactive online French classes.`,
+      desc: `Finalize seat reservation, receive your digital workbooks, and begin your live interactive French classes.`,
     },
   ];
 

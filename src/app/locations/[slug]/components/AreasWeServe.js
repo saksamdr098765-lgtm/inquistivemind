@@ -3,13 +3,9 @@ import { FiMapPin } from "react-icons/fi";
 export default function AreasWeServe({ location }) {
   if (!location.areas || !location.areas.length) return null;
 
-  const isOnlineOnly = location.isOnlineOnly ?? true;
+  const serveCopy = `Students across ${location.city} and neighboring sectors join our live interactive online batches from home, or book 1-on-1 home tutoring where our certified tutor visits their home — no travel required.`;
 
-  const serveCopy = isOnlineOnly
-    ? `Students across ${location.city} and neighboring sectors join our live online batches from home — no commute needed across the tricity region.`
-    : `Students commute to our ${location.city} campus from all neighboring sectors and localities across the tricity region.`;
-
-  const eyebrowLabel = isOnlineOnly ? "Areas We Reach Online" : "Nearby Access";
+  const eyebrowLabel = "Service Areas";
 
   return (
     <section className="py-16 bg-white border-b border-slate-100">

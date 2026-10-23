@@ -11,8 +11,8 @@ export default function LocationWhyChooseUs({ location }) {
       description: "Strict student caps per batch ensure every candidate gets at least 25 minutes of dedicated speaking practice per session.",
     },
     {
-      title: "Smart Classroom Tech & Audio Labs",
-      description: "Equipped with interactive digital whiteboards and listening comprehension station setups for authentic exam practice.",
+      title: "Interactive Digital Tools & Audio Drills",
+      description: "Equipped with live interactive digital tools and listening comprehension drills for authentic exam practice.",
     },
     {
       title: "98% First-Time Exam Pass Rate",
@@ -26,13 +26,13 @@ export default function LocationWhyChooseUs({ location }) {
         <div className="max-w-3xl mb-10">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-yellow-100 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-yellow-700">
             <FiAward />
-            <span>Center Excellence</span>
+            <span>Teaching Excellence</span>
           </span>
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
             Why Choose Inquisitive Mind Academy in {location.city}?
           </h2>
           <p className="mt-3 text-base text-slate-600 leading-relaxed">
-            Discover what sets our {location.city} learning center apart for French language mastery, TEF Canada preparation, and official DELF diplomas.
+            Discover what sets our {location.city} live classes and home tutoring apart for French language mastery, TEF Canada preparation, and official DELF diplomas.
           </p>
         </div>
 

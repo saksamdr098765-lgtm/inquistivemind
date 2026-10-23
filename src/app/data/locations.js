@@ -11,10 +11,8 @@ export const locations = [
     phone: "+91 98787 61488",
     hours: "Mon - Sat: 09:00 AM - 07:00 PM | Live Online Batches: 07:00 AM - 10:00 PM IST",
 
-    // Data-Driven Flags for Future Expansion:
-    offersVisits: false, // Set to true when physical center / in-person visits resume
-    isOnlineOnly: true,  // Indicates all classes are currently conducted online
-    physicalAddress: "Sector 62, Phase 8, Mohali, Punjab 160062", // Preserved for future physical campus activation
+    offersVisits: false,
+    isOnlineOnly: true,
 
     centralHub: [
       {
@@ -107,9 +105,9 @@ export const locations = [
           "Fees depend on the batch mode — live online group batches are the most affordable option, while 1-on-1 online mentorship is tailored for individual pace. Check our fee guide for a full breakdown.",
       },
       {
-        question: "Are physical center visits available in Mohali right now?",
+        question: "Do you offer in-person classes or center visits in Mohali?",
         answer:
-          "Physical center visits are currently paused while all classes are conducted live online. Physical visit options will be updated on this page once resumed.",
+          "All our classes are conducted 100% live online, plus optional 1-on-1 home tutoring in Mohali where a tutor visits your home. We do not have a walk-in center or physical office.",
       },
     ],
     seo: {
@@ -142,10 +140,8 @@ export const locations = [
     phone: "+91 98787 61488",
     hours: "Mon - Sat: 09:00 AM - 07:00 PM | Live Online Batches: 07:00 AM - 10:00 PM IST",
 
-    // Data-Driven Flags for Future Expansion:
-    offersVisits: false, // Set to true when physical center / in-person visits resume
-    isOnlineOnly: true,  // Indicates all classes are currently conducted online
-    // physicalAddress: "VIP Road, Zirakpur, Punjab 140603", // Preserved for future physical campus activation
+    offersVisits: false,
+    isOnlineOnly: true,
 
     centralHub: [
        {
@@ -207,7 +203,7 @@ export const locations = [
       {
         title: "Live Online Classes You Can Join From VIP Road, Dhakoli & Beyond",
         description:
-          "No need to commute along the highway or through Zirakpur traffic — join live, interactive sessions from home with real-time teacher feedback and doubt-solving.",
+          "No need to travel through busy Zirakpur traffic — join live, interactive sessions online or arrange 1-on-1 home tutoring with real-time teacher feedback and doubt-solving.",
       },
       {
         title: "Structured Study Plans for Exam-Date Deadlines",
@@ -252,9 +248,9 @@ export const locations = [
           "Reaching basic conversational level (A1-A2) typically takes 2-4 months with consistent practice, while exam-ready proficiency for DELF B2 or TEF Canada usually takes 6-12 months depending on your starting level and study pace.",
       },
       {
-        question: "Are physical center visits available in Zirakpur right now?",
+        question: "Do you offer in-person classes or center visits in Zirakpur?",
         answer:
-          "Physical center visits are currently paused while all classes are conducted live online. Physical visit options will be updated on this page once resumed.",
+          "All our classes are 100% live interactive online batches, plus 1-on-1 home tutoring in Zirakpur where a tutor travels to you. We do not have a walk-in office or physical center.",
       },
     ],
     seo: {
@@ -288,7 +284,6 @@ export const locations = [
 
   offersVisits: false,
   isOnlineOnly: true,
-  physicalAddress: "Sector 9, Panchkula, Haryana 134109",
 
   centralHub: [
     {
@@ -386,9 +381,9 @@ export const locations = [
         "Fee depends on batch type — student academic-year batches, adult group batches, and 1-on-1 exam-focused mentorship are priced differently. Ask for the current fee sheet for a breakdown by track.",
     },
     {
-      question: "Will physical classes in Panchkula resume?",
+      question: "Do you offer in-person classes or a center in Panchkula?",
       answer:
-        "Not currently — all Panchkula batches run live online for now. This page will be updated with in-person options if and when they resume.",
+        "All classes are conducted live online, with optional 1-on-1 home tutoring in Panchkula where an instructor visits your home. We do not have a walk-in center or physical office.",
     },
   ],
 seo: {
@@ -422,10 +417,8 @@ seo: {
     phone: "+91 98787 61488",
     hours: "Mon - Sat: 09:00 AM - 07:00 PM | Tutor Applications Open Daily",
 
-    // Tutor-jobs page: home tuition visits are the core service here.
-    offersVisits: true,
-    isOnlineOnly: false,
-    physicalAddress: "Sector 62, Phase 8, Mohali, Punjab 160062",
+    offersVisits: false,
+    isOnlineOnly: true,
 
     centralHub: [
       {
@@ -559,11 +552,8 @@ seo: {
     phone: SITE_CONFIG.phone,
     hours: "Mon - Fri: 09:00 AM - 07:00 PM | Sat: 09:00 AM - 05:00 PM | Live Online Batches: 07:00 AM - 10:00 PM IST",
 
-    // Data-driven flags
     offersVisits: false,
     isOnlineOnly: true,
-    // Academy office (not a Mohali centre), kept for NAP consistency with siteConfig
-    physicalAddress: `${SITE_CONFIG.address.line1}, ${SITE_CONFIG.address.city}, ${SITE_CONFIG.address.postalCode}`,
 
     centralHub: [
       {
@@ -624,7 +614,7 @@ seo: {
       {
         title: "Join From Any Mohali Phase or Sector",
         description:
-          "Live online sessions mean no commute to Chandigarh. Learners in Phase 7, Phase 8, Sector 62, Sector 70 and Kharar join from home with real-time tutor feedback.",
+          "Live online sessions and 1-on-1 home tutoring mean no travel required. Learners in Phase 7, Phase 8, Sector 62, Sector 70 and Kharar join from home with real-time tutor feedback.",
       },
       {
         title: "Straight Answers on Exam Centres, Dates and Fees",
@@ -676,7 +666,7 @@ seo: {
       {
         question: "Do you have a centre in Mohali?",
         answer:
-          `All DELF classes are live online at present. Our academy office is at ${SITE_CONFIG.address.line1}, ${SITE_CONFIG.address.city}. Call or WhatsApp ${SITE_CONFIG.phone} for batch timings.`,
+          `All DELF classes are 100% live online, plus optional 1-on-1 home tutoring across the Tricity region. We do not run a walk-in center or physical office. Call or WhatsApp ${SITE_CONFIG.phone} for batch timings and home tutoring consultations.`,
       },
     ],
     seo: {

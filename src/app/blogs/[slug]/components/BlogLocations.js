@@ -12,10 +12,10 @@ export default function BlogLocations() {
             <span>Locations & Areas We Serve</span>
           </span>
           <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
-            Learn French In-Person or Online
+            Learn French Online or via Home Tutoring
           </h3>
           <p className="mt-1 text-xs sm:text-sm text-slate-600">
-            Convenient study centers across Punjab and interactive virtual classrooms worldwide.
+            Live interactive online classes worldwide and 1-on-1 home tutoring across the Tricity region.
           </p>
         </div>
 
@@ -23,7 +23,7 @@ export default function BlogLocations() {
           href="/locations"
           className="inline-flex items-center gap-1.5 rounded-xl border border-amber-200 bg-white px-4 py-2 text-xs font-bold text-amber-900 shadow-sm transition-all hover:bg-amber-50 shrink-0 self-start sm:self-auto"
         >
-          <span>All Centers</span>
+          <span>All Locations</span>
           <FiArrowRight size={14} className="text-amber-700" />
         </Link>
       </div>

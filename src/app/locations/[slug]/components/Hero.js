@@ -6,12 +6,9 @@ import {
   FiClock,
   FiStar,
   FiCheckCircle,
-  FiNavigation,
 } from "react-icons/fi";
 
 export default function Hero({ location }) {
-  const offersVisits = location.offersVisits ?? false;
-
   return (
     <section className="relative overflow-hidden bg-transparent pt-24 pb-14 md:pt-28 md:pb-20">
       <div className="mx-auto max-w-7xl px-5 sm:px-6">
@@ -20,7 +17,7 @@ export default function Hero({ location }) {
           <div className="lg:col-span-7">
             <span className="inline-flex items-center gap-2 rounded-full border border-yellow-200 bg-yellow-50 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-yellow-700">
               <FiMapPin className="text-yellow-500" />
-              <span>{offersVisits ? `${location.city} Study Center` : `Online French Hub — ${location.city}`}</span>
+              <span>Live Online & Home Tutoring — {location.city}</span>
             </span>
 
             <h1 className="mt-5 text-4xl font-bold leading-tight text-slate-900 md:text-5xl lg:text-6xl">
@@ -34,7 +31,7 @@ export default function Hero({ location }) {
             <div className="mt-6 flex flex-wrap gap-3 text-xs sm:text-sm text-slate-700 font-medium">
               <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 shadow-xs">
                 <FiMapPin className="text-yellow-500 font-bold shrink-0" />
-                <span>{offersVisits ? (location.physicalAddress || location.address) : location.address}</span>
+                <span>{location.address}</span>
               </div>
               <div className="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 shadow-xs">
                 <FiPhone className="text-yellow-500 font-bold shrink-0" />
@@ -59,17 +56,6 @@ export default function Hero({ location }) {
               >
                 Call Direct
               </a>
-              {offersVisits && location.googleMaps?.direction && (
-                <a
-                  href={location.googleMaps.direction}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full border border-amber-300 bg-amber-50 px-6 py-4 text-sm font-bold text-amber-900 hover:bg-amber-100 transition-all shadow-xs flex items-center gap-2"
-                >
-                  <FiNavigation className="text-amber-600" />
-                  <span>Get Directions</span>
-                </a>
-              )}
             </div>
           </div>
 
@@ -90,7 +76,7 @@ export default function Hero({ location }) {
 
             <div className="rounded-3xl border border-slate-200 bg-gradient-to-br from-yellow-50/60 via-white to-sky-50/40 p-6 sm:p-8 shadow-sm">
               <h3 className="text-xl font-bold text-slate-900 mb-4 border-b border-slate-100 pb-3">
-                {offersVisits ? "Center Facilities" : "Online Hub Features"}
+                Online & Home Tutoring Features
               </h3>
               <ul className="space-y-3">
                 {location.features?.map((feat, idx) => (
@@ -103,7 +89,7 @@ export default function Hero({ location }) {
 
               <div className="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between">
                 <span className="text-xs font-bold text-yellow-700 bg-yellow-100 px-3 py-1 rounded-full border border-yellow-200">
-                  Certified Hub
+                  Live Online & Home Tutoring
                 </span>
               </div>
             </div>

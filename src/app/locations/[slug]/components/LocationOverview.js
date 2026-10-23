@@ -6,13 +6,13 @@ export default function LocationOverview({ location }) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
           <span className="text-xs font-bold uppercase tracking-wider text-yellow-600">
-            Center Overview
+            Service Overview
           </span>
           <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            About Our {location.city} Center
+            About Learning French in {location.city}
           </h2>
           <p className="mt-4 text-base sm:text-lg text-slate-600 leading-relaxed">
-            {location.shortDescription} Our {location.city} campus provides a supportive, fully immersive learning environment equipped with digital smart boards, language listening stations, and small batch sizes to guarantee personal attention.
+            {location.shortDescription} Our programs for {location.city} provide a supportive, flexible learning environment with live interactive online classes and 1-on-1 home tutoring options across the Tricity.
           </p>
         </div>
 

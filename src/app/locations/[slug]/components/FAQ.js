@@ -15,7 +15,7 @@ export default function FAQ({ location }) {
             Frequently Asked Questions
           </span>
           <h2 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Questions About {location.city} Center
+            Questions About French Classes in {location.city}
           </h2>
         </div>
 

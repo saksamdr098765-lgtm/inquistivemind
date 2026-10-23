@@ -119,7 +119,7 @@ export const academicFocusAreas = [
 ];
 export const academicPreferences = [
   "Online Classes",
-  "Offline Classes",
+  "Home Tutoring (tutor visits your home)",
   "One-to-One Tuition",
   "Group Classes",
   "Weekend Batches",
@@ -136,7 +136,7 @@ export const availabilityOptions = [
 
 export const tutorPreferences = [
   "Online Classes",
-  "Offline Classes",
+  "Home Tutoring (tutor visits your home)",
   "Weekend Classes",
   "Weekday Classes",
   "One-to-One Learning",

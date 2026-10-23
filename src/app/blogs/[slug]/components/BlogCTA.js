@@ -27,7 +27,7 @@ export default function BlogCTA({
   const targetHref = cta?.serviceLink || cta?.href;
 
   const features = cta?.features || [
-    "Online Live & Offline",
+    "Live Online & Home Tutoring",
     "DELF & TEF Canada Prep",
   ];
 

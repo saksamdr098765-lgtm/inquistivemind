@@ -117,7 +117,7 @@ export default async function ServicePage({ params }) {
           {/* 8. Courses We Offer */}
           <ServiceCoursesWeOffer service={service} />
 
-          {/* 9. Pricing, Fee Plans & Study Centers */}
+          {/* 9. Pricing, Fee Plans & Service Areas */}
           <ServicePricingAndAreas service={service} />
 
           {/* 10. Become a Tutor callout */}

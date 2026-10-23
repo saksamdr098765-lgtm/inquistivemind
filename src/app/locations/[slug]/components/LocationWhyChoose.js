@@ -11,8 +11,8 @@ export default function LocationWhyChoose({ location }) {
       description: "Proven curriculum with mock exam simulations designed around official FEI standards.",
     },
     {
-      title: "Central Accessible Campus",
-      description: "Situated in a prime accessible commercial hub with full public transport connectivity.",
+      title: "Flexible Learning Formats",
+      description: "Choose between live interactive online batches or personalized 1-on-1 home tutoring tailored to your schedule.",
     },
   ];
 
@@ -22,13 +22,13 @@ export default function LocationWhyChoose({ location }) {
         <div className="max-w-3xl mb-10">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-yellow-100 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-yellow-700">
             <FiAward />
-            <span>Local Center Advantages</span>
+            <span>Learning Advantages</span>
           </span>
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Why Choose Our {location.city} Study Center?
+            Why Choose Inquisitive Mind Academy for {location.city}?
           </h2>
           <p className="mt-3 text-base text-slate-600 leading-relaxed">
-            Our {location.city} campus provides a fully equipped, supportive learning environment designed for rapid French language acquisition.
+            Our {location.city} programs provide a flexible, supportive learning environment with live interactive online classes and 1-on-1 home tutoring options.
           </p>
         </div>
 

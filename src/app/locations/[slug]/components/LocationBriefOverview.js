@@ -1,25 +1,15 @@
 import { FiMapPin, FiCheckCircle, FiInfo, FiClock, FiPhone } from "react-icons/fi";
 
 export default function LocationBriefOverview({ location }) {
-  const offersVisits = location.offersVisits ?? false;
-
   const summary =
     location.shortDescription ||
-    (offersVisits
-      ? `Our ${location.city} campus provides a modern, fully immersive learning environment equipped with digital smart boards, language audio stations, and small batch sizes.`
-      : `Our live online batches for ${location.city} provide a fully interactive learning environment equipped with digital whiteboards, audio labs, and small batch sizes.`);
+    `Our live interactive online batches and 1-on-1 home tutoring for ${location.city} provide a fully supportive learning environment with certified mentors, real-time speaking drills, and small batch sizes.`;
 
-  const highlights = offersVisits
-    ? [
-        "Certified native and bilingual French language faculty on site",
-        "Smart interactive classrooms with dedicated listening & speaking stations",
-        "Small batch guarantee (Max 8-10 students) for individual evaluation",
-      ]
-    : [
-        "Live interactive online sessions with certified French faculty",
-        "Real-time speaking & listening drills with digital learning materials",
-        "Small batch guarantee (Max 6-8 students) for personalized evaluation",
-      ];
+  const highlights = [
+    "Live interactive online sessions with certified French faculty",
+    `Personalized 1-on-1 home tutoring across ${location.city} & Tricity`,
+    "Small batch guarantee (Max 6-8 students) for personalized evaluation",
+  ];
 
   return (
     <section className="py-14 bg-white border-b border-slate-100">
@@ -27,15 +17,13 @@ export default function LocationBriefOverview({ location }) {
         <div className="max-w-3xl mb-8">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-yellow-100 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-yellow-700">
             <FiInfo />
-            <span>{offersVisits ? "Center Briefing" : "Online Hub Briefing"}</span>
+            <span>Online Hub & Home Tutoring Briefing</span>
           </span>
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            {location.city} {offersVisits ? "Center in Brief" : "Online Hub in Brief"}
+            {location.city} Learning Overview
           </h2>
           <p className="mt-2 text-sm text-slate-500">
-            {offersVisits
-              ? `A quick summary of our physical campus, smart facilities, and learning atmosphere in ${location.city}.`
-              : `A quick summary of our live online classes, interactive format, and learning benefits for ${location.city} students.`}
+            A quick summary of our live online classes, 1-on-1 home tutoring format, and learning benefits for {location.city} students.
           </p>
         </div>
 
@@ -49,7 +37,7 @@ export default function LocationBriefOverview({ location }) {
 
               <div className="mt-6 pt-6 border-t border-slate-100">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-slate-900 mb-4">
-                  {offersVisits ? "Center Key Highlights" : "Online Hub Highlights"}
+                  Online & Home Tutoring Highlights
                 </h3>
                 <ul className="space-y-3">
                   {highlights.map((item, idx) => (
@@ -72,14 +60,14 @@ export default function LocationBriefOverview({ location }) {
                     <FiMapPin className="text-lg" />
                   </div>
                   <h3 className="text-lg font-bold text-slate-900">
-                    {location.city} {offersVisits ? "Campus Snapshot" : "Online Hub Snapshot"}
+                    {location.city} Service Snapshot
                   </h3>
                 </div>
 
                 <div className="space-y-3 pt-2 text-xs font-semibold text-slate-800">
                   <div className="flex items-start gap-2">
                     <FiMapPin className="text-yellow-600 shrink-0 mt-0.5" />
-                    <span>{offersVisits ? (location.physicalAddress || location.address) : location.address}</span>
+                    <span>{location.address}</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <FiPhone className="text-yellow-600 shrink-0" />
@@ -94,38 +82,12 @@ export default function LocationBriefOverview({ location }) {
 
               <div className="mt-8 pt-4 border-t border-yellow-200/60 flex flex-col sm:flex-row gap-3">
                 <a
-                  href="#booking"
+                  href="/about"
                   className="flex-1 text-center inline-block rounded-full bg-slate-900 px-6 py-3 text-xs font-bold text-white transition-all hover:bg-yellow-500 hover:text-slate-950 shadow-sm"
                 >
-                  {offersVisits ? `Visit ${location.city} Center & Demo` : `Book Free Online Demo`}
+                  Book Free Online Demo
                 </a>
-
-                {offersVisits && location.googleMaps?.direction && (
-                  <a
-                    href={location.googleMaps.direction}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 text-center inline-block rounded-full bg-yellow-500 px-6 py-3 text-xs font-bold text-slate-950 transition-all hover:bg-yellow-400 shadow-sm"
-                  >
-                    Google Maps Directions
-                  </a>
-                )}
               </div>
-
-              {offersVisits && location.googleMaps?.iframe && (
-                <div className="mt-4 overflow-hidden rounded-2xl border border-yellow-200 h-44 w-full">
-                  <iframe
-                    src={location.googleMaps.iframe}
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen=""
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title={`${location.city} Center Map`}
-                  />
-                </div>
-              )}
             </div>
           </div>
         </div>

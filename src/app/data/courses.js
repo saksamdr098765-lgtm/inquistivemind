@@ -162,7 +162,7 @@ export const courses = [
       },
       {
         q: "Are the classes conducted online or at a physical coaching center?",
-        a: "We offer both live interactive online batches (accessible globally via Zoom with interactive digital boards) and hybrid offline consulting for students in the Chandigarh, Mohali, and Panchkula region.",
+        a: "We conduct 100% live interactive online batches accessible globally via Zoom with interactive digital boards, as well as 1-on-1 home tutoring across the Chandigarh, Mohali, and Panchkula region where a tutor visits your home. We do not have a physical coaching center or walk-in office.",
       },
       {
         q: "Does this program prepare me for DELF B2 and TEF Canada?",

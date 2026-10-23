@@ -4,15 +4,15 @@ import { FiMapPin, FiPhone, FiClock, FiArrowRight, FiCheckCircle } from "react-i
 import TrackedLink from "@/app/Components/tracking/TrackedLink";
 
 export const metadata = {
-  title: "Academy Study Centers & Learning Locations | Inquisitive Mind Academy",
+  title: "Online Classes & Home Tutoring Across Tricity & Punjab | Inquisitive Mind Academy",
   description:
-    "Find an Inquisitive Mind Academy learning center near you in Chandigarh, Mohali, Ludhiana, or join our global interactive online classrooms.",
+    "Join live online French classes and find certified 1-on-1 home tutors across Chandigarh, Mohali, Panchkula, and Zirakpur with Inquisitive Mind Academy.",
   keywords: [
-    "French learning centers",
-    "French institute Chandigarh",
+    "French classes online",
+    "French tutor Chandigarh",
     "French classes Mohali",
-    "French institute Ludhiana",
-    "Online French classes",
+    "French home tuition Panchkula",
+    "Learn French online",
   ],
   alternates: {
     canonical: `${SITE_CONFIG.url}/locations`,
@@ -31,21 +31,19 @@ export default function LocationsPage() {
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
           <span className="inline-flex items-center gap-2 rounded-full border border-yellow-200 bg-yellow-50 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-yellow-700">
             <FiMapPin className="text-yellow-500" />
-            <span>Our Campuses & Virtual Hubs</span>
+            <span>Online + Home Tutoring</span>
           </span>
           <h1 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            Find Your Nearest Learning Center
+            Find Classes for Your City
           </h1>
           <p className="mt-4 text-base text-slate-600 sm:text-lg leading-relaxed">
-            Choose from our modern smart classrooms across Punjab or join live interactive online batches from anywhere in the world.
+            Choose from our live interactive online batches or book certified 1-on-1 home tutors across Chandigarh, Mohali, Panchkula, and Zirakpur.
           </p>
         </div>
 
         {/* Locations Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {locations.map((loc) => {
-            const offersVisits = loc.offersVisits ?? false;
-
             return (
               <div
                 key={loc.slug}
@@ -59,7 +57,7 @@ export default function LocationsPage() {
                     className="h-full w-full object-contain transition-transform duration-500 hover:scale-105"
                   />
                   <div className="absolute top-4 left-4 rounded-full bg-yellow-500 px-3.5 py-1 text-xs font-bold text-slate-950 shadow-md">
-                    {offersVisits ? `★ ${loc.city} Center` : `★ ${loc.city} Online Hub`}
+                    ★ {loc.city} Online & Home
                   </div>
                 </div>
 
@@ -76,7 +74,7 @@ export default function LocationsPage() {
                     <div className="mt-6 space-y-2.5 text-xs sm:text-sm text-slate-700 font-medium">
                       <div className="flex items-start gap-2.5">
                         <FiMapPin className="text-yellow-500 mt-0.5 shrink-0 font-bold" />
-                        <span>{offersVisits ? (loc.physicalAddress || loc.address) : loc.address}</span>
+                        <span>{loc.address}</span>
                       </div>
                       <div className="flex items-center gap-2.5">
                         <FiPhone className="text-yellow-500 shrink-0 font-bold" />
@@ -91,7 +89,7 @@ export default function LocationsPage() {
                     {/* Highlights */}
                     <div className="mt-6 pt-6 border-t border-slate-100">
                       <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                        {offersVisits ? "Center Highlights" : "Hub Highlights"}
+                        Program Highlights
                       </h3>
                       <div className="mt-3 flex flex-wrap gap-2">
                         {loc.features.slice(0, 3).map((feat, idx) => (
@@ -114,7 +112,7 @@ export default function LocationsPage() {
                       category="Locations Grid"
                       className="w-full inline-flex min-h-[44px] items-center justify-center gap-2 rounded-full bg-yellow-500 px-6 py-3.5 text-sm font-bold text-slate-950 transition-all duration-300 hover:bg-yellow-400 shadow-md hover:shadow-lg"
                     >
-                      <span>{offersVisits ? "Explore Center Details" : "Explore Online Hub Details"}</span>
+                      <span>Explore Online & Home Tutoring</span>
                       <FiArrowRight />
                     </TrackedLink>
                   </div>

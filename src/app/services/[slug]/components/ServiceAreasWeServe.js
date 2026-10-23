@@ -11,10 +11,10 @@ export default function ServiceAreasWeServe({ service }) {
         <div className="max-w-3xl mb-10">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-yellow-100 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-yellow-700">
             <FiMapPin />
-            <span>Locations & Study Centers</span>
+            <span>Areas We Serve</span>
           </span>
           <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            Areas We Serve (Offline & Online)
+            Areas We Serve (Live Online & Home Tutoring)
           </h2>
         </div>
 
@@ -37,7 +37,7 @@ export default function ServiceAreasWeServe({ service }) {
                 href={loc.href || "/locations"}
                 className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-yellow-600 hover:text-yellow-800 transition-colors"
               >
-                <span>View Center</span>
+                <span>View Details</span>
                 <FiArrowRight size={12} />
               </Link>
             </div>

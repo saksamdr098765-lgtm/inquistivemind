@@ -101,7 +101,7 @@ export default function CoursesHubClient({ allCourses }) {
                   selectedMode === "hybrid" ? "bg-white text-slate-900 shadow-xs" : "text-slate-600"
                 }`}
               >
-                Hybrid / Offline
+                Home Tutoring (Tricity)
               </button>
             </div>
           </div>

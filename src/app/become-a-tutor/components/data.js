@@ -78,7 +78,7 @@ export const studentLevelOptions = [
 
 export const teachingModeOptions = [
   "Online Classes",
-  "Offline Classes",
+  "Home Tutoring (visits student's home)",
   "Hybrid Teaching",
 ];
 

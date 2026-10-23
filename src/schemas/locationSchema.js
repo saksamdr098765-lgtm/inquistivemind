@@ -4,31 +4,30 @@ export function getLocationSchema(location) {
   const url = `${SITE_CONFIG.url}/locations/${location.slug}`;
 
   const schemas = [
-    // Educational Organization / School / Center
+    // Educational Organization
     {
       "@context": "https://schema.org",
       "@type": "EducationalOrganization",
-      "@id": `${url}#educationalcenter`,
+      "@id": `${url}#organization`,
       name: `${SITE_CONFIG.name} - ${location.city}`,
       url,
+      sameAs: SITE_CONFIG.url,
       image: location.coverImage?.startsWith("http")
         ? location.coverImage
         : `${SITE_CONFIG.url}${location.coverImage || SITE_CONFIG.ogImage}`,
       description: location.shortDescription,
       telephone: location.phone || SITE_CONFIG.phone,
       email: SITE_CONFIG.email,
-
-      address: {
-        "@type": "PostalAddress",
-        streetAddress: location.address || SITE_CONFIG.address.line1,
-        addressLocality: location.city,
-        addressRegion: location.state || SITE_CONFIG.address.state,
-        postalCode: location.postalCode || SITE_CONFIG.address.postalCode,
-        addressCountry: "IN",
-      },
-
-      openingHours: location.hours || SITE_CONFIG.businessHours,
-      areaServed: location.areas || [],
+      areaServed: [
+        {
+          "@type": "AdministrativeArea",
+          name: location.city,
+        },
+        ...(location.areas || []).map((area) => ({
+          "@type": "AdministrativeArea",
+          name: area,
+        })),
+      ],
       priceRange: "₹3,000 - ₹25,000",
     },
 
@@ -45,7 +44,7 @@ export function getLocationSchema(location) {
         "@id": `${SITE_CONFIG.url}/#website`,
       },
       about: {
-        "@id": `${url}#educationalcenter`,
+        "@id": `${url}#organization`,
       },
       primaryImageOfPage: {
         "@type": "ImageObject",
@@ -89,10 +88,10 @@ export function getLocationSchema(location) {
       "@id": `${url}#services`,
       serviceType: "French Language & Educational Coaching",
       provider: {
-        "@id": `${url}#educationalcenter`,
+        "@id": `${url}#organization`,
       },
       areaServed: {
-        "@type": "City",
+        "@type": "AdministrativeArea",
         name: location.city,
       },
       hasOfferCatalog: {

@@ -305,7 +305,7 @@ export default function Footer() {
 
               <div className="flex items-center gap-3 p-2">
                 <FaMapMarkerAlt className="text-yellow-500 shrink-0" />
-                <span>India • Online & Offline Classes</span>
+                <span>India • Live Online Classes & Home Tutoring</span>
               </div>
             </div>
           </div>

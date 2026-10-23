@@ -7,7 +7,7 @@ export const hubFaqs = [
   },
   {
     q: "Are the classes conducted online or at a physical center in Chandigarh?",
-    a: "We offer both! We conduct live interactive online batches via Zoom with high-definition digital whiteboards for students worldwide, as well as offline mentorship and hybrid counseling in the Chandigarh, Mohali, and Panchkula region.",
+    a: "All our batches are conducted 100% live online via Zoom with high-definition digital whiteboards for students worldwide. For learners in Chandigarh, Mohali, Panchkula, and Zirakpur, we also offer personalized 1-on-1 home tutoring where a tutor visits your home. We do not operate a physical walk-in center.",
   },
   {
     q: "What is the class size for group batches?",

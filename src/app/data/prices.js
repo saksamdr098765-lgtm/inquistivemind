@@ -60,8 +60,8 @@ export const prices = [
         answer: "Yes, all digital textbooks, workbooks, grammar worksheets, and audio recordings are included in the price.",
       },
       {
-        question: "What is the fee for online vs offline classroom batches?",
-        answer: "The online live interactive batch is priced at ₹4,999 while the offline smart classroom batch in Chandigarh/Mohali is ₹6,499.",
+        question: "What is the fee for live online batches vs 1-on-1 home tutoring?",
+        answer: "The live interactive online group batch is priced at ₹4,999. Personalized 1-on-1 home tutoring across Chandigarh, Mohali, Panchkula, and Zirakpur is offered with customized pricing on request based on student goals and schedule.",
       },
     ],
     cta: {

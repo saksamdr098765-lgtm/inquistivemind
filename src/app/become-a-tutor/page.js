@@ -5,7 +5,7 @@ export const metadata = {
   title: "Become a Tutor | Join Inquisitive Mind Academy",
 
   description:
-    "Join Inquisitive Mind Academy as a tutor for French, English, or academic subjects. Teach online, set flexible hours, and grow with our educator team.",
+    "Join Inquisitive Mind Academy as a tutor for French, German, English, or academic subjects. Teach online, set flexible hours, and grow with our educator team.",
 
   keywords: [
     "Become a Tutor",
@@ -13,6 +13,7 @@ export const metadata = {
     "Online Teaching Jobs",
     "Teach Online",
     "French Tutor Jobs",
+    "German Tutor Jobs",
     "English Tutor Jobs",
     "Academic Tutor Jobs",
     "Home Tutor Jobs",
@@ -35,7 +36,7 @@ export const metadata = {
     title: "Become a Tutor | Inquisitive Mind Academy",
 
     description:
-      "Apply to teach French, English, or academic subjects through live online classes with Inquisitive Mind Academy.",
+      "Apply to teach French, German, English, or academic subjects through live online classes with Inquisitive Mind Academy.",
 
     url: "/become-a-tutor",
 
@@ -57,7 +58,7 @@ export const metadata = {
     title: "Become a Tutor",
 
     description:
-      "Join our team of expert tutors across French, English, and academic subjects.",
+      "Join our team of expert tutors across French, German, English, and academic subjects.",
 
     images: ["/web-app-manifest-512x512.png"],
   },
@@ -122,7 +123,7 @@ export default function page() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "JobPosting",
-            title: "French & Academic Language Tutor",
+            title: "French, German & Academic Language Tutor",
             description:
               "Inquisitive Mind Academy is hiring passionate language and academic tutors to teach live online classes.",
             hiringOrganization: {

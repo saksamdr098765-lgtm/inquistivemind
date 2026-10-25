@@ -33,6 +33,11 @@ export const tutorSubjectOptions = [
     icon: FaGlobe,
   },
   {
+    title: "German",
+    subtitle: "Teach Goethe-Zertifikat A1-B2 & conversational",
+    icon: FaGlobe,
+  },
+  {
     title: "Mathematics",
     subtitle: "School & competitive exam support",
     icon: FaBook,

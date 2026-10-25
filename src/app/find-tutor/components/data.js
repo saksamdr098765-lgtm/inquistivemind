@@ -23,7 +23,7 @@ export const steps = [
 export const goalOptions = [
   {
     title: "Languages",
-    subtitle: "English & French Programs",
+    subtitle: "English, French & German Programs",
     icon: FaLanguage,
   },
   {
@@ -40,6 +40,10 @@ export const languageOptions = [
   },
   {
     title: "French",
+    icon: FaGlobe,
+  },
+  {
+    title: "German",
     icon: FaGlobe,
   },
 ];

@@ -13,14 +13,20 @@ import {
   FaBars,
   FaTimes,
   FaSignOutAlt,
-  FaShieldAlt
+  FaShieldAlt,
+  FaChalkboardTeacher,
+  FaClipboardList,
+  FaHandshake,
 } from "react-icons/fa";
 import useAuthStore from "@/store/authStore";
 import { useLogoutMutation } from "@/app/mutations/AuthenticationMutations";
 
 const adminNavItems = [
   { name: "Dashboard", href: "/admin-panel/dashboard", icon: FaChartLine },
-  { name: "Students", href: "/admin-panel/student", icon: FaUsers },
+  { name: "Tutor Applications", href: "/admin-panel/tutor-applications", icon: FaChalkboardTeacher },
+  { name: "Student Requirements", href: "/admin-panel/student-requirements", icon: FaClipboardList },
+  { name: "Tutor Matching", href: "/admin-panel/matching", icon: FaHandshake },
+  { name: "Users & Students", href: "/admin-panel/student", icon: FaUsers },
   { name: "Courses", href: "/admin-panel/courses", icon: FaBookOpen },
   { name: "Profile", href: "/admin-panel/profile", icon: FaUserCircle },
   { name: "Settings", href: "/admin-panel/settings", icon: FaCog },
@@ -171,7 +177,7 @@ export default function AdminDrawerNav({ children }) {
 
           <nav className="mt-6 space-y-2 overflow-y-auto flex-1 pr-1">
             {adminNavItems.map((item) => {
-              const isActive = pathname === item.href || (item.href !== "/admin-panel/dashboard" && pathname?.startsWith(item.href));
+              const isActive = pathname === item.href || pathname?.startsWith(item.href + "/");
               const Icon = item.icon;
               return (
                 <Link

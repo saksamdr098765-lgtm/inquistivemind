@@ -10,6 +10,13 @@ export default function PortalBadge({
     approved: "bg-emerald-50 text-emerald-700 border-emerald-200/60",
     active: "bg-emerald-50 text-emerald-700 border-emerald-200/60",
     pending: "bg-amber-50 text-amber-700 border-amber-200/60",
+    under_review: "bg-sky-50 text-sky-700 border-sky-200/60",
+    info_requested: "bg-orange-50 text-orange-700 border-orange-200/60",
+    shortlisted: "bg-indigo-50 text-indigo-700 border-indigo-200/60",
+    recommended: "bg-purple-50 text-purple-700 border-purple-200/60",
+    matched: "bg-teal-50 text-teal-700 border-teal-200/60",
+    open: "bg-amber-50 text-amber-700 border-amber-200/60",
+    converted: "bg-emerald-50 text-emerald-700 border-emerald-200/60",
     blocked: "bg-rose-50 text-rose-700 border-rose-200/60",
     rejected: "bg-rose-50 text-rose-700 border-rose-200/60",
     info: "bg-blue-50 text-blue-700 border-blue-200/60",
@@ -25,7 +32,7 @@ export default function PortalBadge({
 
   const normalized = (typeof children === "string" ? children.toLowerCase() : "") || variant;
   let activeVariant = variants[variant] || variants.default;
-  
+
   if (variants[normalized]) {
     activeVariant = variants[normalized];
   }

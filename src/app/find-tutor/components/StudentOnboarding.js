@@ -1,14 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
+import useAuthStore from "@/store/authStore";
 
 import MatchingScreen from "./MatchingScreen";
-import StepCard, {
-
-  ContactForm,
-  AvailabilitySelector,
-} from "./StepCard";
+import StepCard, { ContactForm, AvailabilitySelector } from "./StepCard";
+import StudentSuccess from "./StudentSuccess";
 
 import {
   goalOptions,
@@ -16,33 +14,26 @@ import {
   levels,
   availabilityOptions,
   tutorPreferences,
-
   academicSubjects,
   academicLevels,
-
   academicPreferences,
   timeSlotOptions,
 } from "./data";
 
 import ProgressTracker from "./ProgressTraker";
 import { validateStep } from "../validation";
-import SITE_CONFIG from "@/app/siteConfig";
-import { studentsLeadsApi } from "@/app/api/LeadApi";
-import { toast } from "sonner";
 import { useStudentLeadMutation } from "@/app/mutations/leadMutation";
-import { data } from "framer-motion/client";
-import { trackWhatsAppClick } from "@/lib/traking";
+import { trackFormSubmit } from "@/lib/traking";
 
 export default function StudentOnboarding() {
   const [error, setError] = useState("");
   const [step, setStep] = useState(0);
-  const { whatsappNumber } = SITE_CONFIG;
+  const [referenceCode, setReferenceCode] = useState("");
 
   const [form, setForm] = useState({
     goal: "",
     language: "",
     level: "",
-  
     availability: [],
     timeSlot: [],
     tutor: "",
@@ -51,8 +42,24 @@ export default function StudentOnboarding() {
     phone: "",
   });
 
+  const user = useAuthStore((state) => state.user);
+
+  useEffect(() => {
+    if (user) {
+      setForm((prev) => ({
+        ...prev,
+        name: prev.name || user.fullName || "",
+        email: prev.email || user.email || "",
+        phone: prev.phone || user.phone || "",
+      }));
+    }
+  }, [user]);
+
   const update = (key, value) => {
-    setForm((prev) => ({ ...prev, [key]: value }));
+    setForm((prev) => ({
+      ...prev,
+      [key]: value,
+    }));
   };
 
   const toggleDay = (day) => {
@@ -63,217 +70,217 @@ export default function StudentOnboarding() {
         : [...form.availability, day]
     );
   };
- const toggleSlot = (timeSlot) => {
+
+  const toggleSlot = (slot) => {
     update(
       "timeSlot",
-      form.timeSlot.includes(timeSlot)
-        ? form.timeSlot.filter((t) => t !== timeSlot)
-        : [...form.timeSlot, timeSlot]
+      form.timeSlot.includes(slot)
+        ? form.timeSlot.filter((s) => s !== slot)
+        : [...form.timeSlot, slot]
     );
   };
+
   const next = () => {
     const errorMessage = validateStep(step, form);
     if (errorMessage) return setError(errorMessage);
 
     setError("");
-   if (step < 7) {
-  setStep((prev) => prev + 1);
-}
+    if (step < 7) {
+      setStep((prev) => prev + 1);
+    }
   };
 
   const prev = () => {
     if (step > 0) setStep((prev) => prev - 1);
   };
 
-  const message = `
-🎓 New Tutor Request
+  const studentLeadsMutation = useStudentLeadMutation();
 
-👤 Name: ${form.name}
-📧 Email: ${form.email}
-📱 Phone: ${form.phone}
-
-🎯 Goal: ${form.goal}
-📚 Subject: ${form.language}
-📈 Level: ${form.level}
-
-📅 Days: ${form.availability.join(", ")}
-⏰ Time: ${form.timeSlot.join(", ")}
-
-
-`;
-const studentLeadsMutation=useStudentLeadMutation()
-const onContinue = async () => {
-   await studentLeadsMutation.mutateAsync(form,{onSuccess:()=>{
-    trackFormSubmit("Find Tutor Student Lead", "success");
-    trackWhatsAppClick("find-tutor");
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-      window.open(whatsappUrl, "_blank");
-   }})
-};
+  const onContinue = async () => {
+    await studentLeadsMutation.mutateAsync(form, {
+      onSuccess: (data) => {
+        trackFormSubmit("Find Tutor Student Lead", "success");
+        if (data?.referenceCode) {
+          setReferenceCode(data.referenceCode);
+        }
+        setStep(8);
+      },
+    });
+  };
 
   return (
-    <section className="relative min-h-screen overflow-hidden py-20">
+    <section className="relative overflow-hidden py-4 sm:py-8 lg:py-12">
+      <div className="relative mx-auto max-w-4xl px-3 sm:px-6 lg:px-8">
+        <h1 className="sr-only">Find a Tutor — Search Qualified Tutors</h1>
 
-    
-
-      <div className="relative mx-auto max-w-7xl px-5 py-6 lg:px-8 lg:py-10">
- <h1 className="sr-only">Find a Tutor — Search Qualified Tutors</h1>
         {/* PROGRESS */}
         <ProgressTracker currentStep={step} totalSteps={8} />
 
-        {/* TAGS */}
-        <div className="mb-8 flex flex-wrap justify-center gap-3">
-          {form.goal && (
-            <button onClick={()=>{setStep(1)}} className="rounded-full bg-yellow-100 px-4 py-2 text-sm text-yellow-700">
-              {form.goal}
-            </button>
-          )}
+        {/* SELECTED TAGS */}
+        {step < 8 && (
+          <div className="mb-4 sm:mb-6 flex flex-wrap justify-center gap-1.5 sm:gap-2">
+            {form.goal && (
+              <button
+                type="button"
+                onClick={() => setStep(1)}
+                className="rounded-full bg-yellow-50 border border-yellow-200/80 px-3 py-1 sm:px-3.5 sm:py-1.5 text-xs sm:text-sm font-semibold text-yellow-800 transition hover:bg-yellow-100/70"
+              >
+                🎯 {form.goal}
+              </button>
+            )}
 
-          {form.language && (
-            <button onClick={()=>{setStep(2)}} className="rounded-full bg-amber-100 px-4 py-2 text-sm text-amber-700">
-              {form.language}
-            </button>
-          )}
+            {form.language && (
+              <button
+                type="button"
+                onClick={() => setStep(2)}
+                className="rounded-full bg-amber-50 border border-amber-200/80 px-3 py-1 sm:px-3.5 sm:py-1.5 text-xs sm:text-sm font-semibold text-amber-800 transition hover:bg-amber-100/70"
+              >
+                📚 {form.language}
+              </button>
+            )}
 
-          {form.level && (
-            <button onClick={()=>{setStep(3)}} className="rounded-full bg-slate-100 px-4 py-2 text-sm text-slate-700">
-              {form.level}
-            </button>
-          )}
-        </div>
+            {form.level && (
+              <button
+                type="button"
+                onClick={() => setStep(3)}
+                className="rounded-full bg-slate-100 border border-slate-200 px-3 py-1 sm:px-3.5 sm:py-1.5 text-xs sm:text-sm font-semibold text-slate-700 transition hover:bg-slate-200/70"
+              >
+                📈 {form.level}
+              </button>
+            )}
+          </div>
+        )}
 
-        {/* CARD */}
-        <div className="mx-auto max-w-4xl">
-          <div className="relative overflow-hidden rounded-[40px] border border-white/60 bg-white/90 p-6 shadow-[0_30px_100px_rgba(0,0,0,0.08)] backdrop-blur-xl lg:p-12">
+        {/* CARD CONTAINER */}
+        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl lg:rounded-[36px] border border-slate-200/90 bg-white/95 p-4 sm:p-7 lg:p-10 shadow-lg sm:shadow-xl shadow-slate-200/50 backdrop-blur-md">
+          <div className="relative">
+            <AnimatePresence mode="wait">
+              {/* Contact */}
+              {step === 0 && <ContactForm form={form} update={update} />}
 
-            <div className="absolute -top-20 -right-20 h-60 w-60 rounded-full bg-yellow-200/20 blur-3xl" />
-            <div className="absolute -bottom-20 -left-20 h-60 w-60 rounded-full bg-amber-200/20 blur-3xl" />
-
-            <div className="relative">
-
-           <AnimatePresence mode="wait">
-
-  {/* Contact */}
-  {step === 0 && (
-    <ContactForm form={form} update={update} />
-  )}
-
-  {/* Goal */}
-  {step === 1 && (
-    <StepCard
-      title="What are you looking for?"
-      subtitle="We'll personalize your learning journey."
-      options={goalOptions}
-      selected={form.goal}
-      onSelect={(v) => update("goal", v)}
-    />
-  )}
-
-  {/* Subject / Language */}
-  {step === 2 && (
-    <StepCard
-      title={
-        form.goal === "Academics"
-          ? "Which subject do you need help with?"
-          : "Which language do you want to learn?"
-      }
-      options={
-        form.goal === "Academics"
-          ? academicSubjects
-          : languageOptions
-      }
-      selected={form.language}
-      onSelect={(v) => update("language", v)}
-    />
-  )}
-
-  {/* Level */}
-  {step === 3 && (
-    <StepCard
-      title="What's your current level?"
-      options={
-        form.goal === "Academics"
-          ? academicLevels
-          : levels
-      }
-      selected={form.level}
-      onSelect={(v) => update("level", v)}
-    />
-  )}
-
-  {/* Availability */}
-  {step === 4 && (
-    <AvailabilitySelector
-      selected={form.availability}
-      toggleDay={toggleDay}
-      days={availabilityOptions}
-    />
-  )}
-
-  {/* Time */}
-  {step === 5 && (
-    <AvailabilitySelector
-    description=" Select all Time Slot that work for you."
-      selected={form.timeSlot}
-      toggleDay={toggleSlot}
-      days={timeSlotOptions}
-    />
-  )}
-
-  {/* Preference */}
-  {step === 6 && (
-    <StepCard
-      title="How would you like to learn?"
-      options={
-        form.goal === "Academics"
-          ? academicPreferences
-          : tutorPreferences
-      }
-      selected={form.tutor}
-      onSelect={(v) => update("tutor", v)}
-    />
-  )}
-
-  {/* Matching */}
-  {step === 7 && (
-    <MatchingScreen
-      onContinue={onContinue}
-      mutation={studentLeadsMutation}
-    />
-  )}
-
-</AnimatePresence>
-
-              {/* ERROR */}
-              {error && (
-                <div className="mt-6 rounded-2xl border border-red-100 bg-red-50 px-4 py-3 text-sm text-red-600">
-                  {error}
-                </div>
+              {/* Goal */}
+              {step === 1 && (
+                <StepCard
+                  title="What are you looking for?"
+                  subtitle="We'll personalize your learning journey."
+                  options={goalOptions}
+                  selected={form.goal}
+                  onSelect={(v) => update("goal", v)}
+                />
               )}
 
-              {/* NAV */}
-           {step < 7 && (
-                <div className="mt-10 flex items-center gap-3">
+              {/* Subject / Language */}
+              {step === 2 && (
+                <StepCard
+                  title={
+                    form.goal === "Academics"
+                      ? "Which subject do you need help with?"
+                      : "Which language do you want to learn?"
+                  }
+                  options={
+                    form.goal === "Academics"
+                      ? academicSubjects
+                      : languageOptions
+                  }
+                  selected={form.language}
+                  onSelect={(v) => update("language", v)}
+                />
+              )}
 
-                  {step > 0 && (
-                    <button
-                      onClick={prev}
-                      className="rounded-full border border-slate-200 px-6 py-3 text-sm text-slate-600 hover:bg-slate-50"
-                    >
-                      Back
-                    </button>
-                  )}
+              {/* Level */}
+              {step === 3 && (
+                <StepCard
+                  title="What's your current level?"
+                  options={
+                    form.goal === "Academics" ? academicLevels : levels
+                  }
+                  selected={form.level}
+                  onSelect={(v) => update("level", v)}
+                />
+              )}
 
+              {/* Availability */}
+              {step === 4 && (
+                <AvailabilitySelector
+                  selected={form.availability}
+                  toggleDay={toggleDay}
+                  days={availabilityOptions}
+                  description="Select all days that work for your schedule."
+                />
+              )}
+
+              {/* Time Slots */}
+              {step === 5 && (
+                <AvailabilitySelector
+                  description="Select all time slots that work for you."
+                  selected={form.timeSlot}
+                  toggleDay={toggleSlot}
+                  days={timeSlotOptions}
+                />
+              )}
+
+              {/* Preference */}
+              {step === 6 && (
+                <StepCard
+                  title="How would you like to learn?"
+                  options={
+                    form.goal === "Academics"
+                      ? academicPreferences
+                      : tutorPreferences
+                  }
+                  selected={form.tutor}
+                  onSelect={(v) => update("tutor", v)}
+                />
+              )}
+
+              {/* Matching */}
+              {step === 7 && (
+                <MatchingScreen
+                  onContinue={onContinue}
+                  mutation={studentLeadsMutation}
+                />
+              )}
+
+              {/* Server-Based Success Screen */}
+              {step === 8 && (
+                <StudentSuccess
+                  referenceCode={referenceCode}
+                  form={form}
+                  onContinue={() => (window.location.href = "/")}
+                />
+              )}
+            </AnimatePresence>
+
+            {/* ERROR */}
+            {error && (
+              <div className="mt-4 sm:mt-6 rounded-xl sm:rounded-2xl border border-red-200 bg-red-50 p-3 sm:p-4 text-xs sm:text-sm font-semibold text-red-600 flex items-center gap-2">
+                <span>⚠️</span>
+                <span>{error}</span>
+              </div>
+            )}
+
+            {/* NAVIGATION */}
+            {step < 7 && (
+              <div className="mt-6 sm:mt-8 flex items-center gap-2 sm:gap-3 pt-2">
+                {step > 0 && (
                   <button
-                    onClick={next}
-                    className="flex-1 rounded-full bg-gradient-to-r from-yellow-400 to-amber-500 px-6 py-4 font-medium text-white shadow-lg transition hover:scale-[1.01]"
+                    type="button"
+                    onClick={prev}
+                    className="rounded-full border border-slate-200/90 bg-white px-5 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-semibold text-slate-700 transition hover:bg-slate-50 active:scale-[0.98] min-h-[44px] flex items-center justify-center cursor-pointer"
                   >
-                    Continue
+                    Back
                   </button>
-                </div>
-              )}
+                )}
 
-            </div>
+                <button
+                  type="button"
+                  onClick={next}
+                  className="flex-1 rounded-full bg-gradient-to-r from-amber-400 to-yellow-400 hover:from-amber-500 hover:to-yellow-500 px-5 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-bold text-slate-950 shadow-md shadow-amber-400/20 transition active:scale-[0.99] min-h-[44px] flex items-center justify-center cursor-pointer"
+                >
+                  Continue
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>

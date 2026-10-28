@@ -42,7 +42,7 @@ export default function Modal({
     <AnimatePresence mode="wait">
       {isOpen && (
         <motion.div
-          className="fixed inset-0 z-[999] flex items-center justify-center p-4 sm:p-6"
+          className="fixed inset-0 z-[999] flex items-center justify-center p-3 sm:p-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -81,14 +81,14 @@ export default function Modal({
             className={`relative z-10 flex max-h-[90vh] w-full flex-col overflow-hidden rounded-3xl bg-white shadow-[0_30px_80px_rgba(0,0,0,0.18)] ${sizes[size]}`}
           >
             {/* Header */}
-            <div className="flex items-start justify-between border-b border-slate-200/70 bg-slate-50/70 px-7 py-5 backdrop-blur">
+            <div className="flex items-start justify-between border-b border-slate-200/70 bg-slate-50/70 px-5 sm:px-7 py-4 sm:py-5 backdrop-blur">
               <div>
-                <h2 className="text-xl font-bold tracking-tight text-slate-900">
+                <h2 className="text-lg sm:text-xl font-bold tracking-tight text-slate-900">
                   {title}
                 </h2>
 
                 {subtitle && (
-                  <p className="mt-1 text-sm text-slate-500">
+                  <p className="mt-0.5 sm:mt-1 text-xs sm:text-sm text-slate-500">
                     {subtitle}
                   </p>
                 )}
@@ -96,20 +96,20 @@ export default function Modal({
 
               <button
                 onClick={onClose}
-                className="flex h-10 w-10 items-center justify-center rounded-xl text-slate-500 transition-all duration-200 hover:bg-slate-200 hover:text-slate-900"
+                className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl text-slate-500 transition-all duration-200 hover:bg-slate-200 hover:text-slate-900 cursor-pointer"
               >
                 <FaTimes className="text-sm" />
               </button>
             </div>
 
-            {/* Body */}
-            <div className="flex-1 overflow-y-auto px-7 py-6">
+            {/* Body - Single Clean Scrollbar */}
+            <div className="flex-1 overflow-y-auto overflow-x-hidden px-4 sm:px-7 py-5 sm:py-6">
               {children}
             </div>
 
             {/* Footer */}
             {actions && (
-              <div className="flex flex-col-reverse gap-3 border-t border-slate-200 bg-slate-50 px-7 py-5 sm:flex-row sm:justify-end">
+              <div className="flex flex-col-reverse gap-3 border-t border-slate-200 bg-slate-50 px-5 sm:px-7 py-4 sm:py-5 sm:flex-row sm:justify-end">
                 {actions}
               </div>
             )}

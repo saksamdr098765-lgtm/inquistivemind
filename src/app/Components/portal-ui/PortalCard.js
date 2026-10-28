@@ -9,12 +9,14 @@ export default function PortalCard({
   action,
   hoverable = false,
   padding = "p-6 sm:p-8",
+  noPadding = false,
   ...props
 }) {
+  const resolvedPadding = noPadding ? "" : padding;
   return (
     <motion.div
       whileHover={hoverable ? { y: -4, transition: { duration: 0.2 } } : {}}
-      className={`rounded-[28px] border border-slate-200/80 bg-white/95 backdrop-blur-xs shadow-sm hover:shadow-md transition-all duration-300 ${padding} ${className}`}
+      className={`rounded-[28px] border border-slate-200/80 bg-white/95 backdrop-blur-xs shadow-sm hover:shadow-md transition-all duration-300 ${resolvedPadding} ${className}`}
       {...props}
     >
       {(header || action) && (

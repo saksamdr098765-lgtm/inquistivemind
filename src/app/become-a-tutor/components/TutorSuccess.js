@@ -11,98 +11,82 @@ import {
 
 export default function TutorSuccess({ onContinue }) {
   return (
-    <div className="relative overflow-hidden bg-white py-16">
-
-      {/* Background Glow */}
-      <div className="absolute inset-0">
-        <div className="absolute left-1/2 top-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-400/10 blur-[120px]" />
-        <div className="absolute bottom-10 right-10 h-[300px] w-[300px] rounded-full bg-sky-400/10 blur-[120px]" />
-        <div className="absolute top-10 left-10 h-[300px] w-[300px] rounded-full bg-amber-200/10 blur-[120px]" />
-      </div>
-
+    <div className="relative overflow-hidden py-4 sm:py-8 lg:py-12">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="relative mx-auto max-w-4xl px-6 text-center"
+        transition={{ duration: 0.35 }}
+        className="relative mx-auto max-w-3xl px-2 sm:px-6 text-center"
       >
-
         {/* Icon */}
         <motion.div
           initial={{ scale: 0, rotate: -20 }}
           animate={{ scale: 1, rotate: 0 }}
-          transition={{ type: "spring", stiffness: 180 }}
-          className="mx-auto flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-r from-amber-400 to-sky-400 text-4xl text-white shadow-lg"
+          transition={{ type: "spring", stiffness: 200 }}
+          className="mx-auto flex h-18 w-18 sm:h-24 sm:w-24 items-center justify-center rounded-full bg-gradient-to-r from-amber-400 to-yellow-400 text-3xl sm:text-4xl text-slate-950 shadow-lg shadow-amber-400/20"
         >
           <FaCheckCircle />
         </motion.div>
 
         {/* Heading */}
-        <h2 className="mt-8 text-4xl font-bold text-slate-900">
-          Application Submitted
+        <h2 className="mt-5 sm:mt-6 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-slate-900">
+          Application Submitted!
         </h2>
 
-        <p className="mx-auto mt-4 max-w-xl text-slate-600">
-          Thank you for applying to join our teaching community.
-          Our academic team will review your profile and contact
-          you within 24–48 hours.
+        <p className="mx-auto mt-2 sm:mt-3 max-w-md text-xs sm:text-sm md:text-base text-slate-600 leading-relaxed">
+          Thank you for applying to teach with us. Our academic onboarding team will review your profile and reach out within 24–48 hours.
         </p>
 
         {/* Steps */}
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-
-          <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm transition hover:shadow-md">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-50 text-amber-500">
+        <div className="mt-6 sm:mt-10 grid gap-3 sm:gap-4 md:grid-cols-3 text-left sm:text-center">
+          <div className="rounded-2xl sm:rounded-3xl border border-slate-100 bg-white/90 p-4 sm:p-5 shadow-2xs">
+            <div className="sm:mx-auto flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-amber-50 text-amber-600 text-lg sm:text-xl">
               <FaChalkboardTeacher />
             </div>
-            <h3 className="mt-4 font-semibold text-slate-900">
+            <h3 className="mt-3 text-sm sm:text-base font-bold text-slate-900">
               Profile Review
             </h3>
-            <p className="mt-2 text-sm text-slate-500">
-              We review your experience, qualifications, and teaching expertise.
+            <p className="mt-1 text-xs sm:text-sm text-slate-500 leading-relaxed">
+              We review your subject expertise, qualification, and teaching background.
             </p>
           </div>
 
-          <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm transition hover:shadow-md">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-50 text-sky-500">
+          <div className="rounded-2xl sm:rounded-3xl border border-slate-100 bg-white/90 p-4 sm:p-5 shadow-2xs">
+            <div className="sm:mx-auto flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-yellow-50 text-yellow-700 text-lg sm:text-xl">
               <FaUsers />
             </div>
-            <h3 className="mt-4 font-semibold text-slate-900">
-              Interview
+            <h3 className="mt-3 text-sm sm:text-base font-bold text-slate-900">
+              Short Interview
             </h3>
-            <p className="mt-2 text-sm text-slate-500">
-              Our team may schedule a short interview or demo class.
+            <p className="mt-1 text-xs sm:text-sm text-slate-500 leading-relaxed">
+              A quick demo discussion to align on teaching approach and availability.
             </p>
           </div>
 
-          <div className="rounded-3xl border border-slate-100 bg-white p-6 shadow-sm transition hover:shadow-md">
-            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-green-50 text-green-600">
+          <div className="rounded-2xl sm:rounded-3xl border border-slate-100 bg-white/90 p-4 sm:p-5 shadow-2xs">
+            <div className="sm:mx-auto flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-green-50 text-green-700 text-lg sm:text-xl">
               <FaCalendarAlt />
             </div>
-            <h3 className="mt-4 font-semibold text-slate-900">
+            <h3 className="mt-3 text-sm sm:text-base font-bold text-slate-900">
               Start Teaching
             </h3>
-            <p className="mt-2 text-sm text-slate-500">
-              Once approved, you'll be matched with students and batches.
+            <p className="mt-1 text-xs sm:text-sm text-slate-500 leading-relaxed">
+              Get matched with active student inquiries and manage your teaching schedule.
             </p>
           </div>
-
         </div>
 
         {/* CTA */}
-        <button
-          onClick={onContinue}
-          className="mt-10 inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-amber-400 to-sky-400 px-8 py-4 font-medium text-white shadow-lg transition hover:scale-[1.02]"
-        >
-          Back to Homepage
-          <FaArrowRight />
-        </button>
-
-        {/* Footer Note */}
-        <p className="mt-6 text-sm text-slate-500">
-          Average review time: 24–48 hours
-        </p>
-
+        <div className="mt-6 sm:mt-8 flex justify-center">
+          <button
+            type="button"
+            onClick={onContinue}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-400 to-yellow-400 hover:from-amber-500 hover:to-yellow-500 px-6 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-bold text-slate-950 shadow-md shadow-amber-400/20 active:scale-[0.98] transition cursor-pointer min-h-[46px]"
+          >
+            Back to Homepage
+            <FaArrowRight className="text-xs" />
+          </button>
+        </div>
       </motion.div>
     </div>
   );

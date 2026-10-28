@@ -26,6 +26,10 @@ export function validateStep(step, form) {
         return "Please enter a valid 10-digit phone number";
       }
 
+      if (form.password && form.password.trim().length > 0 && form.password.length < 8) {
+        return "Password must be at least 8 characters long";
+      }
+
       break;
 
     // Subject

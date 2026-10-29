@@ -12,17 +12,14 @@ export const profileSchema = z.object({
     .string()
     .min(10, "Phone number is required"),
 
-  // profileImage: z.string().optional(),
-
-  // Student
-
   dateOfBirth: z.string().optional(),
 
   gender: z.enum(["male", "female", "other"]).optional().or(z.literal("")),
   role: z.enum(["student", "teacher"]).optional(),
 
-  // Tutor & Teacher fields
+  // Tutor & Teacher academic & preference fields
   city: z.string().optional(),
+  headline: z.string().optional(),
   subject: z.string().optional(),
   experience: z.string().optional(),
   studentLevel: z.string().optional(),

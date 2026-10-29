@@ -17,6 +17,7 @@ import {
   FaChalkboardTeacher,
   FaClipboardList,
   FaHandshake,
+  FaGlobe,
 } from "react-icons/fa";
 import useAuthStore from "@/store/authStore";
 import { useLogoutMutation } from "@/app/mutations/AuthenticationMutations";
@@ -67,6 +68,14 @@ export default function AdminDrawerNav({ children }) {
         </div>
 
         <div className="flex items-center gap-2">
+          <Link
+            href="/"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-all"
+            title="Back to main website"
+          >
+            <FaGlobe className="text-slate-500 text-xs" />
+            <span className="hidden xs:inline sm:inline">Website</span>
+          </Link>
           <Link
             href="/admin-panel/profile"
             className="flex h-10 w-10 items-center justify-center rounded-full bg-yellow-100 text-yellow-800 font-bold border border-yellow-300"
@@ -133,6 +142,16 @@ export default function AdminDrawerNav({ children }) {
                       </Link>
                     );
                   })}
+
+                  <div className="pt-2 my-2 border-t border-slate-100">
+                    <Link
+                      href="/"
+                      className="flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-bold text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-all"
+                    >
+                      <FaGlobe className="text-lg text-slate-400" />
+                      <span>Main Website</span>
+                    </Link>
+                  </div>
                 </nav>
               </div>
 
@@ -194,6 +213,16 @@ export default function AdminDrawerNav({ children }) {
                 </Link>
               );
             })}
+
+            <div className="pt-3 mt-3 border-t border-slate-100">
+              <Link
+                href="/"
+                className="flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-bold text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-all"
+              >
+                <FaGlobe className="text-lg text-slate-400" />
+                <span>Main Website</span>
+              </Link>
+            </div>
           </nav>
         </div>
 

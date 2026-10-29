@@ -42,6 +42,10 @@ export function adminDeleteUserByIdApi(id) {
   return api.delete(`/admin/user/${id}`);
 }
 
+export function adminCreateStudentApi(data) {
+  return api.post(`/admin/student/create`, data);
+}
+
 // course
 export function adminGetCoursesApi() {
   return api.get(`/courses/`);

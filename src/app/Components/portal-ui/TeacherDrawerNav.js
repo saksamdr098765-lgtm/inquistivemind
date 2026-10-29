@@ -24,10 +24,10 @@ import { useLogoutMutation } from "@/app/mutations/AuthenticationMutations";
 const teacherNavItems = [
   { name: "Dashboard", href: "/teacher-profile/dashboard", icon: FaChartLine },
   { name: "My Profile", href: "/teacher-profile/profile", icon: FaUserCircle },
-  { name: "My Batches", href: "/teacher-profile/batches", icon: FaUsers, isComingSoon: true },
-  { name: "Live Classes", href: "/teacher-profile/classes", icon: FaVideo, isComingSoon: true },
-  { name: "My Courses", href: "/teacher-profile/courses", icon: FaBookOpen, isComingSoon: true },
-  { name: "Students", href: "/teacher-profile/students", icon: FaGraduationCap, isComingSoon: true },
+  { name: "My Batches", href: "/teacher-profile/batches", icon: FaUsers },
+  { name: "Live Classes", href: "/teacher-profile/classes", icon: FaVideo },
+  { name: "My Courses", href: "/teacher-profile/courses", icon: FaBookOpen },
+  { name: "Students", href: "/teacher-profile/students", icon: FaGraduationCap },
   { name: "Settings", href: "/teacher-profile/settings", icon: FaCog },
 ];
 

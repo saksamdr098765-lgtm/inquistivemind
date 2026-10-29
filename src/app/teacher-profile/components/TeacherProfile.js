@@ -12,11 +12,11 @@ import PersonalInformation from "@/app/student-profile/components/profile/Person
 import { profileSchema } from "@/schemas/profileSchema";
 import useAuthStore from "@/store/authStore";
 import { useProfileImageMutation } from "@/app/mutations/userMutation";
-import { useProfileUpdateMutation } from "@/app/mutations/studentMutation";
+import { useTeacherProfileUpdateMutation } from "@/app/mutations/teacherMutations";
 import PortalButton from "@/app/Components/portal-ui/PortalButton";
 
 export default function TeacherProfile({ user, profile }) {
-  const profileUpdateMutation = useProfileUpdateMutation();
+  const profileUpdateMutation = useTeacherProfileUpdateMutation();
   const {
     register,
     handleSubmit,

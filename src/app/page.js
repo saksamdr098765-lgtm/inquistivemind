@@ -1,8 +1,7 @@
-import ScrollProgressBar from "./Components/home/ScrollProgressBar";
 import HomeHero from "./Components/home/HomeHero";
 import HowItWorksSection from "./Components/home/HowItWorksSection";
 import BentoFeaturesSection from "./Components/home/BentoFeaturesSection";
-import TutorShowcaseSection from "./Components/home/TutorShowcaseSection";
+import InteractiveRoadmapBuilder from "./Components/home/InteractiveRoadmapBuilder";
 import DualCtaSplitSection from "./Components/home/DualCtaSplitSection";
 import TestimonialsSection from "./Components/home/TestimonialsSection";
 import FaqSection from "./Components/home/FaqSection";
@@ -112,9 +111,6 @@ export const metadata = {
 export default function Home() {
   return (
     <main className="relative min-h-screen w-full bg-white text-slate-900 selection:bg-yellow-400 selection:text-slate-950 overflow-x-clip">
-      {/* Scroll Progress Bar at the very top */}
-      <ScrollProgressBar />
-
       {/* 1. Hero Section with Dual-Path Switcher & Interactive Match Widget */}
       <HomeHero />
 
@@ -124,8 +120,8 @@ export default function Home() {
       {/* 4. Bento-Grid Features Section */}
       <BentoFeaturesSection />
 
-      {/* 5. Interactive Tutor Showcase Carousel */}
-      <TutorShowcaseSection />
+      {/* 5. Interactive 1-on-1 Learning Blueprint & Match Engine */}
+      <InteractiveRoadmapBuilder />
 
       {/* 6. Dual CTA Split Section ("Become a Student" & "Become a Tutor") */}
       <DualCtaSplitSection />

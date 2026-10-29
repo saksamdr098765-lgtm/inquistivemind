@@ -8,7 +8,7 @@ export default function SchedulePricing({ course }) {
   const encodedWhatsapp = encodeURIComponent(
     `Hello! I would like to inquire about the batch schedules and course fee for ${course.title} at Inquisitive Mind Academy.`
   );
-  const whatsappUrl = `https://wa.me/919878761488?text=${encodedWhatsapp}`;
+  const whatsappUrl = `https://wa.me/919855293752?text=${encodedWhatsapp}`;
 
   return (
     <section id="pricing" className="relative bg-gradient-to-b from-white via-amber-50/25 to-white py-16 sm:py-20 lg:py-24 border-b border-yellow-100/60">

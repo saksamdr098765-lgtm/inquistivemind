@@ -81,20 +81,20 @@ export default function AboutAcademy() {
 
               <div className="rounded-3xl border border-slate-200 bg-white p-5 hover:border-yellow-200 transition">
                 <FaUsers className="text-2xl text-yellow-500" />
-                <h3 className="mt-3 text-3xl font-bold text-slate-900">500+</h3>
-                <p className="text-sm text-slate-500">Students Trained</p>
+                <h3 className="mt-3 text-2xl sm:text-3xl font-bold text-slate-900">1-on-1</h3>
+                <p className="text-sm text-slate-500">Personalized Mentorship</p>
               </div>
 
               <div className="rounded-3xl border border-slate-200 bg-white p-5 hover:border-yellow-200 transition">
                 <FaChalkboardTeacher className="text-2xl text-yellow-500" />
-                <h3 className="mt-3 text-3xl font-bold text-slate-900">20+</h3>
-                <p className="text-sm text-slate-500">Expert Teachers</p>
+                <h3 className="mt-3 text-2xl sm:text-3xl font-bold text-slate-900">Certified</h3>
+                <p className="text-sm text-slate-500">Expert Faculty</p>
               </div>
 
               <div className="rounded-3xl border border-slate-200 bg-white p-5 hover:border-yellow-200 transition col-span-2 md:col-span-1">
                 <FaAward className="text-2xl text-yellow-500" />
-                <h3 className="mt-3 text-3xl font-bold text-slate-900">95%</h3>
-                <p className="text-sm text-slate-500">Success Rate</p>
+                <h3 className="mt-3 text-2xl sm:text-3xl font-bold text-slate-900">100% Free</h3>
+                <p className="text-sm text-slate-500">Trial Evaluation</p>
               </div>
 
             </div>

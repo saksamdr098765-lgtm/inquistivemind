@@ -180,11 +180,11 @@ export default function RootLayout({ children }) {
           logo: "https://www.inquistivemindacademy.com/web-app-manifest-512x512.png",
           description:
             "Inquisitive Mind Academy offers 100% live interactive online French classes and 1-on-1 home tutoring across Chandigarh, Mohali, Panchkula, and Zirakpur.",
-          telephone: "+91 98787 61488",
+          telephone: "+91 98552 93752",
           email: "inquisitivemindacademy@gmail.com",
           sameAs: [
             "https://www.instagram.com/theinquisitivemindacademy",
-            "https://wa.me/919878761488"
+            "https://wa.me/919855293752"
           ]
         },
         {

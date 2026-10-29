@@ -7,7 +7,7 @@ export default function Hero({ course }) {
   const encodedWhatsapp = encodeURIComponent(
     course.cta?.whatsappMessage || `Hello! I would like to inquire about the ${course.title} at Inquisitive Mind Academy.`
   );
-  const whatsappUrl = `https://wa.me/919878761488?text=${encodedWhatsapp}`;
+  const whatsappUrl = `https://wa.me/919855293752?text=${encodedWhatsapp}`;
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-amber-50/40 via-white to-slate-50/60 text-slate-900 pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24 border-b border-yellow-100/60">

@@ -199,7 +199,7 @@ export default function CoursesHubPage() {
                     <FaArrowRight className="text-xs" />
                   </Link>
                   <a
-                    href="https://wa.me/919878761488?text=Hello%20Inquisitive%20Mind%20Academy!%20I%20need%20help%20choosing%20the%20right%20course."
+                    href="https://wa.me/919855293752?text=Hello%20Inquisitive%20Mind%20Academy!%20I%20need%20help%20choosing%20the%20right%20course."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex min-h-[48px] w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-emerald-500 bg-emerald-600 px-7 py-3 text-sm font-semibold text-white transition hover:bg-emerald-700 shadow-md"

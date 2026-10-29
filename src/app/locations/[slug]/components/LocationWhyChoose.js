@@ -7,7 +7,7 @@ export default function LocationWhyChoose({ location }) {
       description: "Maximum 8-10 students per batch to ensure individual speaking time and evaluation.",
     },
     {
-      title: "98% DELF Exam Pass Rate",
+      title: "Official DELF & TEF Aligned Curriculum",
       description: "Proven curriculum with mock exam simulations designed around official FEI standards.",
     },
     {

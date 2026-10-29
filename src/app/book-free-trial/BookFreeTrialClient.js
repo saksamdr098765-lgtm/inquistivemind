@@ -63,7 +63,7 @@ Level: ${formData.level}
 Preferred Timing: ${formData.timing}
 My WhatsApp Number: ${formData.whatsappNumber}`;
 
-  const whatsappUrl = `https://wa.me/919878761488?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = `https://wa.me/919855293752?text=${encodeURIComponent(message)}`;
 
   window.open(whatsappUrl, "_blank", "noopener,noreferrer");
 
@@ -75,7 +75,7 @@ My WhatsApp Number: ${formData.whatsappNumber}`;
   const encodedWhatsapp = encodeURIComponent(
     `Hello! My name is ${formData.fullName || "Student"}. I would like to book a free trial class for ${selectedCourseObj?.title || formData.course} (${formData.level}). My phone number is ${formData.whatsappNumber}.`
   );
-  const whatsappUrl = `https://wa.me/919878761488?text=${encodedWhatsapp}`;
+  const whatsappUrl = `https://wa.me/919855293752?text=${encodedWhatsapp}`;
 
   if (isSuccess) {
     return (
@@ -248,7 +248,7 @@ My WhatsApp Number: ${formData.whatsappNumber}`;
         <p className="text-xs text-slate-500 font-medium mb-3">Prefer immediate personal assistance?</p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <a
-            href="https://wa.me/919878761488?text=Hello!%20I%20would%20like%20to%20book%20a%20free%20trial%20class%20at%20Inquisitive%20Mind%20Academy."
+            href="https://wa.me/919855293752?text=Hello!%20I%20would%20like%20to%20book%20a%20free%20trial%20class%20at%20Inquisitive%20Mind%20Academy."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex min-h-[44px] w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-emerald-500 bg-emerald-50 px-5 py-2 text-xs sm:text-sm font-semibold text-emerald-800 hover:bg-emerald-100 transition"
@@ -258,11 +258,11 @@ My WhatsApp Number: ${formData.whatsappNumber}`;
           </a>
 
           <a
-            href="tel:+919878761488"
+            href="tel:+919855293752"
             className="inline-flex min-h-[44px] w-full sm:w-auto items-center justify-center gap-2 rounded-full border border-slate-200 px-5 py-2 text-xs sm:text-sm font-semibold text-slate-700 hover:bg-slate-50 transition"
           >
             <FaPhoneAlt className="text-slate-400 text-xs" />
-            <span>Call +91 98787 61488</span>
+            <span>Call +91 98552 93752</span>
           </a>
         </div>
       </div>

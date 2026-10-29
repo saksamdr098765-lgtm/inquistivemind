@@ -73,7 +73,7 @@ export default function ServicesClient({ services = [] }) {
     {
       question: "What is the pass rate for TEF Canada & DELF preparation courses?",
       answer:
-        "Our students boast a 98% first-attempt success rate for TEF Canada NCLC 7+ and DELF A1-B2 exams thanks to our rigorous mock tests, oral task drills, and exam-focused curriculum.",
+        "Our students boast exceptional first-attempt readiness for TEF Canada NCLC 7+ and DELF A1-B2 exams thanks to our rigorous mock tests, oral task drills, and exam-focused curriculum.",
     },
     {
       question: "How can French teachers apply for tutoring jobs with Inquisitive Mind Academy?",
@@ -134,7 +134,7 @@ export default function ServicesClient({ services = [] }) {
             >
               <div className="flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 shadow-xs border border-slate-200/80">
                 <FiCheckCircle className="text-emerald-500" />
-                <span>98% Exam Pass Rate</span>
+                <span>Proven Exam Readiness</span>
               </div>
               <div className="flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 shadow-xs border border-slate-200/80">
                 <FiUserCheck className="text-sky-500" />

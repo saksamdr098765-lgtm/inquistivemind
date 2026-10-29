@@ -20,7 +20,7 @@ export default function CourseJsonLd({ course }) {
     ],
     sameAs: [
       "https://www.instagram.com/theinquisitivemindacademy",
-      "https://wa.me/919878761488",
+      "https://wa.me/919855293752",
     ],
   };
 

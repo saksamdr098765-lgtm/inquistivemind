@@ -23,12 +23,12 @@ const features = [
   {
     icon: <FaGlobe />,
     title: "Global Learning Community",
-    desc: "Connect with learners from 25+ countries and practice languages in real-time.",
+    desc: "Connect with dedicated learners and practice spoken communication in real-time.",
   },
   {
     icon: <FaAward />,
     title: "Proven Results",
-    desc: "Structured pathways designed for 98% success rate from beginner to fluency.",
+    desc: "Structured pathways designed for tangible mastery and rapid conversational fluency.",
   },
 ];
 

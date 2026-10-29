@@ -163,23 +163,36 @@ export default function page() {
       {/* Page Content Container */}
       <div className="relative">
         {/* Top Hero Banner */}
-        <header className="pt-20 sm:pt-28 lg:pt-32 pb-2 sm:pb-4 text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-          <div className="text-[9px] sm:text-[11px] font-extrabold tracking-[0.25em] sm:tracking-[0.35em] text-slate-400 uppercase">
-            STUDENT TUTOR MATCHING
+        <header className="pt-20 sm:pt-28 lg:pt-32 pb-2 sm:pb-4 text-center px-3 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-yellow-300 bg-yellow-100/90 px-3 py-0.5 text-[8.5px] sm:text-[10px] font-black tracking-[0.2em] sm:tracking-[0.25em] text-yellow-950 uppercase shadow-2xs mb-2">
+            <span>🎮 INTERACTIVE TUTOR MATCH QUEST</span>
           </div>
 
-          <h1 className="mt-2.5 sm:mt-3 text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-snug sm:leading-tight text-slate-900">
+          <h1 className="mt-1.5 text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-black leading-snug sm:leading-tight text-slate-900 tracking-tight">
             Find Your Ideal{" "}
-            <span className="bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-300 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-400 bg-clip-text text-transparent">
               Online Tutor
             </span>
           </h1>
 
-          <div className="mx-auto mt-3 sm:mt-4 h-1 w-16 sm:w-20 rounded-full bg-yellow-500" />
+          <div className="mx-auto mt-2.5 sm:mt-3 h-1 w-14 sm:w-20 rounded-full bg-gradient-to-r from-yellow-400 to-amber-500" />
 
-          <p className="mx-auto mt-3 sm:mt-4 max-w-xl text-xs sm:text-base lg:text-lg text-slate-600 font-medium leading-relaxed">
-            Give your details &amp; we will match verified French, English &amp; academic tutors to you.
+          <p className="mx-auto mt-2 sm:mt-3 max-w-xl text-xs sm:text-base lg:text-lg text-slate-600 font-medium leading-relaxed px-2">
+            Level up your learning. Complete the 2-minute quest &amp; we will match certified French, English &amp; academic faculty to your exact goals.
           </p>
+
+          {/* Quick Quest Badges */}
+          <div className="mt-3 sm:mt-4 flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 text-[11px] sm:text-xs font-bold text-slate-700">
+            <span className="inline-flex items-center gap-1 rounded-full bg-yellow-50 border border-yellow-200 px-2.5 py-0.5 sm:px-3 sm:py-1">
+              ⚡ 2-Minute Setup
+            </span>
+            <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 border border-amber-200 px-2.5 py-0.5 sm:px-3 sm:py-1">
+              🎯 Tailored Matchmaking
+            </span>
+            <span className="inline-flex items-center gap-1 rounded-full bg-green-50 border border-green-200 px-2.5 py-0.5 sm:px-3 sm:py-1 text-green-800">
+              🎁 Free Trial Class
+            </span>
+          </div>
         </header>
 
         {/* Client Onboarding Multi-Step Form Component */}

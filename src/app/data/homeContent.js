@@ -24,9 +24,9 @@ export const HOME_CONTENT = {
         label: "Hero CTA - Find Tutor",
       },
       secondaryCta: {
-        text: "Browse All Guides",
-        href: "/tutors",
-        label: "Hero Secondary - Browse Tutors",
+        text: "Book Free Trial",
+        href: "/book-free-trial",
+        label: "Hero Secondary - Free Trial",
       },
       trustBadges: [
         "Free Demo Evaluation",
@@ -66,12 +66,11 @@ export const HOME_CONTENT = {
         studentName: "Aarav",
         studentGoal: "TEF Canada B2",
         tutor: {
-          name: "Sakshi Goel",
+          name: "French Faculty",
           role: "Lead French Faculty",
           credentials: "DELF Certified • 10+ Yrs",
-          rating: 5.0,
           rate: "₹750/hr",
-          image: "/founder.webp",
+          characterId: "character-french",
           badge: "Lead Faculty",
           matchScore: 99,
           link: "/find-tutor?subject=french",
@@ -85,12 +84,11 @@ export const HOME_CONTENT = {
         studentName: "Diya",
         studentGoal: "CBSE Board Prep",
         tutor: {
-          name: "Priyanka Sharma",
+          name: "Math Mentor",
           role: "Senior Math Mentor",
           credentials: "M.Sc. Math • 4+ Yrs",
-          rating: 4.9,
           rate: "₹650/hr",
-          image: "/faculty/emily.jpg",
+          characterId: "character-math",
           badge: "Board Specialist",
           matchScore: 97,
           link: "/find-tutor?subject=math",
@@ -104,13 +102,12 @@ export const HOME_CONTENT = {
         studentName: "Kabir",
         studentGoal: "Corporate Speaking",
         tutor: {
-          name: "Aman Verma",
-          role: "Fluency Coach",
+          name: "Fluency Coach",
+          role: "Spoken English Coach",
           credentials: "IELTS 8.5 • 6+ Yrs",
-          rating: 5.0,
           rate: "₹600/hr",
-          image: "/faculty/michael.jpg",
-          badge: "Fluency Champion",
+          characterId: "character-english",
+          badge: "Fluency Specialist",
           matchScore: 98,
           link: "/find-tutor?subject=english",
         },
@@ -119,33 +116,32 @@ export const HOME_CONTENT = {
   },
 
   /* -------------------------------------------------------------------------- */
-  /* 2. TRUST METRICS STRIP                                                     */
+  /* 2. VALUE PILLARS & TRUST HIGHLIGHTS                                       */
   /* -------------------------------------------------------------------------- */
   trustStats: [
     {
-      value: 12000,
-      suffix: "+",
-      label: "Curious Learners",
-      detail: "Across India & Canada",
+      value: "1-on-1",
+      suffix: "",
+      label: "Dedicated Focus",
+      detail: "Live Interactive Mentorship",
     },
     {
-      value: 450,
-      suffix: "+",
-      label: "Verified Guides",
-      detail: "Top 5% faculty screening",
+      value: "Verified",
+      suffix: "",
+      label: "Certified Faculty",
+      detail: "Hand-screened educators",
     },
     {
-      value: 98.4,
-      decimals: 1,
-      suffix: "%",
-      label: "Exam Success Rate",
-      detail: "Proven score improvements",
+      value: "100%",
+      suffix: "",
+      label: "Free Demo Class",
+      detail: "Zero commitment evaluation",
     },
     {
-      value: 35,
-      suffix: "+",
-      label: "Subjects & Certifications",
-      detail: "DELF, CBSE, IELTS, STEM",
+      value: "35+",
+      suffix: "",
+      label: "Syllabi & Certifications",
+      detail: "DELF, CBSE, IELTS, TEF",
     },
   ],
 
@@ -234,19 +230,17 @@ export const HOME_CONTENT = {
         title: "Intelligent Tutor Matching",
         subtitle: "Matches syllabus alignment, pace, and schedule in 24 hours.",
         icon: "FaMagic",
-        tag: "Core AI",
+        tag: "Matching Engine",
         span: "col-span-1 lg:col-span-2",
-        image: "/courses/french1.avif",
         accent: "from-amber-500/15 via-yellow-500/10 to-transparent",
       },
       {
         id: "verified-tutors",
-        title: "Top 5% Vetted Faculty",
-        subtitle: "Rigorous 4-stage background, degree, and demo teaching review.",
+        title: "Rigorous 4-Stage Faculty Vetting",
+        subtitle: "Pedagogical demo review, certified credentials, and subject mastery screening.",
         icon: "FaShieldAlt",
-        tag: "Quality",
+        tag: "Faculty Quality",
         span: "col-span-1",
-        image: "/founder.webp",
         accent: "from-blue-500/15 via-sky-500/10 to-transparent",
       },
       {
@@ -254,19 +248,17 @@ export const HOME_CONTENT = {
         title: "Online & Doorstep Modes",
         subtitle: "100% live interactive online classes or home tutors in Tricity.",
         icon: "FaChalkboardTeacher",
-        tag: "Formats",
+        tag: "Flexible Formats",
         span: "col-span-1",
-        image: "/classroom1.jpg",
         accent: "from-emerald-500/15 via-teal-500/10 to-transparent",
       },
       {
         id: "milestone-tracking",
         title: "Transparent Progress Analytics",
-        subtitle: "Weekly feedback reports, attendance logs, and test score curves.",
+        subtitle: "Weekly feedback reports, attendance logs, and test score curves for parents.",
         icon: "FaChartBar",
-        tag: "Parent Dashboard",
+        tag: "Progress Tracking",
         span: "col-span-1 lg:col-span-2",
-        image: "/courses/academic1.avif",
         accent: "from-purple-500/15 via-indigo-500/10 to-transparent",
       },
       {
@@ -274,9 +266,8 @@ export const HOME_CONTENT = {
         title: "DELF, CBSE & Global Syllabi",
         subtitle: "Covers DELF A1–C2, TEF Canada, CBSE, ICSE, and Spoken English.",
         icon: "FaGraduationCap",
-        tag: "Curriculum",
+        tag: "Official Syllabi",
         span: "col-span-1",
-        image: "/courses/english1.avif",
         accent: "from-rose-500/15 via-amber-500/10 to-transparent",
       },
       {
@@ -284,90 +275,15 @@ export const HOME_CONTENT = {
         title: "Free Tutor Rematch Guarantee",
         subtitle: "Don't love your tutor? We rematch you immediately for free.",
         icon: "FaHeadset",
-        tag: "Zero Risk",
+        tag: "100% Risk-Free",
         span: "col-span-1 lg:col-span-2",
-        image: "/classroom.jpg",
         accent: "from-yellow-500/20 via-amber-400/10 to-transparent",
       },
     ],
   },
 
   /* -------------------------------------------------------------------------- */
-  /* 5. TUTOR SHOWCASE (Profile Constellation)                                  */
-  /* -------------------------------------------------------------------------- */
-  tutorShowcase: {
-    eyebrow: "MEET THE GUIDES",
-    title: "Explore Guides Ready to Teach.", // 5 words
-    subtitle: "Filter by subject to view verified mentors and request a trial.", // 1 line
-    filters: [
-      { id: "all", label: "All Guides" },
-      { id: "french", label: "French & DELF" },
-      { id: "academics", label: "School Academics" },
-      { id: "english", label: "Spoken English" },
-      { id: "stem", label: "Math & Science" },
-    ],
-    tutors: [
-      {
-        id: "t1",
-        category: "french",
-        name: "Sakshi Goel",
-        role: "Head of French Faculty",
-        credentials: "DELF Certified • 10+ Yrs",
-        rating: 5.0,
-        reviewsCount: 148,
-        hourlyRate: "₹750/hr",
-        subjects: ["French", "DELF A1–B2", "TEF Canada"],
-        avatarImage: "/founder.webp",
-        badge: "Lead Faculty",
-        location: "Chandigarh • Live Online",
-      },
-      {
-        id: "t2",
-        category: "stem",
-        name: "Priyanka Sharma",
-        role: "Lead Math Faculty",
-        credentials: "M.Sc. Math • 4+ Yrs",
-        rating: 4.9,
-        reviewsCount: 112,
-        hourlyRate: "₹650/hr",
-        subjects: ["Class 9-12 Math", "Calculus", "Algebra"],
-        avatarImage: "/faculty/emily.jpg",
-        badge: "Board Specialist",
-        location: "Mohali • Home & Online",
-      },
-      {
-        id: "t3",
-        category: "english",
-        name: "Aman Verma",
-        role: "Fluency Coach",
-        credentials: "IELTS 8.5 Band • 6+ Yrs",
-        rating: 5.0,
-        reviewsCount: 94,
-        hourlyRate: "₹600/hr",
-        subjects: ["Spoken English", "IELTS Academic", "Interview Prep"],
-        avatarImage: "/faculty/michael.jpg",
-        badge: "Fluency Coach",
-        location: "Pan-India Online",
-      },
-      {
-        id: "t4",
-        category: "stem",
-        name: "Dr. Neha Kapoor",
-        role: "Senior Science Specialist",
-        credentials: "Ph.D. Physics • 8+ Yrs",
-        rating: 4.9,
-        reviewsCount: 130,
-        hourlyRate: "₹800/hr",
-        subjects: ["Physics", "Chemistry", "CBSE"],
-        avatarImage: "/faculty/jean.jpg",
-        badge: "Senior Scientist",
-        location: "Panchkula • Home & Online",
-      },
-    ],
-  },
-
-  /* -------------------------------------------------------------------------- */
-  /* 6. DUAL CTA SPLIT                                                         */
+  /* 5. DUAL CTA SPLIT                                                         */
   /* -------------------------------------------------------------------------- */
   dualCta: {
     student: {
@@ -405,11 +321,6 @@ export const HOME_CONTENT = {
     eyebrow: "STUDENT BREAKTHROUGHS",
     title: "Watch Real Breakthrough Stories.", // 4 words
     subtitle: "Click any student story to watch their transformation video.", // 1 line
-    summaryBadge: {
-      score: "4.9",
-      totalReviews: "850+",
-      subtext: "Verified Ratings",
-    },
     videoStories: [
       {
         id: "vid-1",
@@ -421,7 +332,6 @@ export const HOME_CONTENT = {
         thumbnail: "/students/anjali.jpg",
         quote: "Scored CLB 7 on my first attempt with Sakshi ma'am's speaking drills.",
         location: "Chandigarh",
-        rating: 5,
       },
       {
         id: "vid-2",
@@ -433,7 +343,6 @@ export const HOME_CONTENT = {
         thumbnail: "/students/rahul.jpg",
         quote: "My band score jumped from 6.0 to 7.5 in just 8 weeks of mentoring.",
         location: "Mohali",
-        rating: 5,
       },
       {
         id: "vid-3",
@@ -445,7 +354,6 @@ export const HOME_CONTENT = {
         thumbnail: "/students/sofia.jpg",
         quote: "Interactive discussions gave me the freedom to speak without translating.",
         location: "Panchkula",
-        rating: 5,
       },
     ],
   },
@@ -507,7 +415,7 @@ export const HOME_CONTENT = {
   finalCta: {
     eyebrow: "START TODAY",
     title: "Where Curiosity Meets Its Guide.", // 5 words
-    subtitle: "Join over 12,000+ students and 450+ verified tutors today.", // 1 line
+    subtitle: "Personalized 1-on-1 mentorship designed for real fluency and academic mastery.", // 1 line
     studentButton: {
       text: "Find Your Tutor",
       href: "/find-tutor",

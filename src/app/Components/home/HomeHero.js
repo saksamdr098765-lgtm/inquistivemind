@@ -6,7 +6,6 @@ import Link from "next/link";
 import {
   FaGraduationCap,
   FaChalkboardTeacher,
-  FaStar,
   FaCheckCircle,
   FaArrowRight,
   FaBolt,
@@ -16,6 +15,113 @@ import {
 import { BsStars } from "react-icons/bs";
 import TrackedLink from "../tracking/TrackedLink";
 import HOME_CONTENT from "@/app/data/homeContent";
+
+function TutorCharacterAvatar({ characterId }) {
+  if (characterId === "character-french") {
+    return (
+      <div className="relative h-14 w-14 sm:h-16 sm:w-16 shrink-0 rounded-2xl overflow-hidden border-2 border-yellow-400 bg-gradient-to-br from-amber-200 via-yellow-100 to-amber-300 shadow-md flex items-center justify-center">
+        <svg viewBox="0 0 80 80" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Hair back */}
+          <path d="M22 36C22 22 32 16 40 16C48 16 58 22 58 36C58 48 54 54 54 54H26C26 54 22 48 22 36Z" fill="#5C2D16" />
+          {/* French Beret */}
+          <ellipse cx="40" cy="22" rx="26" ry="10" fill="#1E293B" transform="rotate(-6 40 22)" />
+          <circle cx="39" cy="12" r="2.5" fill="#1E293B" />
+          <path d="M42 12C45 9 47 10 47 10" stroke="#1E293B" strokeWidth="1.5" strokeLinecap="round" />
+          {/* Face */}
+          <ellipse cx="40" cy="38" rx="16" ry="17" fill="#FDE047" fillOpacity="0.4" />
+          <ellipse cx="40" cy="38" rx="15" ry="16" fill="#FDE68A" />
+          {/* Cheeks */}
+          <circle cx="30" cy="42" r="3" fill="#FCA5A5" fillOpacity="0.6" />
+          <circle cx="50" cy="42" r="3" fill="#FCA5A5" fillOpacity="0.6" />
+          {/* Round Glasses */}
+          <circle cx="33" cy="35" r="5" stroke="#78350F" strokeWidth="1.5" fill="#FFFFFF" fillOpacity="0.3" />
+          <circle cx="47" cy="35" r="5" stroke="#78350F" strokeWidth="1.5" fill="#FFFFFF" fillOpacity="0.3" />
+          <line x1="38" y1="35" x2="42" y2="35" stroke="#78350F" strokeWidth="1.5" />
+          {/* Eyes */}
+          <circle cx="33" cy="35" r="1.8" fill="#1E293B" />
+          <circle cx="47" cy="35" r="1.8" fill="#1E293B" />
+          {/* Friendly Smile */}
+          <path d="M36 43C38 46 42 46 44 43" stroke="#78350F" strokeWidth="1.5" strokeLinecap="round" />
+          {/* French Striped Neck / Collar */}
+          <path d="M26 62C26 52 32 50 40 50C48 50 54 52 54 62V80H26V62Z" fill="#FFFFFF" />
+          <path d="M26 56H54" stroke="#1E3A8A" strokeWidth="2" />
+          <path d="M26 62H54" stroke="#1E3A8A" strokeWidth="2" />
+          <path d="M26 68H54" stroke="#1E3A8A" strokeWidth="2" />
+          {/* Little flag badge */}
+          <rect x="52" y="2" width="18" height="13" rx="3" fill="#FFFFFF" stroke="#E2E8F0" />
+          <rect x="52" y="2" width="6" height="13" rx="1" fill="#2563EB" />
+          <rect x="64" y="2" width="6" height="13" rx="1" fill="#DC2626" />
+        </svg>
+      </div>
+    );
+  }
+
+  if (characterId === "character-math") {
+    return (
+      <div className="relative h-14 w-14 sm:h-16 sm:w-16 shrink-0 rounded-2xl overflow-hidden border-2 border-sky-400 bg-gradient-to-br from-sky-200 via-blue-100 to-indigo-200 shadow-md flex items-center justify-center">
+        <svg viewBox="0 0 80 80" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Hair */}
+          <path d="M24 30C24 18 32 14 40 14C48 14 56 18 56 30C56 36 54 42 54 42H26C26 42 24 36 24 30Z" fill="#1E293B" />
+          <path d="M23 26C28 16 38 15 42 15C48 15 54 18 57 24C53 22 47 21 41 21C35 21 28 23 23 26Z" fill="#0F172A" />
+          {/* Face */}
+          <ellipse cx="40" cy="38" rx="15" ry="16" fill="#FDE68A" />
+          {/* Cheeks */}
+          <circle cx="31" cy="42" r="2.5" fill="#FCA5A5" fillOpacity="0.5" />
+          <circle cx="49" cy="42" r="2.5" fill="#FCA5A5" fillOpacity="0.5" />
+          {/* Rectangular Smart Glasses */}
+          <rect x="27" y="31" width="11" height="8" rx="2" stroke="#1D4ED8" strokeWidth="1.5" fill="#FFFFFF" fillOpacity="0.4" />
+          <rect x="42" y="31" width="11" height="8" rx="2" stroke="#1D4ED8" strokeWidth="1.5" fill="#FFFFFF" fillOpacity="0.4" />
+          <line x1="38" y1="35" x2="42" y2="35" stroke="#1D4ED8" strokeWidth="1.5" />
+          {/* Eyes */}
+          <circle cx="32.5" cy="35" r="1.8" fill="#0F172A" />
+          <circle cx="47.5" cy="35" r="1.8" fill="#0F172A" />
+          {/* Smile */}
+          <path d="M36 44C38 47 42 47 44 44" stroke="#78350F" strokeWidth="1.5" strokeLinecap="round" />
+          {/* Blazer & Shirt */}
+          <path d="M25 60C25 50 31 48 40 48C49 48 55 50 55 60V80H25V60Z" fill="#1E3A8A" />
+          <polygon points="40,52 35,66 45,66" fill="#FFFFFF" />
+          <polygon points="40,54 38,68 40,74 42,68" fill="#EAB308" />
+          {/* Floating badge */}
+          <circle cx="64" cy="14" r="9" fill="#FFFFFF" stroke="#BFDBFE" />
+          <text x="64" y="17" fontSize="10" textAnchor="middle">📐</text>
+        </svg>
+      </div>
+    );
+  }
+
+  // English Fluency Coach Character
+  return (
+    <div className="relative h-14 w-14 sm:h-16 sm:w-16 shrink-0 rounded-2xl overflow-hidden border-2 border-emerald-400 bg-gradient-to-br from-emerald-200 via-teal-100 to-yellow-200 shadow-md flex items-center justify-center">
+      <svg viewBox="0 0 80 80" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {/* Modern styled hair */}
+        <path d="M23 32C23 18 30 14 40 14C50 14 57 18 57 32C57 38 55 42 55 42H25C25 42 23 38 23 32Z" fill="#334155" />
+        <path d="M26 22C32 14 45 13 54 18C48 18 42 19 36 22C31 24 28 27 26 22Z" fill="#1E293B" />
+        {/* Face */}
+        <ellipse cx="40" cy="38" rx="15" ry="16" fill="#FDE68A" />
+        {/* Headset Band */}
+        <path d="M24 38C24 23 31 16 40 16C49 16 56 23 56 38" stroke="#0F172A" strokeWidth="2.5" strokeLinecap="round" />
+        {/* Headset Ear Cushions */}
+        <rect x="21" y="32" width="4" height="12" rx="2" fill="#047857" stroke="#064E3B" strokeWidth="1" />
+        <rect x="55" y="32" width="4" height="12" rx="2" fill="#047857" stroke="#064E3B" strokeWidth="1" />
+        {/* Microphone Boom */}
+        <path d="M25 40C27 46 32 48 35 47" stroke="#0F172A" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="35" cy="47" r="2" fill="#047857" />
+        {/* Expressive Eyes & Smile */}
+        <circle cx="33" cy="34" r="1.8" fill="#0F172A" />
+        <circle cx="47" cy="34" r="1.8" fill="#0F172A" />
+        <path d="M30 30C32 29 35 30 36 31" stroke="#334155" strokeWidth="1.2" strokeLinecap="round" />
+        <path d="M44 31C45 30 48 29 50 30" stroke="#334155" strokeWidth="1.2" strokeLinecap="round" />
+        <path d="M35 42C37 46 43 46 45 42" stroke="#78350F" strokeWidth="1.5" strokeLinecap="round" />
+        {/* Smart Casual Polo */}
+        <path d="M25 58C25 50 31 48 40 48C49 48 55 50 55 58V80H25V58Z" fill="#065F46" />
+        <polygon points="40,54 36,64 44,64" fill="#A7F3D0" />
+        {/* Floating badge */}
+        <circle cx="64" cy="14" r="9" fill="#FFFFFF" stroke="#A7F3D0" />
+        <text x="64" y="17" fontSize="10" textAnchor="middle">🗣️</text>
+      </svg>
+    </div>
+  );
+}
 
 export default function HomeHero() {
   const [audience, setAudience] = useState("student"); // "student" | "tutor"
@@ -113,8 +219,8 @@ export default function HomeHero() {
             )}
           </h1>
 
-          {/* Subtitle (Max 1 line) */}
-          <p className="mt-2 text-xs sm:text-sm md:text-base text-slate-600 font-normal max-w-xl mx-auto truncate">
+          {/* Subtitle */}
+          <p className="mt-2 text-xs sm:text-sm md:text-base text-slate-600 font-normal max-w-xl mx-auto leading-relaxed px-2">
             {heroData.subheadline}
           </p>
         </div>
@@ -280,25 +386,18 @@ export default function HomeHero() {
                       </span>
                     </div>
 
-                    {/* Tutor Profile Details */}
+                    {/* Tutor Profile Details with Illustrated Character */}
                     <div className="flex items-center gap-3">
-                      <div className="relative h-14 w-14 sm:h-16 sm:w-16 shrink-0 rounded-2xl overflow-hidden border-2 border-yellow-400 shadow-md">
-                        <img
-                          src={activePair.tutor.image}
-                          alt={activePair.tutor.name}
-                          className="h-full w-full object-cover object-top"
-                        />
-                      </div>
+                      <TutorCharacterAvatar characterId={activePair.tutor.characterId} />
 
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center justify-between gap-1">
                           <h4 className="text-sm sm:text-base font-bold text-slate-900 truncate">
                             {activePair.tutor.name}
                           </h4>
-                          <div className="flex items-center gap-1 text-xs font-bold text-amber-500 shrink-0">
-                            <FaStar className="text-yellow-400 text-xs" />
-                            <span>{activePair.tutor.rating.toFixed(1)}</span>
-                          </div>
+                          <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full shrink-0">
+                            Verified Faculty
+                          </span>
                         </div>
 
                         <p className="text-xs text-slate-600 font-medium truncate">

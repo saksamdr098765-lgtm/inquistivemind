@@ -8,7 +8,7 @@ export const locations = [
       "Join live online French classes for Mohali with certified French faculty, small batch sizes, and DELF/TEF/TCF exam preparation for Phase 3B2, Phase 7, Phase 8, Sector 62, Sector 70 and nearby areas.",
     coverImage: "/locations/french-classes-mohali/cover.webp",
     address: "Live Online Interactive Classes (Serving Mohali & Worldwide)",
-    phone: "+91 98787 61488",
+    phone: "+91 98552 93752",
     hours: "Mon - Sat: 09:00 AM - 07:00 PM | Live Online Batches: 07:00 AM - 10:00 PM IST",
 
     offersVisits: false,
@@ -137,7 +137,7 @@ export const locations = [
       "Join live online French classes for Zirakpur with certified French faculty, small batch sizes, and DELF/TEF/TCF exam preparation for VIP Road, Dhakoli, Baltana, Peer Muchalla and nearby areas.",
     coverImage: "/locations/french-classes-zirakpur/cover.webp",
     address: "Live Online Interactive Classes (Serving Zirakpur & Worldwide)",
-    phone: "+91 98787 61488",
+    phone: "+91 98552 93752",
     hours: "Mon - Sat: 09:00 AM - 07:00 PM | Live Online Batches: 07:00 AM - 10:00 PM IST",
 
     offersVisits: false,
@@ -279,7 +279,7 @@ export const locations = [
     "Structured live online French coaching for Panchkula learners — school students, working professionals, and exam candidates — with certified faculty and small-batch, one-on-one attention for Sector 5, Sector 9, Sector 20, MDC and nearby sectors.",
   coverImage: "/locations/french-classes-panchkula/cover.webp",
   address: "Live Online Interactive Classes (Serving Panchkula & Worldwide)",
-  phone: "+91 98787 61488",
+  phone: "+91 98552 93752",
   hours: "Mon - Sat: 09:00 AM - 07:00 PM | Live Online Batches: 07:00 AM - 10:00 PM IST",
 
   offersVisits: false,
@@ -414,7 +414,7 @@ seo: {
       "Find home tutor jobs in Mohali with Inquisitive Mind Academy. Get matched with students in Phase 3B2, Phase 7, Phase 8, Sector 62, Sector 70, Kharar and Zirakpur for home tuition or online classes, part-time or full-time.",
     coverImage: "/locations/home-tutor-jobs-mohali/cover.webp",
     address: "Home Tuition Across Mohali + Live Online Classes",
-    phone: "+91 98787 61488",
+    phone: "+91 98552 93752",
     hours: "Mon - Sat: 09:00 AM - 07:00 PM | Tutor Applications Open Daily",
 
     offersVisits: false,

@@ -25,7 +25,7 @@ const links = [
   { name: "Home", path: "/", icon: FaHome },
   { name: "Courses", path: "/courses", icon: FaBookOpen },
   { name: "Find Tutor", path: "/find-tutor", icon: FaSearch },
-  { name: "Tutors", path: "/tutors", icon: FaUsers },
+
   { name: "Become a Tutor", path: "/become-a-tutor", icon: FaChalkboardTeacher },
   { name: "Blogs", path: "/blogs", icon: BsJournalText },
   { name: "About", path: "/about", icon: FaInfoCircle },

@@ -39,8 +39,8 @@ export default function FinalCtaBanner() {
           </span>
         </h2>
 
-        {/* Caption: Max 1 line */}
-        <p className="mt-3 text-sm sm:text-base lg:text-lg text-slate-600 max-w-xl mx-auto truncate font-normal">
+        {/* Caption */}
+        <p className="mt-3 text-sm sm:text-base lg:text-lg text-slate-600 max-w-xl mx-auto leading-relaxed font-normal">
           {finalCta.subtitle}
         </p>
 

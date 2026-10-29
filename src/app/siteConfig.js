@@ -50,11 +50,11 @@ const SITE_CONFIG = {
   /*                                  Contact                                   */
   /* -------------------------------------------------------------------------- */
 
-  phone: "+91 98787 61488",
-  whatsapp: "919878761488",
-  landLine: "+91 98787 61488",
+  phone: "+91 98552 93752",
+  whatsapp: "919855293752",
+  landLine: "+91 98552 93752",
   email: "inquisitivemindacademy@gmail.com",
-  bookingPhone: "+91 98787 61488",
+  bookingPhone: "+91 98552 93752",
 
   /* -------------------------------------------------------------------------- */
   /*                               Service Areas                                */
@@ -75,7 +75,7 @@ const SITE_CONFIG = {
       "https://www.instagram.com/theinquisitivemindacademy?igsh=MWFrY2owbmJnMTJwdA==",
     // youtube: "https://www.youtube.com/@inquisitivemindacademy",
     // linkedin: "https://www.linkedin.com/company/inquisitivemindacademy",
-    whatsapp:"https://wa.me/919878761488"
+    whatsapp: "https://wa.me/919855293752"
   },
 };
 

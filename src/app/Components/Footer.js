@@ -1,84 +1,56 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  FaPhone,
+  FaPhoneAlt,
   FaEnvelope,
   FaMapMarkerAlt,
-  FaChevronDown,
-  FaChevronRight,
   FaInstagram,
-  FaFacebookF,
-  FaLinkedinIn,
-  FaYoutube,
   FaWhatsapp,
+  FaArrowRight,
+  FaShieldAlt,
+  FaGraduationCap,
+  FaChalkboardTeacher,
 } from "react-icons/fa";
+import { BsStars } from "react-icons/bs";
 import { trackSocialClick, trackPhoneClick } from "@/lib/traking";
 import TrackedLink from "./tracking/TrackedLink";
 import TrackedButton from "./tracking/TrackedButton";
 import SITE_CONFIG from "../siteConfig";
 
-const links = [
-  { name: "Home", path: "/" },
-  { name: "Courses", path: "/courses" },
-  { name: "Blogs", path: "/blogs" },
-  { name: "About Us", path: "/about" },
+const LEARNING_TRACKS = [
+  { name: "French DELF A1–B2", path: "/courses/french-language-program" },
+  { name: "TEF Canada Coaching", path: "/services/tef-canada-coaching-chandigarh" },
+  { name: "Spoken English Mastery", path: "/courses/english-speaking-mastery" },
+  { name: "CBSE & ICSE Tuition", path: "/courses/academic-excellence-program" },
+  { name: "Book Free Trial Class", path: "/book-free-trial" },
 ];
 
-const socials = [
-  { name: "Instagram", link: SITE_CONFIG.socialLinks.instagram, icon: FaInstagram },
-  { name: "Whatsapp", link: SITE_CONFIG.socialLinks.whatsapp, icon: FaWhatsapp },
+const EXPLORE_HUBS = [
+  { name: "How Matching Works", path: "/#how-it-works" },
+  { name: "Platform Pillars", path: "/#features" },
+  { name: "Learning Blueprint", path: "/#learning-blueprint" },
+  { name: "French Classes Mohali", path: "/locations/french-classes-mohali" },
+  { name: "French Classes Zirakpur", path: "/locations/french-classes-zirakpur" },
+  { name: "French Classes Panchkula", path: "/locations/french-classes-panchkula" },
+  { name: "Educational Blogs", path: "/blogs" },
 ];
 
-const serviceCategories = [
-  {
-    id: "tef-delf",
-    title: "Exam & Immigration Prep",
-    links: [
-      { name: "Spoken French Online", path: "/services/french-classes-chandigarh" },
-    ],
-  },
-  {
-    id: "locations",
-    title: "Locations & Hubs",
-    links: [
-      { name: "French Classes Zirakpur", path: "/locations/french-classes-zirakpur" },
-      { name: "French Classes Mohali", path: "/locations/french-classes-mohali" },
-    ],
-  },
-  {
-    id: "careers",
-    title: "Teacher Careers",
-    links: [
-      { name: "French Tutor Jobs", path: "/services/french-tutor-jobs-chandigarh" },
-      { name: "Become a Tutor", path: "/become-a-tutor" },
-      { name: "Teacher Portal", path: "/teacher-profile/dashboard" },
-    ],
-  },
+const TEACHER_CAREERS = [
+  { name: "Become a Tutor", path: "/become-a-tutor" },
+  { name: "French Tutor Jobs", path: "/services/french-tutor-jobs-chandigarh" },
+  { name: "Teacher Portal", path: "/teacher-profile/dashboard" },
+  { name: "About the Academy", path: "/about" },
 ];
 
 export default function Footer() {
   const pathname = usePathname();
-  const [selectedCategory, setSelectedCategory] = useState(serviceCategories[0].id);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
 
   const phone = SITE_CONFIG.phone;
   const email = SITE_CONFIG.email;
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsDropdownOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  // Hide footer completely on Admin Panel, Student Profile, Teacher Profile, Login, Signup, and Forget Password pages
+  // Hide footer completely on auth / internal app routes
   if (
     pathname?.startsWith("/admin-panel") ||
     pathname?.startsWith("/student-profile") ||
@@ -90,251 +62,265 @@ export default function Footer() {
     return null;
   }
 
-  const activeCat = serviceCategories.find((c) => c.id === selectedCategory) || serviceCategories[0];
-
   return (
-    <footer className="relative overflow-hidden border-t border-slate-100 bg-white text-slate-900">
-      {/* Background glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(251,191,36,0.06),transparent_60%)]" />
+    <footer className="relative overflow-hidden border-t border-slate-200/80 bg-white text-slate-900 pt-16 sm:pt-20 pb-8">
+      {/* Background Architectural Patterns */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(250,204,21,0.12),transparent_70%)]" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.025] bg-[linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] bg-[size:50px_50px]" />
 
-      {/* Watermark */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.03]">
-        <img
-          src="/icon1.png"
-          alt=""
-          className="h-[420px] w-[420px] max-h-[80vw] max-w-[80vw] object-contain"
-        />
-      </div>
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full min-w-0">
+        {/* ========================================================= */}
+        {/* TOP: MOBILE-FIRST ENROLL NOW CALLOUT                      */}
+        {/* ========================================================= */}
+        <div className="relative overflow-hidden rounded-3xl border-2 border-yellow-300 bg-gradient-to-br from-yellow-50/90 via-white to-amber-50/60 p-6 sm:p-10 lg:p-12 text-center shadow-xl shadow-yellow-500/10 mb-14 sm:mb-20">
+          <div className="inline-flex items-center gap-2 rounded-full bg-yellow-100/90 border border-yellow-300 px-3.5 py-1 text-[10px] sm:text-[11px] font-extrabold tracking-[0.25em] text-yellow-950 uppercase shadow-2xs">
+            <BsStars className="text-yellow-600" />
+            <span>BUILDING CONFIDENT COMMUNICATORS</span>
+          </div>
 
-      <div className="relative mx-auto max-w-7xl px-6 py-16 sm:py-20">
-        {/* TOP GRID */}
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-5">
-          {/* BRAND */}
-          <div className="sm:col-span-2 lg:col-span-2">
-            <div className="flex items-center gap-4">
-              <img
-                src="/icon1.png"
-                className="h-14 w-14 shrink-0 object-contain"
-                alt="Inquisitive Mind Academy Logo"
-              />
+          <h2 className="mt-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-slate-950 tracking-tight leading-tight">
+            Speak with Confidence.{" "}
+            <span className="block bg-gradient-to-r from-yellow-500 via-amber-500 to-yellow-600 bg-clip-text text-transparent sm:inline">
+              Learn Without Limits.
+            </span>
+          </h2>
 
-              <div>
-                <h3 className="text-xl font-bold text-slate-900">
-                  Inquisitive Mind Academy
-                </h3>
+          <p className="mt-3 max-w-xl mx-auto text-xs sm:text-sm md:text-base text-slate-600 font-normal leading-relaxed">
+            Experience our 1-on-1 personalized mentorship firsthand with a 100% complimentary trial class. No card or upfront commitments required.
+          </p>
 
-                <p className="mt-1 text-[10px] tracking-[0.35em] text-slate-500">
-                  LANGUAGE • COMMUNICATION • CONFIDENCE
-                </p>
+          {/* Action Buttons: Full Width on Mobile, Thumb-Friendly */}
+          <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-md mx-auto sm:max-w-none">
+            <TrackedLink
+              href="/find-tutor"
+              label="Footer Enroll Now CTA"
+              category="Footer CTA"
+              className="w-full sm:w-auto inline-flex min-h-[50px] items-center justify-center gap-2 rounded-full bg-yellow-400 px-8 py-3.5 text-sm sm:text-base font-extrabold text-slate-950 shadow-md shadow-yellow-400/30 transition hover:bg-yellow-500 active:scale-95 cursor-pointer"
+            >
+              <span>Enroll Now — Free Trial</span>
+              <FaArrowRight className="text-xs" />
+            </TrackedLink>
+
+            <a
+              href="https://wa.me/919855293752?text=Hello!%20I%20would%20like%20to%20enroll%20for%20a%20free%20trial%20class%20at%20Inquisitive%20Mind%20Academy."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex min-h-[50px] items-center justify-center gap-2 rounded-full border-2 border-emerald-500 bg-emerald-50 px-6 py-3.5 text-xs sm:text-sm font-bold text-emerald-800 transition hover:bg-emerald-100 active:scale-95"
+            >
+              <FaWhatsapp className="text-emerald-600 text-base" />
+              <span>WhatsApp +91 98552 93752</span>
+            </a>
+          </div>
+
+          {/* Micro Trust Pills */}
+          <div className="mt-6 pt-5 border-t border-yellow-200/70 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-[11px] sm:text-xs text-slate-600 font-medium">
+            <span className="flex items-center gap-1.5">
+              <span className="h-2 w-2 rounded-full bg-emerald-500" />
+              <span>⚡ 24h Tutor Match</span>
+            </span>
+            <span className="text-slate-300">•</span>
+            <span className="flex items-center gap-1.5">
+              <FaShieldAlt className="text-yellow-600 text-xs" />
+              <span>🎁 100% Free Trial</span>
+            </span>
+            <span className="text-slate-300">•</span>
+            <span>🔄 Free Rematch Guarantee</span>
+          </div>
+        </div>
+
+        {/* ========================================================= */}
+        {/* MAIN MODERN FOOTER GRID                                   */}
+        {/* ========================================================= */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-12 sm:pb-16 border-b border-slate-200">
+          {/* BRAND COLUMN (4 COLS) */}
+          <div className="lg:col-span-4 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-3">
+                <img
+                  src="/icon1.png"
+                  className="h-11 w-11 shrink-0 object-contain rounded-xl border border-yellow-200 shadow-2xs"
+                  alt="Inquisitive Mind Academy Logo"
+                />
+                <div>
+                  <h3 className="text-base sm:text-lg font-black text-slate-950 tracking-tight leading-tight">
+                    Inquisitive Mind Academy
+                  </h3>
+                  <p className="text-[10px] tracking-[0.25em] text-yellow-800 font-extrabold uppercase mt-0.5">
+                    1-on-1 Mentorship & Tutoring
+                  </p>
+                </div>
+              </div>
+
+              <p className="mt-4 text-xs sm:text-sm text-slate-600 leading-relaxed max-w-sm">
+                Empowering students and professionals through live interactive language coaching, official exam prep (DELF, TEF, IELTS), and academic excellence.
+              </p>
+
+              {/* Direct WhatsApp Response Pill */}
+              <div className="mt-5 inline-flex items-center gap-2 rounded-full bg-emerald-50 border border-emerald-200 px-3 py-1.5 text-xs text-emerald-800">
+                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-[11px] font-bold">Fast Support: Replies within 15 mins</span>
               </div>
             </div>
 
-            <p className="mt-6 max-w-lg leading-relaxed text-slate-600 text-sm">
-              Empowering learners through English and French training, real
-              conversations, live mentorship, and structured fluency systems
-              designed for real-world communication.
-            </p>
+            {/* Social Links */}
+            <div className="mt-6 flex items-center gap-2.5">
+              <a
+                href={SITE_CONFIG.socialLinks.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackSocialClick("Instagram")}
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:bg-yellow-400 hover:text-slate-950 hover:border-yellow-400 hover:scale-105 shadow-2xs"
+                aria-label="Instagram"
+              >
+                <FaInstagram size={17} />
+              </a>
 
-            {/* SOCIALS */}
-            <div className="mt-6 flex gap-3 text-lg">
-              {socials.map((item, i) => {
-                const Icon = item.icon;
-                return (
-                  <a
-                    key={i}
-                    href={item.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => trackSocialClick(item.name)}
-                    className="flex h-11 w-11 cursor-pointer items-center justify-center rounded-full border border-slate-200 bg-white text-slate-500 transition hover:-translate-y-0.5 hover:border-yellow-300 hover:text-yellow-500 hover:shadow-md"
-                    aria-label={`Social ${item.name}`}
+              <a
+                href={SITE_CONFIG.socialLinks.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackSocialClick("WhatsApp")}
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 transition-all hover:bg-emerald-500 hover:text-white hover:border-emerald-500 hover:scale-105 shadow-2xs"
+                aria-label="WhatsApp"
+              >
+                <FaWhatsapp size={17} />
+              </a>
+            </div>
+          </div>
+
+          {/* COLUMN 1: LEARNING TRACKS (3 COLS) */}
+          <div className="lg:col-span-3">
+            <h4 className="text-xs font-extrabold uppercase tracking-widest text-slate-400 flex items-center gap-1.5">
+              <FaGraduationCap className="text-yellow-600" />
+              <span>Learning Tracks</span>
+            </h4>
+
+            <ul className="mt-4 space-y-2.5 text-xs sm:text-sm text-slate-600 font-medium">
+              {LEARNING_TRACKS.map((track) => (
+                <li key={track.name}>
+                  <TrackedLink
+                    href={track.path}
+                    label={`Footer Track: ${track.name}`}
+                    category="Footer Navigation"
+                    className="block py-1 hover:text-yellow-700 hover:translate-x-1 transition-all"
                   >
-                    <Icon size={18} />
-                  </a>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* QUICK LINKS */}
-          <div>
-            <h4 className="font-semibold text-slate-900">Quick Links</h4>
-
-            <div className="mt-5 space-y-1 text-sm text-slate-600">
-              {links.map((item) => (
-                <TrackedLink
-                  key={item.name}
-                  href={item.path}
-                  label={`Footer Link: ${item.name}`}
-                  category="Footer Links"
-                  className="flex items-center gap-2.5 rounded-xl px-2 py-2 transition hover:bg-yellow-50 hover:text-yellow-600 min-h-[44px]"
-                >
-                  <FaChevronRight className="text-[10px] text-yellow-500 shrink-0" />
-                  <span>{item.name}</span>
-                </TrackedLink>
+                    {track.name}
+                  </TrackedLink>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
-          {/* SERVICES (DESKTOP) */}
-          <div className="hidden lg:block">
-            <div className="flex items-center justify-between">
-              <h4 className="font-semibold text-slate-900">Services</h4>
-              <TrackedLink
-                href="/services"
-                label="Footer All Services"
-                category="Footer Links"
-                className="text-xs text-yellow-600 font-semibold hover:underline"
-              >
-                All Services →
-              </TrackedLink>
-            </div>
+          {/* COLUMN 2: HUBS & EXPLORE (2 COLS) */}
+          <div className="lg:col-span-2">
+            <h4 className="text-xs font-extrabold uppercase tracking-widest text-slate-400">
+              Explore & Hubs
+            </h4>
 
-            <div className="relative mt-4" ref={dropdownRef}>
-              <TrackedButton
-                type="button"
-                onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                label="Footer Service Category Dropdown"
-                category="Footer Navigation"
-                className="flex w-full min-h-[44px] items-center justify-between rounded-xl border border-slate-200 bg-slate-50/80 px-3.5 py-2 text-xs font-semibold text-slate-800 transition hover:border-yellow-400 hover:bg-white shadow-xs"
-              >
-                <span>{activeCat.title}</span>
-                <FaChevronDown className={`text-[10px] text-slate-400 transition-transform duration-200 ${isDropdownOpen ? "rotate-180 text-yellow-500" : ""}`} />
-              </TrackedButton>
-
-              {isDropdownOpen && (
-                <div className="absolute left-0 right-0 z-30 mt-1.5 rounded-xl border border-slate-100 bg-white p-1.5 shadow-xl shadow-slate-200/60">
-                  {serviceCategories.map((cat) => (
-                    <button
-                      key={cat.id}
-                      type="button"
-                      onClick={() => {
-                        setSelectedCategory(cat.id);
-                        setIsDropdownOpen(false);
-                      }}
-                      className={`flex w-full min-h-[44px] items-center justify-between rounded-lg px-3 py-2 text-xs font-medium transition ${
-                        selectedCategory === cat.id
-                          ? "bg-yellow-50 text-yellow-700 font-semibold"
-                          : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-                      }`}
-                    >
-                      <span>{cat.title}</span>
-                      <span className="rounded-full bg-slate-100 px-1.5 py-0.5 text-[10px] text-slate-500">
-                        {cat.links.length}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            <div className="mt-3.5 space-y-1 text-sm text-slate-600">
-              {activeCat.links.map((item) => (
-                <TrackedLink
-                  key={item.name}
-                  href={item.path}
-                  label={`Footer Service: ${item.name}`}
-                  category="Footer Services"
-                  className="flex items-center gap-2.5 rounded-xl px-2.5 py-2 transition hover:bg-yellow-50 hover:text-yellow-600 min-h-[44px]"
-                >
-                  <FaChevronRight className="text-[10px] text-yellow-500 shrink-0" />
-                  <span className="line-clamp-1">{item.name}</span>
-                </TrackedLink>
+            <ul className="mt-4 space-y-2.5 text-xs sm:text-sm text-slate-600 font-medium">
+              {EXPLORE_HUBS.map((hub) => (
+                <li key={hub.name}>
+                  <TrackedLink
+                    href={hub.path}
+                    label={`Footer Hub: ${hub.name}`}
+                    category="Footer Navigation"
+                    className="block py-1 hover:text-yellow-700 hover:translate-x-1 transition-all"
+                  >
+                    {hub.name}
+                  </TrackedLink>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
-          {/* SERVICES (MOBILE) */}
-          <div className="block lg:hidden">
-            <div className="flex items-center justify-between">
-              <h4 className="font-semibold text-slate-900">Services</h4>
-              <TrackedLink
-                href="/services"
-                label="Footer Mobile All Services"
-                category="Footer Links"
-                className="text-xs text-yellow-600 font-semibold hover:underline"
-              >
-                All Services →
-              </TrackedLink>
-            </div>
+          {/* COLUMN 3: CONTACT & CAREERS (3 COLS) */}
+          <div className="lg:col-span-3">
+            <h4 className="text-xs font-extrabold uppercase tracking-widest text-slate-400 flex items-center gap-1.5">
+              <FaChalkboardTeacher className="text-yellow-600" />
+              <span>Contact & Careers</span>
+            </h4>
 
-            <div className="mt-4 space-y-4">
-              {serviceCategories.map((cat) => (
-                <div key={cat.id}>
-                  <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-1.5">
-                    {cat.title}
-                  </p>
-                  <div className="space-y-1 text-sm text-slate-600">
-                    {cat.links.map((item) => (
-                      <TrackedLink
-                        key={item.name}
-                        href={item.path}
-                        label={`Footer Mobile Service: ${item.name}`}
-                        category="Footer Services"
-                        className="flex items-center gap-2.5 rounded-xl px-2.5 py-2 transition hover:bg-yellow-50 hover:text-yellow-600 min-h-[44px]"
-                      >
-                        <FaChevronRight className="text-[10px] text-yellow-500 shrink-0" />
-                        <span>{item.name}</span>
-                      </TrackedLink>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* CONTACT */}
-          <div>
-            <h4 className="font-semibold text-slate-900">Contact</h4>
-
-            <div className="mt-5 space-y-3 text-sm text-slate-600">
+            <div className="mt-4 space-y-3 text-xs sm:text-sm text-slate-600">
+              {/* Phone */}
               <TrackedButton
                 onClick={() => trackPhoneClick(phone)}
                 label={`Phone: ${phone}`}
                 category="Footer Contact"
-                className="flex items-center gap-3 text-left w-full rounded-xl p-2 transition hover:bg-yellow-50 hover:text-yellow-700 min-h-[44px]"
+                className="flex items-start gap-2.5 text-left w-full rounded-xl p-2 bg-slate-50 border border-slate-200/70 hover:bg-yellow-50 hover:border-yellow-300 transition-all cursor-pointer"
               >
-                <FaPhone className="text-yellow-500 shrink-0" />
-                <span>{phone}</span>
+                <FaPhoneAlt className="text-yellow-600 mt-0.5 shrink-0 text-xs" />
+                <div>
+                  <span className="font-bold text-slate-900 block">{phone}</span>
+                  <span className="text-[10px] text-slate-400 font-medium">Mon–Sat, 9:00 AM – 8:00 PM</span>
+                </div>
               </TrackedButton>
 
-              <div className="flex items-center gap-3 p-2">
-                <FaEnvelope className="text-yellow-500 shrink-0" />
-                <span>{email}</span>
+              {/* Email */}
+              <div className="flex items-center gap-2.5 p-2 rounded-xl bg-slate-50 border border-slate-200/70">
+                <FaEnvelope className="text-yellow-600 shrink-0 text-xs" />
+                <span className="text-slate-800 font-medium truncate">{email}</span>
               </div>
 
-              <div className="flex items-center gap-3 p-2">
-                <FaMapMarkerAlt className="text-yellow-500 shrink-0" />
-                <span>India • Live Online Classes & Home Tutoring</span>
+              {/* Location */}
+              <div className="flex items-start gap-2.5 p-2 rounded-xl bg-slate-50 border border-slate-200/70 text-xs text-slate-600">
+                <FaMapMarkerAlt className="text-yellow-600 mt-0.5 shrink-0 text-xs" />
+                <span className="leading-snug">
+                  India • Live Online Classes & Doorstep Tutoring across Tricity
+                </span>
+              </div>
+
+              {/* Careers Link */}
+              <div className="pt-2">
+                <TrackedLink
+                  href="/become-a-tutor"
+                  label="Footer Careers"
+                  category="Footer Careers"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-yellow-800 hover:text-yellow-950 hover:underline"
+                >
+                  <span>Apply to Teach as Verified Faculty</span>
+                  <FaArrowRight className="text-[10px]" />
+                </TrackedLink>
               </div>
             </div>
           </div>
         </div>
 
-        {/* DIVIDER */}
-        <div className="my-12 h-px bg-slate-200" />
+        {/* ========================================================= */}
+        {/* BOTTOM METADATA BAR                                       */}
+        {/* ========================================================= */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 text-center sm:text-left">
+          <p>
+            © {new Date().getFullYear()} Inquisitive Mind Academy. All rights reserved.
+          </p>
 
-        {/* CTA */}
-        <div className="text-center">
-          <div className="text-[10px] tracking-[0.35em] text-slate-400">
-            BUILDING CONFIDENT COMMUNICATORS
+          <div className="flex items-center gap-5 font-medium">
+            <TrackedLink
+              href="/privacy-policy"
+              label="Footer Privacy Policy"
+              category="Footer Legal"
+              className="hover:text-yellow-600 transition"
+            >
+              Privacy Policy
+            </TrackedLink>
+            <span>•</span>
+            <TrackedLink
+              href="/terms-of-service"
+              label="Footer Terms"
+              category="Footer Legal"
+              className="hover:text-yellow-600 transition"
+            >
+              Terms of Service
+            </TrackedLink>
+            <span>•</span>
+            <TrackedLink
+              href="/sitemap.xml"
+              label="Footer Sitemap"
+              category="Footer Legal"
+              className="hover:text-yellow-600 transition"
+            >
+              Sitemap
+            </TrackedLink>
           </div>
-
-          <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
-            Speak with Confidence.
-            <span className="block bg-gradient-to-r from-yellow-500 via-yellow-400 to-sky-400 bg-clip-text text-transparent">
-              Learn Without Limits.
-            </span>
-          </h2>
-
-          <TrackedLink
-            href="/find-tutor"
-            label="Footer Enroll Now CTA"
-            category="Footer CTA"
-            className="mt-8 inline-flex items-center justify-center rounded-full bg-yellow-500 px-8 py-3.5 font-medium text-white shadow-md shadow-yellow-200 transition hover:bg-yellow-600 hover:-translate-y-0.5 min-h-[44px]"
-          >
-            Enroll Now
-          </TrackedLink>
         </div>
       </div>
     </footer>

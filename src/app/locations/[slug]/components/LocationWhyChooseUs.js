@@ -15,7 +15,7 @@ export default function LocationWhyChooseUs({ location }) {
       description: "Equipped with live interactive digital tools and listening comprehension drills for authentic exam practice.",
     },
     {
-      title: "98% First-Time Exam Pass Rate",
+      title: "Comprehensive Mock Exam Preparation",
       description: "Structured curriculum aligned with Alliance Française and FEI standards to ensure passing results.",
     },
   ];

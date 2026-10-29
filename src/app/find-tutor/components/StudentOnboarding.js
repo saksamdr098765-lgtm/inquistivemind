@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import useAuthStore from "@/store/authStore";
 
 import MatchingScreen from "./MatchingScreen";
@@ -24,11 +24,15 @@ import ProgressTracker from "./ProgressTraker";
 import { validateStep } from "../validation";
 import { useStudentLeadMutation } from "@/app/mutations/leadMutation";
 import { trackFormSubmit } from "@/lib/traking";
+import { playSuccess, getSoundMuted, setSoundMuted } from "../utils/soundEffects";
+import { FaBolt, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 export default function StudentOnboarding() {
   const [error, setError] = useState("");
   const [step, setStep] = useState(0);
   const [referenceCode, setReferenceCode] = useState("");
+  const [soundMuted, setSoundMutedState] = useState(false);
+  const [showXpGain, setShowXpGain] = useState(false);
 
   const [form, setForm] = useState({
     goal: "",
@@ -40,9 +44,14 @@ export default function StudentOnboarding() {
     name: "",
     email: "",
     phone: "",
+    avatar: "fox",
   });
 
   const user = useAuthStore((state) => state.user);
+
+  useEffect(() => {
+    setSoundMutedState(getSoundMuted());
+  }, []);
 
   useEffect(() => {
     if (user) {
@@ -54,6 +63,17 @@ export default function StudentOnboarding() {
       }));
     }
   }, [user]);
+
+  const toggleSound = () => {
+    const nextVal = !soundMuted;
+    setSoundMutedState(nextVal);
+    setSoundMuted(nextVal);
+  };
+
+  const triggerXpGain = () => {
+    setShowXpGain(true);
+    setTimeout(() => setShowXpGain(false), 1200);
+  };
 
   const update = (key, value) => {
     setForm((prev) => ({
@@ -85,13 +105,37 @@ export default function StudentOnboarding() {
     if (errorMessage) return setError(errorMessage);
 
     setError("");
+    playSuccess();
+    triggerXpGain();
     if (step < 7) {
       setStep((prev) => prev + 1);
     }
   };
 
+  const handleAutoAdvance = (key, value) => {
+    update(key, value);
+    playSuccess();
+    triggerXpGain();
+    setError("");
+    if (step < 7) {
+      setTimeout(() => {
+        setStep((prev) => prev + 1);
+      }, 260);
+    }
+  };
+
   const prev = () => {
-    if (step > 0) setStep((prev) => prev - 1);
+    if (step > 0) {
+      setError("");
+      setStep((prev) => prev - 1);
+    }
+  };
+
+  const jumpToStep = (targetStep) => {
+    if (targetStep < step) {
+      setError("");
+      setStep(targetStep);
+    }
   };
 
   const studentLeadsMutation = useStudentLeadMutation();
@@ -109,21 +153,55 @@ export default function StudentOnboarding() {
   };
 
   return (
-    <section className="relative overflow-hidden py-4 sm:py-8 lg:py-12">
-      <div className="relative mx-auto max-w-4xl px-3 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden py-2 sm:py-8 lg:py-12">
+      <div className="relative mx-auto max-w-4xl px-2.5 xs:px-3 sm:px-6 lg:px-8">
         <h1 className="sr-only">Find a Tutor — Search Qualified Tutors</h1>
 
-        {/* PROGRESS */}
-        <ProgressTracker currentStep={step} totalSteps={8} />
+        {/* FLOATING XP GAIN BADGE (Mobile Friendly Position) */}
+        <AnimatePresence>
+          {showXpGain && (
+            <motion.div
+              initial={{ opacity: 0, y: 10, scale: 0.8 }}
+              animate={{ opacity: 1, y: -16, scale: 1.05 }}
+              exit={{ opacity: 0, y: -30, scale: 0.9 }}
+              transition={{ duration: 0.75, ease: "easeOut" }}
+              className="pointer-events-none fixed top-18 sm:top-24 left-1/2 -translate-x-1/2 z-50 flex items-center gap-1.5 rounded-full bg-gradient-to-r from-amber-400 to-yellow-400 px-3.5 py-1 sm:px-4 sm:py-1.5 text-xs sm:text-sm font-black text-slate-950 shadow-lg shadow-amber-400/30"
+            >
+              <FaBolt className="text-slate-950 text-xs" />
+              <span>+125 XP EARNED!</span>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-        {/* SELECTED TAGS */}
+        {/* GAMIFIED PROGRESS TRACKER (Single bar, only on questionnaire steps 0 to 6) */}
+        {step < 7 && (
+          <ProgressTracker
+            currentStep={step}
+            totalSteps={7}
+            onSelectStep={jumpToStep}
+            soundMuted={soundMuted}
+            onToggleSound={toggleSound}
+          />
+        )}
+
+        {/* COMPLETED QUEST TRAIL (Mobile First Compact Chips) */}
         {step < 8 && (
-          <div className="mb-4 sm:mb-6 flex flex-wrap justify-center gap-1.5 sm:gap-2">
+          <div className="mb-3 sm:mb-6 flex flex-wrap justify-center items-center gap-1.5">
+            {form.name && (
+              <button
+                type="button"
+                onClick={() => jumpToStep(0)}
+                className="rounded-full bg-yellow-50 border border-yellow-300/80 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-bold text-yellow-900 transition hover:bg-yellow-100 cursor-pointer shadow-2xs touch-manipulation"
+              >
+                👤 {form.name}
+              </button>
+            )}
+
             {form.goal && (
               <button
                 type="button"
-                onClick={() => setStep(1)}
-                className="rounded-full bg-yellow-50 border border-yellow-200/80 px-3 py-1 sm:px-3.5 sm:py-1.5 text-xs sm:text-sm font-semibold text-yellow-800 transition hover:bg-yellow-100/70"
+                onClick={() => jumpToStep(1)}
+                className="rounded-full bg-amber-50 border border-amber-300/80 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-bold text-amber-900 transition hover:bg-amber-100 cursor-pointer shadow-2xs touch-manipulation"
               >
                 🎯 {form.goal}
               </button>
@@ -132,8 +210,8 @@ export default function StudentOnboarding() {
             {form.language && (
               <button
                 type="button"
-                onClick={() => setStep(2)}
-                className="rounded-full bg-amber-50 border border-amber-200/80 px-3 py-1 sm:px-3.5 sm:py-1.5 text-xs sm:text-sm font-semibold text-amber-800 transition hover:bg-amber-100/70"
+                onClick={() => jumpToStep(2)}
+                className="rounded-full bg-yellow-100/70 border border-yellow-300 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-bold text-yellow-950 transition hover:bg-yellow-200/80 cursor-pointer shadow-2xs touch-manipulation"
               >
                 📚 {form.language}
               </button>
@@ -142,41 +220,61 @@ export default function StudentOnboarding() {
             {form.level && (
               <button
                 type="button"
-                onClick={() => setStep(3)}
-                className="rounded-full bg-slate-100 border border-slate-200 px-3 py-1 sm:px-3.5 sm:py-1.5 text-xs sm:text-sm font-semibold text-slate-700 transition hover:bg-slate-200/70"
+                onClick={() => jumpToStep(3)}
+                className="rounded-full bg-slate-100 border border-slate-300 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-bold text-slate-800 transition hover:bg-slate-200 cursor-pointer shadow-2xs touch-manipulation"
               >
-                📈 {form.level}
+                📈 {typeof form.level === "string" ? form.level : form.level?.title}
+              </button>
+            )}
+
+            {form.availability?.length > 0 && (
+              <button
+                type="button"
+                onClick={() => jumpToStep(4)}
+                className="rounded-full bg-amber-100/60 border border-amber-300 px-2.5 py-0.5 sm:px-3 sm:py-1 text-[11px] sm:text-xs font-bold text-amber-950 transition hover:bg-amber-200 cursor-pointer shadow-2xs touch-manipulation"
+              >
+                📅 {form.availability.length} Days
               </button>
             )}
           </div>
         )}
 
-        {/* CARD CONTAINER */}
-        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl lg:rounded-[36px] border border-slate-200/90 bg-white/95 p-4 sm:p-7 lg:p-10 shadow-lg sm:shadow-xl shadow-slate-200/50 backdrop-blur-md">
+        {/* MAIN GAME CONTAINER CARD (Mobile First Touch & Padding) */}
+        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl lg:rounded-[36px] border-2 border-yellow-300/90 bg-white/95 p-3.5 xs:p-4 sm:p-7 lg:p-10 shadow-xl shadow-yellow-500/10 backdrop-blur-md">
+          {/* Subtle Ambient Golden Sparkles in Background */}
+          <div className="pointer-events-none absolute -top-12 -right-12 h-36 w-36 sm:h-44 sm:w-44 rounded-full bg-yellow-300/20 blur-2xl" />
+          <div className="pointer-events-none absolute -bottom-12 -left-12 h-36 w-36 sm:h-44 sm:w-44 rounded-full bg-amber-300/20 blur-2xl" />
+
           <div className="relative">
             <AnimatePresence mode="wait">
-              {/* Contact */}
-              {step === 0 && <ContactForm form={form} update={update} />}
+              {/* Step 0: Character Creation & Contact Profile */}
+              {step === 0 && (
+                <ContactForm form={form} update={update} />
+              )}
 
-              {/* Goal */}
+              {/* Step 1: Learning Goal (Auto-advancing single choice) */}
               {step === 1 && (
                 <StepCard
-                  title="What are you looking for?"
-                  subtitle="We'll personalize your learning journey."
+                  badge="QUEST 2 • GOAL DESTINATION"
+                  title="What are you aiming to master?"
+                  subtitle="Select your focus track. We will customize your learning journey."
                   options={goalOptions}
                   selected={form.goal}
                   onSelect={(v) => update("goal", v)}
+                  autoAdvance={(v) => handleAutoAdvance("goal", v)}
                 />
               )}
 
-              {/* Subject / Language */}
+              {/* Step 2: Subject / Language (Auto-advancing single choice) */}
               {step === 2 && (
                 <StepCard
+                  badge="QUEST 3 • TARGET DISCIPLINE"
                   title={
                     form.goal === "Academics"
                       ? "Which subject do you need help with?"
                       : "Which language do you want to learn?"
                   }
+                  subtitle="Choose the specific subject or language program."
                   options={
                     form.goal === "Academics"
                       ? academicSubjects
@@ -184,45 +282,51 @@ export default function StudentOnboarding() {
                   }
                   selected={form.language}
                   onSelect={(v) => update("language", v)}
+                  autoAdvance={(v) => handleAutoAdvance("language", v)}
                 />
               )}
 
-              {/* Level */}
+              {/* Step 3: Current Level (Auto-advancing single choice) */}
               {step === 3 && (
                 <StepCard
+                  badge="QUEST 4 • CURRENT PROFICIENCY"
                   title="What's your current level?"
+                  subtitle="Be honest! Tutors tailor classes from foundational basics to advanced mastery."
                   options={
                     form.goal === "Academics" ? academicLevels : levels
                   }
                   selected={form.level}
                   onSelect={(v) => update("level", v)}
+                  autoAdvance={(v) => handleAutoAdvance("level", v)}
                 />
               )}
 
-              {/* Availability */}
+              {/* Step 4: Availability Days */}
               {step === 4 && (
                 <AvailabilitySelector
                   selected={form.availability}
                   toggleDay={toggleDay}
                   days={availabilityOptions}
-                  description="Select all days that work for your schedule."
+                  description="Select all days that work for your schedule. More days mean higher tutor compatibility."
                 />
               )}
 
-              {/* Time Slots */}
+              {/* Step 5: Time Slots */}
               {step === 5 && (
                 <AvailabilitySelector
-                  description="Select all time slots that work for you."
+                  description="Choose one or more convenient learning windows."
                   selected={form.timeSlot}
                   toggleDay={toggleSlot}
                   days={timeSlotOptions}
                 />
               )}
 
-              {/* Preference */}
+              {/* Step 6: Learning Format Preference (Auto-advancing single choice) */}
               {step === 6 && (
                 <StepCard
+                  badge="QUEST 7 • CLASS ARENA"
                   title="How would you like to learn?"
+                  subtitle="Choose your preferred classroom format."
                   options={
                     form.goal === "Academics"
                       ? academicPreferences
@@ -230,10 +334,11 @@ export default function StudentOnboarding() {
                   }
                   selected={form.tutor}
                   onSelect={(v) => update("tutor", v)}
+                  autoAdvance={(v) => handleAutoAdvance("tutor", v)}
                 />
               )}
 
-              {/* Matching */}
+              {/* Step 7: Arcade Radar Scanner */}
               {step === 7 && (
                 <MatchingScreen
                   onContinue={onContinue}
@@ -241,7 +346,7 @@ export default function StudentOnboarding() {
                 />
               )}
 
-              {/* Server-Based Success Screen */}
+              {/* Step 8: Quest Victory & Hologram Pass */}
               {step === 8 && (
                 <StudentSuccess
                   referenceCode={referenceCode}
@@ -251,33 +356,39 @@ export default function StudentOnboarding() {
               )}
             </AnimatePresence>
 
-            {/* ERROR */}
+            {/* ERROR NOTICE */}
             {error && (
-              <div className="mt-4 sm:mt-6 rounded-xl sm:rounded-2xl border border-red-200 bg-red-50 p-3 sm:p-4 text-xs sm:text-sm font-semibold text-red-600 flex items-center gap-2">
-                <span>⚠️</span>
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mt-4 sm:mt-6 rounded-2xl border-2 border-red-300 bg-red-50 p-3 sm:p-4 text-xs sm:text-sm font-bold text-red-700 flex items-center gap-2"
+              >
+                <span className="text-base shrink-0">⚠️</span>
                 <span>{error}</span>
-              </div>
+              </motion.div>
             )}
 
-            {/* NAVIGATION */}
+            {/* NAVIGATION BUTTONS (Mobile First Thumb Targets min 48px) */}
             {step < 7 && (
-              <div className="mt-6 sm:mt-8 flex items-center gap-2 sm:gap-3 pt-2">
+              <div className="mt-5 sm:mt-8 flex items-center gap-2 sm:gap-3 pt-1">
                 {step > 0 && (
                   <button
                     type="button"
                     onClick={prev}
-                    className="rounded-full border border-slate-200/90 bg-white px-5 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-semibold text-slate-700 transition hover:bg-slate-50 active:scale-[0.98] min-h-[44px] flex items-center justify-center cursor-pointer"
+                    className="flex items-center justify-center gap-1.5 rounded-full border-2 border-slate-200 bg-white hover:border-yellow-300 hover:bg-yellow-50/40 px-4 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-bold text-slate-700 transition active:scale-[0.98] min-h-[48px] touch-manipulation cursor-pointer"
                   >
-                    Back
+                    <FaArrowLeft className="text-xs" />
+                    <span>Back</span>
                   </button>
                 )}
 
                 <button
                   type="button"
                   onClick={next}
-                  className="flex-1 rounded-full bg-gradient-to-r from-amber-400 to-yellow-400 hover:from-amber-500 hover:to-yellow-500 px-5 sm:px-6 py-3 sm:py-3.5 text-xs sm:text-sm font-bold text-slate-950 shadow-md shadow-amber-400/20 transition active:scale-[0.99] min-h-[44px] flex items-center justify-center cursor-pointer"
+                  className="flex-1 flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-500 hover:to-yellow-500 px-5 sm:px-8 py-3 sm:py-4 text-xs sm:text-sm font-black text-slate-950 shadow-md shadow-amber-400/25 transition active:scale-[0.99] min-h-[48px] touch-manipulation cursor-pointer"
                 >
-                  Continue
+                  <span>Continue</span>
+                  <FaArrowRight className="text-xs" />
                 </button>
               </div>
             )}

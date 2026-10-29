@@ -7,7 +7,7 @@ export default function FinalCTA({ course }) {
   const encodedWhatsapp = encodeURIComponent(
     course.cta?.whatsappMessage || `Hello! I would like to book a free trial for ${course.title} at Inquisitive Mind Academy.`
   );
-  const whatsappUrl = `https://wa.me/919878761488?text=${encodedWhatsapp}`;
+  const whatsappUrl = `https://wa.me/919855293752?text=${encodedWhatsapp}`;
 
   return (
     <section id="final-cta" className="relative overflow-hidden bg-gradient-to-b from-amber-50/60 via-white to-yellow-50/80 text-slate-900 py-20 sm:py-24 border-t border-yellow-200/80">
@@ -64,8 +64,8 @@ export default function FinalCTA({ course }) {
 
         <p className="mt-6 text-xs text-slate-500">
           Prefer to talk right now? Call us directly at{" "}
-          <a href="tel:+919878761488" className="text-yellow-700 font-bold hover:underline">
-            +91 98787 61488
+          <a href="tel:+919855293752" className="text-yellow-700 font-bold hover:underline">
+            +91 98552 93752
           </a>
         </p>
       </div>

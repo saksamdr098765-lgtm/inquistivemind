@@ -35,7 +35,7 @@ export default function StickyMobileCTA({ course }) {
   const encodedWhatsapp = encodeURIComponent(
     course.cta?.whatsappMessage || `Hello! I would like to book a free trial class for ${course.title} at Inquisitive Mind Academy.`
   );
-  const whatsappUrl = `https://wa.me/919878761488?text=${encodedWhatsapp}`;
+  const whatsappUrl = `https://wa.me/919855293752?text=${encodedWhatsapp}`;
 
   return (
     <aside

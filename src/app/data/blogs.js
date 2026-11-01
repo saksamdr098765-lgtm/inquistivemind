@@ -6,7 +6,7 @@ export const blogs = [
     id: 1,
     slug: "what-is-tef-tcf-exam-comparison-scores-fees",
  title:
-  "TEF vs TCF Exam: Comparison, Scores & Fees (2026)",
+ "TEF vs TCF Canada: Which Is Easier? Fees & Score Chart 2026",
     excerpt:
       "New to French exams for Canada PR? Understand what TEF and TCF stand for, how they compare, their score charts, exam duration, and fees — all in one place.",
     category: "TEF/TCF Preparation",
@@ -44,9 +44,9 @@ export const blogs = [
   
    seo: {
   title:
-    "TEF vs TCF Exam: Comparison, Scores & Fees (2026)",
+    "TEF vs TCF Canada: Which Is Easier? Fees & Score Chart 2026",
   description:
-    "Complete guide to TEF and TCF exams for Canada PR — what they are, score chart comparison, exam duration, and latest fees. Learn from expert French tutors.",
+    "TEF or TCF for Canada PR? See which is easier, the key differences, CLB score chart and exam fees in India (₹18,000–₹20,000).",
   keywords: [
     "What is TEF exam",
     "What is TCF exam",
@@ -69,7 +69,17 @@ export const blogs = [
       {
         type: "paragraph",
         text:
-          "If you're just starting your Canada PR journey, the terms TEF and TCF can feel confusing. Both are official French proficiency tests accepted by IRCC, but they're run by different organizations and structured differently. This guide breaks down exactly what each exam is, how they compare, and what to expect in terms of scores, timing, and cost.",
+         "Short answer: IRCC accepts TEF Canada and TCF Canada equally for Express Entry, so choose the one that fits you. TCF Canada tends to suit beginners (shorter listening clips, progressive difficulty). TEF Canada tends to suit stronger candidates aiming for CLB 7+. Fees in India are roughly ₹18,000–₹20,000 for either. Below: the full comparison, score chart and how to decide.",
+      },
+       {
+        type: "heading",
+        level: 2,
+        text: "Which is Easy, TEF or TCF Canada?",
+      },
+      {
+        type: "paragraph",
+        text:
+          "There's no universally 'easier' exam — it genuinely depends on your current French level and learning style. Here's how to actually decide, rather than relying on generic rankings.",
       },
       {
         type: "heading",
@@ -118,7 +128,7 @@ export const blogs = [
       {
         type: "heading",
         level: 2,
-        text: "TEF vs TCF: Side-by-Side Comparison",
+        text: "Difference Between TEF and TCF: Side-by-Side Comparison",
       },
       {
         type: "list",
@@ -212,16 +222,7 @@ export const blogs = [
 },
 ],
       },
-      {
-        type: "heading",
-        level: 2,
-        text: "Which is Easy, TEF or TCF Canada?",
-      },
-      {
-        type: "paragraph",
-        text:
-          "There's no universally 'easier' exam — it genuinely depends on your current French level and learning style. Here's how to actually decide, rather than relying on generic rankings.",
-      },
+     
       {
         type: "list",
         items: [
@@ -711,9 +712,9 @@ export const blogs = [
     id: 3,
     slug: "tcf-canada-exam-guide-registration-fees-score-chart",
     title:
-      "TCF Exam Fees & Registration Guide 2026",
+      "TCF Canada Exam Fees in India 2026 (₹18,000–₹19,500)",
     excerpt:
-      "Wondering how much the TCF exam costs? Here's the full fee breakdown, registration process, CLB score chart, exam pattern, and how to prepare — all in one guide.",
+      "TCF Canada exam fees in India are ₹18,000–₹19,500 depending on the centre. Here's the full fee breakdown, registration steps, CLB score chart and exam pattern.",
     category: "TEF/TCF Preparation",
     author: {
       name: "Sakshi Goel",
@@ -749,9 +750,9 @@ export const blogs = [
 
     seo: {
       title:
-        "TCF Exam Fees & Registration Guide 2026",
+        "TCF Canada Exam Fees in India 2026 (₹18,000–₹19,500)",
       description:
-        "TCF exam fees explained — full cost breakdown, registration process, CLB score chart, and exam pattern. Complete 2026 guide for Canada PR aspirants.",
+        "TCF Canada exam fees in India: ₹18,000–₹19,500 depending on the centre. Registration steps, CLB score chart, exam pattern and booking tips.",
       keywords: [
         "TCF exam fees",
         "TCF Canada exam fees",
@@ -1053,7 +1054,7 @@ export const blogs = [
     id: 4,
     slug: "tef-canada-exam-guide-registration-fees-score-chart",
     title:
-      "TEF Canada Exam Guide 2026: Fees, Registration & Score",
+      "TEF Canada Exam Fees in India 2026 + Score Chart (CLB 7 & 9)",
     excerpt:
       "Planning to give TEF Canada for PR? Here's everything you need — registration process, exam fees in India, CLB score chart, exam pattern, and how to prepare.",
     category: "TEF/TCF Preparation",
@@ -1091,9 +1092,9 @@ export const blogs = [
 
   seo: {
   title:
-    "TEF Canada Exam Guide 2026: Fees, Registration & Score",
+    "TEF Canada Exam Fees in India 2026 + Score Chart (CLB 7 & 9)",
   description:
-    "Planning to give TEF Canada for PR? Get registration steps, exam fees, CLB score chart, exam pattern, and prep tips in one complete guide.",
+  "TEF Canada exam fees in India (₹18,000–₹20,000), registration steps, CLB score chart, exam pattern and how to read your TEF results.",
   keywords: [
     "TEF Canada registration",
     "TEF Canada fees",
@@ -1118,6 +1119,13 @@ export const blogs = [
         text:
           "If you've decided to take TEF Canada for your Express Entry or PR application, the next questions are usually practical ones — how do I register, what does it cost, what score do I actually need, and how do I prepare. This guide walks through all of it in one place, so you can plan your exam timeline with confidence.",
       },
+      { type: "heading", level: 2, text: "How to Understand Your TEF Canada Results" },
+{ type: "paragraph", text: "Your TEF Canada result shows a separate score for each of the four modules: listening, speaking, reading and writing. Each score is converted to its own CLB level, and your CRS French points come from those four levels. One weak module can cost points even if the others are strong." },
+{ type: "list", items: [
+  "Check each module's score, not just the total",
+  "Compare each score with the current IRCC conversion table",
+  "Retake only the weak module if your centre allows it",
+]},
       {
         type: "heading",
         level: 2,
@@ -1691,9 +1699,9 @@ export const blogs = [
   {
     id: 6,
     slug: "delf-exam-guide-levels-fees-pattern-results",
-    title: "DELF Exam Guide 2026: Levels, Fees, Pattern & Results",
+    title: "DELF Exam Fees in India 2026: A1–B2 Cost, Levels & Pattern",
     excerpt:
-      "What is the DELF exam, which level should you take, and what does it cost in India? A clear guide to DELF levels, exam pattern, passing marks, 2026 fees, dates and results.",
+      "DELF exam fees in India for 2026 are ₹11,210 (A1/A2) and ₹13,265 (B1/B2) for external candidates. Here are the levels, exam pattern, passing marks, dates and results.",
     category: "DELF Preparation",
     author: {
       name: "Sakshi Goel",
@@ -1728,11 +1736,10 @@ export const blogs = [
     },
 
     seo: {
-      title: "DELF Exam Guide 2026: Levels, Fees, Pattern & Results",
-      // 53 characters
+      title: "DELF Exam Fees in India 2026: A1–B2 Cost, Levels & Pattern",
+    
       description:
-        "What is the DELF exam? Understand levels A1 to B2, 2026 fees in India, exam pattern, passing marks, results and how to prepare, from a French tutor.",
-      // 148 characters
+      "DELF exam fees in India 2026: ₹11,210 for A1/A2 and ₹13,265 for B1/B2 (external candidates, incl. GST). Levels, pattern, passing marks and dates.",
       keywords: [
         "DELF exam",
         "DELF exam fees in India",
@@ -1753,6 +1760,11 @@ export const blogs = [
         text:
           "DELF is the official French language diploma that most learners in India take to prove their French for study, work or personal goals. If you are new to it, the questions are usually the same: what does DELF stand for, which level should you take, how much does it cost, and how hard is it? This guide answers each of them in one place, with 2026 fee details and a practical preparation plan.",
       },
+      {
+  type: "tip",
+  title: "DELF Exam Fees at a Glance",
+  text: "External candidates pay ₹11,210 for DELF A1/A2, ₹13,265 for B1/B2 and ₹14,553 for DALF C1/C2 (2026 rates, incl. GST). Alliance Française students pay less. Full breakdown below.",
+},
       {
         type: "heading",
         level: 2,

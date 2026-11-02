@@ -40,6 +40,8 @@ export default function StudentRequirementDetailView({
   const router = useRouter();
   const [req, setReq] = useState(requirement);
   const [newNote, setNewNote] = useState("");
+  const [pendingStatus, setPendingStatus] = useState(null);
+  const [pendingCandidateAction, setPendingCandidateAction] = useState({ id: null, type: null });
 
   // Delete modal state
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
@@ -93,10 +95,16 @@ export default function StudentRequirementDetailView({
   });
 
   const handleStatusChange = (newStatus) => {
-    updateStatusMutation.mutate({
-      status: newStatus,
-      note: `Status updated to ${newStatus}`,
-    });
+    setPendingStatus(newStatus);
+    updateStatusMutation.mutate(
+      {
+        status: newStatus,
+        note: `Status updated to ${newStatus}`,
+      },
+      {
+        onSettled: () => setPendingStatus(null),
+      }
+    );
   };
 
   const handleAddNote = (e) => {
@@ -107,22 +115,34 @@ export default function StudentRequirementDetailView({
 
   const handleShortlist = (cand) => {
     if (!req?._id) return;
-    shortlistMutation.mutate({
-      requirementId: req._id,
-      teacherId: cand.teacherId,
-      score: cand.score,
-      reasons: cand.reasons,
-    });
+    setPendingCandidateAction({ id: cand.teacherId, type: "shortlist" });
+    shortlistMutation.mutate(
+      {
+        requirementId: req._id,
+        teacherId: cand.teacherId,
+        score: cand.score,
+        reasons: cand.reasons,
+      },
+      {
+        onSettled: () => setPendingCandidateAction({ id: null, type: null }),
+      }
+    );
   };
 
   const handleRecommend = (cand) => {
     if (!req?._id) return;
-    recommendMutation.mutate({
-      requirementId: req._id,
-      teacherId: cand.teacherId,
-      score: cand.score,
-      reasons: cand.reasons,
-    });
+    setPendingCandidateAction({ id: cand.teacherId, type: "recommend" });
+    recommendMutation.mutate(
+      {
+        requirementId: req._id,
+        teacherId: cand.teacherId,
+        score: cand.score,
+        reasons: cand.reasons,
+      },
+      {
+        onSettled: () => setPendingCandidateAction({ id: null, type: null }),
+      }
+    );
   };
 
   if (!req) return null;
@@ -212,7 +232,7 @@ export default function StudentRequirementDetailView({
           <span className="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider block">
             Subject
           </span>
-          <span className="font-extrabold text-amber-800 text-sm sm:text-base mt-0.5 block truncate">
+          <span className="font-extrabold text-amber-800 text-sm sm:text-base mt-0.5 block break-words">
             {req.subject}
           </span>
         </div>
@@ -221,7 +241,7 @@ export default function StudentRequirementDetailView({
           <span className="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider block">
             Target Level
           </span>
-          <span className="font-extrabold text-slate-900 text-sm sm:text-base mt-0.5 block truncate">
+          <span className="font-extrabold text-slate-900 text-sm sm:text-base mt-0.5 block break-words">
             {req.level || "All stages"}
           </span>
         </div>
@@ -230,7 +250,7 @@ export default function StudentRequirementDetailView({
           <span className="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider block">
             Teaching Mode
           </span>
-          <span className="font-extrabold text-slate-900 text-sm sm:text-base mt-0.5 block truncate">
+          <span className="font-extrabold text-slate-900 text-sm sm:text-base mt-0.5 block break-words">
             {req.mode || "Online Classes"}
           </span>
         </div>
@@ -239,7 +259,7 @@ export default function StudentRequirementDetailView({
           <span className="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider block">
             Budget
           </span>
-          <span className="font-extrabold text-slate-900 text-sm sm:text-base mt-0.5 block truncate">
+          <span className="font-extrabold text-slate-900 text-sm sm:text-base mt-0.5 block break-words">
             {req.budget?.max ? `₹${req.budget.min || 0} - ₹${req.budget.max}` : "Flexible"}
           </span>
         </div>
@@ -411,28 +431,52 @@ export default function StudentRequirementDetailView({
                       <div className="flex items-center gap-1.5">
                         <button
                           type="button"
-                          disabled={shortlistMutation.isPending || isShortlisted}
+                          disabled={
+                            shortlistMutation.isPending ||
+                            isShortlisted
+                          }
                           onClick={() => handleShortlist(cand)}
-                          className={`px-2.5 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer ${
+                          className={`px-2.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 cursor-pointer ${
                             isShortlisted
                               ? "bg-indigo-100 text-indigo-700 border border-indigo-200 cursor-default"
                               : "bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200"
                           }`}
                         >
-                          Shortlist
+                          {shortlistMutation.isPending &&
+                          pendingCandidateAction.id === cand.teacherId &&
+                          pendingCandidateAction.type === "shortlist" ? (
+                            <>
+                              <FaSpinner className="animate-spin text-[10px]" />
+                              <span>Shortlisting...</span>
+                            </>
+                          ) : (
+                            <span>Shortlist</span>
+                          )}
                         </button>
 
                         <button
                           type="button"
-                          disabled={recommendMutation.isPending || isRecommended}
+                          disabled={
+                            recommendMutation.isPending ||
+                            isRecommended
+                          }
                           onClick={() => handleRecommend(cand)}
-                          className={`px-3 py-1.5 rounded-xl text-xs font-black transition cursor-pointer shadow-2xs ${
+                          className={`px-3 py-1.5 rounded-xl text-xs font-black transition flex items-center gap-1 cursor-pointer shadow-2xs ${
                             isRecommended
                               ? "bg-amber-400 text-slate-950 border border-amber-400 cursor-default"
                               : "bg-gradient-to-r from-amber-400 to-yellow-400 hover:from-amber-500 hover:to-yellow-500 text-slate-950"
                           }`}
                         >
-                          Recommend
+                          {recommendMutation.isPending &&
+                          pendingCandidateAction.id === cand.teacherId &&
+                          pendingCandidateAction.type === "recommend" ? (
+                            <>
+                              <FaSpinner className="animate-spin text-[10px]" />
+                              <span>Recommending...</span>
+                            </>
+                          ) : (
+                            <span>Recommend</span>
+                          )}
                         </button>
                       </div>
                     </div>
@@ -456,13 +500,16 @@ export default function StudentRequirementDetailView({
               type="button"
               disabled={updateStatusMutation.isPending || req.status === st}
               onClick={() => handleStatusChange(st)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold capitalize transition border cursor-pointer ${
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold capitalize transition border flex items-center gap-1.5 cursor-pointer ${
                 req.status === st
                   ? "bg-amber-400 text-slate-950 border-amber-400 shadow-2xs font-extrabold"
                   : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
               }`}
             >
-              {st}
+              {updateStatusMutation.isPending && pendingStatus === st && (
+                <FaSpinner className="animate-spin text-[10px]" />
+              )}
+              <span>{st}</span>
             </button>
           ))}
         </div>
@@ -501,6 +548,7 @@ export default function StudentRequirementDetailView({
             type="submit"
             size="sm"
             disabled={addNoteMutation.isPending || !newNote.trim()}
+            isLoading={addNoteMutation.isPending}
           >
             Add Note
           </PortalButton>

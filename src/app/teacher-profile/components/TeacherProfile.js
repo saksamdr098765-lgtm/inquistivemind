@@ -19,6 +19,7 @@ import {
   FaCalendarAlt,
   FaClock,
   FaBookOpen,
+  FaCheck,
 } from "react-icons/fa";
 
 import ProfileSidebar from "@/app/student-profile/components/profile/ProfileSidebar";
@@ -31,6 +32,7 @@ import { useProfileImageMutation } from "@/app/mutations/userMutation";
 import { useTeacherProfileUpdateMutation } from "@/app/mutations/teacherMutations";
 import PortalButton from "@/app/Components/portal-ui/PortalButton";
 
+// Standardized options exactly matching Become-a-Tutor & Find-Tutor Lead Flows
 const DAY_OPTIONS = [
   "Monday",
   "Tuesday",
@@ -42,45 +44,133 @@ const DAY_OPTIONS = [
 ];
 
 const TIME_SLOT_OPTIONS = [
-  "Morning (8:00 AM - 12:00 PM)",
-  "Afternoon (12:00 PM - 4:00 PM)",
-  "Evening (4:00 PM - 8:00 PM)",
-  "Late Evening (8:00 PM - 10:00 PM)",
+  { slot: "6:00 AM - 9:00 AM", title: "Morning Fresh", icon: "🌅" },
+  { slot: "9:00 AM - 12:00 PM", title: "Midday Prime", icon: "☀️" },
+  { slot: "12:00 PM - 3:00 PM", title: "Afternoon Session", icon: "🌤️" },
+  { slot: "3:00 PM - 6:00 PM", title: "Post-School Slot", icon: "☕" },
+  { slot: "6:00 PM - 9:00 PM", title: "Evening Peak", icon: "🔥" },
+  { slot: "9:00 PM - 11:00 PM", title: "Night Owl", icon: "🌙" },
 ];
 
 const SUBJECT_OPTIONS = [
-  { value: "French", label: "French Language" },
-  { value: "German", label: "German Language" },
-  { value: "English", label: "English Speaking & Communication" },
-  { value: "Mathematics", label: "Mathematics" },
+  { value: "French", label: "French Language (DELF / TEF Canada)" },
+  { value: "English", label: "English Speaking & Communication / IELTS" },
+  { value: "German", label: "German Language (Goethe A1-B2)" },
+  { value: "Spanish", label: "Spanish Language (DELE / SIELE)" },
+  { value: "Italian", label: "Italian Language" },
+  { value: "Mathematics", label: "Mathematics (CBSE / ICSE / Board)" },
   { value: "Science", label: "Science (Physics / Chemistry / Biology)" },
-  { value: "Spanish", label: "Spanish Language" },
   { value: "Academic Coaching", label: "Academic Coaching (CBSE / ICSE)" },
-  { value: "Other", label: "Other Academic Subject" },
+  { value: "Other Subject / Language", label: "Other Subject / Language" },
 ];
 
 const EXPERIENCE_OPTIONS = [
-  { value: "< 1 Year", label: "Less than 1 Year" },
-  { value: "1-3 Years", label: "1 - 3 Years" },
-  { value: "3-5 Years", label: "3 - 5 Years" },
-  { value: "5-8 Years", label: "5 - 8 Years" },
-  { value: "8+ Years", label: "8+ Years" },
+  { value: "Less than 1 Year", label: "Less than 1 Year (Fresh Talent)" },
+  { value: "1 - 3 Years", label: "1 - 3 Years (Interactive Educator)" },
+  { value: "3 - 5 Years", label: "3 - 5 Years (Experienced Mentor)" },
+  { value: "5+ Years", label: "5+ Years (Senior Faculty)" },
 ];
 
 const STUDENT_LEVEL_OPTIONS = [
-  { value: "All Levels", label: "All Levels" },
-  { value: "Beginner (A1 / A2)", label: "Beginner (A1 / A2)" },
-  { value: "Intermediate (B1 / B2)", label: "Intermediate (B1 / B2)" },
-  { value: "Advanced (C1 / C2)", label: "Advanced (C1 / C2)" },
-  { value: "School Curriculum (CBSE / ICSE)", label: "School Curriculum (CBSE / ICSE)" },
-  { value: "TEF / TCF Canada Exam Prep", label: "TEF / TCF Canada Exam Prep" },
+  { value: "All Levels", label: "All Levels (All Age Groups)" },
+  { value: "Primary School (1-5)", label: "Primary School (Class 1 - 5)" },
+  { value: "Middle School (6-8)", label: "Middle School (Class 6 - 8)" },
+  { value: "High School (9-10)", label: "High School (Class 9 - 10 / Board Prep)" },
+  { value: "Senior Secondary (11-12)", label: "Senior Secondary (Class 11 - 12)" },
+  { value: "College Students", label: "College & University Students" },
+  { value: "Adult Learners", label: "Adult Learners & Working Professionals" },
+  { value: "Beginner", label: "Beginner (A1 / A2)" },
+  { value: "Intermediate", label: "Intermediate (B1 / B2)" },
+  { value: "Advanced", label: "Advanced (C1 / C2)" },
 ];
 
 const MODE_OPTIONS = [
   { value: "Online Classes", label: "Online Live Classes" },
-  { value: "Offline / Doorstep Tutoring", label: "Offline / Doorstep Home Tutoring" },
-  { value: "Flexible / Hybrid Both", label: "Flexible / Hybrid (Online & Offline)" },
+  { value: "Home Tutoring (visits student's home)", label: "Home Tutoring (In-Person at Student's Home)" },
+  { value: "Hybrid Teaching", label: "Hybrid Teaching (Flexible Online & In-Person)" },
 ];
+
+const QUALIFICATION_OPTIONS = [
+  { value: "Post Graduate", label: "Post Graduate (Master's Degree — M.A., M.Sc., M.Com, M.Ed)" },
+  { value: "Graduate", label: "Graduate (Bachelor's Degree — B.A., B.Sc., B.Com, B.Tech)" },
+  { value: "B.Ed", label: "B.Ed (Bachelor of Education)" },
+  { value: "IELTS / Language Certified", label: "Language Certified (DELF / TEF / Goethe / IELTS 8.0+)" },
+  { value: "Teaching Certification", label: "Teaching Certification (CTET / State Board Certified)" },
+  { value: "Other Professional Qualification", label: "Other Professional Qualification / Industry Expert" },
+];
+
+// Helper to normalize legacy mode strings to modern standardized values
+function normalizeMode(val) {
+  const m = (val || "").toLowerCase();
+  if (m.includes("hybrid") || m.includes("both") || m.includes("flexible")) {
+    return "Hybrid Teaching";
+  }
+  if (m.includes("home") || m.includes("doorstep") || m.includes("offline")) {
+    return "Home Tutoring (visits student's home)";
+  }
+  return "Online Classes";
+}
+
+// Helper to normalize legacy experience strings
+function normalizeExperience(val) {
+  const e = (val || "").toLowerCase();
+  if (e.includes("<") || e.includes("less")) return "Less than 1 Year";
+  if (e.includes("1-3") || e.includes("1 - 3")) return "1 - 3 Years";
+  if (e.includes("3-5") || e.includes("3 - 5")) return "3 - 5 Years";
+  if (e.includes("5") || e.includes("8")) return "5+ Years";
+  return val || "3 - 5 Years";
+}
+
+// Helper to normalize day strings (e.g. "Mon" -> "Monday")
+function normalizeDays(daysArray) {
+  if (!Array.isArray(daysArray)) return [];
+  const map = {
+    mon: "Monday",
+    monday: "Monday",
+    tue: "Tuesday",
+    tuesday: "Tuesday",
+    wed: "Wednesday",
+    wednesday: "Wednesday",
+    thu: "Thursday",
+    thursday: "Thursday",
+    fri: "Friday",
+    friday: "Friday",
+    sat: "Saturday",
+    saturday: "Saturday",
+    sun: "Sunday",
+    sunday: "Sunday",
+  };
+  return Array.from(
+    new Set(
+      daysArray
+        .map((d) => map[(d || "").toLowerCase().trim()] || d)
+        .filter((d) => DAY_OPTIONS.includes(d))
+    )
+  );
+}
+
+// Helper to normalize time slots
+function normalizeTimeSlots(slotsArray) {
+  if (!Array.isArray(slotsArray)) return [];
+  const validSlots = TIME_SLOT_OPTIONS.map((o) => o.slot);
+  return slotsArray.map((s) => {
+    const trimmed = (s || "").trim();
+    if (validSlots.includes(trimmed)) return trimmed;
+    if (trimmed.includes("Morning") || trimmed.includes("8:00 AM") || trimmed.includes("6:00 AM")) {
+      return "9:00 AM - 12:00 PM";
+    }
+    if (trimmed.includes("Afternoon") || trimmed.includes("12:00 PM")) {
+      return "12:00 PM - 3:00 PM";
+    }
+    if (trimmed.includes("Evening") || trimmed.includes("4:00 PM") || trimmed.includes("6:00 PM")) {
+      return "6:00 PM - 9:00 PM";
+    }
+    if (trimmed.includes("Late") || trimmed.includes("9:00 PM")) {
+      return "9:00 PM - 11:00 PM";
+    }
+    return trimmed;
+  });
+}
 
 export default function TeacherProfile({ user, profile }) {
   const profileUpdateMutation = useTeacherProfileUpdateMutation();
@@ -91,7 +181,7 @@ export default function TeacherProfile({ user, profile }) {
     reset,
     watch,
     setValue,
-    formState: { errors, isSubmitting, isDirty, dirtyFields },
+    formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(profileSchema),
     mode: "onBlur",
@@ -104,7 +194,7 @@ export default function TeacherProfile({ user, profile }) {
       headline: "",
       subject: "French",
       qualification: "",
-      experience: "3-5 Years",
+      experience: "3 - 5 Years",
       studentLevel: "All Levels",
       mode: "Online Classes",
       bio: "",
@@ -130,12 +220,12 @@ export default function TeacherProfile({ user, profile }) {
       headline: profile?.headline || "",
       subject: profile?.subject || "French",
       qualification: profile?.qualification || "",
-      experience: profile?.experience || "3-5 Years",
+      experience: normalizeExperience(profile?.experience),
       studentLevel: profile?.studentLevel || "All Levels",
-      mode: profile?.mode || "Online Classes",
+      mode: normalizeMode(profile?.mode),
       bio: profile?.bio || "",
-      availability: Array.isArray(profile?.availability) ? profile.availability : [],
-      timeSlot: Array.isArray(profile?.timeSlot) ? profile.timeSlot : [],
+      availability: normalizeDays(profile?.availability),
+      timeSlot: normalizeTimeSlots(profile?.timeSlot),
     });
   }, [user, profile, reset]);
 
@@ -161,29 +251,37 @@ export default function TeacherProfile({ user, profile }) {
     setValue("timeSlot", current, { shouldDirty: true, shouldValidate: true });
   };
 
+  const onInvalid = (validationErrors) => {
+    console.error("Profile Form Validation Errors:", validationErrors);
+    const firstKey = Object.keys(validationErrors)[0];
+    const msg =
+      validationErrors[firstKey]?.message ||
+      "Please fill in all required fields accurately before saving.";
+    toast.error(msg);
+  };
+
   const onSubmit = async (data) => {
-    if (!isDirty) {
-      toast.info("No changes were made to your profile.");
-      return;
+    try {
+      const payload = {
+        fullName: (data.fullName || "").trim(),
+        phone: (data.phone || "").trim(),
+        gender: data.gender || "",
+        city: (data.city || "").trim(),
+        headline: (data.headline || "").trim(),
+        subject: data.subject || "French",
+        qualification: (data.qualification || "").trim(),
+        experience: data.experience || "3 - 5 Years",
+        studentLevel: data.studentLevel || "All Levels",
+        mode: data.mode || "Online Classes",
+        bio: (data.bio || "").trim(),
+        availability: Array.isArray(data.availability) ? data.availability : [],
+        timeSlot: Array.isArray(data.timeSlot) ? data.timeSlot : [],
+      };
+
+      await profileUpdateMutation.mutateAsync(payload);
+    } catch (err) {
+      console.error("Profile submit error:", err);
     }
-
-    const payload = {
-      fullName: data.fullName,
-      phone: data.phone,
-      gender: data.gender,
-      city: data.city,
-      headline: data.headline,
-      subject: data.subject,
-      qualification: data.qualification,
-      experience: data.experience,
-      studentLevel: data.studentLevel,
-      mode: data.mode,
-      bio: data.bio,
-      availability: data.availability,
-      timeSlot: data.timeSlot,
-    };
-
-    await profileUpdateMutation.mutateAsync(payload);
   };
 
   const handleImageUpload = (file, done) => {
@@ -206,19 +304,19 @@ export default function TeacherProfile({ user, profile }) {
 
         <div className="relative">
           <span className="inline-flex rounded-full bg-white/20 border border-white/30 px-3 py-0.5 text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white backdrop-blur-md">
-            Teacher Profile & Credentials
+            Teacher Profile &amp; Lead Synchronization
           </span>
           <h1 className="mt-2 text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
             Instructor Profile
           </h1>
           <p className="mt-1 text-orange-100 font-medium text-xs sm:text-sm max-w-xl">
-            Manage your personal details, academic qualifications, teaching subjects, and batch availability.
+            Update your teaching credentials, subject specializations, and schedule. All changes automatically sync with your active student matching leads.
           </p>
         </div>
       </motion.div>
 
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(onSubmit, onInvalid)}
         className="grid gap-4 sm:gap-6 lg:grid-cols-[300px_1fr]"
       >
         {/* Sidebar */}
@@ -239,10 +337,10 @@ export default function TeacherProfile({ user, profile }) {
               </div>
               <div>
                 <h2 className="text-base sm:text-xl font-extrabold text-slate-900">
-                  Personal & Contact Information
+                  Personal &amp; Contact Information
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-                  Update your contact details to receive batch notifications and communication.
+                  Update your contact details to receive batch notifications, demo requests, and counseling links.
                 </p>
               </div>
             </div>
@@ -287,6 +385,7 @@ export default function TeacherProfile({ user, profile }) {
                 error={errors.gender}
                 {...register("gender")}
                 options={[
+                  { value: "", label: "Select Gender" },
                   { value: "male", label: "Male" },
                   { value: "female", label: "Female" },
                   { value: "other", label: "Other" },
@@ -295,7 +394,7 @@ export default function TeacherProfile({ user, profile }) {
             </div>
           </section>
 
-          {/* 2. Academic & Teaching Credentials */}
+          {/* 2. Academic & Teaching Credentials (Synced with Become a Tutor Lead) */}
           <section className="rounded-2xl sm:rounded-3xl border border-slate-200/90 bg-white p-5 sm:p-7 shadow-xs">
             <div className="mb-5 flex items-start gap-3 sm:gap-4">
               <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl sm:rounded-2xl bg-amber-100 text-amber-800 text-base sm:text-lg border border-amber-200">
@@ -303,10 +402,10 @@ export default function TeacherProfile({ user, profile }) {
               </div>
               <div>
                 <h2 className="text-base sm:text-xl font-extrabold text-slate-900">
-                  Academic & Teaching Credentials
+                  Academic &amp; Teaching Credentials
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-                  Your academic degrees, subject specializations, and years of instructional experience.
+                  Fields strictly matched with the Student &amp; Tutor Matching Engine.
                 </p>
               </div>
             </div>
@@ -318,14 +417,6 @@ export default function TeacherProfile({ user, profile }) {
                 error={errors.subject}
                 {...register("subject")}
                 options={SUBJECT_OPTIONS}
-              />
-
-              <Input
-                icon={<FaAward />}
-                label="Highest Qualification / Certification"
-                placeholder="e.g. M.A. in French / DELF C1 Certified"
-                error={errors.qualification}
-                {...register("qualification")}
               />
 
               <Select
@@ -344,11 +435,19 @@ export default function TeacherProfile({ user, profile }) {
                 options={STUDENT_LEVEL_OPTIONS}
               />
 
+              <Select
+                icon={<FaAward />}
+                label="Highest Academic Qualification Level"
+                error={errors.qualification}
+                {...register("qualification")}
+                options={QUALIFICATION_OPTIONS}
+              />
+
               <div className="sm:col-span-2">
                 <Input
                   icon={<FaAward />}
-                  label="Professional Headline / Tagline"
-                  placeholder="e.g. Certified French Faculty & TEF Canada Exam Specialist with 6+ Years Experience"
+                  label="Professional Tagline / Bio Headline"
+                  placeholder="e.g. Certified French Faculty & TEF Canada Exam Specialist | 5+ Years Experience"
                   error={errors.headline}
                   {...register("headline")}
                 />
@@ -356,7 +455,7 @@ export default function TeacherProfile({ user, profile }) {
             </div>
           </section>
 
-          {/* 3. Teaching Preferences & Availability */}
+          {/* 3. Teaching Preferences & Availability (Synced with Matching Engine) */}
           <section className="rounded-2xl sm:rounded-3xl border border-slate-200/90 bg-white p-5 sm:p-7 shadow-xs">
             <div className="mb-5 flex items-start gap-3 sm:gap-4">
               <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-xl sm:rounded-2xl bg-orange-100 text-orange-800 text-base sm:text-lg border border-orange-200">
@@ -364,10 +463,10 @@ export default function TeacherProfile({ user, profile }) {
               </div>
               <div>
                 <h2 className="text-base sm:text-xl font-extrabold text-slate-900">
-                  Teaching Mode & Schedule Preferences
+                  Teaching Mode &amp; Schedule Preferences
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
-                  Select your available teaching days, preferred time slots, and instructional delivery mode.
+                  Select your available teaching days, standard time slots, and delivery mode.
                 </p>
               </div>
             </div>
@@ -384,7 +483,7 @@ export default function TeacherProfile({ user, profile }) {
               {/* Day Availability Pills */}
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-2">
-                  Preferred Teaching Days (Select all that apply)
+                  Available Teaching Days (Select all that apply)
                 </label>
                 <div className="flex flex-wrap gap-2">
                   {DAY_OPTIONS.map((day) => {
@@ -394,7 +493,7 @@ export default function TeacherProfile({ user, profile }) {
                         key={day}
                         type="button"
                         onClick={() => toggleDay(day)}
-                        className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all border ${
+                        className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all border cursor-pointer ${
                           isSelected
                             ? "bg-yellow-500 text-slate-950 border-yellow-500 shadow-xs"
                             : "bg-slate-50 text-slate-600 border-slate-200 hover:border-yellow-300 hover:bg-yellow-50/50"
@@ -407,27 +506,35 @@ export default function TeacherProfile({ user, profile }) {
                 </div>
               </div>
 
-              {/* Time Slots Pills */}
+              {/* Time Slots Pills (Synced with Become a Tutor & Find Tutor) */}
               <div>
                 <label className="block text-xs font-bold text-slate-700 mb-2">
-                  Preferred Time Slots (Select all that apply)
+                  Prime Teaching Slots (Select all that apply)
                 </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {TIME_SLOT_OPTIONS.map((slot) => {
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+                  {TIME_SLOT_OPTIONS.map(({ slot, title, icon }) => {
                     const isSelected = selectedSlots.includes(slot);
                     return (
                       <button
                         key={slot}
                         type="button"
                         onClick={() => toggleSlot(slot)}
-                        className={`p-3 rounded-xl text-xs font-bold text-left transition-all border flex items-center justify-between ${
+                        className={`p-3 rounded-xl text-xs font-bold text-left transition-all border flex items-center justify-between cursor-pointer ${
                           isSelected
                             ? "bg-yellow-500 text-slate-950 border-yellow-500 shadow-xs"
                             : "bg-slate-50 text-slate-600 border-slate-200 hover:border-yellow-300 hover:bg-yellow-50/50"
                         }`}
                       >
-                        <span>{slot}</span>
-                        {isSelected && <span className="text-xs font-extrabold">✓</span>}
+                        <div>
+                          <div className="flex items-center gap-1.5">
+                            <span>{icon}</span>
+                            <span>{title}</span>
+                          </div>
+                          <span className="text-[11px] font-medium opacity-85 block mt-0.5">
+                            {slot}
+                          </span>
+                        </div>
+                        {isSelected && <FaCheck className="text-xs text-slate-950 shrink-0" />}
                       </button>
                     );
                   })}
@@ -436,8 +543,8 @@ export default function TeacherProfile({ user, profile }) {
 
               {/* Teaching Biography */}
               <TextArea
-                label="Teaching Biography & Pedagogy"
-                placeholder="Describe your background, teaching methodology, student achievements, and curriculum pacing..."
+                label="Teacher Introduction &amp; Pedagogy Statement"
+                placeholder="Describe your background, teaching methodology, student achievements, and exam preparation pacing..."
                 rows={4}
                 error={errors.bio}
                 {...register("bio")}
@@ -454,7 +561,7 @@ export default function TeacherProfile({ user, profile }) {
               disabled={isSubmitting || profileUpdateMutation.isPending}
               className="w-full sm:w-auto"
             >
-              {profileUpdateMutation.isPending ? "Saving Changes..." : "Save Profile Changes"}
+              {profileUpdateMutation.isPending ? "Synchronizing Profile & Leads..." : "Save Profile Changes"}
             </PortalButton>
           </div>
         </div>

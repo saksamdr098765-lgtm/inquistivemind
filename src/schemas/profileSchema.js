@@ -6,11 +6,13 @@ export const profileSchema = z.object({
     .string()
     .min(3, "Full name must be at least 3 characters"),
 
-  email: z.string().email(),
+  email: z.string().email().optional().or(z.literal("")),
 
   phone: z
     .string()
-    .min(10, "Phone number is required"),
+    .min(10, "Phone number must be at least 10 digits")
+    .optional()
+    .or(z.literal("")),
 
   dateOfBirth: z.string().optional(),
 

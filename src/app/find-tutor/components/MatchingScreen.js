@@ -6,51 +6,27 @@ import {
   FaCheckCircle,
   FaUserGraduate,
   FaSpinner,
-  FaStar,
   FaBolt,
   FaAward,
-  FaRocket,
+  FaPaperPlane,
+  FaClipboardCheck,
+  FaClock,
+  FaCalendarAlt,
+  FaLaptop,
 } from "react-icons/fa";
 import { playRadarPing, playVictory } from "../utils/soundEffects";
 
-const MOCK_TUTORS = [
-  {
-    name: "Sarah D.",
-    role: "DELF C2 Certified French Faculty",
-    exp: "8+ yrs exp",
-    rating: "4.9",
-    avatar: "👩‍🏫",
-    highlight: "Canada TEF Specialist",
-  },
-  {
-    name: "Amit K.",
-    role: "Senior CBSE & ICSE Math Mentor",
-    exp: "10+ yrs exp",
-    rating: "5.0",
-    avatar: "👨‍🏫",
-    highlight: "100/100 Board Track Record",
-  },
-  {
-    name: "Sofia R.",
-    role: "English Fluency & IELTS 8.5 Trainer",
-    exp: "7+ yrs exp",
-    rating: "4.9",
-    avatar: "👩‍💼",
-    highlight: "Accent & Confidence Coach",
-  },
-];
-
-export default function MatchingScreen({ onContinue, mutation }) {
+export default function MatchingScreen({ form, onContinue, mutation }) {
   const [progress, setProgress] = useState(0);
   const [complete, setComplete] = useState(false);
   const [activeTelemetryIndex, setActiveTelemetryIndex] = useState(0);
 
   const telemetryLogs = [
-    "Analyzing student quest preferences & level...",
-    "Scanning verified faculty registry...",
-    "Synchronizing day & time slot compatibility...",
-    "Verifying pedagogical credentials & ratings...",
-    "Locking in top compatibility tutor match!",
+    "Verifying student learning goals & target subject...",
+    "Validating schedule availability & preferred time slots...",
+    "Scanning verified faculty database for curriculum match...",
+    "Preparing student learning request for submission...",
+    "Verification complete • Ready to submit requirement!",
   ];
 
   useEffect(() => {
@@ -76,6 +52,17 @@ export default function MatchingScreen({ onContinue, mutation }) {
 
     return () => clearInterval(interval);
   }, []);
+
+  const chosenSubject = form?.language || form?.goal || "Languages";
+  const chosenLevel =
+    typeof form?.level === "string"
+      ? form.level
+      : form?.level?.title || "Beginner";
+  const chosenMode = form?.tutor || "Online Classes";
+  const chosenDays =
+    form?.availability && form.availability.length > 0
+      ? form.availability.join(", ")
+      : "Flexible Schedule";
 
   return (
     <div className="relative overflow-hidden py-2 sm:py-6 select-none">
@@ -130,7 +117,7 @@ export default function MatchingScreen({ onContinue, mutation }) {
                 transition={{ duration: 1.8, repeat: Infinity, delay: 0.3 }}
                 className="absolute top-6 right-7 sm:top-8 sm:right-10 flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-amber-400 text-slate-950 text-[10px] sm:text-xs shadow-md"
               >
-                👩‍🏫
+                📚
               </motion.div>
 
               <motion.div
@@ -138,7 +125,7 @@ export default function MatchingScreen({ onContinue, mutation }) {
                 transition={{ duration: 2.1, repeat: Infinity, delay: 0.9 }}
                 className="absolute bottom-7 left-6 sm:bottom-10 sm:left-8 flex h-5 w-5 sm:h-6 sm:w-6 items-center justify-center rounded-full bg-yellow-400 text-slate-950 text-[10px] sm:text-xs shadow-md"
               >
-                👨‍🏫
+                🎯
               </motion.div>
 
               {/* Center Radar Core */}
@@ -148,18 +135,18 @@ export default function MatchingScreen({ onContinue, mutation }) {
             </div>
 
             <h2 className="mt-4 sm:mt-6 text-lg sm:text-2xl md:text-3xl font-black text-slate-900 tracking-tight">
-              Matching Your Perfect Tutor
+              Analyzing Your Learning Request
             </h2>
 
             <p className="mt-1 text-xs sm:text-sm text-slate-600 max-w-sm font-medium px-2">
-              Scanning certified educators to assemble your personal study squad.
+              Validating requirements against available teaching hours and certified faculty.
             </p>
 
             {/* High-Tech Progress Meter */}
             <div className="mt-4 sm:mt-6 w-full max-w-md">
               <div className="mb-1.5 flex justify-between items-center text-xs font-black">
                 <span className="text-slate-500 uppercase tracking-wider text-[9px] sm:text-[10px]">
-                  CALIBRATING ALGORITHM
+                  CALIBRATING REQUIREMENTS
                 </span>
                 <span className="text-amber-800 text-xs sm:text-sm">{progress}%</span>
               </div>
@@ -183,7 +170,7 @@ export default function MatchingScreen({ onContinue, mutation }) {
             </div>
           </motion.div>
         ) : (
-          /* RADAR RESULT - MATCH FOUND (Mobile First) */
+          /* RADAR RESULT - REQUEST READY (NO TUTOR NAMES) */
           <motion.div
             key="radar-success"
             initial={{ opacity: 0, scale: 0.94 }}
@@ -192,9 +179,9 @@ export default function MatchingScreen({ onContinue, mutation }) {
             className="relative mx-auto max-w-2xl px-1 sm:px-4 text-center"
           >
             {/* Victory Badge */}
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-green-300 bg-green-100 px-3 py-0.5 text-[8.5px] sm:text-[10px] font-black tracking-[0.2em] sm:tracking-[0.25em] text-green-950 uppercase shadow-2xs">
-              <FaCheckCircle className="text-green-600 text-[10px]" />
-              <span>MATCH VERIFIED • OPTIMAL FIT</span>
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-300 bg-emerald-100 px-3 py-0.5 text-[8.5px] sm:text-[10px] font-black tracking-[0.2em] sm:tracking-[0.25em] text-emerald-950 uppercase shadow-2xs">
+              <FaCheckCircle className="text-emerald-600 text-[10px]" />
+              <span>REQUIREMENT VERIFIED • READY TO SUBMIT</span>
             </div>
 
             {/* Victory Icon */}
@@ -208,70 +195,116 @@ export default function MatchingScreen({ onContinue, mutation }) {
             </motion.div>
 
             <h2 className="mt-3 sm:mt-5 text-xl sm:text-3xl lg:text-4xl font-black text-slate-900 tracking-tight">
-              Tutor Squad Located!
+              Tutor Matching Request Ready
             </h2>
 
             <p className="mx-auto mt-1 sm:mt-2 max-w-md text-xs sm:text-sm md:text-base text-slate-600 font-medium px-2">
-              We identified <strong>17 verified tutors</strong> matching your schedule, level, and target goals.
+              Your preferences have been cataloged. Submit your request below to initiate educator matching — <strong>no tutor is assigned yet</strong>.
             </p>
 
-            {/* Stats Overview */}
-            <div className="mt-4 sm:mt-6 grid grid-cols-3 gap-1.5 sm:gap-3">
-              <div className="rounded-xl sm:rounded-2xl border border-yellow-200 bg-yellow-50/70 p-2 sm:p-4 text-center">
-                <div className="text-lg sm:text-2xl font-black text-amber-900">17</div>
-                <div className="text-[9px] sm:text-xs font-bold text-slate-600 uppercase">Tutors Matched</div>
-              </div>
-
-              <div className="rounded-xl sm:rounded-2xl border border-yellow-200 bg-yellow-50/70 p-2 sm:p-4 text-center">
-                <div className="text-lg sm:text-2xl font-black text-amber-900 flex items-center justify-center gap-1">
-                  <span>4.9</span>
-                  <FaStar className="text-yellow-500 text-xs sm:text-sm" />
+            {/* STUDENT'S CUSTOM REQUIREMENT SUMMARY (NO MOCK TUTOR NAMES) */}
+            <div className="mt-5 rounded-2xl sm:rounded-3xl border-2 border-amber-300/80 bg-gradient-to-br from-amber-50/70 via-white to-yellow-50/50 p-4 sm:p-5 text-left shadow-xs space-y-3">
+              <div className="flex items-center justify-between pb-2.5 border-b border-amber-200/60">
+                <div className="flex items-center gap-2">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-amber-400 text-slate-950 text-sm font-black shadow-2xs">
+                    <FaClipboardCheck />
+                  </span>
+                  <div>
+                    <span className="text-[10px] font-black uppercase tracking-wider text-amber-900 block">
+                      Student Requirement Summary
+                    </span>
+                    <h4 className="text-sm sm:text-base font-extrabold text-slate-900">
+                      {form?.name || "Student"}'s Custom Plan
+                    </h4>
+                  </div>
                 </div>
-                <div className="text-[9px] sm:text-xs font-bold text-slate-600 uppercase">Avg Rating</div>
+                <span className="text-[10px] font-black px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
+                  Ready to Submit
+                </span>
               </div>
 
-              <div className="rounded-xl sm:rounded-2xl border border-yellow-200 bg-yellow-50/70 p-2 sm:p-4 text-center">
-                <div className="text-lg sm:text-2xl font-black text-green-700">100%</div>
-                <div className="text-[9px] sm:text-xs font-bold text-slate-600 uppercase">Free Demo</div>
+              {/* Grid of chosen specs */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+                <div className="p-2.5 rounded-xl bg-white border border-amber-200/60 shadow-2xs">
+                  <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400 block">
+                    Target Subject
+                  </span>
+                  <span className="font-extrabold text-amber-900 truncate block mt-0.5">
+                    {chosenSubject}
+                  </span>
+                </div>
+
+                <div className="p-2.5 rounded-xl bg-white border border-amber-200/60 shadow-2xs">
+                  <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400 block">
+                    Target Level
+                  </span>
+                  <span className="font-extrabold text-slate-900 truncate block mt-0.5">
+                    {chosenLevel}
+                  </span>
+                </div>
+
+                <div className="p-2.5 rounded-xl bg-white border border-amber-200/60 shadow-2xs">
+                  <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400 block">
+                    Learning Mode
+                  </span>
+                  <span className="font-extrabold text-slate-900 truncate block mt-0.5">
+                    {chosenMode}
+                  </span>
+                </div>
+
+                <div className="p-2.5 rounded-xl bg-white border border-amber-200/60 shadow-2xs">
+                  <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400 block">
+                    Available Days
+                  </span>
+                  <span className="font-extrabold text-slate-900 truncate block mt-0.5">
+                    {chosenDays}
+                  </span>
+                </div>
               </div>
+
+              {form?.timeSlot && form.timeSlot.length > 0 && (
+                <div className="p-2.5 rounded-xl bg-white/90 border border-amber-200/60 text-xs flex items-center justify-between">
+                  <span className="text-[10px] font-bold text-slate-400 uppercase">
+                    Preferred Time Slots:
+                  </span>
+                  <span className="font-bold text-slate-800">
+                    {form.timeSlot.join(" • ")}
+                  </span>
+                </div>
+              )}
             </div>
 
-            {/* TOP 3 SQUAD MATCH PREVIEWS */}
-            <div className="mt-4 sm:mt-6 space-y-2 text-left">
-              <div className="text-[10px] sm:text-[11px] font-black uppercase tracking-wider text-slate-400 px-1">
-                Top Matched Faculty Profiles
+            {/* TRANSPARENT MATCHING WORKFLOW (3 STEPS) */}
+            <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-2.5 text-left text-xs">
+              <div className="p-3 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-1">
+                <span className="inline-block h-5 w-5 rounded-full bg-amber-400 text-slate-950 font-black text-center text-[10px] leading-5">
+                  1
+                </span>
+                <p className="font-extrabold text-slate-900">Request Registered</p>
+                <p className="text-[11px] text-slate-500 leading-snug font-medium">
+                  Requirement is logged into our active tutor matching registry.
+                </p>
               </div>
 
-              {MOCK_TUTORS.map((tutor) => (
-                <div
-                  key={tutor.name}
-                  className="flex items-center justify-between gap-2.5 rounded-xl sm:rounded-2xl border border-slate-200/90 bg-white p-2.5 sm:p-3.5 shadow-2xs hover:border-yellow-300 transition-colors"
-                >
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <span className="flex h-9 w-9 sm:h-11 sm:w-11 shrink-0 items-center justify-center rounded-xl bg-yellow-100 text-lg sm:text-xl">
-                      {tutor.avatar}
-                    </span>
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-xs sm:text-sm font-black text-slate-900 truncate">
-                          {tutor.name}
-                        </span>
-                        <span className="rounded-full bg-amber-100 px-1.5 py-0.2 text-[8px] sm:text-[9px] font-extrabold text-amber-950">
-                          {tutor.exp}
-                        </span>
-                      </div>
-                      <div className="text-[10.5px] sm:text-[11px] text-slate-600 font-medium truncate">
-                        {tutor.role}
-                      </div>
-                    </div>
-                  </div>
+              <div className="p-3 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-1">
+                <span className="inline-block h-5 w-5 rounded-full bg-amber-400 text-slate-950 font-black text-center text-[10px] leading-5">
+                  2
+                </span>
+                <p className="font-extrabold text-slate-900">Faculty Compatibility</p>
+                <p className="text-[11px] text-slate-500 leading-snug font-medium">
+                  Verified teachers matching your subject &amp; schedule are scored.
+                </p>
+              </div>
 
-                  <div className="flex items-center gap-1 shrink-0 text-amber-800 font-black text-xs sm:text-sm bg-yellow-50 px-2 py-1 rounded-lg sm:rounded-xl border border-yellow-200">
-                    <FaStar className="text-yellow-500 text-[10px] sm:text-xs" />
-                    <span>{tutor.rating}</span>
-                  </div>
-                </div>
-              ))}
+              <div className="p-3 rounded-2xl bg-white border border-slate-200/90 shadow-2xs space-y-1">
+                <span className="inline-block h-5 w-5 rounded-full bg-amber-400 text-slate-950 font-black text-center text-[10px] leading-5">
+                  3
+                </span>
+                <p className="font-extrabold text-slate-900">Demo Scheduled</p>
+                <p className="text-[11px] text-slate-500 leading-snug font-medium">
+                  Our academic advisor coordinates directly to confirm your free trial.
+                </p>
+              </div>
             </div>
 
             {/* ACTION CTA (Full width on mobile min 48px) */}
@@ -280,14 +313,17 @@ export default function MatchingScreen({ onContinue, mutation }) {
                 type="button"
                 onClick={onContinue}
                 disabled={mutation?.isPending}
-                className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-500 hover:to-yellow-500 px-6 sm:px-9 py-3.5 sm:py-4 text-xs sm:text-sm font-black text-slate-950 shadow-md shadow-amber-400/25 active:scale-[0.98] transition cursor-pointer min-h-[48px] touch-manipulation"
+                className="w-full sm:w-auto flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 hover:from-amber-500 hover:to-yellow-500 px-7 sm:px-10 py-3.5 sm:py-4 text-xs sm:text-sm font-black text-slate-950 shadow-md shadow-amber-400/25 active:scale-[0.98] transition cursor-pointer min-h-[48px] touch-manipulation disabled:opacity-75"
               >
                 {mutation?.isPending ? (
-                  <FaSpinner className="animate-spin text-slate-950 text-base" />
+                  <>
+                    <FaSpinner className="animate-spin text-slate-950 text-base" />
+                    <span>Submitting Request...</span>
+                  </>
                 ) : (
                   <>
-                    <FaRocket className="text-slate-950 text-xs sm:text-sm" />
-                    <span>Assemble Tutor Squad &amp; Unlock Demo</span>
+                    <FaPaperPlane className="text-slate-950 text-xs sm:text-sm" />
+                    <span>Submit Learning Request &amp; Unlock Free Demo</span>
                   </>
                 )}
               </button>

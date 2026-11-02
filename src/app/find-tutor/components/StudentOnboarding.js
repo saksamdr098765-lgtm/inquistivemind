@@ -341,6 +341,7 @@ export default function StudentOnboarding() {
               {/* Step 7: Arcade Radar Scanner */}
               {step === 7 && (
                 <MatchingScreen
+                  form={form}
                   onContinue={onContinue}
                   mutation={studentLeadsMutation}
                 />

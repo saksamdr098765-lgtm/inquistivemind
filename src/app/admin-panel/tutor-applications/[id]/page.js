@@ -16,7 +16,7 @@ export default function TutorApplicationDetailPage({ params }) {
     useAdminTutorApplicationById(applicationId);
 
   return (
-    <div className="space-y-4 sm:space-y-6 max-w-5xl mx-auto pb-12">
+    <div className="space-y-4 sm:space-y-6 max-w-7xl mx-auto pb-12">
       {/* Top Breadcrumb & Navigation */}
       <div className="flex items-center justify-between gap-4">
         <Link

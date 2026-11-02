@@ -86,14 +86,16 @@ export default function TutorApplicationsPage() {
     {
       header: "Applicant",
       key: "fullName",
+      headerClassName: "min-w-[220px]",
+      cellClassName: "min-w-[220px]",
       render: (app) => (
         <div className="flex items-center gap-3">
           <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-amber-100 font-black text-amber-900 border border-amber-300 text-sm shadow-2xs">
             {app.fullName?.charAt(0)?.toUpperCase() || "T"}
           </div>
-          <div>
-            <p className="font-bold text-slate-900 leading-snug">{app.fullName}</p>
-            <p className="text-xs text-slate-400 mt-0.5">
+          <div className="min-w-0 flex-1">
+            <p className="font-bold text-slate-900 leading-snug truncate" title={app.fullName}>{app.fullName}</p>
+            <p className="text-xs text-slate-400 mt-0.5 truncate">
               {app.city ? `${app.city} • ` : ""}
               {new Date(app.createdAt).toLocaleDateString()}
             </p>
@@ -104,54 +106,65 @@ export default function TutorApplicationsPage() {
     {
       header: "Contact",
       key: "contact",
+      headerClassName: "min-w-[200px]",
+      cellClassName: "min-w-[200px]",
       render: (app) => (
-        <div className="text-xs space-y-0.5">
+        <div className="text-xs space-y-0.5 min-w-0">
           <a
             href={`mailto:${app.email}`}
             onClick={(e) => e.stopPropagation()}
-            className="font-semibold text-slate-700 hover:text-amber-600 block truncate max-w-[180px]"
+            className="font-semibold text-slate-700 hover:text-amber-600 block truncate"
+            title={app.email}
           >
             {app.email}
           </a>
-          <p className="text-slate-400">{app.phone || "No phone"}</p>
+          <p className="text-slate-400 font-mono">{app.phone || "No phone"}</p>
         </div>
       ),
     },
     {
       header: "Subject & Level",
       key: "subject",
+      headerClassName: "min-w-[180px]",
+      cellClassName: "min-w-[180px]",
       render: (app) => (
-        <div>
-          <span className="inline-block px-2.5 py-0.5 rounded-lg bg-amber-50 text-amber-800 border border-amber-200 text-xs font-bold">
+        <div className="space-y-1">
+          <span className="inline-block px-2.5 py-0.5 rounded-lg bg-amber-50 text-amber-800 border border-amber-200 text-xs font-bold break-words max-w-full">
             {app.subject}
           </span>
-          <p className="text-xs text-slate-500 mt-1">{app.studentLevel || "All levels"}</p>
+          <p className="text-xs text-slate-500 line-clamp-1" title={app.studentLevel}>{app.studentLevel || "All levels"}</p>
         </div>
       ),
     },
     {
       header: "Mode & Experience",
       key: "mode",
+      headerClassName: "min-w-[160px] whitespace-nowrap",
+      cellClassName: "min-w-[160px]",
       render: (app) => (
         <div className="text-xs">
-          <p className="font-semibold text-slate-700">{app.mode || "Online"}</p>
-          <p className="text-slate-400">{app.experience || "Not specified"}</p>
+          <p className="font-semibold text-slate-700 whitespace-nowrap">{app.mode || "Online"}</p>
+          <p className="text-slate-400 line-clamp-1" title={app.experience}>{app.experience || "Not specified"}</p>
         </div>
       ),
     },
     {
       header: "Status",
       key: "status",
+      headerClassName: "whitespace-nowrap",
+      cellClassName: "whitespace-nowrap",
       render: (app) => <PortalBadge variant={app.status}>{app.status}</PortalBadge>,
     },
     {
       header: "Public Profile",
       key: "isPublished",
+      headerClassName: "whitespace-nowrap",
+      cellClassName: "whitespace-nowrap",
       render: (app) => {
         const isPub = app.teacher?.isPublished;
         return (
           <span
-            className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold border ${
+            className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold border whitespace-nowrap ${
               isPub
                 ? "bg-emerald-50 text-emerald-700 border-emerald-300"
                 : "bg-slate-100 text-slate-500 border-slate-200"
@@ -167,14 +180,16 @@ export default function TutorApplicationsPage() {
       header: "Actions",
       key: "actions",
       align: "right",
+      headerClassName: "whitespace-nowrap text-right",
+      cellClassName: "whitespace-nowrap text-right",
       render: (app) => (
-        <div className="flex items-center justify-end gap-1.5">
+        <div className="flex items-center justify-end gap-1.5 whitespace-nowrap">
           <button
             onClick={(e) => {
               e.stopPropagation();
               handleOpenReview(app);
             }}
-            className="px-3.5 py-1.5 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs transition shadow-2xs cursor-pointer"
+            className="px-3.5 py-1.5 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs transition shadow-2xs cursor-pointer whitespace-nowrap"
           >
             Review &amp; Manage
           </button>
@@ -184,7 +199,7 @@ export default function TutorApplicationsPage() {
               e.stopPropagation();
               setDeletingApp(app);
             }}
-            className="flex h-8 w-8 items-center justify-center rounded-xl bg-rose-50 text-rose-600 hover:bg-rose-100 border border-rose-200 transition cursor-pointer"
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-rose-50 text-rose-600 hover:bg-rose-100 border border-rose-200 transition cursor-pointer"
             title="Delete Application"
           >
             <FaTrash className="text-xs" />
@@ -391,7 +406,7 @@ export default function TutorApplicationsPage() {
         <Modal
           isOpen={Boolean(selectedApp)}
           onClose={() => setSelectedApp(null)}
-          size="xl"
+          size="2xl"
           title={`Tutor Application: ${selectedApp.fullName}`}
           subtitle={`Submitted on ${new Date(selectedApp.createdAt).toLocaleDateString()} • Ref: ${selectedApp._id.slice(-6).toUpperCase()}`}
         >

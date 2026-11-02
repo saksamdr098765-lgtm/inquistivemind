@@ -40,6 +40,7 @@ function MatchingContent() {
   const queryReqId = searchParams.get("reqId") || "";
 
   const [selectedReqId, setSelectedReqId] = useState(queryReqId);
+  const [pendingCandidateAction, setPendingCandidateAction] = useState({ id: null, type: null });
 
   // Requirements list to populate selector
   const { data: reqData, isLoading: reqLoading } = useAdminStudentRequirements(
@@ -74,21 +75,33 @@ function MatchingContent() {
   const updateMatchMutation = useAdminUpdateMatchStatusMutation(() => refetch());
 
   const handleShortlist = (candidate) => {
-    shortlistMutation.mutate({
-      requirementId: selectedReqId,
-      teacherId: candidate.teacherId,
-      score: candidate.score,
-      reasons: candidate.reasons,
-    });
+    setPendingCandidateAction({ id: candidate.teacherId, type: "shortlist" });
+    shortlistMutation.mutate(
+      {
+        requirementId: selectedReqId,
+        teacherId: candidate.teacherId,
+        score: candidate.score,
+        reasons: candidate.reasons,
+      },
+      {
+        onSettled: () => setPendingCandidateAction({ id: null, type: null }),
+      }
+    );
   };
 
   const handleRecommend = (candidate) => {
-    recommendMutation.mutate({
-      requirementId: selectedReqId,
-      teacherId: candidate.teacherId,
-      score: candidate.score,
-      reasons: candidate.reasons,
-    });
+    setPendingCandidateAction({ id: candidate.teacherId, type: "recommend" });
+    recommendMutation.mutate(
+      {
+        requirementId: selectedReqId,
+        teacherId: candidate.teacherId,
+        score: candidate.score,
+        reasons: candidate.reasons,
+      },
+      {
+        onSettled: () => setPendingCandidateAction({ id: null, type: null }),
+      }
+    );
   };
 
   const handleUpdateStatus = (matchId, newStatus) => {
@@ -342,7 +355,16 @@ function MatchingContent() {
                                 : "bg-indigo-50 text-indigo-700 border border-indigo-300 hover:bg-indigo-100 cursor-pointer"
                             }`}
                           >
-                            Shortlist
+                            {shortlistMutation.isPending &&
+                            pendingCandidateAction.id === cand.teacherId &&
+                            pendingCandidateAction.type === "shortlist" ? (
+                              <>
+                                <FaSpinner className="animate-spin text-xs" />
+                                <span>Shortlisting...</span>
+                              </>
+                            ) : (
+                              <span>Shortlist</span>
+                            )}
                           </button>
 
                           <button
@@ -357,7 +379,16 @@ function MatchingContent() {
                                 : "bg-gradient-to-r from-amber-400 to-yellow-400 hover:from-amber-500 hover:to-yellow-500 text-slate-950 cursor-pointer"
                             }`}
                           >
-                            Recommend
+                            {recommendMutation.isPending &&
+                            pendingCandidateAction.id === cand.teacherId &&
+                            pendingCandidateAction.type === "recommend" ? (
+                              <>
+                                <FaSpinner className="animate-spin text-xs" />
+                                <span>Recommending...</span>
+                              </>
+                            ) : (
+                              <span>Recommend</span>
+                            )}
                           </button>
                         </div>
 

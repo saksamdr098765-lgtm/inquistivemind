@@ -20,6 +20,17 @@ import {
   FaFileAlt,
   FaShieldAlt,
   FaTrash,
+  FaSpinner,
+  FaHandshake,
+  FaGraduationCap,
+  FaUserGraduate,
+  FaLaptop,
+  FaCalendarCheck,
+  FaQuoteLeft,
+  FaHistory,
+  FaBookOpen,
+  FaCheck,
+  FaSlidersH,
 } from "react-icons/fa";
 import { toast } from "sonner";
 import {
@@ -77,6 +88,7 @@ export default function TutorApplicationDetailView({
   const [reviewNote, setReviewNote] = useState("");
   const [actionType, setActionType] = useState(null); // 'info_requested' | 'rejected' | null
   const [actionMessage, setActionMessage] = useState("");
+  const [pendingAction, setPendingAction] = useState(null); // tracks 'approved' | 'under_review' | 'info_requested' | 'rejected'
 
   // Publication state
   const [headline, setHeadline] = useState("");
@@ -110,7 +122,7 @@ export default function TutorApplicationDetailView({
           setAllowedFields(application.teacher.allowedPublicFields);
         }
       } else {
-        setHeadline(`${application.subject} Instructor`);
+        setHeadline(`${application.subject || "Academic"} Instructor`);
         setRateMin(500);
         setRateMax(1500);
       }
@@ -168,12 +180,18 @@ export default function TutorApplicationDetailView({
       return;
     }
 
-    reviewMutation.mutate({
-      status: newStatus,
-      note: reviewNote,
-      infoMessage: newStatus === "info_requested" ? actionMessage : "",
-      rejectionReason: newStatus === "rejected" ? actionMessage : "",
-    });
+    setPendingAction(newStatus);
+    reviewMutation.mutate(
+      {
+        status: newStatus,
+        note: reviewNote,
+        infoMessage: newStatus === "info_requested" ? actionMessage : "",
+        rejectionReason: newStatus === "rejected" ? actionMessage : "",
+      },
+      {
+        onSettled: () => setPendingAction(null),
+      }
+    );
   };
 
   const handleTogglePublish = () => {
@@ -212,426 +230,560 @@ export default function TutorApplicationDetailView({
   if (!app) return null;
 
   return (
-    <div className="space-y-5 sm:space-y-6">
-      {/* Top Applicant Banner Card - Mobile First */}
-      <div className="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-amber-50 via-white to-amber-50/50 border border-amber-200/90 shadow-2xs">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex items-start sm:items-center gap-3.5">
-            <div className="flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl bg-amber-400 text-slate-950 font-black text-lg sm:text-xl shadow-xs">
+    <div className="space-y-6">
+      {/* ======================================================== */}
+      {/* 1. TOP APPLICANT DOSSIER BANNER CARD                     */}
+      {/* ======================================================== */}
+      <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-amber-50 via-white to-amber-50/60 border border-amber-200/90 shadow-2xs">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+          {/* Avatar & Main Info */}
+          <div className="flex items-start sm:items-center gap-4 min-w-0">
+            <div className="flex h-14 w-14 sm:h-16 sm:w-16 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-tr from-amber-400 to-yellow-300 text-slate-950 font-black text-xl sm:text-2xl shadow-xs border border-amber-300">
               {app.fullName?.charAt(0)?.toUpperCase() || "T"}
             </div>
-            <div>
-              <div className="flex items-center gap-2 flex-wrap">
-                <h3 className="text-base sm:text-lg font-black text-slate-900 leading-snug">
+
+            <div className="min-w-0 flex-1">
+              <div className="flex items-center gap-2.5 flex-wrap">
+                <h3 className="text-lg sm:text-xl font-black text-slate-900 leading-snug break-words">
                   {app.fullName}
                 </h3>
                 <PortalBadge variant={app.status}>{app.status}</PortalBadge>
-                {app.teacher?.isPublished && (
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
-                    Live on Directory
+                {app.teacher?.isPublished ? (
+                  <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">
+                    <FaEye className="text-[10px]" /> Live on Directory
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-1 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-200">
+                    <FaEyeSlash className="text-[10px]" /> Private Profile
                   </span>
                 )}
+                <span className="text-[10px] font-mono text-slate-400 bg-white px-2 py-0.5 rounded-md border border-slate-200/80">
+                  ID: #{app._id?.slice(-6)?.toUpperCase()}
+                </span>
               </div>
-              <div className="flex items-center gap-3 text-xs text-slate-600 mt-1 flex-wrap">
+
+              {/* Quick Contact & Location Chips */}
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-slate-600 mt-2">
                 <a
                   href={`mailto:${app.email}`}
-                  className="flex items-center gap-1 font-semibold text-slate-700 hover:text-amber-600 truncate max-w-[200px]"
+                  className="flex items-center gap-1.5 font-semibold text-slate-700 hover:text-amber-600 transition break-all sm:break-normal"
+                  title="Click to email tutor"
                 >
-                  <FaEnvelope className="text-slate-400 text-[11px]" />
-                  {app.email}
+                  <FaEnvelope className="text-amber-500 text-xs shrink-0" />
+                  <span>{app.email}</span>
                 </a>
+
                 {app.phone && (
                   <a
                     href={`tel:${app.phone}`}
-                    className="flex items-center gap-1 font-semibold text-slate-700 hover:text-amber-600"
+                    className="flex items-center gap-1.5 font-semibold font-mono text-slate-700 hover:text-amber-600 transition"
+                    title="Click to call tutor"
                   >
-                    <FaPhoneAlt className="text-slate-400 text-[11px]" />
-                    {app.phone}
+                    <FaPhoneAlt className="text-amber-500 text-xs shrink-0" />
+                    <span>{app.phone}</span>
                   </a>
                 )}
+
                 {app.city && (
-                  <span className="flex items-center gap-1 text-slate-500">
-                    <FaMapMarkerAlt className="text-slate-400 text-[11px]" />
-                    {app.city}
+                  <span className="flex items-center gap-1.5 text-slate-500 font-medium">
+                    <FaMapMarkerAlt className="text-amber-500 text-xs shrink-0" />
+                    <span>{app.city}</span>
                   </span>
                 )}
+
+                <span className="flex items-center gap-1.5 text-slate-400 text-[11px]">
+                  <FaCalendarAlt className="text-slate-400 text-xs shrink-0" />
+                  <span>Applied: {new Date(app.createdAt).toLocaleDateString()}</span>
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Header Action Tools */}
-          <div className="flex items-center gap-2 justify-between sm:justify-end text-xs">
+          {/* Quick Header Tools & Navigation */}
+          <div className="flex items-center gap-2.5 justify-start lg:justify-end text-xs flex-wrap shrink-0 pt-2 lg:pt-0 border-t lg:border-t-0 border-amber-200/50">
+            {app.status === "approved" && (
+              <Link
+                href="/admin-panel/matching"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-black transition shadow-xs cursor-pointer"
+                title="Match approved tutor with student requirements"
+              >
+                <FaHandshake className="text-sm" />
+                <span>Match Students</span>
+              </Link>
+            )}
+
             {isModal && (
               <Link
                 href={`/admin-panel/tutor-applications/${app._id}`}
-                className="hidden sm:inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 font-bold transition"
+                className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-900 font-bold transition"
+                title="Open in dedicated full page"
               >
-                Full Page <FaExternalLinkAlt className="text-[9px]" />
+                <span>Full Page View</span>
+                <FaExternalLinkAlt className="text-[10px]" />
               </Link>
             )}
+
             <button
               type="button"
+              disabled={deleteMutation.isPending}
               onClick={() => setIsDeleteOpen(true)}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 font-bold transition cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-600 border border-rose-200 font-bold transition cursor-pointer disabled:opacity-60"
               title="Delete Application"
             >
-              <FaTrash className="text-[10px]" /> Delete
+              {deleteMutation.isPending ? (
+                <FaSpinner className="animate-spin text-xs" />
+              ) : (
+                <FaTrash className="text-xs" />
+              )}
+              <span>Delete</span>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile-Friendly Tab Switcher */}
-      <div className="flex border-b border-slate-200 gap-4 sm:gap-6 overflow-x-auto no-scrollbar">
+      {/* ======================================================== */}
+      {/* 2. RESPONSIVE TAB SWITCHER                               */}
+      {/* ======================================================== */}
+      <div className="flex border-b border-slate-200 gap-4 sm:gap-8 overflow-x-auto no-scrollbar">
         <button
           type="button"
           onClick={() => setActiveTab("review")}
-          className={`pb-3 font-bold text-xs sm:text-sm transition border-b-2 flex items-center gap-2 shrink-0 cursor-pointer ${
+          className={`pb-3.5 font-black text-xs sm:text-sm transition-all border-b-2 flex items-center gap-2 shrink-0 cursor-pointer ${
             activeTab === "review"
               ? "border-amber-500 text-amber-700"
               : "border-transparent text-slate-500 hover:text-slate-800"
           }`}
         >
-          <FaFileAlt className="text-xs" /> Application &amp; Review
+          <FaFileAlt className="text-sm" />
+          <span>Application &amp; Review Dossier</span>
         </button>
+
         <button
           type="button"
           onClick={() => setActiveTab("publish")}
-          className={`pb-3 font-bold text-xs sm:text-sm transition border-b-2 flex items-center gap-2 shrink-0 cursor-pointer ${
+          className={`pb-3.5 font-black text-xs sm:text-sm transition-all border-b-2 flex items-center gap-2 shrink-0 cursor-pointer ${
             activeTab === "publish"
               ? "border-amber-500 text-amber-700"
               : "border-transparent text-slate-500 hover:text-slate-800"
           }`}
         >
-          <FaGlobe className="text-xs" /> Public Directory Profile
+          <FaGlobe className="text-sm" />
+          <span>Public Directory Profile</span>
           {app.teacher?.isPublished ? (
-            <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-emerald-100 text-emerald-800">
+            <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">
               Live
             </span>
           ) : (
-            <span className="text-[10px] font-bold px-1.5 py-0.2 rounded-full bg-slate-100 text-slate-600">
+            <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">
               Private
             </span>
           )}
         </button>
       </div>
 
-      {/* TAB 1: APPLICATION & REVIEW */}
+      {/* ======================================================== */}
+      {/* 3. TAB 1: APPLICATION & CREDENTIALS REVIEW               */}
+      {/* ======================================================== */}
       {activeTab === "review" && (
-        <div className="space-y-5">
-          {/* Specifications Grid - Unified, clean modern panel */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200/80">
-            <div>
-              <span className="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider block">
-                Teaching Subject
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 items-start">
+          {/* ---------------------------------------------------- */}
+          {/* LEFT COLUMN: Teacher Dossier (8 cols on desktop)    */}
+          {/* ---------------------------------------------------- */}
+          <div className="lg:col-span-7 xl:col-span-8 space-y-5 sm:space-y-6 min-w-0">
+            {/* Subject Specialization Highlight Card */}
+            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-amber-50/70 border border-amber-200/90 shadow-2xs space-y-2">
+              <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-amber-900 flex items-center gap-1.5">
+                <FaBookOpen className="text-amber-600 text-xs" />
+                Teaching Subject Specialization
               </span>
-              <span className="font-extrabold text-amber-800 text-sm sm:text-base mt-0.5 block truncate">
-                {app.subject}
-              </span>
-            </div>
-
-            <div>
-              <span className="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider block">
-                Teaching Mode
-              </span>
-              <span className="font-extrabold text-slate-900 text-sm sm:text-base mt-0.5 block truncate">
-                {app.mode || "Online Classes"}
-              </span>
-            </div>
-
-            <div>
-              <span className="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider block">
-                Experience
-              </span>
-              <span className="font-extrabold text-slate-900 text-sm sm:text-base mt-0.5 block truncate">
-                {app.experience || "Not specified"}
-              </span>
-            </div>
-
-            <div>
-              <span className="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider block">
-                Target Student Level
-              </span>
-              <span className="font-bold text-slate-800 text-xs sm:text-sm mt-0.5 block truncate">
-                {app.studentLevel || "All levels"}
-              </span>
-            </div>
-
-            <div>
-              <span className="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider block">
-                Qualification
-              </span>
-              <span className="font-bold text-slate-800 text-xs sm:text-sm mt-0.5 block truncate">
-                {app.qualification || "Not specified"}
-              </span>
-            </div>
-
-            <div>
-              <span className="text-[10px] sm:text-xs text-slate-400 font-bold uppercase tracking-wider block">
-                Application Source
-              </span>
-              <span className="font-bold text-slate-800 text-xs sm:text-sm mt-0.5 block capitalize truncate">
-                {app.source || "Website Form"}
-              </span>
-            </div>
-          </div>
-
-          {/* Availability & Preferred Slots */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3.5">
-            <div className="p-3.5 sm:p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-              <span className="text-xs text-slate-500 font-bold uppercase tracking-wider flex items-center gap-1.5">
-                <FaCalendarAlt className="text-amber-500" /> Available Days
-              </span>
-              <div className="flex flex-wrap gap-1.5 pt-0.5">
-                {app.availability && app.availability.length > 0 ? (
-                  app.availability.map((day) => (
-                    <span
-                      key={day}
-                      className="px-2.5 py-1 rounded-xl bg-white text-slate-800 font-bold text-xs border border-slate-200 shadow-2xs"
-                    >
-                      {day}
-                    </span>
-                  ))
-                ) : (
-                  <span className="text-xs text-slate-500 italic">Flexible schedule</span>
-                )}
+              <div className="text-base sm:text-xl font-black text-amber-950 break-words leading-tight">
+                {app.subject || "Not specified"}
               </div>
             </div>
 
-            <div className="p-3.5 sm:p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2">
-              <span className="text-xs text-slate-500 font-bold uppercase tracking-wider flex items-center gap-1.5">
-                <FaClock className="text-amber-500" /> Preferred Time Slots
-              </span>
-              <div className="flex flex-wrap gap-1.5 pt-0.5">
-                {app.timeSlot && app.timeSlot.length > 0 ? (
-                  app.timeSlot.map((slot) => (
-                    <span
-                      key={slot}
-                      className="px-2.5 py-1 rounded-xl bg-white text-slate-800 font-bold text-xs border border-slate-200 shadow-2xs"
-                    >
-                      {slot}
-                    </span>
-                  ))
-                ) : (
-                  <span className="text-xs text-slate-500 italic">Flexible timing</span>
-                )}
-              </div>
-            </div>
-          </div>
-
-          {/* Cover Note / Bio */}
-          {app.bio && (
-            <div className="p-3.5 sm:p-4 rounded-2xl bg-amber-50/50 border border-amber-200/80 space-y-1">
-              <span className="text-xs font-bold text-amber-900 uppercase tracking-wider block">
-                Applicant Bio &amp; Motivation
-              </span>
-              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic">
-                "{app.bio}"
-              </p>
-            </div>
-          )}
-
-          {/* Review Decision Console Card */}
-          <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 text-white space-y-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
-              <div>
-                <h4 className="font-extrabold text-sm sm:text-base text-white flex items-center gap-2">
-                  <FaShieldAlt className="text-amber-400" /> Review &amp; Decision Console
-                </h4>
-                <p className="text-xs text-slate-400 mt-0.5">
-                  Current Status: <strong className="text-amber-300 capitalize">{app.status}</strong>
+            {/* Academic Credentials & Experience Cards (2x2 Grid) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
+              {/* Academic Qualification */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-2">
+                <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                  <FaGraduationCap className="text-amber-500 text-sm" />
+                  Academic Qualification
+                </span>
+                <p className="text-xs sm:text-sm font-bold text-slate-900 break-words leading-relaxed">
+                  {app.qualification || "Not specified"}
                 </p>
               </div>
 
-              {app.status === "approved" && (
-                <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30 flex items-center gap-1.5 self-start sm:self-auto">
-                  <FaCheckCircle /> Approved Teacher
+              {/* Teaching Experience */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-2">
+                <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                  <FaBriefcase className="text-amber-500 text-sm" />
+                  Teaching Experience
                 </span>
-              )}
+                <p className="text-xs sm:text-sm font-bold text-slate-900 break-words leading-relaxed">
+                  {app.experience || "Not specified"}
+                </p>
+              </div>
+
+              {/* Target Student Level */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-2">
+                <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                  <FaUserGraduate className="text-amber-500 text-sm" />
+                  Target Student Level
+                </span>
+                <p className="text-xs sm:text-sm font-bold text-slate-900 break-words leading-relaxed">
+                  {app.studentLevel || "All student levels"}
+                </p>
+              </div>
+
+              {/* Teaching Mode */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-2">
+                <span className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                  <FaLaptop className="text-amber-500 text-sm" />
+                  Teaching Mode
+                </span>
+                <p className="text-xs sm:text-sm font-bold text-slate-900 break-words leading-relaxed">
+                  {app.mode || "Online Classes"}
+                </p>
+              </div>
             </div>
 
-            {/* Mobile-First Primary Decision Buttons */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-              <button
-                type="button"
-                disabled={reviewMutation.isPending || app.status === "approved"}
-                onClick={() => handleReviewAction("approved")}
-                className={`flex flex-col items-center justify-center p-3 rounded-xl font-bold text-xs transition gap-1.5 border ${
-                  app.status === "approved"
-                    ? "bg-emerald-800/40 text-emerald-300 border-emerald-700/50 cursor-default opacity-80"
-                    : "bg-emerald-600 hover:bg-emerald-500 text-white border-emerald-500 shadow-md cursor-pointer"
-                }`}
-              >
-                <FaCheckCircle className="text-base" />
-                <span>Approve Tutor</span>
-              </button>
+            {/* Schedule & Availability Section */}
+            <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-2xs space-y-4">
+              <h4 className="text-xs sm:text-sm font-black uppercase tracking-wider text-slate-700 flex items-center gap-2">
+                <FaCalendarCheck className="text-amber-500" />
+                <span>Teaching Schedule &amp; Time Slots</span>
+              </h4>
 
-              <button
-                type="button"
-                disabled={reviewMutation.isPending || app.status === "under_review"}
-                onClick={() => handleReviewAction("under_review")}
-                className={`flex flex-col items-center justify-center p-3 rounded-xl font-bold text-xs transition gap-1.5 border ${
-                  app.status === "under_review"
-                    ? "bg-sky-800/40 text-sky-300 border-sky-700/50 cursor-default opacity-80"
-                    : "bg-sky-700 hover:bg-sky-600 text-white border-sky-600 shadow-md cursor-pointer"
-                }`}
-              >
-                <FaClock className="text-base" />
-                <span>Under Review</span>
-              </button>
-
-              <button
-                type="button"
-                disabled={reviewMutation.isPending}
-                onClick={() => {
-                  setActionType(actionType === "info_requested" ? null : "info_requested");
-                  setActionMessage(app.infoRequestedMessage || "");
-                }}
-                className={`flex flex-col items-center justify-center p-3 rounded-xl font-bold text-xs transition gap-1.5 border cursor-pointer ${
-                  actionType === "info_requested"
-                    ? "bg-amber-400 text-slate-950 border-amber-300 ring-2 ring-amber-300"
-                    : "bg-slate-800 hover:bg-slate-700 text-amber-400 border-slate-700"
-                }`}
-              >
-                <FaInfoCircle className="text-base" />
-                <span>Request Info</span>
-              </button>
-
-              <button
-                type="button"
-                disabled={reviewMutation.isPending}
-                onClick={() => {
-                  setActionType(actionType === "rejected" ? null : "rejected");
-                  setActionMessage(app.rejectionReason || "");
-                }}
-                className={`flex flex-col items-center justify-center p-3 rounded-xl font-bold text-xs transition gap-1.5 border cursor-pointer ${
-                  actionType === "rejected"
-                    ? "bg-rose-500 text-white border-rose-400 ring-2 ring-rose-400"
-                    : "bg-slate-800 hover:bg-slate-700 text-rose-400 border-slate-700"
-                }`}
-              >
-                <FaTimesCircle className="text-base" />
-                <span>Reject</span>
-              </button>
-            </div>
-
-            {/* Contextual Action Input */}
-            {actionType && (
-              <div className="p-3.5 rounded-xl bg-slate-800 border border-slate-700 space-y-2.5">
-                <div className="flex items-center justify-between">
-                  <label className="text-xs font-bold text-amber-300">
-                    {actionType === "info_requested"
-                      ? "Specify Missing Documents or Information:"
-                      : "State Reason for Application Rejection:"}
-                  </label>
-                  <button
-                    type="button"
-                    onClick={() => setActionType(null)}
-                    className="text-slate-400 hover:text-white text-xs font-semibold"
-                  >
-                    Cancel
-                  </button>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                {/* Available Days */}
+                <div className="space-y-2">
+                  <span className="text-xs font-bold text-slate-500 flex items-center gap-1.5">
+                    <FaCalendarAlt className="text-amber-500 text-xs" /> Available Days
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {app.availability && app.availability.length > 0 ? (
+                      app.availability.map((day) => (
+                        <span
+                          key={day}
+                          className="px-2.5 py-1 rounded-xl bg-amber-50 text-amber-950 font-bold text-xs border border-amber-200/80 shadow-2xs"
+                        >
+                          {day}
+                        </span>
+                      ))
+                    ) : (
+                      <span className="text-xs text-slate-400 italic">Flexible schedule</span>
+                    )}
+                  </div>
                 </div>
 
-                <input
-                  type="text"
-                  value={actionMessage}
-                  onChange={(e) => setActionMessage(e.target.value)}
-                  placeholder={
-                    actionType === "info_requested"
-                      ? "e.g. Please send degree certificate & government ID..."
-                      : "e.g. Currently not accepting tutors for this subject..."
-                  }
-                  className="w-full text-xs p-2.5 rounded-lg bg-slate-900 border border-slate-600 text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
-                />
+                {/* Preferred Time Slots */}
+                <div className="space-y-2">
+                  <span className="text-xs font-bold text-slate-500 flex items-center gap-1.5">
+                    <FaClock className="text-amber-500 text-xs" /> Preferred Time Slots
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {app.timeSlot && app.timeSlot.length > 0 ? (
+                      app.timeSlot.map((slot) => (
+                        <span
+                          key={slot}
+                          className="px-2.5 py-1 rounded-xl bg-slate-100 text-slate-800 font-bold text-xs border border-slate-200 shadow-2xs"
+                        >
+                          {slot}
+                        </span>
+                      ))
+                    ) : (
+                      <span className="text-xs text-slate-400 italic">Flexible timing</span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                <button
-                  type="button"
-                  disabled={reviewMutation.isPending || !actionMessage.trim()}
-                  onClick={() => handleReviewAction(actionType)}
-                  className={`w-full py-2 px-3 rounded-lg font-bold text-xs transition cursor-pointer ${
-                    actionType === "info_requested"
-                      ? "bg-amber-400 hover:bg-amber-300 text-slate-950"
-                      : "bg-rose-600 hover:bg-rose-500 text-white"
-                  }`}
-                >
-                  Confirm {actionType === "info_requested" ? "Information Request" : "Rejection"}
-                </button>
+            {/* Teacher Bio & Motivation */}
+            {app.bio && (
+              <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-amber-50/40 border border-amber-200/80 shadow-2xs space-y-2">
+                <span className="text-xs font-black uppercase tracking-wider text-amber-900 flex items-center gap-1.5">
+                  <FaQuoteLeft className="text-amber-600 text-xs" />
+                  Teacher Statement &amp; Introduction
+                </span>
+                <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic break-words whitespace-pre-line pl-1">
+                  "{app.bio}"
+                </p>
               </div>
             )}
 
-            {/* Internal Admin Note */}
-            <div className="space-y-1.5 pt-1">
-              <label className="text-xs font-bold text-slate-400 block">
-                Internal Admin Note (Private team record)
-              </label>
-              <textarea
-                value={reviewNote}
-                onChange={(e) => setReviewNote(e.target.value)}
-                placeholder="Add private review or interview notes for this tutor..."
-                rows={2}
-                className="w-full text-xs p-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-400"
-              />
-            </div>
+            {/* Internal Review History Timeline */}
+            {app.reviewNotes && app.reviewNotes.length > 0 && (
+              <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-2xs space-y-3">
+                <h4 className="font-black text-slate-900 text-xs uppercase tracking-wider text-slate-500 flex items-center gap-2">
+                  <FaHistory className="text-amber-500" />
+                  <span>Internal Review History ({app.reviewNotes.length})</span>
+                </h4>
+                <div className="space-y-2 pt-1">
+                  {app.reviewNotes.map((n, i) => (
+                    <div
+                      key={i}
+                      className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1"
+                    >
+                      <p className="text-slate-800 font-semibold break-words">{n.note}</p>
+                      <p className="text-[10px] text-slate-400 font-medium">
+                        Recorded on {new Date(n.createdAt).toLocaleString()}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
-          {/* Internal Review History Timeline */}
-          {app.reviewNotes && app.reviewNotes.length > 0 && (
-            <div className="space-y-2">
-              <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider text-slate-500">
-                Internal Review History ({app.reviewNotes.length})
-              </h4>
-              <div className="space-y-2">
-                {app.reviewNotes.map((n, i) => (
-                  <div
-                    key={i}
-                    className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs space-y-1"
-                  >
-                    <p className="text-slate-800 font-medium">{n.note}</p>
-                    <p className="text-[10px] text-slate-400">
-                      Recorded on {new Date(n.createdAt).toLocaleString()}
-                    </p>
+          {/* ---------------------------------------------------- */}
+          {/* RIGHT COLUMN: Review Console & Actions (4-5 cols)   */}
+          {/* ---------------------------------------------------- */}
+          <div className="lg:col-span-5 xl:col-span-4 space-y-5 lg:sticky lg:top-4 min-w-0">
+            {/* Review Decision Console Card */}
+            <div className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-slate-900 text-white shadow-xl border border-slate-800 space-y-5">
+              {/* Console Header */}
+              <div className="flex items-center justify-between pb-3.5 border-b border-slate-800 gap-2">
+                <div>
+                  <h4 className="font-black text-sm sm:text-base text-white flex items-center gap-2">
+                    <FaShieldAlt className="text-amber-400" /> Review Decision Console
+                  </h4>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    Current: <strong className="text-amber-300 capitalize">{app.status}</strong>
+                  </p>
+                </div>
+
+                {app.status === "approved" && (
+                  <span className="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-[11px] font-bold border border-emerald-500/30 flex items-center gap-1 shrink-0">
+                    <FaCheckCircle className="text-xs" /> Approved
+                  </span>
+                )}
+              </div>
+
+              {/* 4 Decision Action Buttons in 2x2 Grid */}
+              <div className="grid grid-cols-2 gap-2.5">
+                {/* Approve Button */}
+                <button
+                  type="button"
+                  disabled={reviewMutation.isPending || app.status === "approved"}
+                  onClick={() => handleReviewAction("approved")}
+                  className={`flex flex-col items-center justify-center p-3 rounded-2xl font-bold text-xs transition-all gap-1.5 border ${
+                    app.status === "approved"
+                      ? "bg-emerald-800/40 text-emerald-300 border-emerald-700/50 cursor-default opacity-80"
+                      : "bg-emerald-600 hover:bg-emerald-500 text-white border-emerald-500 shadow-md cursor-pointer disabled:opacity-75 active:scale-98"
+                  }`}
+                >
+                  {reviewMutation.isPending && pendingAction === "approved" ? (
+                    <FaSpinner className="animate-spin text-base text-white" />
+                  ) : (
+                    <FaCheckCircle className="text-base" />
+                  )}
+                  <span>
+                    {reviewMutation.isPending && pendingAction === "approved"
+                      ? "Approving..."
+                      : "Approve Tutor"}
+                  </span>
+                </button>
+
+                {/* Under Review Button */}
+                <button
+                  type="button"
+                  disabled={reviewMutation.isPending || app.status === "under_review"}
+                  onClick={() => handleReviewAction("under_review")}
+                  className={`flex flex-col items-center justify-center p-3 rounded-2xl font-bold text-xs transition-all gap-1.5 border ${
+                    app.status === "under_review"
+                      ? "bg-sky-800/40 text-sky-300 border-sky-700/50 cursor-default opacity-80"
+                      : "bg-sky-700 hover:bg-sky-600 text-white border-sky-600 shadow-md cursor-pointer disabled:opacity-75 active:scale-98"
+                  }`}
+                >
+                  {reviewMutation.isPending && pendingAction === "under_review" ? (
+                    <FaSpinner className="animate-spin text-base text-white" />
+                  ) : (
+                    <FaClock className="text-base" />
+                  )}
+                  <span>
+                    {reviewMutation.isPending && pendingAction === "under_review"
+                      ? "Updating..."
+                      : "Under Review"}
+                  </span>
+                </button>
+
+                {/* Request Info Button */}
+                <button
+                  type="button"
+                  disabled={reviewMutation.isPending}
+                  onClick={() => {
+                    setActionType(actionType === "info_requested" ? null : "info_requested");
+                    setActionMessage(app.infoRequestedMessage || "");
+                  }}
+                  className={`flex flex-col items-center justify-center p-3 rounded-2xl font-bold text-xs transition-all gap-1.5 border cursor-pointer active:scale-98 ${
+                    actionType === "info_requested"
+                      ? "bg-amber-400 text-slate-950 border-amber-300 ring-2 ring-amber-300 font-extrabold"
+                      : "bg-slate-800 hover:bg-slate-700 text-amber-400 border-slate-700"
+                  }`}
+                >
+                  <FaInfoCircle className="text-base" />
+                  <span>Request Info</span>
+                </button>
+
+                {/* Reject Button */}
+                <button
+                  type="button"
+                  disabled={reviewMutation.isPending}
+                  onClick={() => {
+                    setActionType(actionType === "rejected" ? null : "rejected");
+                    setActionMessage(app.rejectionReason || "");
+                  }}
+                  className={`flex flex-col items-center justify-center p-3 rounded-2xl font-bold text-xs transition-all gap-1.5 border cursor-pointer active:scale-98 ${
+                    actionType === "rejected"
+                      ? "bg-rose-500 text-white border-rose-400 ring-2 ring-rose-400 font-extrabold"
+                      : "bg-slate-800 hover:bg-slate-700 text-rose-400 border-slate-700"
+                  }`}
+                >
+                  <FaTimesCircle className="text-base" />
+                  <span>Reject</span>
+                </button>
+              </div>
+
+              {/* Contextual Action Input (Missing info or rejection reason) */}
+              {actionType && (
+                <div className="p-3.5 rounded-2xl bg-slate-800 border border-slate-700 space-y-2.5">
+                  <div className="flex items-center justify-between">
+                    <label className="text-xs font-bold text-amber-300">
+                      {actionType === "info_requested"
+                        ? "Specify Missing Documents or Info:"
+                        : "State Reason for Rejection:"}
+                    </label>
+                    <button
+                      type="button"
+                      onClick={() => setActionType(null)}
+                      className="text-slate-400 hover:text-white text-xs font-semibold cursor-pointer"
+                    >
+                      Cancel
+                    </button>
                   </div>
-                ))}
+
+                  <textarea
+                    rows={2}
+                    value={actionMessage}
+                    onChange={(e) => setActionMessage(e.target.value)}
+                    placeholder={
+                      actionType === "info_requested"
+                        ? "e.g. Please send degree certificate & government ID..."
+                        : "e.g. Currently not accepting tutors for this subject..."
+                    }
+                    className="w-full text-xs p-2.5 rounded-xl bg-slate-900 border border-slate-600 text-white placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                  />
+
+                  <button
+                    type="button"
+                    disabled={reviewMutation.isPending || !actionMessage.trim()}
+                    onClick={() => handleReviewAction(actionType)}
+                    className={`w-full py-2.5 px-3 rounded-xl font-bold text-xs transition cursor-pointer flex items-center justify-center gap-2 ${
+                      actionType === "info_requested"
+                        ? "bg-amber-400 hover:bg-amber-300 text-slate-950 font-black"
+                        : "bg-rose-600 hover:bg-rose-500 text-white"
+                    }`}
+                  >
+                    {reviewMutation.isPending && pendingAction === actionType ? (
+                      <>
+                        <FaSpinner className="animate-spin text-xs" />
+                        <span>
+                          {actionType === "info_requested"
+                            ? "Sending Request..."
+                            : "Rejecting Application..."}
+                        </span>
+                      </>
+                    ) : (
+                      <span>
+                        Confirm {actionType === "info_requested" ? "Information Request" : "Rejection"}
+                      </span>
+                    )}
+                  </button>
+                </div>
+              )}
+
+              {/* Internal Admin Note */}
+              <div className="space-y-1.5 pt-1">
+                <label className="text-xs font-bold text-slate-400 block">
+                  Internal Team Note (Private)
+                </label>
+                <textarea
+                  value={reviewNote}
+                  onChange={(e) => setReviewNote(e.target.value)}
+                  placeholder="Add private review or interview notes for this tutor..."
+                  rows={2}
+                  className="w-full text-xs p-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-400"
+                />
               </div>
             </div>
-          )}
+
+            {/* Approved Tutor Next Steps Card */}
+            {app.status === "approved" && (
+              <div className="p-4 sm:p-5 rounded-2xl sm:rounded-3xl bg-amber-50 border border-amber-300/80 shadow-2xs space-y-3">
+                <div className="flex items-center gap-2">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-amber-400 text-slate-950 font-black text-sm">
+                    <FaHandshake />
+                  </div>
+                  <div>
+                    <h5 className="font-extrabold text-sm text-slate-900 leading-tight">
+                      Ready for Student Matching
+                    </h5>
+                    <p className="text-[11px] text-amber-800 font-medium">
+                      Tutor is qualified and available.
+                    </p>
+                  </div>
+                </div>
+
+                <Link
+                  href="/admin-panel/matching"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-400 to-yellow-400 hover:from-amber-500 hover:to-yellow-500 text-slate-950 font-black text-xs shadow-xs transition"
+                >
+                  <FaHandshake />
+                  <span>Open Matching Console</span>
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
       )}
 
-      {/* TAB 2: PUBLIC PROFILE & PUBLICATION */}
+      {/* ======================================================== */}
+      {/* 4. TAB 2: PUBLIC DIRECTORY PROFILE                       */}
+      {/* ======================================================== */}
       {activeTab === "publish" && (
-        <div className="space-y-5 text-sm">
+        <div className="space-y-6">
           {app.status !== "approved" ? (
-            <div className="p-5 rounded-2xl bg-amber-50 border border-amber-200 text-center space-y-2">
-              <FaInfoCircle className="text-2xl text-amber-600 mx-auto" />
-              <h4 className="font-extrabold text-slate-900">
+            <div className="p-6 sm:p-8 rounded-2xl sm:rounded-3xl bg-amber-50 border border-amber-200 text-center space-y-3">
+              <FaInfoCircle className="text-3xl text-amber-600 mx-auto" />
+              <h4 className="font-black text-slate-900 text-base sm:text-lg">
                 Application Must Be Approved First
               </h4>
-              <p className="text-xs text-slate-600 max-w-md mx-auto">
+              <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
                 Tutors must be verified and approved on Tab 1 before a public directory profile can
                 be activated and configured.
               </p>
               <button
                 type="button"
                 onClick={() => setActiveTab("review")}
-                className="mt-2 inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs transition cursor-pointer"
+                className="mt-2 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-black text-xs transition cursor-pointer shadow-xs"
               >
                 Return to Application Review
               </button>
             </div>
           ) : (
-            <>
-              {/* Status Toggle Card */}
+            <div className="space-y-6">
+              {/* Directory Visibility Toggle Banner */}
               <div
-                className={`p-4 sm:p-5 rounded-2xl border transition-all ${
+                className={`p-5 sm:p-6 rounded-2xl sm:rounded-3xl border transition-all ${
                   app.teacher?.isPublished
                     ? "bg-emerald-50/80 border-emerald-300"
                     : "bg-slate-50 border-slate-200"
                 }`}
               >
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div>
+                  <div className="space-y-1">
                     <div className="flex items-center gap-2">
                       <span
                         className={`h-2.5 w-2.5 rounded-full ${
@@ -640,7 +792,7 @@ export default function TutorApplicationDetailView({
                             : "bg-slate-400"
                         }`}
                       />
-                      <h4 className="font-extrabold text-slate-900 text-base">
+                      <h4 className="font-black text-slate-900 text-base">
                         Directory Visibility:{" "}
                         <span
                           className={
@@ -651,14 +803,14 @@ export default function TutorApplicationDetailView({
                         </span>
                       </h4>
                     </div>
-                    <p className="text-xs text-slate-500 mt-1 max-w-lg">
+                    <p className="text-xs text-slate-600 max-w-xl leading-relaxed">
                       {app.teacher?.isPublished
                         ? "This tutor is currently visible on the public /tutors directory and eligible for matching recommendations."
                         : "This tutor's public profile is private. Students cannot see them in directory searches until explicitly published."}
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-2 flex-wrap">
+                  <div className="flex items-center gap-2 flex-wrap shrink-0">
                     {app.teacher?.isPublished && app.teacher?._id && (
                       <Link
                         href={`/tutors/${app.teacher._id}`}
@@ -673,13 +825,20 @@ export default function TutorApplicationDetailView({
                       type="button"
                       onClick={handleTogglePublish}
                       disabled={publishMutation.isPending || unpublishMutation.isPending}
-                      className={`px-4 py-2 rounded-xl font-bold text-xs transition flex items-center gap-1.5 shadow-xs cursor-pointer ${
+                      className={`px-4 py-2.5 rounded-xl font-black text-xs transition flex items-center gap-1.5 shadow-xs cursor-pointer ${
                         app.teacher?.isPublished
                           ? "bg-rose-50 text-rose-700 border border-rose-300 hover:bg-rose-100"
                           : "bg-emerald-600 text-white hover:bg-emerald-700"
                       }`}
                     >
-                      {app.teacher?.isPublished ? (
+                      {publishMutation.isPending || unpublishMutation.isPending ? (
+                        <>
+                          <FaSpinner className="animate-spin text-xs" />
+                          <span>
+                            {app.teacher?.isPublished ? "Unpublishing..." : "Publishing..."}
+                          </span>
+                        </>
+                      ) : app.teacher?.isPublished ? (
                         <>
                           <FaEyeSlash /> Unpublish / Make Private
                         </>
@@ -693,74 +852,93 @@ export default function TutorApplicationDetailView({
                 </div>
               </div>
 
-              {/* Directory Customization Form */}
-              <form onSubmit={handleSavePublicSettings} className="space-y-4">
-                <div>
-                  <label className="block text-xs font-bold text-slate-700 mb-1">
-                    Public Headline / Tagline
-                  </label>
-                  <PortalInput
-                    value={headline}
-                    onChange={(e) => setHeadline(e.target.value)}
-                    placeholder="e.g. Certified French Instructor | 5+ Years Experience"
-                  />
-                </div>
+              {/* Directory Customization Form (Responsive 2-Column Grid) */}
+              <form onSubmit={handleSavePublicSettings} className="space-y-6">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6">
+                  {/* Left Column: Headline & Rates */}
+                  <div className="lg:col-span-5 space-y-4">
+                    <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-4">
+                      <h5 className="font-black text-xs uppercase tracking-wider text-slate-700 flex items-center gap-2">
+                        <FaSlidersH className="text-amber-500" />
+                        <span>Public Directory Specs</span>
+                      </h5>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">
-                      Min Hourly Rate (₹)
-                    </label>
-                    <PortalInput
-                      type="number"
-                      value={rateMin}
-                      onChange={(e) => setRateMin(Number(e.target.value))}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-xs font-bold text-slate-700 mb-1">
-                      Max Hourly Rate (₹)
-                    </label>
-                    <PortalInput
-                      type="number"
-                      value={rateMax}
-                      onChange={(e) => setRateMax(Number(e.target.value))}
-                    />
-                  </div>
-                </div>
-
-                {/* Privacy checkboxes */}
-                <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <label className="block text-xs font-bold text-slate-700">
-                      Allowed Public Profile Fields (Strict Allowlist Protection)
-                    </label>
-                    <span className="text-[11px] text-slate-400">
-                      {allowedFields.length} fields permitted
-                    </span>
-                  </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-                    {Object.entries(readableFieldLabels).map(([fieldKey, label]) => {
-                      const isChecked = allowedFields.includes(fieldKey);
-                      return (
-                        <label
-                          key={fieldKey}
-                          className={`flex items-center gap-2 p-2.5 rounded-xl border text-xs font-semibold cursor-pointer transition ${
-                            isChecked
-                              ? "bg-amber-50/70 border-amber-300 text-amber-950 font-bold"
-                              : "bg-slate-50 border-slate-200 text-slate-500 hover:bg-slate-100"
-                          }`}
-                        >
-                          <input
-                            type="checkbox"
-                            checked={isChecked}
-                            onChange={() => toggleFieldPermission(fieldKey)}
-                            className="rounded text-amber-500 focus:ring-amber-400"
-                          />
-                          <span>{label}</span>
+                      <div>
+                        <label className="block text-xs font-bold text-slate-700 mb-1">
+                          Public Headline / Tagline
                         </label>
-                      );
-                    })}
+                        <PortalInput
+                          value={headline}
+                          onChange={(e) => setHeadline(e.target.value)}
+                          placeholder="e.g. Certified French Instructor | 5+ Years Experience"
+                        />
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-3 pt-1">
+                        <div>
+                          <label className="block text-xs font-bold text-slate-700 mb-1">
+                            Min Hourly Rate (₹)
+                          </label>
+                          <PortalInput
+                            type="number"
+                            value={rateMin}
+                            onChange={(e) => setRateMin(Number(e.target.value))}
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-bold text-slate-700 mb-1">
+                            Max Hourly Rate (₹)
+                          </label>
+                          <PortalInput
+                            type="number"
+                            value={rateMax}
+                            onChange={(e) => setRateMax(Number(e.target.value))}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Column: Allowlist Permissions */}
+                  <div className="lg:col-span-7 space-y-4">
+                    <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-2xs space-y-3">
+                      <div className="flex items-center justify-between pb-1">
+                        <h5 className="font-black text-xs uppercase tracking-wider text-slate-700">
+                          Allowed Public Profile Fields
+                        </h5>
+                        <span className="text-[11px] font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+                          {allowedFields.length} permitted
+                        </span>
+                      </div>
+
+                      <p className="text-[11px] text-slate-500 leading-normal">
+                        Only checked fields will be visible to students on the public website. Unchecked fields remain strictly confidential to the admin team.
+                      </p>
+
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
+                        {Object.entries(readableFieldLabels).map(([fieldKey, label]) => {
+                          const isChecked = allowedFields.includes(fieldKey);
+                          return (
+                            <label
+                              key={fieldKey}
+                              className={`flex items-center gap-2.5 p-2.5 rounded-xl border text-xs font-semibold cursor-pointer transition select-none ${
+                                isChecked
+                                  ? "bg-amber-50/80 border-amber-300 text-amber-950 font-bold shadow-2xs"
+                                  : "bg-slate-50 border-slate-200 text-slate-500 hover:bg-slate-100"
+                              }`}
+                            >
+                              <input
+                                type="checkbox"
+                                checked={isChecked}
+                                onChange={() => toggleFieldPermission(fieldKey)}
+                                className="rounded text-amber-500 focus:ring-amber-400 h-3.5 w-3.5"
+                              />
+                              <span className="truncate">{label}</span>
+                            </label>
+                          );
+                        })}
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -768,18 +946,21 @@ export default function TutorApplicationDetailView({
                   <PortalButton
                     type="submit"
                     disabled={publicSettingsMutation.isPending}
+                    isLoading={publicSettingsMutation.isPending}
                     className="w-full"
                   >
                     Save Public Profile Settings
                   </PortalButton>
                 </div>
               </form>
-            </>
+            </div>
           )}
         </div>
       )}
 
-      {/* Delete Confirmation Modal */}
+      {/* ======================================================== */}
+      {/* 5. DELETE CONFIRMATION MODAL                             */}
+      {/* ======================================================== */}
       <DeleteConfirmModal
         isOpen={isDeleteOpen}
         onClose={() => setIsDeleteOpen(false)}

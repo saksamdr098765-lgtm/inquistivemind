@@ -26,6 +26,7 @@ import PortalInput from "@/app/Components/portal-ui/PortalInput";
 import PortalSelect from "@/app/Components/portal-ui/PortalSelect";
 import PortalBadge from "@/app/Components/portal-ui/PortalBadge";
 import PortalButton from "@/app/Components/portal-ui/PortalButton";
+import DeleteConfirmModal from "@/app/Components/portal-ui/DeleteConfirmModal";
 
 export default function Students() {
   const router = useRouter();
@@ -85,10 +86,13 @@ export default function Students() {
     search,
   ].filter(Boolean).length;
 
-  const handleDelete = (userId, name) => {
-    if (confirm(`Are you sure you want to delete ${name}?`)) {
-      deleteUserMutation.mutate(userId);
-    }
+  const [deletingUser, setDeletingUser] = useState(null);
+
+  const confirmDeleteUser = () => {
+    if (!deletingUser?._id) return;
+    deleteUserMutation.mutate(deletingUser._id, {
+      onSettled: () => setDeletingUser(null),
+    });
   };
 
   const columns = [
@@ -106,6 +110,18 @@ export default function Students() {
               <span className="ml-2 text-xs font-semibold text-slate-400">
                 ({capitalizeFirstLetter(student.role)})
               </span>
+              {student.role === "teacher" && (
+                <span
+                  className={`ml-1.5 inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold ${
+                    student.isPublished
+                      ? "bg-emerald-100 text-emerald-800 border border-emerald-200"
+                      : "bg-slate-100 text-slate-600 border border-slate-200"
+                  }`}
+                  title={student.isPublished ? "Published on website directory" : "Unpublished / Private"}
+                >
+                  {student.isPublished ? "Public" : "Private"}
+                </span>
+              )}
             </h4>
             <p className="text-xs text-slate-400 font-medium">
               ID #{student._id?.toString().slice(-6).toUpperCase()}
@@ -153,7 +169,7 @@ export default function Students() {
             <FaEdit />
           </button>
           <button
-            onClick={() => handleDelete(student._id, student.fullName)}
+            onClick={() => setDeletingUser(student)}
             className="flex h-10 w-10 items-center justify-center rounded-xl bg-rose-50 text-rose-600 hover:bg-rose-100 transition-colors"
             title="Delete User"
           >
@@ -377,9 +393,9 @@ export default function Students() {
                 </PortalButton>
                 <button
                   type="button"
-                  onClick={() => handleDelete(student._id, student.fullName)}
-                  className="inline-flex items-center justify-center gap-1.5 px-4 min-h-[40px] rounded-xl bg-rose-50 border border-rose-200 text-rose-600 font-bold text-xs hover:bg-rose-100 active:scale-[0.98] transition-all shadow-xs"
-                  title="Delete Student"
+                  onClick={() => setDeletingUser(student)}
+                  className="inline-flex items-center justify-center gap-1.5 px-4 min-h-[40px] rounded-xl bg-rose-50 border border-rose-200 text-rose-600 font-bold text-xs hover:bg-rose-100 active:scale-[0.98] transition-all shadow-xs cursor-pointer"
+                  title="Delete User"
                 >
                   <FaTrash className="text-xs" />
                   <span>Delete</span>
@@ -433,6 +449,17 @@ export default function Students() {
           </div>
         )}
       </div>
+
+      {/* Delete Confirmation Modal */}
+      <DeleteConfirmModal
+        isOpen={Boolean(deletingUser)}
+        onClose={() => setDeletingUser(null)}
+        onConfirm={confirmDeleteUser}
+        title="Delete User Account"
+        message={`Are you sure you want to delete "${deletingUser?.fullName || deletingUser?.name}" (${deletingUser?.email || "User"})? This will deactivate the account and remove it from active listings.`}
+        confirmText="Delete User"
+        isDeleting={deleteUserMutation.isPending}
+      />
     </div>
   );
 }

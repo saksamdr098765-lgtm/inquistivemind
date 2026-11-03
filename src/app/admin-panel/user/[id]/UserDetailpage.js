@@ -24,6 +24,8 @@ import {
   FaUndo,
   FaVenusMars,
   FaIdCard,
+  FaGlobe,
+  FaEyeSlash,
 } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -39,6 +41,8 @@ import {
   useAdminTeacherUpdateMutation,
   useAdminUnblockUser,
   useAdminUserUpdateMutation,
+  useAdminPublishTeacherMutation,
+  useAdminUnpublishTeacherMutation,
 } from "@/app/mutations/AdminMutations";
 
 import Modal from "@/app/Components/ui/Modals";
@@ -125,6 +129,8 @@ export default function UserDetailsPage({ id }) {
   const rejectUserMutation = useAdminRejectUser(id);
   const blockUserMutation = useAdminBlockUser(id, setOpen);
   const unblockUserMutation = useAdminUnblockUser(id);
+  const publishTeacherMutation = useAdminPublishTeacherMutation(id);
+  const unpublishTeacherMutation = useAdminUnpublishTeacherMutation(id);
   const router = useRouter();
 
   const {
@@ -355,6 +361,16 @@ export default function UserDetailsPage({ id }) {
     unblockUserMutation.mutate();
   };
 
+  const handlePublishTeacher = () => {
+    if (!id) return;
+    publishTeacherMutation.mutate({});
+  };
+
+  const handleUnpublishTeacher = () => {
+    if (!id) return;
+    unpublishTeacherMutation.mutate();
+  };
+
   if (isLoading || (data?.role === "teacher" && teacherLoading && !teacher)) {
     return <PortalSkeleton type="profile" />;
   }
@@ -492,6 +508,20 @@ export default function UserDetailsPage({ id }) {
                   {data?.status || "active"}
                 </PortalBadge>
               </div>
+
+              {isTeacher && (
+                <div className="flex items-center gap-2">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 hidden sm:inline">
+                    Directory:
+                  </span>
+                  <PortalBadge
+                    variant={teacher?.isPublished ? "active" : "default"}
+                    size="sm"
+                  >
+                    {teacher?.isPublished ? "Public" : "Private"}
+                  </PortalBadge>
+                </div>
+              )}
             </div>
           </div>
 
@@ -809,6 +839,92 @@ export default function UserDetailsPage({ id }) {
         </div>
       </form>
 
+      {/* Public Directory Visibility & Website Publication (Only for Teachers) */}
+      {isTeacher && (
+        <PortalCard
+          header="Public Website Directory & Visibility"
+          action={
+            <PortalBadge
+              variant={teacher?.isPublished ? "active" : "default"}
+              size="md"
+            >
+              {teacher?.isPublished ? "Live on Website" : "Private (Hidden)"}
+            </PortalBadge>
+          }
+        >
+          <div className="space-y-4">
+            <p className="text-xs text-slate-500 -mt-2">
+              Control whether this teacher appears in public tutor search directories, location pages, and is eligible for active matching with students.
+            </p>
+
+            <div
+              className={`p-4 sm:p-5 rounded-2xl border transition-all ${
+                teacher?.isPublished
+                  ? "bg-emerald-50/70 border-emerald-200/80 text-emerald-950"
+                  : "bg-slate-50 border-slate-200 text-slate-800"
+              }`}
+            >
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div className="flex items-start sm:items-center gap-3.5">
+                  <div
+                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-xl border ${
+                      teacher?.isPublished
+                        ? "bg-emerald-100 text-emerald-700 border-emerald-300"
+                        : "bg-slate-200 text-slate-600 border-slate-300"
+                    }`}
+                  >
+                    {teacher?.isPublished ? <FaGlobe /> : <FaEyeSlash />}
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-sm sm:text-base text-slate-900 flex items-center gap-2">
+                      {teacher?.isPublished
+                        ? "Tutor Profile is Published & Live"
+                        : "Tutor Profile is Private / Hidden"}
+                    </h4>
+                    <p className="text-xs text-slate-600 mt-0.5 max-w-xl leading-relaxed">
+                      {teacher?.isPublished
+                        ? "This tutor profile is currently visible on the public website and searchable by prospective students."
+                        : "This tutor profile is currently hidden from public search and listings. Only admins can see this account."}
+                    </p>
+                    {teacher?.publishedAt && teacher?.isPublished && (
+                      <p className="text-[11px] font-semibold text-emerald-700 mt-1">
+                        Published on {new Date(teacher.publishedAt).toLocaleDateString()}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="shrink-0 w-full sm:w-auto pt-2 sm:pt-0">
+                  {teacher?.isPublished ? (
+                    <PortalButton
+                      type="button"
+                      variant="outline"
+                      icon={FaEyeSlash}
+                      isLoading={unpublishTeacherMutation.isPending}
+                      onClick={handleUnpublishTeacher}
+                      className="w-full sm:w-auto border-rose-200 text-rose-700 hover:bg-rose-50 hover:border-rose-300"
+                    >
+                      Make Profile Private
+                    </PortalButton>
+                  ) : (
+                    <PortalButton
+                      type="button"
+                      variant="primary"
+                      icon={FaGlobe}
+                      isLoading={publishTeacherMutation.isPending}
+                      onClick={handlePublishTeacher}
+                      className="w-full sm:w-auto"
+                    >
+                      Publish to Public Website
+                    </PortalButton>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </PortalCard>
+      )}
+
       {/* Account Administrative Status Actions */}
       <PortalCard header="Administrative Account Actions">
         <p className="text-xs text-slate-500 -mt-2 mb-4">
@@ -816,6 +932,29 @@ export default function UserDetailsPage({ id }) {
         </p>
 
         <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+          {isTeacher && data?.approvalStatus === "approved" && data?.status === "active" && (
+            teacher?.isPublished ? (
+              <PortalButton
+                variant="outline"
+                icon={FaEyeSlash}
+                isLoading={unpublishTeacherMutation.isPending}
+                onClick={handleUnpublishTeacher}
+                className="w-full sm:w-auto border-slate-300 text-slate-700 hover:bg-slate-100"
+              >
+                Make Private (Unpublish)
+              </PortalButton>
+            ) : (
+              <PortalButton
+                variant="primary"
+                icon={FaGlobe}
+                isLoading={publishTeacherMutation.isPending}
+                onClick={handlePublishTeacher}
+                className="w-full sm:w-auto"
+              >
+                Publish Tutor to Website
+              </PortalButton>
+            )
+          )}
           {data?.approvalStatus === "pending" && (
             <>
               <PortalButton

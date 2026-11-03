@@ -207,6 +207,9 @@ export const useAdminPublishTeacherMutation = (id, onSuccessCallback) => {
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["Admin-Tutor-Applications"] });
       queryClient.invalidateQueries({ queryKey: ["Admin-Teacher", id] });
+      queryClient.invalidateQueries({ queryKey: ["Admin-teacher", id] });
+      queryClient.invalidateQueries({ queryKey: ["Admin-User", id] });
+      queryClient.invalidateQueries({ queryKey: ["Admin-Users"] });
       queryClient.invalidateQueries({ queryKey: ["Admin-Matching-Candidates"] });
       queryClient.invalidateQueries({ queryKey: ["Public-Tutors"] });
       toast.success(data.message);
@@ -226,6 +229,9 @@ export const useAdminUnpublishTeacherMutation = (id, onSuccessCallback) => {
     onSuccess: (data) => {
       queryClient.invalidateQueries({ queryKey: ["Admin-Tutor-Applications"] });
       queryClient.invalidateQueries({ queryKey: ["Admin-Teacher", id] });
+      queryClient.invalidateQueries({ queryKey: ["Admin-teacher", id] });
+      queryClient.invalidateQueries({ queryKey: ["Admin-User", id] });
+      queryClient.invalidateQueries({ queryKey: ["Admin-Users"] });
       queryClient.invalidateQueries({ queryKey: ["Admin-Matching-Candidates"] });
       queryClient.invalidateQueries({ queryKey: ["Public-Tutors"] });
       toast.success(data.message);

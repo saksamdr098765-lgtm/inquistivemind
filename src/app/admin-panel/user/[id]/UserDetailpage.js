@@ -26,6 +26,8 @@ import {
   FaIdCard,
   FaGlobe,
   FaEyeSlash,
+  FaSlidersH,
+  FaShieldAlt,
 } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -43,6 +45,7 @@ import {
   useAdminUserUpdateMutation,
   useAdminPublishTeacherMutation,
   useAdminUnpublishTeacherMutation,
+  useAdminUpdateTeacherPublicSettingsMutation,
 } from "@/app/mutations/AdminMutations";
 
 import Modal from "@/app/Components/ui/Modals";
@@ -120,18 +123,73 @@ const tutorTimeSlots = [
   "9:00 PM - 11:00 PM",
 ];
 
+const readableFieldLabels = {
+  fullName: "Full Name",
+  city: "City & Service Area",
+  subject: "Subject Specialization",
+  experience: "Teaching Experience",
+  qualification: "Academic Qualifications",
+  studentLevel: "Target Student Levels",
+  mode: "Teaching Modes",
+  bio: "Teacher Bio / Intro",
+  availability: "Available Days",
+  timeSlot: "Preferred Time Slots",
+  profileImage: "Profile Photo",
+  headline: "Tagline / Headline",
+  hourlyRate: "Hourly Rates",
+  rating: "Student Rating & Reviews",
+};
+
 export default function UserDetailsPage({ id }) {
   const [open, setOpen] = useState(false);
   const [reason, setReason] = useState("");
   const updateMutation = useAdminUserUpdateMutation(id);
-  const teacherUpdate=useAdminTeacherUpdateMutation(id)
+  const teacherUpdate = useAdminTeacherUpdateMutation(id);
   const approveUserMutation = useAdminApproveUser(id);
   const rejectUserMutation = useAdminRejectUser(id);
   const blockUserMutation = useAdminBlockUser(id, setOpen);
   const unblockUserMutation = useAdminUnblockUser(id);
   const publishTeacherMutation = useAdminPublishTeacherMutation(id);
   const unpublishTeacherMutation = useAdminUnpublishTeacherMutation(id);
+  const publicSettingsMutation = useAdminUpdateTeacherPublicSettingsMutation(id);
   const router = useRouter();
+
+  // Public publication & privacy permission states
+  const [headline, setHeadline] = useState("");
+  const [rateMin, setRateMin] = useState(500);
+  const [rateMax, setRateMax] = useState(1500);
+  const [allowedFields, setAllowedFields] = useState([
+    "fullName",
+    "city",
+    "subject",
+    "experience",
+    "qualification",
+    "studentLevel",
+    "mode",
+    "bio",
+    "availability",
+    "timeSlot",
+    "profileImage",
+    "headline",
+    "hourlyRate",
+    "rating",
+  ]);
+
+  const toggleFieldPermission = (field) => {
+    setAllowedFields((prev) =>
+      prev.includes(field) ? prev.filter((f) => f !== field) : [...prev, field]
+    );
+  };
+
+  const handleSavePublicSettings = (e) => {
+    if (e) e.preventDefault();
+    if (!id) return;
+    publicSettingsMutation.mutate({
+      headline,
+      hourlyRate: { min: Number(rateMin) || 0, max: Number(rateMax) || 0, currency: "INR" },
+      allowedPublicFields: allowedFields,
+    });
+  };
 
   const {
     register,
@@ -324,6 +382,25 @@ export default function UserDetailsPage({ id }) {
     }
   }, [data, teacher, reset]);
 
+  useEffect(() => {
+    if (teacher) {
+      if (teacher.headline) {
+        setHeadline(teacher.headline);
+      } else if (teacher.subject) {
+        setHeadline(`${teacher.subject} Educator`);
+      }
+      if (teacher.hourlyRate?.min !== undefined && teacher.hourlyRate?.min !== null) {
+        setRateMin(teacher.hourlyRate.min);
+      }
+      if (teacher.hourlyRate?.max !== undefined && teacher.hourlyRate?.max !== null) {
+        setRateMax(teacher.hourlyRate.max);
+      }
+      if (Array.isArray(teacher.allowedPublicFields) && teacher.allowedPublicFields.length > 0) {
+        setAllowedFields(teacher.allowedPublicFields);
+      }
+    }
+  }, [teacher]);
+
   const onSubmit = async (formData) => {
     if (!isDirty) {
       toast.error("No changes detected");
@@ -363,7 +440,11 @@ export default function UserDetailsPage({ id }) {
 
   const handlePublishTeacher = () => {
     if (!id) return;
-    publishTeacherMutation.mutate({});
+    publishTeacherMutation.mutate({
+      headline,
+      hourlyRate: { min: Number(rateMin) || 0, max: Number(rateMax) || 0, currency: "INR" },
+      allowedPublicFields: allowedFields,
+    });
   };
 
   const handleUnpublishTeacher = () => {
@@ -852,11 +933,12 @@ export default function UserDetailsPage({ id }) {
             </PortalBadge>
           }
         >
-          <div className="space-y-4">
+          <div className="space-y-5">
             <p className="text-xs text-slate-500 -mt-2">
               Control whether this teacher appears in public tutor search directories, location pages, and is eligible for active matching with students.
             </p>
 
+            {/* Publication Status & Main Switch */}
             <div
               className={`p-4 sm:p-5 rounded-2xl border transition-all ${
                 teacher?.isPublished
@@ -921,6 +1003,109 @@ export default function UserDetailsPage({ id }) {
                 </div>
               </div>
             </div>
+
+            {/* Customization Form: Directory Specs & Allowed Public Field Permissions */}
+            <form onSubmit={handleSavePublicSettings} className="space-y-4 pt-3 border-t border-slate-100">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5">
+                {/* Left Column: Headline & Rates */}
+                <div className="lg:col-span-5 space-y-3.5">
+                  <div className="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 space-y-3">
+                    <h5 className="font-bold text-xs uppercase tracking-wider text-slate-700 flex items-center gap-2">
+                      <FaSlidersH className="text-amber-500" />
+                      <span>Public Directory Specs</span>
+                    </h5>
+
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-1">
+                        Public Headline / Tagline
+                      </label>
+                      <PortalInput
+                        value={headline}
+                        onChange={(e) => setHeadline(e.target.value)}
+                        placeholder="e.g. Certified French Instructor | 5+ Years Experience"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3 pt-0.5">
+                      <div>
+                        <label className="block text-xs font-bold text-slate-700 mb-1">
+                          Min Hourly Rate (₹)
+                        </label>
+                        <PortalInput
+                          type="number"
+                          value={rateMin}
+                          onChange={(e) => setRateMin(Number(e.target.value))}
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-bold text-slate-700 mb-1">
+                          Max Hourly Rate (₹)
+                        </label>
+                        <PortalInput
+                          type="number"
+                          value={rateMax}
+                          onChange={(e) => setRateMax(Number(e.target.value))}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column: Allowlist Permissions */}
+                <div className="lg:col-span-7 space-y-3.5">
+                  <div className="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 space-y-2.5">
+                    <div className="flex items-center justify-between pb-0.5">
+                      <h5 className="font-bold text-xs uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
+                        <FaShieldAlt className="text-amber-500" />
+                        <span>Allowed Public Profile Fields</span>
+                      </h5>
+                      <span className="text-[11px] font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+                        {allowedFields.length} permitted
+                      </span>
+                    </div>
+
+                    <p className="text-[11px] text-slate-500 leading-normal">
+                      Only checked fields will be visible to students on the public website. Unchecked fields remain strictly confidential to the admin team.
+                    </p>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 max-h-64 overflow-y-auto pr-1">
+                      {Object.entries(readableFieldLabels).map(([fieldKey, label]) => {
+                        const isChecked = allowedFields.includes(fieldKey);
+                        return (
+                          <label
+                            key={fieldKey}
+                            className={`flex items-center gap-2.5 p-2 rounded-xl border text-xs font-semibold cursor-pointer transition select-none ${
+                              isChecked
+                                ? "bg-amber-50/80 border-amber-300 text-amber-950 font-bold shadow-2xs"
+                                : "bg-white border-slate-200 text-slate-500 hover:bg-slate-100"
+                            }`}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={isChecked}
+                              onChange={() => toggleFieldPermission(fieldKey)}
+                              className="rounded text-amber-500 focus:ring-amber-400 h-3.5 w-3.5 cursor-pointer"
+                            />
+                            <span className="truncate">{label}</span>
+                          </label>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex justify-end pt-1">
+                <PortalButton
+                  type="submit"
+                  disabled={publicSettingsMutation.isPending}
+                  isLoading={publicSettingsMutation.isPending}
+                  className="w-full sm:w-auto"
+                >
+                  Save Directory & Privacy Permissions
+                </PortalButton>
+              </div>
+            </form>
           </div>
         </PortalCard>
       )}

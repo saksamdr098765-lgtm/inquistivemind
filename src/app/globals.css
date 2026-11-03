@@ -21,6 +21,24 @@
 
   --font-body: var(--font-inter, Inter, sans-serif);
   --font-heading: var(--font-poppins, Poppins, sans-serif);
+
+  /* -------------------------------------------------------------------------- */
+  /* Tutor Discovery Playful Editorial Design Tokens                            */
+  /* -------------------------------------------------------------------------- */
+  --tutor-cream: #FFF8EC;
+  --tutor-ink: #111111;
+  --tutor-mint: #BAEDD0;
+  --tutor-lemon: #FDF082;
+  --tutor-peach: #FFD4BC;
+  --tutor-lavender: #E4D2FF;
+  --tutor-sky: #BFE6FF;
+  --tutor-rose: #FFD2DF;
+
+  --shadow-hard-sm: 2px 2px 0 0 #111111;
+  --shadow-hard: 4px 4px 0 0 #111111;
+  --shadow-hard-md: 5px 5px 0 0 #111111;
+  --shadow-hard-lg: 6px 6px 0 0 #111111;
+  --shadow-hard-xl: 8px 8px 0 0 #111111;
 }
 
 @theme inline {
@@ -31,6 +49,22 @@
   --color-brand-dark: var(--brand-dark);
   --font-sans: var(--font-body);
   --font-heading: var(--font-heading);
+
+  --color-tutor-cream: var(--tutor-cream);
+  --color-tutor-ink: var(--tutor-ink);
+  --color-tutor-mint: var(--tutor-mint);
+  --color-tutor-lemon: var(--tutor-lemon);
+  --color-tutor-peach: var(--tutor-peach);
+  --color-tutor-lavender: var(--tutor-lavender);
+  --color-tutor-sky: var(--tutor-sky);
+  --color-tutor-rose: var(--tutor-rose);
+
+  --shadow-hard-sm: var(--shadow-hard-sm);
+  --shadow-hard: var(--shadow-hard);
+  --shadow-hard-md: var(--shadow-hard-md);
+  --shadow-hard-lg: var(--shadow-hard-lg);
+  --shadow-hard-xl: var(--shadow-hard-xl);
+  --font-display: var(--font-display, "Space Grotesk", sans-serif);
 }
 
 body {
@@ -64,3 +98,62 @@ h6 {
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
+
+/* -------------------------------------------------------------------------- */
+/* Playful Editorial Utility Classes                                         */
+/* -------------------------------------------------------------------------- */
+.editorial-border {
+  border: 2px solid #111111;
+}
+
+.editorial-border-3 {
+  border: 3px solid #111111;
+}
+
+.editorial-shadow-sm {
+  box-shadow: 2px 2px 0 0 #111111;
+}
+
+.editorial-shadow {
+  box-shadow: 4px 4px 0 0 #111111;
+}
+
+.editorial-shadow-md {
+  box-shadow: 5px 5px 0 0 #111111;
+}
+
+.editorial-shadow-lg {
+  box-shadow: 6px 6px 0 0 #111111;
+}
+
+.editorial-shadow-xl {
+  box-shadow: 8px 8px 0 0 #111111;
+}
+
+.editorial-card-hover {
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.editorial-card-hover:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0 0 #111111;
+}
+
+.editorial-btn-press {
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.editorial-btn-press:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 0 #111111;
+}
+
+/* Hide scrollbar for clean chip strips while preserving touch scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

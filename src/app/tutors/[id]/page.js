@@ -3,7 +3,6 @@
 import { use } from "react";
 import Link from "next/link";
 import {
-  FaStar,
   FaCheckCircle,
   FaArrowLeft,
   FaGraduationCap,
@@ -56,7 +55,7 @@ export default function TutorProfilePage({ params }) {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50/60 py-8 sm:py-12">
+    <div className="min-h-screen bg-slate-50/60 pt-20 sm:pt-24 pb-8 sm:pb-12">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-6">
         {/* Navigation link */}
         <div>
@@ -88,12 +87,13 @@ export default function TutorProfilePage({ params }) {
             <div className="flex-1 space-y-2">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
-                  <FaShieldAlt className="text-emerald-500" /> Verified Tutor
+                  <FaShieldAlt className="text-emerald-500" /> Verified Faculty
                 </span>
-                <span className="inline-flex items-center gap-1 text-xs text-amber-700 font-bold bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
-                  <FaStar className="text-amber-500" /> {tutor.rating ? tutor.rating.toFixed(1) : "5.0"}{" "}
-                  ({tutor.reviewsCount || 0} reviews)
-                </span>
+                {tutor.experience && (
+                  <span className="inline-flex items-center gap-1 text-xs text-amber-900 font-bold bg-amber-50 px-3 py-1 rounded-full border border-amber-200">
+                    {tutor.experience} Experience
+                  </span>
+                )}
               </div>
 
               <h1 className="text-2xl sm:text-3xl font-black text-slate-900">

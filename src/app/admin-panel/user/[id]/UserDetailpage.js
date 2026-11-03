@@ -181,6 +181,14 @@ export default function UserDetailsPage({ id }) {
     );
   };
 
+  const handleSelectAllFields = () => {
+    setAllowedFields(Object.keys(readableFieldLabels));
+  };
+
+  const handleClearAllFields = () => {
+    setAllowedFields([]);
+  };
+
   const handleSavePublicSettings = (e) => {
     if (e) e.preventDefault();
     if (!id) return;
@@ -923,33 +931,43 @@ export default function UserDetailsPage({ id }) {
       {/* Public Directory Visibility & Website Publication (Only for Teachers) */}
       {isTeacher && (
         <PortalCard
-          header="Public Website Directory & Visibility"
-          action={
-            <PortalBadge
-              variant={teacher?.isPublished ? "active" : "default"}
-              size="md"
-            >
-              {teacher?.isPublished ? "Live on Website" : "Private (Hidden)"}
-            </PortalBadge>
+          header={
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 w-full">
+              <div className="space-y-1">
+                <h2 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-100 text-amber-700 text-sm shrink-0">
+                    <FaGlobe />
+                  </span>
+                  <span>Public Website Directory & Visibility</span>
+                </h2>
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  Control whether this teacher appears in public tutor search directories, location pages, and is eligible for active matching with students.
+                </p>
+              </div>
+              <div className="self-start sm:self-auto shrink-0">
+                <PortalBadge
+                  variant={teacher?.isPublished ? "active" : "default"}
+                  size="md"
+                >
+                  {teacher?.isPublished ? "Live on Website" : "Private (Hidden)"}
+                </PortalBadge>
+              </div>
+            </div>
           }
         >
-          <div className="space-y-5">
-            <p className="text-xs text-slate-500 -mt-2">
-              Control whether this teacher appears in public tutor search directories, location pages, and is eligible for active matching with students.
-            </p>
-
+          <div className="space-y-4 sm:space-y-5">
             {/* Publication Status & Main Switch */}
             <div
-              className={`p-4 sm:p-5 rounded-2xl border transition-all ${
+              className={`p-3.5 sm:p-5 rounded-2xl border transition-all ${
                 teacher?.isPublished
-                  ? "bg-emerald-50/70 border-emerald-200/80 text-emerald-950"
+                  ? "bg-emerald-50/70 border-emerald-200/90 text-emerald-950"
                   : "bg-slate-50 border-slate-200 text-slate-800"
               }`}
             >
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                <div className="flex items-start sm:items-center gap-3.5">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3.5 sm:gap-4">
+                <div className="flex items-start gap-3 min-w-0">
                   <div
-                    className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-xl border ${
+                    className={`flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-2xl text-lg sm:text-xl border ${
                       teacher?.isPublished
                         ? "bg-emerald-100 text-emerald-700 border-emerald-300"
                         : "bg-slate-200 text-slate-600 border-slate-300"
@@ -957,26 +975,30 @@ export default function UserDetailsPage({ id }) {
                   >
                     {teacher?.isPublished ? <FaGlobe /> : <FaEyeSlash />}
                   </div>
-                  <div>
-                    <h4 className="font-bold text-sm sm:text-base text-slate-900 flex items-center gap-2">
-                      {teacher?.isPublished
-                        ? "Tutor Profile is Published & Live"
-                        : "Tutor Profile is Private / Hidden"}
+                  <div className="min-w-0 flex-1">
+                    <h4 className="font-bold text-sm sm:text-base text-slate-900 flex flex-wrap items-center gap-1.5 sm:gap-2">
+                      <span>{teacher?.isPublished ? "Tutor Profile is Published & Live" : "Tutor Profile is Private / Hidden"}</span>
+                      {teacher?.isPublished && (
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-extrabold border border-emerald-300">
+                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                          LIVE
+                        </span>
+                      )}
                     </h4>
-                    <p className="text-xs text-slate-600 mt-0.5 max-w-xl leading-relaxed">
+                    <p className="text-xs text-slate-600 mt-1 leading-relaxed">
                       {teacher?.isPublished
                         ? "This tutor profile is currently visible on the public website and searchable by prospective students."
                         : "This tutor profile is currently hidden from public search and listings. Only admins can see this account."}
                     </p>
                     {teacher?.publishedAt && teacher?.isPublished && (
-                      <p className="text-[11px] font-semibold text-emerald-700 mt-1">
+                      <p className="text-[11px] font-semibold text-emerald-700 mt-1.5">
                         Published on {new Date(teacher.publishedAt).toLocaleDateString()}
                       </p>
                     )}
                   </div>
                 </div>
 
-                <div className="shrink-0 w-full sm:w-auto pt-2 sm:pt-0">
+                <div className="w-full sm:w-auto shrink-0 pt-1 sm:pt-0">
                   {teacher?.isPublished ? (
                     <PortalButton
                       type="button"
@@ -984,7 +1006,7 @@ export default function UserDetailsPage({ id }) {
                       icon={FaEyeSlash}
                       isLoading={unpublishTeacherMutation.isPending}
                       onClick={handleUnpublishTeacher}
-                      className="w-full sm:w-auto border-rose-200 text-rose-700 hover:bg-rose-50 hover:border-rose-300"
+                      className="w-full sm:w-auto min-h-[44px] border-rose-200 text-rose-700 hover:bg-rose-50 hover:border-rose-300 justify-center font-bold"
                     >
                       Make Profile Private
                     </PortalButton>
@@ -995,7 +1017,7 @@ export default function UserDetailsPage({ id }) {
                       icon={FaGlobe}
                       isLoading={publishTeacherMutation.isPending}
                       onClick={handlePublishTeacher}
-                      className="w-full sm:w-auto"
+                      className="w-full sm:w-auto min-h-[44px] justify-center font-bold shadow-sm"
                     >
                       Publish to Public Website
                     </PortalButton>
@@ -1005,36 +1027,53 @@ export default function UserDetailsPage({ id }) {
             </div>
 
             {/* Customization Form: Directory Specs & Allowed Public Field Permissions */}
-            <form onSubmit={handleSavePublicSettings} className="space-y-4 pt-3 border-t border-slate-100">
+            <form onSubmit={handleSavePublicSettings} className="space-y-4 pt-2 border-t border-slate-100">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5">
                 {/* Left Column: Headline & Rates */}
                 <div className="lg:col-span-5 space-y-3.5">
-                  <div className="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 space-y-3">
-                    <h5 className="font-bold text-xs uppercase tracking-wider text-slate-700 flex items-center gap-2">
-                      <FaSlidersH className="text-amber-500" />
-                      <span>Public Directory Specs</span>
-                    </h5>
+                  <div className="p-3.5 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200/80 space-y-3.5">
+                    <div className="flex items-center justify-between pb-1 border-b border-slate-200/60">
+                      <h5 className="font-bold text-xs uppercase tracking-wider text-slate-700 flex items-center gap-2">
+                        <FaSlidersH className="text-amber-500" />
+                        <span>Public Directory Specs</span>
+                      </h5>
+                      <span className="text-[10px] font-semibold text-slate-500 bg-white px-2 py-0.5 rounded-md border border-slate-200">
+                        Discovery Card
+                      </span>
+                    </div>
 
                     <div>
-                      <label className="block text-xs font-bold text-slate-700 mb-1">
-                        Public Headline / Tagline
-                      </label>
+                      <div className="flex items-center justify-between mb-1">
+                        <label className="block text-xs font-bold text-slate-700">
+                          Public Headline / Tagline
+                        </label>
+                        <span className="text-[10px] text-slate-400">
+                          {headline?.length || 0}/80
+                        </span>
+                      </div>
                       <PortalInput
                         value={headline}
                         onChange={(e) => setHeadline(e.target.value)}
                         placeholder="e.g. Certified French Instructor | 5+ Years Experience"
+                        className="w-full text-xs sm:text-sm"
                       />
+                      <p className="text-[10px] text-slate-400 mt-1">
+                        One-line catchy headline shown on tutor cards and search results.
+                      </p>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3 pt-0.5">
+                    <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 gap-3 pt-1">
                       <div>
                         <label className="block text-xs font-bold text-slate-700 mb-1">
                           Min Hourly Rate (₹)
                         </label>
                         <PortalInput
                           type="number"
+                          min="0"
+                          step="50"
                           value={rateMin}
                           onChange={(e) => setRateMin(Number(e.target.value))}
+                          className="w-full text-xs sm:text-sm font-semibold"
                         />
                       </div>
                       <div>
@@ -1043,8 +1082,11 @@ export default function UserDetailsPage({ id }) {
                         </label>
                         <PortalInput
                           type="number"
+                          min="0"
+                          step="50"
                           value={rateMax}
                           onChange={(e) => setRateMax(Number(e.target.value))}
+                          className="w-full text-xs sm:text-sm font-semibold"
                         />
                       </div>
                     </div>
@@ -1053,40 +1095,69 @@ export default function UserDetailsPage({ id }) {
 
                 {/* Right Column: Allowlist Permissions */}
                 <div className="lg:col-span-7 space-y-3.5">
-                  <div className="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 space-y-2.5">
-                    <div className="flex items-center justify-between pb-0.5">
-                      <h5 className="font-bold text-xs uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
-                        <FaShieldAlt className="text-amber-500" />
-                        <span>Allowed Public Profile Fields</span>
-                      </h5>
-                      <span className="text-[11px] font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
-                        {allowedFields.length} permitted
-                      </span>
+                  <div className="p-3.5 sm:p-5 rounded-2xl bg-slate-50/80 border border-slate-200/80 space-y-3">
+                    <div className="flex flex-col xs:flex-row xs:items-center justify-between gap-2 pb-1 border-b border-slate-200/60">
+                      <div className="flex items-center gap-2">
+                        <FaShieldAlt className="text-amber-500 text-xs shrink-0" />
+                        <h5 className="font-bold text-xs uppercase tracking-wider text-slate-700">
+                          Allowed Public Profile Fields
+                        </h5>
+                      </div>
+                      <div className="flex items-center gap-2 self-start xs:self-auto">
+                        <span className="text-[11px] font-bold text-amber-800 bg-amber-50 px-2.5 py-0.5 rounded-full border border-amber-200">
+                          {allowedFields.length} of {Object.keys(readableFieldLabels).length} permitted
+                        </span>
+                      </div>
                     </div>
 
-                    <p className="text-[11px] text-slate-500 leading-normal">
-                      Only checked fields will be visible to students on the public website. Unchecked fields remain strictly confidential to the admin team.
-                    </p>
+                    {/* Quick Selection Action Bar for Mobile & Desktop */}
+                    <div className="flex items-center justify-between gap-2 pt-0.5">
+                      <p className="text-[11px] text-slate-500 leading-tight">
+                        Only checked fields appear on public tutor cards.
+                      </p>
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        <button
+                          type="button"
+                          onClick={handleSelectAllFields}
+                          className="text-[11px] font-bold text-amber-700 hover:text-amber-800 bg-amber-100/70 hover:bg-amber-100 px-2.5 py-1 rounded-lg transition cursor-pointer"
+                        >
+                          Select All
+                        </button>
+                        <button
+                          type="button"
+                          onClick={handleClearAllFields}
+                          className="text-[11px] font-bold text-slate-600 hover:text-slate-800 bg-white hover:bg-slate-100 border border-slate-200 px-2.5 py-1 rounded-lg transition cursor-pointer"
+                        >
+                          Clear
+                        </button>
+                      </div>
+                    </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 max-h-64 overflow-y-auto pr-1">
+                    {/* Touch-Friendly Grid of Permission Cards (min 44px touch targets) */}
+                    <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 gap-2 pt-1 max-h-80 overflow-y-auto pr-1 overscroll-contain custom-scrollbar">
                       {Object.entries(readableFieldLabels).map(([fieldKey, label]) => {
                         const isChecked = allowedFields.includes(fieldKey);
                         return (
                           <label
                             key={fieldKey}
-                            className={`flex items-center gap-2.5 p-2 rounded-xl border text-xs font-semibold cursor-pointer transition select-none ${
+                            className={`flex items-center gap-3 p-3 rounded-xl border text-xs cursor-pointer transition-all select-none min-h-[44px] active:scale-[0.98] ${
                               isChecked
-                                ? "bg-amber-50/80 border-amber-300 text-amber-950 font-bold shadow-2xs"
-                                : "bg-white border-slate-200 text-slate-500 hover:bg-slate-100"
+                                ? "bg-amber-50/90 border-amber-300 text-amber-950 font-bold shadow-2xs"
+                                : "bg-white border-slate-200/90 text-slate-600 hover:bg-slate-50 hover:border-slate-300 font-medium"
                             }`}
                           >
                             <input
                               type="checkbox"
                               checked={isChecked}
                               onChange={() => toggleFieldPermission(fieldKey)}
-                              className="rounded text-amber-500 focus:ring-amber-400 h-3.5 w-3.5 cursor-pointer"
+                              className="rounded text-amber-500 focus:ring-amber-400 h-4 w-4 cursor-pointer shrink-0 accent-amber-500"
                             />
-                            <span className="truncate">{label}</span>
+                            <span className="truncate flex-1 leading-snug">{label}</span>
+                            {isChecked && (
+                              <span className="text-[10px] text-amber-600 font-bold shrink-0 hidden xs:inline">
+                                ✓
+                              </span>
+                            )}
                           </label>
                         );
                       })}
@@ -1095,12 +1166,17 @@ export default function UserDetailsPage({ id }) {
                 </div>
               </div>
 
-              <div className="flex justify-end pt-1">
+              <div className="flex flex-col-reverse sm:flex-row items-center justify-between gap-3 pt-3 border-t border-slate-100">
+                <div className="flex items-center gap-2 text-[11px] text-slate-500 w-full sm:w-auto">
+                  <FaCheckCircle className="text-emerald-500 shrink-0" />
+                  <span>Changes sync instantly across website directory and location pages.</span>
+                </div>
                 <PortalButton
                   type="submit"
                   disabled={publicSettingsMutation.isPending}
                   isLoading={publicSettingsMutation.isPending}
-                  className="w-full sm:w-auto"
+                  icon={FaSave}
+                  className="w-full sm:w-auto min-h-[44px] justify-center text-xs sm:text-sm font-bold shadow-sm"
                 >
                   Save Directory & Privacy Permissions
                 </PortalButton>

@@ -44,7 +44,7 @@ export default function Dashboard() {
   const { data: recentStudents, isLoading: activitiesLoading } = useAdminGetRecentActivities();
   const { data: classes, isLoading: classesLoading } = useAdminGetAllClasses();
   const { data: announcements, isLoading: annoucementsLoading } = useAdminGetAllAnnoucements();
-console.log(recentStudents)
+
   const stats = [
     {
       title: "Total Students",
@@ -83,10 +83,10 @@ console.log(recentStudents)
       render: (student) => (
         <div className="flex items-center gap-3">
           <div className="flex h-11 w-11 items-center justify-center rounded-full bg-yellow-100 font-bold text-yellow-800 border border-yellow-300">
-            {student?.name?.charAt(0) || "S"}
+            {student?.name?.charAt(0) || student?.fullName?.charAt(0) || "S"}
           </div>
           <div>
-            <h4 className="font-bold text-slate-900">{student?.name}</h4>
+            <h4 className="font-bold text-slate-900">{student?.name || student?.fullName}</h4>
             <p className="text-xs text-slate-400">Recent Enrollee</p>
           </div>
         </div>
@@ -271,10 +271,10 @@ console.log(recentStudents)
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="flex h-9 w-9 items-center justify-center rounded-full bg-yellow-100 font-bold text-yellow-800 border border-yellow-300 text-xs">
-                      {student?.name?.charAt(0) || "S"}
+                      {student?.name?.charAt(0) || student?.fullName?.charAt(0) || "S"}
                     </div>
                     <div>
-                      <h4 className="font-bold text-slate-900 text-xs sm:text-sm">{student?.name}</h4>
+                      <h4 className="font-bold text-slate-900 text-xs sm:text-sm">{student?.name || student?.fullName}</h4>
                       <p className="text-[11px] text-slate-400">{student?.course}</p>
                     </div>
                   </div>

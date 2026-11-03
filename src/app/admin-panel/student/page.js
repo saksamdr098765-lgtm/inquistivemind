@@ -11,6 +11,7 @@ import {
   FaFilter,
   FaUserCheck,
   FaUserGraduate,
+  FaChalkboardTeacher,
   FaUndo,
 } from "react-icons/fa";
 
@@ -92,7 +93,7 @@ export default function Students() {
 
   const columns = [
     {
-      header: "Student Name",
+      header: "User / Student Name",
       key: "fullName",
       render: (student) => (
         <div className="flex items-center gap-3.5 min-w-0 max-w-[240px]">
@@ -178,22 +179,33 @@ export default function Students() {
             Administration
           </span>
           <h1 className="mt-2 text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
-            Student Management
+            User & Student Management
           </h1>
           <p className="mt-1 text-orange-100 font-medium text-xs sm:text-sm max-w-xl">
-            Monitor, approve, update, and manage student accounts across all courses.
+            Monitor, approve, update, and manage student and teacher accounts across the academy.
           </p>
         </div>
 
-        <PortalButton
-          variant="secondary"
-          size="sm"
-          icon={FaPlus}
-          onClick={() => router.push("/admin-panel/add-student")}
-          className="w-full sm:w-auto"
-        >
-          Add New Student
-        </PortalButton>
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
+          <PortalButton
+            variant="secondary"
+            size="sm"
+            icon={FaChalkboardTeacher}
+            onClick={() => router.push("/admin-panel/add-teacher")}
+            className="w-full sm:w-auto"
+          >
+            Add Teacher
+          </PortalButton>
+          <PortalButton
+            variant="secondary"
+            size="sm"
+            icon={FaPlus}
+            onClick={() => router.push("/admin-panel/add-student")}
+            className="w-full sm:w-auto"
+          >
+            Add New Student
+          </PortalButton>
+        </div>
       </motion.div>
 
       {/* Filter and Search Bar */}
@@ -287,8 +299,8 @@ export default function Students() {
           data={users}
           isLoading={isLoading}
           isFetching={isFetching}
-          emptyTitle="No students found"
-          emptyDescription="No student records matched your search parameters."
+          emptyTitle="No users found"
+          emptyDescription="No student or teacher records matched your search parameters."
           renderMobileCard={(student) => (
             <div className="space-y-3 min-w-0 w-full">
               {/* Header: Avatar, Name, Role, ID & Status Badge */}

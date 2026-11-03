@@ -3,9 +3,10 @@
 import { use } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FaArrowLeft, FaSpinner, FaUserTie } from "react-icons/fa";
+import { FaArrowLeft, FaUserTie } from "react-icons/fa";
 import { useAdminTutorApplicationById } from "@/Hooks/useAdminTutorApplications";
 import TutorApplicationDetailView from "../components/TutorApplicationDetailView";
+import PortalSkeleton from "@/app/Components/portal-ui/PortalSkeleton";
 
 export default function TutorApplicationDetailPage({ params }) {
   const router = useRouter();
@@ -28,12 +29,7 @@ export default function TutorApplicationDetailPage({ params }) {
       </div>
 
       {isLoading ? (
-        <div className="text-center py-16 rounded-2xl bg-white border border-slate-200">
-          <FaSpinner className="animate-spin text-3xl text-amber-500 mx-auto mb-3" />
-          <p className="text-sm font-semibold text-slate-600">
-            Loading tutor application details...
-          </p>
-        </div>
+        <PortalSkeleton type="profile" />
       ) : !application ? (
         <div className="text-center py-16 rounded-2xl bg-white border border-slate-200 space-y-3">
           <div className="flex h-14 w-14 mx-auto items-center justify-center rounded-2xl bg-amber-100 text-amber-800 text-xl font-bold">

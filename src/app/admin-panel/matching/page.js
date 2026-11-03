@@ -43,7 +43,7 @@ function MatchingContent() {
   const [pendingCandidateAction, setPendingCandidateAction] = useState({ id: null, type: null });
 
   // Requirements list to populate selector
-  const { data: reqData, isLoading: reqLoading } = useAdminStudentRequirements(
+  const { data: reqData, isLoading: reqLoading, isFetching: reqFetching } = useAdminStudentRequirements(
     1,
     "",
     "",
@@ -63,7 +63,7 @@ function MatchingContent() {
   }, [queryReqId, requirements, selectedReqId]);
 
   // Load candidates for selected requirement
-  const { data: matchData, isLoading: matchLoading, refetch } =
+  const { data: matchData, isLoading: matchLoading, isFetching: matchFetching, refetch } =
     useAdminMatchingCandidates(selectedReqId);
 
   const requirement = matchData?.requirement;
@@ -134,6 +134,7 @@ function MatchingContent() {
           </label>
           <PortalSelect
             value={selectedReqId}
+            isLoading={reqLoading || matchFetching}
             onChange={(e) => {
               setSelectedReqId(e.target.value);
               router.push(`/admin-panel/matching?reqId=${e.target.value}`);
@@ -148,21 +149,47 @@ function MatchingContent() {
         </div>
       </div>
 
+      {/* Top indeterminate refetch indicator */}
+      {matchFetching && !matchLoading && (
+        <div className="h-1 w-full bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 animate-pulse rounded-full" />
+      )}
+
       {/* ⭐ PROMINENTLY HIGHLIGHTED STUDENT USER CARD */}
-      {requirement && (
+      {matchLoading && !requirement ? (
+        <div className="animate-pulse p-5 sm:p-6 rounded-3xl bg-amber-50/70 border-2 border-amber-200/80 shadow-xs">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div className="flex items-start gap-4 flex-1 min-w-0">
+              <div className="h-16 w-16 rounded-2xl bg-amber-200/80 shrink-0" />
+              <div className="space-y-2 flex-1 min-w-0">
+                <div className="flex items-center gap-2">
+                  <div className="h-6 w-24 rounded-lg bg-amber-200/70" />
+                  <div className="h-6 w-36 rounded-lg bg-amber-200/50" />
+                </div>
+                <div className="h-4 w-48 rounded bg-amber-200/40" />
+                <div className="flex gap-2 pt-1 flex-wrap">
+                  <div className="h-6 w-20 rounded-md bg-white/80" />
+                  <div className="h-6 w-20 rounded-md bg-white/80" />
+                  <div className="h-6 w-24 rounded-md bg-white/80" />
+                </div>
+              </div>
+            </div>
+            <div className="h-10 w-32 rounded-xl bg-amber-200/60 shrink-0" />
+          </div>
+        </div>
+      ) : requirement ? (
         <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-amber-100/90 via-amber-50 to-yellow-100/60 border-2 border-amber-400 shadow-md">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-            <div className="flex items-start gap-4">
+            <div className="flex items-start gap-4 min-w-0 flex-1">
               <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-amber-400 text-slate-950 font-black text-2xl shadow-sm border border-amber-300">
                 {requirement.name?.charAt(0)?.toUpperCase() || "S"}
               </div>
 
-              <div className="space-y-1.5">
+              <div className="space-y-1.5 min-w-0 flex-1">
                 <div className="flex items-center gap-2.5 flex-wrap">
-                  <span className="font-mono text-xs font-black px-2.5 py-0.5 rounded-lg bg-amber-200/90 text-amber-950 border border-amber-300">
+                  <span className="font-mono text-xs font-black px-2.5 py-0.5 rounded-lg bg-amber-200/90 text-amber-950 border border-amber-300 shrink-0">
                     {requirement.referenceCode}
                   </span>
-                  <h3 className="text-xl font-black text-slate-900">
+                  <h3 className="text-xl font-black text-slate-900 truncate" title={requirement.name}>
                     {requirement.name}
                   </h3>
                   <PortalBadge variant={requirement.status}>{requirement.status}</PortalBadge>
@@ -172,25 +199,26 @@ function MatchingContent() {
                   {requirement.email && (
                     <a
                       href={`mailto:${requirement.email}`}
-                      className="flex items-center gap-1 font-bold text-slate-800 hover:text-amber-700"
+                      className="flex items-center gap-1 font-bold text-slate-800 hover:text-amber-700 truncate max-w-[220px]"
+                      title={requirement.email}
                     >
-                      <FaEnvelope className="text-amber-700 text-xs" />
-                      {requirement.email}
+                      <FaEnvelope className="text-amber-700 text-xs shrink-0" />
+                      <span className="truncate">{requirement.email}</span>
                     </a>
                   )}
                   {requirement.phone && (
                     <a
                       href={`tel:${requirement.phone}`}
-                      className="flex items-center gap-1 font-bold text-slate-800 hover:text-amber-700"
+                      className="flex items-center gap-1 font-bold text-slate-800 hover:text-amber-700 whitespace-nowrap"
                     >
-                      <FaPhoneAlt className="text-amber-700 text-xs" />
-                      {requirement.phone}
+                      <FaPhoneAlt className="text-amber-700 text-xs shrink-0" />
+                      <span>{requirement.phone}</span>
                     </a>
                   )}
                   {requirement.city && (
-                    <span className="flex items-center gap-1 font-semibold text-slate-600">
-                      <FaMapMarkerAlt className="text-amber-700 text-xs" />
-                      {requirement.city}
+                    <span className="flex items-center gap-1 font-semibold text-slate-600 whitespace-nowrap">
+                      <FaMapMarkerAlt className="text-amber-700 text-xs shrink-0" />
+                      <span>{requirement.city}</span>
                     </span>
                   )}
                 </div>
@@ -213,18 +241,18 @@ function MatchingContent() {
               </div>
             </div>
 
-            <div className="flex items-center gap-2 shrink-0">
+            <div className="flex items-center gap-2 lg:shrink-0">
               <button
                 type="button"
                 onClick={() => router.push("/admin-panel/student-requirements")}
-                className="text-xs font-bold text-slate-700 hover:text-slate-900 flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 transition shadow-2xs cursor-pointer"
+                className="text-xs font-bold text-slate-700 hover:text-slate-900 flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white hover:bg-slate-50 transition shadow-2xs cursor-pointer whitespace-nowrap"
               >
                 <FaArrowLeft className="text-xs" /> All Requirements
               </button>
             </div>
           </div>
         </div>
-      )}
+      ) : null}
 
       {/* Candidates List */}
       <div className="space-y-4">
@@ -241,11 +269,37 @@ function MatchingContent() {
         </div>
 
         {matchLoading ? (
-          <div className="p-12 text-center rounded-3xl bg-white border border-slate-200">
-            <FaSpinner className="animate-spin text-3xl text-amber-500 mx-auto mb-3" />
-            <p className="text-sm font-semibold text-slate-500">
-              Calculating compatibility scores and schedules...
-            </p>
+          <div className="space-y-3.5">
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="animate-pulse p-5 sm:p-6 rounded-3xl border-2 border-slate-200/90 bg-white space-y-4 shadow-xs"
+              >
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                  <div className="flex items-start gap-4 flex-1 min-w-0">
+                    <div className="h-14 w-14 rounded-2xl bg-amber-100/80 shrink-0" />
+                    <div className="space-y-2 flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <div className="h-5 w-40 rounded-lg bg-slate-200" />
+                        <div className="h-5 w-20 rounded-full bg-slate-100" />
+                      </div>
+                      <div className="h-4 w-64 rounded bg-slate-100" />
+                      <div className="flex gap-1.5 pt-1">
+                        <div className="h-6 w-28 rounded-lg bg-slate-100" />
+                        <div className="h-6 w-32 rounded-lg bg-slate-100" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4 lg:border-l lg:border-slate-100 lg:pl-6 shrink-0">
+                    <div className="h-10 w-16 rounded-xl bg-slate-100" />
+                    <div className="flex gap-2">
+                      <div className="h-9 w-24 rounded-xl bg-slate-100" />
+                      <div className="h-9 w-28 rounded-xl bg-amber-200/80" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         ) : candidates.length === 0 ? (
           <PortalCard className="text-center py-12">

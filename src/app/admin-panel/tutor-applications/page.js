@@ -44,7 +44,7 @@ export default function TutorApplicationsPage() {
 
   const debouncedSearch = useDebounce(search, 400);
 
-  const { data, isLoading, refetch } = useAdminTutorApplications(
+  const { data, isLoading, isFetching, refetch } = useAdminTutorApplications(
     page,
     debouncedSearch,
     status,
@@ -306,12 +306,16 @@ export default function TutorApplicationsPage() {
       </div>
 
       {/* Filters Card */}
-      <PortalCard>
+      <PortalCard className="relative overflow-hidden">
+        {isFetching && (
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 animate-pulse z-10" />
+        )}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div className="relative">
             <PortalInput
               placeholder="Search by name, email, subject, city..."
               value={search}
+              isLoading={isFetching && Boolean(search)}
               onChange={(e) => {
                 setSearch(e.target.value);
                 setPage(1);
@@ -323,6 +327,7 @@ export default function TutorApplicationsPage() {
 
           <PortalSelect
             value={status}
+            isLoading={isFetching}
             onChange={(e) => {
               setStatus(e.target.value);
               setPage(1);
@@ -338,6 +343,7 @@ export default function TutorApplicationsPage() {
           <PortalInput
             placeholder="Filter by subject (e.g. French, Math)..."
             value={subject}
+            isLoading={isFetching && Boolean(subject)}
             onChange={(e) => {
               setSubject(e.target.value);
               setPage(1);
@@ -350,11 +356,13 @@ export default function TutorApplicationsPage() {
       <PortalTable
         columns={columns}
         data={applications}
-        loading={isLoading}
+        isLoading={isLoading}
+        isFetching={isFetching}
         onRowClick={handleOpenReview}
         renderMobileCard={renderMobileCard}
         selectedRowId={selectedApp?._id}
-        emptyMessage="No tutor applications match your filters."
+        emptyTitle="No tutor applications found"
+        emptyDescription="No tutor applications match your filters."
       />
 
       {/* Pagination Footer */}

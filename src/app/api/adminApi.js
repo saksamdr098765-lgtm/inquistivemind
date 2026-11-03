@@ -46,6 +46,10 @@ export function adminCreateStudentApi(data) {
   return api.post(`/admin/student/create`, data);
 }
 
+export function adminCreateTeacherApi(data) {
+  return api.post(`/admin/create-teacher`, data);
+}
+
 // course
 export function adminGetCoursesApi() {
   return api.get(`/courses/`);

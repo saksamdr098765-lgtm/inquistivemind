@@ -52,7 +52,7 @@ export default function StudentRequirementsPage() {
 
   const debouncedSearch = useDebounce(search, 400);
 
-  const { data, isLoading, refetch } = useAdminStudentRequirements(
+  const { data, isLoading, isFetching, refetch } = useAdminStudentRequirements(
     page,
     debouncedSearch,
     status,
@@ -82,9 +82,9 @@ export default function StudentRequirementsPage() {
     }
   };
 
-  // Navigate to dedicated page on mobile (< 768px), or open modal on desktop
+  // Navigate to dedicated page on mobile (< 1024px), or open modal on desktop
   const handleOpenDetail = (req) => {
-    if (typeof window !== "undefined" && window.innerWidth < 768) {
+    if (typeof window !== "undefined" && window.innerWidth < 1024) {
       router.push(`/admin-panel/student-requirements/${req._id}`);
     } else {
       setSelectedReq(req);
@@ -95,6 +95,8 @@ export default function StudentRequirementsPage() {
     {
       header: "Requirement ID",
       key: "referenceCode",
+      headerClassName: "min-w-[150px] whitespace-nowrap",
+      cellClassName: "min-w-[150px] whitespace-nowrap",
       render: (req) => (
         <div>
           <span className="font-mono text-xs font-black text-amber-900 bg-amber-100/90 px-2.5 py-1 rounded-lg border border-amber-300 shadow-2xs">
@@ -109,14 +111,16 @@ export default function StudentRequirementsPage() {
     {
       header: "Student User",
       key: "name",
+      headerClassName: "min-w-[220px]",
+      cellClassName: "min-w-[220px]",
       render: (req) => (
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 min-w-0">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-amber-100 text-amber-900 font-black border border-amber-300 text-sm shadow-2xs">
             {req.name?.charAt(0)?.toUpperCase() || "S"}
           </div>
-          <div>
-            <p className="font-bold text-slate-900 leading-snug">{req.name}</p>
-            <p className="text-xs text-slate-400">
+          <div className="min-w-0 flex-1">
+            <p className="font-bold text-slate-900 leading-snug truncate" title={req.name}>{req.name}</p>
+            <p className="text-xs text-slate-400 mt-0.5 truncate">
               {req.city ? `${req.city} • ` : ""}
               {req.user ? "Registered Account" : "Guest Lead"}
             </p>
@@ -127,20 +131,24 @@ export default function StudentRequirementsPage() {
     {
       header: "Subject & Level",
       key: "subject",
+      headerClassName: "min-w-[180px]",
+      cellClassName: "min-w-[180px]",
       render: (req) => (
-        <div>
-          <span className="inline-block px-2.5 py-0.5 rounded-lg bg-amber-50 text-amber-800 border border-amber-200 text-xs font-bold">
+        <div className="space-y-1 min-w-0">
+          <span className="inline-block px-2.5 py-0.5 rounded-lg bg-amber-50 text-amber-800 border border-amber-200 text-xs font-bold truncate max-w-full" title={req.subject}>
             {req.subject}
           </span>
-          <p className="text-xs text-slate-500 mt-0.5">{req.level || "Any level"}</p>
+          <p className="text-xs text-slate-500 truncate" title={req.level}>{req.level || "Any level"}</p>
         </div>
       ),
     },
     {
       header: "Teaching Mode",
       key: "mode",
+      headerClassName: "min-w-[140px] whitespace-nowrap",
+      cellClassName: "min-w-[140px] whitespace-nowrap",
       render: (req) => (
-        <span className="text-xs font-semibold text-slate-700 bg-slate-100 px-2.5 py-1 rounded-lg border border-slate-200">
+        <span className="text-xs font-semibold text-slate-700 bg-slate-100 px-2.5 py-1 rounded-lg border border-slate-200 inline-block">
           {req.mode || "Flexible"}
         </span>
       ),
@@ -148,20 +156,24 @@ export default function StudentRequirementsPage() {
     {
       header: "Status",
       key: "status",
+      headerClassName: "min-w-[130px] whitespace-nowrap",
+      cellClassName: "min-w-[130px] whitespace-nowrap",
       render: (req) => <PortalBadge variant={req.status}>{req.status}</PortalBadge>,
     },
     {
       header: "Actions",
       key: "actions",
       align: "right",
+      headerClassName: "min-w-[270px] whitespace-nowrap text-right",
+      cellClassName: "min-w-[270px] whitespace-nowrap text-right",
       render: (req) => (
-        <div className="flex items-center justify-end gap-1.5">
+        <div className="flex items-center justify-end gap-1.5 whitespace-nowrap">
           <button
             onClick={(e) => {
               e.stopPropagation();
               handleOpenDetail(req);
             }}
-            className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 font-bold text-xs transition cursor-pointer"
+            className="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 border border-slate-300 font-bold text-xs transition cursor-pointer whitespace-nowrap"
           >
             View Details
           </button>
@@ -170,7 +182,7 @@ export default function StudentRequirementsPage() {
               e.stopPropagation();
               router.push(`/admin-panel/matching?reqId=${req._id}`);
             }}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-400 text-slate-950 font-extrabold text-xs hover:bg-amber-500 transition shadow-2xs cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-400 text-slate-950 font-extrabold text-xs hover:bg-amber-500 transition shadow-2xs cursor-pointer whitespace-nowrap"
           >
             <FaHandshake className="text-xs" /> Match Tutors
           </button>
@@ -180,7 +192,7 @@ export default function StudentRequirementsPage() {
               e.stopPropagation();
               setDeletingReq(req);
             }}
-            className="flex h-8 w-8 items-center justify-center rounded-xl bg-rose-50 text-rose-600 hover:bg-rose-100 border border-rose-200 transition cursor-pointer"
+            className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-rose-50 text-rose-600 hover:bg-rose-100 border border-rose-200 transition cursor-pointer"
             title="Delete Requirement"
           >
             <FaTrash className="text-xs" />
@@ -192,10 +204,7 @@ export default function StudentRequirementsPage() {
 
   // Mobile First Custom Card Renderer (< 1024px)
   const renderMobileCard = (req) => (
-    <div
-      onClick={() => router.push(`/admin-panel/student-requirements/${req._id}`)}
-      className="space-y-3 cursor-pointer"
-    >
+    <div className="space-y-3">
       {/* Header: Name, Ref Code, Date, Status */}
       <div className="flex items-start justify-between gap-3">
         <div className="flex items-center gap-3 min-w-0">
@@ -262,9 +271,16 @@ export default function StudentRequirementsPage() {
           <FaHandshake className="text-amber-400" /> Match Tutors
         </button>
 
-        <span className="inline-flex items-center gap-1 px-3 py-2 rounded-xl bg-amber-400 text-slate-950 font-bold text-xs shadow-2xs">
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            router.push(`/admin-panel/student-requirements/${req._id}`);
+          }}
+          className="inline-flex items-center gap-1 px-3 py-2 rounded-xl bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold text-xs shadow-2xs transition"
+        >
           View Details <FaChevronRight className="text-[9px]" />
-        </span>
+        </button>
 
         <button
           type="button"
@@ -299,12 +315,16 @@ export default function StudentRequirementsPage() {
       </div>
 
       {/* Filters Card */}
-      <PortalCard>
-        <div className="grid grid-cols-1 sm:grid-cols-4 gap-3">
-          <div className="relative sm:col-span-2">
+      <PortalCard className="relative overflow-hidden">
+        {isFetching && (
+          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-500 animate-pulse z-10" />
+        )}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="relative sm:col-span-2 lg:col-span-1">
             <PortalInput
-              placeholder="Search by reference code, student name, email, subject..."
+              placeholder="Search reference, student, email, subject..."
               value={search}
+              isLoading={isFetching && Boolean(search)}
               onChange={(e) => {
                 setSearch(e.target.value);
                 setPage(1);
@@ -316,6 +336,7 @@ export default function StudentRequirementsPage() {
 
           <PortalSelect
             value={status}
+            isLoading={isFetching}
             onChange={(e) => {
               setStatus(e.target.value);
               setPage(1);
@@ -328,14 +349,48 @@ export default function StudentRequirementsPage() {
             ))}
           </PortalSelect>
 
-          <PortalInput
-            placeholder="Filter by subject (e.g. French, Math)..."
-            value={subject}
+          <PortalSelect
+            value={mode}
+            isLoading={isFetching}
             onChange={(e) => {
-              setSubject(e.target.value);
+              setMode(e.target.value);
               setPage(1);
             }}
-          />
+          >
+            <option value="">All Teaching Modes</option>
+            <option value="Online">Online</option>
+            <option value="Offline">Offline / Home Tutor</option>
+            <option value="Flexible">Flexible</option>
+          </PortalSelect>
+
+          <div className="flex items-center gap-2">
+            <PortalInput
+              placeholder="Filter by subject (e.g. French)..."
+              value={subject}
+              isLoading={isFetching && Boolean(subject)}
+              onChange={(e) => {
+                setSubject(e.target.value);
+                setPage(1);
+              }}
+              className="flex-1"
+            />
+            {(search || status || subject || mode) && (
+              <button
+                type="button"
+                onClick={() => {
+                  setSearch("");
+                  setStatus("");
+                  setSubject("");
+                  setMode("");
+                  setPage(1);
+                }}
+                className="px-3 py-2 text-xs font-bold text-slate-600 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-xl transition cursor-pointer whitespace-nowrap shrink-0"
+                title="Reset filters"
+              >
+                Reset
+              </button>
+            )}
+          </div>
         </div>
       </PortalCard>
 
@@ -343,11 +398,13 @@ export default function StudentRequirementsPage() {
       <PortalTable
         columns={columns}
         data={requirements}
-        loading={isLoading}
+        isLoading={isLoading}
+        isFetching={isFetching}
         onRowClick={handleOpenDetail}
         renderMobileCard={renderMobileCard}
         selectedRowId={selectedReq?._id}
-        emptyMessage="No student requirements match your search."
+        emptyTitle="No student requirements found"
+        emptyDescription="No student learning enquiries match your current search filters."
       />
 
       {/* Pagination Footer */}

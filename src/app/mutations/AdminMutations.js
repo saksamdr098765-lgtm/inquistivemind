@@ -23,6 +23,7 @@ import {
   adminDeleteTutorApplicationApi,
   adminDeleteStudentRequirementApi,
   adminCreateStudentApi,
+  adminCreateTeacherApi,
 } from "../api/adminApi";
 import queryClient from "@/lib/queryClient";
 
@@ -388,6 +389,23 @@ export const useAdminCreateStudentMutation = (onSuccessCallback) => {
       queryClient.invalidateQueries({ queryKey: ["Admin-Student-List"] });
       queryClient.invalidateQueries({ queryKey: ["Admin-Stats"] });
       toast.success(data.message || "Student created successfully.");
+      if (onSuccessCallback) onSuccessCallback(data);
+    },
+    onError: (error) => handleError(error),
+  });
+};
+
+export const useAdminCreateTeacherMutation = (onSuccessCallback) => {
+  return useMutation({
+    mutationFn: async (data) => {
+      const response = await adminCreateTeacherApi(data);
+      return response.data;
+    },
+    retry: false,
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ["Admin-Student-List"] });
+      queryClient.invalidateQueries({ queryKey: ["Admin-Stats"] });
+      toast.success(data.message || "Teacher created successfully.");
       if (onSuccessCallback) onSuccessCallback(data);
     },
     onError: (error) => handleError(error),

@@ -10,12 +10,19 @@ export default function PortalTable({
   emptyTitle = "No records found",
   emptyDescription = "There are no items matching your criteria.",
   isLoading = false,
+  loading = false,
   isFetching = false,
+  emptyMessage,
   className = "",
+  tableClassName = "",
   onRowClick,
   selectedRowId,
 }) {
-  if (isLoading) {
+  const showLoading = isLoading || loading;
+  const resolvedEmptyTitle = emptyTitle || (emptyMessage ? "No records found" : "No records found");
+  const resolvedEmptyDescription = emptyDescription || emptyMessage || "There are no items matching your criteria.";
+
+  if (showLoading) {
     return (
       <div className="animate-pulse space-y-4 rounded-[28px] border border-slate-200 bg-white p-6">
         <div className="h-6 w-1/4 rounded bg-slate-200" />
@@ -31,8 +38,8 @@ export default function PortalTable({
   if (!data || data.length === 0) {
     return (
       <div className="rounded-[28px] border border-dashed border-slate-200 bg-white/80 p-10 text-center">
-        <h3 className="text-lg font-bold text-slate-800">{emptyTitle}</h3>
-        <p className="mt-1 text-sm text-slate-500">{emptyDescription}</p>
+        <h3 className="text-lg font-bold text-slate-800">{resolvedEmptyTitle}</h3>
+        <p className="mt-1 text-sm text-slate-500">{resolvedEmptyDescription}</p>
       </div>
     );
   }
@@ -74,8 +81,8 @@ export default function PortalTable({
       )}
 
       {/* Desktop Table View */}
-      <div className="hidden lg:block overflow-x-auto">
-        <table className="w-full text-left border-collapse">
+      <div className="hidden lg:block overflow-x-auto w-full">
+        <table className={`w-full min-w-full text-left border-collapse ${tableClassName}`}>
           <thead>
             <tr className="border-b border-slate-100 bg-slate-50/70 text-xs font-bold uppercase tracking-wider text-slate-500">
               {columns.map((col, idx) => (

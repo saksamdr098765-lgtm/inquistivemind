@@ -46,58 +46,33 @@ export default function ServiceCoursesWeOffer({ service }) {
               key={course.slug}
               className="group flex flex-col justify-between rounded-3xl border border-slate-200 bg-white overflow-hidden shadow-sm transition-all duration-300 hover:shadow-xl hover:border-yellow-300"
             >
-              <div>
-                <div className="relative h-48 w-full overflow-hidden bg-slate-900/5 p-1.5 flex items-center justify-center">
-                  <img
-                    src={course.coverImage}
-                    alt={course.title}
-                    className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-105"
-                  />
-                  {course.badge && (
-                    <div className="absolute top-3 left-3 rounded-full bg-yellow-500 px-3 py-1 text-[11px] font-bold text-slate-950 shadow-md">
-                      {course.badge}
-                    </div>
-                  )}
-                </div>
-
-                <div className="p-6">
-                  <div className="flex items-center gap-3 text-xs text-slate-500 mb-2">
+              <div className="p-6">
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <div className="flex items-center gap-3 text-xs text-slate-500">
                     <span className="inline-flex items-center gap-1 font-semibold text-yellow-700">
                       <FiTag />
-                      <span>{course.category}</span>
+                      <span>{course.category || course.level || "French Track"}</span>
                     </span>
                     <span>•</span>
                     <span className="inline-flex items-center gap-1">
                       <FiClock />
-                      <span>{course.duration}</span>
+                      <span>{course.duration || (course.durationWeeks ? `${course.durationWeeks} Weeks` : "Structured")}</span>
                     </span>
                   </div>
-
-                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-yellow-700 transition-colors">
-                    {course.title}
-                  </h3>
-
-                  <p className="mt-2.5 text-xs text-slate-600 line-clamp-2 leading-relaxed">
-                    {course.shortDescription}
-                  </p>
-
-                  {/* <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between">
-                    <div>
-                      <p className="text-[10px] font-bold uppercase text-slate-400">
-                        {isTeacher ? "Teaching Pay/Batch" : "Course Fee"}
-                      </p>
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-lg font-extrabold text-slate-900">
-                          {isTeacher ? "Competitive Rates" : `₹${course.price?.toLocaleString()}`}
-                        </span>
-                      </div>
-                    </div>
-                    <span className="inline-flex items-center gap-1 text-xs font-semibold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">
-                      <FiCheckCircle />
-                      <span>{isTeacher ? "Open Batch" : "Live Batch"}</span>
+                  {course.badge && (
+                    <span className="rounded-full bg-yellow-400 px-2.5 py-0.5 text-[10px] font-bold text-slate-950">
+                      {course.badge}
                     </span>
-                  </div> */}
+                  )}
                 </div>
+
+                <h3 className="text-xl font-bold text-slate-900 group-hover:text-yellow-700 transition-colors">
+                  {course.title}
+                </h3>
+
+                <p className="mt-2.5 text-xs text-slate-600 line-clamp-2 leading-relaxed">
+                  {course.shortDescription || course.heroSubtitle}
+                </p>
               </div>
 
               <div className="p-6 pt-0">

@@ -286,13 +286,13 @@ export const locations = [
   isOnlineOnly: true,
 
   centralHub: [
-    {
-      title: "French for School Students in Panchkula",
-      desc: "Structured French coaching aligned with CBSE/ICSE second-language requirements, for students in Sector 15, Sector 20 and nearby schools",
-      href: "/services/french-for-school-students",
-      badge: "Featured Service",
-      buttonText: "Explore School Program",
-    },
+    // {
+    //   title: "French for School Students in Panchkula",
+    //   desc: "Structured French coaching aligned with CBSE/ICSE second-language requirements, for students in Sector 15, Sector 20 and nearby schools",
+    //   href: "/services/french-for-school-students",
+    //   badge: "Featured Service",
+    //   buttonText: "Explore School Program",
+    // },
     {
       title: "French Tutor Jobs in Chandigarh & Mohali",
       desc: "Apply for French tutor jobs and teach students through flexible home and online opportunities",
@@ -689,6 +689,176 @@ seo: {
       direction: "",
     },
   },
+  {
+  slug: "home-tuition-panchkula",
+  city: "Panchkula",
+  title: "Home Tuition in Panchkula | Inquisitive Mind Academy",
+  shortDescription:
+    "Find a home tutor in Panchkula for Class 1–12, spoken English and French. We match a tutor near your sector for home or live online tuition, with a trial class first.",
+  coverImage: "/locations/home-tuition-panchkula/cover.webp",
+  address: "Home Tuition Across Panchkula + Live Online Classes",
+  phone: SITE_CONFIG.phone,
+  hours: "Mon - Sat: 09:00 AM - 07:00 PM | Tutor Requests Open Daily",
+
+  offersVisits: true,
+  isOnlineOnly: false,
+
+  centralHub: [
+    {
+      title: "Home Tutor in Chandigarh, Mohali & Panchkula",
+      desc: "Request a home or online tutor for Class 1–12, spoken English and French, with a trial class before you commit",
+      href: "/services/home-tutor-chandigarh",
+      badge: "Featured Service",
+      buttonText: "Request a Tutor",
+    },
+    {
+      title: "Home Tuition Fees in Chandigarh: Cost Guide",
+      desc: "Understand what decides tuition fees and how to estimate your monthly cost before you enquire",
+      href: "/blogs/home-tuition-fees-in-chandigarh-cost-guide",
+      badge: "Free Guide",
+      buttonText: "Read the Guide",
+    },
+    {
+      title: "French Classes in Panchkula",
+      desc: "Looking for French instead? Explore live online French batches for school students, professionals and exam candidates",
+      href: "/locations/french-classes-panchkula",
+      badge: "Location",
+      buttonText: "Explore French Classes",
+    },
+    {
+      title: "Home Tutor Jobs in Chandigarh",
+      desc: "Are you a tutor? Apply to teach home tuition and online classes across the Tricity",
+      href: "/services/home-tutor-jobs-chandigarh",
+      badge: "Career Opportunity",
+      buttonText: "Apply as Tutor",
+    },
+  ],
+
+  areas: [
+    "Sector 4",
+    "Sector 5",
+    "Sector 6",
+    "Sector 7",
+    "Sector 8",
+    "Sector 9",
+    "Sector 10",
+    "Sector 11",
+    "Sector 12",
+    "Sector 15",
+    "Sector 20",
+    "Sector 25",
+    "Sector 26",
+    "MDC",
+    "Kalka Road",
+    "Pinjore",
+  ],
+
+  courses: [
+    "academic-excellence-program",
+    "english-speaking-mastery",
+    "french-language-program",
+  ],
+
+  features: [
+    "Home Tutors Matched to Your Panchkula Sector",
+    "Class 1–12 for CBSE, ICSE and Haryana Board Syllabi",
+    "Evening & Weekend Timings Around School and Commute",
+    "Live Online Option if a Nearby Tutor Is Not Free",
+  ],
+
+  whyChoose: [
+    {
+      title: "A Tutor Matched to Your Sector, Not Just Your Subject",
+      description:
+        "Panchkula's sectors are spread out, and a tutor who spends half the session's time travelling rarely teaches well. Tell us your sector and we look for a tutor close to you so sessions start on time and stay consistent.",
+    },
+    {
+      title: "Tutors Who Know Your Child's Syllabus",
+      description:
+        "Panchkula families follow a mix of CBSE, ICSE and Haryana Board curricula. Share your child's board and class and we match a tutor who teaches that syllabus rather than a generic subject specialist.",
+    },
+    {
+      title: "Timings That Fit School and the Chandigarh Commute",
+      description:
+        "Many Panchkula parents commute to Chandigarh or Mohali for work, so we focus on after-school, evening and weekend slots instead of assuming a parent is home all day.",
+    },
+    {
+      title: "Online Backup When a Home Tutor Is Not Available Nearby",
+      description:
+        "If no tutor is free in your sector, or exams make travel hard, switch to live online sessions with the same matching process and the same trial class first.",
+    },
+  ],
+
+  faq: [
+    {
+      question: "How can I find a home tutor in Panchkula?",
+      answer:
+        "Share your child's class, subject, school board, sector and preferred timings through our request form or WhatsApp. We match a tutor from our network who fits, and you attend a trial class before committing.",
+    },
+    {
+      question: "Which Panchkula sectors do you cover for home tuition?",
+      answer:
+        "We match tutors across Panchkula sectors including Sector 4 to 12, Sector 15, Sector 20, Sector 25, Sector 26, MDC, Kalka Road and Pinjore. Tell us your exact sector and we look for the closest available tutor.",
+    },
+    {
+      question: "Can I get a home tutor for Class 10 and Class 12 board exams?",
+      answer:
+        "Yes. Share the subjects and the board, and we match a tutor for chapter-wise revision, doubt solving and practice papers. Availability depends on the subject and your sector, so request early in the academic year.",
+    },
+    {
+      question: "Do you have tutors for CBSE, ICSE and Haryana Board?",
+      answer:
+        "Yes, mention your child's board and class in your request, and we match a tutor who teaches that syllabus.",
+    },
+    {
+      question: "What is the home tuition fee in Panchkula?",
+      answer:
+        "Fees depend on the class, subject, tutor experience, home or online mode and sessions per week, so there is no single rate. Our home tuition fees guide shows how to estimate your monthly cost.",
+    },
+    {
+      question: "Is home tuition or coaching better for my child in Panchkula?",
+      answer:
+        "Home tuition works best for students who need individual attention or a flexible pace, while coaching suits students who learn well in a group on a fixed timetable. Many parents use a home tutor alongside school to fix specific gaps.",
+    },
+    {
+      question: "Can I get an online tutor if I live in Panchkula?",
+      answer:
+        "Yes. Live online tuition is available for Panchkula students, with the same matching and trial class, and many families use it when exam schedules make travel difficult.",
+    },
+    {
+      question: "Can I find a French or spoken English tutor in Panchkula?",
+      answer:
+        "Yes. We match tutors for spoken English and French. For structured French batches, see our French classes in Panchkula page.",
+    },
+    {
+      question: "Do you have a centre or office in Panchkula?",
+      answer:
+        `No. We do not run a walk-in centre. Tutors visit your home or teach live online. Call or WhatsApp ${SITE_CONFIG.phone} to request a tutor and discuss timings.`,
+    },
+  ],
+
+  seo: {
+    title: "Home Tuition in Panchkula | Inquisitive Mind Academy",
+    // 52 characters
+    description:
+      "Home tuition in Panchkula for Class 1–12, spoken English and French. Get matched with a tutor for Sector 5, 9, 11, 15, 20, MDC and nearby.",
+    // 138 characters
+    keywords: [
+      "home tuition in Panchkula",
+      "home tutor in Panchkula",
+      "tuition classes in Panchkula",
+      "private tutor Panchkula",
+      "home tutor near me Panchkula",
+      "online tuition Panchkula",
+      "CBSE home tuition Panchkula",
+    ],
+  },
+
+  googleMaps: {
+    iframe: "",
+    direction: "",
+  },
+},
 
 ];
 

@@ -32,6 +32,8 @@
     "@tailwindcss/postcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "16.2.9",
+    "pptxgenjs": "^4.0.1",
+    "puppeteer-core": "^25.16.0",
     "tailwindcss": "^4"
   }
 }

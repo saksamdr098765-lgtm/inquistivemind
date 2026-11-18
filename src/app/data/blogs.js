@@ -1412,9 +1412,12 @@ export const blogs = [
       role: "French Faculty",
     },
     relatedCourses: [
-      "academic-excellence-program",
-      "english-speaking-mastery",
-      "french-language-program",
+      "french-c2-mastery-course",
+      "french-a1-beginner-course",
+      "french-a2-elementary-course",
+      "french-b1-intermediate-course",
+      "french-b2-advanced-course",
+      "french-c1-proficiency-course"
     ],
     publishedAt: "October 5, 2026",
     lastUpdated: "October 5, 2026",
@@ -2146,4 +2149,339 @@ export const blogs = [
       ],
     },
   },
+  {
+  id: 7,
+  slug: "home-tuition-fees-in-chandigarh-cost-guide",
+  title: "Home Tuition Fees in Chandigarh (2026): Cost Guide",
+  excerpt:
+    "How much does a home tutor cost in Chandigarh? Learn what decides tuition fees, how to estimate your monthly cost, and how to compare tutors beyond price.",
+  category: "Fees & Cost Guides",
+  author: {
+    name: "Sakshi Goel",
+    credentials: "French Faculty · 10+ Years Teaching Experience · DELF/DALF Trained",
+    image: "/founder.webp",
+    bio:
+      "French language educator with 10+ years of teaching experience, having taught both adults and young learners across different institutions. Experienced in preparing students for TEF/TCF-style examinations, with specialization in French language, communication skills, and exam-oriented preparation across beginner to advanced levels.",
+  },
+  reviewedBy: {
+    name: "Sakshi Goel",
+    role: "French Faculty",
+  },
+ relatedCourses: [
+      "french-c2-mastery-course",
+      "french-a1-beginner-course",
+      "french-a2-elementary-course",
+      "french-b1-intermediate-course",
+      "french-b2-advanced-course",
+      "french-c1-proficiency-course"
+    ],
+  publishedAt: "November 18, 2026",
+  lastUpdated: "November 18, 2026",
+  readingTime: "8 min read",
+  coverImage: "/blogs/home-tuition-fees-in-chandigarh-cost-guide/cover.webp",
+  featured: true,
+  quickInfo: {
+    courseName: "Home Tuition — Fees Guide for Parents",
+    duration: "8 mins",
+    mode: "Home Tuition & Online",
+    level: "Class 1–12, Spoken English, French",
+    batchSize: "1-on-1 & Small Groups",
+    certification: "N/A",
+  },
+
+  seo: {
+    title: "Home Tuition Fees in Chandigarh (2026): Cost Guide",
+    // 50 characters
+    description:
+      "How much does a home tutor cost in Chandigarh? See what decides tuition fees, how to estimate your monthly cost and how to compare tutors.",
+    // 138 characters
+    keywords: [
+      "home tuition fees in Chandigarh",
+      "home tutor charges per hour in Chandigarh",
+      "home tutor charges per month",
+      "home tuition per hour rate",
+      "one on one tuition",
+      "best home tutor in Chandigarh",
+      "home tuition vs coaching",
+      "how to find a good home tutor",
+    ],
+  },
+
+  tags: [
+    "Home Tuition Fees",
+    "Home Tutor",
+    "Chandigarh",
+    "Parents Guide",
+    "Cost Guide",
+  ],
+
+  content: [
+    {
+      type: "paragraph",
+      text:
+        "Short answer: home tuition fees in Chandigarh depend on the class, the subject, the tutor's experience, whether sessions are at home or online, and how many sessions you take each week, so there is no single rate. Senior classes, board-exam preparation and specialist subjects such as French or spoken English usually cost more than primary classes, and online sessions often cost less than home visits. Use the formula below to estimate your own monthly figure, then compare tutors on fit and results, not price alone.",
+    },
+    {
+      type: "heading",
+      level: 2,
+      text: "What Decides Home Tuition Fees in Chandigarh?",
+    },
+    {
+      type: "list",
+      items: [
+        "Class level: Class 10 and 12 board preparation usually costs more than primary or middle school tuition",
+        "Subject: Maths, Science, French and spoken English generally cost more than general homework help because the tutor needs specialist knowledge",
+        "Tutor experience and results: tutors with a track record of improving marks can charge more than first-time tutors",
+        "Mode: home visits include the tutor's travel time, while online sessions remove it",
+        "Group size: 1-on-1 tuition costs more per student than a small group, but gives more individual attention",
+        "Sessions per week: more sessions raise the monthly cost but usually lower the cost per session",
+        "Location: a tutor travelling to a far sector may charge more than one who lives nearby",
+      ],
+    },
+    {
+      type: "heading",
+      level: 2,
+      text: "How Much Do Home Tutors Charge per Hour or per Month?",
+    },
+    {
+      type: "paragraph",
+      text:
+        "Tutors usually charge per session or per month for each subject, so your monthly bill is the sum of every subject and student. Because rates vary this widely, we do not publish a flat price list. Instead, share your child's class, subject and area and we will give you a quote based on the tutor we match. For the tutor's side of the numbers, see our home tutor salary guide.",
+    },
+    {
+      type: "heading",
+      level: 2,
+      text: "How to Estimate Your Monthly Home Tuition Cost",
+    },
+    {
+      type: "paragraph",
+      text:
+        "A simple formula works for any subject: sessions per week × about 4 weeks × rate per session = monthly cost. Add each additional subject separately.",
+    },
+    {
+      type: "list",
+      items: [
+        "Pick the number of sessions your child needs each week for each subject, usually 2 to 3 for core subjects",
+        "Multiply by 4 to get monthly sessions",
+        "Multiply by the tutor's rate per session",
+        "Add travel or material costs only if the tutor charges them separately",
+      ],
+    },
+    {
+      type: "warning",
+      title: "Illustrative Example Only",
+      text:
+        "If a tutor charged ₹500 per session and your child took 3 sessions a week, the monthly cost would be 3 × 4 × ₹500 = ₹6,000. This is only an example to show the calculation, not a quoted or average fee.",
+    },
+    {
+      type: "heading",
+      level: 2,
+      text: "Home Tuition vs Online Tuition: Which Costs Less?",
+    },
+    {
+      type: "paragraph",
+      text:
+        "Online tuition is usually cheaper, because the tutor saves travel time and can fit more sessions into a day. Home tuition costs more, but suits younger children who concentrate better with a tutor beside them and parents who prefer in-person supervision. Many families use online sessions during exams and home tuition the rest of the year.",
+    },
+    {
+      type: "heading",
+      level: 2,
+      text: "One-on-One Tuition vs Group Tuition",
+    },
+    {
+      type: "list",
+      items: [
+        "One-on-one: the tutor sets the pace for your child, ideal for weak basics, board exam revision or building confidence, at a higher cost per hour",
+        "Small group: costs less per student and suits children who learn well alongside peers",
+        "A mix works too: some parents use a group class for the syllabus and a few 1-on-1 sessions for weak topics",
+      ],
+    },
+    {
+      type: "heading",
+      level: 2,
+      text: "Is Home Tuition Better Than Coaching Classes?",
+    },
+    {
+      type: "paragraph",
+      text:
+        "Neither is better for every child. Coaching classes follow a fixed timetable and suit self-motivated students who do well in a group. Home tuition adapts to your child, which helps students who are falling behind, lack confidence or need to rebuild basics before they can keep up. If your child understands lessons but needs practice, coaching may be enough. If your child does not understand them, a tutor is usually the better first step.",
+    },
+    {
+      type: "interlinking",
+      title: "Request a Tutor or Explore Fees",
+      description:
+        "Ready to compare real options? Request a home or online tutor, or read our other fee guides.",
+      items: [
+        {
+          title: "Home Tutor in Chandigarh",
+          description: "Request a home or online tutor for Class 1–12, spoken English and French, with a trial class first.",
+          href: "/services/home-tutor-chandigarh",
+          badge: "Service",
+        },
+        {
+          title: "French Classes Fees in Chandigarh: Cost Guide",
+          description: "What home, online and group French classes cost, separate from exam fees.",
+          href: "/blogs/french-classes-fees-in-chandigarh-cost-guide",
+          badge: "Blog",
+        },
+        {
+          title: "Home Tutor Salary in Chandigarh",
+          description: "The tutor's side of the numbers: how monthly tuition income is calculated.",
+          href: "/blogs/home-tutor-salary-in-chandigarh-how-much-can-you-earn",
+          badge: "Blog",
+        },
+        {
+          title: "French Classes in Chandigarh",
+          description: "Home tuition and live online French classes from beginner to advanced.",
+          href: "/services/french-classes-chandigarh",
+          badge: "Service",
+        },
+      ],
+    },
+    {
+      type: "heading",
+      level: 2,
+      text: "How to Compare Two Tutors Beyond Price",
+    },
+    {
+      type: "list",
+      items: [
+        "Ask for a trial class and watch how the tutor explains a topic your child finds hard",
+        "Check that the tutor teaches your child's board and class, not just the subject",
+        "Ask how progress will be tracked, for example through short weekly tests or updates",
+        "Confirm timings, travel distance and what happens if a session is missed",
+        "Judge your child's reaction after the trial: comfortable and curious beats impressed but nervous",
+      ],
+    },
+    {
+      type: "tip",
+      title: "Parent Tip",
+      text:
+        "A slightly higher fee for a tutor who stays consistent and explains clearly is usually better value than a cheaper tutor your child avoids. Change tutor early if the trial class does not feel right.",
+    },
+    {
+      type: "heading",
+      level: 2,
+      text: "How to Find a Good Home Tutor in Chandigarh, Mohali and Panchkula",
+    },
+    {
+      type: "list",
+      items: [
+        "Write down your child's class, board, subject and the specific problem, such as weak basics or exam panic",
+        "Note your sector or phase and the days and times that work",
+        "Request a tutor through a matching service instead of calling several listings",
+        "Attend a trial class and agree the schedule and fee only after it",
+      ],
+    },
+    {
+      type: "warning",
+      title: "Confirm Before You Pay",
+      text:
+        "Always agree the per-session or monthly fee, the number of sessions and the cancellation terms before the first paid class, and avoid paying a long period upfront before you have seen the tutor teach.",
+    },
+    {
+      type: "heading",
+      level: 2,
+      text: "Conclusion",
+    },
+    {
+      type: "paragraph",
+      text:
+        "Home tuition fees in Chandigarh depend on the class, subject, mode and the tutor, so the best way to budget is to use the formula above and get a quote for your child's exact needs. Compare tutors on fit, explanation and consistency, attend a trial class, and only then commit to a schedule.",
+    },
+    {
+      type: "interlinking",
+      title: "Locations & Areas We Serve",
+      description:
+        "Home tuition and live online classes across Chandigarh, Mohali and Panchkula.",
+      items: [
+        {
+          title: "Home Tuition in Panchkula",
+          description: "Home tutors matched to your Panchkula sector for Class 1–12, spoken English and French.",
+          href: "/locations/home-tuition-panchkula",
+          badge: "Panchkula",
+        },
+        {
+          title: "Home Tutor Jobs in Mohali",
+          description: "Are you a tutor? Apply for home tuition jobs across Mohali phases and sectors.",
+          href: "/locations/home-tutor-jobs-mohali",
+          badge: "Mohali",
+        },
+        {
+          title: "Home Tutor Jobs in Chandigarh",
+          description: "Apply as a home tutor and get matched with students near you.",
+          href: "/services/home-tutor-jobs-chandigarh",
+          badge: "Careers",
+        },
+      ],
+    },
+  ],
+
+  faq: [
+    {
+      question: "How much do home tutors charge in Chandigarh?",
+      answer:
+        "Rates vary by class, subject, tutor experience, mode and sessions per week, so there is no single rate. Use the formula in this guide to estimate your monthly cost, or request a tutor and we will quote a fee for your child's exact needs.",
+    },
+    {
+      question: "How much does a home tutor charge per hour?",
+      answer:
+        "It depends on the subject and class level. Senior classes, board preparation and specialist subjects usually cost more per hour than primary classes, and online sessions often cost less than home visits.",
+    },
+    {
+      question: "What is the cost of home tuition per month?",
+      answer:
+        "Multiply sessions per week by 4 to get monthly sessions, then multiply by the tutor's rate per session. Add each subject separately.",
+    },
+    {
+      question: "Is home tuition worth it?",
+      answer:
+        "It is worth it when your child needs individual attention, has weak basics or needs exam support that a large class does not provide. If your child already understands lessons and only needs practice, a cheaper option may be enough.",
+    },
+    {
+      question: "Is home tuition better than coaching?",
+      answer:
+        "Home tuition adapts to one child's pace, which helps students who are falling behind. Coaching follows a fixed timetable and suits self-motivated students who do well in a group.",
+    },
+    {
+      question: "Is online tuition cheaper than home tuition?",
+      answer:
+        "Usually yes, because the tutor saves travel time and can fit more sessions into a day. Home tuition costs more but suits younger children who concentrate better with in-person supervision.",
+    },
+    {
+      question: "Is one-on-one tuition worth the extra cost?",
+      answer:
+        "For weak basics, board exam revision or confidence building, usually yes, because the tutor works at your child's pace. For a child who just needs practice, a small group may be enough.",
+    },
+    {
+      question: "How do I find a good home tutor near me?",
+      answer:
+        "Share your child's class, board, subject and sector with a matching service, attend a trial class, and judge the tutor on how clearly they explain and how your child responds, not just on price or qualifications.",
+    },
+    {
+      question: "Can I get a free trial class before paying for a home tutor?",
+      answer:
+        "With Inquisitive Mind Academy, every match starts with a trial class so you can judge the tutor's teaching before agreeing to a schedule and fee plan.",
+    },
+  ],
+
+  cta: {
+    title: "Get a Fee Quote for Your Child's Home Tutor",
+    description:
+      "Share your child's class, subject and area, and we will match a tutor, quote a fee and set up a trial class.",
+    serviceName: "Home Tutor in Chandigarh",
+    serviceLink: "/services/home-tutor-chandigarh",
+    bookingLink:
+      `https://wa.me/${SITE_CONFIG.whatsapp}?text=Hi%2C%20I%20want%20a%20fee%20quote%20for%20a%20home%20tutor.%20Class%3A%20__%2C%20Subject%3A%20__%2C%20Area%3A%20__.`,
+    whatsappLink:
+      `https://wa.me/${SITE_CONFIG.whatsapp}?text=Hi%2C%20I%20have%20a%20question%20about%20home%20tuition%20fees.`,
+    features: [
+      "Home & Online Tuition",
+      "Trial Class First",
+      "Class 1–12, English & French",
+      "Matched to Your Sector",
+      "Flexible Timings",
+    ],
+  },
+}
 ];

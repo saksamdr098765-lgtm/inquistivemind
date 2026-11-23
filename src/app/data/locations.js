@@ -689,45 +689,54 @@ seo: {
       direction: "",
     },
   },
-  {
+
+{
   slug: "home-tuition-panchkula",
   city: "Panchkula",
   title: "Home Tuition in Panchkula | Inquisitive Mind Academy",
+  // 52 characters
   shortDescription:
-    "Find a home tutor in Panchkula for Class 1–12, spoken English and French. We match a tutor near your sector for home or live online tuition, with a trial class first.",
+    "Home tutors for Panchkula students, with a focus on CBSE and Haryana Board (HBSE) syllabi. Share your sector and class, and we find a tutor close by or set up live online lessons.",
   coverImage: "/locations/home-tuition-panchkula/cover.webp",
-  address: "Home Tuition Across Panchkula + Live Online Classes",
+  address: "Tutors Visit Your Home in Panchkula or Teach Live Online",
   phone: SITE_CONFIG.phone,
-  hours: "Mon - Sat: 09:00 AM - 07:00 PM | Tutor Requests Open Daily",
+  hours: "Mon - Sat: 09:00 AM - 07:00 PM | Evening Sessions Available",
 
   offersVisits: true,
   isOnlineOnly: false,
 
   centralHub: [
     {
-      title: "Home Tutor in Chandigarh, Mohali & Panchkula",
-      desc: "Request a home or online tutor for Class 1–12, spoken English and French, with a trial class before you commit",
-      href: "/services/home-tutor-chandigarh",
+      title: "Spoken English Classes in Chandigarh & Online",
+      desc: "Speaking-first English sessions for students, job seekers and working professionals, live online or at home",
+      href: "/services/spoken-english-classes-chandigarh",
       badge: "Featured Service",
-      buttonText: "Request a Tutor",
-    },
-    {
-      title: "Home Tuition Fees in Chandigarh: Cost Guide",
-      desc: "Understand what decides tuition fees and how to estimate your monthly cost before you enquire",
-      href: "/blogs/home-tuition-fees-in-chandigarh-cost-guide",
-      badge: "Free Guide",
-      buttonText: "Read the Guide",
+      buttonText: "Explore Spoken English",
     },
     {
       title: "French Classes in Panchkula",
-      desc: "Looking for French instead? Explore live online French batches for school students, professionals and exam candidates",
+      desc: "School, adult and exam batches for Panchkula learners, live online",
       href: "/locations/french-classes-panchkula",
       badge: "Location",
       buttonText: "Explore French Classes",
     },
     {
+      title: "Home Tuition Fees in Chandigarh: Cost Guide",
+      desc: "How tuition fees are decided and how to estimate your monthly cost",
+      href: "/blogs/home-tuition-fees-in-chandigarh-cost-guide",
+      badge: "Free Guide",
+      buttonText: "Read the Guide",
+    },
+    {
+      title: "Request a Home Tutor",
+      desc: "Class 1–12 tutors for the Tricity, with a trial class before you commit",
+      href: "/services/home-tutor-chandigarh",
+      badge: "Service",
+      buttonText: "Request a Tutor",
+    },
+    {
       title: "Home Tutor Jobs in Chandigarh",
-      desc: "Are you a tutor? Apply to teach home tuition and online classes across the Tricity",
+      desc: "Teach students across Panchkula, Chandigarh and Mohali",
       href: "/services/home-tutor-jobs-chandigarh",
       badge: "Career Opportunity",
       buttonText: "Apply as Tutor",
@@ -760,80 +769,85 @@ seo: {
   ],
 
   features: [
-    "Home Tutors Matched to Your Panchkula Sector",
-    "Class 1–12 for CBSE, ICSE and Haryana Board Syllabi",
-    "Evening & Weekend Timings Around School and Commute",
-    "Live Online Option if a Nearby Tutor Is Not Free",
+    "Tutors Who Know the Haryana Board (HBSE) and CBSE Syllabi",
+    "Matched by Sector, so Travel Stays Short",
+    "After-School and Evening Sessions",
+    "Online-First Option for Pinjore and Kalka Road",
   ],
 
   whyChoose: [
     {
-      title: "A Tutor Matched to Your Sector, Not Just Your Subject",
+      title: "Haryana Board and CBSE, Not One-Size-Fits-All",
       description:
-        "Panchkula's sectors are spread out, and a tutor who spends half the session's time travelling rarely teaches well. Tell us your sector and we look for a tutor close to you so sessions start on time and stay consistent.",
+        "Panchkula sits in Haryana, so many students study the HBSE syllabus while others attend CBSE schools, and the two differ in paper pattern and emphasis. We ask for your board at the start and match a tutor who teaches that curriculum, so the revision matches what your child's school paper will actually look like.",
     },
     {
-      title: "Tutors Who Know Your Child's Syllabus",
+      title: "Matched by Sector in a Spread-Out City",
       description:
-        "Panchkula families follow a mix of CBSE, ICSE and Haryana Board curricula. Share your child's board and class and we match a tutor who teaches that syllabus rather than a generic subject specialist.",
+        "Panchkula's planned sectors are wide and quiet, which makes it easy to lose half an hour to travel between sessions. Giving us your sector lets us look first for tutors already based nearby.",
     },
     {
-      title: "Timings That Fit School and the Chandigarh Commute",
+      title: "Evening Sessions for Parents Who Work in Chandigarh",
       description:
-        "Many Panchkula parents commute to Chandigarh or Mohali for work, so we focus on after-school, evening and weekend slots instead of assuming a parent is home all day.",
+        "A large share of Panchkula parents drive into Chandigarh each day, so many families can only be present for sessions after they return. We prioritise after-school and early-evening slots over mid-day ones.",
     },
     {
-      title: "Online Backup When a Home Tutor Is Not Available Nearby",
+      title: "Pinjore and Kalka Road: Online Works Better",
       description:
-        "If no tutor is free in your sector, or exams make travel hard, switch to live online sessions with the same matching process and the same trial class first.",
+        "Home visits to the outer belt are hard to sustain week after week. For Pinjore and Kalka Road we usually recommend live online lessons with the same matched tutor, which keeps sessions regular without adding travel.",
+    },
+    {
+      title: "Spring Exam Season Planning",
+      description:
+        "Annual exams for both boards fall in the spring term, and good tutors fill up early. Requesting a tutor in the autumn gives time for a trial class, a syllabus check and a revision schedule before the pressure builds.",
     },
   ],
 
   faq: [
     {
-      question: "How can I find a home tutor in Panchkula?",
+      question: "I live in Sector 20 (or MDC or Sector 4). Can I get a tutor nearby?",
       answer:
-        "Share your child's class, subject, school board, sector and preferred timings through our request form or WhatsApp. We match a tutor from our network who fits, and you attend a trial class before committing.",
+        "Tell us your sector and class, and we look for a tutor who is based close to you first. If nobody nearby is free for your subject, we offer live online lessons so your child does not have to wait.",
     },
     {
-      question: "Which Panchkula sectors do you cover for home tuition?",
+      question: "Do you have tutors for the Haryana Board (HBSE) syllabus?",
       answer:
-        "We match tutors across Panchkula sectors including Sector 4 to 12, Sector 15, Sector 20, Sector 25, Sector 26, MDC, Kalka Road and Pinjore. Tell us your exact sector and we look for the closest available tutor.",
+        "Yes. Mention HBSE and your child's class when you request a tutor, and we match someone who teaches that syllabus and paper pattern. Availability varies by subject, so a subject and class together help us match faster.",
     },
     {
-      question: "Can I get a home tutor for Class 10 and Class 12 board exams?",
+      question: "My child studies in a CBSE school in Panchkula. Does the tutor follow CBSE?",
       answer:
-        "Yes. Share the subjects and the board, and we match a tutor for chapter-wise revision, doubt solving and practice papers. Availability depends on the subject and your sector, so request early in the academic year.",
+        "Yes, we match to your child's board. A CBSE student gets a tutor who works from the CBSE syllabus and sample papers, not HBSE material.",
     },
     {
-      question: "Do you have tutors for CBSE, ICSE and Haryana Board?",
+      question: "Can I book a tutor only for the exam months?",
       answer:
-        "Yes, mention your child's board and class in your request, and we match a tutor who teaches that syllabus.",
+        "You can book a shorter set of sessions focused on revision before annual or term exams. Requesting a few weeks ahead gives us time to match the right tutor.",
     },
     {
-      question: "What is the home tuition fee in Panchkula?",
+      question: "Can I get home visits in Pinjore or Kalka Road?",
       answer:
-        "Fees depend on the class, subject, tutor experience, home or online mode and sessions per week, so there is no single rate. Our home tuition fees guide shows how to estimate your monthly cost.",
+        "Home visits depend on whether a tutor is based near you. Because the distance from central Panchkula is long, live online lessons are usually the more reliable option for these areas, with the same matching and trial class.",
     },
     {
-      question: "Is home tuition or coaching better for my child in Panchkula?",
+      question: "I work in Chandigarh and get home in the evening. Are evening slots possible?",
       answer:
-        "Home tuition works best for students who need individual attention or a flexible pace, while coaching suits students who learn well in a group on a fixed timetable. Many parents use a home tutor alongside school to fix specific gaps.",
+        "Yes. After-school and early-evening sessions are our most common requests from Panchkula families. Share your usual return time and we match accordingly.",
     },
     {
-      question: "Can I get an online tutor if I live in Panchkula?",
+      question: "Is home tuition in Panchkula more expensive than in Chandigarh?",
       answer:
-        "Yes. Live online tuition is available for Panchkula students, with the same matching and trial class, and many families use it when exam schedules make travel difficult.",
+        "Fees depend mainly on the class, subject, tutor experience and mode rather than the city. Distance can add to home-visit costs in some cases, which is one reason online sessions are cheaper. Our fees guide shows how to estimate a monthly figure.",
     },
     {
-      question: "Can I find a French or spoken English tutor in Panchkula?",
+      question: "Where does the trial class take place?",
       answer:
-        "Yes. We match tutors for spoken English and French. For structured French batches, see our French classes in Panchkula page.",
+        "At your home with a visiting tutor, or live online. We do not run a walk-in centre in Panchkula, so you never have to travel for the trial.",
     },
     {
-      question: "Do you have a centre or office in Panchkula?",
+      question: "Can I find spoken English or French tutors here as well?",
       answer:
-        `No. We do not run a walk-in centre. Tutors visit your home or teach live online. Call or WhatsApp ${SITE_CONFIG.phone} to request a tutor and discuss timings.`,
+        "Yes. See our spoken English page for speaking-first sessions, or our French classes in Panchkula page for structured French batches.",
     },
   ],
 
@@ -841,16 +855,209 @@ seo: {
     title: "Home Tuition in Panchkula | Inquisitive Mind Academy",
     // 52 characters
     description:
-      "Home tuition in Panchkula for Class 1–12, spoken English and French. Get matched with a tutor for Sector 5, 9, 11, 15, 20, MDC and nearby.",
-    // 138 characters
+      "Home tutors in Panchkula for CBSE and Haryana Board students, Class 1–12. English and French too. Tutors near your sector, trial class first.",
+    // 141 characters
     keywords: [
       "home tuition in Panchkula",
       "home tutor in Panchkula",
       "tuition classes in Panchkula",
+      "HBSE home tuition Panchkula",
+      "Haryana Board tutor Panchkula",
+      "CBSE tutor Panchkula",
       "private tutor Panchkula",
-      "home tutor near me Panchkula",
       "online tuition Panchkula",
-      "CBSE home tuition Panchkula",
+    ],
+  },
+
+  googleMaps: {
+    iframe: "",
+    direction: "",
+  },
+},
+
+{
+  slug: "home-tuition-mohali",
+  city: "Mohali",
+  title: "Home Tuition in Mohali | Inquisitive Mind Academy",
+  // 49 characters
+  shortDescription:
+    "Home tutors for Mohali students across CBSE, ICSE and Punjab Board syllabi. Tell us your phase or sector and your child's subjects, and we match a tutor nearby or set up live online lessons.",
+  coverImage: "/locations/home-tuition-mohali/cover.webp",
+  address: "Tutors Visit Your Home in Mohali or Teach Live Online",
+  phone: SITE_CONFIG.phone,
+  hours: "Mon - Sat: 09:00 AM - 07:00 PM | Saturday Morning Slots Available",
+
+  offersVisits: true,
+  isOnlineOnly: false,
+
+  centralHub: [
+    {
+      title: "Maths & Science Tutor in Chandigarh",
+      desc: "Subject tutors for Maths, Physics, Chemistry and Biology, Class 6 to 12, at home or live online",
+      href: "/services/maths-science-tutor-chandigarh",
+      badge: "Featured Service",
+      buttonText: "Find a Maths/Science Tutor",
+    },
+    {
+      title: "Request a Home Tutor",
+      desc: "Class 1–12 tutors across Chandigarh, Mohali and Panchkula, with a trial class first",
+      href: "/services/home-tutor-chandigarh",
+      badge: "Service",
+      buttonText: "Request a Tutor",
+    },
+    {
+      title: "Spoken English Classes",
+      desc: "Evening and weekend speaking practice for students and working professionals",
+      href: "/services/spoken-english-classes-chandigarh",
+      badge: "Service",
+      buttonText: "Explore Spoken English",
+    },
+    {
+      title: "Home Tuition Fees in Chandigarh: Cost Guide",
+      desc: "Why quotes differ and how to estimate your monthly tuition cost",
+      href: "/blogs/home-tuition-fees-in-chandigarh-cost-guide",
+      badge: "Free Guide",
+      buttonText: "Read the Guide",
+    },
+    {
+      title: "French Classes in Mohali",
+      desc: "Live online French batches for Mohali learners, from beginner to exam level",
+      href: "/locations/french-classes-mohali",
+      badge: "Location",
+      buttonText: "Explore French Classes",
+    },
+    {
+      title: "Home Tutor Jobs in Mohali",
+      desc: "Teach students across Mohali phases and sectors",
+      href: "/locations/home-tutor-jobs-mohali",
+      badge: "Career Opportunity",
+      buttonText: "Apply as Tutor",
+    },
+  ],
+
+  areas: [
+    "Phase 3B2",
+    "Phase 5",
+    "Phase 7",
+    "Phase 8",
+    "Phase 9",
+    "Phase 11",
+    "Sector 62",
+    "Sector 70",
+    "Sector 71",
+    "Kharar",
+    "Zirakpur",
+  ],
+
+  courses: [
+    "academic-excellence-program",
+    "english-speaking-mastery",
+    "french-language-program",
+  ],
+
+  features: [
+    "Smooth Support When Your Child Switches Boards",
+    "Subject Specialists for Maths and Science",
+    "Late-Evening and Saturday Morning Slots",
+    "Live Online for Kharar and Zirakpur",
+  ],
+
+  whyChoose: [
+    {
+      title: "Help When a Child Changes Boards Mid-Stream",
+      description:
+        "Families who move to Mohali for work often find their child shifting between CBSE, ICSE and the Punjab Board, and the chapters and paper style do not line up. A tutor who knows both syllabi can bridge the gap in a few weeks instead of leaving your child behind for a term.",
+    },
+    {
+      title: "Matched Within Your Pocket of the City",
+      description:
+        "Mohali mixes older, dense phases with newer sectors such as 70 and 71, and a tutor crossing between them loses time on the road. Telling us your exact phase or sector lets us look for tutors nearby before anyone further away.",
+    },
+    {
+      title: "Subject Experts for the Hard Subjects",
+      description:
+        "Maths and science are where most Mohali parents ask for help first. We match a tutor for the subject and class, such as Class 10 maths or Class 12 physics, not a general teacher who covers everything loosely.",
+    },
+    {
+      title: "Slots Built Around Office Hours",
+      description:
+        "Many Mohali parents work in IT and corporate roles with long days. We offer late-evening sessions on weekdays and Saturday mornings, so a parent can be present or at least reachable.",
+    },
+    {
+      title: "Kharar and Zirakpur: Online Keeps It Regular",
+      description:
+        "These towns are a drive from the central phases. When no tutor lives close by, live online lessons with the same matching and trial class keep the schedule regular and spare your child the wait.",
+    },
+  ],
+
+  faq: [
+    {
+      question: "How does matching work if I live in Phase 7 or Sector 70?",
+      answer:
+        "You tell us your phase or sector, your child's class, board and subjects, and your preferred timings. We look for a tutor based nearby who teaches that syllabus, and if nobody is free we offer live online lessons instead.",
+    },
+    {
+      question: "My child is moving from CBSE to the Punjab Board (or the other way round). Can a tutor help?",
+      answer:
+        "Yes. Tell us both boards and the current class, and we match a tutor who can compare the two syllabi, fill the gaps in chapters your child has not covered, and prepare them for the new paper pattern.",
+    },
+    {
+      question: "Do you have tutors for the Punjab Board (PSEB)?",
+      answer:
+        "We match tutors for PSEB depending on the subject and class. Mention PSEB in your request so we can confirm availability for your child's needs.",
+    },
+    {
+      question: "How do I find a Class 10 tutor in Mohali for boards?",
+      answer:
+        "Send the subjects, board and the chapters your child finds hardest. The trial class uses one of those chapters, so you see how the tutor explains a real problem before committing to a plan for board revision.",
+    },
+    {
+      question: "Can I get separate tutors for maths and science?",
+      answer:
+        "Yes. Many students have one tutor for maths and another for physics or chemistry, since the subjects need different strengths. See our maths and science tutor page for details.",
+    },
+    {
+      question: "I live in Kharar or Zirakpur. Are home visits possible?",
+      answer:
+        "Sometimes, if a tutor is based near you. Otherwise live online lessons are the more dependable option, with the same matching process and a trial class first.",
+    },
+    {
+      question: "I work late. Are there evening or Saturday slots?",
+      answer:
+        "Yes. We offer late-evening weekday slots and Saturday mornings. Tell us your available windows when you request a tutor.",
+    },
+    {
+      question: "Why do tutors quote different fees in Mohali?",
+      answer:
+        "Quotes differ with the tutor's experience, the class and subject, home or online mode and how many sessions you take weekly. Comparing two quotes only makes sense when those match, and our fees guide shows how to do that.",
+    },
+    {
+      question: "What happens in the trial class?",
+      answer:
+        "The tutor teaches a topic your child finds hard, either at your home or online, so you can judge the teaching before agreeing a schedule. No walk-in centre is involved.",
+    },
+    {
+      question: "I work in Mohali's IT sector. Can I join spoken English sessions?",
+      answer:
+        "Yes. Our spoken English classes include evening and weekend slots for working professionals, covering meetings, presentations and interview practice.",
+    },
+  ],
+
+  seo: {
+    title: "Home Tuition in Mohali | Inquisitive Mind Academy",
+    // 49 characters
+    description:
+      "Home tutors in Mohali for CBSE, ICSE and Punjab Board students. Maths, science, English and French, matched to your phase or sector.",
+    // 133 characters
+    keywords: [
+      "home tuition in Mohali",
+      "home tutor in Mohali",
+      "private tutor in Mohali",
+      "tuition classes in Mohali",
+      "maths tutor in Mohali",
+      "Class 10 home tutor Mohali",
+      "PSEB home tuition Mohali",
+      "online tuition Mohali",
     ],
   },
 

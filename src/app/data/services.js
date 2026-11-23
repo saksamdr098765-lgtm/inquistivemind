@@ -1031,6 +1031,461 @@ title: "TCF Canada Coaching Chandigarh | Inquisitive Mind Academy",
     ],
   },
 },
+{
+  slug: "spoken-english-classes-chandigarh",
+  category: "student",
+  targetAudience: "For Adults, Students & Working Professionals",
+  ctaType: "enroll",
+  title: "Spoken English Classes in Chandigarh — Online & At Home",
+  subtitle:
+    "Speak With Confidence at Work, in Interviews and in Daily Life. Beginner to Advanced Tracks.",
+  description:
+    "Join spoken English classes in Chandigarh, live online or at home. Practise real conversations with a tutor matched to your level, whether you are a student, a job seeker or a working professional.",
+  coverImage: "/services/spoken-english-classes-chandigarh/cover.webp",
+
+  trustBadges: [
+    "Live Online & Home Sessions",
+    "Beginner to Advanced Tracks",
+    "Evening & Weekend Timings",
+    "Demo Class Before You Join",
+  ],
+
+  briefOverview: {
+    summary:
+      "Most people who search for an English speaking course already know grammar rules. What holds them back is speaking: hesitating before sentences, translating from Hindi or Punjabi in their head, and freezing in meetings or interviews. Our spoken English classes are built around speaking time. In every session you talk, get corrected on the spot, and repeat until the sentence comes out naturally. We match you with a tutor for your level and goal, and you can learn live online from anywhere or with a tutor at home in Chandigarh, Mohali or Panchkula.",
+    highlights: [
+      "Speaking-first sessions: most of the class is you talking, not listening",
+      "Tracks for adults, college students, job seekers and school students",
+      "Live online across India, or home sessions in the Tricity",
+      "Demo class first, so you can judge the tutor before you commit",
+    ],
+  },
+
+  quickInfo: {
+    duration: "Flexible — Beginner, Intermediate & Advanced Tracks",
+    mode: "Live Online & Home Tutoring",
+    level: "Beginner to Advanced",
+    batchSize: "1-on-1 & Small Groups",
+    certification: "Progress Reviews With Your Tutor",
+  },
+
+  howItWorks: [
+    {
+      step: "01",
+      title: "Tell Us Your Goal",
+      desc: "Share why you want to improve: interviews, a new job, college, travel or everyday confidence, plus your timings and whether you prefer online or home sessions.",
+    },
+    {
+      step: "02",
+      title: "Quick Level Check",
+      desc: "A short conversation shows where you are today: how fluent you are, where you hesitate, and which grammar and vocabulary gaps matter most.",
+    },
+    {
+      step: "03",
+      title: "Attend a Demo Class",
+      desc: "Meet your matched tutor in a demo session and see how the class works before agreeing to a schedule.",
+    },
+    {
+      step: "04",
+      title: "Practise Weekly, Track Progress",
+      desc: "Join regular sessions with speaking drills, feedback and homework, and review your progress with your tutor as you move up levels.",
+    },
+  ],
+
+  whatsCovered: [
+    {
+      title: "Fluency & Daily Conversation",
+      desc: "Everyday speaking practice so you can answer without translating in your head: introductions, phone calls, shopping, travel and small talk.",
+    },
+    {
+      title: "Pronunciation & Accent Clarity",
+      desc: "Correcting commonly mispronounced sounds and word stress so people understand you the first time.",
+    },
+    {
+      title: "Vocabulary & Grammar for Speaking",
+      desc: "The grammar you actually use while talking, such as tenses, questions and sentence building, taught through conversation instead of worksheets.",
+    },
+    {
+      title: "Interview & Workplace English",
+      desc: "Mock interviews, self-introduction, meetings, presentations and email-style phrasing for job seekers and working professionals.",
+    },
+    {
+      title: "Confidence & Public Speaking",
+      desc: "Gradual practice in speaking up, from one-to-one to short presentations, to remove hesitation and fear of making mistakes.",
+    },
+    {
+      title: "English for Kids & School Students",
+      desc: "Age-appropriate sessions for school students building spoken confidence alongside their school English.",
+    },
+  ],
+
+  whyChooseUs: [
+    {
+      title: "You Talk for Most of the Class",
+      desc: "Passive lectures do not make you fluent. Our sessions are structured so you speak, get corrected and repeat, which is what builds fluency.",
+    },
+    {
+      title: "Matched to Your Level and Goal",
+      desc: "A beginner needs different practice from a manager preparing for presentations. We match a tutor to your level and reason for learning.",
+    },
+    {
+      title: "Online or At Home",
+      desc: "Learn live online from anywhere in India, or choose home sessions in Chandigarh, Mohali and Panchkula when a tutor is available near you.",
+    },
+    {
+      title: "Timings for Working People",
+      desc: "Evening and weekend slots for professionals, and after-school slots for students.",
+    },
+  ],
+
+  pricing: {
+    planName: "Spoken English — Fee Plan",
+    fee: "Contact for Fee Plan",
+    originalFee: "",
+    duration: "Monthly, Based on Sessions per Week",
+    includes: [
+      "Live online or home sessions",
+      "Level check and demo class",
+      "Speaking drills and feedback",
+      "Progress review with your tutor",
+    ],
+    discountNote:
+      "Fees depend on your level, mode (online or home), and whether you choose 1-on-1 or a small group. Read our home tuition fees guide to see how tuition costs are worked out.",
+    pricePageLink: "/blogs/home-tuition-fees-in-chandigarh-cost-guide",
+    pricePageTitle: "Read the Tuition Fees Guide",
+  },
+
+  tutorCallout: {
+    title: "Are You an English Tutor?",
+    description:
+      "Teach spoken English online or at home and get matched with learners in Chandigarh and across India.",
+    buttonText: "Apply as an Online Tutor",
+    link: "/services/online-tutor-jobs",
+  },
+
+  faq: [
+    {
+      question: "How long does it take to learn spoken English?",
+      answer:
+        "It depends on your starting level and how often you practise. Many learners notice clear improvement in confidence within a few months of regular, speaking-focused sessions, while reaching advanced fluency takes longer. Frequent practice matters more than long classes once a week.",
+    },
+    {
+      question: "Can I learn spoken English online?",
+      answer:
+        "Yes. Live online classes work well for spoken English because the practice is conversational. All you need is a quiet space, a stable internet connection and a tutor who corrects you in real time.",
+    },
+    {
+      question: "Which is the best spoken English class near me?",
+      answer:
+        "Look for a class where you speak for most of the session, get corrected immediately, and are taught at your own level. Attend a demo class before committing, and judge by how much you spoke, not by how much you listened.",
+    },
+    {
+      question: "What is the fee for a spoken English course in Chandigarh?",
+      answer:
+        "Fees depend on your level, whether you choose online or home sessions, and whether you take 1-on-1 or small-group classes. Contact us with your level and timings for a fee plan.",
+    },
+    {
+      question: "Can adults learn spoken English from scratch?",
+      answer:
+        "Yes. Many adults start from basic sentences and build up. Beginner tracks focus on everyday vocabulary and short, simple conversations so you can start speaking from the first class.",
+    },
+    {
+      question: "Is a spoken English course worth it?",
+      answer:
+        "It is worth it if your main problem is speaking confidently, such as in interviews, meetings or daily conversation. If you already speak fluently and only need written English, a writing course may suit you better.",
+    },
+    {
+      question: "How can I improve my English speaking fast?",
+      answer:
+        "Speak every day, even if you make mistakes, record yourself and listen back, learn full phrases instead of single words, and practise with a tutor who corrects you. Consistency beats cramming.",
+    },
+    {
+      question: "Do you offer spoken English classes for kids?",
+      answer:
+        "Yes, we match tutors for school students. Tell us your child's class and age so we find a tutor who teaches at the right level.",
+    },
+    {
+      question: "Are there evening or weekend spoken English classes for working professionals?",
+      answer:
+        "Yes. We offer evening and weekend slots so you can learn around your office hours.",
+    },
+    {
+      question: "Are online or offline spoken English classes better?",
+      answer:
+        "Both can work. Online classes save travel time and give you more tutor choice, while home sessions suit younger learners and people who prefer face-to-face practice. We offer both.",
+    },
+  ],
+
+  areasWeServe: [
+    { city: "Chandigarh", center: "Home & Online Sessions", href: "/services/spoken-english-classes-chandigarh" },
+    { city: "Mohali", center: "Home & Online Sessions", href: "/locations/home-tuition-mohali" },
+    { city: "Panchkula", center: "Home & Online Sessions", href: "/locations/home-tuition-panchkula" },
+    { city: "Online (India)", center: "Live Online From Anywhere", href: "/services/spoken-english-classes-chandigarh" },
+  ],
+
+  relatedServices: [
+    "home-tutor-chandigarh",
+    "online-tutor-jobs",
+    "french-classes-chandigarh",
+  ],
+
+  relatedBlogs: [
+    "home-tuition-fees-in-chandigarh-cost-guide",
+  ],
+
+  finalCta: {
+    title: "Book Your Spoken English Demo Class",
+    description:
+      "Tell us your level and goal, and we will match a tutor and set up a demo class.",
+    buttonText: "Book a Demo Class",
+    whatsappMsg:
+      "Hi Inquisitive Mind Academy! I want to join spoken English classes. Level: __, Goal: __, Preferred mode (online/home): __.",
+  },
+
+  seo: {
+    title: "Spoken English Classes Chandigarh | Inquisitive Mind Academy",
+    // 60 characters
+    description:
+      "Join spoken English classes in Chandigarh, live online or at home. Batches for adults, students and professionals with a demo class.",
+    // 132 characters
+    keywords: [
+      "spoken English classes in Chandigarh",
+      "spoken English classes near me",
+      "English speaking course",
+      "English speaking classes",
+      "online spoken English classes",
+      "English speaking course for adults",
+      "English tutor in Chandigarh",
+      "English speaking classes for kids",
+    ],
+  },
+},
+{
+  slug: "maths-science-tutor-chandigarh",
+  category: "student",
+  targetAudience: "For Class 6–12 Students & Parents",
+  ctaType: "enroll",
+  title: "Maths & Science Tutor in Chandigarh — Class 6 to 12",
+  subtitle:
+    "Maths, Physics, Chemistry and Biology Tutors, at Home or Live Online, Matched to Your Board.",
+  description:
+    "Find a maths or science tutor in Chandigarh for Class 6 to 12. Get matched with a Maths, Physics, Chemistry or Biology tutor for 1-on-1 home or live online tuition, aligned to your school board, with a trial class first.",
+  coverImage: "/services/maths-science-tutor-chandigarh/cover.webp",
+
+  trustBadges: [
+    "Maths, Physics, Chemistry & Biology",
+    "Class 6–12, All Boards",
+    "Home & Live Online 1-on-1",
+    "Trial Class First",
+  ],
+
+  briefOverview: {
+    summary:
+      "Maths and science are the subjects where one missed concept quietly breaks the next five chapters. A student who never understood fractions struggles with algebra, and one who skipped force and motion struggles with every physics chapter after it. A good tutor finds the actual gap and rebuilds from there, instead of repeating what the class already covered. Tell us the class, board and the chapters that cause trouble, and we match a maths or science tutor who teaches that syllabus, at home in the Tricity or live online.",
+    highlights: [
+      "Subject-specific tutors for Maths, Physics, Chemistry and Biology",
+      "Class 6 to 12 for CBSE, ICSE and state boards, including board-exam revision",
+      "1-on-1 sessions that start from the concept your child is missing",
+      "Home visits across Chandigarh, Mohali and Panchkula, or live online",
+    ],
+  },
+
+  quickInfo: {
+    duration: "Ongoing — Sessions Set by You",
+    mode: "Home Tuition & Live Online",
+    level: "Class 6–12 Maths, Physics, Chemistry, Biology",
+    batchSize: "1-on-1 (Small Group on Request)",
+    certification: "Board-Aligned Support (CBSE / ICSE / State Boards)",
+  },
+
+  howItWorks: [
+    {
+      step: "01",
+      title: "Share Class, Board & Problem Chapters",
+      desc: "Tell us the class, board, subject and the chapters or topics that cause trouble, plus your sector and timings.",
+    },
+    {
+      step: "02",
+      title: "Get Matched With a Subject Tutor",
+      desc: "We match a tutor who teaches that subject and class, based on a profile check and short demo.",
+    },
+    {
+      step: "03",
+      title: "Trial Class on a Real Topic",
+      desc: "The trial class uses a chapter your child finds difficult, so you can see how the tutor explains it.",
+    },
+    {
+      step: "04",
+      title: "Regular Sessions With Practice",
+      desc: "Begin weekly sessions with concept teaching, practice questions and test preparation, and add another subject whenever you need.",
+    },
+  ],
+
+  whatsCovered: [
+    {
+      title: "Maths, Class 6 to 12",
+      desc: "Arithmetic and algebra foundations, geometry, trigonometry, and Class 10 and 12 board-level problem solving.",
+    },
+    {
+      title: "Physics",
+      desc: "Concept-first teaching of mechanics, electricity, optics and modern physics, with numericals practised step by step.",
+    },
+    {
+      title: "Chemistry",
+      desc: "Physical, organic and inorganic chemistry, including equations, reactions and numericals, taught for understanding rather than memorising.",
+    },
+    {
+      title: "Biology",
+      desc: "Diagrams, processes and terminology for Class 9 to 12, with revision methods that help the content stick.",
+    },
+    {
+      title: "Board Exam & Test Preparation",
+      desc: "Chapter-wise revision, previous-year-style questions and timed practice before school tests and board exams.",
+    },
+  ],
+
+  whyChooseUs: [
+    {
+      title: "A Tutor for the Subject, Not Just 'Any Tutor'",
+      desc: "A good maths teacher is not automatically a good physics teacher. We match you to a tutor who teaches your specific subject and class.",
+    },
+    {
+      title: "Gaps Found and Fixed First",
+      desc: "The trial class is based on a topic your child struggles with, so we can see quickly whether the tutor can fix the gap rather than repeat the textbook.",
+    },
+    {
+      title: "Board-Aligned Teaching",
+      desc: "Share the board and class, and we match a tutor who teaches that syllabus and exam pattern.",
+    },
+    {
+      title: "Home Visits or Live Online",
+      desc: "Choose a tutor nearby for home sessions, or switch to live online during exams or when no tutor is free in your sector.",
+    },
+  ],
+
+  pricing: {
+    planName: "Maths & Science Tuition — Fee Plan",
+    fee: "Contact for Fee Plan",
+    originalFee: "",
+    duration: "Monthly, Based on Sessions per Week",
+    includes: [
+      "1-on-1 home or live online sessions",
+      "Tutor matched to subject, class and board",
+      "Trial class on a real topic",
+      "Flexible evening and weekend timings",
+    ],
+    discountNote:
+      "Fees depend on the class, subject, mode and sessions per week, and senior classes usually cost more than middle school. Our home tuition fees guide explains how to estimate your monthly cost.",
+    pricePageLink: "/blogs/home-tuition-fees-in-chandigarh-cost-guide",
+    pricePageTitle: "Read the Home Tuition Fees Guide",
+  },
+
+  tutorCallout: {
+    title: "Are You a Maths or Science Tutor?",
+    description:
+      "Join our tutor network and get matched with Class 6–12 students across the Tricity.",
+    buttonText: "Apply as a Home Tutor",
+    link: "/services/home-tutor-jobs-chandigarh",
+  },
+
+  faq: [
+    {
+      question: "How do I find a good maths tutor in Chandigarh?",
+      answer:
+        "Start with the class, the board and the specific chapters your child finds hard. Then attend a trial class on one of those chapters and judge whether the tutor explains the concept clearly and checks understanding with questions. We match you to a tutor for your subject and class so you only compare one or two good fits.",
+    },
+    {
+      question: "Is a maths tutor worth it for Class 10?",
+      answer:
+        "Usually yes if your child has gaps in basics, struggles with problem solving, or needs board exam practice. A 1-on-1 tutor can find and fix the exact gap faster than a large class can.",
+    },
+    {
+      question: "Can I get a separate tutor for physics or chemistry?",
+      answer:
+        "Yes. You can book a tutor for a single subject such as Class 12 Physics or Class 11 Chemistry, and add other subjects later. Availability depends on the subject, class and your area.",
+    },
+    {
+      question: "Do you have a biology tutor in Chandigarh?",
+      answer:
+        "We match biology tutors for Class 9 to 12 depending on availability in your area. Send us your class, board and timings and we will confirm what we can offer.",
+    },
+    {
+      question: "Which classes and boards do you cover?",
+      answer:
+        "We cover Class 6 to 12 for CBSE, ICSE and state boards. Mention your board and class when you request a tutor so we match the right syllabus.",
+    },
+    {
+      question: "Is 1-on-1 maths tuition better than a coaching class?",
+      answer:
+        "For students with weak basics or who need individual pace, 1-on-1 tuition usually works better. For students who understand lessons and need group practice, a coaching class may be enough. Many parents use a tutor to fix specific gaps alongside school.",
+    },
+    {
+      question: "Can my child get a tutor for just one chapter or one exam?",
+      answer:
+        "Yes. You can book a short set of sessions focused on specific chapters or an upcoming test or board exam.",
+    },
+    {
+      question: "Are online maths and science classes as effective as home tuition?",
+      answer:
+        "Yes for most students, if the tutor uses a digital whiteboard or paper on camera to work through problems and the student has a stable connection. Younger students may prefer a tutor at home.",
+    },
+    {
+      question: "Do you offer maths and science tuition in Mohali and Panchkula?",
+      answer:
+        "Yes. We match tutors across Chandigarh, Mohali and Panchkula, and offer live online tuition where no nearby tutor is available.",
+    },
+    {
+      question: "What is the fee for a maths or science tutor?",
+      answer:
+        "It depends on the class, subject, mode and sessions per week, with senior classes and board preparation usually costing more. Contact us for a fee plan, or use the formula in our home tuition fees guide to estimate it.",
+    },
+  ],
+
+  areasWeServe: [
+    { city: "Chandigarh", center: "All Sectors (Home & Online)", href: "/services/maths-science-tutor-chandigarh" },
+    { city: "Mohali", center: "All Phases & Sectors", href: "/locations/home-tuition-mohali" },
+    { city: "Panchkula", center: "All Sectors", href: "/locations/home-tuition-panchkula" },
+    { city: "Online", center: "Live Online From Anywhere", href: "/services/maths-science-tutor-chandigarh" },
+  ],
+
+  relatedServices: [
+    "home-tutor-chandigarh",
+    "spoken-english-classes-chandigarh",
+    "home-tutor-jobs-chandigarh",
+  ],
+
+  relatedBlogs: [
+    "home-tuition-fees-in-chandigarh-cost-guide",
+  ],
+
+  finalCta: {
+    title: "Request a Maths or Science Tutor Today",
+    description:
+      "Share the class, board, subject and problem chapters, and we will match a tutor and set up a trial class.",
+    buttonText: "Request a Tutor",
+    whatsappMsg:
+      "Hi Inquisitive Mind Academy! I want a maths/science tutor. Class: __, Board: __, Subject: __, Area: __.",
+  },
+
+  seo: {
+    title: "Maths & Science Tutor Chandigarh | Inquisitive Mind Academy",
+    // 59 characters
+    description:
+      "Maths, Physics, Chemistry and Biology tutors in Chandigarh for Class 6–12. Home or online 1-on-1 tuition matched to your board, with a trial class.",
+    // 146 characters
+    keywords: [
+      "maths tuition in Chandigarh",
+      "maths tutor in Chandigarh",
+      "physics tutor in Chandigarh",
+      "chemistry tutor in Chandigarh",
+      "biology tutor in Chandigarh",
+      "science tuition in Chandigarh",
+      "class 10 maths tuition",
+      "class 12 physics tutor",
+      "maths tutor in Mohali",
+    ],
+  },
+},
 
   // ==========================================
   // TEACHER / TUTOR SERVICES (Jobs & Hiring)
@@ -1815,6 +2270,7 @@ title: "TCF Canada Coaching Chandigarh | Inquisitive Mind Academy",
   },
 }
 ];
+
 
 
 
